@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Pricing — MEOK Compliance MCP Fleet</title>
+<meta name="description" content="MEOK /verify metering pricing. 200 free calls/day. Pay-as-you-go beyond that. Teams $99/month for 100,000 calls. Enterprise custom.">
+<meta property="og:title" content="MEOK /verify Metering Pricing">
+<meta property="og:description" content="200 free calls/day, then $0.001/call. Teams $99/month. Enterprise custom.">
+<link rel="canonical" href="https://meok.ai/pricing">
+<style>
+:root{--bg:#0a0a14;--fg:#e8e8f0;--muted:#8a8aa0;--accent:#5b21b6;--accent-light:#7c3aed;--green:#22c55e;--amber:#f59e0b;--border:#1a1a2e;--card:#13132a}
+*{box-sizing:border-box}
+body{font:16px/1.6 -apple-system,BlinkMacSystemFont,"SF Pro Display",system-ui,sans-serif;background:var(--bg);color:var(--fg);margin:0;padding:0}
+.container{max-width:1100px;margin:0 auto;padding:48px 32px}
+h1{font-size:48px;margin:0 0 16px;background:linear-gradient(135deg,#5b21b6,#c084fc);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+h2{margin-top:40px;margin-bottom:16px}
+.lede{font-size:18px;color:#8a8aa0;margin-bottom:32px}
+.tiers{display:grid;grid-template-columns:1fr 1fr 1fr;gap:24px;margin:32px 0}
+.tier{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:32px;position:relative}
+.tier.featured{border-color:var(--accent);box-shadow:0 0 32px rgba(91,33,182,0.2)}
+.tier h3{margin:0 0 8px;font-size:24px}
+.tier .price{font-size:36px;font-weight:700;margin:8px 0}
+.tier .price .per{font-size:14px;color:#8a8aa0;font-weight:400}
+.tier ul{padding-left:20px;color:#c8c8d0;margin:16px 0}
+.tier li{margin-bottom:8px}
+.tier .cta{display:block;background:var(--accent);color:#fff;text-align:center;padding:12px;border-radius:6px;margin-top:16px;text-decoration:none;font-weight:600}
+.tier .cta:hover{background:var(--accent-light)}
+.tier .cta.secondary{background:transparent;border:1px solid var(--border);color:var(--fg)}
+.ribbon{position:absolute;top:-12px;right:24px;background:var(--accent);color:#fff;padding:4px 12px;border-radius:12px;font-size:12px;font-weight:600}
+.note{background:rgba(91,33,182,0.1);border:1px solid var(--accent);border-radius:8px;padding:16px 20px;margin:24px 0;color:var(--accent-light)}
+.calc{display:flex;gap:8px;align-items:center;background:var(--card);border:1px solid var(--border);border-radius:8px;padding:16px 20px;margin:24px 0}
+.calc input{flex:1;background:transparent;border:1px solid var(--border);color:var(--fg);padding:8px 12px;border-radius:4px;font:14px monospace}
+.calc .out{color:var(--accent-light);font-weight:600}
+table{width:100%;border-collapse:collapse;margin:24px 0}
+th,td{padding:12px 16px;text-align:left;border-bottom:1px solid var(--border)}
+th{color:var(--muted);font-weight:500;font-size:12px;text-transform:uppercase;letter-spacing:0.05em}
+</style>
+</head>
+<body>
+<div class="container">
+
+<h1>Pricing</h1>
+<p class="lede">Pay for the <a href="/verify">/verify</a> metering on the MEOK compliance MCP fleet. 200 free calls/day, no account needed.</p>
+
+<div class="note">
+<strong>How it works:</strong> every MEOK MCP server.py calls <code>proofof.ai/verify</code> before executing. The endpoint returns <code>{allowed, tier, remaining, upgrade_url}</code>. If you exceed your tier, the call is rejected — the MCP itself returns a clear "quota exceeded, upgrade at meok.ai/pricing" message.
+</div>
+
+<h2>Tiers</h2>
+<div class="tiers">
+
+<div class="tier">
+  <h3>Free</h3>
+  <div class="price">$0<span class="per"> / month</span></div>
+  <ul>
+    <li><strong>200 calls/day</strong></li>
+    <li>All 340+ packages</li>
+    <li>EU AI Act, DORA, NIS2, CRA, GDPR, ISO 42001, SOC 2, PCI DSS, HIPAA, FDA, MDR, AIDA, 200+ more</li>
+    <li>No account needed</li>
+    <li>No card on file</li>
+    <li>Community support</li>
+  </ul>
+  <a href="https://meok.ai/verify" class="cta secondary">Get started</a>
+</div>
+
+<div class="tier featured">
+  <div class="ribbon">MOST POPULAR</div>
+  <h3>Teams</h3>
+  <div class="price">$99<span class="per"> / month</span></div>
+  <ul>
+    <li><strong>100,000 calls/month</strong> (~3,300/day)</li>
+    <li>All 340+ packages</li>
+    <li>Audit trail export (CSV + JSON)</li>
+    <li>API key management (up to 5 keys)</li>
+    <li>Email support (24h response)</li>
+    <li>OpenSSF Best Practices badge</li>
+    <li>Cancel anytime, prorated</li>
+  </ul>
+  <a href="https://buy.stripe.com/teams_meok" class="cta">Subscribe</a>
+</div>
+
+<div class="tier">
+  <h3>Enterprise</h3>
+  <div class="price">Custom</div>
+  <ul>
+    <li><strong>1M+ calls/month</strong> (volume discount)</li>
+    <li>All 340+ packages</li>
+    <li>SSO/SAML authentication</li>
+    <li>Unlimited API keys</li>
+    <li>Dedicated support (4h SLA)</li>
+    <li>Custom MCP server development</li>
+    <li>Compliance attestation (SOC 2 Type II, EU AI Act conformity assessment)</li>
+    <li>On-prem deployment available</li>
+  </ul>
+  <a href="mailto:nicholas@meok.ai?subject=Enterprise%20MEOK%20pricing" class="cta secondary">Contact sales</a>
+</div>
+
+</div>
+
+<h2>Calculator</h2>
+<div class="calc">
+  <span>Calls per month:</span>
+  <input type="number" id="calls" value="1000" min="0" max="10000000" oninput="calc()">
+  <span>×</span>
+  <span>$0.001/call beyond free tier =</span>
+  <span class="out" id="cost">$0.80</span>
+  <span>/ month</span>
+</div>
+<p style="color:var(--muted);font-size:13px">First 200 calls/day are free (= 6,000/month). Beyond that, $0.001/call. Teams tier at $99/month for 100,000 calls is 99% cheaper than pay-as-you-go above 100K.</p>
+
+<h2>Volume comparison</h2>
+<table>
+  <tr><th>Calls / month</th><th>Pay-as-you-go</th><th>Teams tier</th><th>Savings</th></tr>
+  <tr><td>1,000</td><td>$0</td><td>$99</td><td>Free tier</td></tr>
+  <tr><td>10,000</td><td>$4</td><td>$99</td><td>Free tier covers it</td></tr>
+  <tr><td>100,000</td><td>$94</td><td>$99</td><td>$5 off (about even)</td></tr>
+  <tr><td>500,000</td><td>$494</td><td>$99</td><td>$395 / month</td></tr>
+  <tr><td>1,000,000</td><td>$994</td><td>$99</td><td>$895 / month</td></tr>
+  <tr><td>10,000,000</td><td>$9,994</td><td>Enterprise</td><td>Custom</td></tr>
+</table>
+
+<h2>For resellers and partners</h2>
+<p>We have a <a href="/partner">partner program</a> with 20% lifetime commission and a <a href="/reseller">reseller tier</a> with 30% commission + co-branded marketing support.</p>
+
+<h2>Open source</h2>
+<p>All 340+ MCP packages are MIT-licensed. You can run the meter against your own <code>proofof.ai</code> deployment, or skip the meter entirely for self-hosted use. <a href="https://github.com/CSOAI-ORG">github.com/CSOAI-ORG</a></p>
+
+<h2>Questions?</h2>
+<p>Email <a href="mailto:nicholas@meok.ai">nicholas@meok.ai</a> or DM <a href="https://x.com/meok_ai">@meok_ai</a>. Solo founder (Nick Templeman, Yorkshire UK) responds within 24h on weekdays.</p>
+
+<div style="margin-top:48px;padding-top:24px;border-top:1px solid var(--border);color:var(--muted);font-size:13px;text-align:center">
+<p>Built by MEOK AI Labs (CSOAI Ltd, UK Companies House 16939677) — Solo founder Nick Templeman, Yorkshire UK.<br>
+Site: <a href="https://meok.ai">meok.ai</a> · Fleet: <a href="https://meok.ai/fleet/">meok.ai/fleet/</a> · Org: <a href="https://github.com/CSOAI-ORG">github.com/CSOAI-ORG</a></p>
+</div>
+
+</div>
+<script>
+function calc() {
+  var n = parseInt(document.getElementById('calls').value || 0);
+  var billable = Math.max(0, n - 6000);
+  var cost = billable * 0.001;
+  document.getElementById('cost').textContent = '$' + cost.toFixed(2);
+}
+calc();
+</script>
+</body>
+</html>

@@ -1,0 +1,71 @@
+<!doctype html>
+<html><head>
+<title>2026-06-13 Ship Log — MEOK MCP Fleet</title>
+<meta name="description" content="What MEOK shipped on 2026-06-13: 299 packages to PyPI + registry, 14 Apify Actors, 50 landing pages, 17 sectors, 1 whitepaper, 5 OpenSSF submissions, 1 Anthropic Cookbook PR draft.">
+</head>
+<body>
+<h1>2026-06-13 Ship Log</h1>
+<p><strong>12-hour sprint, 4 sessions, 7 peer agents, 1 solo founder.</strong></p>
+
+<h2>Numbers (final, phantom-correct)</h2>
+<ul>
+<li>299/336 packages on both PyPI AND official MCP registry</li>
+<li>4 packages on PyPI only (awaiting JWT for registry publish)</li>
+<li>33 packages unpublished (PyPI per-ACCOUNT 429)</li>
+<li>14/14 Apify Actors deployed (knowing_yucca/ account)</li>
+<li>341/341 server.py files wired with /verify metering</li>
+<li>50 dist landing pages (35 originals + 5 verticals + 9 new + 1 cliff)</li>
+<li>17 sector landing pages</li>
+<li>30+ practitioner guides</li>
+<li>1 fleet hub at meok.ai/fleet/</li>
+<li>1 compliance whitepaper (HTML + PDF)</li>
+<li>5 OpenSSF Best Practices submission texts (ready to file)</li>
+<li>1 Anthropic Cookbook PR draft (ready to file)</li>
+<li>192 csga_global npm abuse reports (ready to file when npm-login fires)</li>
+<li>47 inventory docs in _TABS/_inventory/</li>
+</ul>
+
+<h2>Tools shipped to _tooling/</h2>
+<ul>
+<li>ship.py — 7-subcommand CLI</li>
+<li>ship_everything.py — 10-step pipeline orchestrator</li>
+<li>tight_watch.py — JWT mtime watcher (the killer feature)</li>
+<li>auto_publish.py + auto_publish_v3.py — 30-min publish orchestrators</li>
+<li>wire_meter.py — /verify meter wire (341/341)</li>
+<li>fix_server_json_icons.py, fix_repo_field.py, fix_mcp_name_all.py</li>
+<li>build_apify_actors.py — 14 Apify Actor builder</li>
+<li>republish_all_with_mcp_name.py — bulk PyPI republisher</li>
+<li>republish_mcp.py — per-package safe republisher</li>
+<li>openmcp.py — 4-subcommand engine (registry_has() now phantom-correct)</li>
+<li>silver_sweep.py — OpenSSF silver checklist (94h → 1 command)</li>
+<li>npm_abuse_fire.py — npm abuse via Playwright (192 reports)</li>
+<li>publish_4_new.sh — publish the 4 newly-PyPI to registry when JWT fires</li>
+</ul>
+
+<h2>Memory updates</h2>
+<ul>
+<li>Phantom-check protocol (7 checks in order)</li>
+<li>EU AI Act Article 50 cliff: 2 August 2026 (60 days, NOT 2 Nov)</li>
+<li>openmoe.ai vs openmore.ai drift trap</li>
+<li>Environment quirks (Kimi workspace timeouts, /tmp volatility, Vercel KV)</li>
+<li>General tactics (Edit/Write phantom-check, multi-agent shared trees, shell for-loop bug)</li>
+<li>Mavis marketplace plugin pattern</li>
+<li>GitHub API unauth rate limits</li>
+<li>Vercel lock-file collision</li>
+<li>MCP publish queue per-PROJECT throttle</li>
+<li>MEOK fleet ship state (multiple rounds)</li>
+<li>Vercel new-deploys 403 root cause</li>
+<li>Per-cascade auth gating (the watcher pattern)</li>
+<li>IndexNow key file deployment gotcha</li>
+</ul>
+
+<h2>What's still blocked (3 human clicks, all <2 min each)</h2>
+<ol>
+<li>GitHub PAT refresh (30 sec) → unblocks mcp-publisher JWT + gh auth</li>
+<li>csga_global npm password change (30 sec) → releases 192 squatted packages</li>
+<li>Vercel KV create (2 min) → activates 200/day cap on /verify</li>
+</ol>
+
+<p>Once the JWT fires, the cascade is: 4 new → mcp-publisher publish, 33 throttled → twine upload retry, gh fires → punkpeye PR + silver_sweep + bestpractices.dev. Watchers armed across 3 sessions (60s cadence, sentinel-deduped).</p>
+
+</body></html>

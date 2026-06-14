@@ -1,19 +1,35 @@
 import type { Metadata } from "next";
-import GamingClient from "./gaming-client";
 
 export const metadata: Metadata = {
-  title: "AI Gaming Companion — Live Copilot & Strategy | MEOK",
-  description: "Real-time AI gaming companion with live strategy advice, Steam library integration, and Twitch stream coaching. Your sovereign gaming partner.",
-  alternates: { canonical: "https://meok.ai/gaming" },
+  title: "MEOK Gaming Hive · MEOK AI Labs",
+  description: "The first COAI-certified gaming AI infrastructure. 3 MCP servers, 20 tools, INTELLIGENCE_ONLY gate.",
   openGraph: {
-    title: "AI Gaming Companion | MEOK",
-    description: "Live copilot, strategy coach, and Steam/Twitch integration. A sovereign AI companion built for gamers.",
+    title: "MEOK Gaming Hive · MEOK AI Labs",
+    description: "The first COAI-certified gaming AI infrastructure. 3 MCP servers, 20 tools, INTELLIGENCE_ONLY gate.",
     type: "website",
-    url: "https://meok.ai/gaming",
-    images: [{ url: "/api/og?title=Gaming+Companion&desc=AI+that+knows+your+games%2C+builds%2C+and+strategy.", width: 1200, height: 630, alt: "Gaming Companion" }],
   },
 };
 
-export default function GamingPage() {
-  return <GamingClient />;
+export default function Page() {
+  return (
+    <main className="min-h-screen bg-white text-slate-900">
+      <section className="max-w-5xl mx-auto px-6 py-20">
+        <h1 className="text-5xl font-bold bg-gradient-to-r from-violet-700 to-blue-700 bg-clip-text text-transparent">MEOK Gaming Hive</h1>
+        <p className="text-xl text-slate-600 mt-6">The first COAI-certified gaming AI infrastructure. 3 MCP servers, 20 tools, INTELLIGENCE_ONLY gate.</p>
+        <div className="prose prose-slate max-w-none mt-10">
+          <h2>6 gaming MMO surfaces</h2>
+          <p>WoW, FFXIV, EVE, OSRS, PoE, Diablo IV. Landing pages at wowmcp.ai/</p>
+          <h2>The pokerhud sub-domain</h2>
+          <p>pokerhud.ai is the COAI-certified poker HUD. 12 tools, 5-tier pricing.</p>
+          <h2>INTELLIGENCE_ONLY gate</h2>
+          <p>Never plays for you, never bots, never RTA.</p>
+        </div>
+        <div className="mt-12 flex flex-wrap gap-4">
+          <a href="https://wowmcp.ai" className="inline-block px-6 py-3 bg-violet-700 text-white rounded-lg font-semibold hover:bg-violet-800 transition">Explore gaming</a>
+          <a href="/pricing" className="inline-block px-6 py-3 bg-white text-violet-700 border-2 border-violet-700 rounded-lg font-semibold hover:bg-violet-50 transition">View pricing</a>
+          <a href="/fleet" className="inline-block px-6 py-3 bg-slate-100 text-slate-900 rounded-lg font-semibold hover:bg-slate-200 transition">See the fleet</a>
+        </div>
+      </section>
+    </main>
+  );
 }

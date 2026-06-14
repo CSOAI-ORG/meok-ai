@@ -21,6 +21,12 @@ const GOLD = "#c9a84c";
 const BG = "#f5f0e8";
 
 const STRIPE_LINK = "https://buy.stripe.com/4gM3cx0xScMOdMFfL28k91u"; // £999 one-time Article 50 kit
+const STRIPE_LINK_LAUNCH50 = "https://buy.stripe.com/4gM00d9pY7kq6oh3yM8k91R"; // £499 with LAUNCH50
+const STRIPE_LINK_QUICK = "https://buy.stripe.com/9B68wR6WgfZ0gYR8iA8k91W"; // £9 Quick Kit
+const STRIPE_LINK_PRO = "https://buy.stripe.com/eVq14p1BWcMO4c59mE8k91T"; // £199/mo Pro
+const STRIPE_LINK_ENTERPRISE = "https://buy.stripe.com/28E7sNdkEeUW5g96as8k91U"; // £1,499/mo Enterprise
+const STRIPE_LINK_AUDIT = "https://buy.stripe.com/28E6oJ94ofZ0aAt1Uc8k91X"; // £4,950 Audit-Prep
+const STRIPE_LINK_CERT = "https://buy.stripe.com/9B6dRb2G0eUWcIBaqI8k91Y"; // £4,950 CSOAI Watchdog
 
 const PILLARS = [
   {
@@ -227,6 +233,95 @@ export default function Article50KitPage() {
           >
             30-min readiness check (free) →
           </a>
+        </div>
+
+        <h2 style={{ fontSize: "1.8rem", fontWeight: 900, marginBottom: 24, letterSpacing: "-0.01em" }}>
+          Choose your tier
+        </h2>
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))", gap: 16, marginBottom: 40 }}>
+          {[
+            {
+              tier: "Quick Kit", price: "£9", sub: "one-time",
+              desc: "Test the kit on a small scale. C2PA manifest only. No watermark.",
+              cta: "Get £9 Quick Kit", href: STRIPE_LINK_QUICK, primary: false,
+            },
+            {
+              tier: "Article 50 Kit (LAUNCH50)", price: "£499", sub: "£999 → £499, 50% off",
+              desc: "Full kit: C2PA + invisible watermark + perceptual fingerprint + HMAC attestation. Limited time.",
+              cta: "Buy LAUNCH50 — £499", href: STRIPE_LINK_LAUNCH50, primary: true,
+            },
+            {
+              tier: "Article 50 Kit", price: "£999", sub: "one-time",
+              desc: "Full kit + 90-day support + 1 conformity attestation. Ships in 7 days.",
+              cta: "Buy — £999", href: STRIPE_LINK, primary: false,
+            },
+            {
+              tier: "Pro (ongoing)", price: "£199", sub: "/month",
+              desc: "C2PA + watermark + fingerprint + monthly attestations + new-model support.",
+              cta: "Subscribe — £199/mo", href: STRIPE_LINK_PRO, primary: false,
+            },
+            {
+              tier: "Enterprise", price: "£1,499", sub: "/month",
+              desc: "Multi-tenant, custom rules, council governance, unlimited attestations.",
+              cta: "Talk sales — £1,499/mo", href: STRIPE_LINK_ENTERPRISE, primary: false,
+            },
+            {
+              tier: "Audit-Prep Bundle", price: "£4,950", sub: "one-time",
+              desc: "Auditor-ready evidence pack for ISO 42001 / EU AI Act / DORA. CEASAI-aligned.",
+              cta: "Buy Audit-Prep — £4,950", href: STRIPE_LINK_AUDIT, primary: false,
+            },
+            {
+              tier: "CSOAI Watchdog Cert", price: "£4,950", sub: "one-time",
+              desc: "Third-party CEASAI certification. MEOK signs the cert. Auditor verifies.",
+              cta: "Buy Watchdog Cert — £4,950", href: STRIPE_LINK_CERT, primary: false,
+            },
+          ].map((t) => (
+            <div
+              key={t.tier}
+              style={{
+                background: t.primary ? NAVY : "white",
+                color: t.primary ? "white" : NAVY,
+                borderRadius: 14,
+                padding: 20,
+                border: `2px solid ${t.primary ? GOLD : NAVY + "1a"}`,
+                display: "flex",
+                flexDirection: "column",
+                gap: 10,
+              }}
+            >
+              <div style={{ fontSize: 12, fontWeight: 900, letterSpacing: "0.05em", textTransform: "uppercase", color: t.primary ? GOLD : GOLD }}>
+                {t.tier}
+              </div>
+              <div style={{ fontSize: 28, fontWeight: 900, lineHeight: 1 }}>
+                {t.price}
+                <span style={{ fontSize: 12, fontWeight: 400, opacity: 0.7, marginLeft: 4 }}>
+                  {t.sub}
+                </span>
+              </div>
+              <p style={{ fontSize: 13, lineHeight: 1.5, opacity: 0.85, margin: 0, flex: 1 }}>
+                {t.desc}
+              </p>
+              <a
+                href={t.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{
+                  display: "block",
+                  textAlign: "center",
+                  padding: "12px 16px",
+                  borderRadius: 10,
+                  background: t.primary ? GOLD : "transparent",
+                  color: t.primary ? NAVY : NAVY,
+                  fontWeight: 900,
+                  textDecoration: "none",
+                  fontSize: 13,
+                  border: t.primary ? "none" : `1px solid ${NAVY}33`,
+                }}
+              >
+                {t.cta} →
+              </a>
+            </div>
+          ))}
         </div>
 
         <h2 style={{ fontSize: "1.8rem", fontWeight: 900, marginBottom: 24, letterSpacing: "-0.01em" }}>

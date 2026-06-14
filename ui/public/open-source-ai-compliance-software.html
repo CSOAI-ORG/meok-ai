@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Open Source AI Compliance Software · MEOK AI Labs</title>
+<meta name="description" content="MIT-licensed compliance MCP servers. No vendor lock-in, no per-call fees beyond /verify meter (200/day free). Self-hostable.">
+<meta name="keywords" content="compliance, MCP, MEOK, open-source-ai-compliance-software">
+<meta property="og:title" content="Open Source AI Compliance Software">
+<meta property="og:description" content="MIT-licensed compliance MCP servers. No vendor lock-in, no per-call fees beyond /verify meter (200/day free). Self-hostable.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://meok.ai/open-source-ai-compliance-software">
+<link rel="canonical" href="https://meok.ai/open-source-ai-compliance-software">
+<style>
+:root{--bg:#0a0a14;--fg:#e8e8f0;--muted:#8a8aa0;--accent:#5b21b6;--accent-light:#7c3aed;--green:#22c55e;--red:#ef4444;--amber:#f59e0b;--border:#1a1a2e;--card:#13132a}
+*{box-sizing:border-box}
+body{font:16px/1.6 -apple-system,BlinkMacSystemFont,"SF Pro Display",system-ui,sans-serif;background:var(--bg);color:var(--fg);margin:0;padding:0}
+.container{max-width:920px;margin:0 auto;padding:48px 32px}
+h1{font-size:42px;font-weight:700;margin:0 0 8px;line-height:1.15;background:linear-gradient(135deg,#5b21b6 0%,#7c3aed 50%,#c084fc 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+h2{font-size:24px;font-weight:600;margin:36px 0 12px;color:var(--fg)}
+p{color:var(--fg);margin:0 0 16px}
+.lede{color:var(--muted);font-size:18px;margin:0 0 24px;line-height:1.5}
+.deadline{background:rgba(245,158,11,0.1);border:1px solid var(--amber);border-radius:8px;padding:16px 20px;margin:20px 0;color:var(--amber);font-weight:600;text-align:center}
+pre{background:var(--card);border:1px solid var(--border);border-radius:6px;padding:16px 20px;overflow-x:auto;font:13px/1.5 ui-monospace,"SF Mono",monospace;color:var(--fg)}
+code{font:13px/1.5 ui-monospace,"SF Mono",monospace;color:var(--accent-light);background:var(--card);padding:2px 6px;border-radius:3px}
+a{color:var(--accent-light);text-decoration:none}
+a:hover{text-decoration:underline}
+.footer{margin-top:48px;padding:24px 0;border-top:1px solid var(--border);color:var(--muted);font-size:13px;text-align:center}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:24px 0}
+.card{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:20px}
+.card h3{margin:0 0 8px;font-size:16px;color:var(--accent-light)}
+.card p{color:var(--muted);margin:0;font-size:14px}
+</style>
+</head>
+<body>
+<div class="container">
+
+<h1>Open Source AI Compliance Software</h1>
+<p class="lede">All 340+ MEOK MCP servers are MIT-licensed. No vendor lock-in, no usage fees, no per-call charges beyond the optional /verify meter (200 free calls/day). Self-hostable on your own infrastructure. PyPI, npm, Docker, Homebrew, Nix, Winget, Scoop.</p>
+
+<div class="deadline">⏰ MIT-licensed, available now</div>
+
+<h2>Key MCPs</h2>
+<div class="grid">
+  <div class="card">
+    <h3>eu-ai-act-compliance-mcp</h3>
+    <p>EU AI Act</p>
+  </div>
+  <div class="card">
+    <h3>dora-compliance-mcp</h3>
+    <p>DORA</p>
+  </div>
+  <div class="card">
+    <h3>nis2-compliance-mcp</h3>
+    <p>NIS2</p>
+  </div>
+  <div class="card">
+    <h3>cra-compliance-mcp</h3>
+    <p>CRA</p>
+  </div>
+  <div class="card">
+    <h3>gdpr-compliance-ai-mcp</h3>
+    <p>GDPR</p>
+  </div>
+  <div class="card">
+    <h3>iso-42001-ai-mcp</h3>
+    <p>ISO 42001</p>
+  </div>
+</div>
+
+
+<div style="background:#13132a;border:1px solid #1a1a2e;border-radius:8px;padding:16px 20px;margin:24px 0">
+  <p style="margin:0 0 8px;color:#7c3aed;font-weight:600">Try this MCP in 10 seconds</p>
+  <pre style="background:#0a0a14;border:1px solid #1a1a2e;border-radius:4px;padding:12px;font:13px/1.5 monospace;color:#22c55e;margin:0;overflow-x:auto">curl -X POST https://proofof.ai/verify \
+  -H "Content-Type: application/json" \
+  -d '{"api_key": "", "tool": "open-source-ai-compliance-software"}'</pre>
+  <p style="margin:8px 0 0;color:#8a8aa0;font-size:13px">200 free calls/day. <a href="/verify-api" style="color:#7c3aed">Full API reference →</a></p>
+</div>
+<h2>Installation</h2>
+<pre><code>pip install eu-ai-act-compliance-mcp
+# or
+uvx eu-ai-act-compliance-mcp
+# or
+npx -y @smithery/cli@latest install eu-ai-act-compliance-mcp --client claude</code></pre>
+
+<p>See the <a href="/fleet/">fleet hub</a> for all 340+ packages.</p>
+
+<div class="footer">
+<p>Built by MEOK AI Labs (CSOAI Ltd, UK Companies House 16939677) — Solo founder Nick Templeman, Yorkshire UK.<br>
+Site: <a href="https://meok.ai">meok.ai</a> · Fleet: <a href="https://meok.ai/fleet/">meok.ai/fleet/</a> · Org: <a href="https://github.com/CSOAI-ORG">github.com/CSOAI-ORG</a></p>
+</div>
+
+</div>
+</body>
+</html>

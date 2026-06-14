@@ -1,7 +1,22 @@
 Contact: mailto:security@meok.ai
-Expires: 2027-03-31T00:00:00.000Z
+Contact: https://meok.ai/.well-known/security-contact
+Expires: 2027-06-30T00:00:00.000Z
 Encryption: https://meok.ai/.well-known/pgp-key.txt
-Acknowledgments: https://meok.ai/security
-Preferred-Languages: en
+Encryption: https://meok.ai/security.asc
+Acknowledgments: https://meok.ai/security#hall-of-fame
+Acknowledgments: https://meok.ai/changelog#security
+Preferred-Languages: en, en-GB
+Canonical: https://meok.ai/.well-known/security.txt
 Policy: https://meok.ai/security
 Hiring: https://meok.ai/team
+CSAF: https://meok.ai/.well-known/csaf/provider-metadata.json
+CSAF: https://meok.ai/.well-known/csaf/security.txt
+Repository: https://github.com/CSOAI-ORG/meok-ai
+
+# MEOK AI Labs security disclosure policy (RFC 9116 compliant)
+# - Acknowledgments published within 14 days of fix
+# - Coordinated disclosure window: 90 days (extendable for complex issues)
+# - We do not pursue legal action against good-faith security research
+# - Bounty: none at this time (we're a small team); credit + LinkedIn rec on request
+# - Severity scale: CVSS v3.1 (https://www.first.org/cvss/)
+# - For supply-chain issues: prefer SOPS/age encrypted email (subject: "supply-chain")

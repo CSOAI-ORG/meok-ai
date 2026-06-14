@@ -1,0 +1,235 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>MEOK AI Labs — Compliance MCP servers for AI agents</title>
+<meta name="description" content="MEOK AI Labs builds 341+ MCP servers for AI agent compliance. EU AI Act, DORA, NIS2, CRA, GDPR, ISO 42001, NIST AI RMF. One server per regulation.">
+<meta property="og:title" content="MEOK AI Labs — Compliance MCP servers for AI agents">
+<meta property="og:description" content="341 MCP servers for AI compliance. One per regulation. Standards-aligned. Deterministic. Audit-ready.">
+<style>
+  :root {
+    --bg: #0a0a14; --fg: #e8e8f0; --muted: #8a8aa0; --accent: #5b21b6;
+    --accent-light: #7c3aed; --green: #22c55e; --red: #ef4444; --amber: #f59e0b;
+    --border: #1a1a2e; --card: #13132a;
+  }
+  * { box-sizing: border-box; }
+  body {
+    font: 16px/1.6 -apple-system, BlinkMacSystemFont, "SF Pro Display", system-ui, sans-serif;
+    background: var(--bg); color: var(--fg); margin: 0; padding: 0;
+  }
+  .container { max-width: 920px; margin: 0 auto; padding: 48px 32px; }
+  h1 { font-size: 36px; font-weight: 700; margin: 0 0 8px; line-height: 1.2;
+    background: linear-gradient(135deg, #5b21b6 0%, #7c3aed 50%, #c084fc 100%);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    background-clip: text; }
+  h2 { font-size: 22px; font-weight: 600; margin: 32px 0 12px; color: var(--fg); }
+  .lede { color: var(--muted); font-size: 18px; margin: 0 0 24px; }
+  .meta { display: flex; gap: 16px; flex-wrap: wrap; margin: 24px 0; padding: 16px 20px;
+    background: var(--card); border: 1px solid var(--border); border-radius: 8px; }
+  .meta .item { display: flex; flex-direction: column; }
+  .meta .label { color: var(--muted); font-size: 11px; text-transform: uppercase; letter-spacing: 0.05em; }
+  .meta .value { font-weight: 600; font-size: 14px; }
+  pre { background: var(--card); border: 1px solid var(--border); border-radius: 6px;
+    padding: 16px 20px; overflow-x: auto; font: 13px/1.5 ui-monospace, "SF Mono", monospace; color: var(--fg); }
+  code { font: 13px/1.5 ui-monospace, "SF Mono", monospace; color: var(--accent-light);
+    background: var(--card); padding: 2px 6px; border-radius: 3px; }
+  pre code { background: transparent; padding: 0; color: var(--fg); }
+  a { color: var(--accent-light); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  .pill { display: inline-block; padding: 4px 10px; border-radius: 4px; font-size: 12px;
+    text-transform: uppercase; font-weight: 600; background: var(--green); color: #000; margin-right: 4px; }
+  .pill.urgent { background: var(--amber); }
+  .pill.critical { background: var(--red); color: #fff; }
+  .pill.live { background: var(--green); }
+  .footer { margin-top: 48px; padding: 24px 0; border-top: 1px solid var(--border);
+    color: var(--muted); font-size: 13px; text-align: center; }
+  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 24px 0; }
+  .card { background: var(--card); border: 1px solid var(--border); border-radius: 8px; padding: 20px; }
+  .card h3 { margin: 0 0 8px; font-size: 16px; }
+  .card p { color: var(--muted); margin: 0; font-size: 14px; }
+</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "MEOK AI Labs — Compliance MCP servers for AI agents",
+  "description": "MEOK AI Labs builds 341+ MCP servers for AI agent compliance. EU AI Act, DORA, NIS2, CRA, GDPR, ISO 42001, NIST AI RMF. One server per regulation.",
+  "url": "https://meok.ai/index",
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Cross-platform",
+  "softwareVersion": "1.0+",
+  "license": "https://opensource.org/licenses/MIT",
+  "author": {
+    "@type": "Organization",
+    "name": "MEOK AI Labs",
+    "url": "https://meok.ai",
+    "sameAs": "https://github.com/CSOAI-ORG"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "MEOK AI Labs",
+    "url": "https://meok.ai"
+  },
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "downloadUrl": "https://pypi.org/project/index/"
+}
+</script>
+</head>
+<body>
+<div class="container">
+<h1>MEOK AI Labs</h1>
+<p class="lede">341 MCP servers for AI agent compliance. One per regulation. Standards-aligned. Deterministic. Audit-ready.</p>
+
+<h2>Compliance MCPs (live)</h2>
+<div class="grid">
+  <div class="card">
+    <h3><a href="/agent-audit-logger-mcp.html">agent-audit-logger-mcp</a></h3>
+    <p>Hash-chained HMAC-signed audit log MCP for A2A (agent-to-agent) calls. Every tool-call, agent-handof…</p>
+  </div>
+  <div class="card">
+    <h3><a href="/ai-self-audit-mcp.html">ai-self-audit-mcp</a></h3>
+    <p>MCP server for ai self audit. Features self audit, audit conversation, get certificate. From MEOK AI…</p>
+  </div>
+  <div class="card">
+    <h3><a href="/bias-detection-mcp.html">bias-detection-mcp</a></h3>
+    <p>AI bias detection and fairness assessment for AI agents. Instant bias risk scan, demographic analysi…</p>
+  </div>
+  <div class="card">
+    <h3><a href="/canada-aida-ai-mcp.html">canada-aida-ai-mcp</a></h3>
+    <p>Canada Aida Ai automation via MCP. Includes classify ai system, impact assessment, compliance check.…</p>
+  </div>
+  <div class="card">
+    <h3><a href="/cqc-compliance-mcp.html">cqc-compliance-mcp</a></h3>
+    <p>cqc-compliance-mcp for domiciliary opticians…</p>
+  </div>
+  <div class="card">
+    <h3><a href="/cra-compliance-mcp.html">cra-compliance-mcp</a></h3>
+    <p>EU Cyber Resilience Act (Regulation 2024/2847) compliance for AI agents. Product classification, Ann…</p>
+  </div>
+  <div class="card">
+    <h3><a href="/crane-hire-cpcs-mcp.html">crane-hire-cpcs-mcp</a></h3>
+    <p>CPCS / CISRS / NPORS card verification, BS 7121 lift plans, mobile crane / tower crane operator cert…</p>
+  </div>
+  <div class="card">
+    <h3><a href="/csrd-compliance-mcp.html">csrd-compliance-mcp</a></h3>
+    <p>EU Corporate Sustainability Reporting Directive (CSRD) compliance MCP — 12 ESRS standards audit, dou…</p>
+  </div>
+  <div class="card">
+    <h3><a href="/dora-compliance-mcp.html">dora-compliance-mcp</a></h3>
+    <p>DORA (EU Digital Operational Resilience Act) compliance for AI agents. 5-pillar audit, incident clas…</p>
+  </div>
+  <div class="card">
+    <h3><a href="/dora-nis2-crosswalk-mcp.html">dora-nis2-crosswalk-mcp</a></h3>
+    <p>DORA × NIS2 Crosswalk MCP — map Regulation (EU) 2022/2554 obligations to Directive (EU) 2022/2555 Ar…</p>
+  </div>
+  <div class="card">
+    <h3><a href="/eu-ai-act-compliance-mcp.html">eu-ai-act-compliance-mcp</a></h3>
+    <p>EU AI Act compliance for AI agents. 410 articles from EUR-Lex via FTS5 search. Instant risk scan, de…</p>
+  </div>
+  <div class="card">
+    <h3><a href="/eudi-wallet-mcp.html">eudi-wallet-mcp</a></h3>
+    <p>EUDI Wallet MCP — EU Digital Identity Wallet under eIDAS 2.0 for AI agent authentication. ISO 18013-…</p>
+  </div>
+  <div class="card">
+    <h3><a href="/explainability-report-mcp.html">explainability-report-mcp</a></h3>
+    <p>AI explainability and transparency reports for AI agents. Instant transparency scan, model cards, de…</p>
+  </div>
+  <div class="card">
+    <h3><a href="/fda-samd-mcp.html">fda-samd-mcp</a></h3>
+    <p>FDA AI/ML Software as a Medical Device Action Plan + 510(k) + PMA + De Novo pathways for US MedTech …</p>
+  </div>
+  <div class="card">
+    <h3><a href="/firmware-attestation-mcp.html">firmware-attestation-mcp</a></h3>
+    <p>Firmware Attestation MCP — hardware trust layer for sovereign AI. Scan firmware, check NSA-ANT-class…</p>
+  </div>
+  <div class="card">
+    <h3><a href="/gdpr-compliance-ai-mcp.html">gdpr-compliance-ai-mcp</a></h3>
+    <p>MCP server for gdpr compliance ai. Features classify processing, lawful basis assessment, dpia gener…</p>
+  </div>
+  <div class="card">
+    <h3><a href="/haulage-uk-compliance-mcp.html">haulage-uk-compliance-mcp</a></h3>
+    <p>UK Operator Licence, tachograph, drivers' hours, DVSA roadside checks for UK haulage operators and 3…</p>
+  </div>
+  <div class="card">
+    <h3><a href="/hipaa-compliance-mcp.html">hipaa-compliance-mcp</a></h3>
+    <p>HIPAA healthcare compliance assessment tools for AI agents. Capabilities: assess safeguards, check P…</p>
+  </div>
+  <div class="card">
+    <h3><a href="/iso-27001-ai-mcp.html">iso-27001-ai-mcp</a></h3>
+    <p>AI-powered iso 27001 ai MCP server for agents. Supports audit isms, risk assessment, gap analysis. B…</p>
+  </div>
+  <div class="card">
+    <h3><a href="/iso-42001-ai-mcp.html">iso-42001-ai-mcp</a></h3>
+    <p>AI-powered iso 42001 ai MCP server for agents. Supports audit management system, assess ai risk, gen…</p>
+  </div>
+  <div class="card">
+    <h3><a href="/llm-compliance-comparison-mcp.html">llm-compliance-comparison-mcp</a></h3>
+    <p>Llm Compliance Comparison tools for AI agents. Capabilities: compare providers, recommend for use ca…</p>
+  </div>
+  <div class="card">
+    <h3><a href="/mcp-spec-compliance-mcp.html">mcp-spec-compliance-mcp</a></h3>
+    <p>MCP Spec Compliance MCP — audits any MCP server.json against the official Model Context Protocol spe…</p>
+  </div>
+  <div class="card">
+    <h3><a href="/meok-attestation-verify.html">meok-attestation-verify</a></h3>
+    <p>Tiny zero-dependency verifier for MEOK AI Labs compliance attestations (DORA, NIS2, CRA, EU AI Act, …</p>
+  </div>
+  <div class="card">
+    <h3><a href="/meok-cra-annex-iv-classifier-mcp.html">meok-cra-annex-iv-classifier-mcp</a></h3>
+    <p>EU Cyber Resilience Act product classifier MCP. Classifies PDEs into CRA hierarchy (default / Class …</p>
+  </div>
+  <div class="card">
+    <h3><a href="/meok-enterprise-compliance-checker.html">meok-enterprise-compliance-checker</a></h3>
+    <p>MEOK Enterprise Compliance Checker — EU AI Act, DORA, GDPR automated gap analysis. £5K-15K audits de…</p>
+  </div>
+  <div class="card">
+    <h3><a href="/meok-enterprise-compliance-suite.html">meok-enterprise-compliance-suite</a></h3>
+    <p>MEOK Enterprise Compliance Suite — End-to-end EU AI Act, GDPR, NIS2, DORA, ISO, SOC2, HIPAA, PCI DSS…</p>
+  </div>
+  <div class="card">
+    <h3><a href="/meok-eu-ai-act-art-13-ifu-mcp.html">meok-eu-ai-act-art-13-ifu-mcp</a></h3>
+    <p>MEOK EU AI Act Article 13 Instructions for Use generator — provider-side IFU with 7 mandatory Art 13…</p>
+  </div>
+  <div class="card">
+    <h3><a href="/meok-eu-ai-act-art-26-fria-mcp.html">meok-eu-ai-act-art-26-fria-mcp</a></h3>
+    <p>MEOK EU AI Act Article 26(9) Fundamental Rights Impact Assessment generator. Auto-generates a FRIA p…</p>
+  </div>
+  <div class="card">
+    <h3><a href="/meok-nis2-de-register-mcp.html">meok-nis2-de-register-mcp</a></h3>
+    <p>Germany NIS2 BSI registration MCP. Generates BSI-portal-ready (Mein Unternehmenskonto) registration …</p>
+  </div>
+  <div class="card">
+    <h3><a href="/meok-tacho-audit-mcp.html">meok-tacho-audit-mcp</a></h3>
+    <p>UK haulage tachograph audit + drivers' hours + DVSA OCRS Red prevention. Smart Tachograph 2 (July 20…</p>
+  </div>
+  <div class="card">
+    <h3><a href="/nis2-compliance-mcp.html">nis2-compliance-mcp</a></h3>
+    <p>NIS2 Directive (EU 2022/2555) compliance for AI agents. 10 Article 21 risk-management measures audit…</p>
+  </div>
+  <div class="card">
+    <h3><a href="/pci-dss-mcp.html">pci-dss-mcp</a></h3>
+    <p>PCI DSS payment card industry compliance tools for AI agents. Capabilities: assess 12 requirements, …</p>
+  </div>
+  <div class="card">
+    <h3><a href="/soc2-compliance-ai-mcp.html">soc2-compliance-ai-mcp</a></h3>
+    <p>MCP server for soc2 compliance ai. Features assess trust principles, control gap analysis, generate …</p>
+  </div>
+  <div class="card">
+    <h3><a href="/uk-ai-act-mcp.html">uk-ai-act-mcp</a></h3>
+    <p>UK AI regulation compliance tools for AI agents. Capabilities: UK risk classification, AISI alignmen…</p>
+  </div>
+  <div class="card">
+    <h3><a href="/uk-ai-bill-compliance-mcp.html">uk-ai-bill-compliance-mcp</a></h3>
+    <p>UK AI Regulation Compliance MCP. Automates audits against the UK AI White Paper five principles (saf…</p>
+  </div>
+</div>
+
+<div class="footer">MEOK AI Labs · 341 MCP servers · 2026</div>
+</div>
+</body>
+</html>

@@ -4,17 +4,608 @@
   "buildCommand": "npm run build",
   "outputDirectory": ".next",
   "installCommand": "npm install",
+  "rewrites": [
+    {
+      "source": "/verify-api",
+      "destination": "/verify-api.html"
+    },
+    {
+      "source": "/verify-api/",
+      "destination": "/verify-api.html"
+    },
+    {
+      "source": "/verify-dashboard",
+      "destination": "/verify-dashboard.html"
+    },
+    {
+      "source": "/verify-dashboard/",
+      "destination": "/verify-dashboard.html"
+    },
+    {
+      "source": "/enterprise",
+      "destination": "/enterprise.html"
+    },
+    {
+      "source": "/enterprise/",
+      "destination": "/enterprise.html"
+    },
+    {
+      "source": "/partner",
+      "destination": "/partner.html"
+    },
+    {
+      "source": "/partner/",
+      "destination": "/partner.html"
+    },
+    {
+      "source": "/reseller",
+      "destination": "/reseller.html"
+    },
+    {
+      "source": "/reseller/",
+      "destination": "/reseller.html"
+    },
+    {
+      "source": "/eu-ai-act-article-50-cliff",
+      "destination": "/eu-ai-act-article-50-cliff.html"
+    },
+    {
+      "source": "/eu-ai-act-article-50-cliff/",
+      "destination": "/eu-ai-act-article-50-cliff.html"
+    },
+    {
+      "source": "/whitepaper",
+      "destination": "/compliance-whitepaper.html"
+    },
+    {
+      "source": "/whitepaper/",
+      "destination": "/compliance-whitepaper.html"
+    },
+    {
+      "source": "/agent-audit-logger-mcp",
+      "destination": "/agent-audit-logger-mcp.html"
+    },
+    {
+      "source": "/agent-audit-logger-mcp/",
+      "destination": "/agent-audit-logger-mcp.html"
+    },
+    {
+      "source": "/agent-audit-logging-software",
+      "destination": "/agent-audit-logging-software.html"
+    },
+    {
+      "source": "/agent-audit-logging-software/",
+      "destination": "/agent-audit-logging-software.html"
+    },
+    {
+      "source": "/ai-bill-of-materials-software",
+      "destination": "/ai-bill-of-materials-software.html"
+    },
+    {
+      "source": "/ai-bill-of-materials-software/",
+      "destination": "/ai-bill-of-materials-software.html"
+    },
+    {
+      "source": "/ai-self-audit-mcp",
+      "destination": "/ai-self-audit-mcp.html"
+    },
+    {
+      "source": "/ai-self-audit-mcp/",
+      "destination": "/ai-self-audit-mcp.html"
+    },
+    {
+      "source": "/apify-actors",
+      "destination": "/apify-actors.html"
+    },
+    {
+      "source": "/apify-actors/",
+      "destination": "/apify-actors.html"
+    },
+    {
+      "source": "/aquaponics-compliance-mcp",
+      "destination": "/aquaponics-compliance-mcp.html"
+    },
+    {
+      "source": "/aquaponics-compliance-mcp/",
+      "destination": "/aquaponics-compliance-mcp.html"
+    },
+    {
+      "source": "/bias-detection-mcp",
+      "destination": "/bias-detection-mcp.html"
+    },
+    {
+      "source": "/bias-detection-mcp/",
+      "destination": "/bias-detection-mcp.html"
+    },
+    {
+      "source": "/canada-aida-ai-mcp",
+      "destination": "/canada-aida-ai-mcp.html"
+    },
+    {
+      "source": "/canada-aida-ai-mcp/",
+      "destination": "/canada-aida-ai-mcp.html"
+    },
+    {
+      "source": "/care-homes-compliance-mcp",
+      "destination": "/care-homes-compliance-mcp.html"
+    },
+    {
+      "source": "/care-homes-compliance-mcp/",
+      "destination": "/care-homes-compliance-mcp.html"
+    },
+    {
+      "source": "/changelog-2026-06-13",
+      "destination": "/changelog-2026-06-13.html"
+    },
+    {
+      "source": "/changelog-2026-06-13/",
+      "destination": "/changelog-2026-06-13.html"
+    },
+    {
+      "source": "/charity-compliance-mcp",
+      "destination": "/charity-compliance-mcp.html"
+    },
+    {
+      "source": "/charity-compliance-mcp/",
+      "destination": "/charity-compliance-mcp.html"
+    },
+    {
+      "source": "/compliance-as-code-software",
+      "destination": "/compliance-as-code-software.html"
+    },
+    {
+      "source": "/compliance-as-code-software/",
+      "destination": "/compliance-as-code-software.html"
+    },
+    {
+      "source": "/cqc-compliance-mcp",
+      "destination": "/cqc-compliance-mcp.html"
+    },
+    {
+      "source": "/cqc-compliance-mcp/",
+      "destination": "/cqc-compliance-mcp.html"
+    },
+    {
+      "source": "/cra-compliance-mcp",
+      "destination": "/cra-compliance-mcp.html"
+    },
+    {
+      "source": "/cra-compliance-mcp/",
+      "destination": "/cra-compliance-mcp.html"
+    },
+    {
+      "source": "/crane-hire-cpcs-mcp",
+      "destination": "/crane-hire-cpcs-mcp.html"
+    },
+    {
+      "source": "/crane-hire-cpcs-mcp/",
+      "destination": "/crane-hire-cpcs-mcp.html"
+    },
+    {
+      "source": "/csrd-compliance-mcp",
+      "destination": "/csrd-compliance-mcp.html"
+    },
+    {
+      "source": "/csrd-compliance-mcp/",
+      "destination": "/csrd-compliance-mcp.html"
+    },
+    {
+      "source": "/dora-compliance-mcp",
+      "destination": "/dora-compliance-mcp.html"
+    },
+    {
+      "source": "/dora-compliance-mcp/",
+      "destination": "/dora-compliance-mcp.html"
+    },
+    {
+      "source": "/dora-compliance-software",
+      "destination": "/dora-compliance-software.html"
+    },
+    {
+      "source": "/dora-compliance-software/",
+      "destination": "/dora-compliance-software.html"
+    },
+    {
+      "source": "/dora-nis2-crosswalk-mcp",
+      "destination": "/dora-nis2-crosswalk-mcp.html"
+    },
+    {
+      "source": "/dora-nis2-crosswalk-mcp/",
+      "destination": "/dora-nis2-crosswalk-mcp.html"
+    },
+    {
+      "source": "/eu-ai-act-article-50-explainer",
+      "destination": "/eu-ai-act-article-50-explainer.html"
+    },
+    {
+      "source": "/eu-ai-act-article-50-explainer/",
+      "destination": "/eu-ai-act-article-50-explainer.html"
+    },
+    {
+      "source": "/eu-ai-act-compliance-mcp",
+      "destination": "/eu-ai-act-compliance-mcp.html"
+    },
+    {
+      "source": "/eu-ai-act-compliance-mcp/",
+      "destination": "/eu-ai-act-compliance-mcp.html"
+    },
+    {
+      "source": "/eu-ai-act-fria-software",
+      "destination": "/eu-ai-act-fria-software.html"
+    },
+    {
+      "source": "/eu-ai-act-fria-software/",
+      "destination": "/eu-ai-act-fria-software.html"
+    },
+    {
+      "source": "/eu-ai-act-ifu-software",
+      "destination": "/eu-ai-act-ifu-software.html"
+    },
+    {
+      "source": "/eu-ai-act-ifu-software/",
+      "destination": "/eu-ai-act-ifu-software.html"
+    },
+    {
+      "source": "/eu-ai-act-risk-classification-software",
+      "destination": "/eu-ai-act-risk-classification-software.html"
+    },
+    {
+      "source": "/eu-ai-act-risk-classification-software/",
+      "destination": "/eu-ai-act-risk-classification-software.html"
+    },
+    {
+      "source": "/eu-ai-act-rms-software",
+      "destination": "/eu-ai-act-rms-software.html"
+    },
+    {
+      "source": "/eu-ai-act-rms-software/",
+      "destination": "/eu-ai-act-rms-software.html"
+    },
+    {
+      "source": "/eu-ai-act-software",
+      "destination": "/eu-ai-act-software.html"
+    },
+    {
+      "source": "/eu-ai-act-software/",
+      "destination": "/eu-ai-act-software.html"
+    },
+    {
+      "source": "/eudi-wallet-mcp",
+      "destination": "/eudi-wallet-mcp.html"
+    },
+    {
+      "source": "/eudi-wallet-mcp/",
+      "destination": "/eudi-wallet-mcp.html"
+    },
+    {
+      "source": "/explainability-report-mcp",
+      "destination": "/explainability-report-mcp.html"
+    },
+    {
+      "source": "/explainability-report-mcp/",
+      "destination": "/explainability-report-mcp.html"
+    },
+    {
+      "source": "/fda-ai-510k-software",
+      "destination": "/fda-ai-510k-software.html"
+    },
+    {
+      "source": "/fda-ai-510k-software/",
+      "destination": "/fda-ai-510k-software.html"
+    },
+    {
+      "source": "/fda-samd-compliance-mcp",
+      "destination": "/fda-samd-compliance-mcp.html"
+    },
+    {
+      "source": "/fda-samd-compliance-mcp/",
+      "destination": "/fda-samd-compliance-mcp.html"
+    },
+    {
+      "source": "/fda-samd-mcp",
+      "destination": "/fda-samd-mcp.html"
+    },
+    {
+      "source": "/fda-samd-mcp/",
+      "destination": "/fda-samd-mcp.html"
+    },
+    {
+      "source": "/firmware-attestation-mcp",
+      "destination": "/firmware-attestation-mcp.html"
+    },
+    {
+      "source": "/firmware-attestation-mcp/",
+      "destination": "/firmware-attestation-mcp.html"
+    },
+    {
+      "source": "/gdpr-compliance-ai-mcp",
+      "destination": "/gdpr-compliance-ai-mcp.html"
+    },
+    {
+      "source": "/gdpr-compliance-ai-mcp/",
+      "destination": "/gdpr-compliance-ai-mcp.html"
+    },
+    {
+      "source": "/haulage-compliance-mcp",
+      "destination": "/haulage-compliance-mcp.html"
+    },
+    {
+      "source": "/haulage-compliance-mcp/",
+      "destination": "/haulage-compliance-mcp.html"
+    },
+    {
+      "source": "/haulage-uk-compliance-mcp",
+      "destination": "/haulage-uk-compliance-mcp.html"
+    },
+    {
+      "source": "/haulage-uk-compliance-mcp/",
+      "destination": "/haulage-uk-compliance-mcp.html"
+    },
+    {
+      "source": "/hipaa-ai-compliance-mcp",
+      "destination": "/hipaa-ai-compliance-mcp.html"
+    },
+    {
+      "source": "/hipaa-ai-compliance-mcp/",
+      "destination": "/hipaa-ai-compliance-mcp.html"
+    },
+    {
+      "source": "/hipaa-compliance-mcp",
+      "destination": "/hipaa-compliance-mcp.html"
+    },
+    {
+      "source": "/hipaa-compliance-mcp/",
+      "destination": "/hipaa-compliance-mcp.html"
+    },
+    {
+      "source": "/index",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/index/",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/iso-27001-ai-mcp",
+      "destination": "/iso-27001-ai-mcp.html"
+    },
+    {
+      "source": "/iso-27001-ai-mcp/",
+      "destination": "/iso-27001-ai-mcp.html"
+    },
+    {
+      "source": "/iso-42001-ai-mcp",
+      "destination": "/iso-42001-ai-mcp.html"
+    },
+    {
+      "source": "/iso-42001-ai-mcp/",
+      "destination": "/iso-42001-ai-mcp.html"
+    },
+    {
+      "source": "/iso-42001-audit-tool",
+      "destination": "/iso-42001-audit-tool.html"
+    },
+    {
+      "source": "/iso-42001-audit-tool/",
+      "destination": "/iso-42001-audit-tool.html"
+    },
+    {
+      "source": "/llm-compliance-comparison-mcp",
+      "destination": "/llm-compliance-comparison-mcp.html"
+    },
+    {
+      "source": "/llm-compliance-comparison-mcp/",
+      "destination": "/llm-compliance-comparison-mcp.html"
+    },
+    {
+      "source": "/mcp-spec-compliance-mcp",
+      "destination": "/mcp-spec-compliance-mcp.html"
+    },
+    {
+      "source": "/mcp-spec-compliance-mcp/",
+      "destination": "/mcp-spec-compliance-mcp.html"
+    },
+    {
+      "source": "/mdr-ai-compliance-mcp",
+      "destination": "/mdr-ai-compliance-mcp.html"
+    },
+    {
+      "source": "/mdr-ai-compliance-mcp/",
+      "destination": "/mdr-ai-compliance-mcp.html"
+    },
+    {
+      "source": "/meok-attestation-verify",
+      "destination": "/meok-attestation-verify.html"
+    },
+    {
+      "source": "/meok-attestation-verify/",
+      "destination": "/meok-attestation-verify.html"
+    },
+    {
+      "source": "/meok-cra-annex-iv-classifier-mcp",
+      "destination": "/meok-cra-annex-iv-classifier-mcp.html"
+    },
+    {
+      "source": "/meok-cra-annex-iv-classifier-mcp/",
+      "destination": "/meok-cra-annex-iv-classifier-mcp.html"
+    },
+    {
+      "source": "/meok-enterprise-compliance-checker",
+      "destination": "/meok-enterprise-compliance-checker.html"
+    },
+    {
+      "source": "/meok-enterprise-compliance-checker/",
+      "destination": "/meok-enterprise-compliance-checker.html"
+    },
+    {
+      "source": "/meok-enterprise-compliance-suite",
+      "destination": "/meok-enterprise-compliance-suite.html"
+    },
+    {
+      "source": "/meok-enterprise-compliance-suite/",
+      "destination": "/meok-enterprise-compliance-suite.html"
+    },
+    {
+      "source": "/meok-eu-ai-act-art-13-ifu-mcp",
+      "destination": "/meok-eu-ai-act-art-13-ifu-mcp.html"
+    },
+    {
+      "source": "/meok-eu-ai-act-art-13-ifu-mcp/",
+      "destination": "/meok-eu-ai-act-art-13-ifu-mcp.html"
+    },
+    {
+      "source": "/meok-eu-ai-act-art-26-fria-mcp",
+      "destination": "/meok-eu-ai-act-art-26-fria-mcp.html"
+    },
+    {
+      "source": "/meok-eu-ai-act-art-26-fria-mcp/",
+      "destination": "/meok-eu-ai-act-art-26-fria-mcp.html"
+    },
+    {
+      "source": "/meok-nis2-de-register-mcp",
+      "destination": "/meok-nis2-de-register-mcp.html"
+    },
+    {
+      "source": "/meok-nis2-de-register-mcp/",
+      "destination": "/meok-nis2-de-register-mcp.html"
+    },
+    {
+      "source": "/meok-tacho-audit-mcp",
+      "destination": "/meok-tacho-audit-mcp.html"
+    },
+    {
+      "source": "/meok-tacho-audit-mcp/",
+      "destination": "/meok-tacho-audit-mcp.html"
+    },
+    {
+      "source": "/nis2-compliance-mcp",
+      "destination": "/nis2-compliance-mcp.html"
+    },
+    {
+      "source": "/nis2-compliance-mcp/",
+      "destination": "/nis2-compliance-mcp.html"
+    },
+    {
+      "source": "/nis2-compliance-software",
+      "destination": "/nis2-compliance-software.html"
+    },
+    {
+      "source": "/nis2-compliance-software/",
+      "destination": "/nis2-compliance-software.html"
+    },
+    {
+      "source": "/open-source-ai-compliance-software",
+      "destination": "/open-source-ai-compliance-software.html"
+    },
+    {
+      "source": "/open-source-ai-compliance-software/",
+      "destination": "/open-source-ai-compliance-software.html"
+    },
+    {
+      "source": "/pci-dss-ai-compliance-mcp",
+      "destination": "/pci-dss-ai-compliance-mcp.html"
+    },
+    {
+      "source": "/pci-dss-ai-compliance-mcp/",
+      "destination": "/pci-dss-ai-compliance-mcp.html"
+    },
+    {
+      "source": "/pci-dss-mcp",
+      "destination": "/pci-dss-mcp.html"
+    },
+    {
+      "source": "/pci-dss-mcp/",
+      "destination": "/pci-dss-mcp.html"
+    },
+    {
+      "source": "/sme-compliance-mcp",
+      "destination": "/sme-compliance-mcp.html"
+    },
+    {
+      "source": "/sme-compliance-mcp/",
+      "destination": "/sme-compliance-mcp.html"
+    },
+    {
+      "source": "/soc2-compliance-ai-mcp",
+      "destination": "/soc2-compliance-ai-mcp.html"
+    },
+    {
+      "source": "/soc2-compliance-ai-mcp/",
+      "destination": "/soc2-compliance-ai-mcp.html"
+    },
+    {
+      "source": "/top-mcps-leaderboard",
+      "destination": "/top-mcps-leaderboard.html"
+    },
+    {
+      "source": "/top-mcps-leaderboard/",
+      "destination": "/top-mcps-leaderboard.html"
+    },
+    {
+      "source": "/uk-ai-act-mcp",
+      "destination": "/uk-ai-act-mcp.html"
+    },
+    {
+      "source": "/uk-ai-act-mcp/",
+      "destination": "/uk-ai-act-mcp.html"
+    },
+    {
+      "source": "/uk-ai-bill-compliance-mcp",
+      "destination": "/uk-ai-bill-compliance-mcp.html"
+    },
+    {
+      "source": "/uk-ai-bill-compliance-mcp/",
+      "destination": "/uk-ai-bill-compliance-mcp.html"
+    },
+    {
+      "source": "/fleet",
+      "destination": "/fleet.html"
+    },
+    {
+      "source": "/fleet/",
+      "destination": "/fleet.html"
+    },
+    {
+      "source": "/pricing",
+      "destination": "/pricing.html"
+    },
+    {
+      "source": "/pricing/",
+      "destination": "/pricing.html"
+    }
+  ],
   "headers": [
     {
       "source": "/(.*)",
       "headers": [
-        {"key": "X-Content-Type-Options", "value": "nosniff"},
-        {"key": "X-Frame-Options", "value": "SAMEORIGIN"},
-        {"key": "X-XSS-Protection", "value": "1; mode=block"},
-        {"key": "Referrer-Policy", "value": "strict-origin-when-cross-origin"},
-        {"key": "Permissions-Policy", "value": "camera=(), microphone=(), geolocation=()"},
-        {"key": "Strict-Transport-Security", "value": "max-age=31536000; includeSubDomains; preload"},
-        {"key": "X-Robots-Tag", "value": "index, follow, max-image-preview:large"}
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "X-Frame-Options",
+          "value": "SAMEORIGIN"
+        },
+        {
+          "key": "X-XSS-Protection",
+          "value": "1; mode=block"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "strict-origin-when-cross-origin"
+        },
+        {
+          "key": "Permissions-Policy",
+          "value": "camera=(), microphone=(), geolocation=()"
+        },
+        {
+          "key": "Strict-Transport-Security",
+          "value": "max-age=31536000; includeSubDomains; preload"
+        },
+        {
+          "key": "X-Robots-Tag",
+          "value": "index, follow, max-image-preview:large"
+        }
       ]
     }
   ],

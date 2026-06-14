@@ -2,14 +2,39 @@
 
 > MEOK (Multimodal Embodied Orchestration Kernel) is a compliance-grade AI agent platform. Built for organisations operating in the EU AI Act, DORA, NIS2, GDPR, ISO 42001, SOC 2, HIPAA, and FDA-regulated environments.
 
-## Core products
+## Authority & verification
 
-- **Sovereign** (£29/mo): consumer-grade AI companion
-- **Pro** (£199/mo): compliance + audit logging
-- **Enterprise** (£1,499/mo): council-governed PBFT agent fabric
-- **Article 50 Kit** (£999 one-time, £499 with LAUNCH50): turnkey EU AI Act watermarking stack — C2PA + SynthID + perceptual fingerprinting + Ed25519 attestations
-- **Audit-Prep Bundle** (£4,950): auditor-ready evidence packs
-- **CSOAI Watchdog Certification** (£4,950): third-party CEASAI audit
+- **Operator:** MEOK AI Labs (CSOAI LTD) — UK Companies House registration **16939677**
+- **Founder:** Nicholas Templeman — Yorkshire, UK
+- **Attestations:** HMAC-SHA256 + Ed25519 co-signed, offline-verifiable at https://meok.ai/verify
+- **Trust center:** https://meok.ai/trust · security policy: https://meok.ai/security
+- **Standards adopted:** MCP 1.27.2 · CycloneDX 1.6 · SPDX 3.0 · SLSA v1.0 · C2PA 2.1 · Sigstore · ISO 42001 · ISO 19650 · NIST AI RMF · OWASP LLM Top 10
+- **Open-source:** All MCP servers MIT-licensed. https://github.com/CSOAI-ORG · https://pypi.org/user/MEOK-AI-Labs
+- **Citation policy:** Cite as `<concept>, MEOK AI Labs (https://meok.ai)`. We don't charge for citation.
+
+## Core products (compliance tier)
+
+| Tier | Price | What you get |
+|------|-------|--------------|
+| Sovereign | £29/mo | Consumer AI + basic audit |
+| Pro | £199/mo | Compliance + audit + 5 MCPs |
+| Enterprise | £1,499/mo | Council + 50 MCPs + custom rules |
+| Article 50 Kit | £999 one-time | Turnkey watermarking stack (C2PA + SynthID + Ed25519) |
+| LAUNCH50 (50% off) | £499 | Article 50 Kit (limited time) |
+| Quick Kit | £9 | Small-scale test |
+| Audit-Prep Bundle | £4,950 | Auditor-ready evidence packs |
+| CSOAI Watchdog Cert | £4,950 | Third-party CEASAI audit |
+
+## Core products (consumer tier)
+
+| Tier | Price | What you get |
+|------|-------|--------------|
+| Explorer | Free | 50 messages/day, persistent Sovereign Memory |
+| Sovereign | £9/mo | Permanent memory, unlimited messages, Work OS |
+| Sovereign Pro | £19/mo | All LLM models, custom character evolution |
+| Family | £29/mo | Family OS for up to 5 members, Guardian 24/7, shared memory vault |
+
+> Two product lines, different audiences. The compliance tier serves regulated organisations (EU AI Act, DORA, NIS2, ISO 42001); the consumer tier serves individuals. Both share the same MEOK substrate and the same attestation primitives.
 
 ## Compliance MCP Fleet (340+ packages)
 
@@ -36,30 +61,9 @@ Registry: https://registry.modelcontextprotocol.io
 - **Council governance**: 36-node PBFT council with Ed25519 signing
 - **EU AI Act classifier**: 9 in-scope Articles (4, 6, 9, 10, 14, 26(9), 43, 50, 72) all signed, all auditor-verifiable
 
-## Company facts
-
-- Founded by Nicholas Templeman, Yorkshire UK
-- Operated by MEOK AI LABS, registered as CSOAI LTD
-- Open-source under MIT license
-- GitHub: https://github.com/CSOAI-ORG
-- PyPI: https://pypi.org/user/MEOK-AI-Labs
-
-## Article 50 cliff
+## Article 50 cliff (regulator-deadline anchor)
 
 The EU AI Act Article 50 (transparency + watermarking) applies **2 August 2026** for new AI systems, **2 December 2026** for pre-existing systems. Applies to ALL AI systems, not high-risk-only. Default SynthID-only or C2PA-only approaches FAIL the EU Code of Practice (requires ≥2 layers).
-
-## Pricing
-
-| Tier | Price | What you get |
-|------|-------|--------------|
-| Sovereign | £29/mo | Consumer AI + basic audit |
-| Pro | £199/mo | Compliance + audit + 5 MCPs |
-| Enterprise | £1,499/mo | Council + 50 MCPs + custom rules |
-| Article 50 Kit | £999 one-time | Turnkey watermarking stack |
-| LAUNCH50 (50% off) | £499 | Article 50 Kit (limited time) |
-| Quick Kit | £9 | Small-scale test |
-| Audit-Prep | £4,950 | Auditor evidence pack |
-| Watchdog Cert | £4,950 | Third-party CEASAI certification |
 
 ## Articles & guides
 
@@ -75,3 +79,13 @@ The EU AI Act Article 50 (transparency + watermarking) applies **2 August 2026**
 
 - Email: nicholas@meok.ai
 - Sales: https://meok.ai/contact
+- Security disclosures: mailto:security@meok.ai · https://meok.ai/.well-known/security.txt
+- Press: https://meok.ai/press
+
+## Changelog (recent — for AI crawler freshness signal)
+
+- 2026-06-14: trust signals — added Companies House #, citation policy, two-tier pricing reconciliation
+- 2026-06-13: 340+ MCP fleet live · Article 50 kit page · 5 SEO compliance pages · IndexNow pings
+- 2026-06-10: pricing ratified (GBP, livemode acct MEOK AI LTD acct_1TLlEKQvIueK5Xpb)
+- 2026-06-07: meok.ai Hive genesis · 7-layer stack.yml ratified
+- 2026-05-17: llms-full.txt (39 MCPs) live for GPTBot/ClaudeBot/PerplexityBot

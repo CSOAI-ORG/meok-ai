@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Verify API — MEOK AI Labs</title>
+<meta name="description" content="MEOK /verify API reference. POST endpoint, request/response shapes, status codes, integration examples.">
+<link rel="canonical" href="https://meok.ai/verify-api">
+<style>
+:root{--bg:#0a0a14;--fg:#e8e8f0;--muted:#8a8aa0;--accent:#5b21b6;--accent-light:#7c3aed;--green:#22c55e;--border:#1a1a2e;--card:#13132a}
+*{box-sizing:border-box}
+body{font:16px/1.6 -apple-system,sans-serif;background:var(--bg);color:var(--fg);margin:0;padding:0}
+.container{max-width:920px;margin:0 auto;padding:48px 32px}
+h1{font-size:42px;margin:0 0 16px;background:linear-gradient(135deg,#5b21b6,#c084fc);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+h2{margin-top:32px;margin-bottom:12px;color:var(--accent-light)}
+pre{background:var(--card);border:1px solid var(--border);border-radius:6px;padding:16px 20px;overflow-x:auto;font:13px/1.5 ui-monospace,"SF Mono",monospace;color:var(--fg);line-height:1.6}
+code{font:13px/1.5 ui-monospace,"SF Mono",monospace;color:var(--accent-light);background:var(--card);padding:2px 6px;border-radius:3px}
+pre code{background:transparent;padding:0;color:var(--fg)}
+a{color:var(--accent-light);text-decoration:none}
+table{width:100%;border-collapse:collapse;margin:16px 0}
+th,td{padding:10px 14px;text-align:left;border-bottom:1px solid var(--border);font-size:14px}
+th{color:var(--muted);font-weight:600;text-transform:uppercase;font-size:11px;letter-spacing:0.05em}
+tr:hover{background:var(--card)}
+.footnote{color:var(--muted);font-size:13px;margin-top:8px}
+</style>
+</head>
+<body>
+<div class="container">
+
+<h1>/verify API</h1>
+<p>Server-side metering for the MEOK compliance MCP fleet. 200 free calls/day, pay-as-you-go beyond that.</p>
+
+<h2>Endpoint</h2>
+<pre><code>POST https://proofof.ai/verify
+Content-Type: application/json
+Authorization: Bearer &lt;api_key&gt;  (optional — empty key = free tier)
+
+{
+  "api_key": "your-team-key",
+  "tool": "eu-ai-act-compliance-mcp.classify"
+}</code></pre>
+
+<h2>Response (200 OK)</h2>
+<pre><code>{
+  "allowed": true,
+  "tier": "free|teams|enterprise",
+  "remaining": 199,
+  "reset_at": "2026-06-14T00:00:00Z",
+  "upgrade_url": "https://meok.ai/pricing"
+}</code></pre>
+
+<h2>Response (429 Too Many Requests)</h2>
+<pre><code>{
+  "allowed": false,
+  "tier": "free",
+  "remaining": 0,
+  "reset_at": "2026-06-15T00:00:00Z",
+  "upgrade_url": "https://meok.ai/pricing",
+  "message": "Free tier quota exceeded. Upgrade at https://meok.ai/pricing"
+}</code></pre>
+
+<h2>Response (401 Unauthorized)</h2>
+<pre><code>{
+  "allowed": false,
+  "tier": "none",
+  "error": "invalid_api_key",
+  "message": "API key is invalid or revoked. Get a new one at https://meok.ai/verify-dashboard"
+}</code></pre>
+
+<h2>Integration example (Python)</h2>
+<pre><code>import urllib.request, json
+
+def _verify(api_key: str, tool: str) -&gt; dict:
+    """Calls the live /verify endpoint. Returns the JSON dict."""
+    try:
+        data = json.dumps({"api_key": api_key, "tool": tool}).encode()
+        req = urllib.request.Request(
+            "https://proofof.ai/verify",
+            data=data,
+            headers={"Content-Type": "application/json"},
+        )
+        with urllib.request.urlopen(req, timeout=2.5) as r:
+            return json.loads(r.read())
+    except Exception:
+        # Fail-open: meter outage shouldn't block the agent
+        return {"allowed": True, "tier": "unknown", "remaining": 999}
+
+# Usage in your MCP server.py
+result = _verify(api_key="team-key-abc123", tool="eu-ai-act-compliance-mcp.classify")
+if not result.get("allowed"):
+    return {"error": result.get("message", "Quota exceeded")}
+# ... continue with the tool logic</code></pre>
+
+<h2>Integration example (Node.js)</h2>
+<pre><code>async function verify(apiKey, tool) {
+  try {
+    const res = await fetch('https://proofof.ai/verify', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ api_key: apiKey, tool }),
+    });
+    return await res.json();
+  } catch (e) {
+    return { allowed: true, tier: 'unknown', remaining: 999 };
+  }
+}
+
+const r = await verify(process.env.MEOK_API_KEY, 'eu-ai-act-compliance-mcp.classify');
+if (!r.allowed) return { error: r.message };</code></pre>
+
+<h2>Rate limits</h2>
+<table>
+  <tr><th>Tier</th><th>Quota</th><th>Burst</th><th>Audit</th></tr>
+  <tr><td>free (no key)</td><td>200 calls/day</td><td>5 calls/sec</td><td>none</td></tr>
+  <tr><td>teams ($99/mo)</td><td>100,000 calls/month</td><td>50 calls/sec</td><td>CSV + JSON export</td></tr>
+  <tr><td>enterprise</td><td>1M+ calls/month</td><td>custom</td><td>real-time + SIEM ship</td></tr>
+</table>
+
+<h2>Why fail-open?</h2>
+<p>If <code>proofof.ai/verify</code> is unreachable (network issue, our outage, KV not configured), the meter returns <code>{"allowed": True, "tier": "unknown", "remaining": 999}</code>. Your local rate-limit (<code>_check_rate_limit()</code>) is the safety net. We never block users because our metering is down.</p>
+
+<h2>Audit trail</h2>
+<p>Every call to <code>/verify</code> is logged with: <code>{timestamp, api_key_hash, tool, allowed, tier, response_time_ms}</code>. Free tier: no key = no log. Teams tier: queryable via API. Enterprise tier: real-time + SIEM webhook.</p>
+
+<h2>Status codes</h2>
+<table>
+  <tr><th>Code</th><th>Meaning</th><th>Action</th></tr>
+  <tr><td>200</td><td>OK</td><td>Continue</td></tr>
+  <tr><td>401</td><td>Invalid API key</td><td>Get a new key at <a href="/verify-dashboard">/verify-dashboard</a></td></tr>
+  <tr><td>429</td><td>Quota exceeded</td><td>Upgrade at <a href="/pricing">/pricing</a> OR wait for reset</td></tr>
+  <tr><td>5xx</td><td>Server error (fail-open)</td><td>Continue, log the error</td></tr>
+</table>
+
+<h2>Open source</h2>
+<p>The MEOK <code>_server_meter_check</code> function is MIT-licensed. You can run it against your own <code>proofof.ai</code> deployment, or replace it with your own metering.</p>
+
+<p class="footnote">Spec version: 2026-06-14. Backwards compatible with all v1.0+ MEOK MCP packages.</p>
+
+</div>
+</body>
+</html>

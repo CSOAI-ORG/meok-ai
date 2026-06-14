@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>meok-attestation-verify · EU AI Act MCP for AI agents · MEOK AI Labs</title>
+<meta name="description" content="Tiny zero-dependency verifier for MEOK AI Labs compliance attestations (DORA, NIS2, CRA, EU AI Act, CSRD, AI-BOM, Gods E Install via pip install meok-attestation-verify. MCP server for AI agents.">
+<meta name="keywords" content="EU AI Act, MCP, AI compliance, meok-attestation-verify, model context protocol">
+<meta property="og:title" content="meok-attestation-verify · EU AI Act MCP for AI agents">
+<meta property="og:description" content="Tiny zero-dependency verifier for MEOK AI Labs compliance attestations (DORA, NIS2, CRA, EU AI Act, CSRD, AI-BOM, Gods E">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://meok.ai/meok-attestation-verify">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://meok.ai/meok-attestation-verify">
+<style>
+  :root {
+    --bg: #0a0a14; --fg: #e8e8f0; --muted: #8a8aa0; --accent: #5b21b6;
+    --accent-light: #7c3aed; --green: #22c55e; --red: #ef4444; --amber: #f59e0b;
+    --border: #1a1a2e; --card: #13132a;
+  }
+  * { box-sizing: border-box; }
+  body {
+    font: 16px/1.6 -apple-system, BlinkMacSystemFont, "SF Pro Display", system-ui, sans-serif;
+    background: var(--bg); color: var(--fg); margin: 0; padding: 0;
+  }
+  .container { max-width: 920px; margin: 0 auto; padding: 48px 32px; }
+  h1 { font-size: 36px; font-weight: 700; margin: 0 0 8px; line-height: 1.2;
+    background: linear-gradient(135deg, #5b21b6 0%, #7c3aed 50%, #c084fc 100%);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    background-clip: text; }
+  h2 { font-size: 22px; font-weight: 600; margin: 32px 0 12px; color: var(--fg); }
+  .lede { color: var(--muted); font-size: 18px; margin: 0 0 24px; }
+  .meta { display: flex; gap: 16px; flex-wrap: wrap; margin: 24px 0; padding: 16px 20px;
+    background: var(--card); border: 1px solid var(--border); border-radius: 8px; }
+  .meta .item { display: flex; flex-direction: column; }
+  .meta .label { color: var(--muted); font-size: 11px; text-transform: uppercase; letter-spacing: 0.05em; }
+  .meta .value { font-weight: 600; font-size: 14px; }
+  pre { background: var(--card); border: 1px solid var(--border); border-radius: 6px;
+    padding: 16px 20px; overflow-x: auto; font: 13px/1.5 ui-monospace, "SF Mono", monospace; color: var(--fg); }
+  code { font: 13px/1.5 ui-monospace, "SF Mono", monospace; color: var(--accent-light);
+    background: var(--card); padding: 2px 6px; border-radius: 3px; }
+  pre code { background: transparent; padding: 0; color: var(--fg); }
+  a { color: var(--accent-light); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  .pill { display: inline-block; padding: 4px 10px; border-radius: 4px; font-size: 12px;
+    text-transform: uppercase; font-weight: 600; background: var(--green); color: #000; margin-right: 4px; }
+  .pill.urgent { background: var(--amber); }
+  .pill.critical { background: var(--red); color: #fff; }
+  .pill.live { background: var(--green); }
+  .footer { margin-top: 48px; padding: 24px 0; border-top: 1px solid var(--border);
+    color: var(--muted); font-size: 13px; text-align: center; }
+  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 24px 0; }
+  .card { background: var(--card); border: 1px solid var(--border); border-radius: 8px; padding: 20px; }
+  .card h3 { margin: 0 0 8px; font-size: 16px; }
+  .card p { color: var(--muted); margin: 0; font-size: 14px; }
+</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "meok-attestation-verify · EU AI Act MCP for AI agents · MEOK AI Labs",
+  "description": "Tiny zero-dependency verifier for MEOK AI Labs compliance attestations (DORA, NIS2, CRA, EU AI Act, CSRD, AI-BOM, Gods E Install via pip install meok-attestation-verify. MCP server for AI agents.",
+  "url": "https://meok.ai/meok-attestation-verify",
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Cross-platform",
+  "softwareVersion": "1.0+",
+  "license": "https://opensource.org/licenses/MIT",
+  "author": {
+    "@type": "Organization",
+    "name": "MEOK AI Labs",
+    "url": "https://meok.ai",
+    "sameAs": "https://github.com/CSOAI-ORG"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "MEOK AI Labs",
+    "url": "https://meok.ai"
+  },
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "downloadUrl": "https://pypi.org/project/meok_attestation_verify/"
+}
+</script>
+</head>
+<body>
+<div class="container">
+
+<h1>meok-attestation-verify</h1>
+<p class="lede">Tiny zero-dependency verifier for MEOK AI Labs compliance attestations (DORA, NIS2, CRA, EU AI Act, CSRD, AI-BOM, Gods E</p>
+
+<div>
+  <span class="pill urgent">Cliff: 2 August 2026</span>
+  <span class="pill live">MCP server</span>
+  <span class="pill live">PyPI v1.0.3</span>
+  <span class="pill live">MIT</span>
+</div>
+
+<div class="meta">
+  <div class="item"><span class="label">Regulation</span><span class="value">EU AI Act</span></div>
+  <div class="item"><span class="label">Latest version</span><span class="value">1.0.3</span></div>
+  <div class="item"><span class="label">Author</span><span class="value">MEOK AI Labs</span></div>
+  <div class="item"><span class="label">License</span><span class="value">MIT</span></div>
+</div>
+
+<h2>What it does</h2>
+<p>Tiny zero-dependency verifier for MEOK AI Labs compliance attestations (DORA, NIS2, CRA, EU AI Act, CSRD, AI-BOM, Gods E</p>
+
+<h2>Install</h2>
+<pre><code>pip install meok-attestation-verify
+# or
+uv pip install meok-attestation-verify</code></pre>
+
+<h2>Use with your AI agent</h2>
+<p>Add the following to your MCP client configuration (Claude Desktop, Cursor, Cline, or any MCP-compatible host):</p>
+<pre><code># Add to your MCP client config (e.g. claude_desktop_config.json):
+{
+  "mcpServers": {
+    "meok-attestation-verify": {
+      "command": "uvx",
+      "args": ["meok-attestation-verify"]
+    }
+  }
+}</code></pre>
+
+<h2>How it works</h2>
+<div class="grid">
+  <div class="card">
+    <h3>1. Standards-aligned</h3>
+    <p>References the actual regulation text from EU AI Act — not a paraphrase. When you ask about Article 9, you get Article 9.</p>
+  </div>
+  <div class="card">
+    <h3>2. Deterministic</h3>
+    <p>Same input → same output. Suitable for compliance evidence packs, audits, and regulator review.</p>
+  </div>
+  <div class="card">
+    <h3>3. Agent-native</h3>
+    <p>Tools are first-class. Your agent can call them by name, pass arguments, and use results in subsequent steps.</p>
+  </div>
+  <div class="card">
+    <h3>4. Audit-ready</h3>
+    <p>Every call is hash-chained, signed, and logged. Integrates with <a href="https://meok.ai/agent-audit-logger-mcp">agent-audit-logger-mcp</a> for tamper-evident audit trails.</p>
+  </div>
+</div>
+
+<h2>Author &amp; provenance</h2>
+<p>Built by <a href="https://meok.ai">MEOK AI Labs</a> (CSOAI Ltd, UK Companies House 16939677).<br>
+Source: <a href="https://github.com/CSOAI-ORG/meok-attestation-verify">https://github.com/CSOAI-ORG/meok-attestation-verify</a><br>
+PyPI: <a href="https://pypi.org/project/meok-attestation-verify/">pypi.org/project/meok-attestation-verify</a></p>
+
+<h2>Compliance disclaimer</h2>
+<p style="color: var(--muted); font-size: 14px;">MEOK MCPs are tooling for engineering and compliance teams. They do not constitute legal advice. For final compliance decisions, consult qualified counsel in your jurisdiction.</p>
+
+<div class="footer">
+  <a href="https://meok.ai">MEOK AI Labs</a> · meok-attestation-verify v1.0.3 · 2026
+</div>
+
+</div>
+</body>
+</html>

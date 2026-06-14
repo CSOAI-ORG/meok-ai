@@ -5,9 +5,9 @@ Tool registry — aggregates all tool modules and provides unified dispatch.
 from datetime import datetime
 from typing import Dict, Any
 
-from mcp.state import ServiceState
+from meok.mcp.state import ServiceState
 
-from mcp.tools.neural import NEURAL_TOOLS, handle_neural_tool
+from meok.mcp.tools.neural import NEURAL_TOOLS, handle_neural_tool
 from meok.mcp.tools.memory import MEMORY_TOOLS, handle_memory_tool
 from meok.mcp.tools.monitoring import MONITORING_TOOLS, handle_monitoring_tool
 from meok.mcp.tools.agents import AGENT_TOOLS, handle_agent_tool

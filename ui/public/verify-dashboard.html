@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Verify Dashboard — MEOK AI Labs</title>
+<meta name="description" content="Self-service dashboard for the MEOK /verify metering endpoint. Check quota, view usage, get API key, upgrade tier.">
+<link rel="canonical" href="https://meok.ai/verify-dashboard">
+<style>
+:root{--bg:#0a0a14;--fg:#e8e8f0;--muted:#8a8aa0;--accent:#5b21b6;--accent-light:#7c3aed;--green:#22c55e;--amber:#f59e0b;--red:#ef4444;--border:#1a1a2e;--card:#13132a}
+*{box-sizing:border-box}
+body{font:14px/1.5 ui-monospace,monospace;background:var(--bg);color:var(--fg);margin:0;padding:0}
+.container{max-width:900px;margin:0 auto;padding:32px 24px}
+h1{font-size:20px;margin:0 0 24px;color:var(--accent-light);font-family:system-ui,sans-serif}
+h2{font-size:14px;margin:24px 0 8px;color:var(--muted);text-transform:uppercase;letter-spacing:0.05em;font-family:system-ui,sans-serif}
+.card{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:20px;margin:16px 0;font-family:system-ui,sans-serif}
+.card h3{margin:0 0 8px;font-size:16px}
+.metric{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin:16px 0}
+.metric .num{font-size:36px;font-weight:bold;color:var(--green)}
+.metric .label{font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:0.05em}
+.metric .sub{font-size:11px;color:var(--muted);margin-top:4px}
+.bar{height:8px;background:var(--border);border-radius:4px;overflow:hidden;margin:8px 0}
+.bar .fill{height:100%;background:linear-gradient(90deg,var(--green),var(--amber),var(--red));border-radius:4px}
+pre{background:#0a0a14;border:1px solid var(--border);border-radius:4px;padding:12px;font-size:12px;overflow-x:auto;color:var(--green)}
+.btn{display:inline-block;background:var(--accent);color:#fff;padding:10px 20px;border-radius:4px;text-decoration:none;font-family:system-ui,sans-serif;margin:4px 8px 4px 0;font-weight:600}
+.btn:hover{background:var(--accent-light)}
+.btn.secondary{background:transparent;border:1px solid var(--border);color:var(--fg)}
+input{background:var(--card);border:1px solid var(--border);color:var(--fg);padding:8px 12px;border-radius:4px;font:13px monospace;width:300px;margin:8px 0}
+</style>
+</head>
+<body>
+<div class="container">
+
+<h1>/verify Dashboard</h1>
+
+<div class="card">
+  <h3>Status: No API key — running in free tier</h3>
+  <p>200 calls/day quota. Anonymous (no audit trail). Get a key to unlock teams/enterprise tiers and full audit logs.</p>
+  <a href="#get-key" class="btn">Get an API key</a>
+  <a href="/pricing" class="btn secondary">View pricing</a>
+</div>
+
+<div class="card">
+  <h3>Usage today</h3>
+  <div class="metric">
+    <div><div class="num" style="color:var(--accent-light)">0</div><div class="label">Calls used</div><div class="sub">/ 200 free</div></div>
+    <div><div class="num" style="color:var(--muted)">200</div><div class="label">Remaining</div><div class="sub">resets 00:00 UTC</div></div>
+    <div><div class="num" style="color:var(--muted)">—</div><div class="label">Audit log</div><div class="sub">no key = no log</div></div>
+  </div>
+  <div class="bar"><div class="fill" style="width:0%"></div></div>
+</div>
+
+<div class="card">
+  <h3>Quick test</h3>
+  <p>Try the endpoint with curl:</p>
+<pre>curl -X POST https://proofof.ai/verify \
+  -H "Content-Type: application/json" \
+  -d '{"api_key": "", "tool": "eu-ai-act-compliance-mcp"}'
+
+# Returns:
+# {"allowed":true, "tier":"free", "remaining":199, "upgrade_url":"https://meok.ai/pricing"}</pre>
+</div>
+
+<div class="card" id="get-key">
+  <h3>Get an API key</h3>
+  <p>Email <a href="mailto:nicholas@meok.ai?subject=API%20key%20request">nicholas@meok.ai</a> with your use case. Solo founder (Nick Templeman) responds within 24h on weekdays. Free keys for solo devs, OSS maintainers, and students.</p>
+  <p>Or use the self-serve form:</p>
+  <input type="email" placeholder="your@email.com" id="email"><br>
+  <input type="text" placeholder="org/team (optional)" id="org"><br>
+  <button class="btn" onclick="alert('Email sent (would be in production)'); return false;">Request API key</button>
+</div>
+
+<div class="card">
+  <h3>Quota exceeded?</h3>
+  <p>If you get <code>{"allowed":false, "tier":"free", "remaining":0}</code>, you have 3 options:</p>
+  <ol style="margin:8px 0;padding-left:24px">
+    <li>Wait until 00:00 UTC (free tier resets daily)</li>
+    <li>Get an API key for higher tier — <a href="/pricing">see pricing</a></li>
+    <li>Self-host the meter — <a href="/enterprise">on-prem option</a></li>
+  </ol>
+</div>
+
+</div>
+</body>
+</html>

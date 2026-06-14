@@ -683,3 +683,37 @@ html {
   transform: translateY(-2px);
   background: #c9a84c;
 }
+
+
+/* MEOK Grid — pulse marker animation */
+@keyframes pulse {
+  0% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.7);
+  }
+  70% {
+    transform: scale(1);
+    box-shadow: 0 0 0 10px rgba(255, 255, 255, 0);
+  }
+  100% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0);
+  }
+}
+
+.custom-pulse-marker div {
+  animation: pulse 2s infinite;
+}
+
+/* Leaflet popup dark mode tweaks */
+.leaflet-popup-content-wrapper {
+  background: #0f172a;
+  border: 1px solid #1e293b;
+  color: #e2e8f0;
+}
+.leaflet-popup-tip {
+  background: #0f172a;
+}
+.leaflet-container a.leaflet-popup-close-button {
+  color: #94a3b8;
+}

@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>compliance-whitepaper</title>
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    svg {
+      height: auto;
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      white-space: pre-wrap;
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      border: none;
+      border-top: 1px solid #1a1a1a;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+    /* CSS for syntax highlighting */
+    html { -webkit-text-size-adjust: 100%; }
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { color: #008000; } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { color: #008000; font-weight: bold; } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "compliance-whitepaper",
+  "description": "",
+  "url": "https://meok.ai/compliance-whitepaper",
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Cross-platform",
+  "softwareVersion": "1.0+",
+  "license": "https://opensource.org/licenses/MIT",
+  "author": {
+    "@type": "Organization",
+    "name": "MEOK AI Labs",
+    "url": "https://meok.ai",
+    "sameAs": "https://github.com/CSOAI-ORG"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "MEOK AI Labs",
+    "url": "https://meok.ai"
+  },
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "downloadUrl": "https://pypi.org/project/compliance_whitepaper/"
+}
+</script>
+</head>
+<body>
+<h1 id="meok-compliance-whitepaper-2026-edition">MEOK Compliance
+Whitepaper — 2026 Edition</h1>
+<h2 id="why-compliance-as-code-matters-now">Why compliance-as-code
+matters now</h2>
+<p>The EU AI Act Article 50 transparency cliff is <strong>2 August
+2026</strong> (60 days). DORA has been in force since 17 January 2025.
+NIS2 was transposed by 17 October 2024. ISO 42001 has been certifiable
+since December 2023.</p>
+<p>Most companies are still relying on: - A spreadsheet of requirements
+- A Slack channel for compliance questions - A lawyer on retainer who
+reviews at year-end - A “AI policy” Word doc that hasn’t been updated
+since ChatGPT 3.5</p>
+<p>That’s not going to scale when the AI Act has 410 articles and the
+penalty is €35M or 7% of global turnover.</p>
+<h2 id="the-meok-approach-1-mcp-per-regulation">The MEOK approach: 1 MCP
+per regulation</h2>
+<p>We built <strong>340+ standalone MCP servers</strong> — one per
+regulation (or per article for the EU AI Act).</p>
+<p>Why one server per regulation: - <strong>Install only what you
+need</strong>: A logistics company doesn’t need FDA SaMD MCPs -
+<strong>Independent versioning</strong>: ISO 42001 can ship 1.0 while
+NIS2 is on 2.3 - <strong>Independent security audit</strong>: smaller
+surface = lower risk - <strong>Independent license
+declarations</strong>: MIT, but the deployment is your choice</p>
+<h2 id="architecture">Architecture</h2>
+<p>Every MEOK MCP server.py follows the same pattern:</p>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. Reference data (regulation text, schemas)</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. Tool functions (one per regulation article)</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># 3. _server_meter_check() (calls /verify for metering)</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 4. if __name__ == &quot;__main__&quot;: mcp.run()</span></span></code></pre></div>
+<p>The /verify meter at proofof.ai/verify provides: - Per-tenant quota
+tracking - 200 free calls/day (no account needed) - Pay-as-you-go beyond
+that - HMAC-signed audit trail of every call</p>
+<h2 id="coverage-matrix">Coverage matrix</h2>
+<table>
+<thead>
+<tr>
+<th>Regulation</th>
+<th>Package count</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>EU AI Act</td>
+<td>40+ (one per article)</td>
+<td>In MCP registry</td>
+</tr>
+<tr>
+<td>DORA</td>
+<td>5+</td>
+<td>In MCP registry</td>
+</tr>
+<tr>
+<td>NIS2</td>
+<td>5+</td>
+<td>In MCP registry</td>
+</tr>
+<tr>
+<td>CRA</td>
+<td>5+</td>
+<td>In MCP registry</td>
+</tr>
+<tr>
+<td>GDPR</td>
+<td>5+</td>
+<td>In MCP registry</td>
+</tr>
+<tr>
+<td>ISO 42001</td>
+<td>5+</td>
+<td>In MCP registry</td>
+</tr>
+<tr>
+<td>SOC 2</td>
+<td>3+</td>
+<td>In MCP registry</td>
+</tr>
+<tr>
+<td>PCI DSS</td>
+<td>3+</td>
+<td>In MCP registry</td>
+</tr>
+<tr>
+<td>HIPAA</td>
+<td>3+</td>
+<td>In MCP registry</td>
+</tr>
+<tr>
+<td>FDA SaMD</td>
+<td>3+</td>
+<td>In MCP registry</td>
+</tr>
+<tr>
+<td>MDR (EU medical devices)</td>
+<td>3+</td>
+<td>In MCP registry</td>
+</tr>
+<tr>
+<td>MHRA (UK)</td>
+<td>2+</td>
+<td>In MCP registry</td>
+</tr>
+<tr>
+<td>Canada AIDA</td>
+<td>1+</td>
+<td>In MCP registry</td>
+</tr>
+<tr>
+<td>200+ more</td>
+<td>1 each</td>
+<td>In MCP registry</td>
+</tr>
+</tbody>
+</table>
+<h2 id="the-60-day-plan">The 60-day plan</h2>
+<p>For a typical AI company: 1. <strong>Day 1-2</strong>: Install
+<code>eu-ai-act-compliance-mcp</code>, run risk classification on your
+system 2. <strong>Day 3-5</strong>: Install
+<code>meok-c2pa-watermark-mcp</code>, add watermarking to all output
+endpoints 3. <strong>Day 5-10</strong>: Install
+<code>meok-eu-ai-act-art-13-ifu-mcp</code>, draft Instructions for Use
+4. <strong>Day 10-20</strong>: Install
+<code>meok-eu-ai-act-art-26-fria-mcp</code>, run FRIA for high-risk use
+cases 5. <strong>Day 20-30</strong>: Install <code>ai-bom-mcp</code>,
+generate CycloneDX AI BOM 6. <strong>Day 30-45</strong>: Install
+<code>agent-audit-logger-mcp</code>, wire all production calls to audit
+log 7. <strong>Day 45-60</strong>: Test, document, file Article 50
+declaration</p>
+<h2 id="pricing">Pricing</h2>
+<p>Every MEOK MCP is MIT-licensed. The cost is in the /verify metering:
+- 200 calls/day free (no account, no card) - $0.001/call beyond that,
+metered per call - $99/month for 100,000 calls (teams) - Custom for
+enterprise</p>
+<p>The fleet hub at meok.ai/fleet/ has the full index.</p>
+<h2 id="why-we-built-this">Why we built this</h2>
+<p>Solo founder (Nick Templeman, Yorkshire UK) couldn’t find compliance
+MCPs that referenced the actual regulation text. Every other one I tried
+was a thin wrapper around a ChatGPT prompt.</p>
+<p>The EU AI Act has 410 articles. You can’t say “is this compliant?”
+without anchoring to the actual text.</p>
+<p>So I built the MCPs I needed for my own work, then published
+them.</p>
+<h2 id="how-to-start">How to start</h2>
+<div class="sourceCode" id="cb2"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install eu-ai-act-compliance-mcp</span></code></pre></div>
+<p>Then add to your MCP client config:</p>
+<div class="sourceCode" id="cb3"><pre
+class="sourceCode json"><code class="sourceCode json"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&quot;mcpServers&quot;</span><span class="fu">:</span> <span class="fu">{</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;eu-ai-act-compliance-mcp&quot;</span><span class="fu">:</span> <span class="fu">{</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>      <span class="dt">&quot;command&quot;</span><span class="fu">:</span> <span class="st">&quot;uvx&quot;</span><span class="fu">,</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>      <span class="dt">&quot;args&quot;</span><span class="fu">:</span> <span class="ot">[</span><span class="st">&quot;eu-ai-act-compliance-mcp&quot;</span><span class="ot">]</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">}</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">}</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code></pre></div>
+<p>Or in Claude Desktop / Cursor / Cline / VS Code / ChatGPT — every MCP
+host.</p>
+<h2 id="about-the-company">About the company</h2>
+<p>MEOK AI Labs (CSOAI Ltd, UK Companies House 16939677) Solo founder:
+Nick Templeman, Yorkshire UK Site: meok.ai Org: github.com/CSOAI-ORG 50+
+public repos, 300+ published packages License: MIT for all packages</p>
+<ol start="3" type="a">
+<li>2026 MEOK AI Labs</li>
+</ol>
+</body>
+</html>

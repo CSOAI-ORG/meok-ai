@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>EU AI Act Risk Classification Software · MEOK AI Labs</title>
+<meta name="description" content="AI system risk classifier per EU AI Act 4-class framework: unacceptable, high, limited, minimal. Deterministic, audit-traceable, with evidence pack export.">
+<meta name="keywords" content="compliance, MCP, MEOK, eu-ai-act-risk-classification-software">
+<meta property="og:title" content="EU AI Act Risk Classification Software">
+<meta property="og:description" content="AI system risk classifier per EU AI Act 4-class framework: unacceptable, high, limited, minimal. Deterministic, audit-traceable, with evidence pack export.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://meok.ai/eu-ai-act-risk-classification-software">
+<link rel="canonical" href="https://meok.ai/eu-ai-act-risk-classification-software">
+<style>
+:root{--bg:#0a0a14;--fg:#e8e8f0;--muted:#8a8aa0;--accent:#5b21b6;--accent-light:#7c3aed;--green:#22c55e;--red:#ef4444;--amber:#f59e0b;--border:#1a1a2e;--card:#13132a}
+*{box-sizing:border-box}
+body{font:16px/1.6 -apple-system,BlinkMacSystemFont,"SF Pro Display",system-ui,sans-serif;background:var(--bg);color:var(--fg);margin:0;padding:0}
+.container{max-width:920px;margin:0 auto;padding:48px 32px}
+h1{font-size:42px;font-weight:700;margin:0 0 8px;line-height:1.15;background:linear-gradient(135deg,#5b21b6 0%,#7c3aed 50%,#c084fc 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+h2{font-size:24px;font-weight:600;margin:36px 0 12px;color:var(--fg)}
+p{color:var(--fg);margin:0 0 16px}
+.lede{color:var(--muted);font-size:18px;margin:0 0 24px;line-height:1.5}
+.deadline{background:rgba(245,158,11,0.1);border:1px solid var(--amber);border-radius:8px;padding:16px 20px;margin:20px 0;color:var(--amber);font-weight:600;text-align:center}
+pre{background:var(--card);border:1px solid var(--border);border-radius:6px;padding:16px 20px;overflow-x:auto;font:13px/1.5 ui-monospace,"SF Mono",monospace;color:var(--fg)}
+code{font:13px/1.5 ui-monospace,"SF Mono",monospace;color:var(--accent-light);background:var(--card);padding:2px 6px;border-radius:3px}
+a{color:var(--accent-light);text-decoration:none}
+a:hover{text-decoration:underline}
+.footer{margin-top:48px;padding:24px 0;border-top:1px solid var(--border);color:var(--muted);font-size:13px;text-align:center}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:24px 0}
+.card{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:20px}
+.card h3{margin:0 0 8px;font-size:16px;color:var(--accent-light)}
+.card p{color:var(--muted);margin:0;font-size:14px}
+</style>
+</head>
+<body>
+<div class="container">
+
+<h1>EU AI Act Risk Classification</h1>
+<p class="lede">AI systems sold in the EU must be classified under the 4-class risk framework: unacceptable (banned), high (Annex III), limited (transparency), minimal (no obligation). MEOK ships a deterministic classifier MCP that takes a system description and returns the class + reasoning + Annex III check + evidence pack.</p>
+
+<div class="deadline">⏰ 2 August 2026 — 60 days</div>
+
+<h2>Key MCPs</h2>
+<div class="grid">
+  <div class="card">
+    <h3>eu-ai-act-compliance-mcp</h3>
+    <p>410 articles + risk classifier</p>
+  </div>
+  <div class="card">
+    <h3>ai-bom-mcp</h3>
+    <p>AI Bill of Materials for evidence</p>
+  </div>
+  <div class="card">
+    <h3>explainability-report-mcp</h3>
+    <p>Article 13 explainability</p>
+  </div>
+  <div class="card">
+    <h3>agent-audit-logger-mcp</h3>
+    <p>Hash-chained audit trail</p>
+  </div>
+  <div class="card">
+    <h3>meok-eu-aia-art-9-rms-mcp</h3>
+    <p>Article 9 Risk Management System</p>
+  </div>
+  <div class="card">
+    <h3>bias-detection-mcp</h3>
+    <p>Fairness assessment for high-risk</p>
+  </div>
+</div>
+
+
+<div style="background:#13132a;border:1px solid #1a1a2e;border-radius:8px;padding:16px 20px;margin:24px 0">
+  <p style="margin:0 0 8px;color:#7c3aed;font-weight:600">Try this MCP in 10 seconds</p>
+  <pre style="background:#0a0a14;border:1px solid #1a1a2e;border-radius:4px;padding:12px;font:13px/1.5 monospace;color:#22c55e;margin:0;overflow-x:auto">curl -X POST https://proofof.ai/verify \
+  -H "Content-Type: application/json" \
+  -d '{"api_key": "", "tool": "eu-ai-act-risk-classification-software"}'</pre>
+  <p style="margin:8px 0 0;color:#8a8aa0;font-size:13px">200 free calls/day. <a href="/verify-api" style="color:#7c3aed">Full API reference →</a></p>
+</div>
+<h2>Installation</h2>
+<pre><code>pip install eu-ai-act-compliance-mcp
+# or
+uvx eu-ai-act-compliance-mcp
+# or
+npx -y @smithery/cli@latest install eu-ai-act-compliance-mcp --client claude</code></pre>
+
+<p>See the <a href="/fleet/">fleet hub</a> for all 340+ packages.</p>
+
+<div class="footer">
+<p>Built by MEOK AI Labs (CSOAI Ltd, UK Companies House 16939677) — Solo founder Nick Templeman, Yorkshire UK.<br>
+Site: <a href="https://meok.ai">meok.ai</a> · Fleet: <a href="https://meok.ai/fleet/">meok.ai/fleet/</a> · Org: <a href="https://github.com/CSOAI-ORG">github.com/CSOAI-ORG</a></p>
+</div>
+
+</div>
+</body>
+</html>

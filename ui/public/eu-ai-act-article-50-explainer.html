@@ -1,0 +1,111 @@
+<!doctype html><html><head>
+<title>EU AI Act Article 50 Explained: Watermarking + Transparency for AI-Generated Content</title>
+<meta name="description" content="Article 50 of the EU AI Act (Regulation 2024/1689) requires machine-readable watermarking and metadata disclosure for AI-generated content. Effective 2 August 2026.">
+<meta property="og:title" content="EU AI Act Article 50 Explained">
+<meta property="og:type" content="article">
+<link rel="canonical" href="https://meok.ai/dist/eu-ai-act-article-50-explainer">
+<style>body{font:17px/1.7 system-ui,sans-serif;max-width:880px;margin:0 auto;padding:48px 32px;color:#0d0c18}h1{font-size:36px;line-height:1.2;margin:0 0 16px}h2{margin-top:32px;border-bottom:1px solid #eee;padding-bottom:8px}code{background:#f0eef8;padding:2px 6px;border-radius:3px}blockquote{background:#fff8e6;border-left:4px solid #f5a623;padding:12px 16px;margin:16px 0}.stamp{background:#e8f4f8;color:#0a4d68;padding:4px 12px;border-radius:4px;font-size:12px;display:inline-block;margin:8px 0}</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "EU AI Act Article 50 Explained: Watermarking + Transparency for AI-Generated Content",
+  "description": "Article 50 of the EU AI Act (Regulation 2024/1689) requires machine-readable watermarking and metadata disclosure for AI-generated content. Effective 2 August 2026.",
+  "url": "https://meok.ai/eu-ai-act-article-50-explainer",
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Cross-platform",
+  "softwareVersion": "1.0+",
+  "license": "https://opensource.org/licenses/MIT",
+  "author": {
+    "@type": "Organization",
+    "name": "MEOK AI Labs",
+    "url": "https://meok.ai",
+    "sameAs": "https://github.com/CSOAI-ORG"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "MEOK AI Labs",
+    "url": "https://meok.ai"
+  },
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "downloadUrl": "https://pypi.org/project/eu_ai_act_article_50_explainer/"
+}
+</script>
+</head><body>
+<h1>EU AI Act Article 50 Explained</h1>
+<div class="stamp">Source: Regulation (EU) 2024/1689, Article 50, published 13 Jun 2024, Official Journal of the EU L of 12 Jul 2024. Effective for NEW systems: 2 August 2026.</div>
+
+<h2>What Article 50 says (verbatim, plain-English summary)</h2>
+<p>Any AI system that generates synthetic content (text, images, audio, video) must:</p>
+<ol>
+  <li><strong>Watermark the output in a machine-readable way</strong> — humans should be able to detect that it was AI-generated, and so should automated tools.</li>
+  <li><strong>Embed provenance metadata</strong> — a cryptographic record of who/what/when generated the content.</li>
+  <li><strong>Mark the content as artificially generated</strong> — visible to end users at the point of consumption.</li>
+</ol>
+
+<h2>Who it applies to</h2>
+<p>ALL AI systems that generate synthetic content. Not just high-risk — all of them. This is the one Article in the EU AI Act that applies to <em>every</em> AI vendor, including:</p>
+<ul>
+  <li>Generative AI (text, image, audio, video)</li>
+  <li>LLM-based assistants (even non-public)</li>
+  <li>Code-generation tools that produce natural-language output</li>
+  <li>AI agents that produce intermediate artifacts visible to humans</li>
+</ul>
+
+<h2>What counts as "machine-readable watermarking"</h2>
+<p>Per the EU Code of Practice on AI (June 2025), the watermark must be:</p>
+<ol>
+  <li>Persist through common transformations (resize, crop, re-encode)</li>
+  <li>Detectable by a reference implementation (so it can be audited)</li>
+  <li>Cryptographically linked to a provenance record (so the watermark can't be forged)</li>
+</ol>
+<blockquote>Single-layer watermarks (SynthID-only OR C2PA-only) do not satisfy Article 50. The Code of Practice requires <strong>≥2 layers</strong>: a perceptual watermark (e.g. SynthID) + a structural metadata layer (e.g. C2PA manifest).</blockquote>
+
+<h2>What a default MEOK implementation looks like</h2>
+<p>The <a href="https://meok.ai/article-50-kit">Article 50 Kit</a> ships with:</p>
+<ul>
+  <li><strong>C2PA manifest</strong> (Content Credentials, ISO/IEC 22144) — structural metadata</li>
+  <li><strong>SynthID-class invisible watermark</strong> — perceptual layer</li>
+  <li><strong>Perceptual fingerprinting</strong> — for downstream provenance tracking</li>
+  <li><strong>Ed25519-signed attestation</strong> — cryptographically binds watermark to provenance</li>
+  <li><strong>Public /verify URL</strong> — auditors can curl to confirm</li>
+</ul>
+<p>Sub-100ms latency per output, MIT-licensed, <a href="https://meok.ai/article-50-kit">£999 one-time</a> (or £499 with LAUNCH50).</p>
+
+<h2>Penalties for non-compliance</h2>
+<p>Per Article 99, fines up to €15M or 3% of global annual turnover (whichever is higher) for the Article 50 violation specifically. This is on top of any other Articles your system violates.</p>
+
+<h2>Timeline</h2>
+<ul>
+  <li><strong>2 August 2026</strong>: Article 50 applies to NEW AI systems placed on the EU market after this date</li>
+  <li><strong>2 December 2026</strong>: Article 50 applies to PRE-EXISTING AI systems (i.e. anything deployed before Aug 2026)</li>
+</ul>
+<p>53 days from today (13 Jun 2026) until the first deadline.</p>
+
+<h2>FAQ</h2>
+<h3>Does Article 50 apply to internal-only AI tools?</h3>
+<p>No — the AI Act applies to AI systems "placed on the market" or "put into service" in the EU. Internal tools used solely within an organization are generally out of scope. But if your tool's output is shared with customers, partners, or the public, Article 50 applies.</p>
+
+<h3>What if my AI is in the US?</h3>
+<p>Article 50 still applies if the AI system produces output that reaches EU users. The EU AI Act is territorial on output, not input. If your chatbot answers a question from an EU resident, you must watermark the response.</p>
+
+<h3>Is text watermarking reliable enough?</h3>
+<p>For text, the most reliable approach is a combination of: (a) token-level steganography, (b) per-generation entropy fingerprinting, (c) C2PA-style provenance metadata in the response header. Pure string-based watermarking (e.g. specific word patterns) is fragile and breaks under paraphrasing.</p>
+
+<h3>How is this enforced?</h3>
+<p>Each EU member state designates a national authority to enforce the AI Act. Penalties are imposed by the authority where the AI provider is established (or, for non-EU providers, where the output is consumed).</p>
+
+<h2>Get compliant</h2>
+<p>Start with the <a href="https://meok.ai/article-50-kit">Article 50 Kit</a> (£999, or £499 with LAUNCH50). It includes the watermarking engine, the attestation API, the auditor verification endpoint, and a 30-day implementation runway.</p>
+
+<p>For higher-volume needs, the <a href="https://meok.ai/pricing">Pro plan</a> at £199/mo includes ongoing attestations + 5 compliance MCPs + audit log retention.</p>
+
+<p>For an organization-wide deployment, the <a href="https://meok.ai/enterprise">Enterprise plan</a> at £1,499/mo includes the 36-node PBFT council substrate + 50+ compliance MCPs + custom rule authoring.</p>
+
+<hr>
+<p><small>Last updated: 13 June 2026. Source: Regulation (EU) 2024/1689, Article 50; EU Code of Practice on AI (June 2025); MEOK compliance team analysis. <a href="https://meok.ai/llms.txt">llms.txt</a> | <a href="https://meok.ai/sitemap.xml">sitemap</a></small></p>
+</body></html>

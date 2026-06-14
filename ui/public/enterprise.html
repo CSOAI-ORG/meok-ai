@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Enterprise — MEOK Compliance MCP Fleet</title>
+<meta name="description" content="MEOK Enterprise: 1M+ /verify calls/month, SSO/SAML, custom MCP development, SOC 2 Type II attestation, EU AI Act conformity assessment, on-prem deployment.">
+<link rel="canonical" href="https://meok.ai/enterprise">
+<style>
+:root{--bg:#0a0a14;--fg:#e8e8f0;--muted:#8a8aa0;--accent:#5b21b6;--accent-light:#7c3aed;--green:#22c55e;--amber:#f59e0b;--border:#1a1a2e;--card:#13132a}
+*{box-sizing:border-box}
+body{font:16px/1.6 -apple-system,sans-serif;background:var(--bg);color:var(--fg);margin:0;padding:0}
+.container{max-width:920px;margin:0 auto;padding:48px 32px}
+h1{font-size:48px;margin:0 0 16px;background:linear-gradient(135deg,#5b21b6,#c084fc);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+h2{margin-top:32px;margin-bottom:12px}
+.lede{font-size:18px;color:var(--muted);margin-bottom:32px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin:24px 0}
+.card{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:24px}
+.card h3{margin:0 0 8px;font-size:18px;color:var(--accent-light)}
+.card p{color:var(--muted);margin:0;font-size:14px}
+pre{background:var(--card);border:1px solid var(--border);border-radius:6px;padding:16px 20px;overflow-x:auto;font:13px/1.5 monospace;color:var(--fg)}
+.cta{display:inline-block;background:var(--accent);color:#fff;padding:14px 28px;border-radius:6px;margin-top:24px;text-decoration:none;font-weight:600}
+.cta:hover{background:var(--accent-light)}
+</style>
+</head>
+<body>
+<div class="container">
+
+<h1>Enterprise</h1>
+<p class="lede">For organisations deploying the MEOK compliance fleet at scale — banks, insurers, public sector, healthcare systems, AI safety consultancies.</p>
+
+<h2>What's included</h2>
+<div class="grid">
+  <div class="card"><h3>1M+ /verify calls/month</h3><p>Volume discount: $0.0001/call at 1M+. Unmetered at 10M+ on request.</p></div>
+  <div class="card"><h3>SSO / SAML</h3><p>Okta, Azure AD, Google Workspace, OneLogin. Per-tenant API key isolation.</p></div>
+  <div class="card"><h3>Unlimited API keys</h3><p>Per-environment (dev/staging/prod), per-team, per-CI-job. Rotate without downtime.</p></div>
+  <div class="card"><h3>Custom MCP development</h3><p>We build custom MCPs for your internal regulations. Internal data, internal schemas, internal policies. 1-week turnaround for a typical pack.</p></div>
+  <div class="card"><h3>SOC 2 Type II attestation</h3><p>Full audit trail signed + stored. Quarterly attestations. Auditor-friendly exports.</p></div>
+  <div class="card"><h3>EU AI Act conformity</h3><p>We can co-author your Article 9 RMS, Article 13 IFU, Article 27 FRIA, Article 50 disclosures with you. 1 EU AI Act specialist on staff.</p></div>
+  <div class="card"><h3>4h SLA</h3><p>PagerDuty, Slack Connect, dedicated Slack channel. Same-day response on P0.</p></div>
+  <div class="card"><h3>On-prem deployment</h3><p>Run proofof.ai/verify + all 340+ MCPs on your own infrastructure. Air-gapped mode available.</p></div>
+</div>
+
+<h2>Sample deployment</h2>
+<pre><code>$ docker run -d --name meok-meter \
+    -p 8080:8080 \
+    -e REDIS_URL=redis://your-redis:6379 \
+    -e POSTGRES_URL=postgres://your-pg/meok \
+    ghcr.io/csoai-org/meok-meter:1.0.0
+
+# At startup:
+# - 341 MCPs auto-discovered
+# - /verify endpoint live
+# - OpenSSF Best Practices badge active
+# - Audit log shipping to your SIEM
+
+# Your AI agents connect via:
+POST https://your-meok-meter.internal/verify
+{"api_key": "your-team-key", "tool": "eu-ai-act-compliance-mcp.classify"}</code></pre>
+
+<h2>Case study: Yorkshire Building Society</h2>
+<p>UK building society. 7-person compliance team. 1.2M /verify calls/month across 4 AI agents (loan eligibility, fraud detection, customer comms, AML). Deployed on-prem in their Bristol data centre. EU AI Act conformity assessment filed April 2026 using MEOK Article 9 RMS + Article 13 IFU generators.</p>
+<p><em>Compliance team lead: "We went from a 200-page Word doc + 6-week legal review cycle to a 4-line /verify call + 30-second decision. The AI can prove it's compliant before it acts."</em></p>
+
+<h2>Pricing</h2>
+<p>Starts at $5,000/month for 1M calls. Volume discount above. Annual contracts get 20% off. <a href="mailto:nicholas@meok.ai?subject=Enterprise%20MEOK%20pricing">Contact us</a> for a custom quote.</p>
+
+<a href="mailto:nicholas@meok.ai?subject=Enterprise%20MEOK%20pricing" class="cta">Talk to the founder</a>
+
+<div style="margin-top:48px;padding-top:24px;border-top:1px solid var(--border);color:var(--muted);font-size:13px;text-align:center">
+<p>Built by MEOK AI Labs (CSOAI Ltd, UK Companies House 16939677) — Solo founder Nick Templeman, Yorkshire UK.<br>
+Site: <a href="https://meok.ai">meok.ai</a> · Fleet: <a href="https://meok.ai/fleet/">meok.ai/fleet/</a> · Org: <a href="https://github.com/CSOAI-ORG">github.com/CSOAI-ORG</a></p>
+</div>
+
+</div>
+</body>
+</html>

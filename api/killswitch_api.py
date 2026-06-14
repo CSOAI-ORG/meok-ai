@@ -1,6 +1,6 @@
 """KILLSWITCH.md REST API — Emergency Stop Protocol"""
 from fastapi import APIRouter
-from meok.mcp.tools.killswitch import _activate, _get_status, _get_history, _verify
+from meok.mcp.tools.killswitch import _activate, _check_status, _get_history, _anomaly_report
 
 router = APIRouter(prefix="/v1/killswitch", tags=["killswitch"])
 
@@ -10,7 +10,7 @@ async def activate(req: dict):
 
 @router.get("/status")
 async def status():
-    return _get_status()
+    return _check_status({"agent_id": "global", "anomaly_score": 0.0})
 
 @router.get("/history")
 async def history():
@@ -18,4 +18,4 @@ async def history():
 
 @router.post("/verify")
 async def verify(req: dict):
-    return _verify(req)
+    return _anomaly_report(req)

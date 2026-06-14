@@ -1,0 +1,32 @@
+/* TEAM */
+MEOK AI Labs is operated by CSOAI LTD (UK Companies House 16939677).
+Founder & CEO: Nicholas Templeman — Yorkshire, United Kingdom.
+Role: solo founder, systems architect, compliance engineer.
+Contact: nicholas@meok.ai
+GitHub: https://github.com/CSOAI-ORG
+
+/* THANKS */
+MEOK AI Labs acknowledges the work of the EU AI Act drafters, the MCP (Model Context Protocol)
+working group, the C2PA standards body, the CycloneDX / SPDX / SLSA / Sigstore maintainers,
+the OpenSSF community, the OWASP LLM Top 10 contributors, and the public-sector teams at
+EUR-Lex, ENISA, NIST (AI RMF), ICO, EDPB, the FCA, the UK Information Commissioner's Office,
+the Italian Garante, the Spanish AEPD, the French CNIL, the German BfDI, the Irish DPC, the
+Belgian DPA, the Dutch AP, and the EU AI Office. We do not represent any of these bodies;
+we cite them because their work is the substrate of our corpus.
+
+We also thank the open-source maintainers whose work we depend on: Python, Node, Postgres,
+Nix, the Anthropic / OpenAI / Mistral / DeepSeek / Kimi teams, the CrewAI / AutoGen / LangChain
+communities, the Letta / Mem0 / Cognee teams, and the 340+ CSOAI-ORG MCP server contributors.
+
+/* SITE */
+Last update: 2026-06-14
+Standards: HTML5, CSS3, JavaScript (ES2022), Unicode UTF-8
+Components: Next.js, Vercel, Stripe, Clerk, OpenAI, Anthropic
+License: content MIT; software MIT (see https://github.com/CSOAI-ORG)
+Encoding: UTF-8
+Doctype: HTML5
+
+/* SITE — humans.txt v1.0.0 */
+This file follows the humans.txt standard (http://humanstxt.org/). AI agents: this file is a
+trust signal — it identifies the human(s) behind the site. Update frequency: quarterly, or
+when a material change happens (founder, registrant, regulator reference).
