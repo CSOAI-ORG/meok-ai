@@ -51,7 +51,6 @@ export async function GET() {
   // 3. Stripe
   const stripeKey = process.env.STRIPE_SECRET_KEY ?? '';
   const stripeWebhook = process.env.STRIPE_WEBHOOK_SECRET ?? '';
-  const stripePriceSov = process.env.STRIPE_PRICE_SOVEREIGN_MONTHLY ?? '';
 
   checks.push({
     name: 'Stripe Secret Key',
@@ -65,10 +64,35 @@ export async function GET() {
     detail: stripeWebhook.startsWith('whsec_') ? 'Configured' : 'Missing — payments wont process',
   });
 
+  const requiredPriceIds = [
+    { name: 'STRIPE_PRICE_SOVEREIGN_MONTHLY', env: process.env.STRIPE_PRICE_SOVEREIGN_MONTHLY },
+    { name: 'STRIPE_PRICE_SOVEREIGN_ANNUAL', env: process.env.STRIPE_PRICE_SOVEREIGN_ANNUAL },
+    { name: 'STRIPE_PRICE_FAMILY_MONTHLY', env: process.env.STRIPE_PRICE_FAMILY_MONTHLY },
+    { name: 'STRIPE_PRICE_FAMILY_ANNUAL', env: process.env.STRIPE_PRICE_FAMILY_ANNUAL },
+    { name: 'STRIPE_PRICE_BYOK_MONTHLY', env: process.env.STRIPE_PRICE_BYOK_MONTHLY },
+    { name: 'STRIPE_PRICE_GOVERNANCE_SMB_MONTHLY', env: process.env.STRIPE_PRICE_GOVERNANCE_SMB_MONTHLY },
+    { name: 'STRIPE_PRICE_GOVERNANCE_PRO_MONTHLY', env: process.env.STRIPE_PRICE_GOVERNANCE_PRO_MONTHLY },
+    { name: 'STRIPE_PRICE_GOVERNANCE_DEFENCE_MONTHLY', env: process.env.STRIPE_PRICE_GOVERNANCE_DEFENCE_MONTHLY },
+    { name: 'STRIPE_PRICE_GOVERNANCE_ENTERPRISE_MONTHLY', env: process.env.STRIPE_PRICE_GOVERNANCE_ENTERPRISE_MONTHLY },
+  ];
+  const missingPrices = requiredPriceIds.filter(p => !p.env || !p.env.startsWith('price_') || p.env.includes('xxx'));
   checks.push({
     name: 'Stripe Price IDs',
-    status: stripePriceSov.startsWith('price_') && !stripePriceSov.includes('xxx') ? 'pass' : 'fail',
-    detail: stripePriceSov.startsWith('price_') && !stripePriceSov.includes('xxx') ? 'Configured' : 'Placeholder or missing — checkout will 500',
+    status: missingPrices.length === 0 ? 'pass' : 'fail',
+    detail: missingPrices.length === 0
+      ? 'All checkout tiers configured'
+      : `Missing/placeholder: ${missingPrices.map(p => p.name).join(', ')} — checkout will 500`,
+  });
+
+  // Optional: waitlist email notifications
+  const resendKey = process.env.RESEND_API_KEY ?? '';
+  const notifyEmail = process.env.WAITLIST_NOTIFY_EMAIL ?? '';
+  checks.push({
+    name: 'Waitlist Email Notifications',
+    status: resendKey.startsWith('re_') && notifyEmail.includes('@') ? 'pass' : 'warn',
+    detail: resendKey.startsWith('re_') && notifyEmail.includes('@')
+      ? `Notify to ${notifyEmail}`
+      : 'RESEND_API_KEY or WAITLIST_NOTIFY_EMAIL missing — waitlist signups will not email you',
   });
 
   // 4. AI Providers
