@@ -116,18 +116,17 @@ const signature = base64ToUint8(cert.signature);
 const publicKey = base64ToUint8(cert.ed25519_public_key);
 
 const ok = nacl.sign.detached.verify(message, signature, publicKey);
-console.log(ok ? "Valid" : "INVALID");`,
+console.log(ok ? "Valid" : "INVALID");
+  `,
   },
 ];
 
-function base64ToUint8(b64) {
+function base64ToUint8(b64: string): Uint8Array {
   const bin = atob(b64);
   const out = new Uint8Array(bin.length);
   for (let i = 0; i < bin.length; i++) out[i] = bin.charCodeAt(i);
   return out;
-}`,
-  },
-];
+}
 
 export default function PublicKeyPage() {
   return (

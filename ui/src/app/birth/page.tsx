@@ -18,7 +18,7 @@ export default function Page() {
         <p className="text-xl text-slate-600 mt-6">Bring a new companion into existence. Pick an archetype, pick a name, pick a voice, pick a dome.</p>
         <div className="prose prose-slate max-w-none mt-10">
           <h2>The 5-minute birth</h2>
-          <p>Choose -> name -> voice -> dome -> meet.</p>
+          <p>Choose → name → voice → dome → meet.</p>
           <h2>9 archetypes</h2>
           <p>Challenger, Nurturer, Explorer, Strategist, Creator, Guardian, Sage, Seeker, Trickster, Rebel, Innocent.</p>
           <h2>4 packs</h2>

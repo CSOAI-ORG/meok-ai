@@ -42,7 +42,7 @@ export default function HivePage() {
         ]);
         setData(d);
         try {
-          const arr = typeof a === 'string' ? JSON.parse(a.result.content[0].text) : a;
+          const arr = typeof a === 'string' ? JSON.parse(a) : a;
           if (Array.isArray(arr)) setAgents(arr);
         } catch {}
         setLoading(false);

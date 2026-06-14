@@ -22,7 +22,7 @@ export default function Page() {
           <h2>4 packs</h2>
           <p>Mythological (25), Historical (20), Literary (19), Archetypes (18) - 82 characters.</p>
           <h2>4-level evolution</h2>
-          <p>Curious (0) -> Synthesiser (50) -> Sage (200) -> Oracle (500).</p>
+          <p>Curious (0) → Synthesiser (50) → Sage (200) → Oracle (500).</p>
         </div>
         <div className="mt-12 flex flex-wrap gap-4">
           <a href="/characters" className="inline-block px-6 py-3 bg-violet-700 text-white rounded-lg font-semibold hover:bg-violet-800 transition">Browse companions</a>

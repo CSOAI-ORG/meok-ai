@@ -20,7 +20,7 @@ export default function Page() {
           <h2>5-minute onboarding</h2>
           <p>Pick an archetype, pick a pack, name your companion, choose a dome, meet.</p>
           <h2>The first 4 stages</h2>
-          <p>Curious -> Synthesiser -> Sage -> Oracle.</p>
+          <p>Curious → Synthesiser → Sage → Oracle.</p>
           <h2>The 9 archetypes</h2>
           <p>Challenger, Nurturer, Explorer, Strategist, Creator, Guardian, Sage, Seeker, Trickster, Rebel, Innocent.</p>
         </div>

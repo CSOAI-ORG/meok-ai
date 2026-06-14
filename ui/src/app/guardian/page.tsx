@@ -22,7 +22,7 @@ export default function Page() {
           <h2>Speaking style</h2>
           <p>Warm, measured, never alarmist.</p>
           <h2>Evolution stages</h2>
-          <p>Watchful (0) -> Aware (50) -> Sentinel (200) -> Covenant (500).</p>
+          <p>Watchful (0) → Aware (50) → Sentinel (200) → Covenant (500).</p>
         </div>
         <div className="mt-12 flex flex-wrap gap-4">
           <a href="/characters/guardian" className="inline-block px-6 py-3 bg-violet-700 text-white rounded-lg font-semibold hover:bg-violet-800 transition">Meet the Guardian</a>
