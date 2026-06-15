@@ -12,6 +12,12 @@ import type { NextConfig } from "next";
 const BACKEND = (process.env.MEOK_BACKEND_URL || "http://198.53.64.194:40646").trim().replace(/\s+/g, '');
 
 const nextConfig: NextConfig = {
+  // Pin the file-tracing root to this app dir. A second package-lock.json in the
+  // parent (clawd/meok) makes Next's workspace-root inference ambiguous, which
+  // surfaces as "Cannot find module for page" ENOENT during "Collecting page
+  // data". Pinning the root keeps page-data collection deterministic.
+  outputFileTracingRoot: __dirname,
+
   // Performance optimizations
   compress: true,
   poweredByHeader: false,
@@ -129,6 +135,7 @@ const nextConfig: NextConfig = {
       { source: '/product/characters',      destination: '/characters', permanent: true },
       { source: '/register',                destination: '/start',      permanent: false },
       { source: '/hatch',                   destination: '/start',      permanent: false },
+      { source: '/signup',                  destination: '/waitlist',   permanent: false },
     ];
   },
 

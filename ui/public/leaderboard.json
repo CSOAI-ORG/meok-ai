@@ -1,0 +1,21 @@
+{
+  "generated_at": "2026-06-15T13:16:25.238290",
+  "agents": [
+    {
+      "id": "nicholas_templeman",
+      "trust_score": 23910,
+      "tier": "platinum",
+      "badges": [
+        "first_verify",
+        "100_verifies",
+        "first_mcp",
+        "fleet_builder",
+        "council_member",
+        "sovereign_olm",
+        "dome_explorer",
+        "audit_trail"
+      ],
+      "badges_count": 8
+    }
+  ]
+}

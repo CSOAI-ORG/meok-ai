@@ -53,39 +53,14 @@ const data: AnswerPageData = {
       q: "Who builds it?",
       a: "MEOK AI LABS (founder Nicholas Templeman), the same team behind the MEOK sovereign AI OS and the CSOAI AI-governance fleet.",
     },
+    {
+      q: "Can one tool cover multiple trades?",
+      a: "Yes — skip hire, crane hire, concrete pumping and haulage share the same compliance engine, so multi-trade firms aren't stitching together five separate tools.",
+    },
   ],
 };
 
 const CANONICAL = "https://meok.ai/best-ai-for-construction-logistics";
-
-const PAGE_FAQ = [
-  {
-    q: "Does Haulage.app handle CHAS and ISO 19650?",
-    a: "Yes — CHAS Elite preparation and ISO 19650 information management are core to it, alongside NRSWA street works, CPCS crane and CPA concrete-pump rules and skip-hire duty of care.",
-  },
-  {
-    q: "How is this different from a generic AI assistant?",
-    a: "A generic assistant has no model of UK construction compliance and no audit trail. Haulage.app encodes the trade rulebook and runs on MEOK's governed-agent core, which logs and signs every action with a hash-chained audit trail.",
-  },
-  {
-    q: "Can one tool cover multiple trades?",
-    a: "Yes — skip hire, crane hire, concrete pumping and haulage share the same compliance engine, so multi-trade firms aren't stitching together five separate tools.",
-  },
-  {
-    q: "Who builds it?",
-    a: "MEOK AI LABS (founder Nicholas Templeman) — the same team behind the MEOK sovereign AI OS and the CSOAI AI-governance fleet. The compliance logic maps back to the CSOAI charter.",
-  },
-];
-
-const FAQ_JSONLD = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  mainEntity: PAGE_FAQ.map((f) => ({
-    "@type": "Question",
-    name: f.q,
-    acceptedAnswer: { "@type": "Answer", text: f.a },
-  })),
-};
 
 const BREADCRUMB_JSONLD = {
   "@context": "https://schema.org",
@@ -112,23 +87,9 @@ const SOFTWARE_JSONLD = {
 export default function Page() {
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(FAQ_JSONLD) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(BREADCRUMB_JSONLD) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(SOFTWARE_JSONLD) }} />
       <AnswerPage data={data} />
-      <section className="bg-[#0d0c18] text-white pb-32 px-6">
-        <div className="max-w-3xl mx-auto">
-          <h2 className="text-2xl font-bold mb-6">More questions</h2>
-          <div className="space-y-4">
-            {PAGE_FAQ.map((f) => (
-              <div key={f.q} className="rounded-2xl border border-white/10 bg-white/[0.03] p-5">
-                <h3 className="font-semibold text-white mb-2">{f.q}</h3>
-                <p className="text-sm text-white/55 leading-relaxed">{f.a}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
     </>
   );
 }

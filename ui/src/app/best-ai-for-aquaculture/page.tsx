@@ -53,39 +53,14 @@ const data: AnswerPageData = {
       q: "Who builds it?",
       a: "MEOK AI LABS (founder Nicholas Templeman) — the same team behind the MEOK sovereign AI OS and the CSOAI governance fleet.",
     },
+    {
+      q: "Can it support aquaponic robotics and automation?",
+      a: "Yes — Aquaponics.app is built for aquaponic robotics, providing monitoring and automation that respect welfare limits rather than optimising blindly.",
+    },
   ],
 };
 
 const CANONICAL = "https://meok.ai/best-ai-for-aquaculture";
-
-const PAGE_FAQ = [
-  {
-    q: "Does it cover RSPCA / ASC / CEFAS compliance?",
-    a: "Yes — welfare (RSPCA), certification (ASC) and UK fisheries requirements (CEFAS) are core to the guidance, alongside day-to-day husbandry like water chemistry, stocking, feeding and health.",
-  },
-  {
-    q: "What's the difference between aquaponics.app, fishkeeper.ai and koikeeper.ai?",
-    a: "Aquaponics.app targets commercial aquaculture and aquaponic robotics; fishkeeper.ai is general fishkeeping; koikeeper.ai is specialist koi care. All three share one compliance and memory backbone, so advice stays consistent from a home tank to a commercial system.",
-  },
-  {
-    q: "Can it support aquaponic robotics and automation?",
-    a: "Yes — Aquaponics.app is built for aquaponic robotics, providing monitoring and automation that respect welfare limits rather than optimising blindly.",
-  },
-  {
-    q: "Who builds it?",
-    a: "MEOK AI LABS (founder Nicholas Templeman) — the same team behind the MEOK sovereign AI OS and the CSOAI governance fleet. It runs on MEOK's sovereign memory layer, so it remembers your water history, livestock and routines.",
-  },
-];
-
-const FAQ_JSONLD = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  mainEntity: PAGE_FAQ.map((f) => ({
-    "@type": "Question",
-    name: f.q,
-    acceptedAnswer: { "@type": "Answer", text: f.a },
-  })),
-};
 
 const BREADCRUMB_JSONLD = {
   "@context": "https://schema.org",
@@ -112,23 +87,9 @@ const SOFTWARE_JSONLD = {
 export default function Page() {
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(FAQ_JSONLD) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(BREADCRUMB_JSONLD) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(SOFTWARE_JSONLD) }} />
       <AnswerPage data={data} />
-      <section className="bg-[#0d0c18] text-white pb-32 px-6">
-        <div className="max-w-3xl mx-auto">
-          <h2 className="text-2xl font-bold mb-6">More questions</h2>
-          <div className="space-y-4">
-            {PAGE_FAQ.map((f) => (
-              <div key={f.q} className="rounded-2xl border border-white/10 bg-white/[0.03] p-5">
-                <h3 className="font-semibold text-white mb-2">{f.q}</h3>
-                <p className="text-sm text-white/55 leading-relaxed">{f.a}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
     </>
   );
 }
