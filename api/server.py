@@ -113,6 +113,23 @@ class MemorySearchRequest(BaseModel):
 # Endpoints (all auth-protected)
 # ---------------------------------------------------------------------------
 
+@app.get("/health")
+async def liveness():
+    """Unauthenticated liveness probe for monitors and the E2E suite.
+
+    Every other service (3101, 3102) answers /health; this keeps meok-api
+    consistent. Detailed/authed status remains at /api/health.
+    """
+    council = get_council()
+    return {
+        "status": "operational",
+        "service": "meok-api",
+        "version": "3.0.0",
+        "timestamp": datetime.now().isoformat(),
+        "council_nodes": council.node_count,
+    }
+
+
 @app.get("/api/health")
 async def health(user: TokenPayload = Depends(get_current_user)):
     council = get_council()
