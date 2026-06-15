@@ -84,11 +84,63 @@ const GDPR_ITEMS = [
   },
 ];
 
+// ── FAQ ──────────────────────────────────────────────────────────────────────
+
+const SECURITY_FAQ = [
+  {
+    q: "What threats does MEOK protect against?",
+    a: "Four attack surfaces, each with a runtime defence: prompt injection (user messages sanitised; the Maternal Covenant system prompt is locked and cannot be overridden), data exfiltration (every database query is filtered by user_id so User A can never read User B's data), sycophancy attacks (every response is scored 0.0–1.0; above 0.6 honest qualifiers are injected), and toxicity/grooming (a DistilBERT safety classifier runs on every message and triggers a Guardian webhook above 0.85).",
+  },
+  {
+    q: "How does the Maternal Covenant enforce security?",
+    a: "The Maternal Covenant is a constitutional constraint embedded in the system prompt of every LLM call MEOK makes. It cannot be removed, overridden, or bypassed by user input. It enforces a 0.3 care floor (responses below it are rejected before streaming), a 0.6 sycophancy ceiling (above it honest qualifiers are injected automatically), and crisis routing that sends self-harm or suicidal-ideation signals to safety resources instead of an AI response.",
+  },
+  {
+    q: "Where is my data stored?",
+    a: "It depends on the product. The web app is encrypted at rest on EU-hosted infrastructure with zero third-party analytics and no training on your conversations. Memory uses pgvector semantic search scoped to your user ID. The Desktop OS (Summer 2026) is entirely local — LanceDB on your SSD and an LLM running on your hardware via Ollama, with nothing leaving your machine unless you explicitly sync.",
+  },
+  {
+    q: "Is MEOK GDPR compliant?",
+    a: "Yes, and compliance is built into the API surface. You can export everything MEOK holds about you via GET /api/user/export and permanently delete your account via DELETE /api/user. MEOK is registered with the UK Information Commissioner's Office and aligned with UK GDPR and the Children's Code, with data processor agreements in place with all third-party LLM providers — your data is never used for their training.",
+  },
+];
+
+const WEBPAGE_JSONLD = {
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  name: "Security Architecture | MEOK AI LABS",
+  description:
+    "How MEOK AI LABS protects your data: prompt injection defense, tool sandboxing, zero-knowledge memory, and the Maternal Covenant constitutional constraint.",
+  url: "https://meok.ai/security",
+};
+
+const FAQ_JSONLD = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: SECURITY_FAQ.map((f) => ({
+    "@type": "Question",
+    name: f.q,
+    acceptedAnswer: { "@type": "Answer", text: f.a },
+  })),
+};
+
+const BREADCRUMB_JSONLD = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: "https://meok.ai/" },
+    { "@type": "ListItem", position: 2, name: "Security", item: "https://meok.ai/security" },
+  ],
+};
+
 // ── Page ─────────────────────────────────────────────────────────────────────
 
 export default function SecurityPage() {
   return (
     <main className="min-h-screen bg-[#0d0c18] text-white">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(WEBPAGE_JSONLD) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(FAQ_JSONLD) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(BREADCRUMB_JSONLD) }} />
       {/* ── Hero ─────────────────────────────────────────────────────────────── */}
       <section className="relative overflow-hidden pt-24 pb-20 px-4">
         {/* Background blob */}
@@ -300,6 +352,27 @@ export default function SecurityPage() {
             >
               Report a vulnerability →
             </a>
+          </div>
+        </div>
+      </section>
+
+      {/* ── FAQ ──────────────────────────────────────────────────────────────── */}
+      <section className="px-4 pb-20">
+        <div className="max-w-3xl mx-auto">
+          <div className="section-divider mb-16" />
+          <h2 className="text-2xl md:text-3xl font-bold text-white mb-4 text-center">
+            Frequently asked
+          </h2>
+          <p className="text-gray-400 text-center mb-12 max-w-xl mx-auto">
+            The questions buyers and security reviewers ask most.
+          </p>
+          <div className="grid grid-cols-1 gap-4">
+            {SECURITY_FAQ.map((f) => (
+              <details key={f.q} className="premium-card p-6">
+                <summary className="text-base font-bold text-white cursor-pointer">{f.q}</summary>
+                <p className="text-gray-400 text-sm leading-relaxed mt-3">{f.a}</p>
+              </details>
+            ))}
           </div>
         </div>
       </section>

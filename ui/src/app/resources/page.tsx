@@ -76,9 +76,36 @@ const SECTIONS = [
   },
 ];
 
+const BREADCRUMB_JSONLD = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: "https://meok.ai/" },
+    { "@type": "ListItem", position: 2, name: "Resources", item: "https://meok.ai/resources" },
+  ],
+};
+
+const WEBPAGE_JSONLD = {
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  name: "Resources — EU AI Act, DORA, NIS2, CRA tools + guides",
+  url: "https://meok.ai/resources",
+  description: "Free interactive tools (fine calculator, readiness scorecard) + per-article guides + comparison pages + signed-attestation API. Everything in one place.",
+  mainEntity: {
+    "@type": "ItemList",
+    itemListElement: SECTIONS.map((s, i) => ({
+      "@type": "ListItem",
+      position: i + 1,
+      name: s.title,
+    })),
+  },
+};
+
 export default function ResourcesPage() {
   return (
     <main style={{ minHeight: "100vh", background: BG, color: NAVY }}>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(BREADCRUMB_JSONLD) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(WEBPAGE_JSONLD) }} />
       <div style={{ maxWidth: 940, margin: "0 auto", padding: "5rem 1.5rem" }}>
         <Link href="/" style={{ fontSize: 13, color: `${NAVY}66`, textDecoration: "none" }}>← meok.ai</Link>
 

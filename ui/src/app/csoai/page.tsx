@@ -46,9 +46,39 @@ const STATS = [
   { value: "∞", label: "Human Potential" },
 ];
 
+const FAQ = [
+  { q: "What is CSOAI?", a: "Corporate Sovereign Open AI (CSOAI) is a research collective and open-source organization dedicated to building AI infrastructure that prioritizes human agency, data sovereignty, and wellbeing. It is the collective behind MEOK." },
+  { q: "What is the Maternal Covenant?", a: "The Maternal Covenant is CSOAI's design philosophy that treats user wellbeing as a first-class constraint, not an afterthought. It is architecture rather than marketing — every system prioritizes wellbeing over engagement metrics." },
+  { q: "What is the relationship between CSOAI and MEOK?", a: "CSOAI maintains MEOK, the world's most comprehensive MCP server infrastructure for AI governance, with 208 MCP servers and 1,054 governance tools across 12 frameworks." },
+  { q: "Is CSOAI open source?", a: "Yes. CSOAI is open source by default and auditable by design — no black boxes in systems that affect human lives. The code lives at github.com/CSOAI-ORG, and there is an Open Source Program for contributors." },
+];
+
+const ORG_JSONLD = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: "CSOAI — Corporate Sovereign Open AI",
+  url: "https://meok.ai/csoai",
+  description: "CSOAI is the open research collective behind MEOK. We build sovereign AI infrastructure that puts humans first.",
+  sameAs: ["https://github.com/CSOAI-ORG"],
+};
+
+const BREADCRUMB_JSONLD = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: "https://meok.ai/" },
+    { "@type": "ListItem", position: 2, name: "CSOAI", item: "https://meok.ai/csoai" },
+  ],
+};
+
+const FAQ_JSONLD = { "@context": "https://schema.org", "@type": "FAQPage", mainEntity: FAQ.map((f) => ({ "@type": "Question", name: f.q, acceptedAnswer: { "@type": "Answer", text: f.a } })) };
+
 export default function CSOAIPage() {
   return (
     <main className="min-h-screen bg-[#0d0c18] text-white">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(BREADCRUMB_JSONLD) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(ORG_JSONLD) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(FAQ_JSONLD) }} />
       {/* ── Hero ─────────────────────────────────────────────────────────────── */}
       <section className="relative overflow-hidden pt-24 pb-20 px-4">
         {/* Background glow */}
@@ -177,6 +207,26 @@ export default function CSOAIPage() {
               CSOAI maintains MEOK, the world's most comprehensive MCP server infrastructure for 
               AI governance, and contributes to open standards for ethical AI deployment.
             </p>
+          </div>
+        </div>
+      </section>
+
+      {/* ── FAQ ───────────────────────────────────────────────────────────────── */}
+      <section className="py-24 px-4 bg-white/[0.02]">
+        <div className="max-w-3xl mx-auto">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">Frequently asked</h2>
+          </div>
+          <div className="space-y-4">
+            {FAQ.map((f) => (
+              <details
+                key={f.q}
+                className="p-6 rounded-2xl bg-white/[0.03] border border-white/10"
+              >
+                <summary className="text-lg font-semibold cursor-pointer">{f.q}</summary>
+                <p className="text-gray-400 leading-relaxed mt-3">{f.a}</p>
+              </details>
+            ))}
           </div>
         </div>
       </section>

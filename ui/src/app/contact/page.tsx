@@ -10,9 +10,39 @@ export const metadata: Metadata = {
 const DEEP = '#0d0c18';
 const GOLD = '#c9a84c';
 
+const BREADCRUMB_JSONLD = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: "https://meok.ai/" },
+    { "@type": "ListItem", position: 2, name: "Contact", item: "https://meok.ai/contact" },
+  ],
+};
+
+const CONTACT_JSONLD = {
+  "@context": "https://schema.org",
+  "@type": "ContactPage",
+  name: "Contact — MEOK AI LABS",
+  url: "https://meok.ai/contact",
+  description: "Get in touch with MEOK AI LABS. Questions, partnerships, press, or support — we're here to help.",
+  mainEntity: {
+    "@type": "Organization",
+    name: "MEOK AI LABS",
+    url: "https://meok.ai",
+    contactPoint: [
+      { "@type": "ContactPoint", contactType: "customer support", email: "support@meok.ai" },
+      { "@type": "ContactPoint", contactType: "sales", email: "partners@meok.ai" },
+      { "@type": "ContactPoint", contactType: "press", email: "press@meok.ai" },
+      { "@type": "ContactPoint", contactType: "general enquiries", email: "hello@meok.ai" },
+    ],
+  },
+};
+
 export default function ContactPage() {
   return (
     <div className="min-h-screen text-white" style={{ backgroundColor: DEEP }}>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(BREADCRUMB_JSONLD) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(CONTACT_JSONLD) }} />
       <section className="relative pt-32 pb-20 px-6 text-center">
         <div className="absolute inset-0 opacity-[0.03] pointer-events-none"
           style={{
