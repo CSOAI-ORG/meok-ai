@@ -148,21 +148,21 @@ export default function ScorecardClient() {
     if (!email || !email.includes("@")) return;
     setSubmitting(true);
 
-    // Fire-and-forget Buttondown subscribe (does not block scorecard result if it fails)
-    // Tags scorecard runners so the drip sequence can target them specifically
-    fetch("https://buttondown.email/api/emails/embed-subscribe/meok-eu-ai-compliance-brief", {
+    // Fire-and-forget lead capture to the durable same-origin /api/waitlist route
+    // (always-logs + Postgres upsert + Loops/Resend best-effort). Replaces a dead
+    // Buttondown list (meok-eu-ai-compliance-brief) that 404'd and silently dropped
+    // every scorecard lead — confirmed 2026-06-15.
+    fetch("/api/waitlist", {
       method: "POST",
-      mode: "no-cors",
-      headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      body: new URLSearchParams({
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
         email,
-        embed: "1",
-        tag: "scorecard-runner",
-        metadata__entity: entity || "Self-assessment",
-        metadata__score: String(totalScore),
-      }).toString(),
+        name: entity || "Self-assessment",
+        interest: `scorecard score ${totalScore}`,
+        referrer: "scorecard-runner",
+      }),
     }).catch(() => {
-      // Subscribe failure does not block signed-cert flow
+      // Capture failure does not block the signed-cert flow
     });
 
     try {
