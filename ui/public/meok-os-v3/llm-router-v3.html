@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>🧠 MEOK OS v3 — LLM Router</title>
+<meta name="description" content="MEOK OS v3 LLM Router — pick from 12+ models. Local + cloud. Sovereign. Per-window selector. Fallback chain.">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="stylesheet" href="meok-os-design-system.css">
+</head>
+<body>
+<div class="app">
+  <header class="topbar">
+    <a href="index.html">← MEOK OS v3</a>
+    <span class="title">🧠 LLM Router</span>
+    <div class="actions" style="margin-left: auto; display: flex; gap: 12px; align-items: center; font-size: 12px; color: var(--dim);">
+      <span>12 models</span>
+      <span>·</span>
+      <span>3 local · 9 cloud</span>
+    </div>
+  </header>
+  <main class="dock" style="padding: 18px; overflow-y: auto;">
+    <h1 style="margin: 0 0 8px;">🧠 LLM Router</h1>
+    <p style="color: var(--dim); margin: 0 0 24px;">Pick from 12+ models. Local + cloud. Sovereign. Per-window selector. Fallback chain. Always signed, always sovereign.</p>
+    <h2 style="font-size: 16px; color: var(--accent5); margin: 18px 0 12px;">🏠 Local models (3)</h2>
+    <div class="grid cols-3">
+      <div class="card"><div style="display: flex; align-items: center; gap: 8px;"><span style="font-size: 24px;">🦙</span><div><div style="font-weight: 800;">M2 Local</div><div style="color: var(--dim); font-size: 11px;">7B · 4.1GB · 16K context</div></div></div><p style="font-size: 12px; color: var(--dim); margin: 8px 0 0;">Mistral 7B. Free. Sovereign. Local. Best for routine + privacy.</p><button class="primary" style="margin-top: 12px; width: 100%; font-size: 12px;">▶ Use M2</button></div>
+      <div class="card"><div style="display: flex; align-items: center; gap: 8px;"><span style="font-size: 24px;">🦙</span><div><div style="font-weight: 800;">M3 Local (Sovereign)</div><div style="color: var(--dim); font-size: 11px;">13B · 7.2GB · 16K context</div></div></div><p style="font-size: 12px; color: var(--dim); margin: 8px 0 0;">Mistral 13B. Free. Sovereign. Local. Best for complex tasks.</p><button class="ghost" style="margin-top: 12px; width: 100%; font-size: 12px;">▶ Use M3</button></div>
+      <div class="card"><div style="display: flex; align-items: center; gap: 8px;"><span style="font-size: 24px;">🐋</span><div><div style="font-weight: 800;">M4 Local (Whale)</div><div style="color: var(--dim); font-size: 11px;">70B · 38GB · 32K context</div></div></div><p style="font-size: 12px; color: var(--dim); margin: 8px 0 0;">Mixtral 8x7B. Free. Sovereign. Local. Best for research.</p><button class="ghost" style="margin-top: 12px; width: 100%; font-size: 12px;">▶ Use M4</button></div>
+    </div>
+    <h2 style="font-size: 16px; color: var(--accent5); margin: 24px 0 12px;">☁️ Cloud models (9)</h2>
+    <div class="grid cols-3">
+      <div class="card"><div style="font-weight: 800;">🟣 Claude Sonnet 4.5</div><div style="color: var(--dim); font-size: 11px; margin: 4px 0;">Anthropic · 200K · $3/$15 per 1M tokens</div><button class="primary" style="margin-top: 12px; width: 100%; font-size: 12px;">▶ Use Claude</button></div>
+      <div class="card"><div style="font-weight: 800;">🟢 GPT-4o</div><div style="color: var(--dim); font-size: 11px; margin: 4px 0;">OpenAI · 128K · $2.50/$10 per 1M tokens</div><button class="ghost" style="margin-top: 12px; width: 100%; font-size: 12px;">▶ Use GPT-4o</button></div>
+      <div class="card"><div style="font-weight: 800;">🔵 Gemini 1.5 Pro</div><div style="color: var(--dim); font-size: 11px; margin: 4px 0;">Google · 2M · $1.25/$5 per 1M tokens</div><button class="ghost" style="margin-top: 12px; width: 100%; font-size: 12px;">▶ Use Gemini</button></div>
+      <div class="card"><div style="font-weight: 800;">🟠 Llama 3.1 405B</div><div style="color: var(--dim); font-size: 11px; margin: 4px 0;">Meta · 128K · $2.79/$2.79 per 1M tokens</div><button class="ghost" style="margin-top: 12px; width: 100%; font-size: 12px;">▶ Use Llama</button></div>
+      <div class="card"><div style="font-weight: 800;">🔴 Mistral Large 2</div><div style="color: var(--dim); font-size: 11px; margin: 4px 0;">Mistral · 128K · $2/$6 per 1M tokens</div><button class="ghost" style="margin-top: 12px; width: 100%; font-size: 12px;">▶ Use Mistral</button></div>
+      <div class="card"><div style="font-weight: 800;">🟡 Command R+</div><div style="color: var(--dim); font-size: 11px; margin: 4px 0;">Cohere · 128K · $2.50/$10 per 1M tokens</div><button class="ghost" style="margin-top: 12px; width: 100%; font-size: 12px;">▶ Use Cohere</button></div>
+      <div class="card"><div style="font-weight: 800;">🟤 DeepSeek V2.5</div><div style="color: var(--dim); font-size: 11px; margin: 4px 0;">DeepSeek · 128K · $0.14/$0.28 per 1M tokens</div><button class="ghost" style="margin-top: 12px; width: 100%; font-size: 12px;">▶ Use DeepSeek</button></div>
+      <div class="card"><div style="font-weight: 800;">⚪ Qwen 2.5 72B</div><div style="color: var(--dim); font-size: 11px; margin: 4px 0;">Alibaba · 128K · $0.40/$0.40 per 1M tokens</div><button class="ghost" style="margin-top: 12px; width: 100%; font-size: 12px;">▶ Use Qwen</button></div>
+      <div class="card"><div style="font-weight: 800;">🔘 Grok 2</div><div style="color: var(--dim); font-size: 11px; margin: 4px 0;">xAI · 128K · $2/$10 per 1M tokens</div><button class="ghost" style="margin-top: 12px; width: 100%; font-size: 12px;">▶ Use Grok</button></div>
+    </div>
+    <h2 style="font-size: 16px; color: var(--accent5); margin: 24px 0 12px;">⚙️ Router settings</h2>
+    <div class="card">
+      <div style="display: flex; flex-direction: column; gap: 12px;">
+        <div style="display: flex; align-items: center; justify-content: space-between;"><span>Default model</span><span style="color: var(--ok);">M2 Local (sovereign)</span></div>
+        <div style="display: flex; align-items: center; justify-content: space-between;"><span>Fallback chain</span><span style="color: var(--ok);">M2 → M3 → M4 → Claude → GPT-4o</span></div>
+        <div style="display: flex; align-items: center; justify-content: space-between;"><span>Per-window model</span><span style="color: var(--ok);">Yes · each window can use a different model</span></div>
+        <div style="display: flex; align-items: center; justify-content: space-between;"><span>Cost limit (monthly)</span><span>£100 default · configurable</span></div>
+        <div style="display: flex; align-items: center; justify-content: space-between;"><span>Latency target</span><span>500ms p99</span></div>
+        <div style="display: flex; align-items: center; justify-content: space-between;"><span>Streaming</span><span style="color: var(--ok);">✓ Always on</span></div>
+        <div style="display: flex; align-items: center; justify-content: space-between;"><span>Tools (MCP)</span><span style="color: var(--ok);">220+ available to every model</span></div>
+        <div style="display: flex; align-items: center; justify-content: space-between;"><span>Sovereignty</span><span style="color: var(--ok);">Every model call signed</span></div>
+      </div>
+    </div>
+  </main>
+  <footer class="sovereignbar">
+    <div class="item"><span class="ok">●</span><span class="label">Router:</span><span class="val">12 models · M2 default</span></div>
+    <div class="spacer"></div>
+    <button class="action">⚙️ Settings</button>
+  </footer>
+</div>
+</body>
+</html>

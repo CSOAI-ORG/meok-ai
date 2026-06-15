@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>💳 MEOK OS v3 — Payment Methods</title>
+<meta name="description" content="MEOK OS v3 Payment Methods — add/remove cards, ACH, SEPA, x402 USDC. Sovereign. Encrypted.">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="stylesheet" href="meok-os-design-system.css">
+</head>
+<body>
+<div class="app">
+  <header class="topbar">
+    <a href="index.html">← MEOK OS v3</a>
+    <span class="title">💳 Payment Methods</span>
+  </header>
+  <main class="dock" style="padding: 18px; overflow-y: auto;">
+    <h1 style="margin: 0 0 8px;">💳 Payment Methods</h1>
+    <p style="color: var(--dim); margin: 0 0 24px;">Add or remove cards, ACH, SEPA, x402 USDC. Sovereign. Encrypted at rest.</p>
+    <h2 style="font-size: 16px; color: var(--accent5); margin: 18px 0 12px;">💳 Cards</h2>
+    <div class="grid cols-2">
+      <div class="card">
+        <div style="display: flex; align-items: center; gap: 8px;"><span style="font-size: 24px;">💳</span><div><div style="font-weight: 800;">Visa ending 4242</div><div style="color: var(--dim); font-size: 11px;">Expires 12/27 · default</div></div></div>
+        <div style="display: flex; gap: 8px; margin-top: 12px;">
+          <span class="badge" style="background: var(--accent5); color: #000;">DEFAULT</span>
+          <button class="ghost" style="font-size: 11px;">Make default</button>
+          <button class="ghost" style="font-size: 11px; color: var(--err);">Remove</button>
+        </div>
+      </div>
+    </div>
+    <h2 style="font-size: 16px; color: var(--accent5); margin: 24px 0 12px;">🏦 Bank transfers</h2>
+    <div style="background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 16px; text-align: center; color: var(--dim);">
+      No bank accounts on file. <a href="#" style="color: var(--accent2);">+ Add ACH (US) / SEPA (EU)</a>
+    </div>
+    <h2 style="font-size: 16px; color: var(--accent5); margin: 24px 0 12px;">⚡ x402 (USDC)</h2>
+    <div style="background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 16px; text-align: center; color: var(--dim);">
+      No x402 wallet connected. <a href="#" style="color: var(--accent2);">+ Connect USDC wallet</a>
+    </div>
+    <div style="background: var(--panel2); padding: 16px; border-radius: 8px; margin-top: 24px; font-size: 12px; color: var(--dim);">
+      <p style="margin: 0 0 8px; color: var(--ink);"><strong>🛡️ Sovereign payment</strong></p>
+      <ul style="margin: 0; padding-left: 20px;">
+        <li>Cards encrypted at rest (AES-256-GCM)</li>
+        <li>Tokenized by Stripe (PAN never stored on MEOK servers)</li>
+        <li>ACH/SEPA via Plaid/Stripe</li>
+        <li>x402 via Coinbase Commerce (USDC, per-call)</li>
+        <li>Every payment signed + SOV3-anchored</li>
+        <li>14 regulatory frameworks compliant</li>
+      </ul>
+    </div>
+  </main>
+  <footer class="sovereignbar">
+    <div class="item"><span style="color: var(--warn);">●</span><span class="label">Payment:</span><span class="val">awaiting MEOK_MASTER_API_KEY</span></div>
+  </footer>
+</div>
+</body>
+</html>

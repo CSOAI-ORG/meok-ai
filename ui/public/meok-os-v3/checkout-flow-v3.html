@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>💳 MEOK OS v3 — Checkout (5-Step)</title>
+<meta name="description" content="MEOK OS v3 Checkout — 5-step Stripe flow. Plan, account, payment, confirm, sovereign welcome.">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="stylesheet" href="meok-os-design-system.css">
+</head>
+<body>
+<div class="app">
+  <header class="topbar">
+    <a href="index.html">← MEOK OS v3</a>
+    <span class="title">💳 Checkout</span>
+  </header>
+  <main class="dock" style="padding: 18px; overflow-y: auto; max-width: 700px; margin: 0 auto;">
+    <h1 style="margin: 0 0 8px; text-align: center;">💳 Checkout</h1>
+    <p style="color: var(--dim); margin: 0 0 24px; text-align: center;">5 steps. ~2 min. Sovereign from the first charge.</p>
+    <div style="display: flex; gap: 6px; margin-bottom: 24px; justify-content: center;">
+      <div style="padding: 6px 12px; background: var(--accent); color: white; border-radius: 999px; font-size: 11px; font-weight: 800;">1. Plan</div>
+      <div style="padding: 6px 12px; background: var(--accent); color: white; border-radius: 999px; font-size: 11px; font-weight: 800;">2. Account</div>
+      <div style="padding: 6px 12px; background: var(--accent); color: white; border-radius: 999px; font-size: 11px; font-weight: 800;">3. Payment</div>
+      <div style="padding: 6px 12px; background: var(--panel2); color: var(--dim); border-radius: 999px; font-size: 11px;">4. Confirm</div>
+      <div style="padding: 6px 12px; background: var(--panel2); color: var(--dim); border-radius: 999px; font-size: 11px;">5. Welcome</div>
+    </div>
+    <div class="card" style="margin-bottom: 12px;">
+      <h3 style="margin: 0 0 12px; color: var(--accent5);">📋 Step 3 of 5 — Payment</h3>
+      <div style="background: var(--panel2); padding: 12px; border-radius: 8px; margin-bottom: 16px;">
+        <div style="display: flex; justify-content: space-between; padding: 6px 0;"><span>Plan</span><strong>Sovereign</strong></div>
+        <div style="display: flex; justify-content: space-between; padding: 6px 0;"><span>Billed</span><strong>Monthly</strong></div>
+        <div style="display: flex; justify-content: space-between; padding: 6px 0;"><span>Subtotal</span><strong>£9.00</strong></div>
+        <div style="display: flex; justify-content: space-between; padding: 6px 0;"><span>VAT (UK 20%)</span><strong>£1.80</strong></div>
+        <div style="display: flex; justify-content: space-between; padding: 6px 0; border-top: 1px solid var(--line); margin-top: 4px; padding-top: 12px;"><span>Total</span><strong style="font-size: 18px; color: var(--accent5);">£10.80 / mo</strong></div>
+      </div>
+      <h4 style="margin: 12px 0 8px; color: var(--accent5);">💳 Card details</h4>
+      <div style="display: flex; flex-direction: column; gap: 8px;">
+        <input type="text" placeholder="Cardholder name" value="Nicholas Templeman" style="padding: 10px 14px; background: var(--panel2); border: 1px solid var(--line); border-radius: 8px; color: var(--ink);">
+        <input type="text" placeholder="Card number 4242 4242 4242 4242" value="4242 4242 4242 4242" style="padding: 10px 14px; background: var(--panel2); border: 1px solid var(--line); border-radius: 8px; color: var(--ink); font-family: monospace;">
+        <div style="display: flex; gap: 8px;">
+          <input type="text" placeholder="MM/YY" value="12/27" style="flex: 1; padding: 10px 14px; background: var(--panel2); border: 1px solid var(--line); border-radius: 8px; color: var(--ink);">
+          <input type="text" placeholder="CVC" value="123" style="flex: 1; padding: 10px 14px; background: var(--panel2); border: 1px solid var(--line); border-radius: 8px; color: var(--ink);">
+        </div>
+      </div>
+      <h4 style="margin: 16px 0 8px; color: var(--accent5);">🛡️ Sovereign guarantees</h4>
+      <ul style="font-size: 12px; color: var(--ink); line-height: 1.7; padding-left: 18px;">
+        <li>✓ Cancel anytime · 30-day money-back</li>
+        <li>✓ No data sold to third parties</li>
+        <li>✓ Ed25519-signed receipt</li>
+        <li>✓ SOV3-anchored on the hash chain</li>
+        <li>✓ COAI 100/100 compliant</li>
+        <li>✓ MIT open source (sovereign by default)</li>
+      </ul>
+      <button class="primary" style="width: 100%; padding: 14px; font-size: 16px; margin-top: 12px;">💳 Pay £10.80 (Sovereign tier)</button>
+    </div>
+  </main>
+  <footer class="sovereignbar">
+    <div class="item"><span style="color: var(--warn);">●</span><span class="label">Checkout:</span><span class="val">awaiting MEOK_MASTER_API_KEY</span></div>
+    <div class="spacer"></div>
+    <button class="action">← Back</button>
+  </footer>
+</div>
+</body>
+</html>

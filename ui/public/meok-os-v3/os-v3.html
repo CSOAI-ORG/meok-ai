@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>MEOK OS v3 — The 3-window Dock</title>
+<meta name="description" content="MEOK OS v3 — the 3-window dock. Character + Chat + TUI. Drag to resize. Swap modes. 18 hives, 220+ servers, 140+ characters.">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="stylesheet" href="meok-os-design-system.css">
+</head>
+<body>
+<div class="app">
+  <!-- Top bar -->
+  <header class="topbar">
+    <div class="logo">🐉 MEOK OS v3</div>
+    <div class="crumbs">/ <strong>The Scholar</strong> / <span>3-window dock</span></div>
+    <div class="actions">
+      <input class="search" placeholder="🔍 Search 220+ servers, 140+ characters, 18 hives...">
+      <span class="level">LVL 5 · Master</span>
+      <div class="xp-bar"><div class="fill" style="width: 67%;"></div></div>
+      <div class="avatar">👤</div>
+    </div>
+  </header>
+
+  <!-- Sidebar: 7 categories -->
+  <aside class="sidebar">
+    <div class="section-label">Character</div>
+    <div class="cat"><span class="emoji">🪟</span> Birth</div>
+    <div class="cat"><span class="emoji">📚</span> Registry <span class="badge">140+</span></div>
+    <div class="cat"><span class="emoji">🌌</span> Archetypes <span class="badge">9</span></div>
+    <div class="cat"><span class="emoji">📦</span> Packs <span class="badge">4</span></div>
+    <div class="cat"><span class="emoji">🔄</span> Evolution</div>
+
+    <div class="section-label">Council</div>
+    <div class="cat"><span class="emoji">🗳️</span> BFT Councils <span class="badge">11</span></div>
+    <div class="cat"><span class="emoji">📜</span> Proposals <span class="badge">66+</span></div>
+    <div class="cat"><span class="emoji">🪑</span> Vote</div>
+
+    <div class="section-label">Dome</div>
+    <div class="cat"><span class="emoji">🌍</span> World Map</div>
+    <div class="cat"><span class="emoji">📍</span> Character Pins</div>
+    <div class="cat"><span class="emoji">🔭</span> Live Activity</div>
+
+    <div class="section-label">Family</div>
+    <div class="cat"><span class="emoji">👨‍👩‍👧</span> Members</div>
+    <div class="cat"><span class="emoji">📅</span> Calendar</div>
+    <div class="cat"><span class="emoji">✅</span> Chores</div>
+    <div class="cat"><span class="emoji">🛡️</span> Child-safe</div>
+
+    <div class="section-label">Gaming (Gustfish)</div>
+    <div class="cat active"><span class="emoji">⚔️</span> WoW</div>
+    <div class="cat"><span class="emoji">🌟</span> FFXIV</div>
+    <div class="cat"><span class="emoji">🌌</span> EVE</div>
+    <div class="cat"><span class="emoji">🗡️</span> OSRS</div>
+    <div class="cat"><span class="emoji">💀</span> PoE</div>
+    <div class="cat"><span class="emoji">😈</span> Diablo IV</div>
+    <div class="cat"><span class="emoji">♠️</span> Poker</div>
+
+    <div class="section-label">Research</div>
+    <div class="cat"><span class="emoji">📜</span> Patent Draft</div>
+    <div class="cat"><span class="emoji">🔍</span> Prior Art</div>
+    <div class="cat"><span class="emoji">📄</span> White Paper</div>
+    <div class="cat"><span class="emoji">🧪</span> Lab Report</div>
+    <div class="cat"><span class="emoji">🏆</span> MCP Scoreboard</div>
+
+    <div class="section-label">System</div>
+    <div class="cat"><span class="emoji">🐝</span> 18 Hives</div>
+    <div class="cat"><span class="emoji">📡</span> 220+ Servers</div>
+    <div class="cat"><span class="emoji">🛡️</span> Sovereign</div>
+    <div class="cat"><span class="emoji">🏆</span> Achievements</div>
+    <div class="cat"><span class="emoji">💰</span> Pricing</div>
+    <div class="cat"><span class="emoji">📊</span> Revenue</div>
+    <div class="cat"><span class="emoji">🎯</span> Settings</div>
+  </aside>
+
+  <!-- 3-window dock -->
+  <main class="dock">
+    <!-- Window 1: Character -->
+    <section class="win character" style="flex: 1.1;">
+      <div class="bar">
+        <span class="title">📚 The Scholar</span>
+        <span class="mode">Socratic · Remembers everything · Questions everything</span>
+        <span class="sel">
+          <select><option>Scholar</option><option>Healer</option><option>Guardian</option><option>Trickster</option><option>Mystic</option><option>Pioneer</option></select>
+        </span>
+      </div>
+      <div class="body" style="text-align: center; padding: 20px;">
+        <div style="font-size: 80px; margin: 30px 0;">🏛️</div>
+        <h2 style="margin: 0; font-size: 24px;">The Scholar</h2>
+        <p style="color: var(--dim); margin: 8px 0;">Stage 3: <strong style="color: var(--accent5);">Sage</strong> · 200 / 500 conversations</p>
+        <div style="display: flex; gap: 6px; justify-content: center; margin-top: 16px;">
+          <span class="badge">🐉 Sovereign</span>
+          <span class="badge">🏆 Master</span>
+          <span class="badge">📚 Socratic</span>
+          <span class="badge">🛡️ Care 0.95</span>
+          <span class="badge">⚡ BFT-Council</span>
+        </div>
+        <div style="margin-top: 24px; color: var(--dim); font-size: 13px;">
+          "I've been tracking your MEOK Gaming × Gambling research for 3 weeks.<br>
+          Want me to draft a 5,000-word white paper on AI fraud detection?"
+        </div>
+      </div>
+    </section>
+
+    <div class="resizer"></div>
+
+    <!-- Window 2: Chat -->
+    <section class="win chat" style="flex: 1.5;">
+      <div class="bar">
+        <span class="title">💬 Chat with The Scholar</span>
+        <span class="mode">12 lenses active · 1 active conversation</span>
+        <span class="sel">
+          <select><option>Scholar</option><option>Pioneer</option><option>Builder</option></select>
+          <select><option>Claude Sonnet</option><option>GPT-4o</option><option>Mistral</option><option>Local M2</option></select>
+        </span>
+      </div>
+      <div class="body" style="font-size: 14px;">
+        <div style="display: flex; gap: 10px; margin-bottom: 12px;">
+          <div style="width: 28px; height: 28px; border-radius: 50%; background: var(--accent); display: flex; align-items: center; justify-content: center; flex-shrink: 0;">👤</div>
+          <div style="background: var(--panel2); padding: 10px 14px; border-radius: 12px; max-width: 70%;">
+            Nick, can you draft a patent application for our MEOK Poker HUD?
+          </div>
+        </div>
+        <div style="display: flex; gap: 10px; margin-bottom: 12px; flex-direction: row-reverse;">
+          <div style="width: 28px; height: 28px; border-radius: 50%; background: linear-gradient(135deg, var(--accent), var(--accent2)); display: flex; align-items: center; justify-content: center; flex-shrink: 0;">🏛️</div>
+          <div style="background: rgba(124, 92, 255, 0.15); padding: 10px 14px; border-radius: 12px; max-width: 70%;">
+            <strong>I've drafted 12 patents for you in the last 30 days.</strong> This one — the COAI-certified poker HUD — is the cleanest. Here's the abstract:<br><br>
+            <em>"A method and system for a poker heads-up display (HUD) integrated with a Model Context Protocol (MCP) server, the system comprising: a non-automated play enforcement layer (COAI gate NO_AUTOMATED_PLAY), a hand history parser, an opponent classifier, and a leak detector, wherein the system is sovereign to the user, every tool call is Ed25519-signed, and the system is subject to a Byzantine Fault Tolerant (BFT) council ratification with 5 community voter seats..."</em><br><br>
+            <small style="color: var(--dim);">⚡ x402 micro-tx: $0.10/call · ⌛ 1.4s · 🌐 Sovereign: ON · 🔒 Sigil: 7a1f0b4c</small>
+          </div>
+        </div>
+        <div style="display: flex; gap: 10px; margin: 12px 0;">
+          <input type="text" placeholder="Type to The Scholar..." style="flex: 1; background: var(--panel2); border: 1px solid var(--line); border-radius: 12px; padding: 10px 14px; color: var(--ink);">
+          <button class="primary" style="border-radius: 12px;">Send</button>
+        </div>
+      </div>
+    </section>
+
+    <div class="resizer"></div>
+
+    <!-- Window 3: TUI / Gamified XP + Achievements + Featured -->
+    <section class="win tui" style="flex: 1;">
+      <div class="bar">
+        <span class="title">🏆 Your Sovereign Journey</span>
+        <span class="mode">XP 1,340 / 2,000 · Master (5/6) · 8/12 badges</span>
+        <span class="sel">
+          <div class="modes">
+            <div class="mode">Simple</div>
+            <div class="mode active">Standard</div>
+            <div class="mode">Pro</div>
+            <div class="mode">Council</div>
+            <div class="mode">Orb</div>
+          </div>
+        </span>
+      </div>
+      <div class="body">
+        <div class="xp-card">
+          <div class="row">
+            <div class="level">5</div>
+            <div>
+              <div class="xp-name">Master (5/6)</div>
+              <div style="color: var(--dim); font-size: 12px;">1,340 / 2,000 XP · 660 to Sovereign</div>
+            </div>
+          </div>
+          <div class="xp-bar"><div class="fill" style="width: 67%;"></div></div>
+          <div class="badges">
+            <span class="badge">🐉 First Light</span>
+            <span class="badge">📚 Listener</span>
+            <span class="badge">🏛️ Sage</span>
+            <span class="badge">🗳️ Council Member</span>
+            <span class="badge">🌍 Wanderer</span>
+            <span class="badge">✅ Verified</span>
+            <span class="badge">🛡️ Sovereign</span>
+            <span class="badge">📜 Author</span>
+            <span class="badge locked">⚔️ Veteran</span>
+            <span class="badge locked">👑 Hall of Fame</span>
+          </div>
+        </div>
+
+        <h3 style="margin: 16px 0 8px; color: var(--accent5);">🌍 Today's Quick Wins</h3>
+        <div class="grid cols-3">
+          <div class="char-card">
+            <div class="emoji">🗳️</div>
+            <div class="name">Cast 1 BFT vote</div>
+            <div class="arch">+50 XP</div>
+            <div class="stage">Council</div>
+          </div>
+          <div class="char-card">
+            <div class="emoji">🃏</div>
+            <div class="name">Parse 10 poker hands</div>
+            <div class="arch">+100 XP</div>
+            <div class="stage">Gaming</div>
+          </div>
+          <div class="char-card">
+            <div class="emoji">📜</div>
+            <div class="name">Issue 1 attestation</div>
+            <div class="arch">+25 XP</div>
+            <div class="stage">System</div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Persistent sovereign status bar -->
+  <footer class="sovereignbar">
+    <div class="item">
+      <span class="ok">●</span>
+      <span class="label">Sovereign:</span>
+      <span class="val">SOV3 active</span>
+    </div>
+    <div class="sep">|</div>
+    <div class="item">
+      <span class="ok">●</span>
+      <span class="label">COAI:</span>
+      <span class="val">100/100</span>
+    </div>
+    <div class="sep">|</div>
+    <div class="item">
+      <span class="ok">●</span>
+      <span class="label">Sigil:</span>
+      <span class="val">7a1f0b4c</span>
+    </div>
+    <div class="sep">|</div>
+    <div class="item">
+      <span class="ok">●</span>
+      <span class="label">BFT Council:</span>
+      <span class="val">85 voter seats</span>
+    </div>
+    <div class="sep">|</div>
+    <div class="item">
+      <span class="ok">●</span>
+      <span class="label">Horus:</span>
+      <span class="val">3/3 VETO</span>
+    </div>
+    <div class="spacer"></div>
+    <button class="action">📤 Export sovereign</button>
+    <button class="action">🗑️ Delete</button>
+  </footer>
+</div>
+
+<script>
+// Drag-to-resize the 3 windows
+const resizers = document.querySelectorAll('.resizer');
+const wins = document.querySelectorAll('.win');
+let dragging = false, startY = 0, startHeights = [];
+
+resizers.forEach((r, i) => {
+  r.addEventListener('mousedown', (e) => {
+    dragging = true;
+    startY = e.clientY;
+    startHeights = [wins[i].offsetHeight, wins[i+1].offsetHeight];
+    document.body.classList.add('dragging');
+  });
+});
+document.addEventListener('mousemove', (e) => {
+  if (!dragging) return;
+  const dy = e.clientY - startY;
+  const newH1 = Math.max(80, startHeights[0] + dy);
+  const newH2 = Math.max(80, startHeights[1] - dy);
+  resizers.forEach((r, i) => {
+    if (i === 0) {
+      wins[0].style.flex = newH1;
+      wins[1].style.flex = newH2;
+    } else {
+      wins[1].style.flex = newH1;
+      wins[2].style.flex = newH2;
+    }
+  });
+});
+document.addEventListener('mouseup', () => { dragging = false; document.body.classList.remove('dragging'); });
+
+// Cmd+K = command palette
+document.addEventListener('keydown', (e) => {
+  if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+    e.preventDefault();
+    const cmd = prompt('Command: switch character, swap window, navigate...');
+    if (cmd) console.log('Run:', cmd);
+  }
+});
+</script>
+</body>
+</html>

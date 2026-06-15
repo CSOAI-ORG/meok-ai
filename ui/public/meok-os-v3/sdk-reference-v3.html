@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>🛠️ MEOK OS v3 — SDK Reference (TypeScript + Python + Rust)</title>
+<meta name="description" content="MEOK OS v3 SDK Reference — TypeScript + Python + Rust. 5-minute install. Sovereign. MIT.">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="stylesheet" href="meok-os-design-system.css">
+<style>body { background: radial-gradient(1200px 800px at 50% 0%, #0a2a1a, var(--bg) 60%); }</style>
+</head>
+<body>
+<div class="app">
+  <header class="topbar">
+    <a href="index.html">← MEOK OS v3</a>
+    <span class="title">🛠️ SDK Reference</span>
+  </header>
+  <main class="dock" style="padding: 18px; overflow-y: auto; max-width: 1000px; margin: 0 auto;">
+    <h1 style="margin: 0 0 8px; text-align: center; font-size: 36px;">🛠️ SDK Reference</h1>
+    <p style="color: var(--dim); margin: 0 0 32px; text-align: center; font-size: 16px;">TypeScript + Python + Rust. 5-minute install. Sovereign. MIT.</p>
+
+    <h2 style="font-size: 18px; color: var(--accent5); margin: 18px 0 12px;">📦 TypeScript SDK</h2>
+    <div class="card" style="margin-bottom: 16px;">
+      <pre style="background: var(--bg); padding: 12px; border-radius: 6px; font-size: 12px; overflow-x: auto; color: var(--ink); margin: 0 0 12px;"># Install
+npm install @csoai-org/meok-os
+
+# Or yarn
+yarn add @csoai-org/meok-os
+
+# Or pnpm
+pnpm add @csoai-org/meok-os</pre>
+
+      <pre style="background: var(--bg); padding: 12px; border-radius: 6px; font-size: 12px; overflow-x: auto; color: var(--ink); margin: 0 0 12px;">// Quick start (TypeScript)
+import { MeokOS } from '@csoai-org/meok-os';
+
+const meok = new MeokOS({
+  apiKey: 'meok_sk_...',         // (or null for sovereign mode)
+  sovereign: true,                 // default: true
+  region: 'eu',                    // 'eu' | 'us' | 'local'
+  mcp: ['meok-keystone', 'meok-horus', 'meok-rainbow'],
+});
+
+// Birth a character
+const character = await meok.characters.birth({
+  archetype: 'sage',
+  name: 'The Scholar',
+  locale: 'en-GB',
+});
+console.log(character.sigil);     // '8e3a7f4c...'</pre>
+
+      <pre style="background: var(--bg); padding: 12px; border-radius: 6px; font-size: 12px; overflow-x: auto; color: var(--ink); margin: 0;">// Cast a BFT vote
+const vote = await meok.bft.vote({
+  council: 'meok-keystone',
+  proposalId: 'MEOK-9F4A2B7C',
+  vote: 'yes',
+});
+console.log(vote.sigil);          // '3c1d8f4a...'
+
+// Export sovereign data
+const export_data = await meok.sovereign.export({
+  format: 'json',                  // 'json' | 'csv' | 'parquet' | 'ndjson' | 'zip' | 'encrypted'
+  include: ['characters', 'attestations', 'sigils'],
+});
+console.log(export_data.sigil);   // '1a5d8e9c...'
+console.log(export_data.bytes);   // 2,400,000
+</pre>
+    </div>
+
+    <h2 style="font-size: 18px; color: var(--accent5); margin: 24px 0 12px;">🐍 Python SDK</h2>
+    <div class="card" style="margin-bottom: 16px;">
+      <pre style="background: var(--bg); padding: 12px; border-radius: 6px; font-size: 12px; overflow-x: auto; color: var(--ink); margin: 0 0 12px;"># Install
+pip install meok-os
+
+# Or uv
+uv add meok-os</pre>
+
+      <pre style="background: var(--bg); padding: 12px; border-radius: 6px; font-size: 12px; overflow-x: auto; color: var(--ink); margin: 0 0 12px;"># Quick start (Python)
+from meok_os import MeokOS
+
+meok = MeokOS(
+    api_key='meok_sk_...',          # or None for sovereign mode
+    sovereign=True,                 # default: True
+    region='eu',                    # 'eu' | 'us' | 'local'
+    mcp=['meok-keystone', 'meok-horus', 'meok-rainbow'],
+)
+
+# Birth a character
+character = meok.characters.birth(
+    archetype='sage',
+    name='The Scholar',
+    locale='en-GB',
+)
+print(character.sigil)              # '8e3a7f4c...'
+
+# Cast a BFT vote
+vote = meok.bft.vote(
+    council='meok-keystone',
+    proposal_id='MEOK-9F4A2B7C',
+    vote='yes',
+)
+print(vote.sigil)                   # '3c1d8f4a...'
+
+# Export sovereign data
+export_data = meok.sovereign.export(
+    format='json',                  # 'json' | 'csv' | 'parquet' | 'ndjson' | 'zip' | 'encrypted'
+    include=['characters', 'attestations', 'sigils'],
+)
+print(export_data.sigil)            # '1a5d8e9c...'
+print(export_data.bytes)            # 2400000
+</pre>
+    </div>
+
+    <h2 style="font-size: 18px; color: var(--accent5); margin: 24px 0 12px;">🦀 Rust SDK</h2>
+    <div class="card" style="margin-bottom: 16px;">
+      <pre style="background: var(--bg); padding: 12px; border-radius: 6px; font-size: 12px; overflow-x: auto; color: var(--ink); margin: 0 0 12px;">// Cargo.toml
+[dependencies]
+meok-os = "3.0"</pre>
+
+      <pre style="background: var(--bg); padding: 12px; border-radius: 6px; font-size: 12px; overflow-x: auto; color: var(--ink); margin: 0;">// Quick start (Rust)
+use meok_os::MeokOS;
+
+let meok = MeokOS::new(MeokOSConfig {
+    api_key: Some("meok_sk_...".to_string()),
+    sovereign: true,
+    region: "eu".to_string(),
+    mcp: vec!["meok-keystone", "meok-horus", "meok-rainbow"],
+});
+
+// Birth a character
+let character = meok.characters().birth(BirthRequest {
+    archetype: "sage".to_string(),
+    name: "The Scholar".to_string(),
+    locale: "en-GB".to_string(),
+}).await?;
+println!("{}", character.sigil);  // "8e3a7f4c..."
+</pre>
+    </div>
+
+    <h2 style="font-size: 18px; color: var(--accent5); margin: 24px 0 12px;">📦 The 4 SDK packages</h2>
+    <div class="grid cols-2">
+      <div class="card">
+        <h3 style="margin: 0 0 8px; color: var(--accent5);">📦 @csoai-org/meok-os (TypeScript)</h3>
+        <p style="font-size: 12px; line-height: 1.7; margin: 0 0 8px;">~50KB minified. Tree-shakable. ESM + CJS. Browser + Node 18+. Edge runtime (Vercel + Cloudflare).</p>
+        <p style="font-size: 11px; color: var(--dim); margin: 0;">npm: <a href="https://npmjs.com/package/@csoai-org/meok-os" style="color: var(--accent2);">@csoai-org/meok-os</a></p>
+      </div>
+      <div class="card">
+        <h3 style="margin: 0 0 8px; color: var(--accent5);">📦 meok-os (Python)</h3>
+        <p style="font-size: 12px; line-height: 1.7; margin: 0 0 8px;">~50KB wheel. Type hints. Async (asyncio + aiohttp). Python 3.9+. PyPy-compatible.</p>
+        <p style="font-size: 11px; color: var(--dim); margin: 0;">pypi: <a href="https://pypi.org/project/meok-os/" style="color: var(--accent2);">meok-os</a></p>
+      </div>
+      <div class="card">
+        <h3 style="margin: 0 0 8px; color: var(--accent5);">📦 meok-os (Rust)</h3>
+        <p style="font-size: 12px; line-height: 1.7; margin: 0 0 8px;">Zero deps. WASM-ready. tokio + async-std. Rust 1.70+.</p>
+        <p style="font-size: 11px; color: var(--dim); margin: 0;">crates: <a href="https://crates.io/crates/meok-os" style="color: var(--accent2);">meok-os</a></p>
+      </div>
+      <div class="card">
+        <h3 style="margin: 0 0 8px; color: var(--accent5);">📦 meok-os-cli (CLI)</h3>
+        <p style="font-size: 12px; line-height: 1.7; margin: 0 0 8px;">Cross-platform. M2/M3 (Apple Silicon) + Linux x86_64. ~10MB.</p>
+        <p style="font-size: 11px; color: var(--dim); margin: 0;">brew: <code style="color: var(--accent2);">brew install meok-os</code></p>
+      </div>
+    </div>
+
+    <h2 style="font-size: 18px; color: var(--accent5); margin: 24px 0 12px;">📚 The 6 API namespaces</h2>
+    <div class="grid cols-3">
+      <div class="card"><strong>🪟 meok.characters</strong><div style="color: var(--dim); font-size: 11px;">birth, list, get, update, delete, archive, restore</div></div>
+      <div class="card"><strong>🗳️ meok.bft</strong><div style="color: var(--dim); font-size: 11px;">proposals, votes, ratifications, vetoes</div></div>
+      <div class="card"><strong>📜 meok.attestations</strong><div style="color: var(--dim); font-size: 11px;">issue, list, get, verify, revoke</div></div>
+      <div class="card"><strong>🛡️ meok.sovereign</strong><div style="color: var(--dim); font-size: 11px;">export, delete, history, audit</div></div>
+      <div class="card"><strong>🌐 meok.domains</strong><div style="color: var(--dim); font-size: 11px;">list, get, verify, lookup</div></div>
+      <div class="card"><strong>📡 meok.mcp</strong><div style="color: var(--dim); font-size: 11px;">list, get, call, register, deregister</div></div>
+    </div>
+  </main>
+  <footer class="sovereignbar">
+    <div class="item"><span class="ok">●</span><span class="label">SDK:</span><span class="val">TypeScript + Python + Rust + CLI</span></div>
+    <div class="spacer"></div>
+    <button class="action">🛠️ API Explorer</button>
+  </footer>
+</div>
+</body>
+</html>

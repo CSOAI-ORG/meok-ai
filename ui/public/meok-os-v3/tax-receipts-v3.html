@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>🧾 MEOK OS v3 — Tax Receipts (Downloadable, Audit-Grade)</title>
+<meta name="description" content="MEOK OS v3 Tax Receipts — downloadable, audit-grade. VAT-compliant. HMRC + IRS. Sovereign. Ed25519-signed.">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="stylesheet" href="meok-os-design-system.css">
+</head>
+<body>
+<div class="app">
+  <header class="topbar">
+    <a href="index.html">← MEOK OS v3</a>
+    <span class="title">🧾 Tax Receipts</span>
+  </header>
+  <main class="dock" style="padding: 18px; overflow-y: auto;">
+    <h1 style="margin: 0 0 8px;">🧾 Tax Receipts</h1>
+    <p style="color: var(--dim); margin: 0 0 24px;">Downloadable, audit-grade. VAT-compliant. HMRC + IRS. Sovereign. Ed25519-signed.</p>
+
+    <div style="text-align: center; padding: 24px; background: linear-gradient(135deg, var(--accent), var(--accent2)); border-radius: 12px; margin-bottom: 24px;">
+      <div style="font-size: 18px; color: white;">📊 Total deductible (2026 YTD)</div>
+      <div style="font-size: 48px; font-weight: 800; color: white; margin-top: 8px;">£0.00</div>
+      <div style="color: rgba(255,255,255,0.8); font-size: 12px; margin-top: 4px;">UK VAT 20% · 0 invoices · 2026 YTD</div>
+    </div>
+
+    <h2 style="font-size: 18px; color: var(--accent5); margin: 18px 0 12px;">📜 All tax receipts</h2>
+    <div class="card" style="margin-bottom: 16px;">
+      <table style="width: 100%; border-collapse: collapse; font-size: 12px;">
+        <tr style="background: var(--panel2);"><th style="padding: 6px; text-align: left;">#</th><th style="padding: 6px; text-align: left;">Date</th><th style="padding: 6px;">Net</th><th style="padding: 6px;">VAT</th><th style="padding: 6px;">Total</th><th style="padding: 6px;">Status</th><th style="padding: 6px;">PDF</th></tr>
+        <tr><td style="padding: 6px;">—</td><td style="padding: 6px; color: var(--dim);">No receipts yet (first billing cycle)</td><td style="padding: 6px;">—</td><td style="padding: 6px;">—</td><td style="padding: 6px;">—</td><td style="padding: 6px;">—</td><td style="padding: 6px;">—</td></tr>
+      </table>
+    </div>
+
+    <h2 style="font-size: 18px; color: var(--accent5); margin: 18px 0 12px;">🛡️ Compliance details</h2>
+    <div class="grid cols-2">
+      <div class="card">
+        <h3 style="margin: 0 0 8px; color: var(--accent5);">🇬🇧 UK</h3>
+        <ul style="font-size: 12px; line-height: 1.7; padding-left: 18px;">
+          <li>VAT 20% (HMRC compliant)</li>
+          <li>VAT number: GB-CSOAILTD16939677</li>
+          <li>Self-billing: not required</li>
+          <li>7-year retention (HMRC requirement)</li>
+          <li>MTD (Making Tax Digital) ready</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3 style="margin: 0 0 8px; color: var(--accent5);">🇺🇸 US</h3>
+        <ul style="font-size: 12px; line-height: 1.7; padding-left: 18px;">
+          <li>Sales tax by state (Stripe Tax)</li>
+          <li>EIN: TBD</li>
+          <li>1099-K threshold: $20K / 200 transactions</li>
+          <li>7-year retention (IRS requirement)</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3 style="margin: 0 0 8px; color: var(--accent5);">🇪🇺 EU</h3>
+        <ul style="font-size: 12px; line-height: 1.7; padding-left: 18px;">
+          <li>VAT by country (OSS)</li>
+          <li>VAT number: GB-CSOAILTD16939677 (UK)</li>
+          <li>Reverse charge for B2B</li>
+          <li>10-year retention (EU requirement)</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3 style="margin: 0 0 8px; color: var(--accent5);">🌍 Other</h3>
+        <ul style="font-size: 12px; line-height: 1.7; padding-left: 18px;">
+          <li>GST India, GST Australia, GST Canada</li>
+          <li>JCT Japan, KCT Korea, VAT China</li>
+          <li>Sovereign by jurisdiction</li>
+          <li>Local compliance + sovereign substrate</li>
+        </ul>
+      </div>
+    </div>
+  </main>
+  <footer class="sovereignbar">
+    <div class="item"><span class="ok">●</span><span class="label">Tax:</span><span class="val">HMRC + IRS + EU compliant</span></div>
+    <div class="spacer"></div>
+    <button class="action">📥 Download all</button>
+  </footer>
+</div>
+</body>
+</html>

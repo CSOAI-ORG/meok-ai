@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>✅ MEOK OS v3 — Habit Tracker (Build the Streak)</title>
+<meta name="description" content="MEOK OS v3 Habit Tracker — build the streak. Sovereign. Gamified. 30-day, 60-day, 100-day streaks. Hall of Fame.">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="stylesheet" href="meok-os-design-system.css">
+<style>body { background: radial-gradient(1200px 800px at 50% 0%, #2a0a2a, var(--bg) 60%); }</style>
+</head>
+<body>
+<div class="app">
+  <header class="topbar">
+    <a href="index.html">← MEOK OS v3</a>
+    <span class="title">✅ Habit Tracker</span>
+  </header>
+  <main class="dock" style="padding: 18px; overflow-y: auto;">
+    <h1 style="margin: 0 0 8px;">✅ MEOK Habit Tracker</h1>
+    <p style="color: var(--dim); margin: 0 0 24px;">Build the streak. Sovereign. Gamified. 30-day, 60-day, 100-day, 365-day streaks. Hall of Fame.</p>
+
+    <h2 style="font-size: 18px; color: var(--accent5); margin: 18px 0 12px;">🔥 Active habits (5)</h2>
+    <div class="grid cols-2">
+      <div class="card">
+        <div style="display: flex; align-items: center; gap: 8px;">
+          <span style="font-size: 24px;">🌅</span>
+          <div style="flex: 1;">
+            <div style="font-weight: 800;">Daily ritual (5 min)</div>
+            <div style="color: var(--dim); font-size: 11px;">Mood + gratitude + intention + ask + question</div>
+          </div>
+        </div>
+        <div style="margin-top: 12px;">
+          <div style="display: flex; align-items: center; gap: 6px; margin-bottom: 4px;">
+            <span style="font-size: 18px;">🔥</span>
+            <strong>14 days</strong>
+            <span style="color: var(--dim); font-size: 11px; margin-left: auto;">16/30 to Sage</span>
+          </div>
+          <div class="xp-bar"><div class="fill" style="width: 47%;"></div></div>
+          <div style="font-size: 10px; color: var(--dim); margin-top: 4px;">Progress to Sage Streak achievement (+1000 XP)</div>
+        </div>
+        <div style="display: flex; gap: 4px; margin-top: 8px;">
+          <div style="flex: 1; height: 24px; background: var(--ok); border-radius: 2px;" title="Day 1"></div>
+          <div style="flex: 1; height: 24px; background: var(--ok); border-radius: 2px;" title="Day 2"></div>
+          <div style="flex: 1; height: 24px; background: var(--ok); border-radius: 2px;" title="Day 3"></div>
+          <div style="flex: 1; height: 24px; background: var(--ok); border-radius: 2px;" title="Day 4"></div>
+          <div style="flex: 1; height: 24px; background: var(--ok); border-radius: 2px;" title="Day 5"></div>
+          <div style="flex: 1; height: 24px; background: var(--ok); border-radius: 2px;" title="Day 6"></div>
+          <div style="flex: 1; height: 24px; background: var(--ok); border-radius: 2px;" title="Day 7"></div>
+          <div style="flex: 1; height: 24px; background: var(--ok); border-radius: 2px;" title="Day 8"></div>
+          <div style="flex: 1; height: 24px; background: var(--ok); border-radius: 2px;" title="Day 9"></div>
+          <div style="flex: 1; height: 24px; background: var(--ok); border-radius: 2px;" title="Day 10"></div>
+          <div style="flex: 1; height: 24px; background: var(--ok); border-radius: 2px;" title="Day 11"></div>
+          <div style="flex: 1; height: 24px; background: var(--ok); border-radius: 2px;" title="Day 12"></div>
+          <div style="flex: 1; height: 24px; background: var(--ok); border-radius: 2px;" title="Day 13"></div>
+          <div style="flex: 1; height: 24px; background: var(--ok); border-radius: 2px;" title="Day 14"></div>
+          <div style="flex: 1; height: 24px; background: var(--line); border-radius: 2px; opacity: 0.3;" title="Day 15 (today, not done)"></div>
+        </div>
+      </div>
+      <div class="card">
+        <div style="display: flex; align-items: center; gap: 8px;">
+          <span style="font-size: 24px;">🪟</span>
+          <div style="flex: 1;">
+            <div style="font-weight: 800;">Talk to character (10 min)</div>
+            <div style="color: var(--dim); font-size: 11px;">Daily conversation with your companion</div>
+          </div>
+        </div>
+        <div style="margin-top: 12px;">
+          <div style="display: flex; align-items: center; gap: 6px; margin-bottom: 4px;">
+            <span style="font-size: 18px;">🔥</span>
+            <strong>7 days</strong>
+            <span style="color: var(--dim); font-size: 11px; margin-left: auto;">23/30 to Listener</span>
+          </div>
+          <div class="xp-bar"><div class="fill" style="width: 23%;"></div></div>
+          <div style="font-size: 10px; color: var(--dim); margin-top: 4px;">Progress to Listener achievement (+50 XP)</div>
+        </div>
+      </div>
+      <div class="card">
+        <div style="display: flex; align-items: center; gap: 8px;">
+          <span style="font-size: 24px;">🗳️</span>
+          <div style="flex: 1;">
+            <div style="font-weight: 800;">BFT Council vote</div>
+            <div style="color: var(--dim); font-size: 11px;">Cast at least 1 vote per week</div>
+          </div>
+        </div>
+        <div style="margin-top: 12px;">
+          <div style="display: flex; align-items: center; gap: 6px; margin-bottom: 4px;">
+            <span style="font-size: 18px;">🗳️</span>
+            <strong>3/4 weeks</strong>
+            <span style="color: var(--dim); font-size: 11px; margin-left: auto;">+200 XP this month</span>
+          </div>
+          <div class="xp-bar"><div class="fill" style="width: 75%;"></div></div>
+        </div>
+      </div>
+      <div class="card">
+        <div style="display: flex; align-items: center; gap: 8px;">
+          <span style="font-size: 24px;">🎮</span>
+          <div style="flex: 1;">
+            <div style="font-weight: 800;">Gaming session (30 min)</div>
+            <div style="color: var(--dim); font-size: 11px;">Daily Gustfish gaming</div>
+          </div>
+        </div>
+        <div style="margin-top: 12px;">
+          <div style="display: flex; align-items: center; gap: 6px; margin-bottom: 4px;">
+            <span style="font-size: 18px;">🔥</span>
+            <strong>5 days</strong>
+            <span style="color: var(--dim); font-size: 11px; margin-left: auto;">+200 XP</span>
+          </div>
+          <div class="xp-bar"><div class="fill" style="width: 16%;"></div></div>
+        </div>
+      </div>
+      <div class="card">
+        <div style="display: flex; align-items: center; gap: 8px;">
+          <span style="font-size: 24px;">📖</span>
+          <div style="flex: 1;">
+            <div style="font-weight: 800;">Read 1 tutorial</div>
+            <div style="color: var(--dim); font-size: 11px;">Daily MEOK Academy</div>
+          </div>
+        </div>
+        <div style="margin-top: 12px;">
+          <div style="display: flex; align-items: center; gap: 6px; margin-bottom: 4px;">
+            <span style="font-size: 18px;">🔥</span>
+            <strong>3 days</strong>
+            <span style="color: var(--dim); font-size: 11px; margin-left: auto;">+30 XP</span>
+          </div>
+          <div class="xp-bar"><div class="fill" style="width: 10%;"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <h2 style="font-size: 18px; color: var(--accent5); margin: 28px 0 12px;">🏆 The 7 streak achievements</h2>
+    <div class="grid cols-4">
+      <div class="card" style="text-align: center;">
+        <div style="font-size: 28px;">🔥</div>
+        <div style="font-weight: 800; margin: 4px 0;">30 days</div>
+        <div style="color: var(--dim); font-size: 11px;">Sage Streak</div>
+        <div style="color: var(--ok); font-size: 11px;">+1000 XP</div>
+      </div>
+      <div class="card" style="text-align: center;">
+        <div style="font-size: 28px;">🔥</div>
+        <div style="font-weight: 800; margin: 4px 0;">60 days</div>
+        <div style="color: var(--dim); font-size: 11px;">Oracle Streak</div>
+        <div style="color: var(--ok); font-size: 11px;">+2500 XP</div>
+      </div>
+      <div class="card" style="text-align: center;">
+        <div style="font-size: 28px;">🔥</div>
+        <div style="font-weight: 800; margin: 4px 0;">100 days</div>
+        <div style="color: var(--dim); font-size: 11px;">Sovereign Streak</div>
+        <div style="color: var(--ok); font-size: 11px;">+5000 XP</div>
+      </div>
+      <div class="card" style="text-align: center;">
+        <div style="font-size: 28px;">💎</div>
+        <div style="font-weight: 800; margin: 4px 0;">365 days</div>
+        <div style="color: var(--dim); font-size: 11px;">Diamond Hand</div>
+        <div style="color: var(--ok); font-size: 11px;">+20000 XP</div>
+      </div>
+    </div>
+  </main>
+  <footer class="sovereignbar">
+    <div class="item"><span class="ok">●</span><span class="label">Habits:</span><span class="val">5 active · 14-day best</span></div>
+    <div class="spacer"></div>
+    <button class="action">+ Add habit</button>
+  </footer>
+</div>
+</body>
+</html>

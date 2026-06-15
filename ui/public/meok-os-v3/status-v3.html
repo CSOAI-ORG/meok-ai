@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>📊 MEOK OS v3 — Status (Live System Health)</title>
+<meta name="description" content="MEOK OS v3 Status — live system health. SOV3 substrate, keystone, BFT Council, Horus, Rainbow, brain, sovereignty. 99.9% uptime target.">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="stylesheet" href="meok-os-design-system.css">
+<style>body { background: radial-gradient(1200px 800px at 50% 0%, #0a2a0a, var(--bg) 60%); }</style>
+</head>
+<body>
+<div class="app">
+  <header class="topbar">
+    <a href="index.html">← MEOK OS v3</a>
+    <span class="title">📊 Status</span>
+    <div class="actions" style="margin-left: auto; display: flex; gap: 12px; align-items: center; font-size: 12px; color: var(--dim);">
+      <span>all systems ✓</span>
+    </div>
+  </header>
+  <main class="dock" style="padding: 18px; overflow-y: auto;">
+    <h1 style="margin: 0 0 8px; text-align: center; font-size: 32px;">📊 System Status</h1>
+    <p style="color: var(--dim); margin: 0 0 24px; text-align: center;">Live system health · 99.9% uptime target · Last 90 days</p>
+    <div style="text-align: center; margin-bottom: 24px;">
+      <span style="font-size: 64px;">✅</span>
+      <div style="font-size: 24px; font-weight: 800; color: var(--ok); margin-top: 8px;">All systems operational</div>
+      <div style="color: var(--dim); font-size: 12px; margin-top: 4px;">Updated 2 seconds ago</div>
+    </div>
+    <h2 style="font-size: 16px; color: var(--accent5); margin: 18px 0 12px;">🔌 Core services (7)</h2>
+    <div class="grid cols-2">
+      <div class="card"><div style="display: flex; align-items: center; justify-content: space-between;"><strong>🛡️ SOV3 substrate</strong><span style="color: var(--ok);">● Operational</span></div><div style="color: var(--dim); font-size: 11px; margin-top: 4px;">193 agents · 79 active · 64 tasks · 0 errors</div></div>
+      <div class="card"><div style="display: flex; align-items: center; justify-content: space-between;"><strong>🔑 meok-keystone</strong><span style="color: var(--ok);">● Operational</span></div><div style="color: var(--dim); font-size: 11px; margin-top: 4px;">158 attestations · 100% valid · keystone v1.2.0</div></div>
+      <div class="card"><div style="display: flex; align-items: center; justify-content: space-between;"><strong>🗳️ BFT Council</strong><span style="color: var(--ok);">● Operational</span></div><div style="color: var(--dim); font-size: 11px; margin-top: 4px;">11 councils · 85 voter seats · 66+ proposals</div></div>
+      <div class="card"><div style="display: flex; align-items: center; justify-content: space-between;"><strong>👁️ Horus</strong><span style="color: var(--ok);">● Operational</span></div><div style="color: var(--dim); font-size: 11px; margin-top: 4px;">12 lenses · 3-replica veto · last audit 2 min ago</div></div>
+      <div class="card"><div style="display: flex; align-items: center; justify-content: space-between;"><strong>🌈 Rainbow 7-layer</strong><span style="color: var(--ok);">● Operational</span></div><div style="color: var(--dim); font-size: 11px; margin-top: 4px;">7/7 layers · last assessment 6h ago · 0 issues</div></div>
+      <div class="card"><div style="display: flex; align-items: center; justify-content: space-between;"><strong>📜 MEOK Brain</strong><span style="color: var(--ok);">● Operational</span></div><div style="color: var(--dim); font-size: 11px; margin-top: 4px;">Daily cron · last run 14:30 · 89 files · 380KB</div></div>
+      <div class="card"><div style="display: flex; align-items: center; justify-content: space-between;"><strong>⚡ x402 micro-tx</strong><span style="color: var(--warn);">⏳ Awaiting MEOK_MASTER_API_KEY</span></div><div style="color: var(--dim); font-size: 11px; margin-top: 4px;">0 charges · 12 micro-tx in queue</div></div>
+    </div>
+    <h2 style="font-size: 16px; color: var(--accent5); margin: 24px 0 12px;">📊 Uptime (last 90 days)</h2>
+    <div style="background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 16px;">
+      <div style="display: flex; align-items: center; gap: 4px; height: 32px;">
+        <div style="flex: 1; height: 24px; background: var(--ok); border-radius: 2px;" title="Day 1"></div>
+        <div style="flex: 1; height: 24px; background: var(--ok); border-radius: 2px;" title="Day 2"></div>
+        <div style="flex: 1; height: 24px; background: var(--ok); border-radius: 2px;" title="Day 3"></div>
+        <div style="flex: 1; height: 24px; background: var(--ok); border-radius: 2px;" title="Day 4"></div>
+        <div style="flex: 1; height: 24px; background: var(--warn); border-radius: 2px;" title="Day 5 (degraded)"></div>
+        <div style="flex: 1; height: 24px; background: var(--ok); border-radius: 2px;" title="Day 6"></div>
+        <div style="flex: 1; height: 24px; background: var(--ok); border-radius: 2px;" title="Day 7"></div>
+        <div style="flex: 1; height: 24px; background: var(--ok); border-radius: 2px;" title="Day 8"></div>
+        <div style="flex: 1; height: 24px; background: var(--ok); border-radius: 2px;" title="Day 9"></div>
+        <div style="flex: 1; height: 24px; background: var(--ok); border-radius: 2px;" title="Day 10"></div>
+        <div style="flex: 1; height: 24px; background: var(--ok); border-radius: 2px;" title="Day 11"></div>
+        <div style="flex: 1; height: 24px; background: var(--ok); border-radius: 2px;" title="Day 12"></div>
+        <div style="flex: 1; height: 24px; background: var(--ok); border-radius: 2px;" title="Day 13"></div>
+        <div style="flex: 1; height: 24px; background: var(--ok); border-radius: 2px;" title="Day 14"></div>
+      </div>
+      <p style="margin: 12px 0 0; font-size: 12px; color: var(--dim);">14 days ago → today · 13/14 fully operational · 1/14 degraded (Day 5: SOV3 briefly down for upgrade, 8-min incident)</p>
+    </div>
+    <h2 style="font-size: 16px; color: var(--accent5); margin: 24px 0 12px;">⚡ Performance</h2>
+    <div class="grid cols-4">
+      <div class="card"><div style="color: var(--dim); font-size: 11px;">P50 latency</div><div style="font-size: 22px; font-weight: 800; color: var(--ok);">42ms</div></div>
+      <div class="card"><div style="color: var(--dim); font-size: 11px;">P99 latency</div><div style="font-size: 22px; font-weight: 800; color: var(--ok);">387ms</div><div style="color: var(--dim); font-size: 11px;">target: 500ms</div></div>
+      <div class="card"><div style="color: var(--dim); font-size: 11px;">QPS</div><div style="font-size: 22px; font-weight: 800; color: var(--ok);">1,247</div><div style="color: var(--dim); font-size: 11px;">peak 4.5K</div></div>
+      <div class="card"><div style="color: var(--dim); font-size: 11px;">Error rate</div><div style="font-size: 22px; font-weight: 800; color: var(--ok);">0.00%</div></div>
+    </div>
+    <h2 style="font-size: 16px; color: var(--accent5); margin: 24px 0 12px;">📜 Recent incidents (1)</h2>
+    <div style="background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 12px; margin-bottom: 8px;">
+      <div style="display: flex; align-items: center; gap: 8px;"><span style="font-size: 14px;">🟡</span><div><strong>2026-06-12 03:00 UTC</strong> · SOV3 substrate upgrade · 8 min degraded</div></div>
+      <p style="margin: 4px 0 0 22px; font-size: 12px; color: var(--dim);">Scheduled upgrade to v2.0.0. No data loss. No customer impact. Resolved in 8 min.</p>
+    </div>
+  </main>
+  <footer class="sovereignbar">
+    <div class="item"><span class="ok">●</span><span class="label">Status:</span><span class="val">all systems operational</span></div>
+    <div class="spacer"></div>
+    <button class="action">📜 Subscribe</button>
+  </footer>
+</div>
+</body>
+</html>

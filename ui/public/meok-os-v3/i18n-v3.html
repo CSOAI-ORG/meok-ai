@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>🌍 MEOK OS v3 — i18n Guide (50+ Languages, Sovereign)</title>
+<meta name="description" content="MEOK OS v3 i18n Guide — 50+ languages, sovereign localization, 7 regional variants. Per-character locale. MIT.">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="stylesheet" href="meok-os-design-system.css">
+<style>body { background: radial-gradient(1200px 800px at 50% 0%, #0a2a2a, var(--bg) 60%); }</style>
+</head>
+<body>
+<div class="app">
+  <header class="topbar">
+    <a href="index.html">← MEOK OS v3</a>
+    <span class="title">🌍 i18n Guide</span>
+  </header>
+  <main class="dock" style="padding: 18px; overflow-y: auto; max-width: 900px; margin: 0 auto;">
+    <h1 style="margin: 0 0 8px; text-align: center; font-size: 36px;">🌍 i18n Guide</h1>
+    <p style="color: var(--dim); margin: 0 0 32px; text-align: center; font-size: 16px;">50+ languages, sovereign localization, 7 regional variants. Per-character locale. MIT.</p>
+
+    <h2 style="font-size: 18px; color: var(--accent5); margin: 18px 0 12px;">🌍 The 50+ supported languages</h2>
+
+    <h3 style="font-size: 14px; color: var(--accent5); margin: 12px 0 6px;">🇪🇺 European (25)</h3>
+    <div class="card" style="margin-bottom: 8px; background: var(--bg); font-family: monospace; font-size: 11px; padding: 12px; line-height: 1.7;">
+      <div>en-GB (British English) · en-US (American English) · en-AU (Australian English) · en-CA (Canadian English) · en-IN (Indian English)</div>
+      <div>fr-FR (French) · de-DE (German) · es-ES (Spanish) · it-IT (Italian) · pt-PT (Portuguese) · nl-NL (Dutch) · sv-SE (Swedish) · da-DK (Danish) · nb-NO (Norwegian) · fi-FI (Finnish) · is-IS (Icelandic) · ga-IE (Irish) · cy-GB (Welsh) · ca-ES (Catalan) · eu-ES (Basque) · gl-ES (Galician) · ro-RO (Romanian) · pl-PL (Polish) · cs-CZ (Czech) · sk-SK (Slovak) · hu-HU (Hungarian) · el-GR (Greek) · ru-RU (Russian) · uk-UA (Ukrainian) · bg-BG (Bulgarian) · sr-RS (Serbian) · hr-HR (Croatian) · sl-SI (Slovenian) · tr-TR (Turkish) · mt-MT (Maltese) · lb-LU (Luxembourgish)</div>
+    </div>
+
+    <h3 style="font-size: 14px; color: var(--accent5); margin: 12px 0 6px;">🌏 Asian (15)</h3>
+    <div class="card" style="margin-bottom: 8px; background: var(--bg); font-family: monospace; font-size: 11px; padding: 12px; line-height: 1.7;">
+      <div>zh-CN (Simplified Chinese) · zh-TW (Traditional Chinese) · zh-HK (Hong Kong Cantonese) · ja-JP (Japanese) · ko-KR (Korean)</div>
+      <div>hi-IN (Hindi) · bn-IN (Bengali) · ta-IN (Tamil) · te-IN (Telugu) · mr-IN (Marathi) · gu-IN (Gujarati) · pa-IN (Punjabi) · ur-PK (Urdu) · fa-IR (Persian) · ar-SA (Arabic) · he-IL (Hebrew) · th-TH (Thai) · vi-VN (Vietnamese) · id-ID (Indonesian) · ms-MY (Malay) · tl-PH (Tagalog)</div>
+    </div>
+
+    <h3 style="font-size: 14px; color: var(--accent5); margin: 12px 0 6px;">🌍 African (10)</h3>
+    <div class="card" style="margin-bottom: 8px; background: var(--bg); font-family: monospace; font-size: 11px; padding: 12px; line-height: 1.7;">
+      <div>sw-KE (Swahili) · am-ET (Amharic) · ha-NG (Hausa) · yo-NG (Yoruba) · ig-NG (Igbo) · zu-ZA (Zulu) · af-ZA (Afrikaans) · ar-EG (Egyptian Arabic) · fr-MA (Moroccan Arabic) · so-SO (Somali)</div>
+    </div>
+
+    <h3 style="font-size: 14px; color: var(--accent5); margin: 12px 0 6px;">🌎 American (5)</h3>
+    <div class="card" style="margin-bottom: 16px; background: var(--bg); font-family: monospace; font-size: 11px; padding: 12px; line-height: 1.7;">
+      <div>es-MX (Mexican Spanish) · pt-BR (Brazilian Portuguese) · qu-PE (Quechua) · ay-PE (Aymara) · gn-PY (Guaraní)</div>
+    </div>
+
+    <h2 style="font-size: 18px; color: var(--accent5); margin: 24px 0 12px;">📋 Locale format</h2>
+    <div class="card" style="margin-bottom: 16px;">
+      <pre style="background: var(--bg); padding: 12px; border-radius: 6px; font-size: 12px; overflow-x: auto; color: var(--ink); margin: 0;">// BCP 47 locale tag
+[language]-[script]-[region]-[variant]
+   ↓        ↓        ↓        ↓
+   ja      Jpan      JP      hepburn
+   zh      Hans      CN      pinyin
+   en               GB      oxendict
+   pt               BR      formal
+
+// Examples
+"en-GB"      // British English
+"en-GB-oxendict"  // British English, Oxford dictionary
+"zh-Hans-CN"  // Simplified Chinese, China
+"zh-Hant-TW"  // Traditional Chinese, Taiwan
+"es-MX"     // Mexican Spanish
+"pt-BR"     // Brazilian Portuguese
+"ar-SA"     // Saudi Arabic (RTL)
+"he-IL"     // Israeli Hebrew (RTL)
+"ja-JP"     // Japanese
+"ja-JP-hepburn"  // Japanese, Hepburn romanization
+</pre>
+    </div>
+
+    <h2 style="font-size: 18px; color: var(--accent5); margin: 24px 0 12px;">🛡️ Sovereign i18n</h2>
+    <div class="card" style="margin-bottom: 16px;">
+      <p style="font-size: 12px; line-height: 1.7; margin: 0 0 8px;">MEOK's i18n is sovereign. Each user's preferred locale is stored on the sigil chain (encrypted with the user's public key). The user controls their own locale.</p>
+      <p style="font-size: 12px; line-height: 1.7; margin: 0 0 8px;">MEOK supports RTL (right-to-left) languages: Arabic, Hebrew, Urdu, Persian. Bidirectional text rendering.</p>
+      <p style="font-size: 12px; line-height: 1.7; margin: 0;">MEOK supports per-character locale. A Sage companion can speak British English while a Trickster companion speaks Australian English. 50+ languages × 9 archetypes = 450+ character-language combinations.</p>
+    </div>
+
+    <h2 style="font-size: 18px; color: var(--accent5); margin: 24px 0 12px;">🌍 Regional variants (7)</h2>
+    <div class="grid cols-3">
+      <div class="card"><strong>🇪🇺 EU</strong><div style="color: var(--dim); font-size: 11px;">GDPR + EU AI Act + EU AI sovereignty</div></div>
+      <div class="card"><strong>🇬🇧 UK</strong><div style="color: var(--dim); font-size: 11px;">UK GDPR + UK AI Bill + UK sovereignty</div></div>
+      <div class="card"><strong>🇺🇸 US</strong><div style="color: var(--dim); font-size: 11px;">CCPA + HIPAA + NIST AI RMF + US sovereignty</div></div>
+      <div class="card"><strong>🇨🇦 CA</strong><div style="color: var(--dim); font-size: 11px;">PIPEDA + AIDA + Canadian sovereignty</div></div>
+      <div class="card"><strong>🇦🇺 AU</strong><div style="color: var(--dim); font-size: 11px;">Privacy Act + AI ethics framework + Australian sovereignty</div></div>
+      <div class="card"><strong>🇯🇵 JP</strong><div style="color: var(--dim); font-size: 11px;">APPI + AI strategy + Japanese sovereignty</div></div>
+      <div class="card"><strong>🌍 INTL</strong><div style="color: var(--dim); font-size: 11px;">No specific framework, default sovereign</div></div>
+    </div>
+  </main>
+  <footer class="sovereignbar">
+    <div class="item"><span class="ok">●</span><span class="label">i18n:</span><span class="val">50+ languages · 7 regions</span></div>
+    <div class="spacer"></div>
+    <button class="action">🌍 Set locale</button>
+  </footer>
+</div>
+</body>
+</html>

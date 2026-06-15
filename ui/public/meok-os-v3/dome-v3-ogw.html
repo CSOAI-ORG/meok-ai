@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>🌍 MEOK OS v3 — Dome OpenGridWorks (Live Character Movement)</title>
+<meta name="description" content="MEOK OS v3 Dome OpenGridWorks — real-time character movement, visual connections, council-as-table, family-as-household. Sovereign. MIT.">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="stylesheet" href="meok-os-design-system.css">
+<style>
+body { background: radial-gradient(1200px 800px at 50% 0%, #0a1a2a, var(--bg) 60%); }
+#ogw-canvas { width: 100%; height: 480px; background: var(--bg); border: 1px solid var(--line); border-radius: 12px; position: relative; overflow: hidden; }
+.connection { position: absolute; height: 1px; background: linear-gradient(90deg, transparent, var(--accent), transparent); opacity: 0.4; }
+.char { position: absolute; width: 36px; height: 36px; border-radius: 50%; background: radial-gradient(135deg, #7c5cff, #ff5ca8); display: flex; align-items: center; justify-content: center; font-size: 16px; cursor: pointer; box-shadow: 0 0 14px rgba(124, 92, 255, 0.6); transition: transform 0.3s; }
+.char:hover { transform: scale(1.4); z-index: 10; }
+.char.you { background: radial-gradient(135deg, #fbbf24, #ff5ca8); }
+@keyframes drift { 0% { transform: translate(0, 0); } 50% { transform: translate(8px, -4px); } 100% { transform: translate(0, 0); } }
+.char { animation: drift 8s ease-in-out infinite; }
+.city { position: absolute; width: 60px; height: 60px; border-radius: 50%; background: rgba(124, 92, 255, 0.15); border: 2px solid var(--accent); display: flex; align-items: center; justify-content: center; font-size: 24px; }
+</style>
+</head>
+<body>
+<div class="app">
+  <header class="topbar">
+    <a href="index.html">← MEOK OS v3</a>
+    <span class="title">🌍 Dome OpenGridWorks</span>
+    <div class="actions" style="margin-left: auto; display: flex; gap: 12px; align-items: center; font-size: 12px; color: var(--ok);">
+      <span>● live</span>
+    </div>
+  </header>
+  <main class="dock" style="padding: 18px; overflow-y: auto;">
+    <h1 style="margin: 0 0 8px; text-align: center; font-size: 36px;">🌍 Dome OpenGridWorks</h1>
+    <p style="color: var(--dim); margin: 0 0 32px; text-align: center; font-size: 16px;">Real-time character movement. Visual connections. Council-as-table. Family-as-household.</p>
+
+    <div id="ogw-canvas">
+      <!-- Cities -->
+      <div class="city" style="left: 8%; top: 25%;" title="Athens">🏛️</div>
+      <div class="city" style="left: 22%; top: 18%;" title="New York">🗽</div>
+      <div class="city" style="left: 88%; top: 30%;" title="Tokyo">🏯</div>
+      <div class="city" style="left: 50%; top: 12%;" title="London">🏰</div>
+      <div class="city" style="left: 68%; top: 32%;" title="Varanasi">🕉️</div>
+      <div class="city" style="left: 32%; top: 50%;" title="Rio">🌴</div>
+      <div class="city" style="left: 50%; top: 25%;" title="Venice">🚣</div>
+      <div class="city" style="left: 50%; top: 18%;" title="Paris">🗼</div>
+      <div class="city" style="left: 60%; top: 35%;" title="Cairo">🐪</div>
+      <div class="city" style="left: 70%; top: 22%;" title="Delhi">🕌</div>
+      <div class="city" style="left: 92%; top: 70%;" title="Sydney">🦘</div>
+      <div class="city" style="left: 88%; top: 32%;" title="Shanghai">🏯</div>
+
+      <!-- Connections (lines between cities) -->
+      <div class="connection" style="left: 11%; top: 32%; width: 14%; transform: rotate(20deg);"></div>
+      <div class="connection" style="left: 26%; top: 25%; width: 28%; transform: rotate(-5deg);"></div>
+      <div class="connection" style="left: 53%; top: 22%; width: 38%; transform: rotate(2deg);"></div>
+      <div class="connection" style="left: 35%; top: 55%; width: 18%; transform: rotate(-30deg);"></div>
+      <div class="connection" style="left: 52%; top: 30%; width: 1%; height: 60px;"></div>
+      <div class="connection" style="left: 64%; top: 38%; width: 2%; height: 40px;"></div>
+      <div class="connection" style="left: 88%; top: 70%; width: 4%; height: 38px;"></div>
+
+      <!-- Characters (drifting) -->
+      <div class="char you" style="left: 48%; top: 50%; animation-delay: 0s;" title="The Scholar (you)">🏛️</div>
+      <div class="char" style="left: 18%; top: 35%; animation-delay: 1s;" title="Marcus">⚡</div>
+      <div class="char" style="left: 28%; top: 22%; animation-delay: 2s;" title="Aria">🌸</div>
+      <div class="char" style="left: 78%; top: 40%; animation-delay: 3s;" title="Atlas">🗺️</div>
+      <div class="char" style="left: 12%; top: 40%; animation-delay: 4s;" title="Kai">🌿</div>
+      <div class="char" style="left: 42%; top: 62%; animation-delay: 5s;" title="Rex">🦁</div>
+      <div class="char" style="left: 85%; top: 50%; animation-delay: 6s;" title="Sol">☀️</div>
+      <div class="char" style="left: 22%; top: 55%; animation-delay: 7s;" title="Vox">🎤</div>
+      <div class="char" style="left: 55%; top: 45%; animation-delay: 8s;" title="Ember">🔥</div>
+    </div>
+
+    <h2 style="font-size: 18px; color: var(--accent5); margin: 24px 0 12px;">🪑 BFT Council as a virtual table</h2>
+    <div class="card" style="margin-bottom: 16px; text-align: center; padding: 24px;">
+      <p style="font-size: 13px; line-height: 1.7; margin: 0 0 12px;">Imagine the 11 BFT councils as 11 virtual tables. Each chair sits at the head. 5 voter seats around. The 6th seat is empty (sovereignty). Every proposal is a 3D hologram in the center.</p>
+      <div style="display: grid; grid-template-columns: repeat(6, 1fr); gap: 8px; max-width: 480px; margin: 0 auto;">
+        <div style="aspect-ratio: 1; background: rgba(124, 92, 255, 0.2); border: 1px solid var(--accent); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 12px;">Chair</div>
+        <div style="aspect-ratio: 1; background: var(--panel2); border: 1px solid var(--line); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 11px; color: var(--dim);">Seat 1</div>
+        <div style="aspect-ratio: 1; background: var(--panel2); border: 1px solid var(--line); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 11px; color: var(--dim);">Seat 2</div>
+        <div style="aspect-ratio: 1; background: var(--panel2); border: 1px solid var(--line); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 11px; color: var(--dim);">Seat 3</div>
+        <div style="aspect-ratio: 1; background: var(--panel2); border: 1px solid var(--line); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 11px; color: var(--dim);">Seat 4</div>
+        <div style="aspect-ratio: 1; background: var(--panel2); border: 1px solid var(--line); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 11px; color: var(--dim);">Seat 5</div>
+        <div style="aspect-ratio: 1; background: var(--panel2); border: 1px solid var(--line); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 11px; color: var(--dim);">Empty</div>
+        <div style="grid-column: span 4; aspect-ratio: 1; background: rgba(124, 92, 255, 0.3); border: 2px dashed var(--accent); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 11px;">3D hologram: proposal</div>
+      </div>
+      <p style="font-size: 11px; color: var(--dim); margin: 12px 0 0;">🚧 Coming Q1 2027 (WebXR)</p>
+    </div>
+
+    <h2 style="font-size: 18px; color: var(--accent5); margin: 24px 0 12px;">👨‍👩‍👧 Family as a household</h2>
+    <div class="card" style="margin-bottom: 16px; text-align: center; padding: 24px;">
+      <p style="font-size: 13px; line-height: 1.7; margin: 0 0 12px;">Imagine the Templeman family as a 5-room house. Each member has a room. Shared spaces: kitchen (calendar), living room (chores), garden (Dome). Care flows between rooms.</p>
+      <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; max-width: 360px; margin: 0 auto;">
+        <div style="aspect-ratio: 1; background: rgba(124, 92, 255, 0.15); border: 1px solid var(--accent); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 11px; flex-direction: column;"><div style="font-size: 20px;">👨</div>Nick (you)</div>
+        <div style="aspect-ratio: 1; background: var(--panel2); border: 1px solid var(--line); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 11px; flex-direction: column;"><div style="font-size: 20px;">👩</div>Partner</div>
+        <div style="aspect-ratio: 1; background: var(--panel2); border: 1px solid var(--line); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 11px; flex-direction: column;"><div style="font-size: 20px;">👧</div>Daughter</div>
+        <div style="aspect-ratio: 1; background: var(--panel2); border: 1px solid var(--line); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 11px; flex-direction: column;"><div style="font-size: 20px;">👦</div>Son</div>
+        <div style="aspect-ratio: 1; background: var(--panel2); border: 1px solid var(--line); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 11px; flex-direction: column;"><div style="font-size: 20px;">👵</div>Grandma</div>
+        <div style="aspect-ratio: 1; background: var(--panel2); border: 1px solid var(--line); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 11px; flex-direction: column;"><div style="font-size: 20px;">🌳</div>Garden</div>
+      </div>
+    </div>
+
+    <h2 style="font-size: 18px; color: var(--accent5); margin: 24px 0 12px;">🛠️ OpenGridWorks improvements (Day 6)</h2>
+    <div class="grid cols-3">
+      <div class="card">
+        <h3 style="margin: 0 0 4px; color: var(--accent5);">✓ Real-time movement</h3>
+        <p style="font-size: 11px; color: var(--dim); margin: 0;">Characters drift in 8s ease-in-out cycles. Visual presence.</p>
+      </div>
+      <div class="card">
+        <h3 style="margin: 0 0 4px; color: var(--accent5);">✓ Visual connections</h3>
+        <p style="font-size: 11px; color: var(--dim); margin: 0;">Lines between cities that have characters who have met.</p>
+      </div>
+      <div class="card">
+        <h3 style="margin: 0 0 4px; color: var(--accent5);">✓ Council as table</h3>
+        <p style="font-size: 11px; color: var(--dim); margin: 0;">11 BFT councils as virtual tables with chair + 5 seats.</p>
+      </div>
+      <div class="card">
+        <h3 style="margin: 0 0 4px; color: var(--accent5);">✓ Family as household</h3>
+        <p style="font-size: 11px; color: var(--dim); margin: 0;">Multi-generational household view with shared spaces.</p>
+      </div>
+      <div class="card">
+        <h3 style="margin: 0 0 4px; color: var(--accent5);">✓ 3D-influenced</h3>
+        <p style="font-size: 11px; color: var(--dim); margin: 0;">Gradients, shadows, layered UI. No VR required.</p>
+      </div>
+      <div class="card">
+        <h3 style="margin: 0 0 4px; color: var(--accent5);">✓ Open source</h3>
+        <p style="font-size: 11px; color: var(--dim); margin: 0;">MIT license. Fork freely. Sovereign by default.</p>
+      </div>
+    </div>
+  </main>
+  <footer class="sovereignbar">
+    <div class="item"><span class="ok">●</span><span class="label">Dome OGW:</span><span class="val">12 cities · 9 chars · live</span></div>
+    <div class="spacer"></div>
+    <button class="action">🛠️ Open in VR</button>
+  </footer>
+</div>
+</body>
+</html>

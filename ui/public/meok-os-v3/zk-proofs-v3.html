@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>🔮 MEOK OS v3 — ZK-Proofs (Zero-Knowledge, Q2 2027)</title>
+<meta name="description" content="MEOK OS v3 Zero-Knowledge Proofs — verify without revealing. ZK-SNARK + ZK-STARK. Q2 2027. Sovereign. MIT.">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="stylesheet" href="meok-os-design-system.css">
+<style>body { background: radial-gradient(1200px 800px at 50% 0%, #0a2a1a, var(--bg) 60%); }</style>
+</head>
+<body>
+<div class="app">
+  <header class="topbar">
+    <a href="index.html">← MEOK OS v3</a>
+    <span class="title">🔮 ZK-Proofs</span>
+  </header>
+  <main class="dock" style="padding: 18px; overflow-y: auto; max-width: 900px; margin: 0 auto;">
+    <h1 style="margin: 0 0 8px; text-align: center; font-size: 36px;">🔮 Zero-Knowledge Proofs</h1>
+    <p style="color: var(--dim); margin: 0 0 32px; text-align: center; font-size: 16px;">Verify without revealing. ZK-SNARK + ZK-STARK. MEOK OS v3 will support ZK-proofs by Q2 2027. Sovereign. MIT.</p>
+
+    <h2 style="font-size: 18px; color: var(--accent5); margin: 18px 0 12px;">🛡️ What are ZK-proofs?</h2>
+    <div class="card" style="margin-bottom: 16px;">
+      <p style="font-size: 13px; line-height: 1.7; margin: 0 0 8px;">A zero-knowledge proof lets you prove a statement is true without revealing any information beyond the statement's truth. ZK-SNARK (succinct non-interactive argument of knowledge) is the most common type. ZK-STARK (scalable transparent argument of knowledge) is the more recent, post-quantum variant.</p>
+      <p style="font-size: 13px; line-height: 1.7; margin: 0;">In MEOK: you can prove "I have a BFT voter seat" without revealing which one, "I'm over 18" without revealing your date of birth, or "I have 50K+ XP" without revealing your actual XP.</p>
+    </div>
+
+    <h2 style="font-size: 18px; color: var(--accent5); margin: 24px 0 12px;">📊 The 6 ZK use cases (planned Q2 2027)</h2>
+    <div class="grid cols-2">
+      <div class="card">
+        <h3 style="margin: 0 0 8px; color: var(--accent5);">🗳️ Anonymous BFT voting</h3>
+        <p style="font-size: 12px; line-height: 1.7; margin: 0;">Prove you have a BFT voter seat + cast your vote, without revealing your identity. Prevents vote-buying + coercion. For sensitive proposals.</p>
+      </div>
+      <div class="card">
+        <h3 style="margin: 0 0 8px; color: var(--accent5);">🎂 Age verification (no PII)</h3>
+        <p style="font-size: 12px; line-height: 1.7; margin: 0;">Prove you're over 18 (or 21) for age-gated features. ZK proof generated from your passport/DOB. ZK verifier only learns "yes/no", never your DOB.</p>
+      </div>
+      <div class="card">
+        <h3 style="margin: 0 0 8px; color: var(--accent5);">💰 Tier verification (no leakage)</h3>
+        <p style="font-size: 12px; line-height: 1.7; margin: 0;">Prove you have Pro tier (or higher) for premium MCP servers. ZK proof generated from your Stripe subscription. The server only learns "tier ≥ Pro", not your exact plan.</p>
+      </div>
+      <div class="card">
+        <h3 style="margin: 0 0 8px; color: var(--accent5);">📜 Credential verification (selective disclosure)</h3>
+        <p style="font-size: 12px; line-height: 1.7; margin: 0;">Prove you have a verified bar number (for lawyers) or NPI (for healthcare workers) without revealing the number itself. Selective disclosure.</p>
+      </div>
+      <div class="card">
+        <h3 style="margin: 0 0 8px; color: var(--accent5);">📊 Aggregate analytics (no individual data)</h3>
+        <p style="font-size: 12px; line-height: 1.7; margin: 0;">Generate aggregate stats (e.g., "12,450 free attestations issued") with ZK proof. Anyone can verify the math. No individual data leaked.</p>
+      </div>
+      <div class="card">
+        <h3 style="margin: 0 0 8px; color: var(--accent5);">🛡️ Sovereign proof of reserves</h3>
+        <p style="font-size: 12px; line-height: 1.7; margin: 0;">For the Sovereign Custom tier, MEOK can prove "we hold 100% of user data in sovereign EU/US regions" with a ZK proof. Auditable + privacy-preserving.</p>
+      </div>
+    </div>
+
+    <h2 style="font-size: 18px; color: var(--accent5); margin: 24px 0 12px;">🔮 The 2 algorithms</h2>
+    <div class="grid cols-2">
+      <div class="card">
+        <h3 style="margin: 0 0 8px; color: var(--accent5);">🔐 ZK-SNARK (Groth16)</h3>
+        <p style="font-size: 12px; line-height: 1.7; margin: 0;">Succinct (200-byte proof). Fast verify (~5ms). Trusted setup required. Used in Zcash, Tornado Cash. Not quantum-safe.</p>
+        <p style="font-size: 11px; color: var(--dim); margin: 8px 0 0;">Status: planned Q2 2027 · Quantum-safe: ✗</p>
+      </div>
+      <div class="card">
+        <h3 style="margin: 0 0 8px; color: var(--accent5);">🔐 ZK-STARK (FRI)</h3>
+        <p style="font-size: 12px; line-height: 1.7; margin: 0;">Larger proofs (~50KB). Slower verify (~50ms). No trusted setup. Quantum-safe. Used in StarkNet, Polygon Miden.</p>
+        <p style="font-size: 11px; color: var(--dim); margin: 8px 0 0;">Status: planned Q4 2027 · Quantum-safe: ✓</p>
+      </div>
+    </div>
+
+    <h2 style="font-size: 18px; color: var(--accent5); margin: 24px 0 12px;">🛡️ Why MEOK is well-positioned</h2>
+    <div class="card">
+      <p style="font-size: 13px; line-height: 1.7; margin: 0 0 8px;">Most AI platforms still leak PII in every verification flow. MEOK is moving to ZK by Q2 2027, just 5 years after the technology became practical. The migration is opt-in for the first year.</p>
+      <p style="font-size: 13px; line-height: 1.7; margin: 0 0 8px;">Because MEOK is open source (MIT), every user can audit the ZK circuits. Because MEOK is sovereign, every user can choose their own algorithms. Because MEOK is BFT-governed, the ZK roadmap is community-voted.</p>
+      <p style="font-size: 13px; line-height: 1.7; margin: 0;">The dragon has zero-knowledge. Care 0.95+.</p>
+    </div>
+  </main>
+  <footer class="sovereignbar">
+    <div class="item"><span class="ok">●</span><span class="label">ZK-proofs:</span><span class="val">Q2 2027 · ZK-SNARK + ZK-STARK</span></div>
+    <div class="spacer"></div>
+    <button class="action">🔮 Subscribe</button>
+  </footer>
+</div>
+</body>
+</html>

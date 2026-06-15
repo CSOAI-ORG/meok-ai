@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>MEOK Council v3 — BFT Council Voter</title>
+<meta name="description" content="MEOK Council v3 — the BFT Council voter app. 11 councils, 85 voter seats, 66+ proposals. Vote on the sovereign substrate.">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="stylesheet" href="meok-os-design-system.css">
+</head>
+<body>
+<div class="app">
+  <header class="topbar">
+    <a href="os-v3.html">← MEOK OS v3</a>
+    <span class="title">🗳️ Council v3 — BFT Council</span>
+    <div class="actions" style="margin-left: auto; display: flex; gap: 12px; align-items: center; font-size: 12px; color: var(--dim);">
+      <span>11 councils</span>
+      <span>·</span>
+      <span>85 voter seats</span>
+      <span>·</span>
+      <span>66+ proposals</span>
+    </div>
+  </header>
+
+  <main class="dock" style="padding: 18px; overflow-y: auto;">
+    <h1 style="margin: 0 0 16px;">🗳️ MEOK Council v3</h1>
+    <p style="color: var(--dim); margin-bottom: 24px;">11 sovereign BFT councils · 85 voter seats · 66+ open proposals. 5 voters per hive, unanimous yes to pass.</p>
+
+    <h2 style="font-size: 16px; color: var(--accent7); margin: 24px 0 12px;">📋 Open Proposals (6 shown)</h2>
+
+    <div class="grid cols-2">
+      <div class="card">
+        <div class="row" style="display: flex; gap: 6px; margin-bottom: 8px;">
+          <span class="badge">📜 Open</span>
+          <span class="badge" style="background: var(--accent5); color: #000;">🍄 Gaming × Gambling</span>
+        </div>
+        <h3 style="margin: 0 0 6px; font-size: 16px;">Adopt PHH as the MEOK hand-history standard</h3>
+        <p style="margin: 0 0 8px; font-size: 12px; color: var(--dim);">Adopt the University of Toronto's open-source PHH (Poker Hand History) specification as the canonical hand history format. Extend for MCP-native export. "The PGN of poker."</p>
+        <div class="votes" style="display: flex; gap: 4px; margin: 8px 0;">
+          <span style="font-size: 11px; padding: 2px 8px; border-radius: 10px; background: rgba(61, 220, 151, 0.2); color: var(--ok);">✓ 4 / 5</span>
+          <span style="font-size: 11px; padding: 2px 8px; border-radius: 10px; background: rgba(124, 92, 255, 0.2); color: var(--accent);">⏱ 12h left</span>
+        </div>
+        <div style="display: flex; gap: 6px;">
+          <button class="primary" style="flex: 1;">✓ Yes (your vote)</button>
+          <button class="ghost" style="flex: 1;">✗ No</button>
+          <button class="ghost">📖</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="row" style="display: flex; gap: 6px; margin-bottom: 8px;">
+          <span class="badge">📜 Open</span>
+          <span class="badge" style="background: var(--accent5); color: #000;">⚽ Sports Odds</span>
+        </div>
+        <h3 style="margin: 0 0 6px; font-size: 16px;">Add WebSocket streaming to meok-sports-odds-mcp</h3>
+        <p style="margin: 0 0 8px; font-size: 12px; color: var(--dim);">WebSocket streaming for real-time odds. 250+ bookmakers. Sub-second latency. NO_AUTO_BETTING enforced.</p>
+        <div class="votes" style="display: flex; gap: 4px; margin: 8px 0;">
+          <span style="font-size: 11px; padding: 2px 8px; border-radius: 10px; background: rgba(61, 220, 151, 0.2); color: var(--ok);">✓ 3 / 5</span>
+          <span style="font-size: 11px; padding: 2px 8px; border-radius: 10px; background: rgba(124, 92, 255, 0.2); color: var(--accent);">⏱ 2d left</span>
+        </div>
+        <div style="display: flex; gap: 6px;">
+          <button class="primary" style="flex: 1;">✓ Yes (your vote)</button>
+          <button class="ghost" style="flex: 1;">✗ No</button>
+          <button class="ghost">📖</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="row" style="display: flex; gap: 6px; margin-bottom: 8px;">
+          <span class="badge">📜 Open</span>
+          <span class="badge" style="background: var(--accent5); color: #000;">⚖️ Compliance</span>
+        </div>
+        <h3 style="margin: 0 0 6px; font-size: 16px;">Apply for UKGC sandbox status</h3>
+        <p style="margin: 0 0 8px; font-size: 12px; color: var(--dim);">Apply for UKGC sandbox status for meok-responsible-gaming-mcp + meok-gaming-compliance-mcp. Mandatory credibility for enterprise sales.</p>
+        <div class="votes" style="display: flex; gap: 4px; margin: 8px 0;">
+          <span style="font-size: 11px; padding: 2px 8px; border-radius: 10px; background: rgba(61, 220, 151, 0.2); color: var(--ok);">✓ 5 / 5 — UNANIMOUS</span>
+        </div>
+        <div style="display: flex; gap: 6px;">
+          <button class="ghost" style="flex: 1; color: var(--ok);">✓ Ratified</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="row" style="display: flex; gap: 6px; margin-bottom: 8px;">
+          <span class="badge">📜 Open</span>
+          <span class="badge" style="background: var(--accent5); color: #000;">🍄 Casino AI</span>
+        </div>
+        <h3 style="margin: 0 0 6px; font-size: 16px;">Add live RTP streaming to meok-casino-ai-mcp</h3>
+        <p style="margin: 0 0 8px; font-size: 12px; color: var(--dim);">Real-time RTP analysis for live dealer games. WebSocket streaming. 99.5%+ accuracy on published F1.</p>
+        <div class="votes" style="display: flex; gap: 4px; margin: 8px 0;">
+          <span style="font-size: 11px; padding: 2px 8px; border-radius: 10px; background: rgba(124, 92, 255, 0.2); color: var(--accent);">⏱ 5d left</span>
+        </div>
+        <div style="display: flex; gap: 6px;">
+          <button class="primary" style="flex: 1;">✓ Yes (your vote)</button>
+          <button class="ghost" style="flex: 1;">✗ No</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="row" style="display: flex; gap: 6px; margin-bottom: 8px;">
+          <span class="badge">📜 Open</span>
+          <span class="badge" style="background: var(--accent5); color: #000;">🛡️ Sovereign</span>
+        </div>
+        <h3 style="margin: 0 0 6px; font-size: 16px;">Add GDPR data-portability export to all hives</h3>
+        <p style="margin: 0 0 8px; font-size: 12px; color: var(--dim);">One-click export of all sovereign data as JSON/CSV/Parquet. Right to data portability under GDPR Article 20.</p>
+        <div class="votes" style="display: flex; gap: 4px; margin: 8px 0;">
+          <span style="font-size: 11px; padding: 2px 8px; border-radius: 10px; background: rgba(61, 220, 151, 0.2); color: var(--ok);">✓ 5 / 5 — UNANIMOUS</span>
+        </div>
+        <div style="display: flex; gap: 6px;">
+          <button class="ghost" style="flex: 1; color: var(--ok);">✓ Ratified · already shipped</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="row" style="display: flex; gap: 6px; margin-bottom: 8px;">
+          <span class="badge">📜 Open</span>
+          <span class="badge" style="background: var(--accent5); color: #000;">📜 Patents</span>
+        </div>
+        <h3 style="margin: 0 0 6px; font-size: 16px;">File first OpenPatent-derived patent via MEOK</h3>
+        <p style="margin: 0 0 8px; font-size: 12px; color: var(--dim);">Use meok-patent-draft-mcp to draft + file a US utility patent. Sovereign IP. $0.10/call. 1-2 hours from idea to filing-ready.</p>
+        <div class="votes" style="display: flex; gap: 4px; margin: 8px 0;">
+          <span style="font-size: 11px; padding: 2px 8px; border-radius: 10px; background: rgba(124, 92, 255, 0.2); color: var(--accent);">⏱ 1d left</span>
+        </div>
+        <div style="display: flex; gap: 6px;">
+          <button class="primary" style="flex: 1;">✓ Yes (your vote)</button>
+          <button class="ghost" style="flex: 1;">✗ No</button>
+        </div>
+      </div>
+    </div>
+
+    <h2 style="font-size: 16px; color: var(--accent7); margin: 32px 0 12px;">🏛️ The 11 BFT Councils</h2>
+    <div class="grid cols-3">
+      <div class="char-card"><div class="emoji">🔑</div><div class="name">meok-keystone</div><div class="arch">5 voters · 1 chair</div></div>
+      <div class="char-card"><div class="emoji">⚖️</div><div class="name">meok-governance-engine</div><div class="arch">5 voters</div></div>
+      <div class="char-card"><div class="emoji">📋</div><div class="name">meok-compliance-gateway</div><div class="arch">5 voters</div></div>
+      <div class="char-card"><div class="emoji">🔌</div><div class="name">meok-api-gateway</div><div class="arch">5 voters</div></div>
+      <div class="char-card"><div class="emoji">📦</div><div class="name">meok-distribution</div><div class="arch">5 voters</div></div>
+      <div class="char-card"><div class="emoji">👥</div><div class="name">meok-consumer</div><div class="arch">5 voters</div></div>
+      <div class="char-card"><div class="emoji">🏢</div><div class="name">meok-verticals</div><div class="arch">5 voters</div></div>
+      <div class="char-card"><div class="emoji">🐟</div><div class="name">meok-aquaculture</div><div class="arch">5 voters</div></div>
+      <div class="char-card"><div class="emoji">🔬</div><div class="name">meok-research</div><div class="arch">5 voters</div></div>
+      <div class="char-card"><div class="emoji">👓</div><div class="name">meok-templeman-opticians</div><div class="arch">5 voters</div></div>
+      <div class="char-card"><div class="emoji">🎮</div><div class="name">meok-gaming-hive</div><div class="arch">5 voters</div></div>
+    </div>
+  </main>
+
+  <footer class="sovereignbar">
+    <div class="item"><span class="ok">●</span><span class="label">BFT:</span><span class="val">2-of-3 veto</span></div>
+    <div class="sep">|</div>
+    <div class="item"><span class="ok">●</span><span class="label">Quorum:</span><span class="val">3 voters min</span></div>
+    <div class="sep">|</div>
+    <div class="item"><span class="ok">●</span><span class="label">Pass:</span><span class="val">unanimous yes</span></div>
+    <div class="spacer"></div>
+    <button class="action">📤 Submit proposal</button>
+  </footer>
+</div>
+</body>
+</html>

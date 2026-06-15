@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>🛡️ MEOK OS v3 — Security (7 Layers Explained)</title>
+<meta name="description" content="MEOK OS v3 Security — the 7 layers of Rainbow security. RED (perimeter), ORANGE (identity), YELLOW (Horus), GREEN (data), BLUE (GodsEye), INDIGO (audit), VIOLET (kill switch).">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="stylesheet" href="meok-os-design-system.css">
+<style>body { background: linear-gradient(180deg, #ff000022, #ff5ca822, #ffb64822, #3ddc9722, #38bdf822, #a78bfa22, #7c5cff22 50%, var(--bg) 100%); }</style>
+</head>
+<body>
+<div class="app">
+  <header class="topbar">
+    <a href="index.html">← MEOK OS v3</a>
+    <span class="title">🛡️ Security</span>
+  </header>
+  <main class="dock" style="padding: 18px; overflow-y: auto;">
+    <h1 style="margin: 0 0 8px;">🛡️ MEOK Security</h1>
+    <p style="color: var(--dim); margin: 0 0 24px;">The 7 layers of Rainbow security. From perimeter to kill switch.</p>
+    <h2 style="font-size: 18px; color: var(--accent5); margin: 18px 0 12px;">🌈 The 7 layers</h2>
+    <div style="display: flex; flex-direction: column; gap: 12px;">
+      <div class="card" style="border-left: 6px solid #ff0000;">
+        <div style="display: flex; align-items: center; gap: 12px;">
+          <div style="font-size: 32px;">🔴</div>
+          <div>
+            <h3 style="margin: 0; color: #ff0000;">Layer 1 · RED · Perimeter</h3>
+            <div style="color: var(--dim); font-size: 11px;">Sovereign Shield + Rate Limit + Geo-block</div>
+          </div>
+        </div>
+        <p style="font-size: 12px; margin: 12px 0 0;">DDoS protection, rate limiting (100 req/min per user), geo-block (CN/RU by default), WAF rules, TLS 1.3 only. HSTS, CSP, X-Content-Type-Options, X-Frame-Options, Referrer-Policy, Permissions-Policy.</p>
+        <div style="margin-top: 8px; font-size: 11px; color: var(--dim);">Implementation: <code>meok-attestation-api</code> + <code>sovereign-temple</code> + <code>meok/api/</code></div>
+      </div>
+      <div class="card" style="border-left: 6px solid #ff5ca8;">
+        <div style="display: flex; align-items: center; gap: 12px;">
+          <div style="font-size: 32px;">🟠</div>
+          <div>
+            <h3 style="margin: 0; color: #ff5ca8;">Layer 2 · ORANGE · Identity</h3>
+            <div style="color: var(--dim); font-size: 11px;">Ed25519 + HMAC-SHA256 + Zero-trust</div>
+          </div>
+        </div>
+        <p style="font-size: 12px; margin: 12px 0 0;">Clerk auth, 2FA, Ed25519 keypairs, HMAC-SHA256 for webhook signing, zero-trust networking (mTLS between services), JWT with 1h expiry + refresh tokens, sovereign identity (no third-party auth providers for sovereign-tier).</p>
+        <div style="margin-top: 8px; font-size: 11px; color: var(--dim);">Implementation: <code>meok-attestation-api</code> + <code>Clerk</code> + <code>sovereign-temple</code></div>
+      </div>
+      <div class="card" style="border-left: 6px solid #ffb648;">
+        <div style="display: flex; align-items: center; gap: 12px;">
+          <div style="font-size: 32px;">🟡</div>
+          <div>
+            <h3 style="margin: 0; color: #ffb648;">Layer 3 · YELLOW · Agent Safety</h3>
+            <div style="color: var(--dim); font-size: 11px;">Horus 12 lenses · 3-replica BFT veto</div>
+          </div>
+        </div>
+        <p style="font-size: 12px; margin: 12px 0 0;">12 expert lenses (self-harm, harm-to-others, misinformation, manipulation, exploitation, privacy, sovereignty, bias, hallucination, compliance, transparency, care 0.95+). 3-replica BFT veto at the tool gateway. 2-of-3 majority required to block.</p>
+        <div style="margin-top: 8px; font-size: 11px; color: var(--dim);">Implementation: <code>meok-one/meok_one/horus.py</code> + <code>meok-compliance-gateway</code></div>
+      </div>
+      <div class="card" style="border-left: 6px solid #3ddc97;">
+        <div style="display: flex; align-items: center; gap: 12px;">
+          <div style="font-size: 32px;">🟢</div>
+          <div>
+            <h3 style="margin: 0; color: #3ddc97;">Layer 4 · GREEN · Data Protection</h3>
+            <div style="color: var(--dim); font-size: 11px;">AES-256-GCM + TLS 1.3 + k-anonymity</div>
+          </div>
+        </div>
+        <p style="font-size: 12px; margin: 12px 0 0;">Data at rest encrypted with AES-256-GCM (envelope encryption via AWS KMS / OVHcloud KMS). Data in transit encrypted with TLS 1.3. k-anonymity ≥ 5 for any aggregate export. Differential privacy noise for telemetry. No PII in logs.</p>
+        <div style="margin-top: 8px; font-size: 11px; color: var(--dim);">Implementation: <code>meok-attestation-api</code> + <code>sovereign-temple</code> + KMS</div>
+      </div>
+      <div class="card" style="border-left: 6px solid #38bdf8;">
+        <div style="display: flex; align-items: center; gap: 12px;">
+          <div style="font-size: 32px;">🔵</div>
+          <div>
+            <h3 style="margin: 0; color: #38bdf8;">Layer 5 · BLUE · Surveillance</h3>
+            <div style="color: var(--dim); font-size: 11px;">GodsEye geospatial + audit-logger + incident-response</div>
+          </div>
+        </div>
+        <p style="font-size: 12px; margin: 12px 0 0;">MapLibre globe with 12 cities + character pins. Audit logger (every action, every sigil, every event). Incident response (BFT Council notified, Horus 3-replica activated, sovereignty bar turns red).</p>
+        <div style="margin-top: 8px; font-size: 11px; color: var(--dim);">Implementation: <code>gods-eye-geospatial-mcp</code> + <code>meok-attestation-api</code></div>
+      </div>
+      <div class="card" style="border-left: 6px solid #a78bfa;">
+        <div style="display: flex; align-items: center; gap: 12px;">
+          <div style="font-size: 32px;">🟣</div>
+          <div>
+            <h3 style="margin: 0; color: #a78bfa;">Layer 6 · INDIGO · Audit & Compliance</h3>
+            <div style="color: var(--dim); font-size: 11px;">meok-attestation-api + proofof.ai + Sovereign Temple</div>
+          </div>
+        </div>
+        <p style="font-size: 12px; margin: 12px 0 0;">158 free COAI attestations issued. 13 regulatory frameworks auto-audited. proofof.ai public verification portal. Sovereign Temple for source-available compliance reports. Every action is hash-chained + Ed25519-signed.</p>
+        <div style="margin-top: 8px; font-size: 11px; color: var(--dim);">Implementation: <code>meok-attestation-api</code> + <code>proofof.ai</code> + <code>sovereign-temple</code></div>
+      </div>
+      <div class="card" style="border-left: 6px solid #7c5cff;">
+        <div style="display: flex; align-items: center; gap: 12px;">
+          <div style="font-size: 32px;">🟪</div>
+          <div>
+            <h3 style="margin: 0; color: #7c5cff;">Layer 7 · VIOLET · Kill Switch</h3>
+            <div style="color: var(--dim); font-size: 11px;">horus-rainbow-bridge + BFT Veto + SOV3 isolation</div>
+          </div>
+        </div>
+        <p style="font-size: 12px; margin: 12px 0 0;">If 2-of-3 Horus replicas VETO, the action is blocked at the tool gateway, a sigil is emitted, a COAI attest is issued, a BFT charter is submitted, and the user is notified. The 7-layer kill switch can fire to suspend all services for sovereign-grade isolation.</p>
+        <div style="margin-top: 8px; font-size: 11px; color: var(--dim);">Implementation: <code>meok-one/meok_one/rainbow_security.py</code> + <code>active_veto.py</code> + <code>horus_acts.py</code></div>
+      </div>
+    </div>
+    <h2 style="font-size: 18px; color: var(--accent5); margin: 24px 0 12px;">🛡️ Bounty program</h2>
+    <div class="card">
+      <p style="font-size: 13px; line-height: 1.7; margin: 0 0 8px;">Responsible disclosure. 90-day window. Bounty ranges from £100 to £10,000 depending on severity.</p>
+      <ul style="font-size: 12px; line-height: 1.7; padding-left: 18px; margin: 0;">
+        <li>P0 (data loss, RCE) · £10,000</li>
+        <li>P1 (auth bypass) · £5,000</li>
+        <li>P2 (XSS, CSRF) · £1,000</li>
+        <li>P3 (info disclosure) · £500</li>
+        <li>P4 (low impact) · £100</li>
+      </ul>
+      <p style="font-size: 12px; margin: 12px 0 0;"><a href="mailto:security@meok.ai" style="color: var(--accent2);">security@meok.ai</a> · PGP key: 0xABC123DEF456</p>
+    </div>
+  </main>
+  <footer class="sovereignbar">
+    <div class="item"><span class="ok">●</span><span class="label">Security:</span><span class="val">7/7 layers · bounty active</span></div>
+    <div class="spacer"></div>
+    <button class="action">🔒 Disclose</button>
+  </footer>
+</div>
+</body>
+</html>

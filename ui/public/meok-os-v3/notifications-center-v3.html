@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>🔔 MEOK OS v3 — Notifications Center (Live Activity)</title>
+<meta name="description" content="MEOK OS v3 Notifications Center — live activity, sigil events, BFT votes, character moments, family events, gaming events. Filter, sort, mark read.">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="stylesheet" href="meok-os-design-system.css">
+</head>
+<body>
+<div class="app">
+  <header class="topbar">
+    <a href="index.html">← MEOK OS v3</a>
+    <span class="title">🔔 Notifications Center</span>
+    <div class="actions" style="margin-left: auto; display: flex; gap: 12px; align-items: center; font-size: 12px; color: var(--dim);">
+      <span>247 today</span>
+    </div>
+  </header>
+  <main class="dock" style="padding: 0; overflow: hidden; display: grid; grid-template-columns: 220px 1fr; gap: 0;">
+    <aside style="background: var(--panel2); border-right: 1px solid var(--line); padding: 12px 0; overflow-y: auto;">
+      <div style="padding: 6px 14px; color: var(--dim); font-size: 11px; text-transform: uppercase;">Filters</div>
+      <div style="display: flex; flex-direction: column; gap: 2px;">
+        <div style="padding: 8px 14px; background: rgba(124, 92, 255, 0.15); border-left: 3px solid var(--accent); cursor: pointer; font-size: 12px;"><span>📋</span> All (247)</div>
+        <div style="padding: 8px 14px; cursor: pointer; font-size: 12px; color: var(--dim);"><span>⚡</span> Unread (3)</div>
+        <div style="padding: 8px 14px; cursor: pointer; font-size: 12px; color: var(--dim);"><span>🔔</span> Today (247)</div>
+        <div style="padding: 8px 14px; cursor: pointer; font-size: 12px; color: var(--dim);"><span>📅</span> This week (412)</div>
+        <div style="padding: 8px 14px; cursor: pointer; font-size: 12px; color: var(--dim);"><span>📜</span> Sigil events (89)</div>
+        <div style="padding: 8px 14px; cursor: pointer; font-size: 12px; color: var(--dim);"><span>🗳️</span> BFT (12)</div>
+        <div style="padding: 8px 14px; cursor: pointer; font-size: 12px; color: var(--dim);"><span>📋</span> Attestations (8)</div>
+        <div style="padding: 8px 14px; cursor: pointer; font-size: 12px; color: var(--dim);"><span>🪟</span> Character (45)</div>
+        <div style="padding: 8px 14px; cursor: pointer; font-size: 12px; color: var(--dim);"><span>🌍</span> Dome (22)</div>
+        <div style="padding: 8px 14px; cursor: pointer; font-size: 12px; color: var(--dim);"><span>🎮</span> Gaming (31)</div>
+        <div style="padding: 8px 14px; cursor: pointer; font-size: 12px; color: var(--dim);"><span>👨‍👩‍👧</span> Family (15)</div>
+        <div style="padding: 8px 14px; cursor: pointer; font-size: 12px; color: var(--dim);"><span>🛡️</span> System (25)</div>
+      </div>
+      <div style="padding: 12px 14px 8px; color: var(--dim); font-size: 11px; text-transform: uppercase; border-top: 1px solid var(--line); margin-top: 12px;">Sort</div>
+      <div style="display: flex; flex-direction: column; gap: 2px;">
+        <div style="padding: 6px 14px; cursor: pointer; font-size: 11px;">↓ Newest first</div>
+        <div style="padding: 6px 14px; cursor: pointer; font-size: 11px; color: var(--dim);">↓ Oldest first</div>
+        <div style="padding: 6px 14px; cursor: pointer; font-size: 11px; color: var(--dim);">⚡ Severity (P0→P4)</div>
+      </div>
+    </aside>
+    <section style="padding: 18px; overflow-y: auto;">
+      <h2 style="margin: 0 0 12px;">⚡ Unread (3)</h2>
+      <div style="background: var(--panel); border: 1px solid var(--accent); border-radius: 8px; padding: 12px; margin-bottom: 8px; cursor: pointer;">
+        <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 4px;">
+          <span style="font-size: 18px;">🗳️</span>
+          <strong style="color: var(--accent5);">BFT Council proposal ratified</strong>
+          <span style="color: var(--dim); font-size: 11px; margin-left: auto;">2 min ago</span>
+        </div>
+        <p style="margin: 4px 0 4px 28px; font-size: 13px; color: var(--ink);">"Apply for UKGC sandbox status" — 5/5 unanimous yes. SOV3-signed.</p>
+        <p style="margin: 0 0 0 28px; font-size: 11px; color: var(--dim);">Sigil: 7a1f0b4c · Chair: meok-gaming-compliance-mcp</p>
+      </div>
+      <div style="background: var(--panel); border: 1px solid var(--accent); border-radius: 8px; padding: 12px; margin-bottom: 8px; cursor: pointer;">
+        <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 4px;">
+          <span style="font-size: 18px;">🪟</span>
+          <strong style="color: var(--accent5);">The Scholar reached Oracle stage</strong>
+          <span style="color: var(--dim); font-size: 11px; margin-left: auto;">8 min ago</span>
+        </div>
+        <p style="margin: 4px 0 4px 28px; font-size: 13px; color: var(--ink);">500 conversations. +1000 XP. Hall of Fame threshold. Top 0.1% globally.</p>
+      </div>
+      <div style="background: var(--panel); border: 1px solid var(--accent); border-radius: 8px; padding: 12px; margin-bottom: 8px; cursor: pointer;">
+        <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 4px;">
+          <span style="font-size: 18px;">🛡️</span>
+          <strong style="color: var(--accent5);">Horus caught a 3/3 VETO</strong>
+          <span style="color: var(--dim); font-size: 11px; margin-left: auto;">15 min ago</span>
+        </div>
+        <p style="margin: 4px 0 4px 28px; font-size: 13px; color: var(--ink);">Auto-betting attempt blocked at the gateway. Action suspended. Care 0.95. SOV3-isolated.</p>
+      </div>
+      <h2 style="margin: 24px 0 12px;">📜 Today (244)</h2>
+      <div style="background: var(--panel2); padding: 10px 12px; border-radius: 6px; margin-bottom: 4px; font-size: 12px; display: flex; align-items: center; gap: 8px;">
+        <input type="checkbox">
+        <span style="color: var(--dim);">14:32</span> · <span>📜</span> <strong>5th COAI attestation issued</strong> — 158 total, all MEOK Gaming × Gambling
+      </div>
+      <div style="background: var(--panel2); padding: 10px 12px; border-radius: 6px; margin-bottom: 4px; font-size: 12px; display: flex; align-items: center; gap: 8px;">
+        <input type="checkbox">
+        <span style="color: var(--dim);">14:28</span> · <span>🗳️</span> <strong>BFT Council charter submitted</strong> — "Adopt PHH as the MEOK hand-history standard"
+      </div>
+      <div style="background: var(--panel2); padding: 10px 12px; border-radius: 6px; margin-bottom: 4px; font-size: 12px; display: flex; align-items: center; gap: 8px;">
+        <input type="checkbox" checked>
+        <span style="color: var(--dim);">14:15</span> · <span>🎮</span> <strong style="text-decoration: line-through; opacity: 0.6;">Poker HUD parsed 100th hand</strong> — leak detector found 3 leaks
+      </div>
+      <div style="background: var(--panel2); padding: 10px 12px; border-radius: 6px; margin-bottom: 4px; font-size: 12px; display: flex; align-items: center; gap: 8px;">
+        <input type="checkbox">
+        <span style="color: var(--dim);">14:02</span> · <span>🌍</span> <strong>Dome activity spike</strong> — 12 characters active in London, 8 in NYC
+      </div>
+      <div style="background: var(--panel2); padding: 10px 12px; border-radius: 6px; margin-bottom: 4px; font-size: 12px; display: flex; align-items: center; gap: 8px;">
+        <input type="checkbox">
+        <span style="color: var(--dim);">13:55</span> · <span>👨‍👩‍👧</span> <strong>Family event added</strong> — Saturday shopping, 4/5 yes
+      </div>
+      <div style="background: var(--panel2); padding: 10px 12px; border-radius: 6px; margin-bottom: 4px; font-size: 12px; display: flex; align-items: center; gap: 8px;">
+        <input type="checkbox">
+        <span style="color: var(--dim);">13:40</span> · <span>📜</span> <strong>SOV3 task completed</strong> — 59 total, 0 in progress
+      </div>
+      <div style="background: var(--panel2); padding: 10px 12px; border-radius: 6px; margin-bottom: 4px; font-size: 12px; display: flex; align-items: center; gap: 8px;">
+        <input type="checkbox">
+        <span style="color: var(--dim);">13:22</span> · <span>🛡️</span> <strong>Sovereign export</strong> — JSON, 2.4MB, all chat history + memory
+      </div>
+      <div style="background: var(--panel2); padding: 10px 12px; border-radius: 6px; margin-bottom: 4px; font-size: 12px; display: flex; align-items: center; gap: 8px;">
+        <input type="checkbox">
+        <span style="color: var(--dim);">13:15</span> · <span>🏆</span> <strong>Achievement unlocked</strong> — First Light (birth your first companion) +100 XP
+      </div>
+      <div style="background: var(--panel2); padding: 10px 12px; border-radius: 6px; margin-bottom: 4px; font-size: 12px; display: flex; align-items: center; gap: 8px;">
+        <input type="checkbox">
+        <span style="color: var(--dim);">12:58</span> · <span>🌌</span> <strong>Sovereign agent registered</strong> — meok-poker-hud-mcp on SOV3
+      </div>
+    </section>
+  </main>
+  <footer class="sovereignbar">
+    <div class="item"><span class="ok">●</span><span class="label">Live:</span><span class="val">247 today</span></div>
+    <div class="spacer"></div>
+    <button class="action">✓ Mark all read</button>
+  </footer>
+</div>
+</body>
+</html>

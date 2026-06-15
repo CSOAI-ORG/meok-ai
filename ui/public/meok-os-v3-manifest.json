@@ -1,0 +1,21 @@
+{
+  "name": "MEOK OS v3 — Sovereign AI",
+  "short_name": "MEOK OS",
+  "description": "The world's first sovereign AI stack. 18 hives at 100/100. 220+ MCP servers. 158 attestations. 11 BFT councils. 13 regulatory frameworks. MIT. Forever.",
+  "start_url": "/meok-os/",
+  "scope": "/meok-os/",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#0a0a12",
+  "theme_color": "#7c5cff",
+  "icons": [
+    { "src": "/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/icon-512.png", "sizes": "512x512", "type": "image/png" }
+  ],
+  "categories": ["productivity", "developer", "education"],
+  "shortcuts": [
+    { "name": "Dome", "url": "/meok-os-v3/dome-v3-ogw.html" },
+    { "name": "Council", "url": "/meok-os-v3/council-app-v3.html" },
+    { "name": "By Numbers", "url": "/meok-os-v3/by-numbers-v3.html" }
+  ]
+}
