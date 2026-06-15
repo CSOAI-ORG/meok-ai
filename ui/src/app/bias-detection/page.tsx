@@ -69,9 +69,28 @@ const COMPARISON = [
   { tool: "MEOK Bias Detection", price: "£199/mo", limit: "EU-first · Article 10 + ISO 42001 + NIST · signed certs" },
 ];
 
+const FAQ = [
+  { q: "What does EU AI Act Article 10 actually require?", a: "Article 10 mandates data governance for high-risk AI: training, validation and testing datasets must be relevant, sufficiently representative, free of errors as far as possible, and complete. It also requires examination for possible biases that could affect health, safety or fundamental rights. MEOK ships signed bias-test certificates attesting to representativeness, freedom-from-errors, and completeness for every model deployment." },
+  { q: "How much does MEOK Bias Detection cost?", a: "£199/mo for the standalone Starter tier, which includes 10,000 bias tests per month and HMAC-signed compliance certificates. It starts with a 7-day free trial, no credit card required. For unlimited testing there is an Enterprise tier at £1,499/mo." },
+  { q: "Do my protected-attribute labels leave my environment?", a: "No. You can run the optional self-hosted MCP so protected attributes never leave your VPC. Only aggregate fairness scores are sent to the MEOK API for cert signing — the underlying labels stay with you, keeping the flow GDPR-safe." },
+  { q: "Can auditors independently verify the certificates?", a: "Yes. Every bias-test run produces an HMAC-signed certificate with a public verify URL your DPO or external auditor can curl directly. The certificates are tamper-evident and require no dashboard login, and the same evidence pack crosswalks to ISO/IEC 42001 and NIST AI RMF MEASURE 2.10/2.11." },
+];
+
+const FAQ_JSONLD = { "@context": "https://schema.org", "@type": "FAQPage", mainEntity: FAQ.map((f) => ({ "@type": "Question", name: f.q, acceptedAnswer: { "@type": "Answer", text: f.a } })) };
+
+const BREADCRUMB_JSONLD = { "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElement: [
+  { "@type": "ListItem", position: 1, name: "Home", item: "https://meok.ai/" },
+  { "@type": "ListItem", position: 2, name: "AI Bias Detection", item: "https://meok.ai/bias-detection" },
+] };
+
+const SERVICE_JSONLD = { "@context": "https://schema.org", "@type": "Service", name: "AI Bias Detection", serviceType: "EU AI Act Article 10 bias monitoring", provider: { "@type": "Organization", name: "MEOK AI", url: "https://meok.ai" }, url: "https://meok.ai/bias-detection", areaServed: "GB", offers: { "@type": "Offer", price: "199", priceCurrency: "GBP", url: "https://meok.ai/bias-detection" } };
+
 export default function BiasDetectionPage() {
   return (
     <main style={{ minHeight: "100vh", background: BG, color: NAVY }}>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(FAQ_JSONLD) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(BREADCRUMB_JSONLD) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(SERVICE_JSONLD) }} />
       <div style={{ maxWidth: 880, margin: "0 auto", padding: "5rem 1.5rem" }}>
         <div
           style={{
@@ -205,6 +224,26 @@ export default function BiasDetectionPage() {
                 {c.price}
               </div>
               <div style={{ fontSize: 12, color: `${NAVY}99`, lineHeight: 1.5 }}>{c.limit}</div>
+            </div>
+          ))}
+        </div>
+
+        <h2 style={{ fontSize: "1.8rem", fontWeight: 900, marginBottom: 24, letterSpacing: "-0.01em" }}>
+          Frequently asked
+        </h2>
+        <div style={{ display: "grid", gap: 16, marginBottom: 64 }}>
+          {FAQ.map((f) => (
+            <div
+              key={f.q}
+              style={{
+                padding: 22,
+                background: "white",
+                borderRadius: 14,
+                border: `1px solid ${NAVY}1a`,
+              }}
+            >
+              <h3 style={{ fontSize: "1.05rem", fontWeight: 900, marginBottom: 6, color: GOLD }}>{f.q}</h3>
+              <p style={{ color: `${NAVY}99`, fontSize: 14, lineHeight: 1.55 }}>{f.a}</p>
             </div>
           ))}
         </div>

@@ -25,9 +25,29 @@ const ARTICLES = [
   { num: 72, title: "Post-Market Monitoring", desc: "Documented PMM plan + continuous data collection + feedback loop into Article 9 RMS + Article 73 incident reporting.", deadline: "Annex III now Dec 2027", href: "/eu-ai-act/article-72" },
 ];
 
+const FAQ = [
+  { q: "Which EU AI Act article is already in force with no grace period?", a: "Article 4 (AI Literacy) has been binding since 2 February 2025 with no grace period. It requires both providers AND deployers to run training programmes for staff who use, oversee, or are affected by AI." },
+  { q: "What is the next hard deadline under the EU AI Act?", a: "Article 50 (Transparency + Watermarking) is a hard cliff on 2 August 2026: machine-readable AI-content marking and visible deepfake disclosure, implemented via C2PA Content Credentials plus a SynthID-class watermark." },
+  { q: "When do the Annex III high-risk obligations apply?", a: "The Annex III high-risk article obligations — including Article 9 RMS, Article 10 data governance, Article 13/14 transparency and oversight, Article 15 robustness, Article 26 deployer obligations + FRIA, Article 43 conformity assessment, and Article 72 post-market monitoring — now apply from December 2027 following the delay." },
+  { q: "What does the readiness scorecard cover?", a: "The free 10-question scorecard takes about 90 seconds (no credit card) and covers all the high-risk articles plus Article 4 literacy, Article 43 conformity assessment, and Article 72 post-market monitoring." },
+];
+
+const FAQ_JSONLD = { "@context": "https://schema.org", "@type": "FAQPage", mainEntity: FAQ.map((f) => ({ "@type": "Question", name: f.q, acceptedAnswer: { "@type": "Answer", text: f.a } })) };
+
+const BREADCRUMB_JSONLD = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: "https://meok.ai/" },
+    { "@type": "ListItem", position: 2, name: "EU AI Act — article-by-article guides", item: "https://meok.ai/eu-ai-act" },
+  ],
+};
+
 export default function EUAIActIndexPage() {
   return (
     <main style={{ minHeight: "100vh", background: BG, color: NAVY }}>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(FAQ_JSONLD) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(BREADCRUMB_JSONLD) }} />
       <div style={{ maxWidth: 940, margin: "0 auto", padding: "5rem 1.5rem" }}>
         <Link href="/" style={{ fontSize: 13, color: `${NAVY}66`, textDecoration: "none" }}>← meok.ai</Link>
 
@@ -58,6 +78,16 @@ export default function EUAIActIndexPage() {
               <p style={{ fontSize: 14, color: `${NAVY}99`, lineHeight: 1.55 }}>{a.desc}</p>
               <div style={{ fontSize: 13, color: GOLD, fontWeight: 700, marginTop: 8 }}>Read implementation guide →</div>
             </Link>
+          ))}
+        </div>
+
+        <h2 style={{ fontSize: "1.5rem", fontWeight: 900, marginBottom: 16 }}>Frequently asked</h2>
+        <div style={{ display: "grid", gap: 12, marginBottom: 56 }}>
+          {FAQ.map((f) => (
+            <details key={f.q} style={{ background: "white", borderRadius: 14, padding: "16px 20px", border: `1px solid ${NAVY}1a` }}>
+              <summary style={{ fontWeight: 700, cursor: "pointer", fontSize: 15, color: NAVY }}>{f.q}</summary>
+              <p style={{ marginTop: 10, color: `${NAVY}99`, fontSize: 14, lineHeight: 1.6 }}>{f.a}</p>
+            </details>
           ))}
         </div>
 

@@ -21,9 +21,45 @@ const COMMITMENTS = [
   { icon: '📋', title: 'Right to explanation', desc: 'Users can request why any response was generated. Audit logs available for Guardian decisions. Memory vault contents visible and exportable at any time.' },
 ]
 
+const FAQ = [
+  {
+    q: 'Is MEOK AI compliant with the EU AI Act?',
+    a: "Yes. MEOK's core companion is classified as Limited Risk under Article 52 (conversational AI requiring user disclosure). The Guardian child safety features are classified as High Risk under Annex III and are currently in DPIA review — they will not be activated until all compliance requirements are met.",
+  },
+  {
+    q: 'What is a High Risk AI system under the EU AI Act?',
+    a: 'High Risk systems are those listed in Annex III that affect safety, education, employment, or access to essential services. MEOK\'s Guardian child-monitoring features are being assessed under this classification, and no High Risk feature will launch without completing DPIA and conformity assessment.',
+  },
+  {
+    q: 'Does MEOK process biometric data?',
+    a: 'No. MEOK never processes biometric data — no facial recognition, no voice biometrics, and no emotional state inference from physiological data. The Guardian Message Scanner operates without any biometric processing.',
+  },
+  {
+    q: 'How does MEOK guarantee human oversight?',
+    a: 'The Byzantine Council multi-agent consensus means no single AI makes unilateral decisions, and Guardian alerts route to human review before family notification. Users can also request why any response was generated, with audit logs available for Guardian decisions.',
+  },
+]
+
+const FAQ_JSONLD = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: FAQ.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })),
+}
+
+const BREADCRUMB_JSONLD = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://meok.ai/' },
+    { '@type': 'ListItem', position: 2, name: 'EU AI Act Compliance', item: 'https://meok.ai/ai-act' },
+  ],
+}
+
 export default function AIActPage() {
   return (
     <main style={{ minHeight: '100vh', background: '#0a0a0a', color: '#f5f5f5' }}>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(FAQ_JSONLD) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(BREADCRUMB_JSONLD) }} />
       <div style={{ maxWidth: '800px', margin: '0 auto', padding: '4rem 1.5rem' }}>
         {/* Hero */}
         <div style={{ marginBottom: '3rem' }}>
@@ -98,6 +134,19 @@ export default function AIActPage() {
           <p style={{ color: '#aaa', fontSize: '0.875rem', lineHeight: 1.6 }}>
             MEOK&apos;s Guardian child monitoring features require a Data Protection Impact Assessment under UK GDPR Article 35 and EU AI Act conformity assessment under Annex VI. These features are <strong style={{ color: '#f5f5f5' }}>not currently active</strong> for any user. They will be activated only after DPIA completion and ICO notification. Target: Q3 2026.
           </p>
+        </section>
+
+        {/* FAQ */}
+        <section style={{ marginBottom: '3rem' }}>
+          <h2 style={{ fontSize: '1.25rem', fontWeight: 700, marginBottom: '1.5rem', color: '#d4af37' }}>Frequently asked</h2>
+          <div style={{ display: 'grid', gap: '1rem' }}>
+            {FAQ.map(f => (
+              <div key={f.q} style={{ padding: '1.5rem', background: '#111', border: '1px solid #222', borderRadius: '0.75rem' }}>
+                <h3 style={{ fontSize: '1rem', fontWeight: 700, marginBottom: '0.5rem', color: '#f5f5f5' }}>{f.q}</h3>
+                <p style={{ color: '#aaa', fontSize: '0.875rem', lineHeight: 1.6 }}>{f.a}</p>
+              </div>
+            ))}
+          </div>
         </section>
 
         {/* CTA */}

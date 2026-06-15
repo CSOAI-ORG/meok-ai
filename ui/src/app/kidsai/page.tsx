@@ -35,9 +35,28 @@ const MCPS = [
   "eu-ai-act-compliance-mcp", "agent-rate-limiter-mcp", "agent-prompt-injection-firewall-mcp",
 ];
 
+const FAQ = [
+  { q: "What is the strictest rule for AI products aimed at children?", a: "EU AI Act Article 5(1)(b) is a hard prohibition — not a high-risk classification — on AI that exploits the vulnerabilities of children. It is an outright ban, so kids' AI carries the highest compliance burden of any sector. On top of it sit COPPA, FERPA, the UK AADC, and GDPR Article 8." },
+  { q: "What does COPPA require for under-13 products in the US?", a: "COPPA requires verifiable parental consent, data minimisation, and retention limits for products directed at children under 13. It is enforced by the FTC, with penalties of up to $50,000 per violation." },
+  { q: "How do the UK AADC and GDPR Article 8 apply to children's services?", a: "The UK Age-Appropriate Design Code applies the ICO's 15 standards to any UK service likely to be accessed by children, with a mandatory DPIA and the best interests of the child as the governing principle. GDPR Article 8 requires parental consent for information society services, with the age threshold set between 13 and 16 by each member state." },
+  { q: "What is the Maternal Covenant and why does it override the frameworks?", a: "The Maternal Covenant is MEOK IP — Charter Article 3: 'An agent shall never replace a parent's judgement on a child's welfare.' It is a Charter obligation that overrides any individual regulatory framework, which is why the kids-AI bundle is the multi-tenant, council-governed Enterprise tier at £1,499/mo." },
+];
+
+const FAQ_JSONLD = { "@context": "https://schema.org", "@type": "FAQPage", mainEntity: FAQ.map((f) => ({ "@type": "Question", name: f.q, acceptedAnswer: { "@type": "Answer", text: f.a } })) };
+
+const BREADCRUMB_JSONLD = { "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElement: [
+  { "@type": "ListItem", position: 1, name: "Home", item: "https://meok.ai/" },
+  { "@type": "ListItem", position: 2, name: "Children's AI Compliance", item: "https://meok.ai/kidsai" },
+] };
+
+const SERVICE_JSONLD = { "@context": "https://schema.org", "@type": "Service", name: "MEOK Children's AI Compliance", serviceType: "Kids' AI compliance evidence pack", provider: { "@type": "Organization", name: "MEOK AI", url: "https://meok.ai" }, url: "https://meok.ai/kidsai", areaServed: "GB", offers: { "@type": "Offer", price: "1499", priceCurrency: "GBP", url: "https://meok.ai/kidsai" } };
+
 export default function KidsAIPage() {
   return (
     <main style={{ background: BG, color: NAVY, minHeight: "100vh", padding: "48px 24px 96px", fontFamily: "system-ui, -apple-system, sans-serif" }}>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(FAQ_JSONLD) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(BREADCRUMB_JSONLD) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(SERVICE_JSONLD) }} />
       <div style={{ maxWidth: 960, margin: "0 auto" }}>
         <header style={{ marginBottom: 40 }}>
           <p style={{ color: GOLD, fontWeight: 900, fontSize: 13, letterSpacing: "0.1em", textTransform: "uppercase", margin: 0 }}>MEOK · Children's AI</p>
@@ -84,6 +103,18 @@ export default function KidsAIPage() {
              style={{ display: "inline-block", background: GOLD, color: NAVY, padding: "14px 24px", borderRadius: 10, fontWeight: 900, textDecoration: "none" }}>
             Start Enterprise — £1,499/mo →
           </a>
+        </section>
+
+        <section style={{ marginTop: 48 }}>
+          <h2 style={{ fontSize: 26, fontWeight: 900, marginBottom: 16 }}>Frequently asked</h2>
+          <div style={{ display: "grid", gap: 12 }}>
+            {FAQ.map((f) => (
+              <details key={f.q} style={{ background: "white", borderRadius: 12, padding: "16px 20px", border: `1px solid ${NAVY}1a` }}>
+                <summary style={{ fontWeight: 900, cursor: "pointer", fontSize: 15, color: NAVY }}>{f.q}</summary>
+                <p style={{ marginTop: 10, color: `${NAVY}cc`, fontSize: 14, lineHeight: 1.6 }}>{f.a}</p>
+              </details>
+            ))}
+          </div>
         </section>
       </div>
     </main>

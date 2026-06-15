@@ -36,9 +36,28 @@ const MCPS = [
   "agent-handoff-certified-mcp", "agent-policy-enforcement-mcp",
 ];
 
+const FAQ = [
+  { q: "Why is fintech AI the most-regulated AI in the EU?", a: "Financial services AI sits under five overlapping frameworks at once: DORA for ICT risk, the EU AI Act (credit scoring and insurance pricing are Annex III high-risk), AML/KYC under AMLD6 and FATF, MiFID II with RTS 6 for algorithmic trading, and Basel III model risk management. MEOK ships all five as one substrate with a single signed evidence pack." },
+  { q: "What does DORA require of financial entities?", a: "DORA (Regulation 2022/2554, in force since 17 January 2025) requires ICT risk management, incident reporting, threat-led penetration testing, and an ICT third-party register. Under DORA Article 5 most financial entities are designated essential or important, which triggers the full framework — that is why the Enterprise tier is the most common fit for fintech." },
+  { q: "How does the EU AI Act apply to credit scoring?", a: "Credit scoring and insurance pricing are classified as Annex III high-risk under the EU AI Act. That triggers the full 9-Article stack — risk management, data governance, technical documentation, record-keeping, transparency, human oversight, and more — all of which MEOK delivers HMAC-signed. AML bias-detection requirements are mapped to the same evidence." },
+  { q: "How much does the fintech bundle cost?", a: "The Enterprise tier is £1,499/mo and is the most common choice for fintech because DORA Article 5 designates most financial entities as essential or important, triggering the full framework. Onboarding takes 14 days, and the bundle includes 12 MCP servers spanning DORA, AML, MiFID II, Basel III, MiCA, and the EU AI Act." },
+];
+
+const FAQ_JSONLD = { "@context": "https://schema.org", "@type": "FAQPage", mainEntity: FAQ.map((f) => ({ "@type": "Question", name: f.q, acceptedAnswer: { "@type": "Answer", text: f.a } })) };
+
+const BREADCRUMB_JSONLD = { "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElement: [
+  { "@type": "ListItem", position: 1, name: "Home", item: "https://meok.ai/" },
+  { "@type": "ListItem", position: 2, name: "Fintech AI", item: "https://meok.ai/fintech" },
+] };
+
+const SERVICE_JSONLD = { "@context": "https://schema.org", "@type": "Service", name: "MEOK for Fintech AI", serviceType: "DORA + EU AI Act + AML + MiFID II + Basel III compliance", provider: { "@type": "Organization", name: "MEOK AI", url: "https://meok.ai" }, url: "https://meok.ai/fintech", areaServed: "GB", offers: { "@type": "Offer", price: "1499", priceCurrency: "GBP", url: "https://meok.ai/fintech" } };
+
 export default function FintechPage() {
   return (
     <main style={{ background: BG, color: NAVY, minHeight: "100vh", padding: "48px 24px 96px", fontFamily: "system-ui, -apple-system, sans-serif" }}>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(FAQ_JSONLD) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(BREADCRUMB_JSONLD) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(SERVICE_JSONLD) }} />
       <div style={{ maxWidth: 960, margin: "0 auto" }}>
         <header style={{ marginBottom: 40 }}>
           <p style={{ color: GOLD, fontWeight: 900, fontSize: 13, letterSpacing: "0.1em", textTransform: "uppercase", margin: 0 }}>MEOK · Fintech AI</p>
@@ -85,6 +104,18 @@ export default function FintechPage() {
              style={{ display: "inline-block", background: GOLD, color: NAVY, padding: "14px 24px", borderRadius: 10, fontWeight: 900, textDecoration: "none" }}>
             Start Enterprise — £1,499/mo →
           </a>
+        </section>
+
+        <section style={{ marginTop: 48 }}>
+          <h2 style={{ fontSize: 26, fontWeight: 900, marginBottom: 16 }}>Frequently asked</h2>
+          <div style={{ display: "grid", gap: 12 }}>
+            {FAQ.map((f) => (
+              <div key={f.q} style={{ background: "white", borderRadius: 12, padding: 20, border: `1px solid ${NAVY}1a` }}>
+                <h3 style={{ fontSize: 16, fontWeight: 900, color: GOLD, margin: "0 0 6px" }}>{f.q}</h3>
+                <p style={{ fontSize: 13, color: `${NAVY}cc`, lineHeight: 1.5, margin: 0 }}>{f.a}</p>
+              </div>
+            ))}
+          </div>
         </section>
       </div>
     </main>
