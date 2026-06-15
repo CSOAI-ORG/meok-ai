@@ -184,8 +184,43 @@ export default async function MCPDetailPage({ params }: { params: Promise<{ slug
   const proInfo = PRO_URLS[slug];
   const isArchivedBundleUpsell = ARCHIVED_BUNDLE_UPSELL[slug] || null;
 
+  const canonical = `https://meok.ai/mcp/${slug}`;
+  const appJsonLd: Record<string, unknown> = {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    name: mcp.title,
+    description: mcp.tagline,
+    url: canonical,
+    applicationCategory: "DeveloperApplication",
+    operatingSystem: "Cross-platform",
+    softwareRequirements: "Python 3.10+",
+    license: "https://opensource.org/licenses/MIT",
+    publisher: { "@type": "Organization", name: "MEOK AI Labs" },
+  };
+  // Only advertise an offer when there's a real, sellable price (paid + not archived).
+  if (buyUrl && !isArchivedBundleUpsell) {
+    appJsonLd.offers = {
+      "@type": "Offer",
+      price: "29",
+      priceCurrency: "GBP",
+      url: canonical,
+      availability: "https://schema.org/InStock",
+    };
+  }
+  const breadcrumbJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: "https://meok.ai" },
+      { "@type": "ListItem", position: 2, name: "MCP", item: "https://meok.ai/labs/mcp" },
+      { "@type": "ListItem", position: 3, name: mcp.title, item: canonical },
+    ],
+  };
+
   return (
     <main style={{ background: BG, color: NAVY, minHeight: "100vh", padding: "3rem 1.5rem" }}>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(appJsonLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }} />
       <div style={{ maxWidth: 880, margin: "0 auto" }}>
         <nav style={{ marginBottom: "1.5rem", fontSize: ".88rem", opacity: .65 }}>
           <Link href="/labs/mcp" style={{ color: NAVY }}>← All MCP servers</Link>

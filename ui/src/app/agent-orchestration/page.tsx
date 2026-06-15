@@ -22,6 +22,22 @@ interface Task {
   createdAt: string;
 }
 
+const FAQ = [
+  { q: "What agent types can I create?", a: "The Agent Command Center supports 8 agent types: Researcher (web search, analysis), Builder (code generation, automation), Analyst (data analysis, reporting), Writer (content generation, editing), Guardian (security, validation), Architect (system design, planning), Synthesizer (multi-source synthesis), and Validator (code review, testing)." },
+  { q: "How are tasks assigned to agents?", a: "Select an agent from the dropdown in the Assign Task panel, type a task description, and click Execute. The task is dispatched to the agent via the /api/agents endpoint, queued, and its status (pending, running, completed, failed) is tracked live in the Task Queue panel." },
+  { q: "Does this integrate with MCP?", a: "Yes. The Agent Command Center is built on MCP (Model Context Protocol) integration and sovereign AI orchestration, so agents can call tools and coordinate across the MEOK stack." },
+  { q: "Can I monitor agent activity in real time?", a: "Yes. The dashboard shows live stats for total agents, active agents, thinking agents and total tasks, plus a Task Queue and a timestamped Activity Log that updates as agents are created and tasks are executed." },
+];
+
+const FAQ_JSONLD = { "@context": "https://schema.org", "@type": "FAQPage", mainEntity: FAQ.map((f) => ({ "@type": "Question", name: f.q, acceptedAnswer: { "@type": "Answer", text: f.a } })) };
+
+const BREADCRUMB_JSONLD = { "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElement: [
+  { "@type": "ListItem", position: 1, name: "Home", item: "https://meok.ai/" },
+  { "@type": "ListItem", position: 2, name: "Agent Orchestration", item: "https://meok.ai/agent-orchestration" },
+] };
+
+const APP_JSONLD = { "@context": "https://schema.org", "@type": "SoftwareApplication", name: "MEOK Agent Command Center", applicationCategory: "DeveloperApplication", operatingSystem: "Web", description: "Sovereign AI orchestration dashboard with 8 agent types and MCP integration for creating agents, assigning tasks and monitoring activity in real time.", url: "https://meok.ai/agent-orchestration" };
+
 export default function AgentOrchestration() {
   const [agents, setAgents] = useState<Agent[]>([]);
   const [tasks, setTasks] = useState<Task[]>([]);
@@ -136,6 +152,9 @@ export default function AgentOrchestration() {
 
   return (
     <div className="min-h-screen bg-black text-white">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(FAQ_JSONLD) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(BREADCRUMB_JSONLD) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(APP_JSONLD) }} />
       <div className="max-w-7xl mx-auto px-4 py-8">
         {/* Header */}
         <div className="mb-8">
@@ -354,6 +373,19 @@ export default function AgentOrchestration() {
                 </button>
               </div>
             </div>
+          </div>
+        </div>
+
+        {/* FAQ */}
+        <div className="mt-12">
+          <h2 className="text-2xl font-bold mb-4">Frequently asked</h2>
+          <div className="grid gap-3">
+            {FAQ.map((f) => (
+              <details key={f.q} className="bg-gray-900 rounded-lg p-4 border border-gray-800">
+                <summary className="font-semibold cursor-pointer">{f.q}</summary>
+                <p className="mt-2 text-sm text-gray-400 leading-relaxed">{f.a}</p>
+              </details>
+            ))}
           </div>
         </div>
       </div>

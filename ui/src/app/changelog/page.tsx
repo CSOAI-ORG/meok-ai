@@ -101,9 +101,40 @@ const TYPE_CONFIG: Record<string, { color: string; bg: string; label: string }> 
   removed: { color: '#f87171', bg: 'rgba(248,113,113,0.1)', label: 'Removed' },
 }
 
+const BREADCRUMB_JSONLD = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://meok.ai/' },
+    { '@type': 'ListItem', position: 2, name: 'Changelog', item: 'https://meok.ai/changelog' },
+  ],
+}
+
+const WEBPAGE_JSONLD = {
+  '@context': 'https://schema.org',
+  '@type': 'WebPage',
+  name: 'Changelog | MEOK AI LABS',
+  description: 'What we shipped, when we shipped it, and why it matters. The MEOK build log — honest, public, and updated as we go.',
+  url: 'https://meok.ai/changelog',
+}
+
+const RELEASES_JSONLD = {
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  name: 'MEOK AI LABS releases',
+  itemListElement: ENTRIES.map((e, i) => ({
+    '@type': 'ListItem',
+    position: i + 1,
+    name: `${e.version} — ${e.label}`,
+  })),
+}
+
 export default function ChangelogPage() {
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(BREADCRUMB_JSONLD) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(WEBPAGE_JSONLD) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(RELEASES_JSONLD) }} />
       <main style={{ minHeight: '100vh', background: '#0d0c18', color: '#f5f0e8' }}>
         {/* Hero */}
         <section style={{

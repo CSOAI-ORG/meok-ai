@@ -125,8 +125,19 @@ function CheckoutContent() {
   );
 }
 
+const BREADCRUMB_JSONLD = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: "https://meok.ai/" },
+    { "@type": "ListItem", position: 2, name: "Checkout", item: "https://meok.ai/checkout" },
+  ],
+};
+
 export default function CheckoutPage() {
   return (
+    <>
+    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(BREADCRUMB_JSONLD) }} />
     <Suspense fallback={
       <div className="min-h-screen flex items-center justify-center bg-[#0d0c18]">
         <Loader2 className="w-8 h-8 text-[#c9a84c] animate-spin" />
@@ -134,5 +145,6 @@ export default function CheckoutPage() {
     }>
       <CheckoutContent />
     </Suspense>
+    </>
   );
 }
