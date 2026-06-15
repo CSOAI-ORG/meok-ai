@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>🪝 MEOK OS v3 — Webhooks (Sovereign Event Subscriptions, Q1 2027)</title>
+<meta name="description" content="MEOK OS v3 Webhooks — sovereign event subscriptions. 12 event types. HMAC-SHA256 signed. Q1 2027. Sovereign. MIT.">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="stylesheet" href="meok-os-design-system.css">
+<style>body { background: radial-gradient(1200px 800px at 50% 0%, #2a0a1a, var(--bg) 60%); }</style>
+</head>
+<body>
+<div class="app">
+  <header class="topbar">
+    <a href="index.html">← MEOK OS v3</a>
+    <span class="title">🪝 Webhooks</span>
+  </header>
+  <main class="dock" style="padding: 18px; overflow-y: auto; max-width: 1000px; margin: 0 auto;">
+    <h1 style="margin: 0 0 8px; text-align: center; font-size: 36px;">🪝 Webhooks</h1>
+    <p style="color: var(--dim); margin: 0 0 32px; text-align: center; font-size: 16px;">Sovereign event subscriptions. 12 event types. HMAC-SHA256 signed. Q1 2027. Sovereign. MIT.</p>
+
+    <h2 style="font-size: 18px; color: var(--accent5); margin: 18px 0 12px;">🪝 The 12 webhook event types</h2>
+    <div class="grid cols-3">
+      <div class="card">
+        <h3 style="margin: 0 0 4px; color: var(--accent5);">🪟 character.birth</h3>
+        <p style="font-size: 11px; color: var(--dim); margin: 0;">A new character was born</p>
+      </div>
+      <div class="card">
+        <h3 style="margin: 0 0 4px; color: var(--accent5);">🪟 character.stage</h3>
+        <p style="font-size: 11px; color: var(--dim); margin: 0;">A character reached a new stage (Curious/Adept/Sage/Oracle/Sovereign)</p>
+      </div>
+      <div class="card">
+        <h3 style="margin: 0 0 4px; color: var(--accent5);">🪟 character.delete</h3>
+        <p style="font-size: 11px; color: var(--dim); margin: 0;">A character was deleted (GDPR Art 17)</p>
+      </div>
+      <div class="card">
+        <h3 style="margin: 0 0 4px; color: var(--accent5);">🗳️ bft.proposal.submitted</h3>
+        <p style="font-size: 11px; color: var(--dim); margin: 0;">A new BFT proposal was submitted</p>
+      </div>
+      <div class="card">
+        <h3 style="margin: 0 0 4px; color: var(--accent5);">🗳️ bft.vote.cast</h3>
+        <p style="font-size: 11px; color: var(--dim); margin: 0;">A BFT vote was cast (any council, any voter)</p>
+      </div>
+      <div class="card">
+        <h3 style="margin: 0 0 4px; color: var(--accent5);">🗳️ bft.proposal.ratified</h3>
+        <p style="font-size: 11px; color: var(--dim); margin: 0;">A BFT proposal was ratified (5/5 yes)</p>
+      </div>
+      <div class="card">
+        <h3 style="margin: 0 0 4px; color: var(--accent5);">🗳️ bft.proposal.vetoed</h3>
+        <p style="font-size: 11px; color: var(--dim); margin: 0;">A BFT proposal was vetoed (2/3 BFT)</p>
+      </div>
+      <div class="card">
+        <h3 style="margin: 0 0 4px; color: var(--accent5);">📜 attestation.issued</h3>
+        <p style="font-size: 11px; color: var(--dim); margin: 0;">A COAI attestation was issued</p>
+      </div>
+      <div class="card">
+        <h3 style="margin: 0 0 4px; color: var(--accent5);">🛡️ sovereign.exported</h3>
+        <p style="font-size: 11px; color: var(--dim); margin: 0;">A sovereign export was issued</p>
+      </div>
+      <div class="card">
+        <h3 style="margin: 0 0 4px; color: var(--accent5);">🛡️ sovereign.deleted</h3>
+        <p style="font-size: 11px; color: var(--dim); margin: 0;">A sovereign delete was issued (GDPR Art 17)</p>
+      </div>
+      <div class="card">
+        <h3 style="margin: 0 0 4px; color: var(--accent5);">📡 mcp.called</h3>
+        <p style="font-size: 11px; color: var(--dim); margin: 0;">An MCP tool was called</p>
+      </div>
+      <div class="card">
+        <h3 style="margin: 0 0 4px; color: var(--accent5);">🆔 did.rotated</h3>
+        <p style="font-size: 11px; color: var(--dim); margin: 0;">A DID was rotated (key rotation)</p>
+      </div>
+    </div>
+
+    <h2 style="font-size: 18px; color: var(--accent5); margin: 24px 0 12px;">📋 The webhook format</h2>
+    <div class="card" style="margin-bottom: 16px;">
+      <pre style="background: var(--bg); padding: 12px; border-radius: 6px; font-size: 12px; overflow-x: auto; color: var(--ink); margin: 0 0 12px;">// POST /your-endpoint
+Content-Type: application/json
+X-MEOK-Signature: t=1718280000,v1=8e3a7f4c1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e
+X-MEOK-Sovereign: true
+X-MEOK-Sigil: 8e3a7f4c1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e
+
+{
+  "event": "character.birth",
+  "id": "evt_8e3a7f4c1b2c",
+  "created": 1718280000,
+  "sovereign": true,
+  "data": {
+    "character_id": "char_3c1d8f4a",
+    "archetype": "sage",
+    "name": "The Scholar",
+    "stage": "newborn",
+    "sigil": "8e3a7f4c1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e"
+  }
+}</pre>
+      <p style="font-size: 12px; line-height: 1.7; margin: 0 0 8px;"><strong>Signature verification:</strong></p>
+      <pre style="background: var(--bg); padding: 12px; border-radius: 6px; font-size: 12px; overflow-x: auto; color: var(--ink); margin: 0;">// Node.js
+const crypto = require('crypto');
+
+const signature = req.headers['x-meok-signature'];
+const [t, v1] = signature.split(',');
+const timestamp = t.split('=')[1];
+const providedHash = v1.split('=')[1];
+
+const expectedPayload = `${timestamp}.${JSON.stringify(req.body)}`;
+const expectedHash = crypto
+  .createHmac('sha256', process.env.MEOK_WEBHOOK_SECRET)
+  .update(expectedPayload)
+  .digest('hex');
+
+if (expectedHash !== providedHash) {
+  return res.status(401).send('Invalid signature');
+}</pre>
+    </div>
+
+    <h2 style="font-size: 18px; color: var(--accent5); margin: 24px 0 12px;">🛡️ Webhook guarantees</h2>
+    <div class="grid cols-2">
+      <div class="card">
+        <h3 style="margin: 0 0 4px; color: var(--accent5);">🔐 Sovereign</h3>
+        <p style="font-size: 12px; line-height: 1.7; margin: 0;">Every webhook is Ed25519-signed + SOV3-anchored. Verifiable. Tamper-evident.</p>
+      </div>
+      <div class="card">
+        <h3 style="margin: 0 0 4px; color: var(--accent5);">🔁 At-least-once</h3>
+        <p style="font-size: 12px; line-height: 1.7; margin: 0;">Retries up to 24h with exponential backoff. Idempotency key in every payload.</p>
+      </div>
+      <div class="card">
+        <h3 style="margin: 0 0 4px; color: var(--accent5);">⏱ 5-second timeout</h3>
+        <p style="font-size: 12px; line-height: 1.7; margin: 0;">Your endpoint must respond within 5 seconds. Slower = retry. 5xx = retry.</p>
+      </div>
+      <div class="card">
+        <h3 style="margin: 0 0 4px; color: var(--accent5);">🌍 EU + US regions</h3>
+        <p style="font-size: 12px; line-height: 1.7; margin: 0;">Pick your region. Sovereign. Never cross-border without consent.</p>
+      </div>
+    </div>
+
+    <h2 style="font-size: 18px; color: var(--accent5); margin: 24px 0 12px;">📅 Roadmap</h2>
+    <div class="card">
+      <p style="font-size: 12px; line-height: 1.7; margin: 0 0 8px;">Q1 2027 · Webhooks 1.0 (12 event types, HMAC-SHA256)</p>
+      <p style="font-size: 12px; line-height: 1.7; margin: 0 0 8px;">Q2 2027 · Webhooks 1.1 (filtering, batching, replay)</p>
+      <p style="font-size: 12px; line-height: 1.7; margin: 0 0 8px;">Q3 2027 · Webhooks 2.0 (WebSocket streaming, real-time)</p>
+      <p style="font-size: 12px; line-height: 1.7; margin: 0;">Q4 2027 · Webhooks 3.0 (ZK-proofs, ZK-verified event chains)</p>
+    </div>
+  </main>
+  <footer class="sovereignbar">
+    <div class="item"><span class="ok">●</span><span class="label">Webhooks:</span><span class="val">Q1 2027 · 12 event types</span></div>
+    <div class="spacer"></div>
+    <button class="action">🪝 Subscribe</button>
+  </footer>
+</div>
+</body>
+</html>

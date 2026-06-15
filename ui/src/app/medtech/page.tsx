@@ -72,6 +72,22 @@ const PRICING = [
   { tier: "Audit-Prep", price: "£4,950", sub: "one-time", desc: "Auditor evidence pack aligned to ISO 42001 + ISO 13485." },
 ];
 
+const FAQ = [
+  { q: "Is medical AI high-risk under the EU AI Act?", a: "Yes. Medical AI is high-risk under EU AI Act Annex III §5, which means the full 9-Article compliance stack — risk management, data governance, technical documentation, logging, transparency, human oversight, accuracy/robustness, and conformity assessment. Article 50 watermarking also applies to patient-facing AI." },
+  { q: "How does MEOK handle FDA SaMD and EU MDR together?", a: "MEOK covers FDA SaMD pathways (510k, De Novo, PMA, Pre-Sub) using IMDRF risk categorization, alongside EU MDR (Regulation 2017/745, Annex VIII Rule 11 for SaMD, clinical evaluation, and post-market surveillance). Both are delivered as informational compliance evidence, not regulatory advice." },
+  { q: "Why one substrate instead of six separate compliance vendors?", a: "Most healthcare AI teams run 4-6 separate tools — a HIPAA specialist, an FDA pathway consultant, an EU MDR advisor, an EU AI Act readiness service, an AI BOM tool, and a bias-detection library — each producing a different evidence pack that must be reconciled at audit time. MEOK ships all six as one HMAC-signed chain: one vendor, one invoice, one signed evidence pack the auditor reads in an afternoon." },
+  { q: "What does the healthcare bundle cost and how fast can we go live?", a: "Pricing runs from £29/mo (Sovereign Starter) through £199/mo (Pro) to £1,499/mo (Enterprise, multi-tenant), plus a one-time £4,950 Audit-Prep pack aligned to ISO 42001 and ISO 13485. The bundle ships as a single deployment with a 30-minute onboarding call, and teams can be live in 7 days." },
+];
+
+const FAQ_JSONLD = { "@context": "https://schema.org", "@type": "FAQPage", mainEntity: FAQ.map((f) => ({ "@type": "Question", name: f.q, acceptedAnswer: { "@type": "Answer", text: f.a } })) };
+
+const BREADCRUMB_JSONLD = { "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElement: [
+  { "@type": "ListItem", position: 1, name: "Home", item: "https://meok.ai/" },
+  { "@type": "ListItem", position: 2, name: "Healthcare AI Compliance", item: "https://meok.ai/medtech" },
+] };
+
+const SERVICE_JSONLD = { "@context": "https://schema.org", "@type": "Service", name: "MEOK Healthcare AI Compliance", serviceType: "Healthcare and SaMD AI compliance evidence pack", provider: { "@type": "Organization", name: "MEOK AI", url: "https://meok.ai" }, url: "https://meok.ai/medtech", areaServed: "GB", offers: { "@type": "Offer", price: "29", priceCurrency: "GBP", url: "https://meok.ai/medtech" } };
+
 export default function MedtechPage() {
   return (
     <main
@@ -83,6 +99,9 @@ export default function MedtechPage() {
         fontFamily: "system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif",
       }}
     >
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(FAQ_JSONLD) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(BREADCRUMB_JSONLD) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(SERVICE_JSONLD) }} />
       <div style={{ maxWidth: 960, margin: "0 auto" }}>
         <header style={{ marginBottom: 40 }}>
           <p style={{ color: GOLD, fontWeight: 900, fontSize: 13, letterSpacing: "0.1em", textTransform: "uppercase", margin: 0 }}>
@@ -217,6 +236,26 @@ export default function MedtechPage() {
             implementation. <a href="mailto:nicholas@meok.ai?subject=Healthcare%20AI%20compliance" style={{ color: NAVY, textDecoration: "underline" }}>nicholas@meok.ai</a>.
             We can be live in 7 days.
           </p>
+        </section>
+
+        <section style={{ marginTop: 48 }}>
+          <h2 style={{ fontSize: 26, fontWeight: 900, marginBottom: 16 }}>Frequently asked</h2>
+          <div style={{ display: "grid", gap: 12 }}>
+            {FAQ.map((f) => (
+              <details
+                key={f.q}
+                style={{
+                  background: "white",
+                  borderRadius: 12,
+                  padding: "16px 20px",
+                  border: `1px solid ${NAVY}1a`,
+                }}
+              >
+                <summary style={{ fontWeight: 900, cursor: "pointer", fontSize: 15, color: NAVY }}>{f.q}</summary>
+                <p style={{ marginTop: 10, color: `${NAVY}cc`, fontSize: 14, lineHeight: 1.6 }}>{f.a}</p>
+              </details>
+            ))}
+          </div>
         </section>
       </div>
     </main>

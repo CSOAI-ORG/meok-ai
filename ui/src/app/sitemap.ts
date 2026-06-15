@@ -146,6 +146,21 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/best-sovereign-ai-os',
   ];
 
+  // New public pages shipped 2026-06-15 (all now carry JSON-LD structured data).
+  const newPublicPages = [
+    // Vertical landers
+    '/aquaponics', '/charity', '/construction', '/food-safety', '/haulage',
+    '/hr-tech', '/legaltech', '/saas', '/waste-mgmt', '/smart-agri', '/smart-home', '/edtech',
+    // Products / compliance
+    '/agisafe', '/attestations', '/cobolbridge', '/cobol-bridge-audit', '/compliance',
+    '/mcp-stack', '/marketplace', '/features', '/agent-orchestration', '/ai-squad', '/master-stack',
+    '/product/enterprise', '/product/security',
+    // Content / trust / company
+    '/changelog', '/security', '/team', '/protocols', '/methodology', '/charter',
+    '/csoai', '/contact', '/care', '/open-source', '/registry', '/architecture',
+    '/press-kit', '/achievements', '/distributions', '/fund', '/jarvis',
+  ];
+
   const today = new Date();
 
   const merge = (routes: string[], priority: number, freq: 'daily' | 'weekly' | 'monthly') =>
@@ -161,6 +176,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...merge(geoAuthority, 0.95, 'weekly'),
     ...merge(euAiActArticles, 0.95, 'weekly'),
     ...merge(verticals, 0.92, 'weekly'),
+    ...merge(newPublicPages, 0.9, 'weekly'),
     ...merge(verticalConsulting, 0.92, 'weekly'),
     ...merge(mcpLandingPages, 0.92, 'weekly'),
     ...merge(industryHubs, 0.92, 'weekly'),

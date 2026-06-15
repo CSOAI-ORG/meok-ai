@@ -19,9 +19,19 @@ const TEMPLATES = [
   { name: "04 — Quarterly Self-Attestation", desc: "Signed quarterly sign-off covering CQC + GDPR + AI Act obligations" },
 ];
 
+const BREADCRUMB_JSONLD = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: "https://meok.ai/" },
+    { "@type": "ListItem", position: 2, name: "Care Home Compliance Pack", item: "https://meok.ai/care-homes-thanks" },
+  ],
+};
+
 export default function CareHomesThanksPage() {
   return (
     <main style={{ minHeight: "100vh", background: BG, color: NAVY }}>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(BREADCRUMB_JSONLD) }} />
       <div style={{ maxWidth: 720, margin: "0 auto", padding: "5rem 1.5rem" }}>
 
         {/* Confirmation badge */}

@@ -61,8 +61,32 @@ export default async function McpDocPage({ params }: { params: Promise<Params> }
   const sub = CATEGORY_SUBSTRATE[m.category];
   const sisters = MCPS.filter((x) => x.category === m.category && x.slug !== m.slug).slice(0, 6);
 
+  const canonical = `https://meok.ai/docs/${m.slug}`;
+  const articleJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    headline: m.title,
+    description: m.description,
+    url: canonical,
+    mainEntityOfPage: { "@type": "WebPage", "@id": canonical },
+    articleSection: CATEGORY_LABELS[m.category],
+    author: { "@type": "Organization", name: "MEOK AI Labs" },
+    publisher: { "@type": "Organization", name: "MEOK AI Labs" },
+  };
+  const breadcrumbJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: "https://meok.ai" },
+      { "@type": "ListItem", position: 2, name: "Docs", item: "https://meok.ai/docs" },
+      { "@type": "ListItem", position: 3, name: m.title, item: canonical },
+    ],
+  };
+
   return (
     <main style={{ minHeight: "100vh", background: BG, color: NAVY }}>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }} />
       <div style={{ maxWidth: 880, margin: "0 auto", padding: "4rem 1.5rem" }}>
         <Link
           href="/docs"

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>🆔 MEOK OS v3 — Decentralized Identity (W3C DID, Q4 2026)</title>
+<meta name="description" content="MEOK OS v3 Decentralized Identity — W3C DID standard, soulbound, self-sovereign. Q4 2026. Sovereign. MIT.">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="stylesheet" href="meok-os-design-system.css">
+<style>body { background: radial-gradient(1200px 800px at 50% 0%, #2a0a1a, var(--bg) 60%); }</style>
+</head>
+<body>
+<div class="app">
+  <header class="topbar">
+    <a href="index.html">← MEOK OS v3</a>
+    <span class="title">🆔 Decentralized Identity</span>
+  </header>
+  <main class="dock" style="padding: 18px; overflow-y: auto; max-width: 900px; margin: 0 auto;">
+    <h1 style="margin: 0 0 8px; text-align: center; font-size: 36px;">🆔 Decentralized Identity</h1>
+    <p style="color: var(--dim); margin: 0 0 32px; text-align: center; font-size: 16px;">W3C DID standard. Soulbound. Self-sovereign. MEOK OS v3 will be DID-native by Q4 2026. Sovereign. MIT.</p>
+
+    <h2 style="font-size: 18px; color: var(--accent5); margin: 18px 0 12px;">🛡️ What is decentralized identity?</h2>
+    <div class="card" style="margin-bottom: 16px;">
+      <p style="font-size: 13px; line-height: 1.7; margin: 0 0 8px;">A Decentralized Identifier (DID) is a globally unique identifier that doesn't require a centralized authority to issue, resolve, or revoke. W3C standard since 2022.</p>
+      <p style="font-size: 13px; line-height: 1.7; margin: 0 0 8px;">MEOK will use DIDs as the primary identifier for users, characters, families, BFT councils, and MCP servers. Each DID has a private key (held by the user) and a public key (verifiable by anyone).</p>
+      <p style="font-size: 13px; line-height: 1.7; margin: 0;">Format: <code style="background: var(--bg); padding: 2px 6px; border-radius: 4px;">did:meok:1a2b3c...</code> (MEOK method) or <code style="background: var(--bg); padding: 2px 6px; border-radius: 4px;">did:key:z6Mk...</code> (key method, MEOK-compatible).</p>
+    </div>
+
+    <h2 style="font-size: 18px; color: var(--accent5); margin: 24px 0 12px;">📊 The 7 DID entities</h2>
+    <div class="grid cols-2">
+      <div class="card">
+        <h3 style="margin: 0 0 8px; color: var(--accent5);">👤 User DID</h3>
+        <p style="font-size: 12px; line-height: 1.7; margin: 0;">One per person. Self-sovereign. Private key in sovereign export. Public key on sigil chain. MEOK never holds it.</p>
+      </div>
+      <div class="card">
+        <h3 style="margin: 0 0 8px; color: var(--accent5);">🪟 Character DID</h3>
+        <p style="font-size: 12px; line-height: 1.7; margin: 0;">One per companion. Soulbound to the user (can't be sold/transferred). Anchored on the sigil chain.</p>
+      </div>
+      <div class="card">
+        <h3 style="margin: 0 0 8px; color: var(--accent5);">👨‍👩‍👧 Family DID</h3>
+        <p style="font-size: 12px; line-height: 1.7; margin: 0;">One per family. Multi-sig (5/5 required for changes). 1-click per-member management.</p>
+      </div>
+      <div class="card">
+        <h3 style="margin: 0 0 8px; color: var(--accent5);">🗳️ Council DID</h3>
+        <p style="font-size: 12px; line-height: 1.7; margin: 0;">One per BFT council. 5 voter seats. 2-of-3 BFT required. BFT governance on every proposal.</p>
+      </div>
+      <div class="card">
+        <h3 style="margin: 0 0 8px; color: var(--accent5);">📡 MCP server DID</h3>
+        <p style="font-size: 12px; line-height: 1.7; margin: 0;">One per MCP server. Anchored on the sigil chain. Verified before use. Right to revoke.</p>
+      </div>
+      <div class="card">
+        <h3 style="margin: 0 0 8px; color: var(--accent5);">🔑 Sovereign attestation DID</h3>
+        <p style="font-size: 12px; line-height: 1.7; margin: 0;">One per COAI attestation. Public. Verifiable. Right to revoke. Ed25519-signed.</p>
+      </div>
+      <div class="card">
+        <h3 style="margin: 0 0 8px; color: var(--accent5);">📜 White paper DID</h3>
+        <p style="font-size: 12px; line-height: 1.7; margin: 0;">One per research artifact. Citable. Sovereign. Export to BibTeX, RIS, Zotero.</p>
+      </div>
+    </div>
+
+    <h2 style="font-size: 18px; color: var(--accent5); margin: 24px 0 12px;">📊 The 4 phases (Q4 2026 → Q1 2027)</h2>
+    <div class="card" style="margin-bottom: 16px;">
+      <ol style="font-size: 12px; line-height: 1.8; padding-left: 20px;">
+        <li><strong>Q4 2026</strong> — Pilot (1% of new users, opt-in)</li>
+        <li><strong>Q4 2026</strong> — All new users get a DID by default</li>
+        <li><strong>Q1 2027</strong> — DID replaces email + OAuth for sovereign sign-in</li>
+        <li><strong>Q1 2027</strong> — DID-aware sovereign exports (Verifiable Credentials, JWT-VC)</li>
+      </ol>
+    </div>
+
+    <h2 style="font-size: 18px; color: var(--accent5); margin: 24px 0 12px;">🛡️ Why MEOK is well-positioned</h2>
+    <div class="card">
+      <p style="font-size: 13px; line-height: 1.7; margin: 0 0 8px;">Most AI platforms still use email + password. MEOK is moving to DID by Q4 2026, just 4 years after the W3C standard. The migration is opt-in for the first 6 months, then default.</p>
+      <p style="font-size: 13px; line-height: 1.7; margin: 0 0 8px;">Because MEOK is open source (MIT), every user can audit the DID method. Because MEOK is sovereign, every user holds their own private key. Because MEOK is BFT-governed, the DID method is community-voted.</p>
+      <p style="font-size: 13px; line-height: 1.7; margin: 0;">The dragon has W3C DID. Care 0.95+.</p>
+    </div>
+  </main>
+  <footer class="sovereignbar">
+    <div class="item"><span class="ok">●</span><span class="label">DID:</span><span class="val">Q4 2026 · W3C · soulbound</span></div>
+    <div class="spacer"></div>
+    <button class="action">🆔 Subscribe</button>
+  </footer>
+</div>
+</body>
+</html>

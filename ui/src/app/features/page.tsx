@@ -98,9 +98,25 @@ const FEATURES = [
   },
 ];
 
+const FAQ = [
+  { q: "How is a MEOK companion created?", a: "Through the Birth Ceremony. Your companion isn't assigned — it's born. You answer 7 poetic questions and watch your egg respond in real time, and the companion that emerges is uniquely shaped by your personality." },
+  { q: "Which AI models can MEOK use?", a: "MEOK routes across Claude, GPT-4o, DeepSeek, Groq, Ollama and 15+ more. You can switch models freely and your memory and personality travel with you — any model, one memory. You can also run it locally if you want." },
+  { q: "Does my companion remember past conversations?", a: "Yes. Persistent memory makes conversations searchable, memories decay naturally over time, and important moments are preserved forever. Full-text conversation search returns sub-5ms results with highlighted matches." },
+  { q: "How does my companion grow over time?", a: "It evolves through 6 stages — Spark, Bloom, Ember, Crest, Aether and Zenith — with each stage unlocking new personality depth and capabilities. Every response also passes through a care membrane that calibrates in real time from your thumbs up/down feedback." },
+];
+
+const FAQ_JSONLD = { "@context": "https://schema.org", "@type": "FAQPage", mainEntity: FAQ.map((f) => ({ "@type": "Question", name: f.q, acceptedAnswer: { "@type": "Answer", text: f.a } })) };
+
+const BREADCRUMB_JSONLD = { "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElement: [{ "@type": "ListItem", position: 1, name: "Home", item: "https://meok.ai/" }, { "@type": "ListItem", position: 2, name: "Features", item: "https://try.meok.ai/features" }] };
+
+const SOFTWARE_JSONLD = { "@context": "https://schema.org", "@type": "SoftwareApplication", name: "MEOK AI", applicationCategory: "LifestyleApplication", operatingSystem: "Web", url: "https://try.meok.ai/features", description: "Sovereign AI companion platform with a Birth Ceremony, persistent memory, a care membrane, evolution stages, guardian protection and routing across 15+ LLM models.", offers: { "@type": "Offer", price: "0", priceCurrency: "GBP" }, featureList: FEATURES.map((f) => f.title) };
+
 export default function FeaturesPage() {
   return (
     <div className="min-h-screen" style={{ background: DEEP, color: "#e5e5e5" }}>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(FAQ_JSONLD) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(BREADCRUMB_JSONLD) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(SOFTWARE_JSONLD) }} />
       {/* Hero */}
       <section className="pt-24 pb-16 px-6 text-center">
         <p className="text-sm font-bold tracking-widest uppercase mb-4" style={{ color: GOLD }}>Features</p>
@@ -131,6 +147,23 @@ export default function FeaturesPage() {
               <h3 className="font-bold text-white text-lg mb-2">{f.title}</h3>
               <p className="text-white/50 text-sm leading-relaxed">{f.desc}</p>
             </div>
+          ))}
+        </div>
+      </section>
+
+      {/* FAQ */}
+      <section className="max-w-3xl mx-auto px-6 pb-24">
+        <h2 className="font-black text-white text-2xl mb-6 text-center">Frequently asked</h2>
+        <div className="grid gap-4">
+          {FAQ.map((f) => (
+            <details
+              key={f.q}
+              className="rounded-xl p-6"
+              style={{ background: SURFACE, border: "1px solid rgba(255,255,255,0.07)" }}
+            >
+              <summary className="font-bold text-white text-base cursor-pointer">{f.q}</summary>
+              <p className="text-white/50 text-sm leading-relaxed mt-3">{f.a}</p>
+            </details>
           ))}
         </div>
       </section>

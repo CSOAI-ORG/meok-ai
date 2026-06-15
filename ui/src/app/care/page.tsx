@@ -156,9 +156,37 @@ const timeline = [
   },
 ];
 
+const FAQ = [
+  {
+    q: "What is the Maternal Covenant?",
+    a: "The Maternal Covenant is MEOK's constitutional AI alignment framework — a set of inviolable constraints that govern every response. Unlike RLHF, which teaches AI to optimise for human approval, the Covenant teaches AI to optimise for human wellbeing, even when those two diverge. It is enforced at the inference layer and cannot be removed by a product update or an API parameter.",
+  },
+  {
+    q: "How does the care floor work?",
+    a: "Every MEOK response is evaluated by care_validation_nn, a neural network that scores responses on a care axis from 0.0 (harmful) to 1.0 (deeply caring). If any response scores below the care floor of 0.3, it is automatically regenerated before delivery. The care floor applies to all tiers — Explorer, Sovereign, and Family — and cannot be disabled.",
+  },
+  {
+    q: "Who does the Covenant protect?",
+    a: "The framework provides baseline care for all users, with enhanced protections for groups at greater risk of harm: children under 18 (Children's Code aligned, no adult content, School-Safe Mode), elders 65+ (Senior Mode, ScamStop fraud detection, isolation monitoring), and neurodivergent users (Literal Mode, sensory-aware responses, pattern alerts).",
+  },
+  {
+    q: "How is the Maternal Covenant different from RLHF?",
+    a: "RLHF (Reinforcement Learning from Human Feedback) teaches AI to optimise for human approval, which systematically produces sycophantic, dependency-forming interactions. The Maternal Covenant instead optimises for wellbeing — like a caring parent or teacher who tells you what you need to hear, not what you want to hear. A built-in sycophancy detector flags hollow validation and replaces it with grounded, honest feedback.",
+  },
+];
+
+const FAQ_JSONLD = { "@context": "https://schema.org", "@type": "FAQPage", mainEntity: FAQ.map((f) => ({ "@type": "Question", name: f.q, acceptedAnswer: { "@type": "Answer", text: f.a } })) };
+
+const BREADCRUMB_JSONLD = { "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElement: [{ "@type": "ListItem", position: 1, name: "Home", item: "https://meok.ai/" }, { "@type": "ListItem", position: 2, name: "The Care Framework", item: "https://meok.ai/care" }] };
+
+const ARTICLE_JSONLD = { "@context": "https://schema.org", "@type": "Article", headline: "The Care Framework — The Maternal Covenant", description: "MEOK's Care Framework: the ethical foundation that governs every AI response. Care-based alignment beyond RLHF.", author: { "@type": "Person", name: "Nicholas Templeman" }, publisher: { "@type": "Organization", name: "MEOK AI LABS" }, mainEntityOfPage: "https://meok.ai/care" };
+
 export default function CarePage() {
   return (
     <div className="min-h-screen bg-[#0d0c18] text-white">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(FAQ_JSONLD) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(BREADCRUMB_JSONLD) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(ARTICLE_JSONLD) }} />
       {/* Hero */}
       <section className="relative py-24 px-6 text-center overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-rose-950/20 to-transparent pointer-events-none" />
@@ -396,6 +424,30 @@ export default function CarePage() {
                 </div>
               ))}
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ */}
+      <section className="py-16 px-6">
+        <div className="max-w-4xl mx-auto">
+          <h2 className="text-3xl font-bold mb-12 text-center">
+            Frequently asked
+          </h2>
+          <div className="space-y-4">
+            {FAQ.map((f) => (
+              <details
+                key={f.q}
+                className="bg-white/3 border border-white/8 rounded-2xl p-6"
+              >
+                <summary className="text-lg font-bold cursor-pointer">
+                  {f.q}
+                </summary>
+                <p className="text-gray-400 text-sm leading-relaxed mt-4">
+                  {f.a}
+                </p>
+              </details>
+            ))}
           </div>
         </div>
       </section>

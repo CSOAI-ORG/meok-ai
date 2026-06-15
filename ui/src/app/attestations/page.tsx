@@ -103,6 +103,20 @@ const ATTESTATIONS = [
   },
 ];
 
+const FAQ = [
+  { q: "How do I verify a MEOK attestation?", a: "Every attestation carries a verify_url. curl it, e.g. curl -sS 'https://meok.ai/verify?cert=MEOK-EUAIAC-MAIN', and you get JSON with the signature, issued_at, issuer, and the Ed25519 public-key fingerprint. No login, no SDK, no API key required." },
+  { q: "Why does MEOK co-sign with both HMAC-SHA256 and Ed25519?", a: "HMAC-SHA256 is fast, online, and recoverable — it uses the shared secret (the customer's API key) so an auditor can recompute it in real time. Ed25519 is asymmetric and offline-verifiable: the signing key never leaves MEOK and the verifying key is published at /publickey. Both signatures are over the same canonical JSON; if either fails, the cert is invalid." },
+  { q: "Which frameworks have live signed attestations?", a: "Eight frameworks are signed and live: EU AI Act (9 in-scope Articles), DORA, NIS2 (aligned to 9 member-state transpositions), GDPR (DPIA-ready with FRIA bridge), ISO 42001 (AIMS), ISO 19650 (BIM), CRA, and SOC 2 with an AI overlay." },
+  { q: "Can I verify offline without contacting MEOK?", a: "Yes. The response includes a base64 Ed25519 signature over the canonical JSON. Take the signed cert, the public key from /publickey, and any offline Ed25519 lib (libsodium, age, tweetnacl) and verify in two lines of Python — no MEOK infrastructure required. Signing keys rotate quarterly and rotation events are signed by the previous key, so you can verify continuity." },
+];
+
+const FAQ_JSONLD = { "@context": "https://schema.org", "@type": "FAQPage", mainEntity: FAQ.map((f) => ({ "@type": "Question", name: f.q, acceptedAnswer: { "@type": "Answer", text: f.a } })) };
+
+const BREADCRUMB_JSONLD = { "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElement: [
+  { "@type": "ListItem", position: 1, name: "Home", item: "https://meok.ai/" },
+  { "@type": "ListItem", position: 2, name: "Attestations", item: "https://meok.ai/attestations" },
+] };
+
 const VERIFY_STEPS = [
   {
     n: 1,
@@ -142,6 +156,8 @@ export default function AttestationsPage() {
         fontFamily: "system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif",
       }}
     >
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(FAQ_JSONLD) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(BREADCRUMB_JSONLD) }} />
       <div style={{ maxWidth: 960, margin: "0 auto" }}>
         <header style={{ marginBottom: 40 }}>
           <p
@@ -301,6 +317,26 @@ export default function AttestationsPage() {
             <strong>Both signatures are over the same canonical JSON.</strong> If either fails,
             the cert is invalid. We do not ship signatures that depend on a single algorithm.
           </p>
+        </section>
+
+        <section style={{ marginBottom: 56 }}>
+          <h2 style={{ fontSize: 28, fontWeight: 900, marginBottom: 16 }}>Frequently asked</h2>
+          <div style={{ display: "grid", gap: 12 }}>
+            {FAQ.map((f) => (
+              <details
+                key={f.q}
+                style={{
+                  background: "white",
+                  borderRadius: 12,
+                  padding: "16px 20px",
+                  border: `1px solid ${NAVY}1a`,
+                }}
+              >
+                <summary style={{ fontWeight: 700, cursor: "pointer", fontSize: 16, color: NAVY }}>{f.q}</summary>
+                <p style={{ marginTop: 10, color: `${NAVY}cc`, fontSize: 14, lineHeight: 1.6 }}>{f.a}</p>
+              </details>
+            ))}
+          </div>
         </section>
 
         <section>

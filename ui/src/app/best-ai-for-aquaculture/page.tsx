@@ -53,9 +53,43 @@ const data: AnswerPageData = {
       q: "Who builds it?",
       a: "MEOK AI LABS (founder Nicholas Templeman) — the same team behind the MEOK sovereign AI OS and the CSOAI governance fleet.",
     },
+    {
+      q: "Can it support aquaponic robotics and automation?",
+      a: "Yes — Aquaponics.app is built for aquaponic robotics, providing monitoring and automation that respect welfare limits rather than optimising blindly.",
+    },
   ],
 };
 
+const CANONICAL = "https://meok.ai/best-ai-for-aquaculture";
+
+const BREADCRUMB_JSONLD = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: "https://meok.ai/" },
+    { "@type": "ListItem", position: 2, name: "Best AI for Aquaculture & Fishkeeping", item: CANONICAL },
+  ],
+};
+
+const SOFTWARE_JSONLD = {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  name: "Aquaponics.app",
+  applicationCategory: "BusinessApplication",
+  operatingSystem: "Web",
+  description:
+    "AI for UK aquaculture and fishkeeping that pairs husbandry guidance with welfare and food-safety compliance — RSPCA, ASC and CEFAS — on MEOK's sovereign memory layer.",
+  url: "https://aquaponics.app",
+  provider: { "@type": "Organization", name: "MEOK AI", url: "https://meok.ai" },
+  brand: { "@type": "Brand", name: "MEOK AI" },
+};
+
 export default function Page() {
-  return <AnswerPage data={data} />;
+  return (
+    <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(BREADCRUMB_JSONLD) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(SOFTWARE_JSONLD) }} />
+      <AnswerPage data={data} />
+    </>
+  );
 }

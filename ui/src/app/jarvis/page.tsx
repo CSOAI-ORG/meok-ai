@@ -12,6 +12,34 @@ type Tab = 'chat' | 'terminal' | 'dashboard' | 'ralph' | 'memory';
 interface Message { role: 'user' | 'assistant'; content: string; model?: string; timestamp?: string }
 interface SOV3Health { status: string; components?: { consciousness?: { consciousness_mode: string; consciousness_level: number; emotional?: { care_intensity: number; primary_emotion: string } }; neural_models?: Record<string, { is_trained: boolean }> }; production_calls_today?: number }
 
+const SOFTWARE_JSONLD = {
+  '@context': 'https://schema.org',
+  '@type': 'SoftwareApplication',
+  name: 'Jarvis OS',
+  applicationCategory: 'DeveloperApplication',
+  operatingSystem: 'Web',
+  description: 'Jarvis OS — the sovereign operating-system layer for MEOK AI. Chat across 13 models, run 78 MCP tools from a terminal, monitor consciousness + care metrics, drive the Ralph autonomous task executor, and search episodic memory.',
+  url: 'https://meok.ai/jarvis',
+  offers: { '@type': 'Offer', price: '0', priceCurrency: 'GBP' },
+};
+
+const WEBPAGE_JSONLD = {
+  '@context': 'https://schema.org',
+  '@type': 'WebPage',
+  name: 'Jarvis OS',
+  description: 'Sovereign OS layer: chat, MCP terminal, consciousness dashboard, Ralph task executor, and memory search.',
+  url: 'https://meok.ai/jarvis',
+};
+
+const BREADCRUMB_JSONLD = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://meok.ai/' },
+    { '@type': 'ListItem', position: 2, name: 'Jarvis OS', item: 'https://meok.ai/jarvis' },
+  ],
+};
+
 export default function JarvisOS() {
   const [tab, setTab] = useState<Tab>('chat');
   const [health, setHealth] = useState<SOV3Health | null>(null);
@@ -131,6 +159,9 @@ export default function JarvisOS() {
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', height: '100vh', background: DEEP, color: '#e0ddd4', fontFamily: 'system-ui, monospace' }}>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(SOFTWARE_JSONLD) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(WEBPAGE_JSONLD) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(BREADCRUMB_JSONLD) }} />
       {/* Top Bar */}
       <header style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '8px 16px', borderBottom: `1px solid rgba(201,168,76,0.2)`, background: SURFACE, flexShrink: 0 }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>

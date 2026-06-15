@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>🪟 MEOK OS v3 — 3D Avatar (VRM + Three.js Live Preview)</title>
+<meta name="description" content="MEOK OS v3 3D Avatar — live VRM + Three.js preview. Customize face, hair, body, clothing, accessories. Export as .vrm. Sovereign. MIT.">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="stylesheet" href="meok-os-design-system.css">
+<style>body { background: radial-gradient(1200px 800px at 50% 0%, #2a0a2a, var(--bg) 60%); }</style>
+</head>
+<body>
+<div class="app">
+  <header class="topbar">
+    <a href="index.html">← MEOK OS v3</a>
+    <span class="title">🪟 3D Avatar</span>
+  </header>
+  <main class="dock" style="padding: 18px; overflow-y: auto;">
+    <h1 style="margin: 0 0 8px; text-align: center; font-size: 36px;">🪟 3D Avatar (VRM)</h1>
+    <p style="color: var(--dim); margin: 0 0 32px; text-align: center; font-size: 16px;">Live VRM + Three.js preview. Customize face, hair, body, clothing, accessories. Export as .vrm. Sovereign. MIT.</p>
+
+    <div style="text-align: center; margin-bottom: 24px;">
+      <div style="display: inline-block; background: var(--panel); border: 2px solid var(--accent); border-radius: 16px; padding: 24px;">
+        <div style="font-size: 18px; color: var(--ink);">The Scholar · VRM 1.0</div>
+        <div style="color: var(--dim); font-size: 12px; margin-top: 4px;">Sage stage · 1,247 convos · 12 Horus lenses active</div>
+      </div>
+    </div>
+
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 24px;">
+      <div class="card" style="text-align: center; padding: 24px;">
+        <div style="position: relative; height: 320px; background: radial-gradient(circle at 50% 50%, #7c5cff44, transparent); border-radius: 8px; display: flex; align-items: center; justify-content: center;">
+          <div style="font-size: 96px;">🏛️</div>
+          <div style="position: absolute; bottom: 8px; left: 8px; font-size: 11px; color: var(--dim);">Sage stage</div>
+        </div>
+        <p style="font-size: 12px; color: var(--dim); margin: 12px 0 0;">Live preview · Three.js + VRM 1.0 · 30fps</p>
+        <p style="font-size: 11px; color: var(--dim);">🚧 Real WebXR renderer (Three.js + VRM loader) coming Q4 2026</p>
+      </div>
+      <div>
+        <h2 style="font-size: 16px; color: var(--accent5); margin: 0 0 12px;">🎨 Customization</h2>
+
+        <h3 style="font-size: 13px; color: var(--accent5); margin: 12px 0 6px;">👤 Face</h3>
+        <div style="display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 12px;">
+          <button class="ghost" style="font-size: 10px;">😐 Neutral</button>
+          <button class="primary" style="font-size: 10px;">🙂 Slight smile</button>
+          <button class="ghost" style="font-size: 10px;">😀 Smile</button>
+          <button class="ghost" style="font-size: 10px;">😠 Concerned</button>
+          <button class="ghost" style="font-size: 10px;">🤔 Thoughtful</button>
+          <button class="ghost" style="font-size: 10px;">😮 Surprised</button>
+        </div>
+
+        <h3 style="font-size: 13px; color: var(--accent5); margin: 12px 0 6px;">💇 Hair</h3>
+        <div style="display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 12px;">
+          <button class="primary" style="font-size: 10px;">👨‍🦳 White (sage)</button>
+          <button class="ghost" style="font-size: 10px;">👨 Black</button>
+          <button class="ghost" style="font-size: 10px;">👨‍🦱 Brown</button>
+          <button class="ghost" style="font-size: 10px;">👱 Blonde</button>
+          <button class="ghost" style="font-size: 10px;">🧑‍🎤 Red</button>
+          <button class="ghost" style="font-size: 10px;">Bald</button>
+        </div>
+
+        <h3 style="font-size: 13px; color: var(--accent5); margin: 12px 0 6px;">👕 Clothing</h3>
+        <div style="display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 12px;">
+          <button class="ghost" style="font-size: 10px;">Toga</button>
+          <button class="primary" style="font-size: 10px;">Sage robes</button>
+          <button class="ghost" style="font-size: 10px;">Philosopher suit</button>
+          <button class="ghost" style="font-size: 10px;">Sweater</button>
+          <button class="ghost" style="font-size: 10px;">Custom</button>
+        </div>
+
+        <h3 style="font-size: 13px; color: var(--accent5); margin: 12px 0 6px;">🎒 Accessories</h3>
+        <div style="display: flex; gap: 6px; flex-wrap: wrap;">
+          <button class="ghost" style="font-size: 10px;">📚 Scrolls</button>
+          <button class="primary" style="font-size: 10px;">🕯️ Candle</button>
+          <button class="ghost" style="font-size: 10px;">🦉 Owl</button>
+          <button class="ghost" style="font-size: 10px;">📜 Papyrus</button>
+          <button class="ghost" style="font-size: 10px;">⚒️ Tools</button>
+        </div>
+      </div>
+    </div>
+
+    <h2 style="font-size: 18px; color: var(--accent5); margin: 24px 0 12px;">🎬 Live actions (5)</h2>
+    <div class="grid cols-3">
+      <div class="card" style="text-align: center; padding: 16px;">
+        <div style="font-size: 32px;">🗣️</div>
+        <div style="font-weight: 800; margin: 4px 0;">Speak</div>
+        <div style="color: var(--dim); font-size: 11px;">Lips sync with voice</div>
+      </div>
+      <div class="card" style="text-align: center; padding: 16px;">
+        <div style="font-size: 32px;">👀</div>
+        <div style="font-weight: 800; margin: 4px 0;">Eye contact</div>
+        <div style="color: var(--dim); font-size: 11px;">Eye tracking + blink</div>
+      </div>
+      <div class="card" style="text-align: center; padding: 16px;">
+        <div style="font-size: 32px;">😐</div>
+        <div style="font-weight: 800; margin: 4px 0;">Emotion</div>
+        <div style="color: var(--dim); font-size: 11px;">Mood-based expressions</div>
+      </div>
+      <div class="card" style="text-align: center; padding: 16px;">
+        <div style="font-size: 32px;">🤚</div>
+        <div style="font-weight: 800; margin: 4px 0;">Gesture</div>
+        <div style="color: var(--dim); font-size: 11px;">12 hand gestures</div>
+      </div>
+      <div class="card" style="text-align: center; padding: 16px;">
+        <div style="font-size: 32px;">🚶</div>
+        <div style="font-weight: 800; margin: 4px 0;">Walk</div>
+        <div style="color: var(--dim); font-size: 11px;">In the Dome</div>
+      </div>
+      <div class="card" style="text-align: center; padding: 16px;">
+        <div style="font-size: 32px;">💃</div>
+        <div style="font-weight: 800; margin: 4px 0;">Dance</div>
+        <div style="color: var(--dim); font-size: 11px;">3 dance styles</div>
+      </div>
+    </div>
+
+    <h2 style="font-size: 18px; color: var(--accent5); margin: 24px 0 12px;">📐 Technical specs</h2>
+    <div class="card">
+      <table style="width: 100%; border-collapse: collapse; font-size: 12px;">
+        <tr style="background: var(--panel2);"><th style="padding: 6px; text-align: left;">Property</th><th style="padding: 6px; text-align: left;">Value</th></tr>
+        <tr><td style="padding: 6px;">Format</td><td style="padding: 6px;">VRM 1.0 (open standard)</td></tr>
+        <tr><td style="padding: 6px;">Engine</td><td style="padding: 6px;">Three.js + @pixiv/three-vrm</td></tr>
+        <tr><td style="padding: 6px;">Polygon count</td><td style="padding: 6px;">~30K tris (mid-poly)</td></tr>
+        <tr><td style="padding: 6px;">Textures</td><td style="padding: 6px;">2K (face + body + clothing)</td></tr>
+        <tr><td style="padding: 6px;">Animations</td><td style="padding: 6px;">52 (idle, walk, gesture, expression, lip-sync)</td></tr>
+        <tr><td style="padding: 6px;">Lip-sync</td><td style="padding: 6px;">OVR Lip Sync (8 visemes)</td></tr>
+        <tr><td style="padding: 6px;">Format support</td><td style="padding: 6px;">VRM, FBX, GLB (export)</td></tr>
+        <tr><td style="padding: 6px;">License</td><td style="padding: 6px;">MIT (own VRM) / various (default)</td></tr>
+      </table>
+    </div>
+
+    <h2 style="font-size: 18px; color: var(--accent5); margin: 24px 0 12px;">🗺️ Roadmap (Q4 2026)</h2>
+    <div class="card">
+      <p style="font-size: 12px; line-height: 1.7; margin: 0 0 8px;">🛠 Q4 2026 · Real Three.js + VRM 1.0 loader (replaces emoji placeholder)</p>
+      <p style="font-size: 12px; line-height: 1.7; margin: 0 0 8px;">🎤 Q4 2026 · Real lip-sync from voice (8 visemes)</p>
+      <p style="font-size: 12px; line-height: 1.7; margin: 0 0 8px;">👁 Q4 2026 · Real eye tracking + blink (60Hz)</p>
+      <p style="font-size: 12px; line-height: 1.7; margin: 0 0 8px;">📦 Q1 2027 · Export as .vrm (use in Unity, Unreal, Godot)</p>
+      <p style="font-size: 12px; line-height: 1.7; margin: 0 0 8px;">🥽 Q1 2027 · VR mode (Quest 3, Vision Pro, WebXR)</p>
+      <p style="font-size: 12px; line-height: 1.7; margin: 0;">🌐 Q2 2027 · Metaverse (multi-user, persistent world)</p>
+    </div>
+  </main>
+  <footer class="sovereignbar">
+    <div class="item"><span class="ok">●</span><span class="label">3D Avatar:</span><span class="val">VRM 1.0 · Q4 2026</span></div>
+    <div class="spacer"></div>
+    <button class="action">🪟 Customize</button>
+  </footer>
+</div>
+</body>
+</html>

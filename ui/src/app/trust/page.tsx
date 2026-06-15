@@ -87,9 +87,59 @@ const SECURITY_PRACTICES = [
   "Open-source AGPLv3 / MIT licensing on MCP packages; commercial features licensed separately.",
 ];
 
+const TRUST_FAQ = [
+  {
+    q: "What compliance frameworks does MEOK attest to?",
+    a: "MEOK maintains live, signed, auditor-verifiable attestations for the EU AI Act (Articles 4, 6, 9, 10, 14, 26(9), 43, 50, 72), DORA (Reg 2022/2554), NIS2 / NIS2-UmsuCG, the EU CRA (Reg 2024/2847), and GDPR (DPIA template + Article 30 records). An ISO/IEC 42001 crosswalk is shipped with external audit pending.",
+  },
+  {
+    q: "How can an auditor verify a MEOK attestation?",
+    a: "MEOK signs its own compliance certificates with the same HMAC API customers buy. Every certificate carries a verify_url that any auditor can curl independently, and there is a public verifier at meok-attestation-api.vercel.app/verify for cryptographic verification of any signed MEOK certificate.",
+  },
+  {
+    q: "Who are MEOK's sub-processors?",
+    a: "The current vendors that may process customer data on our behalf are Vercel (hosting + edge CDN), Stripe (payments), Anthropic (LLM inference, with zero data retention on the API when configured), Cloudflare (DNS + DDoS for Cloudflare-fronted MCPs), Namecheap PrivateEmail (business email), GitHub (source + CI), and PyPI (package distribution). Customers are notified of material changes via email and the trust page.",
+  },
+  {
+    q: "How do I report a security issue to MEOK?",
+    a: "Email security@csoai.org (which mirrors to nicholas@meok.ai). We commit to a 24-hour acknowledgement and 72-hour triage. There is no paid bug bounty yet, but researchers are credited in the next monthly trust update.",
+  },
+];
+
+const WEBPAGE_JSONLD = {
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  name: "Trust Center · MEOK AI Labs",
+  description:
+    "Security posture, signed compliance attestations, sub-processors, and policies for MEOK AI Labs (CSOAI LTD, UK Companies House 16939677). Buyer-grade trust signals.",
+  url: "https://meok.ai/trust",
+};
+
+const FAQ_JSONLD = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: TRUST_FAQ.map((f) => ({
+    "@type": "Question",
+    name: f.q,
+    acceptedAnswer: { "@type": "Answer", text: f.a },
+  })),
+};
+
+const BREADCRUMB_JSONLD = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: "https://meok.ai/" },
+    { "@type": "ListItem", position: 2, name: "Trust Center", item: "https://meok.ai/trust" },
+  ],
+};
+
 export default function TrustPage() {
   return (
     <main style={{ minHeight: "100vh", background: BG, color: NAVY }}>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(WEBPAGE_JSONLD) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(FAQ_JSONLD) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(BREADCRUMB_JSONLD) }} />
       <div style={{ maxWidth: 1040, margin: "0 auto", padding: "5rem 1.5rem" }}>
         <div
           style={{
@@ -188,6 +238,19 @@ export default function TrustPage() {
               <div style={{ fontSize: 14, fontWeight: 900, marginBottom: 4, color: GOLD }}>{p.name} →</div>
               <div style={{ fontSize: 12, color: `${NAVY}99`, lineHeight: 1.5 }}>{p.desc}</div>
             </Link>
+          ))}
+        </div>
+
+        {/* FAQ */}
+        <h2 style={{ fontSize: "1.6rem", fontWeight: 900, marginBottom: 16 }}>
+          Frequently asked
+        </h2>
+        <div style={{ display: "grid", gap: 12, marginBottom: 56 }}>
+          {TRUST_FAQ.map((f) => (
+            <details key={f.q} style={{ background: "white", borderRadius: 14, padding: "16px 20px", border: `1px solid ${NAVY}1a` }}>
+              <summary style={{ fontWeight: 700, cursor: "pointer", fontSize: 15, color: NAVY }}>{f.q}</summary>
+              <p style={{ marginTop: 10, color: `${NAVY}99`, fontSize: 14, lineHeight: 1.6 }}>{f.a}</p>
+            </details>
           ))}
         </div>
 

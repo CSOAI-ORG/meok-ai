@@ -298,6 +298,33 @@ function MCPServerCard({ server }: { server: MCPServer }) {
   );
 }
 
+// ── Structured data ───────────────────────────────────────────────
+const REGISTRY_BREADCRUMB_JSONLD = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: "https://meok.ai/" },
+    { "@type": "ListItem", position: 2, name: "Model Registry", item: "https://meok.ai/registry" },
+  ],
+};
+
+const REGISTRY_WEBPAGE_JSONLD = {
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  name: "Model Registry — MEOK AI",
+  url: "https://meok.ai/registry",
+  description: "Browse AI models and MCP servers aggregated from OpenRouter, HuggingFace, and Ollama. Filter by source, capability, context length, pricing, and open-source licence.",
+};
+
+const REGISTRY_FAQ = [
+  { q: "Where does the registry data come from?", a: "The registry aggregates model metadata from multiple public sources — OpenRouter, HuggingFace, and Ollama — into a single searchable view. MCP servers are listed alongside the models. Each model card shows its source, and the stats bar at the top shows how many entries came from each source plus the last refresh time." },
+  { q: "How do I filter for open-source models only?", a: "Use the 'Open Source' toggle in the filter bar. When enabled it restricts results to models flagged as open source. You can combine it with the source filter (OpenRouter / HuggingFace / Ollama), the capability filter (chat, code, vision, reasoning), and the free-text search box to narrow down quickly." },
+  { q: "What do the pricing figures mean?", a: "Pricing is shown per one million tokens, split into prompt (input) and completion (output) cost in US dollars. Values under $0.01 per million are shown as '<$0.01'. Models without published pricing — typically locally-run Ollama and many HuggingFace models — show a dash instead." },
+  { q: "How often is the registry updated?", a: "The data is refreshed from upstream sources on a schedule; the timestamp in the stats bar shows when the currently displayed snapshot was fetched. Use the Retry / filter controls to re-query the API for the latest cached snapshot." },
+];
+
+const REGISTRY_FAQ_JSONLD = { "@context": "https://schema.org", "@type": "FAQPage", mainEntity: REGISTRY_FAQ.map((f) => ({ "@type": "Question", name: f.q, acceptedAnswer: { "@type": "Answer", text: f.a } })) };
+
 // ── Main Page ─────────────────────────────────────────────────────
 
 export default function RegistryPage() {
@@ -394,6 +421,9 @@ export default function RegistryPage() {
   // ── Render ────────────────────────────────────────────────────────
   return (
     <div className="min-h-screen" style={{ backgroundColor: DEEP }}>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(REGISTRY_BREADCRUMB_JSONLD) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(REGISTRY_WEBPAGE_JSONLD) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(REGISTRY_FAQ_JSONLD) }} />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {/* ── Header ─────────────────────────────────── */}
         <div className="mb-8">
@@ -642,6 +672,25 @@ export default function RegistryPage() {
             )}
           </div>
         )}
+
+        {/* ── FAQ ────────────────────────────────────── */}
+        <div className="mt-16">
+          <h2 className="text-lg font-semibold text-white mb-4">Frequently asked</h2>
+          <div className="grid grid-cols-1 gap-3">
+            {REGISTRY_FAQ.map((f) => (
+              <details
+                key={f.q}
+                className="rounded-xl p-5"
+                style={{ backgroundColor: SURFACE, border: `1px solid ${BORDER}` }}
+              >
+                <summary className="text-sm font-medium text-white/90 cursor-pointer">
+                  {f.q}
+                </summary>
+                <p className="mt-3 text-sm text-white/50 leading-relaxed">{f.a}</p>
+              </details>
+            ))}
+          </div>
+        </div>
 
         {/* ── Footer ─────────────────────────────────── */}
         <div className="mt-16 pb-8 text-center text-white/20 text-xs">

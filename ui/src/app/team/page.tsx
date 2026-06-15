@@ -83,9 +83,43 @@ const AGENTS_TYPES = [
   { name: "Neural Trainers", role: "Six specialised models — train on care patterns, memory architecture, and sovereign AI research" },
 ];
 
+const ORGANIZATION_JSONLD = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: "MEOK AI LABS",
+  url: "https://meok.ai/",
+  description:
+    "UK-registered, care-governed sovereign AI company. One founder and a Byzantine Council of 43 specialist agents.",
+  email: "hello@meok.ai",
+  founder: {
+    "@type": "Person",
+    name: "Nicholas Templeman",
+    jobTitle: "Founder & CEO",
+    email: "nicholas@meok.ai",
+    worksFor: { "@type": "Organization", name: "MEOK AI LABS" },
+  },
+  member: {
+    "@type": "Person",
+    name: "Nicholas Templeman",
+    jobTitle: "Founder & CEO",
+    email: "nicholas@meok.ai",
+  },
+};
+
+const BREADCRUMB_JSONLD = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: "https://meok.ai/" },
+    { "@type": "ListItem", position: 2, name: "Team", item: "https://meok.ai/team" },
+  ],
+};
+
 export default function TeamPage() {
   return (
     <div className="min-h-screen bg-[#0d0c18] text-white">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(ORGANIZATION_JSONLD) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(BREADCRUMB_JSONLD) }} />
 
       {/* ─── HERO ──────────────────────────────────────────────── */}
       <section className="relative pt-36 pb-24 px-6 text-center overflow-hidden">

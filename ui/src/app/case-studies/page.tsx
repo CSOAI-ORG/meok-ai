@@ -18,6 +18,24 @@ const NAVY = "#1a1a2e";
 const GOLD = "#c9a84c";
 const BG = "#f5f0e8";
 
+const BREADCRUMB_JSONLD = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: "https://meok.ai/" },
+    { "@type": "ListItem", position: 2, name: "Case Studies", item: "https://meok.ai/case-studies" },
+  ],
+};
+
+const CS_FAQ = [
+  { q: "Are these case studies real?", a: "Yes. We don't have a wall of customer logos yet, so we publish a small number of honest accounts: customers who have shipped real things with MEOK plus our own published self-tests. Customer names are anonymised where privacy requires it, and every outcome is described as it actually happened — including open gaps." },
+  { q: "Why are some customers anonymised?", a: "Several of our early customers operate in regulated sectors where disclosing a compliance gap or a missed filing deadline would be commercially sensitive. We anonymise the organisation (e.g. 'German Mittelstand SaaS') while keeping the framework, challenge, approach and outcome accurate so the case is still useful to a reader in the same position." },
+  { q: "Can I verify the signed attestations referenced here?", a: "Yes. Where a case lists a signed attestation (for example MEOK-EUAIAC-MAIN), it is publicly verifiable via the meok-attestation-api verify endpoint. The self-test attestation for MEOK's own EU AI Act readiness is verifiable at meok-attestation-api.vercel.app/verify." },
+  { q: "How do I get my own outcome featured here?", a: "If you run MEOK and are willing to be named, email nicholas@meok.ai with the subject 'Case study participation' and we'll add your story to this page. We can keep it anonymised if you prefer, or attach your logo and a quote." },
+];
+
+const CS_FAQ_JSONLD = { "@context": "https://schema.org", "@type": "FAQPage", mainEntity: CS_FAQ.map((f) => ({ "@type": "Question", name: f.q, acceptedAnswer: { "@type": "Answer", text: f.a } })) };
+
 type Case = {
   slug: string;
   org: string;
@@ -60,9 +78,24 @@ const CASES: Case[] = [
   },
 ];
 
+const CS_ITEMLIST_JSONLD = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  name: "MEOK AI Labs case studies",
+  itemListElement: CASES.map((c, i) => ({
+    "@type": "ListItem",
+    position: i + 1,
+    name: `${c.org} — ${c.framework}`,
+    description: c.outcome,
+  })),
+};
+
 export default function CaseStudiesPage() {
   return (
     <main style={{ minHeight: "100vh", background: BG, color: NAVY }}>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(BREADCRUMB_JSONLD) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(CS_ITEMLIST_JSONLD) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(CS_FAQ_JSONLD) }} />
       <div style={{ maxWidth: 940, margin: "0 auto", padding: "5rem 1.5rem" }}>
         <div
           style={{
@@ -135,6 +168,16 @@ export default function CaseStudiesPage() {
                 </div>
               )}
             </article>
+          ))}
+        </div>
+
+        <h2 style={{ fontSize: "1.5rem", fontWeight: 900, marginBottom: 20 }}>Frequently asked</h2>
+        <div style={{ display: "grid", gap: 12, marginBottom: 48 }}>
+          {CS_FAQ.map((f) => (
+            <details key={f.q} style={{ background: "white", borderRadius: 12, padding: "16px 20px", border: `1px solid ${NAVY}1a` }}>
+              <summary style={{ fontWeight: 700, cursor: "pointer", fontSize: 15, color: NAVY }}>{f.q}</summary>
+              <p style={{ marginTop: 10, color: `${NAVY}99`, fontSize: 14, lineHeight: 1.6 }}>{f.a}</p>
+            </details>
           ))}
         </div>
 

@@ -70,9 +70,31 @@ const PRICING_TIERS = [
   },
 ];
 
+const ENTERPRISE_FAQ = [
+  { q: "How much does MEOK for teams cost?", a: "The Team plan is £19 per user per month for up to 20 users, including a shared character library, basic analytics, email support, and SSO (beta). The Business plan is £49 per user per month for unlimited users with custom deployments, full audit logs, priority support, a dedicated account manager, and an SLA guarantee. Enterprise pricing is custom for national-scale deployments." },
+  { q: "What identity providers does SSO support?", a: "MEOK integrates with all major IdPs via SSO and SAML — including Okta, Azure AD, Google Workspace, and Auth0. SSO is in beta on the Team plan and fully available on Business and Enterprise." },
+  { q: "Can MEOK be deployed on-premise?", a: "Yes. Custom deployments support on-premise, private cloud, or a dedicated VPC, so you can deploy MEOK wherever your data residency requirements demand. On-premise is available on the Enterprise plan." },
+  { q: "Who uses MEOK Enterprise?", a: "Healthcare (patient companion AI, staff support, care home monitoring with NHS-compliant data handling), professional services (client-facing assistants, case memory, compliance tracking), and government (citizen support AI and sensitive data handling, G-Cloud approved)." },
+];
+
+const ENT_BREADCRUMB_JSONLD = { "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElement: [
+  { "@type": "ListItem", position: 1, name: "Home", item: "https://meok.ai/" },
+  { "@type": "ListItem", position: 2, name: "Enterprise & Team", item: "https://meok.ai/product/enterprise" },
+] };
+
+const ENT_PRODUCT_JSONLD = { "@context": "https://schema.org", "@type": "Service", name: "MEOK Enterprise & Team", description: "Enterprise AI solutions with SSO, role-based access, custom deployments, dedicated support, and SLA guarantees.", url: "https://meok.ai/product/enterprise", provider: { "@type": "Organization", name: "MEOK AI Labs" }, offers: [
+  { "@type": "Offer", name: "Team", price: "19", priceCurrency: "GBP", description: "Per user per month — up to 20 users, shared character library, basic analytics, email support, SSO (beta)." },
+  { "@type": "Offer", name: "Business", price: "49", priceCurrency: "GBP", description: "Per user per month — unlimited users, custom deployments, full audit logs, priority support, dedicated account manager, SLA guarantee." },
+] };
+
+const ENT_FAQ_JSONLD = { "@context": "https://schema.org", "@type": "FAQPage", mainEntity: ENTERPRISE_FAQ.map((f) => ({ "@type": "Question", name: f.q, acceptedAnswer: { "@type": "Answer", text: f.a } })) };
+
 export default function EnterprisePage() {
   return (
     <div className="min-h-screen bg-[#0d0c18] text-[#f5f0e8]">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(ENT_BREADCRUMB_JSONLD) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(ENT_PRODUCT_JSONLD) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(ENT_FAQ_JSONLD) }} />
       {/* Hero */}
       <section className="relative pt-32 pb-24 px-6 text-center overflow-hidden">
         <div className="blob-blue" style={{ width: 600, height: 500, top: -150, left: "50%", transform: "translateX(-50%)", opacity: 0.15 }} />
@@ -209,6 +231,28 @@ export default function EnterprisePage() {
                   {cta}
                 </Link>
               </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ */}
+      <section className="py-24 px-6 bg-[#0d0c18]">
+        <div className="max-w-3xl mx-auto">
+          <div className="text-center mb-16">
+            <span className="text-xs font-bold tracking-widest uppercase text-[#c9a84c]/60 block mb-4">
+              FAQ
+            </span>
+            <h2 className="text-3xl sm:text-4xl font-black text-white">
+              Frequently asked.
+            </h2>
+          </div>
+          <div className="space-y-3">
+            {ENTERPRISE_FAQ.map(({ q, a }) => (
+              <details key={q} className="rounded-xl bg-white/[0.02] border border-white/[0.05] p-5">
+                <summary className="font-bold text-white text-sm cursor-pointer">{q}</summary>
+                <p className="mt-3 text-sm text-[#f5f0e8]/60 leading-relaxed">{a}</p>
+              </details>
             ))}
           </div>
         </div>

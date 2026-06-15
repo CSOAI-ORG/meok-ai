@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>💻 MEOK OS v3 — CLI (meok-os-cli, Cross-Platform, MIT)</title>
+<meta name="description" content="MEOK OS v3 CLI — meok-os-cli. Cross-platform. Sovereign. MIT. 30 commands. Install via brew + pip + cargo.">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="stylesheet" href="meok-os-design-system.css">
+<style>body { background: radial-gradient(1200px 800px at 50% 0%, #1a0d2a, var(--bg) 60%); }</style>
+</head>
+<body>
+<div class="app">
+  <header class="topbar">
+    <a href="index.html">← MEOK OS v3</a>
+    <span class="title">💻 CLI</span>
+  </header>
+  <main class="dock" style="padding: 18px; overflow-y: auto; max-width: 900px; margin: 0 auto;">
+    <h1 style="margin: 0 0 8px; text-align: center; font-size: 36px;">💻 meok-os-cli</h1>
+    <p style="color: var(--dim); margin: 0 0 32px; text-align: center; font-size: 16px;">Cross-platform CLI. Sovereign. MIT. 30 commands. Install via brew + pip + cargo.</p>
+
+    <h2 style="font-size: 18px; color: var(--accent5); margin: 18px 0 12px;">📦 Install</h2>
+    <div class="card" style="margin-bottom: 16px;">
+      <pre style="background: var(--bg); padding: 12px; border-radius: 6px; font-size: 12px; overflow-x: auto; color: var(--ink); margin: 0 0 8px;"># macOS
+brew install meok-os
+
+# Linux
+curl -fsSL https://meok.ai/install.sh | sh
+
+# Windows
+iwr -useb https://meok.ai/install.ps1 | iex
+
+# Python
+pip install meok-os-cli
+
+# Rust
+cargo install meok-os-cli
+
+# From source (any platform)
+git clone https://github.com/csoai-org/meok-os-cli
+cd meok-os-cli
+make install
+</pre>
+    </div>
+
+    <h2 style="font-size: 18px; color: var(--accent5); margin: 24px 0 12px;">💻 The 30 commands (grouped)</h2>
+
+    <h3 style="font-size: 14px; color: var(--accent5); margin: 12px 0 6px;">🪟 Character (6 commands)</h3>
+    <div class="card" style="margin-bottom: 8px; background: var(--bg); font-family: monospace; font-size: 12px; padding: 12px;">
+      <div>meok character birth &lt;archetype&gt; &lt;name&gt;</div>
+      <div>meok character list</div>
+      <div>meok character get &lt;id&gt;</div>
+      <div>meok character update &lt;id&gt; --name &lt;name&gt;</div>
+      <div>meok character delete &lt;id&gt; --confirm</div>
+      <div>meok character archive &lt;id&gt;</div>
+    </div>
+
+    <h3 style="font-size: 14px; color: var(--accent5); margin: 12px 0 6px;">🗳️ BFT (4 commands)</h3>
+    <div class="card" style="margin-bottom: 8px; background: var(--bg); font-family: monospace; font-size: 12px; padding: 12px;">
+      <div>meok bft proposals list [--council &lt;council&gt;] [--status open|ratified|vetoed]</div>
+      <div>meok bft proposals submit --council &lt;council&gt; --title &lt;title&gt; --body &lt;body&gt;</div>
+      <div>meok bft vote --proposal &lt;id&gt; --vote yes|no|abstain</div>
+      <div>meok bft audit log [--days 30]</div>
+    </div>
+
+    <h3 style="font-size: 14px; color: var(--accent5); margin: 12px 0 6px;">📜 Attestation (3 commands)</h3>
+    <div class="card" style="margin-bottom: 8px; background: var(--bg); font-family: monospace; font-size: 12px; padding: 12px;">
+      <div>meok attest issue --type sovereign</div>
+      <div>meok attest list [--type sovereign|compliance|...]</div>
+      <div>meok attest verify &lt;cert_id&gt;</div>
+    </div>
+
+    <h3 style="font-size: 14px; color: var(--accent5); margin: 12px 0 6px;">🛡️ Sovereign (5 commands)</h3>
+    <div class="card" style="margin-bottom: 8px; background: var(--bg); font-family: monospace; font-size: 12px; padding: 12px;">
+      <div>meok sovereign export --format json|csv|parquet|ndjson|zip|encrypted --output &lt;path&gt;</div>
+      <div>meok sovereign delete --confirm --audit-receipt</div>
+      <div>meok sovereign history [--days 30]</div>
+      <div>meok sovereign audit log</div>
+      <div>meok sovereign import &lt;path&gt; --verify</div>
+    </div>
+
+    <h3 style="font-size: 14px; color: var(--accent5); margin: 12px 0 6px;">📡 MCP (5 commands)</h3>
+    <div class="card" style="margin-bottom: 8px; background: var(--bg); font-family: monospace; font-size: 12px; padding: 12px;">
+      <div>meok mcp list [--hive &lt;hive&gt;] [--tag gaming|compliance|...]</div>
+      <div>meok mcp get &lt;server_id&gt;</div>
+      <div>meok mcp call &lt;server_id&gt; &lt;tool_name&gt; --arg &lt;value&gt;</div>
+      <div>meok mcp register &lt;manifest.json&gt;</div>
+      <div>meok mcp deregister &lt;server_id&gt;</div>
+    </div>
+
+    <h3 style="font-size: 14px; color: var(--accent5); margin: 12px 0 6px;">📊 System (7 commands)</h3>
+    <div class="card" style="margin-bottom: 16px; background: var(--bg); font-family: monospace; font-size: 12px; padding: 12px;">
+      <div>meok --version</div>
+      <div>meok --help</div>
+      <div>meok auth login [--device-flow] [--browser]</div>
+      <div>meok auth logout</div>
+      <div>meok config set &lt;key&gt; &lt;value&gt;</div>
+      <div>meok config get &lt;key&gt;</div>
+      <div>meok status [--verbose] [--json]</div>
+    </div>
+
+    <h2 style="font-size: 18px; color: var(--accent5); margin: 24px 0 12px;">🚀 Quick start</h2>
+    <div class="card">
+      <pre style="background: var(--bg); padding: 12px; border-radius: 6px; font-size: 12px; overflow-x: auto; color: var(--ink); margin: 0 0 8px;"># 1. Login
+meok auth login
+
+# 2. Birth a character
+meok character birth sage "The Scholar"
+
+# 3. Vote on a proposal
+meok bft vote --proposal MEOK-9F4A2B7C --vote yes
+
+# 4. Export your data
+meok sovereign export --format json --output ./my-data.json
+
+# 5. Verify an attestation
+meok attest verify MEOK-9F4A2B7C
+</pre>
+    </div>
+  </main>
+  <footer class="sovereignbar">
+    <div class="item"><span class="ok">●</span><span class="label">CLI:</span><span class="val">30 commands · cross-platform</span></div>
+    <div class="spacer"></div>
+    <button class="action">💻 Install</button>
+  </footer>
+</div>
+</body>
+</html>

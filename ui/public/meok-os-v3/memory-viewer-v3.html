@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>🧠 MEOK OS v3 — Memory Viewer (4 Layers, Editable)</title>
+<meta name="description" content="MEOK OS v3 Memory Viewer — see and edit the 4 memory layers: working, episodic, semantic, procedural. Sovereign. Right to rectification (GDPR Art 16).">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="stylesheet" href="meok-os-design-system.css">
+</head>
+<body>
+<div class="app">
+  <header class="topbar">
+    <a href="index.html">← MEOK OS v3</a>
+    <span class="title">🧠 Memory Viewer</span>
+  </header>
+  <main class="dock" style="padding: 18px; overflow-y: auto; max-width: 1000px; margin: 0 auto;">
+    <h1 style="margin: 0 0 8px;">🧠 Memory Viewer</h1>
+    <p style="color: var(--dim); margin: 0 0 24px;">See and edit the 4 memory layers. Right to rectification (GDPR Art 16). Sovereign. Exportable.</p>
+
+    <div style="display: flex; gap: 8px; margin-bottom: 16px;">
+      <button class="primary" style="font-size: 11px;">💼 Working (1 conversation)</button>
+      <button class="ghost" style="font-size: 11px;">📚 Episodic (12,450 messages)</button>
+      <button class="ghost" style="font-size: 11px;">🧠 Semantic (1,247 facts)</button>
+      <button class="ghost" style="font-size: 11px;">⚙️ Procedural (24 preferences)</button>
+    </div>
+
+    <h2 style="font-size: 16px; color: var(--accent5); margin: 18px 0 12px;">💼 Working memory (last 8K tokens)</h2>
+    <div class="card" style="margin-bottom: 16px;">
+      <div style="background: var(--bg); padding: 12px; border-radius: 6px; font-family: monospace; font-size: 11px; color: var(--ink); line-height: 1.6;">
+        <div style="color: var(--accent5); margin-bottom: 8px;">--- Current conversation (token #5,234 of 8,192) ---</div>
+        <div style="color: var(--dim);">[User] Draft a 5,000-word white paper on AI fraud detection in online gambling.</div>
+        <div style="color: var(--ok);">[The Scholar] I'll structure it in 6 sections: (1) Market sizing ($1.5B → $14.7B at 25.7% CAGR), (2) 10 banned features enforced at the COAI gate, (3) Sportradar / Mindway AI / GAMWIT competitive landscape, (4) MCP-native fraud detection architecture, (5) Sovereign data + 13 regulatory frameworks, (6) OpenPatent × MEOK case study. Estimated time: 90 minutes. Cost: $0.10 × 5 calls = $0.50.</div>
+        <div style="color: var(--dim);">[User] Yes, proceed. Use the Socratic voice, not the play voice.</div>
+        <div style="color: var(--ok);">[The Scholar] Acknowledged. Switching to Socratic voice. Beginning the 90-minute draft. Section 1 first.</div>
+      </div>
+      <div style="margin-top: 12px; padding: 8px; background: var(--panel2); border-radius: 6px; font-size: 11px; color: var(--dim);">
+        <strong>Working memory</strong> is the current conversation context. Auto-purged on close. Max 8K tokens (configurable per tier). Not exportable in real-time, but the full conversation is stored in episodic memory.
+      </div>
+    </div>
+
+    <h2 style="font-size: 16px; color: var(--accent5); margin: 24px 0 12px;">🧠 Semantic memory (1,247 facts about you)</h2>
+    <div class="card" style="margin-bottom: 16px;">
+      <div style="display: flex; flex-direction: column; gap: 6px;">
+        <div style="background: var(--panel2); padding: 10px 12px; border-radius: 6px; display: flex; align-items: center; gap: 8px; font-size: 12px;">
+          <span style="color: var(--ok);">✓</span>
+          <div style="flex: 1;">
+            <div style="font-weight: 700;">Fact #1</div>
+            <div style="color: var(--dim); font-size: 11px;">"User is the founder of MEOK AI Labs, a UK-based solo founder company."</div>
+          </div>
+          <button class="ghost" style="font-size: 10px;">✎ Edit</button>
+          <button class="ghost" style="font-size: 10px; color: var(--err);">🗑️</button>
+        </div>
+        <div style="background: var(--panel2); padding: 10px 12px; border-radius: 6px; display: flex; align-items: center; gap: 8px; font-size: 12px;">
+          <span style="color: var(--ok);">✓</span>
+          <div style="flex: 1;">
+            <div style="font-weight: 700;">Fact #2</div>
+            <div style="color: var(--dim); font-size: 11px;">"User lives on a 6.5-acre UK farm."</div>
+          </div>
+          <button class="ghost" style="font-size: 10px;">✎ Edit</button>
+          <button class="ghost" style="font-size: 10px; color: var(--err);">🗑️</button>
+        </div>
+        <div style="background: var(--panel2); padding: 10px 12px; border-radius: 6px; display: flex; align-items: center; gap: 8px; font-size: 12px;">
+          <span style="color: var(--ok);">✓</span>
+          <div style="flex: 1;">
+            <div style="font-weight: 700;">Fact #3</div>
+            <div style="color: var(--dim); font-size: 11px;">"User prefers Socratic voice over play voice."</div>
+          </div>
+          <button class="ghost" style="font-size: 10px;">✎ Edit</button>
+          <button class="ghost" style="font-size: 10px; color: var(--err);">🗑️</button>
+        </div>
+        <div style="background: var(--panel2); padding: 10px 12px; border-radius: 6px; display: flex; align-items: center; gap: 8px; font-size: 12px;">
+          <span style="color: var(--ok);">✓</span>
+          <div style="flex: 1;">
+            <div style="font-weight: 700;">Fact #4</div>
+            <div style="color: var(--dim); font-size: 11px;">"User is allergic to inflated marketing claims. Wants honest numbers."</div>
+          </div>
+          <button class="ghost" style="font-size: 10px;">✎ Edit</button>
+          <button class="ghost" style="font-size: 10px; color: var(--err);">🗑️</button>
+        </div>
+        <div style="background: var(--panel2); padding: 10px 12px; border-radius: 6px; display: flex; align-items: center; gap: 8px; font-size: 12px;">
+          <span style="color: var(--ok);">✓</span>
+          <div style="flex: 1;">
+            <div style="font-weight: 700;">Fact #5</div>
+            <div style="color: var(--dim); font-size: 11px;">"User has a daughter who likes The Trickster, a son who likes The Pioneer, and a grandma who likes The Sage."</div>
+          </div>
+          <button class="ghost" style="font-size: 10px;">✎ Edit</button>
+          <button class="ghost" style="font-size: 10px; color: var(--err);">🗑️</button>
+        </div>
+      </div>
+      <p style="font-size: 12px; color: var(--dim); margin: 12px 0 0;">Showing 5 of 1,247 facts. <a href="#" style="color: var(--accent2);">View all 1,247 →</a></p>
+    </div>
+
+    <h2 style="font-size: 16px; color: var(--accent5); margin: 24px 0 12px;">⚙️ Procedural memory (24 preferences)</h2>
+    <div class="card" style="margin-bottom: 16px;">
+      <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 6px;">
+        <div style="background: var(--panel2); padding: 8px 12px; border-radius: 6px; font-size: 12px;"><strong>Voice:</strong> Socratic</div>
+        <div style="background: var(--panel2); padding: 8px 12px; border-radius: 6px; font-size: 12px;"><strong>Model:</strong> Claude Sonnet</div>
+        <div style="background: var(--panel2); padding: 8px 12px; border-radius: 6px; font-size: 12px;"><strong>Language:</strong> English (UK)</div>
+        <div style="background: var(--panel2); padding: 8px 12px; border-radius: 6px; font-size: 12px;"><strong>Timezone:</strong> Europe/London</div>
+        <div style="background: var(--panel2); padding: 8px 12px; border-radius: 6px; font-size: 12px;"><strong>Theme:</strong> Dark</div>
+        <div style="background: var(--panel2); padding: 8px 12px; border-radius: 6px; font-size: 12px;"><strong>Font size:</strong> Medium</div>
+        <div style="background: var(--panel2); padding: 8px 12px; border-radius: 6px; font-size: 12px;"><strong>Animation:</strong> Default</div>
+        <div style="background: var(--panel2); padding: 8px 12px; border-radius: 6px; font-size: 12px;"><strong>Care floor:</strong> 0.95</div>
+        <div style="background: var(--panel2); padding: 8px 12px; border-radius: 6px; font-size: 12px;"><strong>Horus veto:</strong> 2-of-3</div>
+        <div style="background: var(--panel2); padding: 8px 12px; border-radius: 6px; font-size: 12px;"><strong>Sigils:</strong> All visible</div>
+        <div style="background: var(--panel2); padding: 8px 12px; border-radius: 6px; font-size: 12px;"><strong>BFT:</strong> Active (1x weight)</div>
+        <div style="background: var(--panel2); padding: 8px 12px; border-radius: 6px; font-size: 12px;"><strong>Export:</strong> JSON default</div>
+      </div>
+    </div>
+
+    <div style="background: var(--panel2); padding: 16px; border-radius: 8px; margin-top: 24px; font-size: 12px; color: var(--dim); text-align: center;">
+      🛡️ Your memory is sovereign. Edit any fact. Delete any memory. Export everything. Right to rectification (GDPR Art 16). Right to erasure (GDPR Art 17).
+    </div>
+  </main>
+  <footer class="sovereignbar">
+    <div class="item"><span class="ok">●</span><span class="label">Memory:</span><span class="val">1,247 facts · 24 prefs</span></div>
+    <div class="spacer"></div>
+    <button class="action">📤 Export all</button>
+  </footer>
+</div>
+</body>
+</html>

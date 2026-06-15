@@ -1,5 +1,32 @@
 import Link from "next/link";
 
+const FAQ = [
+  { q: "Is AGISafe high-risk under the EU AI Act?", a: "AGISafe is a safety + compliance monitoring layer, not itself a high-risk AI system. It helps you meet Article 9 (risk management) for the high-risk systems you deploy, with automated high-risk classification and documentation. The product itself produces audit evidence rather than making decisions affecting fundamental rights." },
+  { q: "What compliance frameworks does AGISafe cover?", a: "EU AI Act (full Article 9 for high-risk systems), GDPR (DPIAs + consent management), SOC 2 Type II, HIPAA (PHI protection for healthcare AI), NIST AI RMF, and ISO 42001 AI management system certification support — 50+ frameworks in total." },
+  { q: "How does the Byzantine Council make safety decisions reliable?", a: "AGISafe runs on MEOK's proprietary 33-agent governance architecture. Every safety decision is validated by fault-tolerant consensus, so the system remains safe even if up to 10 agents are compromised. Critical decisions require human-in-the-loop confirmation, and every decision is logged in an immutable, timestamped audit trail." },
+  { q: "How much does AGISafe cost?", a: "Starter is £99/mo (10,000 AI interactions/month, real-time monitoring, basic bias detection, email support). Professional is £999/mo (100,000 interactions/month, full compliance suite, EU AI Act reporting, priority support). Enterprise is custom-priced with unlimited interactions and a dedicated success manager." },
+];
+
+const FAQ_JSONLD = { "@context": "https://schema.org", "@type": "FAQPage", mainEntity: FAQ.map((f) => ({ "@type": "Question", name: f.q, acceptedAnswer: { "@type": "Answer", text: f.a } })) };
+
+const BREADCRUMB_JSONLD = { "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElement: [
+  { "@type": "ListItem", position: 1, name: "Home", item: "https://meok.ai/" },
+  { "@type": "ListItem", position: 2, name: "AGISafe", item: "https://meok.ai/agisafe" },
+] };
+
+const APP_JSONLD = {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  name: "AGISafe.ai",
+  applicationCategory: "BusinessApplication",
+  operatingSystem: "Web",
+  description: "Real-time AI safety monitoring and compliance automation. EU AI Act, GDPR, SOC 2, HIPAA, NIST AI RMF and ISO 42001 in one platform.",
+  url: "https://meok.ai/agisafe",
+  brand: { "@type": "Brand", name: "MEOK AI" },
+  provider: { "@type": "Organization", name: "MEOK AI", url: "https://meok.ai" },
+  offers: { "@type": "Offer", price: "99", priceCurrency: "GBP", url: "https://meok.ai/agisafe#pricing" },
+};
+
 const FEATURES = [
   {
     icon: "🛡️",
@@ -45,6 +72,9 @@ const COMPLIANCE = [
 export default function AgisafePage() {
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(FAQ_JSONLD) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(BREADCRUMB_JSONLD) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(APP_JSONLD) }} />
       {/* Hero Section */}
       <section className="relative overflow-hidden py-24 px-6">
         <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/5 via-transparent to-teal-500/5" />
@@ -289,6 +319,28 @@ export default function AgisafePage() {
                 Contact Sales
               </Link>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ */}
+      <section id="faq" className="py-24 px-6">
+        <div className="max-w-4xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold text-white mb-4">
+              Frequently Asked Questions
+            </h2>
+            <p className="text-xl text-slate-400">
+              EU AI Act, governance, and pricing — answered.
+            </p>
+          </div>
+          <div className="grid gap-6">
+            {FAQ.map((f, i) => (
+              <div key={i} className="p-6 rounded-2xl bg-slate-900/50 border border-slate-800 hover:border-emerald-500/30 transition-colors">
+                <h3 className="text-xl font-semibold text-white mb-2">{f.q}</h3>
+                <p className="text-slate-400">{f.a}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>

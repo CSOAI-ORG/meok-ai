@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>📤 MEOK Sovereign Export v3 — 1-Click Data Export</title>
+<meta name="description" content="MEOK OS v3 Sovereign Export — 1-click JSON/CSV/Parquet export. GDPR Article 20 (portability). Right to data portability.">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="stylesheet" href="meok-os-design-system.css">
+</head>
+<body>
+<div class="app">
+  <header class="topbar">
+    <a href="index.html">← MEOK OS v3</a>
+    <span class="title">📤 Sovereign Export v3</span>
+  </header>
+
+  <main class="dock" style="padding: 18px; overflow-y: auto;">
+    <h1 style="margin: 0 0 8px;">📤 Sovereign Export</h1>
+    <p style="color: var(--dim); margin: 0 0 24px;">1-click export of all your sovereign data. GDPR Article 20 (portability). Right to data portability. Your data, your control, your format.</p>
+
+    <div class="grid cols-3">
+      <div class="card" style="text-align: center;">
+        <div style="font-size: 32px; color: var(--accent4);">💬</div>
+        <div style="font-size: 22px; font-weight: 800; color: var(--ink);">12,450</div>
+        <div style="color: var(--dim); font-size: 12px;">conversations</div>
+      </div>
+      <div class="card" style="text-align: center;">
+        <div style="font-size: 32px; color: var(--accent2);">📜</div>
+        <div style="font-size: 22px; font-weight: 800; color: var(--ink);">2.4M</div>
+        <div style="color: var(--dim); font-size: 12px;">messages</div>
+      </div>
+      <div class="card" style="text-align: center;">
+        <div style="font-size: 32px; color: var(--accent5);">🌍</div>
+        <div style="font-size: 22px; font-weight: 800; color: var(--ink);">12</div>
+        <div style="color: var(--dim); font-size: 12px;">Dome locations</div>
+      </div>
+      <div class="card" style="text-align: center;">
+        <div style="font-size: 32px; color: var(--accent);">🗳️</div>
+        <div style="font-size: 22px; font-weight: 800; color: var(--ink);">47</div>
+        <div style="color: var(--dim); font-size: 12px;">BFT votes</div>
+      </div>
+      <div class="card" style="text-align: center;">
+        <div style="font-size: 32px; color: var(--accent6);">📋</div>
+        <div style="font-size: 22px; font-weight: 800; color: var(--ink);">8</div>
+        <div style="color: var(--dim); font-size: 12px;">Sovereign attestations</div>
+      </div>
+      <div class="card" style="text-align: center;">
+        <div style="font-size: 32px; color: var(--accent3);">⚙️</div>
+        <div style="font-size: 22px; font-weight: 800; color: var(--ink);">193</div>
+        <div style="color: var(--dim); font-size: 12px;">SOV3 events</div>
+      </div>
+    </div>
+
+    <h2 style="font-size: 18px; color: var(--accent5); margin: 24px 0 12px;">📦 Choose format</h2>
+    <div class="grid cols-3">
+      <div class="card" style="border-color: var(--accent);">
+        <div style="font-size: 24px;">📋</div>
+        <div style="font-size: 18px; font-weight: 800; margin: 4px 0;">JSON</div>
+        <div style="color: var(--dim); font-size: 12px;">Structured · ~1.2MB</div>
+        <button class="primary" style="margin-top: 12px; width: 100%;">📤 Export JSON</button>
+      </div>
+      <div class="card">
+        <div style="font-size: 24px;">📊</div>
+        <div style="font-size: 18px; font-weight: 800; margin: 4px 0;">CSV</div>
+        <div style="color: var(--dim); font-size: 12px;">Tabular · ~800KB</div>
+        <button class="ghost" style="margin-top: 12px; width: 100%;">📤 Export CSV</button>
+      </div>
+      <div class="card">
+        <div style="font-size: 24px;">🗜️</div>
+        <div style="font-size: 18px; font-weight: 800; margin: 4px 0;">Parquet</div>
+        <div style="color: var(--dim); font-size: 12px;">Columnar · ~400KB</div>
+        <button class="ghost" style="margin-top: 12px; width: 100%;">📤 Export Parquet</button>
+      </div>
+      <div class="card">
+        <div style="font-size: 24px;">🔗</div>
+        <div style="font-size: 18px; font-weight: 800; margin: 4px 0;">NDJSON</div>
+        <div style="color: var(--dim); font-size: 12px;">Streaming · 1M+ records</div>
+        <button class="ghost" style="margin-top: 12px; width: 100%;">📤 Stream NDJSON</button>
+      </div>
+      <div class="card">
+        <div style="font-size: 24px;">📦</div>
+        <div style="font-size: 18px; font-weight: 800; margin: 4px 0;">ZIP bundle</div>
+        <div style="color: var(--dim); font-size: 12px;">All formats · ~3MB</div>
+        <button class="ghost" style="margin-top: 12px; width: 100%;">📤 Export ZIP</button>
+      </div>
+      <div class="card">
+        <div style="font-size: 24px;">🔐</div>
+        <div style="font-size: 18px; font-weight: 800; margin: 4px 0;">Encrypted</div>
+        <div style="color: var(--dim); font-size: 12px;">E2E + age-locked</div>
+        <button class="ghost" style="margin-top: 12px; width: 100%;">📤 Export Encrypted</button>
+      </div>
+    </div>
+
+    <h2 style="font-size: 18px; color: var(--accent5); margin: 24px 0 12px;">🔐 What gets exported</h2>
+    <div class="card">
+      <ul style="line-height: 1.8; padding-left: 20px; color: var(--ink); font-size: 13px;">
+        <li>✓ All conversations (12,450 messages, 2.4MB)</li>
+        <li>✓ All memories (1,247 facts, 847 preferences, 1,103 context items)</li>
+        <li>✓ All character profiles (140+ companions, 9 archetypes, 4 packs)</li>
+        <li>✓ All 158 COAI attestations (with public verify URLs)</li>
+        <li>✓ All 8 sigil chain transcripts (Ed25519 signatures)</li>
+        <li>✓ All 11 BFT Council charters (5 voters per hive)</li>
+        <li>✓ All 193 SOV3 events (with timestamps + sigils)</li>
+        <li>✓ All 12 Dome locations (with coordinates + timestamps)</li>
+        <li>✓ All 47 BFT votes (with proposal + vote details)</li>
+        <li>✓ All 12,450 gaming hands (with leak analyses)</li>
+        <li>✓ All 8 family events + 13 chores</li>
+        <li>✓ All achievements + XP (24 badges, 7 levels)</li>
+        <li>✗ No telemetry. No analytics. No third-party data.</li>
+      </ul>
+    </div>
+
+    <div style="margin-top: 24px; padding: 16px; background: var(--panel2); border: 1px solid var(--line); border-radius: 8px; text-align: center;">
+      <p style="margin: 0 0 8px; color: var(--ink); font-size: 14px;">📤 Your data. Your export. Your control.</p>
+      <p style="margin: 0; color: var(--dim); font-size: 11px;">GDPR Article 20 · UK GDPR · LGPD · CCPA · PIPEDA — all 13 frameworks compliant</p>
+    </div>
+  </main>
+
+  <footer class="sovereignbar">
+    <div class="item"><span class="ok">●</span><span class="label">Export:</span><span class="val">ready</span></div>
+    <div class="sep">|</div>
+    <div class="item"><span class="ok">●</span><span class="label">GDPR:</span><span class="val">Art 20 ✓</span></div>
+    <div class="spacer"></div>
+    <button class="action">📤 Export all</button>
+  </footer>
+</div>
+</body>
+</html>

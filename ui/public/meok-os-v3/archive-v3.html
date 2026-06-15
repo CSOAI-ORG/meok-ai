@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>📜 MEOK OS v3 — Sovereign Archive</title>
+<meta name="description" content="MEOK OS v3 Sovereign Archive — every sigil, every attestation, every BFT vote. Tamper-evident. Searchable. Exportable.">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="stylesheet" href="meok-os-design-system.css">
+</head>
+<body>
+<div class="app">
+  <header class="topbar">
+    <a href="index.html">← MEOK OS v3</a>
+    <span class="title">📜 Sovereign Archive</span>
+    <div class="actions" style="margin-left: auto; display: flex; gap: 12px; align-items: center; font-size: 12px; color: var(--dim);">
+      <span>193 sigils</span>
+      <span>·</span>
+      <span>158 attestations</span>
+      <span>·</span>
+      <span>66+ proposals</span>
+    </div>
+  </header>
+  <main class="dock" style="padding: 18px; overflow-y: auto;">
+    <h1 style="margin: 0 0 8px;">📜 Sovereign Archive</h1>
+    <p style="color: var(--dim); margin: 0 0 24px;">The complete, tamper-evident, Ed25519-signed record of every action on the sovereign substrate.</p>
+    <input type="text" placeholder="🔍 Search archive (193 sigils, 158 attestations, 66+ proposals)..." style="width: 100%; padding: 12px 16px; background: var(--panel2); border: 1px solid var(--line); border-radius: 8px; color: var(--ink); font-size: 14px; margin-bottom: 16px;">
+    <div style="display: flex; gap: 8px; margin-bottom: 18px; flex-wrap: wrap;">
+      <button class="primary" style="font-size: 11px;">All (193)</button>
+      <button class="ghost" style="font-size: 11px;">📜 Sigils (193)</button>
+      <button class="ghost" style="font-size: 11px;">📋 Attestations (158)</button>
+      <button class="ghost" style="font-size: 11px;">🗳️ BFT Votes (47)</button>
+      <button class="ghost" style="font-size: 11px;">🪟 Character Events (45)</button>
+      <button class="ghost" style="font-size: 11px;">🛡️ Sovereign Actions (15)</button>
+      <button class="ghost" style="font-size: 11px;">🌍 Dome (22)</button>
+      <button class="ghost" style="font-size: 11px;">🎮 Gaming (31)</button>
+    </div>
+    <h2 style="font-size: 16px; color: var(--accent5); margin: 18px 0 12px;">📜 Recent sigils (10 of 193)</h2>
+    <table style="width: 100%; font-size: 11px; border-collapse: collapse; font-family: monospace;">
+      <tr style="background: var(--panel2); color: var(--accent5);"><th style="padding: 6px; text-align: left;">#</th><th style="padding: 6px; text-align: left;">Digest</th><th style="padding: 6px; text-align: left;">Type</th><th style="padding: 6px; text-align: left;">Line</th><th style="padding: 6px; text-align: left;">TS</th></tr>
+      <tr><td style="padding: 6px;">193</td><td style="padding: 6px;">2a93315a042f6f8d</td><td style="padding: 6px;">C</td><td style="padding: 6px;">MEOK OS v3 SPRINT SEALED 2026-06-14...</td><td style="padding: 6px;">11:45</td></tr>
+      <tr><td style="padding: 6px;">192</td><td style="padding: 6px;">6875b7a6d9f9f4d6</td><td style="padding: 6px;">C</td><td style="padding: 6px;">MEOK OS v3 SPRINT SEALED 2026-06-14...</td><td style="padding: 6px;">11:18</td></tr>
+      <tr><td style="padding: 6px;">191</td><td style="padding: 6px;">e563110805725a7f</td><td style="padding: 6px;">C</td><td style="padding: 6px;">MEOK OS v3 SPRINT SEALED 2026-06-14...</td><td style="padding: 6px;">11:21</td></tr>
+      <tr><td style="padding: 6px;">190</td><td style="padding: 6px;">353238ed20378db6</td><td style="padding: 6px;">V</td><td style="padding: 6px;">horus-acts: VETO sigil (Phase 4 active veto)</td><td style="padding: 6px;">11:08</td></tr>
+      <tr><td style="padding: 6px;">189</td><td style="padding: 6px;">a81515cd24551cfc</td><td style="padding: 6px;">A</td><td style="padding: 6px;">horus-acts: VETO action (3/3 BFT)</td><td style="padding: 6px;">11:08</td></tr>
+      <tr><td style="padding: 6px;">188</td><td style="padding: 6px;">67035ca319b2d5c5</td><td style="padding: 6px;">S</td><td style="padding: 6px;">meok-poker-hud seal (pokerhud.ai)</td><td style="padding: 6px;">10:55</td></tr>
+      <tr><td style="padding: 6px;">187</td><td style="padding: 6px;">0dbc7f5343aed384</td><td style="padding: 6px;">B</td><td style="padding: 6px;">meok-brain-daily: 89 files, 380.5KB</td><td style="padding: 6px;">10:30</td></tr>
+      <tr><td style="padding: 6px;">186</td><td style="padding: 6px;">74b91a96bc77cdc3</td><td style="padding: 6px;">B</td><td style="padding: 6px;">openpatent-revenue cron: bootstrap</td><td style="padding: 6px;">10:25</td></tr>
+      <tr><td style="padding: 6px;">185</td><td style="padding: 6px;">6f80ad776890a3d3</td><td style="padding: 6px;">C</td><td style="padding: 6px;">horus-rainbow activation seal</td><td style="padding: 6px;">10:20</td></tr>
+      <tr><td style="padding: 6px;">184</td><td style="padding: 6px;">8e3a7f4c2b1d5e9a</td><td style="padding: 6px;">A</td><td style="padding: 6px;">meok-keystone attest: MEOK-MEOKHO-8C7112ED71BF</td><td style="padding: 6px;">10:15</td></tr>
+    </table>
+    <p style="text-align: center; margin-top: 24px; color: var(--dim);">Showing 10 of 193 sigils. Each is Ed25519-signed, hash-chained, and SOV3-anchored.</p>
+  </main>
+  <footer class="sovereignbar">
+    <div class="item"><span class="ok">●</span><span class="label">Archive:</span><span class="val">193 sigils</span></div>
+    <div class="spacer"></div>
+    <button class="action">📤 Export full archive</button>
+  </footer>
+</div>
+</body>
+</html>

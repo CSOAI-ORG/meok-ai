@@ -115,9 +115,42 @@ const EMERGENCY_STACK = [
   },
 ];
 
+const FAQ = [
+  { q: "Why do 6 MCPs matter more than one?", a: "One MCP is a tool. Six MCPs wired together is an auditor-defensible compliance event. The featured stack turns ONE AI-generated video into a single HMAC-signed evidence event mapped to EU AI Act Articles 12 + 50, DORA Article 17, and ISO 42001 clause 9, with a public verify URL." },
+  { q: "What does the featured Article 50 stack chain together?", a: "Six MCPs run in sequence: BFT Progress Council (anti-loop guardrail), Token Budget Cap (hard cost ceiling), Article 50 Watermark (machine-readable AI-generated mark), EU AIGC Icon (ISO BMFF uuid box + C2PA assertion), Audit Logger (hash-chained log + HMAC), and the Governance Bridge, which folds all upstream signatures into one signed event." },
+  { q: "What other wired stacks are available?", a: "Three more: an incident chain that drives EU AI Act Art 73 + DORA Art 19 + NIS2 Art 23 + GDPR Art 33 + ISO 42001 cl 10.1 in one call; an AI-bias audit that produces a signed Article 10 + Annex IV bundle; and an NIS2 NL registration chain that yields an NCSC-NL portal payload, DORA cross-walk, and board sign-off attestation." },
+  { q: "Do I have to wire the MCPs myself?", a: "No. The MEOK A2A Substrate (£999/mo) and Governance Substrate (£499/mo) run these stacks behind the api.meok.ai/v1/<primitive> endpoint — one signing key, one invoice, one HMAC-chained evidence trail. The MCPs are also MIT-licensed for free self-host." },
+];
+
+const FAQ_JSONLD = { "@context": "https://schema.org", "@type": "FAQPage", mainEntity: FAQ.map((f) => ({ "@type": "Question", name: f.q, acceptedAnswer: { "@type": "Answer", text: f.a } })) };
+
+const SERVICE_JSONLD = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  name: "MEOK A2A Substrate",
+  serviceType: "Hosted MCP compliance substrate",
+  description: "Wired MEOK MCP stacks behind one api.meok.ai/v1/<primitive> endpoint — one signing key, one invoice, one HMAC-chained evidence trail across EU AI Act, DORA, NIS2, GDPR, and ISO 42001.",
+  provider: { "@type": "Organization", name: "MEOK AI", url: "https://meok.ai" },
+  brand: { "@type": "Brand", name: "MEOK AI" },
+  url: "https://meok.ai/mcp-stack",
+  offers: { "@type": "Offer", price: "999", priceCurrency: "GBP", url: "https://meok.ai/mcp-stack" },
+};
+
+const BREADCRUMB_JSONLD = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: "https://meok.ai/" },
+    { "@type": "ListItem", position: 2, name: "MCP Stack", item: "https://meok.ai/mcp-stack" },
+  ],
+};
+
 export default function McpStackPage() {
   return (
     <main style={{ background: BG, color: NAVY, minHeight: "100vh", padding: "3rem 1.5rem" }}>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(FAQ_JSONLD) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(SERVICE_JSONLD) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(BREADCRUMB_JSONLD) }} />
       <div style={{ maxWidth: 980, margin: "0 auto" }}>
         {/* Hero */}
         <div
@@ -399,6 +432,33 @@ export default function McpStackPage() {
             >
               Governance Substrate £499/mo →
             </Link>
+          </div>
+        </section>
+
+        {/* FAQ */}
+        <section style={{ marginBottom: "3rem" }}>
+          <h2 style={{ fontSize: "1.6rem", fontWeight: 900, marginBottom: 16 }}>
+            Frequently asked
+          </h2>
+          <div style={{ display: "grid", gap: 12 }}>
+            {FAQ.map((f) => (
+              <details
+                key={f.q}
+                style={{
+                  padding: "1.1rem 1.4rem",
+                  background: "white",
+                  borderRadius: 12,
+                  border: `1px solid ${NAVY}1a`,
+                }}
+              >
+                <summary style={{ fontSize: "1rem", fontWeight: 900, color: GOLD, cursor: "pointer" }}>
+                  {f.q}
+                </summary>
+                <p style={{ fontSize: 13, color: `${NAVY}cc`, lineHeight: 1.55, margin: "10px 0 0" }}>
+                  {f.a}
+                </p>
+              </details>
+            ))}
           </div>
         </section>
 

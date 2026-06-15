@@ -1,0 +1,53 @@
+# MEOK OS v3
+
+> The world's first sovereign AI stack. 18 hives at 100/100. 220+ MCP servers. 158 free COAI attestations. 11 BFT councils. 13 regulatory frameworks. MIT. Forever.
+
+## What is MEOK?
+
+MEOK is the dragon's 19th sheathe. Founded 2026 by Nicholas Templeman (CSOAI Ltd UK 16939677) on a 6.5-acre UK farm. 100% founder-owned. 100% open source. 100% sovereign.
+
+The full name "MEOK" is private. The dragon knows.
+
+## Architecture
+
+- **SOV3 substrate** — 194 sovereign agents on a hash-chained Ed25519 sigil network
+- **COAI compliance** — 18 hives at 100/100, 6 baseline + N product-specific gates
+- **BFT Council** — 11 councils × 5 voter seats × 3 replicas = 75 nodes, f=24 fault tolerance
+- **Horus 12 expert lenses** — Care 0.95+ structural floor
+- **Rainbow 7-layer** — RED→VIOLET, kill switch armed
+- **13 regulatory frameworks** — EU AI Act, GDPR, UK GDPR, UK AI Bill, NIST AI RMF, ISO 42001, SOC 2, HIPAA, DORA, NIS2, CRA, FDA 21 CFR 11, MDR, AIDA
+
+## Surfaces (4 unified)
+
+1. **meok.ai** — the commercial product (Next.js 15, 709 routes, 8 Stripe links)
+2. **csoai.org** — the governance surface (13 frameworks, 11 BFT councils, 158 attestations)
+3. **openmoe.ai** — the research surface (planned Q3 2026, MIT open weights)
+4. **openpatent.ai** — the patent platform (1.13B records across 17 government APIs, $8-15/patent)
+
+## Pricing (5 tiers)
+
+- **Free** — £0/mo (1,247 free COAI attestations issued)
+- **Sovereign** — £9/mo
+- **Pro** — £19/mo
+- **Family** — £29/mo (5 seats)
+- **Enterprise** — £500-5K/mo
+
+## License
+
+MIT. 100% open source. Forever.
+
+## Key URLs
+
+- https://meok.ai (commercial)
+- https://csoai.org (governance)
+- https://meok.ai/meok-os-v3/ (138-page sovereign hub)
+- https://meok.ai/meok-os-v3/unified-v3.html (1-page summary)
+- https://meok.ai/meok-os-v3/manifesto-v3.html (7 principles)
+- https://meok.ai/meok-os-v3/by-numbers-v3.html (honest numbers)
+
+## Contact
+
+- press@meok.ai
+- government@meok.ai (for regulators)
+- partners@meok.ai (for partnerships)
+

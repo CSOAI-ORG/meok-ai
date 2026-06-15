@@ -126,8 +126,29 @@ export default function McpStackDemoPage() {
   const total_ms = steps.reduce((a, b) => a + b.duration_ms, 0);
   const last = steps[steps.length - 1];
 
+  const webPageJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    name: "One signed compliance event from 6 MCPs — live demo",
+    description:
+      "Live browser demo: 6 MEOK MCPs execute in sequence (BFT progress council, token budget cap, Article 50 watermark, EU AIGC icon, audit logger, governance bridge) producing one signed evidence event mapped to EU AI Act Articles 12 + 50, DORA Article 17, ISO 42001 clause 9.",
+    url: "https://meok.ai/mcp-stack/demo",
+    isPartOf: { "@type": "WebSite", name: "MEOK AI Labs", url: "https://meok.ai" },
+  };
+  const breadcrumbJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: "https://meok.ai" },
+      { "@type": "ListItem", position: 2, name: "MCP Stack", item: "https://meok.ai/mcp-stack" },
+      { "@type": "ListItem", position: 3, name: "Demo", item: "https://meok.ai/mcp-stack/demo" },
+    ],
+  };
+
   return (
     <main style={{ minHeight: "100vh", background: BG, color: NAVY, padding: "3rem 1.5rem" }}>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(webPageJsonLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }} />
       <div style={{ maxWidth: 960, margin: "0 auto" }}>
         <Link
           href="/mcp-stack"

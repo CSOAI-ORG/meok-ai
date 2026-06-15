@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>🗳️ MEOK OS v3 — BFT Charter Editor (Submit Proposal)</title>
+<meta name="description" content="MEOK OS v3 BFT Charter Editor — submit a new BFT proposal. Markdown editor, templates, BFT Council, sigil chain preview.">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="stylesheet" href="meok-os-design-system.css">
+</head>
+<body>
+<div class="app">
+  <header class="topbar">
+    <a href="council-app-v3.html">← Council</a>
+    <span class="title">🗳️ New BFT Proposal</span>
+  </header>
+  <main class="dock" style="padding: 18px; overflow-y: auto; max-width: 900px; margin: 0 auto;">
+    <h1 style="margin: 0 0 8px;">🗳️ Submit BFT Proposal</h1>
+    <p style="color: var(--dim); margin: 0 0 24px;">Draft a new BFT proposal. 5 templates to choose from. Ed25519-signed. SOV3-anchored.</p>
+
+    <div class="card" style="margin-bottom: 16px;">
+      <h3 style="margin: 0 0 12px; color: var(--accent5);">📋 Step 1 of 4 — Choose template</h3>
+      <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px;">
+        <div style="padding: 12px; background: rgba(124, 92, 255, 0.15); border: 1px solid var(--accent); border-radius: 8px; cursor: pointer;">
+          <div style="font-weight: 800; font-size: 14px;">📋 Technical</div>
+          <div style="color: var(--dim); font-size: 11px; margin-top: 4px;">Code changes, new features, refactoring</div>
+        </div>
+        <div style="padding: 12px; background: var(--panel2); border: 1px solid var(--line); border-radius: 8px; cursor: pointer;">
+          <div style="font-weight: 800; font-size: 14px;">💰 Financial</div>
+          <div style="color: var(--dim); font-size: 11px; margin-top: 4px;">Pricing, expenses, investments</div>
+        </div>
+        <div style="padding: 12px; background: var(--panel2); border: 1px solid var(--line); border-radius: 8px; cursor: pointer;">
+          <div style="font-weight: 800; font-size: 14px;">⚖️ Compliance</div>
+          <div style="color: var(--dim); font-size: 11px; margin-top: 4px;">Regulatory, framework, audit</div>
+        </div>
+        <div style="padding: 12px; background: var(--panel2); border: 1px solid var(--line); border-radius: 8px; cursor: pointer;">
+          <div style="font-weight: 800; font-size: 14px;">🤝 Community</div>
+          <div style="color: var(--dim); font-size: 11px; margin-top: 4px;">Voter seats, partnerships, events</div>
+        </div>
+        <div style="padding: 12px; background: var(--panel2); border: 1px solid var(--line); border-radius: 8px; cursor: pointer;">
+          <div style="font-weight: 800; font-size: 14px;">🚨 Emergency</div>
+          <div style="color: var(--dim); font-size: 11px; margin-top: 4px;">Security, outage, kill switch</div>
+        </div>
+        <div style="padding: 12px; background: var(--panel2); border: 1px solid var(--line); border-radius: 8px; cursor: pointer;">
+          <div style="font-weight: 800; font-size: 14px;">📝 Custom</div>
+          <div style="color: var(--dim); font-size: 11px; margin-top: 4px;">Blank canvas, your own template</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card" style="margin-bottom: 16px;">
+      <h3 style="margin: 0 0 12px; color: var(--accent5);">📝 Step 2 of 4 — Markdown editor</h3>
+      <label style="display: block; font-weight: 700; margin-bottom: 4px;">Title (1 line)</label>
+      <input type="text" placeholder="e.g., Add WebSocket streaming to meok-sports-odds-mcp" style="width: 100%; padding: 8px 12px; background: var(--panel2); border: 1px solid var(--line); border-radius: 6px; color: var(--ink); margin-bottom: 12px;">
+      <label style="display: block; font-weight: 700; margin-bottom: 4px;">Description (Markdown)</label>
+      <textarea placeholder="Describe the proposal in detail..." style="width: 100%; height: 240px; padding: 8px; background: var(--panel2); border: 1px solid var(--line); border-radius: 6px; color: var(--ink); font-family: monospace; font-size: 12px;">## Summary
+
+This proposal adds WebSocket streaming to the meok-sports-odds-mcp server, enabling real-time odds updates for arbitrage detection.
+
+## Why
+
+The current REST API polls every 5 minutes, which means we miss fast-moving odds changes. WebSocket streaming will give us sub-second updates, allowing us to detect arbitrage opportunities before they close.
+
+## Implementation
+
+- Add `ws://api.meok.ai/sports/odds/stream` endpoint
+- Use the existing `meok-sports-odds-mcp` MCP server
+- Stream odds for 250+ bookmakers
+- NO_AUTO_BETTING enforced at the COAI gate (user must still manually execute trades)
+- Backwards compatible (REST endpoint stays)
+
+## Cost
+
+- 1 week of engineering
+- $0 incremental (use existing infrastructure)
+
+## Risk
+
+- Low (NO_AUTO_BETTING is enforced)
+- Real-time load on bookmakers (mitigated by per-bookmaker rate limits)</textarea>
+    </div>
+
+    <div class="card" style="margin-bottom: 16px;">
+      <h3 style="margin: 0 0 12px; color: var(--accent5);">🏛️ Step 3 of 4 — Choose council + voter weight</h3>
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px;">
+        <div>
+          <label style="display: block; font-weight: 700; margin-bottom: 4px;">Council</label>
+          <select style="width: 100%; padding: 8px; background: var(--panel2); border: 1px solid var(--line); border-radius: 6px; color: var(--ink);">
+            <option>meok-api-gateway (172 servers)</option>
+            <option>meok-gaming-hive (14 servers)</option>
+            <option>meok-research (5 servers)</option>
+            <option>meok-compliance-gateway (12 servers)</option>
+            <option>meok-consumer (6 servers)</option>
+            <option>meok-governance-engine (4 servers)</option>
+            <option>meok-distribution (3 servers)</option>
+            <option>meok-keystone (2 servers)</option>
+            <option>meok-templeman-opticians (1 server)</option>
+            <option>meok-aquaculture (1 server)</option>
+            <option>meok-verticals (1 server)</option>
+          </select>
+        </div>
+        <div>
+          <label style="display: block; font-weight: 700; margin-bottom: 4px;">Voting weight</label>
+          <select style="width: 100%; padding: 8px; background: var(--panel2); border: 1px solid var(--line); border-radius: 6px; color: var(--ink);">
+            <option>Standard (1× per voter, 5 voters, unanimous)</option>
+            <option>Weighted (chair has 2×, others 1×)</option>
+            <option>Supermajority (4/5 instead of 5/5)</option>
+            <option>Single-vote (1/5 to pass, fast-track)</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <div class="card" style="margin-bottom: 16px;">
+      <h3 style="margin: 0 0 12px; color: var(--accent5);">📜 Step 4 of 4 — Preview + sign</h3>
+      <div style="background: var(--bg); padding: 12px; border-radius: 6px; font-family: monospace; font-size: 11px; color: var(--dim); margin-bottom: 12px;">
+Title: Add WebSocket streaming to meok-sports-odds-mcp<br>
+Type: Technical<br>
+Council: meok-api-gateway<br>
+Voting: Standard (1× per voter, 5 voters, unanimous)<br>
+Voting period: 7 days<br>
+Required: 5/5 unanimous</div>
+      <p style="font-size: 12px; color: var(--dim); margin: 0 0 12px;">When you submit, this proposal will be: Ed25519-signed, SOV3-anchored, hash-chained, and visible to all 5 voters of the meok-api-gateway council.</p>
+      <button class="primary" style="width: 100%; padding: 14px; font-size: 14px;">📜 Submit BFT proposal (Ed25519-signed)</button>
+    </div>
+  </main>
+  <footer class="sovereignbar">
+    <div class="item"><span class="ok">●</span><span class="label">Draft:</span><span class="val">auto-saved</span></div>
+    <div class="spacer"></div>
+    <button class="action">💾 Save draft</button>
+  </footer>
+</div>
+</body>
+</html>

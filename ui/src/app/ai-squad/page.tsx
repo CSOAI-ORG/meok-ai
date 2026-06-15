@@ -16,6 +16,22 @@ const CHARACTER_EMOJI: Record<string, string> = {
 const PURPOSE_ICONS: Record<string, typeof Gamepad2> = { gaming: Gamepad2, creative: Sparkles, productivity: Zap, learning: BookOpen, general: Heart };
 const PURPOSE_COLORS: Record<string, string> = { gaming: "#8B5CF6", creative: "#EC4899", productivity: "#F59E0B", learning: "#3B82F6", general: "#10B981" };
 
+const FAQ = [
+  { q: "What is an AI Squad?", a: "An AI Squad is a multi-character team of MEOK AI characters that work together toward a shared purpose. You pick a template, the squad is created with its members, and you chat with the whole squad at once — each character contributing in its own voice." },
+  { q: "What purposes can a squad have?", a: "Squads are organised by purpose: gaming, creative, productivity, learning, and general. Each purpose has its own icon and colour, and templates group characters suited to that purpose." },
+  { q: "Can the squad talk back with voice?", a: "Yes. Toggle voice output in Settings (or the speaker button in a squad). It uses the browser's built-in text-to-speech (SpeechSynthesis) to read the squad's replies aloud." },
+  { q: "How do I create a new squad?", a: "Click New Squad (or the Create Squad tile) to choose from the available templates. Selecting a template creates the squad with its members via the /api/ai-squad endpoint and adds it to your list." },
+];
+
+const FAQ_JSONLD = { "@context": "https://schema.org", "@type": "FAQPage", mainEntity: FAQ.map((f) => ({ "@type": "Question", name: f.q, acceptedAnswer: { "@type": "Answer", text: f.a } })) };
+
+const BREADCRUMB_JSONLD = { "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElement: [
+  { "@type": "ListItem", position: 1, name: "Home", item: "https://meok.ai/" },
+  { "@type": "ListItem", position: 2, name: "AI Squad", item: "https://meok.ai/ai-squad" },
+] };
+
+const APP_JSONLD = { "@context": "https://schema.org", "@type": "SoftwareApplication", name: "MEOK AI Squad", applicationCategory: "MultimediaApplication", operatingSystem: "Web", description: "Build multi-character AI teams (squads) around a shared purpose — gaming, creative, productivity, learning or general — and chat with the whole squad at once, with optional browser voice output.", url: "https://meok.ai/ai-squad" };
+
 export default function AISquadPage() {
   const [squads, setSquads] = useState<AISquad[]>([]);
   const [templates, setTemplates] = useState<any[]>([]);
@@ -73,6 +89,9 @@ export default function AISquadPage() {
 
   return (
     <div className="min-h-screen" style={{ background: "#0d0c18", color: "#e5e5e5" }}>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(FAQ_JSONLD) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(BREADCRUMB_JSONLD) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(APP_JSONLD) }} />
       <header className="p-6 border-b" style={{ borderColor: "rgba(255,255,255,0.07)" }}>
         <div className="max-w-6xl mx-auto flex items-center justify-between">
           <div className="flex items-center gap-3">
@@ -127,6 +146,18 @@ export default function AISquadPage() {
             </div>
           </div>
         )}
+
+        <section className="mt-12">
+          <h2 className="text-xl font-bold mb-4">Frequently asked</h2>
+          <div className="grid gap-3">
+            {FAQ.map((f) => (
+              <details key={f.q} className="p-4 rounded-xl border" style={{ background: "#1a1a2e", borderColor: "rgba(255,255,255,0.07)" }}>
+                <summary className="font-medium cursor-pointer">{f.q}</summary>
+                <p className="mt-2 text-sm" style={{ opacity: 0.7 }}>{f.a}</p>
+              </details>
+            ))}
+          </div>
+        </section>
       </main>
       {showCreate && (
         <div className="fixed inset-0 bg-black/50 flex items-center justify-center p-4 z-50">

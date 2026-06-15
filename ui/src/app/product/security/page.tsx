@@ -63,9 +63,59 @@ const SECURITY_MEASURES = [
   "24/7 infrastructure monitoring",
 ];
 
+const SECURITY_FAQ = [
+  {
+    q: "How is my data encrypted?",
+    a: "All data is encrypted with AES-256-GCM both at rest and in transit. Every account gets a unique encryption key, so your memory vault is cryptographically isolated from every other vault on the platform.",
+  },
+  {
+    q: "Can MEOK engineers read my vault?",
+    a: "No. Your vault lives in its own isolated namespace with row-level security enforced at the database engine level. There are no backdoor access paths and no internal admin overrides — even MEOK engineers cannot query across vaults.",
+  },
+  {
+    q: "What happens to my data if I delete my account?",
+    a: "We perform cryptographic deletion: when you delete your account we destroy the encryption key, which makes all of your data permanently and verifiably unrecoverable.",
+  },
+  {
+    q: "Where is my data stored and which regulations apply?",
+    a: "All data is stored in UK data centres and is fully compliant with UK GDPR, the Data Protection Act 2018, and ICO requirements. MEOK is ICO registered, COPPA and Children's Code compliant, with SOC 2 Type II and ISO 27001 in progress.",
+  },
+];
+
+const WEBPAGE_JSONLD = {
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  name: "Security & Compliance | MEOK.AI",
+  description:
+    "Enterprise-grade security, encryption, compliance certifications, and data protection. ISO 27001, UK GDPR, SOC 2 ready.",
+  url: "https://meok.ai/product/security",
+};
+
+const BREADCRUMB_JSONLD = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: "https://meok.ai/" },
+    { "@type": "ListItem", position: 2, name: "Security & Compliance", item: "https://meok.ai/product/security" },
+  ],
+};
+
+const FAQ_JSONLD = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: SECURITY_FAQ.map((f) => ({
+    "@type": "Question",
+    name: f.q,
+    acceptedAnswer: { "@type": "Answer", text: f.a },
+  })),
+};
+
 export default function SecurityPage() {
   return (
     <div className="min-h-screen bg-[#0d0c18] text-[#f5f0e8]">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(WEBPAGE_JSONLD) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(BREADCRUMB_JSONLD) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(FAQ_JSONLD) }} />
       {/* Hero */}
       <section className="relative pt-32 pb-24 px-6 text-center overflow-hidden">
         <div className="blob-green" style={{ width: 600, height: 500, top: -150, left: "50%", transform: "translateX(-50%)", opacity: 0.15 }} />
@@ -154,6 +204,26 @@ export default function SecurityPage() {
                 <Check className="w-4 h-4 text-green-400 flex-shrink-0" />
                 <span className="text-sm text-[#f5f0e8]/70">{item}</span>
               </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ */}
+      <section className="py-24 px-6 bg-[#0d0c18]">
+        <div className="max-w-3xl mx-auto">
+          <div className="text-center mb-12">
+            <span className="text-xs font-bold tracking-widest uppercase text-green-500/60 block mb-4">
+              Frequently asked
+            </span>
+            <h2 className="text-3xl sm:text-4xl font-black text-white">Security questions, answered.</h2>
+          </div>
+          <div className="flex flex-col gap-4">
+            {SECURITY_FAQ.map((f) => (
+              <details key={f.q} className="premium-card p-6 border-green-500/10">
+                <summary className="font-bold text-white text-base cursor-pointer">{f.q}</summary>
+                <p className="text-sm text-[#f5f0e8]/55 leading-relaxed mt-3">{f.a}</p>
+              </details>
             ))}
           </div>
         </div>

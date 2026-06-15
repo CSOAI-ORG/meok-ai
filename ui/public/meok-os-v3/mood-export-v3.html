@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>📤 MEOK OS v3 — Mood Export (Take Your Mood Data Anywhere)</title>
+<meta meta name="description" content="MEOK OS v3 Mood Export — export your mood data as JSON, CSV, Parquet, or PDF. Sovereign. MIT. Compatible with all major mood apps.">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="stylesheet" href="meok-os-design-system.css">
+<style>body { background: radial-gradient(1200px 800px at 50% 0%, #2a0a1a, var(--bg) 60%); }</style>
+</head>
+<body>
+<div class="app">
+  <header class="topbar">
+    <a href="index.html">← MEOK OS v3</a>
+    <span class="title">📤 Mood Export</span>
+  </header>
+  <main class="dock" style="padding: 18px; overflow-y: auto; max-width: 800px; margin: 0 auto;">
+    <h1 style="margin: 0 0 8px; text-align: center; font-size: 36px;">📤 Mood Export</h1>
+    <p style="color: var(--dim); margin: 0 0 32px; text-align: center; font-size: 16px;">Take your mood data anywhere. 6 formats. Sovereign. MIT. Compatible with all major mood apps.</p>
+
+    <div style="text-align: center; margin-bottom: 24px;">
+      <div style="display: inline-block; background: var(--panel); border: 2px solid var(--accent); border-radius: 16px; padding: 24px;">
+        <div style="font-size: 18px; color: var(--ink);">14 days of mood data</div>
+        <div style="color: var(--dim); font-size: 12px; margin-top: 4px;">247 voice entries · 12 moods · 4.2 hours of audio</div>
+      </div>
+    </div>
+
+    <h2 style="font-size: 18px; color: var(--accent5); margin: 18px 0 12px;">📤 The 6 export formats</h2>
+    <div class="grid cols-2">
+      <div class="card">
+        <h3 style="margin: 0 0 4px; color: var(--accent5);">📄 JSON</h3>
+        <p style="font-size: 12px; line-height: 1.7; margin: 0;">Universal. Easy to parse. Default format. Includes audio as base64 (large).</p>
+      </div>
+      <div class="card">
+        <h3 style="margin: 0 0 4px; color: var(--accent5);">📊 CSV</h3>
+        <p style="font-size: 12px; line-height: 1.7; margin: 0;">Spreadsheet-friendly. Excel + Google Sheets compatible. No audio.</p>
+      </div>
+      <div class="card">
+        <h3 style="margin: 0 0 4px; color: var(--accent5);">📦 Parquet</h3>
+        <p style="font-size: 12px; line-height: 1.7; margin: 0;">Big-data friendly. Compressed. Pandas / Polars / DuckDB. No audio.</p>
+      </div>
+      <div class="card">
+        <h3 style="margin: 0 0 4px; color: var(--accent5);">📋 NDJSON</h3>
+        <p style="font-size: 12px; line-height: 1.7; margin: 0;">Streaming. One JSON per line. For log analysis. No audio.</p>
+      </div>
+      <div class="card">
+        <h3 style="margin: 0 0 4px; color: var(--accent5);">📁 ZIP</h3>
+        <p style="font-size: 12px; line-height: 1.7; margin: 0;">JSON + audio files (WAV). For archival. Largest size.</p>
+      </div>
+      <div class="card">
+        <h3 style="margin: 0 0 4px; color: var(--accent5);">🔐 Encrypted</h3>
+        <p style="font-size: 12px; line-height: 1.7; margin: 0;">AES-256-GCM encrypted. For sharing. Decrypt with your private key.</p>
+      </div>
+    </div>
+
+    <h2 style="font-size: 18px; color: var(--accent5); margin: 24px 0 12px;">📊 Compatible with all major mood apps</h2>
+    <div class="grid cols-3">
+      <div class="card">
+        <h3 style="margin: 0 0 4px; color: var(--accent5);">📊 Daylio</h3>
+        <p style="font-size: 12px; line-height: 1.7; margin: 0;">CSV import supported. Map MEOK moods to Daylio moods.</p>
+      </div>
+      <div class="card">
+        <h3 style="margin: 0 0 4px; color: var(--accent5);">📊 Moodnotes</h3>
+        <p style="font-size: 12px; line-height: 1.7; margin: 0;">JSON import supported. Map MEOK to Moodnotes schema.</p>
+      </div>
+      <div class="card">
+        <h3 style="margin: 0 0 4px; color: var(--accent5);">📊 iMoodJournal</h3>
+        <p style="font-size: 12px; line-height: 1.7; margin: 0;">CSV import supported. Map MEOK moods to iMoodJournal moods.</p>
+      </div>
+      <div class="card">
+        <h3 style="margin: 0 0 4px; color: var(--accent5);">📊 Reflectly</h3>
+        <p style="font-size: 12px; line-height: 1.7; margin: 0;">JSON import supported. Map MEOK to Reflectly schema.</p>
+      </div>
+      <div class="card">
+        <h3 style="margin: 0 0 4px; color: var(--accent5);">📊 Stoic.</h3>
+        <p style="font-size: 12px; line-height: 1.7; margin: 0;">CSV import supported. Map MEOK moods to Stoic. moods.</p>
+      </div>
+      <div class="card">
+        <h3 style="margin: 0 0 4px; color: var(--accent5);">📊 Custom</h3>
+        <p style="font-size: 12px; line-height: 1.7; margin: 0;">Use JSON or Parquet + your custom schema. Full control.</p>
+      </div>
+    </div>
+
+    <h2 style="font-size: 18px; color: var(--accent5); margin: 24px 0 12px;">📊 Sample CSV (mood export)</h2>
+    <div class="card" style="margin-bottom: 16px;">
+      <pre style="background: var(--bg); padding: 12px; border-radius: 6px; font-size: 11px; overflow-x: auto; color: var(--ink); margin: 0;">timestamp,date,mood,intensity,note,characters,tags
+1718280000,2026-06-14,happy,0.8,I'm grateful...,The Scholar,gratitude
+1718160000,2026-06-13,frustrated,0.6,Tough call...,The Scholar,work
+1718040000,2026-06-12,proud,0.9,158th attestation...,The Scholar,milestone
+1717920000,2026-06-11,joyful,0.7,Great day at farm...,The Scholar,family
+1717800000,2026-06-10,thoughtful,0.5,Morning reflection...,The Scholar,research
+1717680000,2026-06-09,calm,0.6,Evening wind-down...,The Scholar,peace</pre>
+    </div>
+
+    <div style="background: var(--panel2); padding: 24px; border-radius: 8px; margin-top: 24px; text-align: center;">
+      <p style="margin: 0 0 8px; color: var(--accent5); font-size: 16px; font-weight: 800;">📤 Your mood data is sovereign</p>
+      <p style="margin: 0 0 16px; color: var(--ink); font-size: 13px;">Take it anywhere. Use it forever. No vendor lock-in. Right to delete (GDPR Art 17).</p>
+      <button class="primary">📤 Export now</button>
+    </div>
+  </main>
+  <footer class="sovereignbar">
+    <div class="item"><span class="ok">●</span><span class="label">Mood export:</span><span class="val">6 formats · 6 apps</span></div>
+    <div class="spacer"></div>
+    <button class="action">📤 Export</button>
+  </footer>
+</div>
+</body>
+</html>

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>🗣️ MEOK OS v3 — Voice (TTS + STT + Voice Cloning)</title>
+<meta name="description" content="MEOK OS v3 Voice — TTS, STT, voice cloning. Sovereign. 12 voices. Multi-language. ElevenLabs + local.">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="stylesheet" href="meok-os-design-system.css">
+</head>
+<body>
+<div class="app">
+  <header class="topbar">
+    <a href="index.html">← MEOK OS v3</a>
+    <span class="title">🗣️ Voice v3</span>
+  </header>
+  <main class="dock" style="padding: 18px; overflow-y: auto;">
+    <h1 style="margin: 0 0 8px;">🗣️ MEOK Voice</h1>
+    <p style="color: var(--dim); margin: 0 0 24px;">TTS, STT, voice cloning. Sovereign. 12 voices. 8 languages. ElevenLabs + local + open source.</p>
+
+    <div style="text-align: center; padding: 24px; background: linear-gradient(135deg, var(--accent), var(--accent2)); border-radius: 12px; margin-bottom: 24px;">
+      <div style="font-size: 64px;">🗣️</div>
+      <div id="voice-status" style="font-size: 24px; font-weight: 800; color: white; margin-top: 8px;">Click to speak</div>
+      <button id="voice-toggle" class="primary" style="margin-top: 16px; padding: 12px 24px; font-size: 14px;">🎤 Start listening</button>
+    </div>
+
+    <h2 style="font-size: 16px; color: var(--accent5); margin: 18px 0 12px;">🎤 Speech-to-text (STT)</h2>
+    <div class="grid cols-2">
+      <div class="card">
+        <h3 style="margin: 0 0 8px; color: var(--accent5);">🌍 Open source (local)</h3>
+        <p style="font-size: 12px; color: var(--dim); margin: 4px 0;">Whisper (OpenAI) + Vosk + Coqui STT</p>
+        <div style="font-size: 11px; color: var(--dim); margin: 4px 0;">Cost: Free · Latency: 500ms · Accuracy: 95%</div>
+        <button class="primary" style="margin-top: 8px; width: 100%; font-size: 11px;">▶ Use local</button>
+      </div>
+      <div class="card">
+        <h3 style="margin: 0 0 8px; color: var(--accent5);">☁️ ElevenLabs</h3>
+        <p style="font-size: 12px; color: var(--dim); margin: 4px 0;">Cloud, best-in-class</p>
+        <div style="font-size: 11px; color: var(--dim); margin: 4px 0;">Cost: $0.30/1K chars · Latency: 200ms · Accuracy: 99%</div>
+        <button class="ghost" style="margin-top: 8px; width: 100%; font-size: 11px;">▶ Use ElevenLabs</button>
+      </div>
+      <div class="card">
+        <h3 style="margin: 0 0 8px; color: var(--accent5);">☁️ OpenAI Whisper</h3>
+        <p style="font-size: 12px; color: var(--dim); margin: 4px 0;">Cloud, fast</p>
+        <div style="font-size: 11px; color: var(--dim); margin: 4px 0;">Cost: $0.006/min · Latency: 300ms · Accuracy: 97%</div>
+        <button class="ghost" style="margin-top: 8px; width: 100%; font-size: 11px;">▶ Use OpenAI</button>
+      </div>
+      <div class="card">
+        <h3 style="margin: 0 0 8px; color: var(--accent5);">☁️ Deepgram</h3>
+        <p style="font-size: 12px; color: var(--dim); margin: 4px 0;">Cloud, enterprise</p>
+        <div style="font-size: 11px; color: var(--dim); margin: 4px 0;">Cost: $0.0125/min · Latency: 200ms · Accuracy: 99%</div>
+        <button class="ghost" style="margin-top: 8px; width: 100%; font-size: 11px;">▶ Use Deepgram</button>
+      </div>
+    </div>
+
+    <h2 style="font-size: 16px; color: var(--accent5); margin: 24px 0 12px;">🗣️ Text-to-speech (TTS)</h2>
+    <div class="grid cols-2">
+      <div class="card">
+        <h3 style="margin: 0 0 8px; color: var(--accent5);">🌍 Open source (local)</h3>
+        <p style="font-size: 12px; color: var(--dim); margin: 4px 0;">Piper + Coqui TTS + Bark</p>
+        <div style="font-size: 11px; color: var(--dim); margin: 4px 0;">Cost: Free · Latency: 300ms · 8 voices</div>
+        <button class="primary" style="margin-top: 8px; width: 100%; font-size: 11px;">▶ Use local</button>
+      </div>
+      <div class="card">
+        <h3 style="margin: 0 0 8px; color: var(--accent5);">☁️ ElevenLabs</h3>
+        <p style="font-size: 12px; color: var(--dim); margin: 4px 0;">Cloud, best quality, voice cloning</p>
+        <div style="font-size: 11px; color: var(--dim); margin: 4px 0;">Cost: $0.30/1K chars · Latency: 200ms · 1000+ voices</div>
+        <button class="ghost" style="margin-top: 8px; width: 100%; font-size: 11px;">▶ Use ElevenLabs</button>
+      </div>
+      <div class="card">
+        <h3 style="margin: 0 0 8px; color: var(--accent5);">☁️ OpenAI TTS</h3>
+        <p style="font-size: 12px; color: var(--dim); margin: 4px 0;">Cloud, fast, 6 voices</p>
+        <div style="font-size: 11px; color: var(--dim); margin: 4px 0;">Cost: $15/1M chars · Latency: 200ms · 6 voices</div>
+        <button class="ghost" style="margin-top: 8px; width: 100%; font-size: 11px;">▶ Use OpenAI</button>
+      </div>
+      <div class="card">
+        <h3 style="margin: 0 0 8px; color: var(--accent5);">☁️ Google TTS</h3>
+        <p style="font-size: 12px; color: var(--dim); margin: 4px 0;">Cloud, 380+ voices, 50+ languages</p>
+        <div style="font-size: 11px; color: var(--dim); margin: 4px 0;">Cost: $4/1M chars · Latency: 200ms · 380+ voices</div>
+        <button class="ghost" style="margin-top: 8px; width: 100%; font-size: 11px;">▶ Use Google</button>
+      </div>
+    </div>
+
+    <h2 style="font-size: 16px; color: var(--accent5); margin: 24px 0 12px;">🎭 Voice cloning</h2>
+    <div class="card">
+      <p style="font-size: 13px; line-height: 1.7; margin: 0 0 12px;">Clone any voice from a 30-second sample. Sovereign. Stored locally. Never shared. MIT-licensed models only.</p>
+      <ol style="font-size: 12px; line-height: 1.7; padding-left: 20px; margin: 0 0 12px;">
+        <li>Record a 30-second sample (clear, no background noise)</li>
+        <li>Upload to MEOK (encrypted, sovereign)</li>
+        <li>MEOK generates your voice clone (1-2 minutes)</li>
+        <li>Use it for your character (TTS in your voice)</li>
+        <li>Export, delete, or migrate anytime</li>
+      </ol>
+      <button class="primary" style="margin-top: 8px;">🎤 Record sample</button>
+    </div>
+  </main>
+  <footer class="sovereignbar">
+    <div class="item"><span class="ok">●</span><span class="label">Voice:</span><span class="val">Whisper local · Piper TTS</span></div>
+    <div class="spacer"></div>
+    <button class="action">🎤 Listen</button>
+  </footer>
+</div>
+<script>
+let listening = false;
+document.getElementById('voice-toggle').addEventListener('click', () => {
+  listening = !listening;
+  document.getElementById('voice-status').textContent = listening ? 'Listening... speak now' : 'Click to speak';
+  document.getElementById('voice-toggle').textContent = listening ? '⏹ Stop' : '🎤 Start listening';
+  document.getElementById('voice-toggle').classList.toggle('primary');
+  document.getElementById('voice-toggle').classList.toggle('ghost');
+});
+</script>
+</body>
+</html>

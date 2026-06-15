@@ -93,6 +93,22 @@ const FRAMEWORKS = [
   { code: "AWS Nitro + Intel TDX + AMD SEV-SNP", date: "Current", status: "roadmap" as ProtoStatus, mcp: "Q3 — tee-attest-mcp" },
 ];
 
+const PROTO_FAQ = [
+  { q: "Which agent-interop protocols does MEOK support?", a: "Eight live protocols: MCP (Anthropic, native across all 47 MCPs), A2A (Google + Linux Foundation, which absorbed IBM ACP in September 2025), Stripe ACP, AP2, x402 (Coinbase HTTP 402 pay-per-call), OASF/AGNTCY, and ANP. MEOK is the only A2A substrate that bridges all of them." },
+  { q: "What happens to IBM ACP?", a: "IBM ACP merged into A2A in September 2025. MEOK supports it via that merge, so existing ACP integrations continue to work through the A2A substrate without re-procurement." },
+  { q: "How many regulatory frameworks are mapped?", a: "More than 30, spanning EU AI Act, DORA, NIS2, EU Cyber Resilience Act, GDPR, UK AI Bill, ISO/IEC 42001 + 42005, NIST AI RMF, MITRE ATT&CK + ATLAS, MiCA, Basel III AI Overlay, MDR/IVDR, and regional regimes from Canada AIDA to Korea AI Basic Act. Each maps to a specific MCP package in the coverage matrix." },
+  { q: "What happens when a new protocol or framework lands?", a: "MEOK ships the bridge. When a new protocol or framework is published, your existing Substrate subscription gets the new MCP for free — no re-procurement, no migration, no abandoned audit trails. The HMAC-signed evidence chain at verify.meok.ai stays continuous." },
+];
+
+const PROTO_BREADCRUMB_JSONLD = { "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElement: [
+  { "@type": "ListItem", position: 1, name: "Home", item: "https://meok.ai/" },
+  { "@type": "ListItem", position: 2, name: "Protocols", item: "https://meok.ai/protocols" },
+] };
+
+const PROTO_WEBPAGE_JSONLD = { "@context": "https://schema.org", "@type": "WebPage", name: "MEOK Protocol Coverage — 8 agent-interop protocols + 30+ regulatory frameworks", description: "Definitive coverage matrix: which of the 8 live agent-interop protocols and 30+ regulatory frameworks each of MEOK's 47 MCPs supports.", url: "https://meok.ai/protocols", publisher: { "@type": "Organization", name: "MEOK AI Labs" } };
+
+const PROTO_FAQ_JSONLD = { "@context": "https://schema.org", "@type": "FAQPage", mainEntity: PROTO_FAQ.map((f) => ({ "@type": "Question", name: f.q, acceptedAnswer: { "@type": "Answer", text: f.a } })) };
+
 function StatusBadge({ status }: { status: ProtoStatus }) {
   const styles: Record<ProtoStatus, { color: string; bg: string; label: string }> = {
     native: { color: GREEN, bg: "rgba(123,196,127,0.15)", label: "✓ Native" },
@@ -118,6 +134,9 @@ export default function ProtocolsPage() {
 
   return (
     <main style={{ background: BG, color: NAVY, minHeight: "100vh", padding: "3rem 1.5rem" }}>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(PROTO_BREADCRUMB_JSONLD) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(PROTO_WEBPAGE_JSONLD) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(PROTO_FAQ_JSONLD) }} />
       <div style={{ maxWidth: 1000, margin: "0 auto" }}>
         {/* Hero */}
         <div style={{ padding: "2.2rem 2rem", background: NAVY, color: "#fff", borderRadius: 18, marginBottom: "2rem" }}>
@@ -250,6 +269,19 @@ export default function ProtocolsPage() {
             existing Substrate subscription gets the new MCP for free. No re-procurement, no migration,
             no abandoned audit trails. The HMAC-signed evidence chain at <code style={{ background: "rgba(0,0,0,0.4)", padding: "2px 6px", borderRadius: 4 }}>verify.meok.ai</code> stays continuous.
           </p>
+        </section>
+
+        {/* FAQ */}
+        <section style={{ marginBottom: "2.6rem" }}>
+          <h2 style={{ fontSize: "1.6rem", fontWeight: 900, marginBottom: 16 }}>Frequently asked</h2>
+          <div style={{ display: "grid", gap: 12 }}>
+            {PROTO_FAQ.map((f) => (
+              <details key={f.q} style={{ background: "#fff", borderRadius: 12, padding: "16px 20px", border: `1px solid ${NAVY}1a` }}>
+                <summary style={{ fontWeight: 700, cursor: "pointer", fontSize: 15, color: NAVY }}>{f.q}</summary>
+                <p style={{ marginTop: 10, color: `${NAVY}99`, fontSize: 14, lineHeight: 1.6 }}>{f.a}</p>
+              </details>
+            ))}
+          </div>
         </section>
 
         {/* CTAs */}

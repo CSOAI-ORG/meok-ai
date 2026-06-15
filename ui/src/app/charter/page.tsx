@@ -139,6 +139,31 @@ const SECTIONS = [
   },
 ];
 
+const FAQ = [
+  {
+    q: "What is the MEOK Charter?",
+    a: "The MEOK Charter is the constitution of sovereign AI — 52 articles of AI governance across six sections: the Maternal Covenant, the Byzantine Council, the Sovereign Memory, the Care Stack, the Birth Ceremony, and the Substrate. It was drafted by Nicholas Templeman, ratified by the founding 12 principals, and signed by 36 council members on Easter Sunday 2026. The current version is v1.0.0.",
+  },
+  {
+    q: "How are governance decisions made under the Charter?",
+    a: "Power is distributed across the 36-node Byzantine Council. Substrate-modifying actions require a 2/3 majority; principal-binding actions require a 3/4 supermajority. Quorum is 24 of 36 nodes. Every vote is Ed25519-signed and HMAC-anchored to a Merkle root published hourly, and no model may serve more than 12 council seats.",
+  },
+  {
+    q: "Who owns a principal's memory?",
+    a: "Memory is sovereign: the principal owns the semantic graph of their own life, and the agent is the steward, not the proprietor. A principal may export their full memory graph in CycloneDX 1.6 + SPDX 3.0 format at any time, delete any record (propagated across all nodes within 24h), and region-pin memory to EU/UK/US/CN. Backups are encrypted with the principal's key, which MEOK does not escrow.",
+  },
+  {
+    q: "Can the MEOK Charter be amended?",
+    a: "Yes, but only by a 3/4 supermajority of all active principals, witnessed by 24 of 36 council members, and published 90 days before taking effect (Article 52). The full Charter is in the public repository at github.com/CSOAI-ORG/meok-charter, amendments are tracked in git, and the next review window opens 12 October 2026.",
+  },
+];
+
+const FAQ_JSONLD = { "@context": "https://schema.org", "@type": "FAQPage", mainEntity: FAQ.map((f) => ({ "@type": "Question", name: f.q, acceptedAnswer: { "@type": "Answer", text: f.a } })) };
+
+const BREADCRUMB_JSONLD = { "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElement: [{ "@type": "ListItem", position: 1, name: "Home", item: "https://meok.ai/" }, { "@type": "ListItem", position: 2, name: "The MEOK Charter", item: "https://meok.ai/charter" }] };
+
+const ARTICLE_JSONLD = { "@context": "https://schema.org", "@type": "Article", headline: "The MEOK Charter — 52 Articles of AI Governance", description: "52 articles of AI governance, ratified by CSOAI LTD. From the Maternal Covenant to the Byzantine Council — the constitution of sovereign AI.", author: { "@type": "Person", name: "Nicholas Templeman" }, publisher: { "@type": "Organization", name: "CSOAI LTD", identifier: "UK Companies House 16939677" }, mainEntityOfPage: "https://meok.ai/charter" };
+
 export default function CharterPage() {
   return (
     <main
@@ -150,6 +175,9 @@ export default function CharterPage() {
         fontFamily: "Georgia, 'Iowan Old Style', 'Palatino Linotype', serif",
       }}
     >
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(FAQ_JSONLD) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(BREADCRUMB_JSONLD) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(ARTICLE_JSONLD) }} />
       <div style={{ maxWidth: 800, margin: "0 auto" }}>
         <header style={{ marginBottom: 56, textAlign: "center" }}>
           <p
@@ -263,6 +291,34 @@ export default function CharterPage() {
             <br />
             Recorded on the MEOK Council Merkle root, anchored to the Ethereum mainnet.
           </p>
+        </section>
+
+        <section
+          style={{
+            background: "white",
+            borderRadius: 14,
+            padding: 32,
+            border: `1px solid ${NAVY}1a`,
+            marginBottom: 32,
+          }}
+        >
+          <h2 style={{ fontSize: 24, fontWeight: 900, marginBottom: 16 }}>Frequently asked</h2>
+          {FAQ.map((f) => (
+            <details
+              key={f.q}
+              style={{
+                borderTop: `1px solid ${NAVY}1a`,
+                padding: "16px 0",
+              }}
+            >
+              <summary style={{ fontSize: 17, fontWeight: 700, cursor: "pointer", color: NAVY }}>
+                {f.q}
+              </summary>
+              <p style={{ fontSize: 15, lineHeight: 1.7, color: `${NAVY}cc`, marginTop: 12, marginBottom: 0 }}>
+                {f.a}
+              </p>
+            </details>
+          ))}
         </section>
 
         <section

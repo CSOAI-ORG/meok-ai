@@ -107,6 +107,12 @@ const EXCLUDED = [
   { item: "Stripe links ending in 8k90x or 8k83x",           reason: "Dead accounts. Replaced 2026-06-13 with new payment links — all 10 verified live." },
 ];
 
+const FAQ_JSONLD = { "@context": "https://schema.org", "@type": "FAQPage", mainEntity: COUNT_RULES.map((c) => ({ "@type": "Question", name: c.q, acceptedAnswer: { "@type": "Answer", text: c.a } })) };
+
+const BREADCRUMB_JSONLD = { "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElement: [{ "@type": "ListItem", position: 1, name: "Home", item: "https://meok.ai/" }, { "@type": "ListItem", position: 2, name: "MEOK Methodology", item: "https://meok.ai/methodology" }] };
+
+const WEBPAGE_JSONLD = { "@context": "https://schema.org", "@type": "WebPage", name: "MEOK Methodology — what we count, what we don't, our fail rules", description: "How we score MCP servers, how we count fleet packages, what we exclude, and the fail rules that gate our 90+ scores.", publisher: { "@type": "Organization", name: "MEOK AI LABS" }, url: "https://meok.ai/methodology" };
+
 export default function MethodologyPage() {
   return (
     <main
@@ -118,6 +124,9 @@ export default function MethodologyPage() {
         fontFamily: "system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif",
       }}
     >
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(FAQ_JSONLD) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(BREADCRUMB_JSONLD) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(WEBPAGE_JSONLD) }} />
       <div style={{ maxWidth: 960, margin: "0 auto" }}>
         <header style={{ marginBottom: 40 }}>
           <p

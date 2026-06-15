@@ -53,9 +53,42 @@ const data: AnswerPageData = {
       q: "Does it lock me into one AI model?",
       a: "No. MEOK ONE routes across multiple LLMs and supports local models via Ollama, so you avoid single-vendor lock-in.",
     },
+    {
+      q: "Can I audit what the AI actually did?",
+      a: "Yes. Every agent decision is recorded and signed in a hash-chained sigil trail, so you can replay exactly what the AI did and why — nothing the system does is unaccountable.",
+    },
   ],
 };
 
+const BREADCRUMB_JSONLD = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: "https://meok.ai/" },
+    { "@type": "ListItem", position: 2, name: "Best Sovereign AI OS", item: "https://meok.ai/best-sovereign-ai-os" },
+  ],
+};
+
+const SOFTWARE_JSONLD = {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  name: "MEOK ONE",
+  applicationCategory: "BusinessApplication",
+  operatingSystem: "Web, Self-hostable",
+  url: "https://meok.ai",
+  brand: { "@type": "Brand", name: "MEOK AI" },
+  provider: { "@type": "Organization", name: "MEOK AI", url: "https://meok.ai" },
+  description:
+    "Sovereign AI OS with one encrypted, portable memory layer you own, multi-LLM routing with no vendor lock-in, and a hash-chained audit trail on every agent action. Care-aligned via a Byzantine fault-tolerant council.",
+  offers: { "@type": "Offer", price: "0", priceCurrency: "GBP" },
+};
+
 export default function Page() {
-  return <AnswerPage data={data} />;
+  return (
+    <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(BREADCRUMB_JSONLD) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(SOFTWARE_JSONLD) }} />
+      <AnswerPage data={data} />
+    </>
+  );
 }

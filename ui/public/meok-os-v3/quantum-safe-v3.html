@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>🔐 MEOK OS v3 — Quantum-Safe (NIST PQC Roadmap, Q1 2027)</title>
+<meta name="description" content="MEOK OS v3 Quantum-Safe — NIST PQC migration roadmap. Hybrid Ed25519 + ML-DSA + Kyber. Q1 2027. Sovereign. MIT.">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="stylesheet" href="meok-os-design-system.css">
+<style>body { background: radial-gradient(1200px 800px at 50% 0%, #1a0d2a, var(--bg) 60%); }</style>
+</head>
+<body>
+<div class="app">
+  <header class="topbar">
+    <a href="index.html">← MEOK OS v3</a>
+    <span class="title">🔐 Quantum-Safe</span>
+  </header>
+  <main class="dock" style="padding: 18px; overflow-y: auto; max-width: 900px; margin: 0 auto;">
+    <h1 style="margin: 0 0 8px; text-align: center; font-size: 36px;">🔐 Quantum-Safe Roadmap</h1>
+    <p style="color: var(--dim); margin: 0 0 32px; text-align: center; font-size: 16px;">MEOK OS v3 will be quantum-safe by Q1 2027. NIST PQC standard. Hybrid Ed25519 + ML-DSA + Kyber. Sovereign. MIT.</p>
+
+    <h2 style="font-size: 18px; color: var(--accent5); margin: 18px 0 12px;">🛡️ Why quantum-safe matters</h2>
+    <div class="card" style="margin-bottom: 16px;">
+      <p style="font-size: 13px; line-height: 1.7; margin: 0 0 8px;">In 2026, NIST released the first post-quantum cryptography (PQC) standards: FIPS 203 (ML-KEM/Kyber), FIPS 204 (ML-DSA/Dilithium), FIPS 205 (SLH-DSA/SPHINCS+). These are designed to resist attacks by quantum computers.</p>
+      <p style="font-size: 13px; line-height: 1.7; margin: 0 0 8px;">Ed25519 (used by SOV3 today) is not quantum-safe. A sufficiently powerful quantum computer could derive a private key from a public key. MEOK is migrating.</p>
+      <p style="font-size: 13px; line-height: 1.7; margin: 0;">The MEOK approach: <strong>hybrid</strong>. Ed25519 + ML-DSA + Kyber. The hash chain remains hash-chained (SHA-256 is not weakened by quantum). Only the signatures get upgraded.</p>
+    </div>
+
+    <h2 style="font-size: 18px; color: var(--accent5); margin: 24px 0 12px;">📅 The 4-phase migration (Q4 2026 → Q1 2027)</h2>
+    <div class="grid cols-2">
+      <div class="card">
+        <h3 style="margin: 0 0 8px; color: var(--accent5);">🛠 Phase 1 (Q4 2026) — Pilot</h3>
+        <p style="font-size: 12px; line-height: 1.7; margin: 0;">Add ML-DSA + Kyber to the sovereign stack. Hybrid mode (Ed25519 + ML-DSA). 5% of new sigils use hybrid. Audit by independent cryptographer. MIT release.</p>
+        <p style="font-size: 11px; color: var(--dim); margin: 8px 0 0;">Status: planned · Owner: MEOK cryptographer · Target: Dec 2026</p>
+      </div>
+      <div class="card">
+        <h3 style="margin: 0 0 8px; color: var(--accent5);">🛠 Phase 2 (Q1 2027) — Migration</h3>
+        <p style="font-size: 12px; line-height: 1.7; margin: 0;">All new sigils use hybrid. Old sigils (Ed25519-only) remain valid (cryptographic no-op). Hash chain integrity preserved. Sovereign by default.</p>
+        <p style="font-size: 11px; color: var(--dim); margin: 8px 0 0;">Status: planned · Owner: MEOK cryptographer · Target: Mar 2027</p>
+      </div>
+      <div class="card">
+        <h3 style="margin: 0 0 8px; color: var(--accent5);">🛠 Phase 3 (Q1 2027) — Full quantum-safe</h3>
+        <p style="font-size: 12px; line-height: 1.7; margin: 0;">Ed25519 deprecated. New sigils use ML-DSA + Kyber. Old Ed25519 sigils remain valid forever (no chain split). Quantum-safe export format (PEM).</p>
+        <p style="font-size: 11px; color: var(--dim); margin: 8px 0 0;">Status: planned · Owner: MEOK cryptographer · Target: Mar 2027</p>
+      </div>
+      <div class="card">
+        <h3 style="margin: 0 0 8px; color: var(--accent5);">🛠 Phase 4 (Q2 2027) — Cryptographic agility</h3>
+        <p style="font-size: 12px; line-height: 1.7; margin: 0;">MEOK is now crypto-agile. New algorithms (e.g., SPHINCS+ for stateless) can be added without breaking the chain. Forward + backward compatible.</p>
+        <p style="font-size: 11px; color: var(--dim); margin: 8px 0 0;">Status: planned · Owner: MEOK cryptographer · Target: Jun 2027</p>
+      </div>
+    </div>
+
+    <h2 style="font-size: 18px; color: var(--accent5); margin: 24px 0 12px;">🔐 The 4 algorithms</h2>
+    <div class="grid cols-2">
+      <div class="card">
+        <h3 style="margin: 0 0 8px; color: var(--accent5);">🔑 Ed25519 (current)</h3>
+        <p style="font-size: 12px; line-height: 1.7; margin: 0;">256-bit elliptic curve. Fast, small signatures (64 bytes). Used by SOV3, sigil chain, all 18 hives. Not quantum-safe. MEOK will keep using it as a fallback forever.</p>
+        <p style="font-size: 11px; color: var(--dim); margin: 8px 0 0;">Status: active today · Quantum-safe: ✗ · Will be deprecated Q1 2027</p>
+      </div>
+      <div class="card">
+        <h3 style="margin: 0 0 8px; color: var(--accent5);">🔐 ML-DSA (Dilithium-3, FIPS 204)</h3>
+        <p style="font-size: 12px; line-height: 1.7; margin: 0;">Lattice-based. Quantum-safe. 1,952-byte signatures. 4x larger than Ed25519 but quantum-resistant. Standard for the next 20 years.</p>
+        <p style="font-size: 11px; color: var(--dim); margin: 8px 0 0;">Status: planned Q1 2027 · Quantum-safe: ✓ · Will be primary</p>
+      </div>
+      <div class="card">
+        <h3 style="margin: 0 0 8px; color: var(--accent5);">🔐 ML-KEM (Kyber-768, FIPS 203)</h3>
+        <p style="font-size: 12px; line-height: 1.7; margin: 0;">Lattice-based KEM. Quantum-safe. 1,088-byte public keys. For key exchange, not signing. MEOK will use it for sovereign export encryption.</p>
+        <p style="font-size: 11px; color: var(--dim); margin: 8px 0 0;">Status: planned Q1 2027 · Quantum-safe: ✓ · Will be primary for KEM</p>
+      </div>
+      <div class="card">
+        <h3 style="margin: 0 0 8px; color: var(--accent5);">🔐 SLH-DSA (SPHINCS+, FIPS 205)</h3>
+        <p style="font-size: 12px; line-height: 1.7; margin: 0;">Hash-based. Quantum-safe. 8,192-byte signatures. Stateless. Slow. For high-stakes (legal, financial, government). MEOK will use it for notarization.</p>
+        <p style="font-size: 11px; color: var(--dim); margin: 8px 0 0;">Status: planned Q2 2027 · Quantum-safe: ✓ · Will be for notarization</p>
+      </div>
+    </div>
+
+    <h2 style="font-size: 18px; color: var(--accent5); margin: 24px 0 12px;">📊 Migration impact (estimated)</h2>
+    <div class="card">
+      <ul style="font-size: 12px; line-height: 1.8; padding-left: 20px;">
+        <li><strong>Signature size:</strong> 64 bytes → 1,952 bytes (~30x larger)</li>
+        <li><strong>Verify time:</strong> ~50µs → ~200µs (~4x slower)</li>
+        <li><strong>Sign time:</strong> ~30µs → ~500µs (~17x slower)</li>
+        <li><strong>Hash chain:</strong> unchanged (SHA-256, quantum-safe)</li>
+        <li><strong>Sigil storage:</strong> +30% per sigil (acceptable for audit trail)</li>
+        <li><strong>Compatibility:</strong> 100% backward-compatible (old Ed25519 sigils stay valid)</li>
+        <li><strong>Migration cost:</strong> ~$50K dev + ~$10K audit (independent cryptographer)</li>
+        <li><strong>Target launch:</strong> Q1 2027 (NIST PQC mandatory in US gov by 2035)</li>
+      </ul>
+    </div>
+
+    <h2 style="font-size: 18px; color: var(--accent5); margin: 24px 0 12px;">🛡️ Why MEOK is well-positioned</h2>
+    <div class="card">
+      <p style="font-size: 13px; line-height: 1.7; margin: 0 0 8px;">Most AI platforms today don't even know what PQC is. MEOK is migrating 8 years before NIST's mandatory deadline (2035) for US government. The 4 phases above show our commitment.</p>
+      <p style="font-size: 13px; line-height: 1.7; margin: 0 0 8px;">Because MEOK is open source (MIT), every user can audit the migration. Because MEOK is sovereign, every user can choose their own algorithms. Because MEOK is BFT-governed, the migration is community-voted.</p>
+      <p style="font-size: 13px; line-height: 1.7; margin: 0;">The dragon is quantum-safe. Care 0.95+.</p>
+    </div>
+  </main>
+  <footer class="sovereignbar">
+    <div class="item"><span class="ok">●</span><span class="label">Quantum-safe:</span><span class="val">Q1 2027 · NIST PQC · hybrid</span></div>
+    <div class="spacer"></div>
+    <button class="action">🔐 Subscribe</button>
+  </footer>
+</div>
+</body>
+</html>

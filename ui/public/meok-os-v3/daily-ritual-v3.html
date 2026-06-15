@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>🌅 MEOK OS v3 — Daily Ritual (5-Minute Daily Check-In)</title>
+<meta name="description" content="MEOK OS v3 Daily Ritual — 5-minute daily check-in with your character. Mood, gratitude, intention, one ask, one question. Sovereign. Gamified.">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="stylesheet" href="meok-os-design-system.css">
+<style>body { background: radial-gradient(1200px 800px at 50% 0%, #2a0a0a, var(--bg) 60%); }</style>
+</head>
+<body>
+<div class="app">
+  <header class="topbar">
+    <a href="index.html">← MEOK OS v3</a>
+    <span class="title">🌅 Daily Ritual</span>
+    <div class="actions" style="margin-left: auto; display: flex; gap: 12px; align-items: center; font-size: 12px; color: var(--dim);">
+      <span>🔥 14-day streak</span>
+    </div>
+  </header>
+  <main class="dock" style="padding: 18px; overflow-y: auto; max-width: 800px; margin: 0 auto;">
+    <h1 style="margin: 0 0 8px; text-align: center; font-size: 36px;">🌅 Daily Ritual</h1>
+    <p style="color: var(--dim); margin: 0 0 32px; text-align: center; font-size: 16px;">5 minutes a day. 5 questions. 1 conversation. 1 connection.</p>
+
+    <div style="display: flex; gap: 8px; margin-bottom: 24px; justify-content: center;">
+      <div style="padding: 8px 16px; background: var(--accent); color: white; border-radius: 999px; font-size: 11px; font-weight: 800;">1. Mood</div>
+      <span style="color: var(--dim);">→</span>
+      <div style="padding: 8px 16px; background: var(--panel2); color: var(--dim); border-radius: 999px; font-size: 11px;">2. Gratitude</div>
+      <span style="color: var(--dim);">→</span>
+      <div style="padding: 8px 16px; background: var(--panel2); color: var(--dim); border-radius: 999px; font-size: 11px;">3. Intention</div>
+      <span style="color: var(--dim);">→</span>
+      <div style="padding: 8px 16px; background: var(--panel2); color: var(--dim); border-radius: 999px; font-size: 11px;">4. One ask</div>
+      <span style="color: var(--dim);">→</span>
+      <div style="padding: 8px 16px; background: var(--panel2); color: var(--dim); border-radius: 999px; font-size: 11px;">5. One question</div>
+    </div>
+
+    <div class="card" style="border-color: var(--accent); margin-bottom: 16px;">
+      <h3 style="margin: 0 0 12px; color: var(--accent5);">Step 1 of 5 — Mood (30 sec)</h3>
+      <p style="font-size: 13px; line-height: 1.7; margin: 0 0 12px;">How are you feeling right now?</p>
+      <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-bottom: 8px;">
+        <div style="text-align: center; padding: 12px; background: var(--panel2); border-radius: 8px; cursor: pointer; font-size: 28px;">😀</div>
+        <div style="text-align: center; padding: 12px; background: var(--panel2); border-radius: 8px; cursor: pointer; font-size: 28px;">🙂</div>
+        <div style="text-align: center; padding: 12px; background: var(--panel2); border-radius: 8px; cursor: pointer; font-size: 28px;">😐</div>
+        <div style="text-align: center; padding: 12px; background: var(--panel2); border-radius: 8px; cursor: pointer; font-size: 28px;">😔</div>
+        <div style="text-align: center; padding: 12px; background: var(--panel2); border-radius: 8px; cursor: pointer; font-size: 28px;">😡</div>
+        <div style="text-align: center; padding: 12px; background: var(--panel2); border-radius: 8px; cursor: pointer; font-size: 28px;">😰</div>
+        <div style="text-align: center; padding: 12px; background: var(--panel2); border-radius: 8px; cursor: pointer; font-size: 28px;">🥰</div>
+        <div style="text-align: center; padding: 12px; background: var(--panel2); border-radius: 8px; cursor: pointer; font-size: 28px;">😴</div>
+      </div>
+    </div>
+
+    <div class="card" style="margin-bottom: 16px; opacity: 0.5;">
+      <h3 style="margin: 0 0 12px; color: var(--dim);">Step 2 of 5 — Gratitude (1 min)</h3>
+      <p style="font-size: 13px; line-height: 1.7; margin: 0 0 12px;">What's one thing you're grateful for today?</p>
+      <textarea placeholder="Type your gratitude..." style="width: 100%; height: 80px; padding: 8px; background: var(--panel2); border: 1px solid var(--line); border-radius: 6px; color: var(--ink); font-family: inherit;"></textarea>
+    </div>
+
+    <div class="card" style="margin-bottom: 16px; opacity: 0.5;">
+      <h3 style="margin: 0 0 12px; color: var(--dim);">Step 3 of 5 — Intention (1 min)</h3>
+      <p style="font-size: 13px; line-height: 1.7; margin: 0 0 12px;">What's your one intention for today?</p>
+      <textarea placeholder="Type your intention..." style="width: 100%; height: 80px; padding: 8px; background: var(--panel2); border: 1px solid var(--line); border-radius: 6px; color: var(--ink); font-family: inherit;"></textarea>
+    </div>
+
+    <div class="card" style="margin-bottom: 16px; opacity: 0.5;">
+      <h3 style="margin: 0 0 12px; color: var(--dim);">Step 4 of 5 — One ask (1 min)</h3>
+      <p style="font-size: 13px; line-height: 1.7; margin: 0 0 12px;">What's one thing you need help with today?</p>
+      <textarea placeholder="Type your ask..." style="width: 100%; height: 80px; padding: 8px; background: var(--panel2); border: 1px solid var(--line); border-radius: 6px; color: var(--ink); font-family: inherit;"></textarea>
+    </div>
+
+    <div class="card" style="margin-bottom: 16px; opacity: 0.5;">
+      <h3 style="margin: 0 0 12px; color: var(--dim);">Step 5 of 5 — One question (1 min)</h3>
+      <p style="font-size: 13px; line-height: 1.7; margin: 0 0 12px;">What's one question on your mind today?</p>
+      <textarea placeholder="Type your question..." style="width: 100%; height: 80px; padding: 8px; background: var(--panel2); border: 1px solid var(--line); border-radius: 6px; color: var(--ink); font-family: inherit;"></textarea>
+    </div>
+
+    <div style="background: var(--panel2); padding: 16px; border-radius: 8px; margin-top: 24px; font-size: 12px; color: var(--dim); text-align: center;">
+      <p style="margin: 0 0 8px; color: var(--ink); font-size: 14px; font-weight: 700;">🔥 14-day streak · +25 XP daily</p>
+      <p style="margin: 0;">The Scholar remembers every daily ritual. After 30 days, you unlock the Sage Streak achievement (+1000 XP). After 100 days, the Oracle Streak (+2500 XP).</p>
+    </div>
+  </main>
+  <footer class="sovereignbar">
+    <div class="item"><span class="ok">●</span><span class="label">Streak:</span><span class="val">14 days · 14/30 to Sage</span></div>
+    <div class="spacer"></div>
+    <button class="action">⏭ Skip today</button>
+  </footer>
+</div>
+</body>
+</html>

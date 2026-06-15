@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>🧮 MEOK OS v3 — Pricing Calculator (What You'll Actually Pay)</title>
+<meta name="description" content="MEOK OS v3 Pricing Calculator — what you'll actually pay. Seats, calls, x402, overage. Sovereign. Honest numbers.">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="stylesheet" href="meok-os-design-system.css">
+</head>
+<body>
+<div class="app">
+  <header class="topbar">
+    <a href="index.html">← MEOK OS v3</a>
+    <span class="title">🧮 Calculator</span>
+  </header>
+  <main class="dock" style="padding: 18px; overflow-y: auto; max-width: 700px; margin: 0 auto;">
+    <h1 style="margin: 0 0 8px;">🧮 Pricing Calculator</h1>
+    <p style="color: var(--dim); margin: 0 0 24px;">What you'll actually pay. Seats, calls, x402, overage. Sovereign. Honest numbers.</p>
+
+    <div class="card" style="margin-bottom: 16px;">
+      <h3 style="margin: 0 0 12px; color: var(--accent5);">👥 How many seats?</h3>
+      <div style="display: flex; align-items: center; gap: 8px;">
+        <input type="range" min="1" max="50" value="3" id="seats" style="flex: 1;">
+        <span id="seats-val" style="font-size: 22px; font-weight: 800; color: var(--accent5); min-width: 60px; text-align: right;">3</span>
+      </div>
+    </div>
+
+    <div class="card" style="margin-bottom: 16px;">
+      <h3 style="margin: 0 0 12px; color: var(--accent5);">⚡ Estimated calls/month</h3>
+      <div style="display: flex; align-items: center; gap: 8px;">
+        <input type="range" min="100" max="100000" step="100" value="5000" id="calls" style="flex: 1;">
+        <span id="calls-val" style="font-size: 18px; font-weight: 800; color: var(--accent5); min-width: 90px; text-align: right;">5,000</span>
+      </div>
+    </div>
+
+    <div class="card" style="margin-bottom: 16px;">
+      <h3 style="margin: 0 0 12px; color: var(--accent5);">💳 Estimated attestations/month</h3>
+      <div style="display: flex; align-items: center; gap: 8px;">
+        <input type="range" min="0" max="500" step="5" value="20" id="attests" style="flex: 1;">
+        <span id="attests-val" style="font-size: 18px; font-weight: 800; color: var(--accent5); min-width: 80px; text-align: right;">20</span>
+      </div>
+    </div>
+
+    <div class="card" style="margin-bottom: 16px;">
+      <h3 style="margin: 0 0 12px; color: var(--accent5);">💰 x402 micro-transactions/month</h3>
+      <div style="display: flex; align-items: center; gap: 8px;">
+        <input type="range" min="0" max="100" value="0" id="x402" style="flex: 1;">
+        <span id="x402-val" style="font-size: 18px; font-weight: 800; color: var(--accent5); min-width: 80px; text-align: right;">$0</span>
+      </div>
+    </div>
+
+    <div class="card" style="border-color: var(--accent5); padding: 24px; text-align: center; background: linear-gradient(135deg, rgba(124, 92, 255, 0.05), rgba(255, 92, 168, 0.05));">
+      <h3 style="margin: 0 0 12px; color: var(--accent5);">📊 Recommended tier</h3>
+      <div id="tier-name" style="font-size: 32px; font-weight: 800; color: var(--accent);">Sovereign £9/mo</div>
+      <div id="tier-reason" style="color: var(--dim); font-size: 13px; margin: 8px 0 16px;">Best for individuals</div>
+      <table style="width: 100%; border-collapse: collapse; font-size: 12px; text-align: left; margin: 12px 0;">
+        <tr><td style="padding: 4px 0;">Subscription</td><td style="padding: 4px 0; text-align: right;">£9.00/mo</td></tr>
+        <tr><td style="padding: 4px 0;">Calls (included)</td><td style="padding: 4px 0; text-align: right;">Unlimited</td></tr>
+        <tr><td style="padding: 4px 0;">Attestations (included)</td><td style="padding: 4px 0; text-align: right;">20 of 100</td></tr>
+        <tr><td style="padding: 4px 0;">Overage (calls)</td><td style="padding: 4px 0; text-align: right; color: var(--ok);">£0.00</td></tr>
+        <tr><td style="padding: 4px 0;">Overage (attests)</td><td style="padding: 4px 0; text-align: right; color: var(--ok);">£0.00</td></tr>
+        <tr><td style="padding: 4px 0;">x402 micro-tx</td><td style="padding: 4px 0; text-align: right; color: var(--ok);">£0.00</td></tr>
+        <tr style="border-top: 1px solid var(--line);"><td style="padding: 8px 0; font-weight: 800;">Total (UK 20% VAT)</td><td style="padding: 8px 0; text-align: right; font-weight: 800; color: var(--accent5);">£10.80/mo</td></tr>
+      </table>
+      <a href="checkout-flow-v3.html" class="btn primary" style="margin-top: 12px;">💳 Get started</a>
+    </div>
+  </main>
+  <footer class="sovereignbar">
+    <div class="item"><span class="ok">●</span><span class="label">Calculator:</span><span class="val">real-time</span></div>
+    <div class="spacer"></div>
+    <button class="action">🧮 Reset</button>
+  </footer>
+</div>
+<script>
+const seats = document.getElementById('seats');
+const seatsVal = document.getElementById('seats-val');
+const calls = document.getElementById('calls');
+const callsVal = document.getElementById('calls-val');
+const attests = document.getElementById('attests');
+const attestsVal = document.getElementById('attests-val');
+const x402 = document.getElementById('x402');
+const x402Val = document.getElementById('x402-val');
+const tierName = document.getElementById('tier-name');
+const tierReason = document.getElementById('tier-reason');
+
+function update() {
+  seatsVal.textContent = seats.value;
+  callsVal.textContent = parseInt(calls.value).toLocaleString();
+  attestsVal.textContent = attests.value;
+  x402Val.textContent = '$' + x402.value;
+  // Logic
+  const s = parseInt(seats.value);
+  const a = parseInt(attests.value);
+  if (s === 1 && a <= 20) { tierName.textContent = 'Free £0/mo'; tierReason.textContent = 'Best for trying MEOK'; }
+  else if (s === 1 && a <= 100) { tierName.textContent = 'Sovereign £9/mo'; tierReason.textContent = 'Best for individuals'; }
+  else if (s <= 1 && a > 100) { tierName.textContent = 'Pro £19/mo'; tierReason.textContent = 'Best for power users'; }
+  else if (s <= 5 && a <= 100) { tierName.textContent = 'Family £29/mo'; tierReason.textContent = 'Best for families + small teams'; }
+  else { tierName.textContent = 'Enterprise £500-5K/mo'; tierReason.textContent = 'Best for banks, government, defense'; }
+}
+seats.addEventListener('input', update);
+calls.addEventListener('input', update);
+attests.addEventListener('input', update);
+x402.addEventListener('input', update);
+update();
+</script>
+</body>
+</html>

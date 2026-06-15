@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>⚙️ MEOK Settings v3</title>
+<meta name="description" content="MEOK OS v3 Settings — preferences, mode, language, sovereignty, security, BFT.">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="stylesheet" href="meok-os-design-system.css">
+</head>
+<body>
+<div class="app">
+  <header class="topbar">
+    <a href="index.html">← MEOK OS v3</a>
+    <span class="title">⚙️ Settings v3</span>
+  </header>
+
+  <main class="dock" style="padding: 18px; overflow-y: auto;">
+    <h1 style="margin: 0 0 24px;">⚙️ MEOK OS v3 Settings</h1>
+
+    <div class="grid cols-2">
+      <div class="card">
+        <h3 style="margin: 0 0 12px; color: var(--accent5);">👤 Profile</h3>
+        <div style="display: flex; flex-direction: column; gap: 10px;">
+          <div><span style="color: var(--dim); font-size: 12px;">Display name</span><br><input type="text" value="Nick" style="width: 100%; padding: 8px 12px; background: var(--panel2); border: 1px solid var(--line); border-radius: 6px; color: var(--ink);"></div>
+          <div><span style="color: var(--dim); font-size: 12px;">Email</span><br><input type="email" value="nick@meok.ai" style="width: 100%; padding: 8px 12px; background: var(--panel2); border: 1px solid var(--line); border-radius: 6px; color: var(--ink);"></div>
+          <div><span style="color: var(--dim); font-size: 12px;">Timezone</span><br><select style="width: 100%; padding: 8px 12px; background: var(--panel2); border: 1px solid var(--line); border-radius: 6px; color: var(--ink);"><option>Europe/London (UK)</option><option>America/New_York</option><option>America/Los_Angeles</option><option>Asia/Tokyo</option><option>Australia/Sydney</option></select></div>
+          <div><span style="color: var(--dim); font-size: 12px;">Language</span><br><select style="width: 100%; padding: 8px 12px; background: var(--panel2); border: 1px solid var(--line); border-radius: 6px; color: var(--ink);"><option>English (UK)</option><option>English (US)</option><option>Português</option><option>Français</option><option>Deutsch</option><option>日本語</option></select></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3 style="margin: 0 0 12px; color: var(--accent5);">🎨 Appearance</h3>
+        <div style="display: flex; flex-direction: column; gap: 10px;">
+          <div><span style="color: var(--dim); font-size: 12px;">Mode</span><br>
+            <div class="modes">
+              <div class="mode">Simple</div>
+              <div class="mode active">Standard</div>
+              <div class="mode">Pro</div>
+              <div class="mode">Council</div>
+              <div class="mode">Orb</div>
+              <div class="mode">Developer</div>
+            </div>
+          </div>
+          <div><span style="color: var(--dim); font-size: 12px;">Theme</span><br>
+            <div class="modes">
+              <div class="mode active">Dark</div>
+              <div class="mode">Light</div>
+              <div class="mode">Auto</div>
+            </div>
+          </div>
+          <div><span style="color: var(--dim); font-size: 12px;">Density</span><br>
+            <div class="modes">
+              <div class="mode">Compact</div>
+              <div class="mode active">Comfortable</div>
+              <div class="mode">Spacious</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3 style="margin: 0 0 12px; color: var(--accent5);">🛡️ Sovereignty</h3>
+        <div style="display: flex; flex-direction: column; gap: 10px;">
+          <div style="display: flex; align-items: center; justify-content: space-between; padding: 6px 0; border-bottom: 1px solid var(--line);">
+            <span>Sovereign data export</span>
+            <span style="color: var(--ok);">✓ 1-click JSON/CSV/Parquet</span>
+          </div>
+          <div style="display: flex; align-items: center; justify-content: space-between; padding: 6px 0; border-bottom: 1px solid var(--line);">
+            <span>Sovereign data delete</span>
+            <span style="color: var(--ok);">✓ 1-click + audit</span>
+          </div>
+          <div style="display: flex; align-items: center; justify-content: space-between; padding: 6px 0; border-bottom: 1px solid var(--line);">
+            <span>Sovereign compute</span>
+            <span style="color: var(--ok);">✓ EU + US regions</span>
+          </div>
+          <div style="display: flex; align-items: center; justify-content: space-between; padding: 6px 0;">
+            <span>GDPR Article 20 (portability)</span>
+            <span style="color: var(--ok);">✓ Compliant</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3 style="margin: 0 0 12px; color: var(--accent5);">🛡️ Security</h3>
+        <div style="display: flex; flex-direction: column; gap: 10px;">
+          <div style="display: flex; align-items: center; justify-content: space-between; padding: 6px 0; border-bottom: 1px solid var(--line);">
+            <span>2FA</span>
+            <span style="color: var(--ok);">✓ Enabled</span>
+          </div>
+          <div style="display: flex; align-items: center; justify-content: space-between; padding: 6px 0; border-bottom: 1px solid var(--line);">
+            <span>Ed25519 sigil on every action</span>
+            <span style="color: var(--ok);">✓ Active</span>
+          </div>
+          <div style="display: flex; align-items: center; justify-content: space-between; padding: 6px 0; border-bottom: 1px solid var(--line);">
+            <span>Horus 3-replica BFT veto</span>
+            <span style="color: var(--ok);">✓ Active</span>
+          </div>
+          <div style="display: flex; align-items: center; justify-content: space-between; padding: 6px 0;">
+            <span>Rainbow 7-layer security</span>
+            <span style="color: var(--ok);">✓ All 7 layers</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3 style="margin: 0 0 12px; color: var(--accent5);">🗳️ BFT Council</h3>
+        <div style="display: flex; flex-direction: column; gap: 10px;">
+          <div><span style="color: var(--dim); font-size: 12px;">Your voter seat(s)</span><br>
+            <div style="font-size: 13px; color: var(--ink); margin-top: 4px;">meok-keystone (seat-1) · meok-gaming-hive (seat-1) · meok-research (seat-1)</div>
+          </div>
+          <div><span style="color: var(--dim); font-size: 12px;">Voting weight</span><br>
+            <div style="font-size: 13px; color: var(--ink); margin-top: 4px;">1× (default) · can delegate to trusted agent</div>
+          </div>
+          <div><span style="color: var(--dim); font-size: 12px;">Auto-vote on routine proposals</span><br>
+            <select style="width: 100%; padding: 8px 12px; background: var(--panel2); border: 1px solid var(--line); border-radius: 6px; color: var(--ink);"><option>Off</option><option>On (yes)</option><option>On (abstain)</option></select>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3 style="margin: 0 0 12px; color: var(--accent5);">🔌 Integrations</h3>
+        <div style="display: flex; flex-direction: column; gap: 10px;">
+          <div style="display: flex; align-items: center; justify-content: space-between; padding: 6px 0; border-bottom: 1px solid var(--line);"><span>Clerk (auth)</span><span style="color: var(--ok);">✓ Connected</span></div>
+          <div style="display: flex; align-items: center; justify-content: space-between; padding: 6px 0; border-bottom: 1px solid var(--line);"><span>Stripe (billing)</span><span style="color: var(--warn);">⏳ Awaiting MEOK_MASTER_API_KEY</span></div>
+          <div style="display: flex; align-items: center; justify-content: space-between; padding: 6px 0; border-bottom: 1px solid var(--line);"><span>SOV3 substrate</span><span style="color: var(--ok);">✓ localhost:3101</span></div>
+          <div style="display: flex; align-items: center; justify-content: space-between; padding: 6px 0; border-bottom: 1px solid var(--line);"><span>keystone (attestation)</span><span style="color: var(--ok);">✓ meok-attestation-api</span></div>
+          <div style="display: flex; align-items: center; justify-content: space-between; padding: 6px 0;"><span>Smithery (MCP marketplace)</span><span style="color: var(--warn);">⏳ Awaiting SMITHERY_API_KEY</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top: 24px; padding: 16px; background: var(--panel2); border: 1px solid var(--line); border-radius: 8px; text-align: center;">
+      <button class="ghost" style="margin-right: 8px;">Cancel</button>
+      <button class="primary">Save changes</button>
+    </div>
+  </main>
+
+  <footer class="sovereignbar">
+    <div class="item"><span class="ok">●</span><span class="label">Settings:</span><span class="val">saved 12s ago</span></div>
+    <div class="spacer"></div>
+    <button class="action">📤 Export</button>
+  </footer>
+</div>
+</body>
+</html>

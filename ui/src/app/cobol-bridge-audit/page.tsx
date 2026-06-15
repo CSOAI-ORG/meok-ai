@@ -27,9 +27,42 @@ const PRIMARY = "#3B82F6";
 // Stripe payment link for £999 audit (existing product prod_UTyzRPBkBQrqCQ "COBOL Bridge Analysis")
 const AUDIT_BUY_URL = "https://buy.stripe.com/5kQ6oJ0xS3ce8sl7ew8k91j";
 
+const FAQ = [
+  { q: "How much is the COBOL migration audit?", a: "The deep audit is a fixed £999. It delivers a full COBOL codebase scan (copybook + JCL + CICS + EBCDIC paths), a complexity heatmap, a migration cost estimate in developer-days, per-program risk scores, a recommended target stack, and the top 10 highest-leverage refactors to do first. No consultants on the meter." },
+  { q: "Can I try it before paying?", a: "Yes. The MIT-licensed cobol-bridge-mcp runs locally against any COBOL source tree and gives you a quick complexity-and-blocker report in about 5 minutes. No data leaves your machine — run pip install cobol-bridge-mcp then cobol-bridge scan ./your-codebase --report quick." },
+  { q: "How fast is delivery?", a: "5 working days from receipt of your codebase. You get a PDF report plus a signed JSON manifest plus a 30-minute walkthrough call — versus the 12-week assessments typical of IBM or the Big Four." },
+  { q: "Who is this for?", a: "Banks and insurers running 80s/90s mainframes, government and public-sector legacy systems (DWP, HMRC, NHS, Home Office), acquired-company technical-debt audits, and DORA-scoped financial-services firms that need a clear view of critical mainframe ICT dependencies for the Article 28 third-party register." },
+];
+
+const FAQ_JSONLD = { "@context": "https://schema.org", "@type": "FAQPage", mainEntity: FAQ.map((f) => ({ "@type": "Question", name: f.q, acceptedAnswer: { "@type": "Answer", text: f.a } })) };
+
+const SERVICE_JSONLD = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  name: "COBOL → Modern Stack Migration Audit",
+  serviceType: "Legacy COBOL migration assessment",
+  description: "Fixed-price 5-day COBOL legacy codebase audit: scan, complexity heatmap, migration cost estimate, per-program risk scores, recommended target stack.",
+  provider: { "@type": "Organization", name: "MEOK AI", url: "https://meok.ai" },
+  brand: { "@type": "Brand", name: "MEOK AI" },
+  url: "https://meok.ai/cobol-bridge-audit",
+  offers: { "@type": "Offer", price: "999", priceCurrency: "GBP", url: AUDIT_BUY_URL },
+};
+
+const BREADCRUMB_JSONLD = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: "https://meok.ai/" },
+    { "@type": "ListItem", position: 2, name: "COBOL Bridge Audit", item: "https://meok.ai/cobol-bridge-audit" },
+  ],
+};
+
 export default function CobolAuditPage() {
   return (
     <main style={{ background: BG, color: NAVY, minHeight: "100vh", padding: "3rem 1.5rem" }}>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(FAQ_JSONLD) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(SERVICE_JSONLD) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(BREADCRUMB_JSONLD) }} />
       <div style={{ maxWidth: 880, margin: "0 auto" }}>
 
         {/* Hero */}
@@ -125,6 +158,19 @@ cobol-bridge scan ./your-codebase --report quick`}
                 <strong style={{ fontSize: "1.05rem" }}>{p.title}</strong>
                 <p style={{ marginTop: ".4rem", fontSize: ".95rem", opacity: .75 }}>{p.body}</p>
               </div>
+            ))}
+          </div>
+        </section>
+
+        {/* FAQ */}
+        <section style={{ marginBottom: "3rem" }}>
+          <h2 style={{ fontSize: "1.4rem", fontWeight: 700, marginBottom: "1rem" }}>Frequently asked</h2>
+          <div style={{ display: "grid", gap: ".75rem" }}>
+            {FAQ.map((f) => (
+              <details key={f.q} style={{ padding: "1.25rem 1.5rem", background: "#fff", borderRadius: 10, border: `1px solid ${NAVY}22` }}>
+                <summary style={{ fontSize: "1.05rem", fontWeight: 700, cursor: "pointer" }}>{f.q}</summary>
+                <p style={{ marginTop: ".5rem", fontSize: ".95rem", opacity: .75, lineHeight: 1.55 }}>{f.a}</p>
+              </details>
             ))}
           </div>
         </section>

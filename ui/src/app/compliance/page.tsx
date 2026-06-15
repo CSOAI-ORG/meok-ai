@@ -28,6 +28,38 @@ interface Framework {
   riskCategory: string;
 }
 
+// ─── STRUCTURED DATA ─────────────────────────────────────────────────────────
+
+const FAQ = [
+  { q: "Which frameworks does MEOKCLAW cover?", a: "MEOKCLAW provides real-time regulatory mapping and audit-ready evidence for the EU AI Act, GDPR, and NIS2, with cross-check capability and live monitoring across the supported frameworks." },
+  { q: "How is compliance proven, not just claimed?", a: "All compliance artifacts are HMAC-signed by the MEOKCLAW Kernel and stored in an immutable local ledger. Rather than only following the rules, the system cryptographically proves adherence — trust is codified, not asserted." },
+  { q: "Where is the evidence stored?", a: "Evidence is written to an immutable local ledger (the Compliance Vault / Audit Ledger). Artifacts use 256-bit encryption and BFT v3 consensus, and the ledger is designed to be audit-ready at all times." },
+  { q: "Is this built for agentic AI?", a: "Yes. The Sovereign Trust Protocol is automated compliance for agentic AI — it maps regulatory obligations and generates auditor-defensible evidence in real time as agents operate." },
+];
+
+const FAQ_JSONLD = { "@context": "https://schema.org", "@type": "FAQPage", mainEntity: FAQ.map((f) => ({ "@type": "Question", name: f.q, acceptedAnswer: { "@type": "Answer", text: f.a } })) };
+
+const SERVICE_JSONLD = {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  name: "MEOKCLAW Automated Compliance",
+  applicationCategory: "BusinessApplication",
+  operatingSystem: "Web",
+  description: "Automated compliance for agentic AI — real-time regulatory mapping and HMAC-signed, audit-ready evidence for the EU AI Act, GDPR, and NIS2.",
+  brand: { "@type": "Brand", name: "MEOK AI" },
+  publisher: { "@type": "Organization", name: "MEOK AI", url: "https://meok.ai" },
+  url: "https://meok.ai/compliance",
+};
+
+const BREADCRUMB_JSONLD = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: "https://meok.ai/" },
+    { "@type": "ListItem", position: 2, name: "Compliance", item: "https://meok.ai/compliance" },
+  ],
+};
+
 // ─── COMPLIANCE PAGE ─────────────────────────────────────────────────────────
 
 export default function CompliancePage() {
@@ -46,6 +78,9 @@ export default function CompliancePage() {
 
   return (
     <div className="min-h-screen bg-[#0d0c18] text-[#f5f0e8] font-sans">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(FAQ_JSONLD) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(SERVICE_JSONLD) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(BREADCRUMB_JSONLD) }} />
       {/* Hero Section */}
       <section className="relative pt-32 pb-20 px-6 overflow-hidden">
         <div className="absolute inset-0 pointer-events-none">
@@ -152,6 +187,21 @@ export default function CompliancePage() {
                </div>
             </div>
          </Surface>
+      </section>
+
+      {/* FAQ */}
+      <section className="max-w-4xl mx-auto px-6 py-20 space-y-8">
+         <div className="flex items-end justify-between border-b border-white/05 pb-6">
+            <h2 className="text-xl font-bold uppercase tracking-widest">Frequently_Asked</h2>
+         </div>
+         <div className="grid grid-cols-1 gap-6">
+            {FAQ.map((f) => (
+              <Surface key={f.q} variant="glass" className="p-6 border-white/[0.03] space-y-2">
+                 <h3 className="text-sm font-black text-white/90 uppercase tracking-widest">{f.q}</h3>
+                 <p className="text-[12px] text-white/40 leading-relaxed">{f.a}</p>
+              </Surface>
+            ))}
+         </div>
       </section>
 
       <footer className="py-12 border-t border-white/05 opacity-20 text-center">

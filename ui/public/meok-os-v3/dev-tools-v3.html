@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>🔧 MEOK OS v3 — Dev Tools</title>
+<meta name="description" content="MEOK OS v3 Dev Tools — 220+ MCP tools, sovereign API, sigil chain, BFT voter, attestation issuer, scaffold. For developers.">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="stylesheet" href="meok-os-design-system.css">
+</head>
+<body>
+<div class="app">
+  <header class="topbar">
+    <a href="index.html">← MEOK OS v3</a>
+    <span class="title">🔧 Dev Tools</span>
+    <div class="actions" style="margin-left: auto; display: flex; gap: 12px; align-items: center; font-size: 12px; color: var(--dim);">
+      <span>v3.0.0</span>
+      <span>·</span>
+      <span>MIT</span>
+    </div>
+  </header>
+  <main class="dock" style="padding: 18px; overflow-y: auto;">
+    <h1 style="margin: 0 0 8px;">🔧 MEOK OS v3 Dev Tools</h1>
+    <p style="color: var(--dim); margin: 0 0 24px;">For developers building on the MEOK sovereign substrate. 220+ MCP tools · 1 unified API · MIT license.</p>
+    <div class="grid cols-2">
+      <div class="card">
+        <h3 style="margin: 0 0 8px;">📜 MEOK OS v3 SDK (npm)</h3>
+        <pre style="background: var(--bg); padding: 8px 12px; border-radius: 6px; font-size: 11px; color: var(--dim); overflow-x: auto; margin: 0;">npm install @meok-os/sdk
+
+import MEOK from '@meok-os/sdk';
+const scholar = await MEOK.character.get('scholar');
+await MEOK.council.vote('proposal_id', 'yes');</pre>
+      </div>
+      <div class="card">
+        <h3 style="margin: 0 0 8px;">🐍 MEOK OS v3 SDK (pip)</h3>
+        <pre style="background: var(--bg); padding: 8px 12px; border-radius: 6px; font-size: 11px; color: var(--dim); overflow-x: auto; margin: 0;">pip install meok-os
+
+from meok_os import MEOK
+meok = MEOK()
+meok.character.get('scholar')
+meok.council.vote('proposal_id', 'yes')</pre>
+      </div>
+      <div class="card">
+        <h3 style="margin: 0 0 8px;">🔧 MCP Server Scaffolder</h3>
+        <p style="font-size: 12px; color: var(--dim); margin: 0 0 8px;">Auto-generate a new MCP server from a single config.</p>
+        <pre style="background: var(--bg); padding: 8px 12px; border-radius: 6px; font-size: 11px; color: var(--dim); overflow-x: auto; margin: 0;">python3 lib/scaffolder.py \
+  --name meok-foo-mcp \
+  --description "Foo does bar" \
+  --hive api-gateway \
+  --tools 12</pre>
+      </div>
+      <div class="card">
+        <h3 style="margin: 0 0 8px;">🛡️ Sovereignty Middleware</h3>
+        <p style="font-size: 12px; color: var(--dim); margin: 0 0 8px;">Drop-in Express.js middleware for 7 sovereignty headers.</p>
+        <pre style="background: var(--bg); padding: 8px 12px; border-radius: 6px; font-size: 11px; color: var(--dim); overflow-x: auto; margin: 0;">import sovereignty from '@meok-os/middleware';
+app.use(sovereignty);</pre>
+      </div>
+      <div class="card">
+        <h3 style="margin: 0 0 8px;">📜 Sigil Chain Auto-Anchor</h3>
+        <p style="font-size: 12px; color: var(--dim); margin: 0 0 8px;">Auto-anchor every action to the SOV3 sigil chain.</p>
+        <pre style="background: var(--bg); padding: 8px 12px; border-radius: 6px; font-size: 11px; color: var(--dim); overflow-x: auto; margin: 0;">from meok_os import sigil
+sigil.anchor('character.birth', 'nick', 'scholar', {'archetype': 'sage'})</pre>
+      </div>
+      <div class="card">
+        <h3 style="margin: 0 0 8px;">🗳️ BFT Voter Weight Calculator</h3>
+        <p style="font-size: 12px; color: var(--dim); margin: 0 0 8px;">Compute XP-weighted voter reputation.</p>
+        <pre style="background: var(--bg); padding: 8px 12px; border-radius: 6px; font-size: 11px; color: var(--dim); overflow-x: auto; margin: 0;">from meok_os import voter_weight
+voter_weight.compute(years=2.3, cast=47, available=50, aligned=43)</pre>
+      </div>
+    </div>
+    <h2 style="font-size: 18px; color: var(--accent5); margin: 24px 0 12px;">📦 npm packages</h2>
+    <div class="grid cols-3">
+      <div class="card"><div style="font-weight: 800;">@meok-os/sdk</div><div style="color: var(--dim); font-size: 11px; margin: 4px 0;">npm · 5.2MB</div><div style="color: var(--ok); font-size: 11px;">MIT · 100% open</div></div>
+      <div class="card"><div style="font-weight: 800;">@meok-os/middleware</div><div style="color: var(--dim); font-size: 11px; margin: 4px 0;">npm · 1.1MB</div><div style="color: var(--ok); font-size: 11px;">MIT · 100% open</div></div>
+      <div class="card"><div style="font-weight: 800;">@meok-os/sigil</div><div style="color: var(--dim); font-size: 11px; margin: 4px 0;">npm · 2.4MB</div><div style="color: var(--ok); font-size: 11px;">MIT · 100% open</div></div>
+      <div class="card"><div style="font-weight: 800;">@meok-os/keystone</div><div style="color: var(--dim); font-size: 11px; margin: 4px 0;">npm · 1.8MB</div><div style="color: var(--ok); font-size: 11px;">MIT · 100% open</div></div>
+      <div class="card"><div style="font-weight: 800;">@meok-os/council</div><div style="color: var(--dim); font-size: 11px; margin: 4px 0;">npm · 1.4MB</div><div style="color: var(--ok); font-size: 11px;">MIT · 100% open</div></div>
+      <div class="card"><div style="font-weight: 800;">@meok-os/horus</div><div style="color: var(--dim); font-size: 11px; margin: 4px 0;">npm · 1.6MB</div><div style="color: var(--ok); font-size: 11px;">MIT · 100% open</div></div>
+    </div>
+    <h2 style="font-size: 18px; color: var(--accent5); margin: 24px 0 12px;">🐍 pip packages</h2>
+    <div class="grid cols-3">
+      <div class="card"><div style="font-weight: 800;">meok-os</div><div style="color: var(--dim); font-size: 11px; margin: 4px 0;">pip · 4.8MB</div><div style="color: var(--ok); font-size: 11px;">MIT · Python 3.11+</div></div>
+      <div class="card"><div style="font-weight: 800;">meok-sovereign</div><div style="color: var(--dim); font-size: 11px; margin: 4px 0;">pip · 2.1MB</div><div style="color: var(--ok); font-size: 11px;">MIT · Python 3.11+</div></div>
+      <div class="card"><div style="font-weight: 800;">meok-keystone</div><div style="color: var(--dim); font-size: 11px; margin: 4px 0;">pip · 1.4MB</div><div style="color: var(--ok); font-size: 11px;">MIT · Python 3.11+</div></div>
+    </div>
+    <h2 style="font-size: 18px; color: var(--accent5); margin: 24px 0 12px;">🐙 GitHub repos</h2>
+    <div class="grid cols-3">
+      <div class="card"><div style="font-weight: 800;">CSOAI-ORG/meok-os</div><div style="color: var(--dim); font-size: 11px; margin: 4px 0;">the main repo</div><div style="color: var(--ok); font-size: 11px;">MIT</div></div>
+      <div class="card"><div style="font-weight: 800;">CSOAI-ORG/meok-keystone</div><div style="color: var(--dim); font-size: 11px; margin: 4px 0;">the attestation API</div><div style="color: var(--ok); font-size: 11px;">MIT</div></div>
+      <div class="card"><div style="font-weight: 800;">CSOAI-ORG/meok-attestation-api</div><div style="color: var(--dim); font-size: 11px; margin: 4px 0;">the verify portal</div><div style="color: var(--ok); font-size: 11px;">MIT</div></div>
+    </div>
+  </main>
+  <footer class="sovereignbar">
+    <div class="item"><span class="ok">●</span><span class="label">Dev Tools:</span><span class="val">v3.0.0</span></div>
+    <div class="spacer"></div>
+    <button class="action">📜 Docs</button>
+  </footer>
+</div>
+</body>
+</html>

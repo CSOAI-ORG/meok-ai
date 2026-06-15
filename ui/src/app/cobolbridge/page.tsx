@@ -1,5 +1,31 @@
 import Link from "next/link";
 
+const FAQ = [
+  { q: "How accurate is the AI COBOL-to-modern translation?", a: "COBOLBridge achieves 95%+ automated translation accuracy. Our LLM models are trained on millions of COBOL-to-modern conversions and handle complex business logic, with human-in-the-loop verification on every translated module." },
+  { q: "Will my mainframe go down during migration?", a: "No. We run a phased, zero-downtime migration with dual-running systems. Your mainframe stays live while we modernise layer by layer, and we generate comprehensive test suites from your COBOL test data to verify every function matches original behaviour before cutover." },
+  { q: "What languages and platforms does it output?", a: "Cloud-native Java, Python, or Node.js microservices, containerised with Docker and Kubernetes configs, ready to deploy to AWS, Azure, or GCP. Modern systems handle up to 100x the throughput of legacy mainframes with built-in auto-scaling." },
+  { q: "How much does COBOLBridge cost?", a: "Assessment is a one-off £499 (full codebase scan, business logic mapping, migration complexity score, effort estimation). Migration is £1,999/mo (automated translation, test suite generation, weekly reports, dedicated migration engineer). Enterprise is custom-priced with a 99.99% uptime SLA and on-site training." },
+];
+
+const FAQ_JSONLD = { "@context": "https://schema.org", "@type": "FAQPage", mainEntity: FAQ.map((f) => ({ "@type": "Question", name: f.q, acceptedAnswer: { "@type": "Answer", text: f.a } })) };
+
+const BREADCRUMB_JSONLD = { "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElement: [
+  { "@type": "ListItem", position: 1, name: "Home", item: "https://meok.ai/" },
+  { "@type": "ListItem", position: 2, name: "COBOLBridge", item: "https://meok.ai/cobolbridge" },
+] };
+
+const SERVICE_JSONLD = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  name: "COBOLBridge.ai",
+  serviceType: "Legacy COBOL to cloud-native migration",
+  description: "AI-powered COBOL-to-modern migration into cloud-native Java, Python, or Node.js microservices with zero-downtime, dual-running cutover.",
+  url: "https://meok.ai/cobolbridge",
+  brand: { "@type": "Brand", name: "MEOK AI" },
+  provider: { "@type": "Organization", name: "MEOK AI", url: "https://meok.ai" },
+  offers: { "@type": "Offer", price: "499", priceCurrency: "GBP", url: "https://meok.ai/cobolbridge#pricing" },
+};
+
 const FEATURES = [
   {
     icon: "⚡",
@@ -44,6 +70,9 @@ const USE_CASES = [
 export default function CobolBridgePage() {
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(FAQ_JSONLD) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(BREADCRUMB_JSONLD) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(SERVICE_JSONLD) }} />
       {/* Hero Section */}
       <section className="relative overflow-hidden py-24 px-6">
         <div className="absolute inset-0 bg-gradient-to-br from-amber-500/5 via-transparent to-orange-500/5" />
@@ -307,6 +336,28 @@ class InterestCalculator:
                 Contact Sales
               </Link>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ */}
+      <section id="faq" className="py-24 px-6">
+        <div className="max-w-4xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold text-white mb-4">
+              Frequently Asked Questions
+            </h2>
+            <p className="text-xl text-slate-400 max-w-2xl mx-auto">
+              Accuracy, downtime, output, and pricing — answered.
+            </p>
+          </div>
+          <div className="grid gap-6">
+            {FAQ.map((f, i) => (
+              <div key={i} className="p-6 rounded-2xl bg-slate-900/50 border border-slate-800 hover:border-amber-500/30 transition-colors">
+                <h3 className="text-xl font-semibold text-white mb-2">{f.q}</h3>
+                <p className="text-slate-400">{f.a}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>

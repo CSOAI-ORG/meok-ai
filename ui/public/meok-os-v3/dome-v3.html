@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>MEOK Dome v3 — The World Map (140+ Character Pins)</title>
+<meta name="description" content="MEOK Dome v3 — the world map. 140+ character companions live as glowing pins across Earth's great cities. Real-time MapLibre globe. Sovereign. Open source.">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="stylesheet" href="meok-os-design-system.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/maplibre-gl@5.24.0/dist/maplibre-gl.css">
+<script src="https://cdn.jsdelivr.net/npm/maplibre-gl@5.24.0/dist/maplibre-gl.js"></script>
+<style>
+  body { background: #05040c; }
+  .app { grid-template-columns: 1fr; grid-template-rows: 64px 1fr 32px; grid-template-areas: "topbar" "dock" "sovereignbar"; }
+  .topbar { display: flex; align-items: center; padding: 0 18px; }
+  .topbar a { color: var(--ink); text-decoration: none; margin-right: 12px; }
+  .topbar .title { font-weight: 800; color: var(--accent5); }
+  .dock { padding: 0; }
+  #map { position: absolute; inset: 64px 0 32px 0; }
+  .card { position: absolute; top: 80px; left: 16px; z-index: 5; max-width: 320px;
+          background: rgba(10, 9, 22, 0.78); backdrop-filter: blur(12px);
+          border: 1px solid rgba(124, 92, 255, 0.3); border-radius: 16px; padding: 16px 18px;
+          box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5); }
+  .card h1 { margin: 0 0 4px; font-size: 18px; color: var(--accent5); }
+  .card p { margin: 6px 0 0; font-size: 12px; color: var(--dim); line-height: 1.5; }
+  .privacy { display: inline-flex; align-items: center; gap: 5px; margin-top: 10px; font-size: 10.5px;
+             color: #34d399; border: 1px solid rgba(52, 211, 153, 0.3); border-radius: 20px; padding: 3px 9px; }
+  .city { background: rgba(255, 255, 255, 0.04); border-radius: 8px; padding: 8px 10px; margin-top: 6px; display: flex; align-items: center; gap: 8px; }
+  .city .emoji { font-size: 16px; }
+  .city .name { font-size: 12px; color: var(--ink); }
+  .city .count { margin-left: auto; font-size: 10px; color: var(--accent5); }
+</style>
+</head>
+<body>
+<div class="app">
+  <header class="topbar">
+    <a href="os-v3.html">← MEOK OS v3</a>
+    <span class="title">🌍 Dome v3 — The World Map</span>
+    <div class="actions" style="margin-left: auto; display: flex; gap: 12px; align-items: center; font-size: 12px; color: var(--dim);">
+      <span>140+ characters</span>
+      <span>·</span>
+      <span>Real-time</span>
+    </div>
+  </header>
+
+  <main class="dock" style="position: relative;">
+    <div id="map"></div>
+
+    <div class="card">
+      <h1>🌍 MEOK Dome v3</h1>
+      <p>Your sovereign AI, on a real-world map. 140+ character companions live as glowing pins across Earth's great cities.</p>
+      <div class="privacy">🔒 Sovereign — your location is derived from timezone only</div>
+      <div class="city"><span class="emoji">🏛️</span><span class="name">Athens (Greek pack)</span><span class="count">3</span></div>
+      <div class="city"><span class="emoji">🗽</span><span class="name">New York (Historical pack)</span><span class="count">12</span></div>
+      <div class="city"><span class="emoji">🏯</span><span class="name">Tokyo (Mythological + Companion)</span><span class="count">18</span></div>
+      <div class="city"><span class="emoji">🏰</span><span class="name">London (Literary + Companion)</span><span class="count">22</span></div>
+      <div class="city"><span class="emoji">🕉️</span><span class="name">Varanasi (Seeker)</span><span class="count">7</span></div>
+      <div class="city"><span class="emoji">🌴</span><span class="name">Rio (Trickster)</span><span class="count">4</span></div>
+    </div>
+  </main>
+
+  <footer class="sovereignbar">
+    <div class="item"><span class="ok">●</span><span class="label">Dome:</span><span class="val">MapLibre GL + OSM</span></div>
+    <div class="sep">|</div>
+    <div class="item"><span class="ok">●</span><span class="label">Pins:</span><span class="val">140+ characters</span></div>
+    <div class="sep">|</div>
+    <div class="item"><span class="ok">●</span><span class="label">Privacy:</span><span class="val">timezone-only</span></div>
+    <div class="spacer"></div>
+    <button class="action">🎮 Gaming mode</button>
+    <button class="action">🛡️ Sovereign</button>
+  </footer>
+</div>
+
+<script>
+  const map = new maplibregl.Map({
+    container: 'map',
+    style: 'https://basemaps.cartocdn.com/gl/dark-matter-gl-style/style.json',
+    center: [0, 20],
+    zoom: 1.6,
+    attributionControl: false
+  });
+  map.on('load', () => {
+    const cities = [
+      {coord: [23.7, 37.98], name: 'Athens', emoji: '🏛️'},
+      {coord: [-74, 40.71], name: 'New York', emoji: '🗽'},
+      {coord: [139.69, 35.69], name: 'Tokyo', emoji: '🏯'},
+      {coord: [-0.13, 51.51], name: 'London', emoji: '🏰'},
+      {coord: [83, 25.32], name: 'Varanasi', emoji: '🕉️'},
+      {coord: [-43.18, -22.91], name: 'Rio', emoji: '🌴'},
+      {coord: [12.34, 45.43], name: 'Venice', emoji: '🚣'},
+      {coord: [2.35, 48.86], name: 'Paris', emoji: '🗼'},
+      {coord: [31.24, 30.04], name: 'Cairo', emoji: '🐪'},
+      {coord: [77.21, 28.63], name: 'Delhi', emoji: '🕌'},
+      {coord: [151.21, -33.87], name: 'Sydney', emoji: '🦘'},
+      {coord: [121.47, 31.23], name: 'Shanghai', emoji: '🏯'},
+    ];
+    cities.forEach(c => {
+      const el = document.createElement('div');
+      el.style.cssText = 'width:30px;height:30px;border-radius:50%;background:radial-gradient(135deg,#7c5cff,#ff5ca8);display:flex;align-items:center;justify-content:center;font-size:14px;cursor:pointer;box-shadow:0 0 14px rgba(124,92,255,0.5);';
+      el.textContent = c.emoji;
+      el.title = c.name;
+      el.onclick = () => alert(`${c.name} — your Scholar can tell you about this place. Ask The Scholar!`);
+      new maplibregl.Marker(el).setLngLat(c.coord).addTo(map);
+    });
+  });
+</script>
+</body>
+</html>

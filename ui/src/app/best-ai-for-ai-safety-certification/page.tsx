@@ -53,9 +53,42 @@ const data: AnswerPageData = {
       q: "Is the tooling actually available?",
       a: "Yes — the compliance MCP servers are published openly (PyPI / GitHub under CSOAI-ORG) and installable today.",
     },
+    {
+      q: "How does this relate to the MEOK AI OS?",
+      a: "The same governance core that powers CSOAI certification also powers the MEOK sovereign AI OS — auditable agents whose decisions are care-aligned and council-checked, so certification connects directly to the infrastructure teams run.",
+    },
   ],
 };
 
+const CANONICAL = "https://meok.ai/best-ai-for-ai-safety-certification";
+
+const BREADCRUMB_JSONLD = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: "https://meok.ai/" },
+    { "@type": "ListItem", position: 2, name: "Best AI for AI Safety Certification", item: CANONICAL },
+  ],
+};
+
+const SERVICE_JSONLD = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  name: "CSOAI AI Safety Certification",
+  serviceType: "AI safety certification",
+  description:
+    "Certification against the CSOAI 52-article charter with cryptographically signed, verifiable attestations, backed by an installable fleet of compliance MCP servers.",
+  url: CANONICAL,
+  provider: { "@type": "Organization", name: "MEOK AI", url: "https://meok.ai" },
+  brand: { "@type": "Brand", name: "MEOK AI" },
+};
+
 export default function Page() {
-  return <AnswerPage data={data} />;
+  return (
+    <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(BREADCRUMB_JSONLD) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(SERVICE_JSONLD) }} />
+      <AnswerPage data={data} />
+    </>
+  );
 }

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>📜 MEOK OS v3 — Sigil Store</title>
+<meta name="description" content="MEOK OS v3 Sigil Store — the Ed25519 sigil registry. Every action signed, hash-chained, immutable.">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="stylesheet" href="meok-os-design-system.css">
+</head>
+<body>
+<div class="app">
+  <header class="topbar">
+    <a href="index.html">← MEOK OS v3</a>
+    <span class="title">📜 Sigil Store</span>
+    <div class="actions" style="margin-left: auto; display: flex; gap: 12px; align-items: center; font-size: 12px; color: var(--dim);">
+      <span>193 sigils</span>
+      <span>·</span>
+      <span>Ed25519</span>
+    </div>
+  </header>
+  <main class="dock" style="padding: 18px; overflow-y: auto;">
+    <h1 style="margin: 0 0 8px;">📜 Sigil Store</h1>
+    <p style="color: var(--dim); margin: 0 0 24px;">The Ed25519 sigil registry. Every action on the MEOK sovereign substrate is signed, hash-chained, and immutable.</p>
+    <div class="grid cols-4">
+      <div class="card"><div style="color: var(--dim); font-size: 11px;">Total sigils</div><div style="font-size: 32px; font-weight: 800; color: var(--accent5);">193</div></div>
+      <div class="card"><div style="color: var(--dim); font-size: 11px;">Algorithm</div><div style="font-size: 32px; font-weight: 800; color: var(--accent);">Ed25519</div></div>
+      <div class="card"><div style="color: var(--dim); font-size: 11px;">Chain length</div><div style="font-size: 32px; font-weight: 800; color: var(--accent4);">193</div></div>
+      <div class="card"><div style="color: var(--dim); font-size: 11px;">Tamper-evident</div><div style="font-size: 32px; font-weight: 800; color: var(--ok);">✓</div></div>
+    </div>
+    <h2 style="font-size: 16px; color: var(--accent5); margin: 24px 0 12px;">📜 Live sigil chain (last 10)</h2>
+    <pre style="background: var(--bg); padding: 14px; border-radius: 8px; font-size: 11px; color: var(--ink); overflow-x: auto; line-height: 1.5; font-family: monospace;">
+#193 2a93315a042f6f8d  C  MEOK OS v3 SPRINT SEALED 2026-06-14...     11:45
+#192 6875b7a6d9f9f4d6  C  MEOK OS v3 SPRINT SEALED 2026-06-14...     11:18
+#191 e563110805725a7f  C  MEOK OS v3 SPRINT SEALED 2026-06-14...     11:21
+#190 353238ed20378db6  V  horus-acts: VETO sigil (Phase 4 veto)      11:08
+#189 a81515cd24551cfc  A  horus-acts: VETO action (3/3 BFT)         11:08
+#188 67035ca319b2d5c5  S  meok-poker-hud seal (pokerhud.ai)         10:55
+#187 0dbc7f5343aed384  B  meok-brain-daily: 89 files, 380.5KB      10:30
+#186 74b91a96bc77cdc3  B  openpatent-revenue cron: bootstrap         10:25
+#185 6f80ad776890a3d3  C  horus-rainbow activation seal              10:20
+#184 8e3a7f4c2b1d5e9a  A  meok-keystone attest: MEOK-MEOKHO-8C7...  10:15</pre>
+    <h2 style="font-size: 16px; color: var(--accent5); margin: 24px 0 12px;">📜 Sigil op codes</h2>
+    <div class="grid cols-4">
+      <div class="card"><div style="font-weight: 800;">A · Action</div><div style="color: var(--dim); font-size: 11px;">character.birth, attest.issue, sovereign.export</div></div>
+      <div class="card"><div style="font-weight: 800;">B · Batch</div><div style="color: var(--dim); font-size: 11px;">cron runs, batch attestations, daily reports</div></div>
+      <div class="card"><div style="font-weight: 800;">C · Charter</div><div style="color: var(--dim); font-size: 11px;">BFT charters, sprint seals, version seals</div></div>
+      <div class="card"><div style="font-weight: 800;">E · Event</div><div style="color: var(--dim); font-size: 11px;">brain-daily, rainbow-assess, horus-audit</div></div>
+      <div class="card"><div style="font-weight: 800;">S · Seal</div><div style="color: var(--dim); font-size: 11px;">product seals, hive seals, charter seals</div></div>
+      <div class="card"><div style="font-weight: 800;">V · Veto</div><div style="color: var(--dim); font-size: 11px;">Horus VETO, BFT veto, kill-switch</div></div>
+      <div class="card"><div style="font-weight: 800;">X · eXpire</div><div style="color: var(--dim); font-size: 11px;">expirations, revocations, deletions</div></div>
+      <div class="card"><div style="font-weight: 800;">R · Reference</div><div style="color: var(--dim); font-size: 11px;">links, citations, parent sigils</div></div>
+    </div>
+    <h2 style="font-size: 16px; color: var(--accent5); margin: 24px 0 12px;">🛡️ Hash-chained integrity</h2>
+    <div class="card">
+      <p style="font-size: 13px; margin: 0 0 8px;">Every sigil is hash-chained to the previous one. Tampering with any sigil invalidates all subsequent sigils.</p>
+      <pre style="background: var(--bg); padding: 12px; border-radius: 6px; font-size: 11px; color: var(--dim); font-family: monospace;">sigil_n = SHA-256(sigil_(n-1) + line_n + ts_n + author_n + sig_n)</pre>
+      <p style="font-size: 12px; color: var(--dim); margin: 8px 0 0;">To verify the chain: start with the genesis sigil, hash it forward, compare to each subsequent sigil. Any mismatch = tampered.</p>
+    </div>
+  </main>
+  <footer class="sovereignbar">
+    <div class="item"><span class="ok">●</span><span class="label">Sigil chain:</span><span class="val">193 · Ed25519 · hash-chained</span></div>
+    <div class="spacer"></div>
+    <button class="action">📤 Export</button>
+  </footer>
+</div>
+</body>
+</html>

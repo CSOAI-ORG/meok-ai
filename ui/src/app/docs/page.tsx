@@ -57,6 +57,73 @@ const SAMPLE_INSTALLS = [
   { key: "windsurf", title: "Windsurf", path: "~/.windsurf/mcp.json", lang: "json" },
 ];
 
+const DOCS_FAQ = [
+  {
+    q: "How do I install a MEOK MCP?",
+    a: "Add it to your client's MCP config (e.g. ~/.claude.json mcpServers block) as a uvx command, for example { \"command\": \"uvx\", \"args\": [\"meok-watermark-attest-mcp\"] }, then restart the client and run /mcp to verify. The same JSON shape works for Cursor (.cursor/mcp.json), Cline (cline_mcp_settings.json), and Windsurf. You can also pip install any package.",
+  },
+  {
+    q: "Do I need an API key to use the MCPs?",
+    a: "No central API key is needed for the free tier. Every package is MIT-licensed and listed in the official Model Context Protocol Registry, and runs via uvx or pip install. Paid tiers (Pro and the substrate bundles) unlock metered/keyed billing and additional features.",
+  },
+  {
+    q: "What does the Attestation API do?",
+    a: "POST to meok-attestation-api.vercel.app/sign with email, entity, regulation, score, and findings and you get back an HMAC-SHA256-signed certificate with a cert_id, a public verify_url, and a signature. Auditors verify by curling the verify_url — no MEOK contact needed. The free tier marks certs as free-tier; Pro (£149/mo) unlocks a custom verify domain and your own signing key.",
+  },
+  {
+    q: "How do auditors verify a certificate?",
+    a: "Each signed certificate returns a public verify_url. Anyone — including external auditors — can curl that URL or use the Verifier UI at meok-attestation-api.vercel.app/verify to confirm the HMAC-SHA256 signature independently, with no MEOK contact required.",
+  },
+];
+
+const SECTION_NAV = [
+  { id: "install", label: "Install" },
+  { id: "substrates", label: "5 Substrates" },
+  { id: "catalogue", label: "MCP Catalogue" },
+  { id: "attestation", label: "Attestation API" },
+  { id: "sources", label: "Sources" },
+];
+
+const WEBPAGE_JSONLD = {
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  headline: "MEOK Developer Docs — MCPs + Attestation API + Substrates",
+  description:
+    "Install, configure, and use 59+ MEOK MCPs across governance, A2A, cybersec, trade, and platform — plus the HMAC-signed attestation API. Drop-in for Claude Code, Cursor, Cline, Windsurf.",
+  url: "https://meok.ai/docs",
+};
+
+const BREADCRUMB_JSONLD = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: "https://meok.ai/" },
+    { "@type": "ListItem", position: 2, name: "Developer Docs", item: "https://meok.ai/docs" },
+  ],
+};
+
+const SECTIONS_JSONLD = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  name: "MEOK Developer Docs sections",
+  itemListElement: SECTION_NAV.map((s, i) => ({
+    "@type": "ListItem",
+    position: i + 1,
+    name: s.label,
+    url: `https://meok.ai/docs#${s.id}`,
+  })),
+};
+
+const FAQ_JSONLD = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: DOCS_FAQ.map((f) => ({
+    "@type": "Question",
+    name: f.q,
+    acceptedAnswer: { "@type": "Answer", text: f.a },
+  })),
+};
+
 export default function DocsPage() {
   const byCat = new Map<RegistryMCP["category"], RegistryMCP[]>();
   for (const m of MCPS) {
@@ -66,6 +133,10 @@ export default function DocsPage() {
 
   return (
     <main style={{ minHeight: "100vh", background: BG, color: NAVY }}>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(WEBPAGE_JSONLD) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(BREADCRUMB_JSONLD) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(SECTIONS_JSONLD) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(FAQ_JSONLD) }} />
       <div style={{ maxWidth: 1000, margin: "0 auto", padding: "4.5rem 1.5rem" }}>
         {/* Hero */}
         <div
@@ -139,13 +210,7 @@ export default function DocsPage() {
             borderRadius: 12,
           }}
         >
-          {[
-            { id: "install", label: "Install" },
-            { id: "substrates", label: "5 Substrates" },
-            { id: "catalogue", label: "MCP Catalogue" },
-            { id: "attestation", label: "Attestation API" },
-            { id: "sources", label: "Sources" },
-          ].map((nav) => (
+          {SECTION_NAV.map((nav) => (
             <a
               key={nav.id}
               href={`#${nav.id}`}
@@ -438,6 +503,31 @@ export default function DocsPage() {
             See pricing →
           </Link>
         </p>
+
+        {/* FAQ */}
+        <h2 id="faq" style={{ fontSize: "1.6rem", fontWeight: 900, marginBottom: 16 }}>
+          Frequently asked
+        </h2>
+        <div style={{ display: "grid", gap: 12, marginBottom: 56 }}>
+          {DOCS_FAQ.map((f) => (
+            <details
+              key={f.q}
+              style={{
+                background: "white",
+                borderRadius: 12,
+                padding: "16px 20px",
+                border: `1px solid ${NAVY}1a`,
+              }}
+            >
+              <summary style={{ fontWeight: 700, cursor: "pointer", fontSize: 15, color: NAVY }}>
+                {f.q}
+              </summary>
+              <p style={{ marginTop: 10, color: `${NAVY}99`, fontSize: 14, lineHeight: 1.6 }}>
+                {f.a}
+              </p>
+            </details>
+          ))}
+        </div>
 
         {/* Sources */}
         <div id="sources" style={{ background: NAVY, color: "white", padding: 28, borderRadius: 16 }}>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>🗑️ MEOK Sovereign Delete v3 — Right to be Forgotten (GDPR Art 17)</title>
+<meta name="description" content="MEOK OS v3 Sovereign Delete — 1-click hard delete. GDPR Article 17. Right to be forgotten. Audit receipt.">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="stylesheet" href="meok-os-design-system.css">
+<style>body { background: radial-gradient(1200px 800px at 50% 0%, #2a0a0a, var(--bg) 60%); }</style>
+</head>
+<body>
+<div class="app">
+  <header class="topbar">
+    <a href="index.html">← MEOK OS v3</a>
+    <span class="title">🗑️ Sovereign Delete v3</span>
+  </header>
+
+  <main class="dock" style="padding: 18px; overflow-y: auto; max-width: 700px; margin: 0 auto;">
+    <h1 style="margin: 0 0 8px; text-align: center; font-size: 36px; color: var(--err);">🗑️ Sovereign Delete</h1>
+    <p style="color: var(--dim); margin: 0 0 24px; text-align: center;">Right to be forgotten. GDPR Article 17. 1-click. Audit receipt.</p>
+
+    <div class="card" style="border-color: var(--err);">
+      <h3 style="margin: 0 0 12px; color: var(--err);">⚠️ This will permanently delete your MEOK OS v3 account.</h3>
+      <p style="font-size: 13px; color: var(--ink); margin: 0 0 12px;">This action is <strong>irreversible</strong>. Once you delete, your data cannot be recovered.</p>
+
+      <h4 style="margin: 16px 0 8px; color: var(--accent5);">What will be deleted (immediately, hard delete):</h4>
+      <ul style="line-height: 1.7; padding-left: 20px; font-size: 13px; color: var(--ink);">
+        <li>✓ All 12,450 conversations (2.4MB)</li>
+        <li>✓ All 140+ character profiles</li>
+        <li>✓ All 158 COAI attestations (issued)</li>
+        <li>✓ All 47 BFT votes</li>
+        <li>✓ All 8 sigil chain transcripts</li>
+        <li>✓ All 12 Dome locations</li>
+        <li>✓ All 12,450 gaming hands</li>
+        <li>✓ All 8 family events + 13 chores</li>
+        <li>✓ All achievements + XP (1,340)</li>
+        <li>✓ All 193 SOV3 events</li>
+        <li>✓ All sovereign memory (1,247 facts, 847 preferences)</li>
+        <li>✓ All settings + preferences</li>
+        <li>✓ All notification history</li>
+      </ul>
+
+      <h4 style="margin: 16px 0 8px; color: var(--accent5);">What will be retained (anonymized, 90 days, for compliance):</h4>
+      <ul style="line-height: 1.7; padding-left: 20px; font-size: 13px; color: var(--dim);">
+        <li>○ Audit receipt (proof of delete, no PII)</li>
+        <li>○ Anonymized aggregate stats (for regulatory reporting)</li>
+        <li>○ Tax records (7-year retention required by law)</li>
+      </ul>
+    </div>
+
+    <div class="card" style="margin-top: 16px;">
+      <h4 style="margin: 0 0 12px; color: var(--accent5);">🔐 Step 1: Verify identity</h4>
+      <p style="font-size: 13px; margin: 0 0 8px;">Enter your email to receive a verification code.</p>
+      <input type="email" placeholder="your@email.com" style="width: 100%; padding: 10px 14px; background: var(--panel2); border: 1px solid var(--line); border-radius: 8px; color: var(--ink); font-size: 14px; margin-bottom: 8px;">
+      <button class="ghost" style="width: 100%;">📧 Send verification code</button>
+    </div>
+
+    <div class="card" style="margin-top: 16px;">
+      <h4 style="margin: 0 0 12px; color: var(--accent5);">🔐 Step 2: Enter verification code</h4>
+      <input type="text" placeholder="123456" maxlength="6" style="width: 100%; padding: 10px 14px; background: var(--panel2); border: 1px solid var(--line); border-radius: 8px; color: var(--ink); font-size: 18px; text-align: center; letter-spacing: 8px; font-family: monospace; margin-bottom: 8px;">
+      <p style="font-size: 12px; color: var(--dim); margin: 0;">Code expires in 5 minutes.</p>
+    </div>
+
+    <div class="card" style="margin-top: 16px; border-color: var(--err);">
+      <h4 style="margin: 0 0 12px; color: var(--err);">🔐 Step 3: Type DELETE to confirm</h4>
+      <input type="text" placeholder="DELETE" style="width: 100%; padding: 10px 14px; background: var(--panel2); border: 1px solid var(--err); border-radius: 8px; color: var(--err); font-size: 16px; font-weight: 800; text-align: center; letter-spacing: 4px; margin-bottom: 8px;">
+      <button class="primary" style="background: var(--err); color: white; width: 100%; padding: 12px; font-weight: 800;">🗑️ DELETE MY ACCOUNT FOREVER</button>
+      <p style="font-size: 11px; color: var(--dim); margin: 8px 0 0; text-align: center;">This action cannot be undone. Audit receipt will be emailed to you.</p>
+    </div>
+
+    <div style="text-align: center; margin-top: 24px;">
+      <a href="index.html" class="btn ghost" style="font-size: 14px;">← Back to MEOK OS v3 (safe option)</a>
+    </div>
+  </main>
+
+  <footer class="sovereignbar">
+    <div class="item"><span style="color: var(--err);">●</span><span class="label">Delete:</span><span class="val">awaiting confirmation</span></div>
+    <div class="sep">|</div>
+    <div class="item"><span class="ok">●</span><span class="label">GDPR Art 17:</span><span class="val">right to be forgotten</span></div>
+    <div class="spacer"></div>
+    <button class="action">📤 Export first</button>
+  </footer>
+</div>
+</body>
+</html>
