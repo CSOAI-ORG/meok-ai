@@ -15,9 +15,25 @@ export const metadata: Metadata = {
   },
 }
 
+const FAQ = [
+  { q: "How much do the AI characters cost?", a: "Nothing. All 107 characters in the marketplace are CC0 licensed and free to use, forever — mythological figures, historical icons, literary legends and timeless archetypes." },
+  { q: "What does the CC0 license mean for me?", a: "CC0 places the characters in the public domain, so you are free to use them however you like — including commercially — with no attribution required and no usage fees." },
+  { q: "Can I build and publish my own character?", a: "Yes. Describe any personality in plain English and the character generator (running on local hardware, so there is no token cost to you) produces a full profile with personality traits, communication style and archetype, which you can then publish to the marketplace for everyone to use." },
+  { q: "What is the MEOK MCP Marketplace?", a: "It is a separate collection of 255 production-ready, MIT-licensed MCP servers for Claude, Cursor and any MCP-compatible client, spanning AI safety, business automation, healthcare and robotics — all open source." },
+];
+
+const FAQ_JSONLD = { "@context": "https://schema.org", "@type": "FAQPage", mainEntity: FAQ.map((f) => ({ "@type": "Question", name: f.q, acceptedAnswer: { "@type": "Answer", text: f.a } })) };
+
+const BREADCRUMB_JSONLD = { "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElement: [{ "@type": "ListItem", position: 1, name: "Home", item: "https://meok.ai/" }, { "@type": "ListItem", position: 2, name: "Marketplace", item: "https://meok.ai/marketplace" }] };
+
+const WEBPAGE_JSONLD = { "@context": "https://schema.org", "@type": "CollectionPage", name: "AI Character Marketplace", url: "https://meok.ai/marketplace", description: "107 open-source, CC0-licensed AI companions — mythological figures, historical icons, literary legends and archetypes — free to use forever, or build your own.", isPartOf: { "@type": "WebSite", name: "MEOK AI LABS", url: "https://meok.ai" }, about: { "@type": "Thing", name: "AI companion characters" } };
+
 export default function MarketplacePage() {
   return (
     <main>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(FAQ_JSONLD) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(BREADCRUMB_JSONLD) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(WEBPAGE_JSONLD) }} />
       {/* Hero */}
       <section className="relative overflow-hidden pt-20 pb-10 px-4 bg-[#0d0c18]">
         <div className="max-w-5xl mx-auto text-center">
@@ -106,6 +122,25 @@ export default function MarketplacePage() {
 
       {/* Character grid — client component */}
       <MarketplaceClient />
+
+      {/* FAQ */}
+      <section className="py-16 px-4 bg-[#0d0c18]">
+        <div className="max-w-3xl mx-auto">
+          <h2 className="text-2xl font-bold text-white mb-6 text-center">Frequently asked</h2>
+          <div className="grid gap-4">
+            {FAQ.map((f) => (
+              <details
+                key={f.q}
+                className="rounded-2xl p-6 border"
+                style={{ background: '#13121f', borderColor: 'rgba(201,168,76,0.2)' }}
+              >
+                <summary className="font-semibold text-white cursor-pointer">{f.q}</summary>
+                <p className="text-gray-400 text-sm leading-relaxed mt-3">{f.a}</p>
+              </details>
+            ))}
+          </div>
+        </div>
+      </section>
 
       {/* Create your own CTA */}
       <section id="create" className="py-20 px-4 bg-[#0d0c18]">

@@ -23,6 +23,19 @@ const BG = "#f5f0e8";
 const SELF_SERVE = "https://buy.stripe.com/8x200l5Sc5kmeQJ9mE8k91p"; // £99 self-serve (price_1TfJVOQvIueK5XpbbP8CBCPL)
 const DFY = "https://buy.stripe.com/00waEZ3K48wydMF6as8k91k"; // £499 done-for-you
 
+const FAQ = [
+  { q: "Who must register on the BSI portal?", a: "NIS2-UmsuCG covers essential entities (Section 30 — energy, transport, water, healthcare, ICT services, food production) and important entities (Section 32 — manufacturing, postal/courier, waste, chemicals, research), plus digital service providers, MSPs and B2B SaaS with German customers, generally at 50+ employees OR >€10M turnover. Smaller entities can opt in." },
+  { q: "I missed the 6 March 2026 deadline — what now?", a: "You are among the ~17,500 of an estimated 30,000+ obligated entities that did not register by the deadline. Of those obligated, only ~11,500 registered on time. Late filing is still required and the kit includes a late-filing rationale document for BSI inspectors plus a signed compliance attestation for your audit committee." },
+  { q: "What's the difference between the £99 and £499 tiers?", a: "Self-Serve (£99, one-time) gives you a step-by-step English-first BSI MIP register walkthrough, the Section 30 vs Section 32 classifier, the Elster certificate setup guide, the meok-nis2-de-register MCP and 90 days of email support — about 30 minutes to complete yourself. Done-For-You (£499, one-time) adds us completing your register on your behalf, a 60-min Zoom kickoff, the late-filing rationale, a signed attestation, a 7-day turnaround and 30 days of post-filing support." },
+  { q: "Why is the BSI portal hard to use without help?", a: "The BSI portal requires \"Mein Unternehmenskonto\", an Elster certificate (the most common blocker) and German-language UI navigation. The kit walks you through Elster setup and portal completion in English so you can finish in roughly 30 minutes, or we do it all for you on the Done-For-You tier." },
+];
+
+const FAQ_JSONLD = { "@context": "https://schema.org", "@type": "FAQPage", mainEntity: FAQ.map((f) => ({ "@type": "Question", name: f.q, acceptedAnswer: { "@type": "Answer", text: f.a } })) };
+
+const BREADCRUMB_JSONLD = { "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElement: [{ "@type": "ListItem", position: 1, name: "Home", item: "https://meok.ai/" }, { "@type": "ListItem", position: 2, name: "Germany NIS2 BSI Register", item: "https://meok.ai/nis2-de-kit" }] };
+
+const SERVICE_JSONLD = { "@context": "https://schema.org", "@type": "Service", name: "NIS2-UmsuCG BSI Late-Filing Kit", serviceType: "Cybersecurity compliance registration", areaServed: "DE", provider: { "@type": "Organization", name: "MEOK AI Labs" }, url: "https://meok.ai/nis2-de-kit", offers: [{ "@type": "Offer", name: "Self-Serve", price: "99", priceCurrency: "GBP", url: SELF_SERVE }, { "@type": "Offer", name: "Done-For-You", price: "499", priceCurrency: "GBP", url: DFY }] };
+
 const SELF_INCLUDES = [
   "Step-by-step BSI MIP register walkthrough (English-first)",
   "Section 30 (KRITIS) vs Section 32 (significant entities) classifier",
@@ -45,6 +58,9 @@ const DFY_INCLUDES = [
 export default function NIS2DeKitPage() {
   return (
     <main style={{ minHeight: "100vh", background: BG, color: NAVY }}>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(FAQ_JSONLD) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(BREADCRUMB_JSONLD) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(SERVICE_JSONLD) }} />
       <div style={{ maxWidth: 880, margin: "0 auto", padding: "5rem 1.5rem" }}>
         <div
           style={{
@@ -192,6 +208,18 @@ export default function NIS2DeKitPage() {
           <li>Digital service providers (DSP), MSPs, B2B SaaS with German customers</li>
           <li>50+ employees OR &gt;€10M turnover (smaller entities can opt in)</li>
         </ul>
+
+        <h2 style={{ fontSize: "1.6rem", fontWeight: 900, marginBottom: 16 }}>
+          Frequently asked
+        </h2>
+        <div style={{ display: "grid", gap: 12, marginBottom: 48 }}>
+          {FAQ.map((f) => (
+            <details key={f.q} style={{ background: "white", borderRadius: 16, padding: "16px 20px", border: `1px solid ${NAVY}1a` }}>
+              <summary style={{ fontWeight: 900, cursor: "pointer", fontSize: 15, color: NAVY }}>{f.q}</summary>
+              <p style={{ marginTop: 10, color: `${NAVY}99`, fontSize: 14, lineHeight: 1.65 }}>{f.a}</p>
+            </details>
+          ))}
+        </div>
 
         <div style={{ background: NAVY, color: "white", padding: 32, borderRadius: 16, textAlign: "center" }}>
           <h3 style={{ fontSize: "1.4rem", fontWeight: 900, marginBottom: 8 }}>

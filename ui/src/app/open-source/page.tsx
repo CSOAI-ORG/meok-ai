@@ -8,6 +8,37 @@ export const metadata: Metadata = {
   alternates: { canonical: "https://meok.ai/open-source" },
 };
 
+// ── Structured data ──────────────────────────────────────────────────────────
+
+const OS_BREADCRUMB_JSONLD = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: "https://meok.ai/" },
+    { "@type": "ListItem", position: 2, name: "Open Source", item: "https://meok.ai/open-source" },
+  ],
+};
+
+const OS_SOFTWARE_JSONLD = {
+  "@context": "https://schema.org",
+  "@type": "SoftwareSourceCode",
+  name: "MEOK AI Labs open-source components",
+  description: "MEOK core components (Character SDK, MCP Server Toolkit, Byzantine Council, MCP Mesh Network) under the Functional Source License 1.1, converting to Apache 2.0 after two years. Client libraries and plugin SDKs are MIT licensed.",
+  url: "https://meok.ai/open-source",
+  codeRepository: "https://github.com/meok-ai",
+  license: "https://fsl.software/",
+  programmingLanguage: "Python",
+};
+
+const OS_FAQ = [
+  { q: "What licence does MEOK use?", a: "MEOK core components are released under the Functional Source License 1.1 (FSL 1.1). You can read, audit, fork, and contribute from day one. FSL 1.1 prohibits competing commercial products from using the same functionality for two years — after which all code automatically converts to Apache 2.0. Client libraries and plugin SDKs are released under the fully permissive MIT licence." },
+  { q: "Which MEOK components are open source?", a: "FSL 1.1 covers the Character SDK, MCP Server Toolkit, SOV3 Byzantine Council, and the MCP Mesh Network. The MIT-licensed components include the MCP servers, client libraries, and plugin scaffolding. FSL components are open to read, audit, fork, and contribute, and convert to Apache 2.0 after two years; MIT components can be used in any project, commercial or personal, without restriction." },
+  { q: "How does the MEOK plugin marketplace work?", a: "Community-built companions and integrations run inside fully isolated WASM modules via Extism, sandboxed at the runtime level so a rogue plugin cannot read your filesystem, phone home, or touch another plugin's memory. Submit your plugin via a GitHub pull request to the meok-ai organisation. Once merged, your companion or integration is live in the marketplace and earns a 70% creator revenue share on every subscription that uses it." },
+  { q: "How do I contribute to MEOK?", a: "Four steps: (1) join the Discord and pick a working group; (2) pick a GitHub issue labelled 'bounty'; (3) fork, open a PR, and our maintainers review within 72 hours with all contributors credited in the changelog; (4) merged plugin contributions earn ongoing marketplace revenue share." },
+];
+
+const OS_FAQ_JSONLD = { "@context": "https://schema.org", "@type": "FAQPage", mainEntity: OS_FAQ.map((f) => ({ "@type": "Question", name: f.q, acceptedAnswer: { "@type": "Answer", text: f.a } })) };
+
 // ── Data ─────────────────────────────────────────────────────────────────────
 
 const FSL_COMPONENTS = [
@@ -80,6 +111,9 @@ const CONTRIBUTE_STEPS = [
 export default function OpenSourcePage() {
   return (
     <main className="min-h-screen bg-[#0d0c18] text-white">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(OS_BREADCRUMB_JSONLD) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(OS_SOFTWARE_JSONLD) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(OS_FAQ_JSONLD) }} />
       {/* ── Hero ─────────────────────────────────────────────────────────────── */}
       <section className="relative overflow-hidden pt-24 pb-20 px-4">
         {/* Background blob */}
@@ -378,6 +412,28 @@ export default function OpenSourcePage() {
                   </Link>
                 )}
               </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── FAQ ──────────────────────────────────────────────────────────────── */}
+      <section className="px-4 pb-20">
+        <div className="max-w-3xl mx-auto">
+          <div className="section-divider mb-16" />
+
+          <h2 className="text-2xl md:text-3xl font-bold text-white mb-8 text-center">
+            Frequently asked
+          </h2>
+
+          <div className="grid grid-cols-1 gap-4">
+            {OS_FAQ.map((f) => (
+              <details key={f.q} className="premium-card p-6">
+                <summary className="text-base font-bold text-white cursor-pointer">
+                  {f.q}
+                </summary>
+                <p className="text-gray-400 text-sm leading-relaxed mt-4">{f.a}</p>
+              </details>
             ))}
           </div>
         </div>
