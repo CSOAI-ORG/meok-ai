@@ -580,6 +580,510 @@
     {
       "source": "/verify/",
       "destination": "/verify.html"
+    },
+    {
+      "source": "/about",
+      "destination": "https://about-deploy-nine.vercel.app/"
+    },
+    {
+      "source": "/about/:path*",
+      "destination": "https://about-deploy-nine.vercel.app/:path*"
+    },
+    {
+      "source": "/aeo-registry",
+      "destination": "https://aeo-registry-deploy.vercel.app/"
+    },
+    {
+      "source": "/aeo-registry/:path*",
+      "destination": "https://aeo-registry-deploy.vercel.app/:path*"
+    },
+    {
+      "source": "/annual-report",
+      "destination": "https://annual-report-deploy.vercel.app/"
+    },
+    {
+      "source": "/annual-report/:path*",
+      "destination": "https://annual-report-deploy.vercel.app/:path*"
+    },
+    {
+      "source": "/app",
+      "destination": "https://app-deploy-nu.vercel.app/"
+    },
+    {
+      "source": "/app/:path*",
+      "destination": "https://app-deploy-nu.vercel.app/:path*"
+    },
+    {
+      "source": "/apply-48h",
+      "destination": "https://apply-48h-deploy.vercel.app/"
+    },
+    {
+      "source": "/apply-48h/:path*",
+      "destination": "https://apply-48h-deploy.vercel.app/:path*"
+    },
+    {
+      "source": "/audit-feed",
+      "destination": "https://audit-feed-deploy.vercel.app/"
+    },
+    {
+      "source": "/audit-feed/:path*",
+      "destination": "https://audit-feed-deploy.vercel.app/:path*"
+    },
+    {
+      "source": "/badge",
+      "destination": "https://badge-deploy-bice.vercel.app/"
+    },
+    {
+      "source": "/badge/:path*",
+      "destination": "https://badge-deploy-bice.vercel.app/:path*"
+    },
+    {
+      "source": "/blog",
+      "destination": "https://blog-deploy-azure.vercel.app/"
+    },
+    {
+      "source": "/blog/:path*",
+      "destination": "https://blog-deploy-azure.vercel.app/:path*"
+    },
+    {
+      "source": "/care",
+      "destination": "https://care-ai-deploy.vercel.app/"
+    },
+    {
+      "source": "/care/:path*",
+      "destination": "https://care-ai-deploy.vercel.app/:path*"
+    },
+    {
+      "source": "/compliance/care-homes",
+      "destination": "https://care-compliance-deploy.vercel.app/"
+    },
+    {
+      "source": "/compliance/care-homes/:path*",
+      "destination": "https://care-compliance-deploy.vercel.app/:path*"
+    },
+    {
+      "source": "/care-special",
+      "destination": "https://care-special-deploy.vercel.app/"
+    },
+    {
+      "source": "/care-special/:path*",
+      "destination": "https://care-special-deploy.vercel.app/:path*"
+    },
+    {
+      "source": "/careers",
+      "destination": "https://careers-deploy.vercel.app/"
+    },
+    {
+      "source": "/careers/:path*",
+      "destination": "https://careers-deploy.vercel.app/:path*"
+    },
+    {
+      "source": "/cert-lookup",
+      "destination": "https://cert-lookup-deploy.vercel.app/"
+    },
+    {
+      "source": "/cert-lookup/:path*",
+      "destination": "https://cert-lookup-deploy.vercel.app/:path*"
+    },
+    {
+      "source": "/changelog",
+      "destination": "https://changelog-deploy-xi.vercel.app/"
+    },
+    {
+      "source": "/changelog/:path*",
+      "destination": "https://changelog-deploy-xi.vercel.app/:path*"
+    },
+    {
+      "source": "/clock-embed",
+      "destination": "https://clock-embed-deploy.vercel.app/"
+    },
+    {
+      "source": "/clock-embed/:path*",
+      "destination": "https://clock-embed-deploy.vercel.app/:path*"
+    },
+    {
+      "source": "/compare",
+      "destination": "https://compare-deploy-taupe.vercel.app/"
+    },
+    {
+      "source": "/compare/:path*",
+      "destination": "https://compare-deploy-taupe.vercel.app/:path*"
+    },
+    {
+      "source": "/compliance-dash",
+      "destination": "https://compliance-dash-deploy.vercel.app/"
+    },
+    {
+      "source": "/compliance-dash/:path*",
+      "destination": "https://compliance-dash-deploy.vercel.app/:path*"
+    },
+    {
+      "source": "/contact",
+      "destination": "https://contact-deploy-gray.vercel.app/"
+    },
+    {
+      "source": "/contact/:path*",
+      "destination": "https://contact-deploy-gray.vercel.app/:path*"
+    },
+    {
+      "source": "/cookie",
+      "destination": "https://cookie-deploy-three.vercel.app/"
+    },
+    {
+      "source": "/cookie/:path*",
+      "destination": "https://cookie-deploy-three.vercel.app/:path*"
+    },
+    {
+      "source": "/cs-submit",
+      "destination": "https://cs-submit-deploy.vercel.app/"
+    },
+    {
+      "source": "/cs-submit/:path*",
+      "destination": "https://cs-submit-deploy.vercel.app/:path*"
+    },
+    {
+      "source": "/customers",
+      "destination": "https://customers-deploy.vercel.app/"
+    },
+    {
+      "source": "/customers/:path*",
+      "destination": "https://customers-deploy.vercel.app/:path*"
+    },
+    {
+      "source": "/data-residency",
+      "destination": "https://data-residency-deploy.vercel.app/"
+    },
+    {
+      "source": "/data-residency/:path*",
+      "destination": "https://data-residency-deploy.vercel.app/:path*"
+    },
+    {
+      "source": "/demo",
+      "destination": "https://demo-deploy-lyart-delta.vercel.app/"
+    },
+    {
+      "source": "/demo/:path*",
+      "destination": "https://demo-deploy-lyart-delta.vercel.app/:path*"
+    },
+    {
+      "source": "/empire",
+      "destination": "https://empire-deploy-one.vercel.app/"
+    },
+    {
+      "source": "/empire/:path*",
+      "destination": "https://empire-deploy-one.vercel.app/:path*"
+    },
+    {
+      "source": "/events",
+      "destination": "https://events-deploy.vercel.app/"
+    },
+    {
+      "source": "/events/:path*",
+      "destination": "https://events-deploy.vercel.app/:path*"
+    },
+    {
+      "source": "/fintech",
+      "destination": "https://fintech-ai-deploy.vercel.app/"
+    },
+    {
+      "source": "/fintech/:path*",
+      "destination": "https://fintech-ai-deploy.vercel.app/:path*"
+    },
+    {
+      "source": "/free-trial",
+      "destination": "https://free-trial-deploy.vercel.app/"
+    },
+    {
+      "source": "/free-trial/:path*",
+      "destination": "https://free-trial-deploy.vercel.app/:path*"
+    },
+    {
+      "source": "/govtech",
+      "destination": "https://govtech-ai-deploy.vercel.app/"
+    },
+    {
+      "source": "/govtech/:path*",
+      "destination": "https://govtech-ai-deploy.vercel.app/:path*"
+    },
+    {
+      "source": "/gtm",
+      "destination": "https://gtm-deploy-fawn.vercel.app/"
+    },
+    {
+      "source": "/gtm/:path*",
+      "destination": "https://gtm-deploy-fawn.vercel.app/:path*"
+    },
+    {
+      "source": "/hackathon",
+      "destination": "https://hackathon-deploy-mu.vercel.app/"
+    },
+    {
+      "source": "/hackathon/:path*",
+      "destination": "https://hackathon-deploy-mu.vercel.app/:path*"
+    },
+    {
+      "source": "/healthtech",
+      "destination": "https://healthtech-ai-deploy.vercel.app/"
+    },
+    {
+      "source": "/healthtech/:path*",
+      "destination": "https://healthtech-ai-deploy.vercel.app/:path*"
+    },
+    {
+      "source": "/help",
+      "destination": "https://help-deploy.vercel.app/"
+    },
+    {
+      "source": "/help/:path*",
+      "destination": "https://help-deploy.vercel.app/:path*"
+    },
+    {
+      "source": "/hive",
+      "destination": "https://hive-deploy-psi.vercel.app/"
+    },
+    {
+      "source": "/hive/:path*",
+      "destination": "https://hive-deploy-psi.vercel.app/:path*"
+    },
+    {
+      "source": "/industries",
+      "destination": "https://industries-deploy.vercel.app/"
+    },
+    {
+      "source": "/industries/:path*",
+      "destination": "https://industries-deploy.vercel.app/:path*"
+    },
+    {
+      "source": "/integrations",
+      "destination": "https://integrations-deep-deploy.vercel.app/"
+    },
+    {
+      "source": "/integrations/:path*",
+      "destination": "https://integrations-deep-deploy.vercel.app/:path*"
+    },
+    {
+      "source": "/investor",
+      "destination": "https://investor-deploy-tau.vercel.app/"
+    },
+    {
+      "source": "/investor/:path*",
+      "destination": "https://investor-deploy-tau.vercel.app/:path*"
+    },
+    {
+      "source": "/playground",
+      "destination": "https://keystone-playground-deploy.vercel.app/"
+    },
+    {
+      "source": "/playground/:path*",
+      "destination": "https://keystone-playground-deploy.vercel.app/:path*"
+    },
+    {
+      "source": "/launch",
+      "destination": "https://launch-deploy-murex.vercel.app/"
+    },
+    {
+      "source": "/launch/:path*",
+      "destination": "https://launch-deploy-murex.vercel.app/:path*"
+    },
+    {
+      "source": "/legal-acts-tracker",
+      "destination": "https://legal-acts-tracker-deploy.vercel.app/"
+    },
+    {
+      "source": "/legal-acts-tracker/:path*",
+      "destination": "https://legal-acts-tracker-deploy.vercel.app/:path*"
+    },
+    {
+      "source": "/calendar",
+      "destination": "https://live-calendar-deploy.vercel.app/"
+    },
+    {
+      "source": "/calendar/:path*",
+      "destination": "https://live-calendar-deploy.vercel.app/:path*"
+    },
+    {
+      "source": "/live-counter",
+      "destination": "https://live-counter-deploy.vercel.app/"
+    },
+    {
+      "source": "/live-counter/:path*",
+      "destination": "https://live-counter-deploy.vercel.app/:path*"
+    },
+    {
+      "source": "/live-demo",
+      "destination": "https://live-demo-deploy.vercel.app/"
+    },
+    {
+      "source": "/live-demo/:path*",
+      "destination": "https://live-demo-deploy.vercel.app/:path*"
+    },
+    {
+      "source": "/live",
+      "destination": "https://live-deploy-omega.vercel.app/"
+    },
+    {
+      "source": "/live/:path*",
+      "destination": "https://live-deploy-omega.vercel.app/:path*"
+    },
+    {
+      "source": "/manifest",
+      "destination": "https://manifest-deploy.vercel.app/"
+    },
+    {
+      "source": "/manifest/:path*",
+      "destination": "https://manifest-deploy.vercel.app/:path*"
+    },
+    {
+      "source": "/memes",
+      "destination": "https://meme-deploy-rouge.vercel.app/"
+    },
+    {
+      "source": "/memes/:path*",
+      "destination": "https://meme-deploy-rouge.vercel.app/:path*"
+    },
+    {
+      "source": "/partner-finder",
+      "destination": "https://partner-finder-deploy.vercel.app/"
+    },
+    {
+      "source": "/partner-finder/:path*",
+      "destination": "https://partner-finder-deploy.vercel.app/:path*"
+    },
+    {
+      "source": "/partner-sign",
+      "destination": "https://partner-sign-deploy.vercel.app/"
+    },
+    {
+      "source": "/partner-sign/:path*",
+      "destination": "https://partner-sign-deploy.vercel.app/:path*"
+    },
+    {
+      "source": "/partners",
+      "destination": "https://partners-deploy.vercel.app/"
+    },
+    {
+      "source": "/partners/:path*",
+      "destination": "https://partners-deploy.vercel.app/:path*"
+    },
+    {
+      "source": "/play",
+      "destination": "https://play-deploy.vercel.app/"
+    },
+    {
+      "source": "/play/:path*",
+      "destination": "https://play-deploy.vercel.app/:path*"
+    },
+    {
+      "source": "/policy-gen",
+      "destination": "https://policy-gen-deploy.vercel.app/"
+    },
+    {
+      "source": "/policy-gen/:path*",
+      "destination": "https://policy-gen-deploy.vercel.app/:path*"
+    },
+    {
+      "source": "/positions",
+      "destination": "https://positions-deploy.vercel.app/"
+    },
+    {
+      "source": "/positions/:path*",
+      "destination": "https://positions-deploy.vercel.app/:path*"
+    },
+    {
+      "source": "/press",
+      "destination": "https://press-deploy.vercel.app/"
+    },
+    {
+      "source": "/press/:path*",
+      "destination": "https://press-deploy.vercel.app/:path*"
+    },
+    {
+      "source": "/pricing",
+      "destination": "https://pricing-deploy-azure.vercel.app/"
+    },
+    {
+      "source": "/pricing/:path*",
+      "destination": "https://pricing-deploy-azure.vercel.app/:path*"
+    },
+    {
+      "source": "/pricing-vs-big4",
+      "destination": "https://pricing-vs-big4-deploy.vercel.app/"
+    },
+    {
+      "source": "/pricing-vs-big4/:path*",
+      "destination": "https://pricing-vs-big4-deploy.vercel.app/:path*"
+    },
+    {
+      "source": "/privacy",
+      "destination": "https://privacy-deploy-alpha.vercel.app/"
+    },
+    {
+      "source": "/privacy/:path*",
+      "destination": "https://privacy-deploy-alpha.vercel.app/:path*"
+    },
+    {
+      "source": "/regtech",
+      "destination": "https://regtech-ai-deploy.vercel.app/"
+    },
+    {
+      "source": "/regtech/:path*",
+      "destination": "https://regtech-ai-deploy.vercel.app/:path*"
+    },
+    {
+      "source": "/roadmap",
+      "destination": "https://roadmap-deploy-five.vercel.app/"
+    },
+    {
+      "source": "/roadmap/:path*",
+      "destination": "https://roadmap-deploy-five.vercel.app/:path*"
+    },
+    {
+      "source": "/sitemap-index",
+      "destination": "https://sitemap-index-deploy.vercel.app/"
+    },
+    {
+      "source": "/sitemap-index/:path*",
+      "destination": "https://sitemap-index-deploy.vercel.app/:path*"
+    },
+    {
+      "source": "/subscribe",
+      "destination": "https://subscribe-deploy.vercel.app/"
+    },
+    {
+      "source": "/subscribe/:path*",
+      "destination": "https://subscribe-deploy.vercel.app/:path*"
+    },
+    {
+      "source": "/supplier-portal",
+      "destination": "https://supplier-portal-deploy.vercel.app/"
+    },
+    {
+      "source": "/supplier-portal/:path*",
+      "destination": "https://supplier-portal-deploy.vercel.app/:path*"
+    },
+    {
+      "source": "/support",
+      "destination": "https://support-deploy-sandy.vercel.app/"
+    },
+    {
+      "source": "/support/:path*",
+      "destination": "https://support-deploy-sandy.vercel.app/:path*"
+    },
+    {
+      "source": "/terms",
+      "destination": "https://terms-deploy-one.vercel.app/"
+    },
+    {
+      "source": "/terms/:path*",
+      "destination": "https://terms-deploy-one.vercel.app/:path*"
+    },
+    {
+      "source": "/transparency",
+      "destination": "https://transparency-deploy.vercel.app/"
+    },
+    {
+      "source": "/transparency/:path*",
+      "destination": "https://transparency-deploy.vercel.app/:path*"
     }
   ],
   "headers": [

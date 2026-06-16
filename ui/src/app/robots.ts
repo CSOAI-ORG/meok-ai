@@ -12,6 +12,13 @@ export default function robots(): MetadataRoute.Robots {
       { userAgent: 'Applebot-Extended', allow: '/' },
       { userAgent: 'YouBot', allow: '/' },
       { userAgent: 'cohere-ai', allow: '/' },
+      { userAgent: 'CCBot', allow: '/' },
+      { userAgent: 'Claude-Web', allow: '/' },
+      { userAgent: 'Perplexity-User', allow: '/' },
+      { userAgent: 'Amazonbot', allow: '/' },
+      { userAgent: 'Meta-ExternalAgent', allow: '/' },
+      { userAgent: 'MistralAI-User', allow: '/' },
+      { userAgent: 'DeepSeekBot', allow: '/' },
     ],
     sitemap: 'https://meok.ai/sitemap.xml',
   };

@@ -1587,4 +1587,6 @@ if __name__ == "__main__":
             "MEOK_PORT", _os_entry.environ.get("MEOK_MCP__PORT", 3100)
         )
     )
-    uvicorn.run(app, host="0.0.0.0", port=_port)
+    # SECURITY 2026-06-15: bind to loopback (was 0.0.0.0, which exposed /auth endpoints publicly)
+    _bind_host = _os_entry.environ.get("MEOK_MCP__HOST", "127.0.0.1")
+    uvicorn.run(app, host=_bind_host, port=_port)

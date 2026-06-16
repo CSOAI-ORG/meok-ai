@@ -18,7 +18,9 @@ Task types and their provider preferences:
 - "fast"         → GPT-4.1-mini → llama3 (ollama) → Claude-haiku
 - "dream"        → Ollama → (no fallback, dreams are local-only)
 - "long_context" → Gemini-1.5-pro → Claude → GPT-4-turbo
-- "care"         → Claude (always — care alignment requires Claude's values)
+- "sidekick"     → Claude (always — the sovereign sidekick needs Claude's
+                   values for the Maternal Covenant safety net AND
+                   Claude's instruction-following for the persona prefix)
 """
 
 from __future__ import annotations
@@ -119,7 +121,7 @@ TASK_ROUTING: Dict[str, List[str]] = {
     "dream":        ["ollama", "groq"],    # local preferred, Groq fallback
     "long_context": ["minimax", "gemini", "claude", "openai"],    # MiniMax 4M ctx first
     "character":    ["minimax", "claude", "groq", "openai"],      # MiniMax built Talkie — best character AI
-    "care":         ["claude", "groq"],    # care alignment → Claude first, Groq fallback
+    "sidekick":     ["claude", "groq"],    # sovereign sidekick → Claude first (Maternal Covenant + persona), Groq fallback
     "default":      ["claude", "groq", "openai", "gemini"],
 }
 

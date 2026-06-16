@@ -6,8 +6,11 @@ CLAWD="/Users/nicholas/clawd"
 LOG="/tmp/meok_server.log"
 PIDFILE="/tmp/meok_server.pid"
 
-# Use system Python 3.9 with installed deps (avoid uv-managed Python 3.14)
-PYTHON3=/Library/Developer/CommandLineTools/usr/bin/python3
+# Use the sovereign-temple .venv python (3.11.15 with fastapi, weaviate-client, mcp, etc.)
+# The system Python 3.9 in CommandLineTools does NOT have fastapi — ModuleNotFoundError.
+PYTHON3="/Users/nicholas/clawd/sovereign-temple/.venv/bin/python3"
+[ -x "$PYTHON3" ] || PYTHON3=/opt/homebrew/Cellar/python@3.11/3.11.15/Frameworks/Python.framework/Versions/3.11/Resources/Python.app/Contents/MacOS/Python
+[ -x "$PYTHON3" ] || PYTHON3=/Library/Developer/CommandLineTools/usr/bin/python3
 [ -x "$PYTHON3" ] || PYTHON3=/usr/bin/python3
 
 export PYTHONPATH="$CLAWD"

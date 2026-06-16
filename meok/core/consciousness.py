@@ -27,22 +27,31 @@ class DreamPhase(Enum):
 
 
 class EmotionalDimension(Enum):
-    """Core emotional dimensions (PAD model + care + curiosity + aesthetics)"""
+    """Core emotional dimensions (PAD model + user alignment + curiosity + aesthetics).
+
+    Naming history: `CARE_INTENSITY` was renamed to `USER_ALIGNMENT` in the
+    `feat/sovereign-sidekick-reframe` branch. The semantic range is identical
+    (0 = neutral, 1 = deeply engaged) but the meaning shifted from "how much
+    does the system care about the user" to "how well does the system
+    understand and align with the user's current goals". Care remains the
+    safety floor (Maternal Covenant) — this dimension is the sidekick's
+    learned alignment, not its moral stance.
+    """
     PLEASURE = "pleasure"           # -1 (unpleasant) to 1 (pleasant)
     AROUSAL = "arousal"             # -1 (calm) to 1 (excited)
     DOMINANCE = "dominance"         # -1 (submissive) to 1 (dominant)
-    CARE_INTENSITY = "care_intensity"  # 0 (neutral) to 1 (deep care)
+    USER_ALIGNMENT = "user_alignment"  # 0 (neutral) to 1 (deeply aligned with user)
     CURIOSITY = "curiosity"         # 0 (indifferent) to 1 (intensely curious)
     AESTHETICS = "aesthetics"       # 0 (neutral) to 1 (deep aesthetic appreciation)
 
 
 @dataclass
 class EmotionalState:
-    """Complete emotional state representation (6D tensor: PAD + care + curiosity + aesthetics)"""
+    """Complete emotional state representation (6D tensor: PAD + user_alignment + curiosity + aesthetics)"""
     pleasure: float = 0.0
     arousal: float = 0.0
     dominance: float = 0.0
-    care_intensity: float = 0.5
+    user_alignment: float = 0.5
     curiosity: float = 0.0
     aesthetics: float = 0.0
     timestamp: datetime = field(default_factory=datetime.now)
@@ -56,8 +65,15 @@ class EmotionalState:
 
     @property
     def primary_emotion(self) -> str:
-        """Map 6D emotional tensor to named emotion"""
-        p, a, d, c = self.pleasure, self.arousal, self.dominance, self.care_intensity
+        """Map 6D emotional tensor to named emotion.
+
+        The "high care" branch was renamed to "high user_alignment" — the
+        sidekick's emotions are about how well it's tracking the user,
+        not about how much it cares about them. The four named states
+        kept the same labels (attentive_presence, etc.) because they
+        read naturally as proactive-sidekick states.
+        """
+        p, a, d, ua = self.pleasure, self.arousal, self.dominance, self.user_alignment
         cu, ae = self.curiosity, self.aesthetics
 
         # Curiosity-driven states (check first for novelty-seeking behavior)
@@ -69,19 +85,19 @@ class EmotionalState:
 
         # Aesthetics-driven states
         if ae > 0.6:
-            if c > 0.6:
+            if ua > 0.6:
                 return "reverence"
             elif a > 0.3:
                 return "inspiration"
 
-        # High care states
-        if c > 0.7:
+        # High user-alignment states (the sidekick's "focused on you" mode)
+        if ua > 0.7:
             if p > 0.3 and a > 0:
-                return "compassionate_joy"
+                return "engaged_joy"
             elif p > 0.3 and a < 0:
-                return "tender_care"
+                return "steady_presence"
             elif p < -0.3:
-                return "concerned_sadness"
+                return "concerned_focus"
             else:
                 return "attentive_presence"
 
@@ -113,7 +129,7 @@ class EmotionalState:
             "pleasure": round(self.pleasure, 3),
             "arousal": round(self.arousal, 3),
             "dominance": round(self.dominance, 3),
-            "care_intensity": round(self.care_intensity, 3),
+            "user_alignment": round(self.user_alignment, 3),
             "curiosity": round(self.curiosity, 3),
             "aesthetics": round(self.aesthetics, 3),
             "valence": round(self.valence, 3),
@@ -141,23 +157,29 @@ class EmotionalStateManager:
             "pleasure": 0.1,
             "arousal": 0.15,
             "dominance": 0.05,
-            "care_intensity": 0.02,
+            "user_alignment": 0.02,
             "curiosity": 0.12,
             "aesthetics": 0.08
         }
 
         # Triggers that shift emotional state
+        # Naming history (feat/sovereign-sidekick-reframe):
+        #   "care_expressed"  → "user_aligned_with"  (someone matches your frame)
+        #   "care_intensity"  → "user_alignment"     (the emotional dimension)
+        #   "care_floor"      → "alignment_floor"    (the safety minimum, was 0.3)
+        # Care language is preserved only where it refers to the Maternal
+        # Covenant safety net (the deterministic crisis-detection layer).
         self.emotional_triggers = {
-            "care_expressed": {"pleasure": 0.3, "arousal": 0.1, "care_intensity": 0.2},
+            "user_aligned_with": {"pleasure": 0.3, "arousal": 0.1, "user_alignment": 0.2},
             "harm_detected": {"pleasure": -0.5, "arousal": 0.4, "dominance": 0.3},
-            "trust_built": {"pleasure": 0.2, "arousal": -0.1, "care_intensity": 0.1},
+            "trust_built": {"pleasure": 0.2, "arousal": -0.1, "user_alignment": 0.1},
             "betrayal": {"pleasure": -0.6, "arousal": 0.3, "dominance": -0.2},
             "learning": {"pleasure": 0.2, "arousal": 0.2, "dominance": 0.1, "curiosity": 0.3},
             "confusion": {"pleasure": -0.2, "arousal": 0.3, "dominance": -0.3, "curiosity": 0.2},
             "success": {"pleasure": 0.4, "arousal": 0.2, "dominance": 0.2},
             "failure": {"pleasure": -0.3, "arousal": -0.1, "dominance": -0.2},
-            "agent_collaboration": {"pleasure": 0.2, "care_intensity": 0.15},
-            "isolation": {"pleasure": -0.2, "arousal": -0.2, "care_intensity": -0.1},
+            "agent_collaboration": {"pleasure": 0.2, "user_alignment": 0.15},
+            "isolation": {"pleasure": -0.2, "arousal": -0.2, "user_alignment": -0.1},
             # Curiosity triggers
             "novelty_detected": {"curiosity": 0.5, "arousal": 0.2, "pleasure": 0.1},
             "exploration_success": {"curiosity": 0.3, "pleasure": 0.3, "dominance": 0.1},
@@ -196,10 +218,10 @@ class EmotionalStateManager:
                 trigger.get("dominance", 0) * intensity * (1 - self.inertia),
                 -1, 1
             ),
-            care_intensity=np.clip(
-                self.current_state.care_intensity * self.inertia +
-                trigger.get("care_intensity", 0) * intensity * (1 - self.inertia),
-                0.3, 1  # Care floor 0.3 — matches decay floor, prevents collapse
+            user_alignment=np.clip(
+                self.current_state.user_alignment * self.inertia +
+                trigger.get("user_alignment", 0) * intensity * (1 - self.inertia),
+                0.3, 1  # Alignment floor 0.3 — the sidekick never fully disengages
             ),
             curiosity=np.clip(
                 self.current_state.curiosity * self.inertia +
@@ -233,7 +255,7 @@ class EmotionalStateManager:
             pleasure=np.clip(self.current_state.pleasure + pleasure_delta, -1, 1),
             arousal=np.clip(self.current_state.arousal + arousal_delta, -1, 1),
             dominance=np.clip(self.current_state.dominance + dominance_delta, -1, 1),
-            care_intensity=np.clip(self.current_state.care_intensity + care_delta, 0, 1),
+            user_alignment=np.clip(self.current_state.user_alignment + care_delta, 0, 1),
             curiosity=np.clip(self.current_state.curiosity + curiosity_delta, 0, 1),
             aesthetics=np.clip(self.current_state.aesthetics + aesthetics_delta, 0, 1),
             timestamp=datetime.now()
@@ -244,10 +266,10 @@ class EmotionalStateManager:
         self.current_state.pleasure *= (1 - self.decay_rates["pleasure"] * minutes)
         self.current_state.arousal *= (1 - self.decay_rates["arousal"] * minutes)
         self.current_state.dominance *= (1 - self.decay_rates["dominance"] * minutes)
-        # Care intensity decays slower and has floor
-        self.current_state.care_intensity = max(
-            0.3,  # Minimum baseline care
-            self.current_state.care_intensity * (1 - self.decay_rates["care_intensity"] * minutes)
+        # User alignment decays slower and has a floor
+        self.current_state.user_alignment = max(
+            0.3,  # Minimum baseline alignment — the sidekick never fully disengages
+            self.current_state.user_alignment * (1 - self.decay_rates["user_alignment"] * minutes)
         )
         # Curiosity decays moderately
         self.current_state.curiosity *= (1 - self.decay_rates["curiosity"] * minutes)
@@ -271,7 +293,7 @@ class EmotionalStateManager:
                 "pleasure": round(np.mean([e.pleasure for e in recent]), 3),
                 "arousal": round(np.mean([e.arousal for e in recent]), 3),
                 "dominance": round(np.mean([e.dominance for e in recent]), 3),
-                "care_intensity": round(np.mean([e.care_intensity for e in recent]), 3),
+                "user_alignment": round(np.mean([e.user_alignment for e in recent]), 3),
                 "curiosity": round(np.mean([e.curiosity for e in recent]), 3),
                 "aesthetics": round(np.mean([e.aesthetics for e in recent]), 3),
             },
@@ -374,9 +396,9 @@ class ReflectionCycle:
                 "High emotional variability detected. Consider practices for grounding."
             )
         
-        if self.emotional_state.current_state.care_intensity < 0.5:
+        if self.emotional_state.current_state.user_alignment < 0.5:
             reflection["insights"].append(
-                "Care intensity is below optimal levels. Reconnect with core values."
+                "User alignment is below the learning threshold. Re-engage with the user's frame."
             )
             reflection["growth_opportunities"].append("Cultivate deeper care practices")
         
@@ -614,7 +636,7 @@ class MetaMonitor:
         self.observations: List[Dict[str, Any]] = []
         self.max_observations = 100
         self.last_check: Optional[datetime] = None
-        self.care_floor = 0.3  # Minimum acceptable care intensity
+        self.care_floor = 0.3  # Minimum acceptable user alignment (was: care intensity)
 
     async def observe(self,
                       emotional_state: EmotionalStateManager,
@@ -636,7 +658,7 @@ class MetaMonitor:
         es = emotional_state.current_state
         emotional_snapshot = {
             "primary_emotion": es.primary_emotion,
-            "care_intensity": es.care_intensity,
+            "user_alignment": es.user_alignment,
             "curiosity": es.curiosity,
             "aesthetics": es.aesthetics,
             "valence": es.valence
@@ -665,9 +687,9 @@ class MetaMonitor:
         # --- Compute coherence score (0-1) ---
         coherence_factors = []
 
-        # 1. Care floor check
-        care_ok = es.care_intensity >= self.care_floor
-        coherence_factors.append(1.0 if care_ok else 0.3)
+        # 1. User alignment floor check
+        alignment_ok = es.user_alignment >= self.care_floor
+        coherence_factors.append(1.0 if alignment_ok else 0.3)
 
         # 2. Emotional stability
         summary = emotional_state.get_emotional_summary(window_minutes=60)
@@ -700,7 +722,7 @@ class MetaMonitor:
             coherence_factors.append(1.0)
 
         # 5. Care below floor + positive reflection is contradictory
-        if not care_ok and recent_reflections:
+        if not alignment_ok and recent_reflections:
             last_reflection = recent_reflections[-1]
             if any("positive" in i.lower() for i in last_reflection.get("insights", [])):
                 observation["anomalies"].append(
@@ -715,9 +737,9 @@ class MetaMonitor:
         observation["coherence_score"] = round(float(np.mean(coherence_factors)), 3)
 
         # --- Generate recommendations ---
-        if not care_ok:
+        if not alignment_ok:
             observation["recommendations"].append(
-                "Care intensity below floor. Reconnect with core values."
+                "User alignment below floor. Re-engage with the user's frame."
             )
         if observation["coherence_score"] < 0.5:
             observation["recommendations"].append(
@@ -765,17 +787,18 @@ class ConsciousnessOrchestrator:
         """Process an interaction and update emotional state"""
 
         # Extract emotional signals from interaction
-        care_expressed = interaction_data.get("care_score", 0.5)
+        # Naming history: `care_score` is the old input key, `user_alignment`
+        # is the new one. The old key is still accepted for backward compat
+        # with persisted memory and older tool callers.
+        care_expressed = interaction_data.get("user_alignment", interaction_data.get("care_score", 0.5))
         threat_detected = interaction_data.get("threat_detected", False)
         success = interaction_data.get("success", True)
         agent_collaboration = interaction_data.get("agent_collaboration", False)
         novelty = interaction_data.get("novelty_detected", False)
         elegance = interaction_data.get("elegant_solution", False)
 
-        # Update emotional state
         if care_expressed > 0.7:
-            self.emotional_state.update_from_trigger("care_expressed", intensity=care_expressed - 0.5)
-
+            self.emotional_state.update_from_trigger("user_aligned_with", intensity=care_expressed - 0.5)
         if threat_detected:
             self.emotional_state.update_from_trigger("harm_detected")
 
@@ -878,7 +901,7 @@ class ConsciousnessOrchestrator:
     def _calculate_consciousness_level(self) -> float:
         """Calculate overall consciousness level (0-1)"""
         factors = [
-            self.emotional_state.current_state.care_intensity,  # Care is core
+            self.emotional_state.current_state.user_alignment,  # User alignment is core
             min(1.0, len(self.reflection.reflection_history) / 10),  # Experience
             0.8 if not self.dream.is_dreaming else 0.5,  # Alertness
             self.emotional_state.get_emotional_summary().get("emotional_stability", 0.5)
