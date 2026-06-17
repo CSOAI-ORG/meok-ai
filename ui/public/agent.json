@@ -1,0 +1,35 @@
+{
+  "schema_version": "1.0",
+  "name": "MEOK AI Labs — Sovereign AI OS & Compliance Agent",
+  "description": "MEOK builds the sovereign AI OS (meok.ai) and a 271-server MCP compliance fleet (EU AI Act, DORA, NIS2, CRA, GDPR, ISO 42001). Audits emit HMAC + Ed25519 signed attestations with public verify URLs.",
+  "url": "https://meok.ai",
+  "provider": {
+    "organization": "CSOAI LTD (UK Companies House 16939677)",
+    "url": "https://csoai.org"
+  },
+  "capabilities": {
+    "streaming": false,
+    "mcp": true,
+    "a2a": true
+  },
+  "skills": [
+    {
+      "id": "eu-ai-act-audit",
+      "name": "eu-ai-act-compliance-mcp.assess",
+      "description": "Risk classification + article-by-article EU AI Act audit with signed attestation. pip install eu-ai-act-compliance-mcp"
+    },
+    {
+      "id": "attestation-verify",
+      "name": "meok-attestation-verify.verify",
+      "description": "Offline Ed25519 verification of a MEOK attestation. Pubkey at https://www.proofof.ai/pubkey"
+    }
+  ],
+  "endpoints": {
+    "a2a": "https://meok.ai/a2a",
+    "mcp_catalog": "https://meok.ai/.well-known/mcp.json",
+    "catalogue": "https://www.proofof.ai",
+    "verify": "https://www.proofof.ai/verify",
+    "signup": "https://www.proofof.ai/signup"
+  },
+  "sector": "ai-governance"
+}

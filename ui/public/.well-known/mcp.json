@@ -1,0 +1,31 @@
+{
+  "schema_version": "2025-06",
+  "publisher": {
+    "name": "CSOAI Hive",
+    "legal_entity": "MEOK AI LTD",
+    "url": "https://csoai.org"
+  },
+  "site": {
+    "name": "MEOK AI Labs",
+    "domain": "meok.ai",
+    "sector": "ai-governance"
+  },
+  "registry": "https://csoai.org/.well-known/mcp.json",
+  "published_mcp_servers_total": 271,
+  "servers": [
+    {
+      "name": "eu-ai-act-compliance-mcp",
+      "tool": "eu-ai-act-compliance-mcp.assess",
+      "description": "Run a full EU AI Act risk-and-control assessment with signed attestation output.",
+      "endpoint": "https://meok.ai/mcp/eu-ai-act-compliance-mcp",
+      "tier": "flagship"
+    },
+    {
+      "name": "meok-attestation-verify",
+      "tool": "meok-attestation-verify.verify",
+      "description": "Offline Ed25519 verification of a MEOK compliance attestation.",
+      "endpoint": "https://meok.ai/mcp/meok-attestation-verify",
+      "tier": "flagship"
+    }
+  ]
+}
