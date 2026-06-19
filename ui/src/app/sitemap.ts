@@ -1,4 +1,58 @@
 import { MetadataRoute } from 'next';
+import { readdirSync } from 'fs';
+import { join } from 'path';
+
+/**
+ * Walk src/app at build time and return every static public route that has a
+ * page.tsx. Excludes dynamic segments, route groups, and private/auth/admin
+ * areas. Wrapped by the caller in try/catch so a discovery failure can never
+ * break the build — it just falls back to the hand-curated lists below.
+ */
+function discoverPublicRoutes(): string[] {
+  const appDir = join(process.cwd(), 'src', 'app');
+  const routes: string[] = [];
+
+  // Drop a route if any of these match. Keeps dashboards, auth, archives,
+  // and system/internal pages out of the index.
+  const DENY_EXACT = new Set([
+    '/terminal', '/publickey', '/register', '/buy', '/download', '/connect',
+    '/feedback', '/grid', '/legion', '/hatch', '/live', '/start', '/self-audit',
+  ]);
+  const DENY_PREFIX = [
+    '/dashboard', '/admin', '/api', '/work', '/sign-in', '/sign-up', '/login',
+    '/checkout', '/settings', '/account', '/billing', '/onboarding', '/chat',
+    '/register/', '/sov3', '/investors', '/os/_archive', '/os/settings',
+  ];
+  const denied = (r: string) =>
+    DENY_EXACT.has(r) ||
+    DENY_PREFIX.some((p) => r === p || r.startsWith(p + '/') || r.startsWith(p)) ||
+    /-dashboard$/.test(r) ||           // *-dashboard
+    /\/_/.test('/' + r.slice(1)) ||    // any private _segment
+    r.includes('[');                    // dynamic
+
+  const walk = (dir: string, prefix: string) => {
+    for (const entry of readdirSync(dir, { withFileTypes: true })) {
+      if (!entry.isDirectory()) continue;
+      const name = entry.name;
+      if (name.startsWith('[') || name.startsWith('@') || name.startsWith('_') || name.startsWith('(')) {
+        // dynamic, parallel, private, or route-group dirs — skip for discovery
+        if (name.startsWith('(')) {
+          // route group: descend but don't add the group name to the path
+          walk(join(dir, name), prefix);
+        }
+        continue;
+      }
+      const route = `${prefix}/${name}`;
+      const childDir = join(dir, name);
+      const children = readdirSync(childDir);
+      if (children.includes('page.tsx') && !denied(route)) routes.push(route);
+      walk(childDir, route);
+    }
+  };
+
+  walk(appDir, '');
+  return routes;
+}
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://meok.ai';
@@ -171,7 +225,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority,
     }));
 
-  return [
+  const curated = [
+    highValue, geoAuthority, euAiActArticles, verticals, newPublicPages,
+    verticalConsulting, mcpLandingPages, industryHubs, mcpServers, versusPages,
+    blogIndex, product, blogPosts, legal,
+  ];
+
+  const curatedEntries: MetadataRoute.Sitemap = [
     ...merge(highValue, 1.0, 'weekly'),
     ...merge(geoAuthority, 0.95, 'weekly'),
     ...merge(euAiActArticles, 0.95, 'weekly'),
@@ -186,5 +246,24 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...merge(product, 0.7, 'weekly'),
     ...merge(blogPosts, 0.6, 'weekly'),
     ...merge(legal, 0.4, 'monthly'),
-  ] as MetadataRoute.Sitemap;
+  ];
+
+  // Auto-discovered public routes not already curated above. Build-time fs
+  // walk; never throws — on failure we ship only the curated list (prior
+  // behaviour). Blog posts get a slightly higher priority than other tail pages.
+  let discoveredEntries: MetadataRoute.Sitemap = [];
+  try {
+    const curatedSet = new Set(curated.flat().map((r) => r || '/'));
+    const discovered = discoverPublicRoutes().filter((r) => !curatedSet.has(r));
+    const blogTail = discovered.filter((r) => r.startsWith('/blog/'));
+    const otherTail = discovered.filter((r) => !r.startsWith('/blog/'));
+    discoveredEntries = [
+      ...merge(blogTail, 0.6, 'weekly'),
+      ...merge(otherTail, 0.5, 'monthly'),
+    ];
+  } catch {
+    discoveredEntries = [];
+  }
+
+  return [...curatedEntries, ...discoveredEntries] as MetadataRoute.Sitemap;
 }
