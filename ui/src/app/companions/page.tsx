@@ -10,9 +10,22 @@ export const metadata: Metadata = {
   },
 };
 
+const SOFTWARE_JSONLD = {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  name: "MEOK Companions",
+  description:
+    "140+ AI companions across 9 archetypes and 4 packs (Mythological, Historical, Literary, Archetypes). Includes a 4-level evolution path: Curious, Synthesiser, Sage, Oracle.",
+  url: "https://meok.ai/companions",
+  applicationCategory: "BusinessApplication",
+  operatingSystem: "Web",
+  publisher: { "@type": "Organization", name: "MEOK AI Labs" },
+};
+
 export default function Page() {
   return (
     <main className="min-h-screen bg-white text-slate-900">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(SOFTWARE_JSONLD) }} />
       <section className="max-w-5xl mx-auto px-6 py-20">
         <h1 className="text-5xl font-bold bg-gradient-to-r from-violet-700 to-blue-700 bg-clip-text text-transparent">MEOK Companions</h1>
         <p className="text-xl text-slate-600 mt-6">140+ AI companions across 9 archetypes and 4 packs. Scholar, Guardian, Healer, Trickster, Mystic, Pioneer, plus 134 more.</p>

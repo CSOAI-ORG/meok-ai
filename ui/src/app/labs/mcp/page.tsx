@@ -109,9 +109,58 @@ const CATEGORIES = [
   { id: "developer", name: "Developer" },
 ];
 
+const COLLECTION_JSONLD = {
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  name: "MEOK Labs MCP — AI Governance Servers",
+  description:
+    "The world's most comprehensive AI governance infrastructure as MCP servers. 208 servers, 1,054 tools, 12 regulatory frameworks (EU AI Act, NIST, ISO 42001, GDPR, SOC 2).",
+  url: "https://meok.ai/labs/mcp",
+  isPartOf: { "@type": "WebSite", name: "MEOK.AI", url: "https://meok.ai" },
+  publisher: { "@type": "Organization", name: "MEOK AI Labs", url: "https://meok.ai" },
+  mainEntity: {
+    "@type": "ItemList",
+    name: "Core Compliance MCP Servers",
+    numberOfItems: COMPLIANCE_SERVERS.length,
+    itemListElement: COMPLIANCE_SERVERS.map((server, i) => ({
+      "@type": "ListItem",
+      position: i + 1,
+      item: {
+        "@type": "SoftwareApplication",
+        name: server.name,
+        description: server.desc,
+        applicationCategory: "DeveloperApplication",
+        operatingSystem: "Cross-platform",
+        url: `https://github.com/CSOAI-ORG/${server.name}`,
+        publisher: { "@type": "Organization", name: "MEOK AI Labs" },
+      },
+    })),
+  },
+};
+
+const TIERS_JSONLD = {
+  "@context": "https://schema.org",
+  "@type": "Product",
+  name: "MEOK Labs MCP — AI Governance Servers",
+  description:
+    "208 MCP servers, 1,054 tools, 12 regulatory frameworks. Enterprise AI compliance at SMB prices.",
+  brand: { "@type": "Brand", name: "MEOK AI Labs" },
+  offers: TIERS.filter((t) => /^£[\d,]+$/.test(t.price)).map((t) => ({
+    "@type": "Offer",
+    name: t.name,
+    description: t.desc,
+    priceCurrency: "GBP",
+    price: t.price.replace(/[£,]/g, ""),
+    availability: "https://schema.org/InStock",
+    url: "https://meok.ai/labs/mcp#pricing",
+  })),
+};
+
 export default function LabsMcpPage() {
   return (
     <div className="min-h-screen bg-[#0d0c18] text-[#f5f0e8]">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(COLLECTION_JSONLD) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(TIERS_JSONLD) }} />
       {/* Hero */}
       <section className="relative pt-32 pb-20 px-6 text-center overflow-hidden">
         <div className="relative max-w-5xl mx-auto">

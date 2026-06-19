@@ -153,9 +153,76 @@ const FAQS = [
   },
 ];
 
+const SOFTWARE_JSONLD = {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  name: "MEOK Memory",
+  applicationCategory: "BusinessApplication",
+  operatingSystem: "Web",
+  url: "https://meok.ai/memory",
+  description:
+    "MEOK Memory is a sovereign, encrypted memory layer for every AI you use. Claude, GPT-4o, DeepSeek, Groq, Gemini, Perplexity, and Ollama share your context via a pgvector semantic store, so you never re-explain yourself again.",
+  publisher: { "@type": "Organization", name: "MEOK AI Labs", url: "https://meok.ai" },
+  featureList: [
+    "Semantic memory via vector embeddings",
+    "Cross-AI sync across Claude, GPT-4o, DeepSeek, Groq, Gemini, Perplexity, and Ollama",
+    "Sovereign encryption — only your key can read your memories",
+    "Infinite timeline with no expiry or memory cap",
+  ],
+  offers: [
+    {
+      "@type": "Offer",
+      name: "Explorer (Free)",
+      priceCurrency: "GBP",
+      price: "0",
+      availability: "https://schema.org/InStock",
+      url: "https://meok.ai/memory",
+    },
+    {
+      "@type": "Offer",
+      name: "BYOK",
+      priceCurrency: "GBP",
+      price: "5",
+      priceSpecification: { "@type": "UnitPriceSpecification", price: "5", priceCurrency: "GBP", unitText: "MONTH" },
+      availability: "https://schema.org/InStock",
+      url: "https://meok.ai/memory",
+    },
+    {
+      "@type": "Offer",
+      name: "Sovereign",
+      priceCurrency: "GBP",
+      price: "12",
+      priceSpecification: { "@type": "UnitPriceSpecification", price: "12", priceCurrency: "GBP", unitText: "MONTH" },
+      availability: "https://schema.org/InStock",
+      url: "https://meok.ai/memory",
+    },
+    {
+      "@type": "Offer",
+      name: "Family",
+      priceCurrency: "GBP",
+      price: "29",
+      priceSpecification: { "@type": "UnitPriceSpecification", price: "29", priceCurrency: "GBP", unitText: "MONTH" },
+      availability: "https://schema.org/InStock",
+      url: "https://meok.ai/memory",
+    },
+  ],
+};
+
+const FAQ_JSONLD = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: FAQS.map((f) => ({
+    "@type": "Question",
+    name: f.q,
+    acceptedAnswer: { "@type": "Answer", text: f.a },
+  })),
+};
+
 export default function MemoryPage() {
   return (
     <div className="min-h-screen bg-[#0d0c18] text-white">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(SOFTWARE_JSONLD) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(FAQ_JSONLD) }} />
 
       {/* ─── HERO ─────────────────────────────────────────────────── */}
       <section

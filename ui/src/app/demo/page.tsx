@@ -10,9 +10,34 @@ export const metadata: Metadata = {
   },
 };
 
+const WEBAPP_JSONLD = {
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  name: "MEOK Live Demo",
+  description:
+    "Interactive demo of the MEOK AI platform: talk to a companion, run a 42-point EU AI Act compliance scan in 30 seconds, and generate a 5,000-word white paper from a research brief.",
+  url: "https://meok.ai/demo",
+  applicationCategory: "BusinessApplication",
+  operatingSystem: "Web",
+  publisher: { "@type": "Organization", name: "MEOK AI Labs" },
+  featureList: [
+    "Companion demo — talk to the Scholar; it remembers, queries, and reasons",
+    "Compliance demo — 42-point EU AI Act scan in 30 seconds, free",
+    "White paper demo — generate a 5,000-word white paper from a research brief",
+  ],
+  offers: {
+    "@type": "Offer",
+    name: "White paper generation",
+    price: "0.10",
+    priceCurrency: "USD",
+    url: "https://meok.ai/demo",
+  },
+};
+
 export default function Page() {
   return (
     <main className="min-h-screen bg-white text-slate-900">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(WEBAPP_JSONLD) }} />
       <section className="max-w-5xl mx-auto px-6 py-20">
         <h1 className="text-5xl font-bold bg-gradient-to-r from-violet-700 to-blue-700 bg-clip-text text-transparent">MEOK Live Demo</h1>
         <p className="text-xl text-slate-600 mt-6">See MEOK in action. Try a companion, run a compliance scan, generate a white paper, file a patent draft.</p>
