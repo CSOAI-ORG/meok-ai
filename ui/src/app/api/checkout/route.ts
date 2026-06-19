@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { currentUser } from '@clerk/nextjs/server';
 import { getAuthUserId } from '@/lib/api-auth';
-import { createCheckoutSession, Tier, GovernanceTier } from '@/lib/stripe';
+import { createCheckoutSession, StripeConfigError, Tier, GovernanceTier } from '@/lib/stripe';
 const _isLocalMode = process.env.MEOK_LOCAL_MODE === 'true';
 
 // Accepted paid tiers
@@ -89,6 +89,22 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
     return NextResponse.json({ url });
   } catch (err) {
     const message = err instanceof Error ? err.message : String(err);
+
+    // Stripe not configured for this tier (missing secret key or price ID) —
+    // degrade gracefully instead of 500-ing the user. Self-serve isn't wired
+    // for this plan yet; point them at sales.
+    if (err instanceof StripeConfigError) {
+      console.warn('[Checkout] Stripe not configured:', message);
+      return NextResponse.json(
+        {
+          error: 'This plan is not available for self-serve checkout yet.',
+          contactUrl: '/contact',
+          tier,
+        },
+        { status: 503 },
+      );
+    }
+
     console.error('[Checkout] Failed to create Stripe session:', message);
     return NextResponse.json(
       { error: 'Failed to create checkout session' },

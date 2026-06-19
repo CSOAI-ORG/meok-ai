@@ -14,11 +14,26 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
     return NextResponse.json({ error: 'Invalid price ID' }, { status: 400 });
   }
 
-  const user = await currentUser();
-  const email = user?.emailAddresses?.[0]?.emailAddress ?? 'unknown@meok.ai';
+  // Clerk may be unconfigured (e.g. no keys in an env) — don't let a failed
+  // user lookup 500 the checkout; fall back to an empty email.
+  let email = 'unknown@meok.ai';
+  try {
+    const user = await currentUser();
+    email = user?.emailAddresses?.[0]?.emailAddress ?? email;
+  } catch (err) {
+    console.warn('[Compliance checkout] Clerk user lookup failed:', err instanceof Error ? err.message : err);
+  }
   const origin = req.headers.get('origin') ?? 'https://meok.ai';
 
-  const stripe = new Stripe(process.env.STRIPE_SECRET_KEY ?? '');
+  if (!process.env.STRIPE_SECRET_KEY) {
+    console.warn('[Compliance checkout] STRIPE_SECRET_KEY not set');
+    return NextResponse.json(
+      { error: 'Audit checkout is not available yet. Please contact us to book.', contactUrl: '/contact' },
+      { status: 503 },
+    );
+  }
+
+  const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 
   try {
     let amount: number;
@@ -49,6 +64,7 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
     return NextResponse.json({ url: session.url });
   } catch (err) {
     const message = err instanceof Error ? err.message : String(err);
-    return NextResponse.json({ error: message }, { status: 500 });
+    console.error('[Compliance checkout] Failed to create session:', message);
+    return NextResponse.json({ error: 'Failed to create checkout session' }, { status: 500 });
   }
 }

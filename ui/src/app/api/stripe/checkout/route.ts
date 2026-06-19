@@ -1,7 +1,7 @@
 "use server";
 import { NextRequest, NextResponse } from "next/server";
 import { getAuthUserId } from "@/lib/api-auth";
-import { stripe, PLANS, PlanId } from "@/lib/stripe";
+import { stripe, PLANS, PlanId, StripeConfigError } from "@/lib/stripe";
 
 export async function POST(req: NextRequest) {
   try {
@@ -33,6 +33,13 @@ export async function POST(req: NextRequest) {
 
     return NextResponse.json({ clientSecret: session.client_secret });
   } catch (err) {
+    if (err instanceof StripeConfigError) {
+      console.warn("[Stripe checkout] not configured:", err.message);
+      return NextResponse.json(
+        { error: "Checkout is not available yet.", contactUrl: "/contact" },
+        { status: 503 },
+      );
+    }
     console.error("[Stripe checkout]", err);
     return NextResponse.json({ error: "Checkout creation failed" }, { status: 500 });
   }
