@@ -28,11 +28,14 @@ const nextConfig: NextConfig = {
   // in _not-found page-data collection. Excluding these packages from RSC
   // bundling lets them be require()'d at runtime where their version-specific
   // react-server-dom-webpack export is resolvable.
+  //
+  // NOTE (2026-06-19): @clerk/nextjs 7.4.3 ships extensionless relative ESM
+  // imports (e.g. `from "./client-boundary/controlComponents"`). When the pkg
+  // is externalized, Node's strict ESM resolver rejects those → ERR_MODULE_NOT_FOUND
+  // → /login, /checkout, /dashboard 500 at RUNTIME (dev and prod). Letting the
+  // bundler process @clerk/* instead resolves the extensionless imports. Kept the
+  // non-Clerk native deps externalized.
   serverExternalPackages: [
-    "@clerk/nextjs",
-    "@clerk/backend",
-    "@clerk/clerk-sdk-node",
-    "@clerk/shared",
     "@neondatabase/serverless",
     "postgres",
     "stripe",
