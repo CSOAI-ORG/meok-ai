@@ -169,7 +169,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   // New public pages shipped 2026-06-15 (all now carry JSON-LD structured data).
   const newPublicPages = [
-    '/universe', '/dome', '/pioneer',
+    '/universe', '/dome', '/pioneer', '/go',
     // Vertical landers
     '/aquaponics', '/charity', '/construction', '/food-safety', '/haulage',
     '/hr-tech', '/legaltech', '/saas', '/waste-mgmt', '/smart-agri', '/smart-home', '/edtech',
