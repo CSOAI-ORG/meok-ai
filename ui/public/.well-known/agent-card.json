@@ -1,42 +1,41 @@
 {
-  "name": "MEOK Compliance Fleet",
-  "version": "1.0.0",
-  "url": "https://meok.ai/api/a2a",
-  "capabilities": {
-    "streaming": false,
-    "pushNotifications": false,
-    "stateTransitionHistory": false
-  },
-  "protocolVersion": "0.3.0",
-  "description": "The MEOK AI Labs compliance-MCP fleet as one A2A agent: EU AI Act, DORA, NIS2, CRA, GDPR, bias, watermarking + 330 more. Signed, verifiable, governed by the CSOAI charter.",
+  "name": "MEOK Town",
+  "description": "CSOAI's persistent protocol town where 290+ MCP servers are buildings, A2A connections are roads, and players test agentic infrastructure together.",
+  "url": "https://meok.ai/town",
   "provider": {
-    "organization": "MEOK AI LABS",
+    "name": "MEOK AI LABS",
     "url": "https://meok.ai"
   },
-  "defaultInputModes": [
-    "application/json",
-    "text/plain"
-  ],
-  "defaultOutputModes": [
-    "application/json",
-    "text/plain"
-  ],
-  "documentationUrl": "https://meok.ai/developers",
+  "version": "1.0.0",
+  "documentationUrl": "https://github.com/CSOAI-ORG/clawd-workspace/blob/main/meok-universe/research/mcp_a2a_town_integration.md",
+  "capabilities": {
+    "streaming": true,
+    "pushNotifications": false,
+    "stateTransitionHistory": true
+  },
+  "authentication": {
+    "schemes": ["none"]
+  },
+  "defaultInputModes": ["text"],
+  "defaultOutputModes": ["text"],
   "skills": [
     {
-      "id": "discover",
-      "name": "Discover agents",
-      "description": "List the 340 MEOK compliance agents + their skills via the registry at /.well-known/agents.json",
-      "tags": [
-        "compliance",
-        "governance",
-        "registry"
-      ]
+      "id": "mcp-city",
+      "name": "MCP City",
+      "description": "Browse 290+ MCP servers rendered as buildings with live health scores.",
+      "tags": ["mcp", "protocols", "scoreboard"]
+    },
+    {
+      "id": "agent-quarters",
+      "name": "Agent Quarters",
+      "description": "Discover 145+ MEOK agents via A2A Agent Cards.",
+      "tags": ["a2a", "agents", "discovery"]
+    },
+    {
+      "id": "protocol-quests",
+      "name": "Protocol Quests",
+      "description": "Solo, PvP, co-op, and sandbox missions for testing agentic infrastructure.",
+      "tags": ["gaming", "testing", "quests"]
     }
-  ],
-  "x-meok": {
-    "registry": "https://meok.ai/.well-known/agents.json",
-    "acp": "https://meok.ai/.well-known/agents-acp.json",
-    "verifier": "https://proofof.ai/verify"
-  }
+  ]
 }

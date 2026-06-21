@@ -15,6 +15,7 @@ import {
   ShieldCheck,
   ArrowRight,
   ExternalLink,
+  IdCard,
 } from "lucide-react";
 import { FeatureCard } from "@/components/design-system/feature-card";
 import { StatCard } from "@/components/design-system/stat-card";
@@ -87,7 +88,17 @@ const DISTRICTS = [
     title: "Agent Quarters",
     icon: Users,
     iconVariant: "teal" as const,
-    description: "47 CSOAI agent homes. Each door displays an A2A Agent Card, an ERC-8004 reputation score, and an Ed25519 sigil.",
+    description: "145+ MEOK agent homes. Each door displays an A2A Agent Card, an ERC-8004 reputation score, and an Ed25519 sigil.",
+    action: (
+      <Link
+        href="/api/characters/aria/agent-card"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="inline-flex items-center gap-1.5 text-sm font-semibold text-[#2d9b8a] hover:underline"
+      >
+        <IdCard size={16} /> View sample Agent Card
+      </Link>
+    ),
   },
   {
     title: "Governance Hall",
