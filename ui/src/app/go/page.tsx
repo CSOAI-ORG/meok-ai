@@ -182,6 +182,53 @@ export default function GoPage() {
         </div>
       </section>
 
+      {/* BUILD REALITY */}
+      <section className="mx-auto max-w-6xl px-6 py-20">
+        <div className="mb-12 text-center">
+          <h2 className="text-3xl font-bold md:text-4xl">Build Reality</h2>
+          <p className="mx-auto mt-4 max-w-2xl text-white/60">
+            June 2026 made this economically viable. UE5.8 has native MCP support, Vercel EVE makes agents durable, and DeepSeek cuts agent costs by 10×.
+          </p>
+        </div>
+        <div className="grid gap-5 lg:grid-cols-2">
+          <Surface variant="elevated" className="p-5">
+            <div className="text-xs font-bold uppercase tracking-widest text-white/40">Tier 1 Integrations</div>
+            <div className="mt-4 space-y-3">
+              {[
+                { tool: "Unreal Engine 5.8 + MCP", fit: "3D world for 47 agents", effort: "2-3 days" },
+                { tool: "Vercel EVE", fit: "Filesystem-first durable agents", effort: "1-2 days" },
+                { tool: "DeepSeek API", fit: "$0.14/M tokens vs $10/M GPT-4", effort: "1 hour" },
+                { tool: "NVIDIA Nemotron ASR", fit: "Edge voice for agents", effort: "1 day" },
+              ].map((t) => (
+                <div key={t.tool} className="flex items-start justify-between gap-4 border-b border-white/[0.05] pb-3 last:border-0 last:pb-0">
+                  <div>
+                    <div className="font-semibold text-sm">{t.tool}</div>
+                    <div className="text-xs text-white/60">{t.fit}</div>
+                  </div>
+                  <div className="shrink-0 text-xs text-[#2d9b8a]">{t.effort}</div>
+                </div>
+              ))}
+            </div>
+          </Surface>
+          <Surface variant="elevated" className="p-5">
+            <div className="text-xs font-bold uppercase tracking-widest text-white/40">Monthly Cost Reality</div>
+            <div className="mt-4 space-y-3">
+              {[
+                { approach: "GPT-4 class (47 agents)", cost: "$15K-25K" },
+                { approach: "DeepSeek API", cost: "$1.5K-2.5K" },
+                { approach: "DeepSeek + local ASR", cost: "$1.8K-3K" },
+                { approach: "Total realistic run cost", cost: "$2K-3K" },
+              ].map((c) => (
+                <div key={c.approach} className="flex items-center justify-between border-b border-white/[0.05] pb-3 last:border-0 last:pb-0">
+                  <div className="text-sm text-white/80">{c.approach}</div>
+                  <div className="text-sm font-semibold text-[#c9a84c]">{c.cost}</div>
+                </div>
+              ))}
+            </div>
+          </Surface>
+        </div>
+      </section>
+
       {/* DATA LOOP */}
       <section className="mx-auto max-w-5xl px-6 py-20">
         <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-8 md:p-12">

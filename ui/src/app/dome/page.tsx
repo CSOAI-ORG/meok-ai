@@ -357,6 +357,186 @@ export default function DomePage() {
         </div>
       </section>
 
+      {/* PHEROMONE PROTOCOL */}
+      <section className="mx-auto max-w-6xl px-6 py-20">
+        <div className="mb-12 text-center">
+          <h2 className="text-3xl font-bold md:text-4xl">The Pheromone Protocol</h2>
+          <p className="mx-auto mt-4 max-w-2xl text-white/60">
+            Biological swarm intelligence is the physics of MEOK. Agents coordinate, fight, trade, and panic through chemical signals that any player can see and influence.
+          </p>
+        </div>
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {[
+            { name: "Alarm", mechanic: "Defense wave propagation", visual: "Red pulsing aura", interaction: "Oversaturates trails" },
+            { name: "Trail", mechanic: "ACO path optimization", visual: "Green glowing paths", interaction: "Alarm disrupts following" },
+            { name: "Queen", mechanic: "Loyalty & productivity field", visual: "Gold radial glow", interaction: "Amplifies aggregation" },
+            { name: "Mark", mechanic: "Territory claiming", visual: "Black ink banners", interaction: "Overlap = contested zones" },
+            { name: "Necromone", mechanic: "Risk/failure mechanics", visual: "Dark purple tendrils", interaction: "Triggers emergency quorum" },
+            { name: "Primer", mechanic: "Caste transformation", visual: "Bioluminescent shift", interaction: "Accelerates development" },
+            { name: "Guard", mechanic: "Chokepoint defense", visual: "Blue dome shields", interaction: "Fatigue shrinks queen radius" },
+            { name: "Allomone", mechanic: "Deception & espionage", visual: "Shimmering interference", interaction: "Can spoof other signals" },
+            { name: "Aggregation", mechanic: "Quorum decisions", visual: "Bright white/gold flow", interaction: "Self-reinforcing recruitment" },
+          ].map((p) => (
+            <Surface key={p.name} variant="elevated" className="p-5">
+              <div className="text-xs font-bold uppercase tracking-widest text-[#c9a84c]">{p.name}</div>
+              <p className="mt-2 text-sm text-white/80">{p.mechanic}</p>
+              <p className="mt-1 text-xs text-white/50">{p.visual} · {p.interaction}</p>
+            </Surface>
+          ))}
+        </div>
+        <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          {[
+            { state: "Planktonic", range: "0-20%", desc: "Dispersed exploration" },
+            { state: "Colony Formation", range: "20-40%", desc: "Aggregation at nest sites" },
+            { state: "Active Foraging", range: "40-60%", desc: "Peak resource efficiency" },
+            { state: "Defense Alert", range: "60%", desc: "Barriers lock, trade halts" },
+            { state: "Emergency", range: "70-80%", desc: "All castes mobilize" },
+            { state: "Biofilm / Fortress", range: "80%+", desc: "Total defensive shell" },
+            { state: "Swarm / Migration", range: "90%+", desc: "Colony relocates" },
+          ].map((s, i) => (
+            <Surface key={s.state} variant="glass" className="p-4">
+              <div className="text-xs font-bold uppercase tracking-widest text-white/40">Tier {i + 1}</div>
+              <div className="mt-1 font-semibold">{s.state}</div>
+              <div className="text-xs text-[#2d9b8a]">{s.range}</div>
+              <p className="mt-1 text-sm text-white/60">{s.desc}</p>
+            </Surface>
+          ))}
+        </div>
+      </section>
+
+      {/* AGENT BRAIN */}
+      <section className="mx-auto max-w-6xl px-6 py-20">
+        <div className="mb-12 text-center">
+          <h2 className="text-3xl font-bold md:text-4xl">Agent Brain</h2>
+          <p className="mx-auto mt-4 max-w-2xl text-white/60">
+            Every AI citizen has memory, relationships, and a personality that evolves. They remember, gossip, fall in love, hold grudges, and form factions.
+          </p>
+        </div>
+        <div className="overflow-hidden rounded-2xl border border-white/10">
+          <div className="grid grid-cols-5 gap-4 border-b border-white/10 bg-white/[0.03] px-5 py-3 text-xs font-bold uppercase tracking-widest text-white/50">
+            <div>Layer</div>
+            <div>Storage</div>
+            <div>Retention</div>
+            <div>Content</div>
+            <div>Query</div>
+          </div>
+          {[
+            { layer: "L1 Context", storage: "LLM prompt", retention: "Per call", content: "Current conversation", query: "Instant" },
+            { layer: "L2 Working", storage: "Ring buffer", retention: "Session (100 entries)", content: "Raw observations", query: "O(1)" },
+            { layer: "L3 Semantic", storage: "HNSW vector DB", retention: "Persistent", content: "Facts & beliefs", query: "O(log n)" },
+            { layer: "L4 Episodic", storage: "Vector DB + summaries", retention: "Persistent", content: "Significant events", query: "O(log n)" },
+          ].map((m) => (
+            <div key={m.layer} className="grid grid-cols-5 gap-4 border-b border-white/[0.05] px-5 py-3 text-sm transition hover:bg-white/[0.03]">
+              <div className="font-medium text-white/90">{m.layer}</div>
+              <div className="text-white/60">{m.storage}</div>
+              <div className="text-white/60">{m.retention}</div>
+              <div className="text-white/60">{m.content}</div>
+              <div className="text-white/60">{m.query}</div>
+            </div>
+          ))}
+        </div>
+        <div className="mt-10 overflow-hidden rounded-2xl border border-white/10">
+          <div className="grid grid-cols-6 gap-4 border-b border-white/10 bg-white/[0.03] px-5 py-3 text-xs font-bold uppercase tracking-widest text-white/50">
+            <div>Action</div>
+            <div>Friendship</div>
+            <div>Trust</div>
+            <div>Romance</div>
+            <div className="col-span-2">Requirements</div>
+          </div>
+          {[
+            { action: "Greet", f: "+1", t: "—", r: "—", req: "Proximity < 15m" },
+            { action: "Chat", f: "+2-5", t: "+0-2", r: "+0-1", req: "Proximity < 5m" },
+            { action: "Deep Talk", f: "+5-10", t: "+3-8", r: "+2-5", req: "Friendship > 30" },
+            { action: "Gift", f: "+5-15", t: "+3-10", r: "+5-15", req: "Has item" },
+            { action: "Betray", f: "-30-60", t: "-40-80", r: "-50-90", req: "Secret known" },
+            { action: "Collaborate", f: "+5-15", t: "+8-20", r: "+2-5", req: "Shared goal" },
+          ].map((a) => (
+            <div key={a.action} className="grid grid-cols-6 gap-4 border-b border-white/[0.05] px-5 py-3 text-sm transition hover:bg-white/[0.03]">
+              <div className="font-medium text-white/90">{a.action}</div>
+              <div className="text-white/60">{a.f}</div>
+              <div className="text-white/60">{a.t}</div>
+              <div className="text-white/60">{a.r}</div>
+              <div className="col-span-2 text-white/60">{a.req}</div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* TOWN LAYOUT */}
+      <section className="mx-auto max-w-6xl px-6 py-20">
+        <div className="mb-12 text-center">
+          <h2 className="text-3xl font-bold md:text-4xl">CSOAI Town Layout</h2>
+          <p className="mx-auto mt-4 max-w-2xl text-white/60">
+            An 800m × 800m radial town centered on SOV3 King&apos;s Tower. Eight spoke districts map to CSOAI governance domains.
+          </p>
+        </div>
+        <div className="grid gap-8 lg:grid-cols-2">
+          <Surface variant="elevated" className="p-5">
+            <div className="overflow-hidden rounded-xl border border-white/10">
+              <div className="grid grid-cols-3 gap-4 border-b border-white/10 bg-white/[0.03] px-4 py-3 text-xs font-bold uppercase tracking-widest text-white/50">
+                <div>District</div>
+                <div>Angle</div>
+                <div>Distance</div>
+              </div>
+              {[
+                { d: "Central", a: "0-360°", dist: "0-60m" },
+                { d: "Governance", a: "-22.5 to +22.5°", dist: "60-180m" },
+                { d: "Commerce", a: "+22.5 to +67.5°", dist: "60-180m" },
+                { d: "Wellness", a: "+67.5 to +112.5°", dist: "60-180m" },
+                { d: "Innovation", a: "+112.5 to +157.5°", dist: "60-180m" },
+                { d: "Safety", a: "+157.5 to +202.5°", dist: "60-180m" },
+                { d: "Legal", a: "+202.5 to +247.5°", dist: "60-180m" },
+                { d: "Media", a: "+247.5 to +292.5°", dist: "60-180m" },
+                { d: "Residential", a: "0-360°", dist: "200-320m" },
+              ].map((row) => (
+                <div key={row.d} className="grid grid-cols-3 gap-4 border-b border-white/[0.05] px-4 py-2 text-sm transition hover:bg-white/[0.03]">
+                  <div className="font-medium text-white/90">{row.d}</div>
+                  <div className="text-white/60">{row.a}</div>
+                  <div className="text-white/60">{row.dist}</div>
+                </div>
+              ))}
+            </div>
+          </Surface>
+          <Surface variant="elevated" className="p-5">
+            <div className="text-xs font-bold uppercase tracking-widest text-[#c9a84c]">SOV3 King&apos;s Tower</div>
+            <h3 className="mt-1 text-lg font-semibold">Sovereign governance node</h3>
+            <ul className="mt-4 space-y-2 text-sm text-white/70">
+              <li>• Position: exact center (0, 0, 0)</li>
+              <li>• Base: 20m × 20m · Height: 80m</li>
+              <li>• 8 floors + 1 subterranean server vault</li>
+              <li>• 12 agent workstations · Max 24 agents</li>
+              <li>• Council hall, war room, broadcast studio, observation decks</li>
+            </ul>
+          </Surface>
+        </div>
+      </section>
+
+      {/* 28 DOMAINS */}
+      <section className="mx-auto max-w-6xl px-6 py-20">
+        <div className="mb-12 text-center">
+          <h2 className="text-3xl font-bold md:text-4xl">28 Industry Hives</h2>
+          <p className="mx-auto mt-4 max-w-2xl text-white/60">
+            Each district is a live CSOAI hive. 28 industry domains, each with public data sources, governance rules, and AI agents.
+          </p>
+        </div>
+        <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+          {[
+            { d: "Finance", p: "P1" }, { d: "Governance", p: "P1" }, { d: "Security", p: "P1" }, { d: "Innovation", p: "P1" },
+            { d: "Manufacturing", p: "P1" }, { d: "Agriculture", p: "P1" }, { d: "Energy", p: "P1" }, { d: "Transport", p: "P1" },
+            { d: "Healthcare", p: "P1" }, { d: "Education", p: "P1" }, { d: "Real Estate & Construction", p: "P2" }, { d: "Insurance & Risk", p: "P2" },
+            { d: "Media, Entertainment & Sports", p: "P2" }, { d: "Legal & Professional Services", p: "P2" }, { d: "Retail & E-commerce", p: "P2" }, { d: "Utilities & Mining", p: "P2" },
+            { d: "Space & Satellite", p: "P2" }, { d: "Telecommunications", p: "P2" }, { d: "Environmental & Climate", p: "P2" }, { d: "Marine & Fisheries", p: "P3" },
+            { d: "Automotive", p: "P3" }, { d: "Pharmaceuticals", p: "P3" }, { d: "Chemicals", p: "P3" }, { d: "Food & Beverage", p: "P3" },
+            { d: "Textiles & Fashion", p: "P3" }, { d: "Defense & Aerospace", p: "P3" }, { d: "Tourism & Hospitality", p: "P3" }, { d: "Arts & Culture", p: "P3" },
+          ].map((x) => (
+            <div key={x.d} className="flex items-center justify-between rounded-xl border border-white/10 bg-white/[0.03] px-4 py-3 text-sm transition hover:border-[#c9a84c]/30">
+              <span className="font-medium text-white/90">{x.d}</span>
+              <span className={`rounded-full px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider ${x.p === "P1" ? "bg-[#c9a84c]/10 text-[#c9a84c]" : x.p === "P2" ? "bg-[#2d9b8a]/10 text-[#2d9b8a]" : "bg-white/5 text-white/40"}`}>{x.p}</span>
+            </div>
+          ))}
+        </div>
+      </section>
+
       {/* VALUE EXCHANGE */}
       <section className="mx-auto max-w-6xl px-6 py-20">
         <div className="mb-12 text-center">
