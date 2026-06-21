@@ -5,6 +5,7 @@ interface WaitlistEntry {
   name?: string
   interest?: string
   referrer?: string
+  metadata?: Record<string, string | boolean | number>
 }
 
 /** Escape user input for safe HTML interpolation */
@@ -95,6 +96,7 @@ async function notifyViaResend(entry: WaitlistEntry): Promise<void> {
 <p><strong>Name:</strong> ${escapeHtml(entry.name ?? '—')}</p>
 <p><strong>Interest:</strong> ${escapeHtml(entry.interest ?? '—')}</p>
 <p><strong>Referrer:</strong> ${escapeHtml(entry.referrer ?? '—')}</p>
+${entry.metadata ? `<p><strong>Metadata:</strong> ${escapeHtml(JSON.stringify(entry.metadata))}</p>` : ''}
 <p><strong>Time:</strong> ${new Date().toISOString()}</p>`,
       }),
     })
@@ -118,11 +120,20 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: 'Invalid email address' }, { status: 400 })
     }
 
+    const metadata: WaitlistEntry['metadata'] =
+      typeof body.metadata === 'object' && body.metadata !== null ? body.metadata : undefined
+
     const entry: WaitlistEntry = {
       email: body.email.toLowerCase().trim(),
       name: typeof body.name === 'string' ? body.name.trim() : undefined,
       interest: typeof body.interest === 'string' ? body.interest.trim() : undefined,
-      referrer: typeof body.referrer === 'string' ? body.referrer.trim() : undefined,
+      referrer:
+        typeof body.referrer === 'string'
+          ? body.referrer.trim()
+          : metadata
+            ? JSON.stringify(metadata)
+            : undefined,
+      metadata,
     }
 
     // Always log — captured by Vercel function logs, never lost
@@ -131,6 +142,7 @@ export async function POST(req: NextRequest) {
       name: entry.name,
       interest: entry.interest,
       referrer: entry.referrer,
+      metadata: entry.metadata,
       ts: new Date().toISOString(),
     }))
 

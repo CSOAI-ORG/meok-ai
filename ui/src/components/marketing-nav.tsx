@@ -33,6 +33,19 @@ interface NavPillar {
 
 const NAV_PILLARS: NavPillar[] = [
   {
+    key: "universe",
+    label: "Universe",
+    href: "/universe",
+    accentColor: GOLD,
+    items: [
+      { href: "/universe", icon: "🌍", label: "MEOK Universe", desc: "The sovereign AI world vision" },
+      { href: "/dome", icon: "🌐", label: "MEOK DOME", desc: "Persistent world simulation layers" },
+      { href: "/pioneer", icon: "🚀", label: "Pioneer Program", desc: "Become a founding citizen" },
+      { href: "/council", icon: "🏛️", label: "MEOK Council", desc: "Hybrid AI-human governance" },
+      { href: "/gaming", icon: "🎮", label: "Gaming Hive", desc: "AI-powered gaming infrastructure" },
+    ],
+  },
+  {
     key: "os",
     label: "OS",
     href: "/os",
