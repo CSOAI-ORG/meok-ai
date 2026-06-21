@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Home, Mountain, Cloud, Orbit, Sparkles, Scale, Users, Landmark, MapPin, ScrollText, Rocket, Gamepad2, Bot, Plane, Satellite, Anchor, ArrowRight } from "lucide-react";
+import { Home, Mountain, Cloud, Orbit, Sparkles, Scale, Users, Landmark, MapPin, ScrollText, Rocket, Gamepad2, Bot, Plane, Satellite, Anchor, ArrowRight, Globe, Cpu, Wallet, TrendingUp } from "lucide-react";
 import { FeatureCard } from "@/components/design-system/feature-card";
 import { StatCard } from "@/components/design-system/stat-card";
 import { Surface } from "@/components/design-system/surface";
@@ -119,6 +119,7 @@ const RESEARCH_LINKS = [
   { label: "MEOK Universe Whitepaper", url: "https://github.com/CSOAI-ORG/clawd-workspace/blob/main/MEOK_UNIVERSE_WHITEPAPER.md" },
   { label: "Pioneer Program 90-Day Roadmap", url: "https://github.com/CSOAI-ORG/clawd-workspace/blob/main/MEOK_PIONEER_PROGRAM_90DAY.md" },
   { label: "Research seeds", url: "https://github.com/CSOAI-ORG/clawd-workspace/tree/main/meok-universe/research" },
+  { label: "Earth + Space master doc", url: "https://github.com/CSOAI-ORG/clawd-workspace/blob/main/meok-universe/research/meok_earth_space_master.md" },
 ];
 
 export default function DomePage() {
@@ -288,6 +289,99 @@ export default function DomePage() {
         </div>
       </section>
 
+      {/* EARTH + SPACE */}
+      <section className="mx-auto max-w-6xl px-6 py-20">
+        <div className="mb-12 text-center">
+          <h2 className="text-3xl font-bold md:text-4xl">MEOK Earth + MEOK Space</h2>
+          <p className="mx-auto mt-4 max-w-2xl text-white/60">
+            Your real address is the spawn point. From there, build upward — rooftop, underground, orbital station, Moon, Mars, and beyond.
+          </p>
+        </div>
+        <div className="grid gap-5 lg:grid-cols-2">
+          <Surface variant="elevated" className="p-6 md:p-8">
+            <div className="flex items-center gap-3 text-[#2d9b8a]">
+              <Globe size={24} />
+              <h3 className="text-xl font-semibold">MEOK Earth</h3>
+            </div>
+            <p className="mt-3 text-white/70">
+              A digital twin built on CesiumJS, OpenStreetMap, NASA terrain, and Mapillary street photos. Your house, your street,
+              your neighborhood — populated with AI citizens and governed by the MEOK Council.
+            </p>
+            <ul className="mt-4 space-y-2 text-sm text-white/60">
+              <li>• Property ownership tied to real addresses</li>
+              <li>• GTA-style wanted/witness systems</li>
+              <li>• Real weather, wildlife, and emergent events</li>
+              <li>• AI radio news about your town</li>
+            </ul>
+          </Surface>
+          <Surface variant="elevated" className="p-6 md:p-8">
+            <div className="flex items-center gap-3 text-[#8b5cf6]">
+              <Rocket size={24} />
+              <h3 className="text-xl font-semibold">MEOK Space</h3>
+            </div>
+            <p className="mt-3 text-white/70">
+              Real NASA/ESA data for the Moon, Mars, asteroids, and exoplanets. Build rockets, mine Helium-3, establish colonies,
+              and encounter alien factions — all part of the same persistent economy.
+            </p>
+            <ul className="mt-4 space-y-2 text-sm text-white/60">
+              <li>• Earth → Orbit → Moon → Mars gameplay loop</li>
+              <li>• OpenSpace + NASA Horizons orbital mechanics</li>
+              <li>• Asteroid mining & rare minerals</li>
+              <li>• First contact & alien diplomacy</li>
+            </ul>
+          </Surface>
+        </div>
+      </section>
+
+      {/* OPEN SOURCE STACK */}
+      <section className="mx-auto max-w-6xl px-6 py-20">
+        <div className="mb-12 text-center">
+          <h2 className="text-3xl font-bold md:text-4xl">$0 Open-Source Stack</h2>
+          <p className="mx-auto mt-4 max-w-2xl text-white/60">
+            Real-world data, 3D worlds, AI characters, and orbital mechanics — all free or open-source.
+          </p>
+        </div>
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          {[
+            { icon: Globe, label: "Real Earth", value: "CesiumJS + OSM", color: "#2d9b8a" },
+            { icon: Cpu, label: "AI Backend", value: "Ollama + OpenRouter", color: "#c9a84c" },
+            { icon: Satellite, label: "Space", value: "OpenSpace + NASA", color: "#8b5cf6" },
+            { icon: Bot, label: "Characters", value: "MetaHuman + UE5", color: "#F472B6" },
+          ].map((s) => (
+            <Surface key={s.label} variant="glass" className="p-5">
+              <s.icon size={22} style={{ color: s.color }} />
+              <div className="mt-3 text-xs font-bold uppercase tracking-widest text-white/40">{s.label}</div>
+              <div className="mt-1 font-semibold">{s.value}</div>
+            </Surface>
+          ))}
+        </div>
+      </section>
+
+      {/* VALUE EXCHANGE */}
+      <section className="mx-auto max-w-6xl px-6 py-20">
+        <div className="mb-12 text-center">
+          <h2 className="text-3xl font-bold md:text-4xl">Play Free. Earn as You Go.</h2>
+          <p className="mx-auto mt-4 max-w-2xl text-white/60">
+            Governance votes, research surveys, and world-building contributions earn real x402 micropayments.
+          </p>
+        </div>
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          {[
+            { icon: Wallet, label: "Governance Vote", value: "$0.001", desc: "Per council vote" },
+            { icon: ScrollText, label: "Research Survey", value: "$0.01", desc: "Per completed survey" },
+            { icon: Cpu, label: "World Building", value: "$0.10", desc: "Per white-paper contribution" },
+            { icon: TrendingUp, label: "Data Revenue", value: "Revenue share", desc: "From licensed datasets" },
+          ].map((v) => (
+            <Surface key={v.label} variant="elevated" className="p-5">
+              <v.icon size={20} className="text-[#c9a84c]" />
+              <div className="mt-3 text-xs font-bold uppercase tracking-widest text-white/40">{v.label}</div>
+              <div className="mt-1 text-xl font-semibold">{v.value}</div>
+              <p className="mt-1 text-sm text-white/60">{v.desc}</p>
+            </Surface>
+          ))}
+        </div>
+      </section>
+
       {/* LIVE FEED + PIONEER SIGNUP */}
       <section className="mx-auto max-w-6xl px-6 py-20">
         <div className="grid gap-8 lg:grid-cols-2">
@@ -343,7 +437,7 @@ export default function DomePage() {
             <div>
               <h2 className="text-3xl font-bold md:text-4xl">Built on Research</h2>
               <p className="mt-4 text-white/70">
-                MEOK Universe is backed by 8 research seeds, 160+ searches, 20 games analyzed, and a publishable whitepaper roadmap.
+                MEOK Universe is backed by 9+ research seeds, 160+ searches, 20 games analyzed, and a publishable whitepaper roadmap.
               </p>
               <div className="mt-6 flex flex-wrap gap-3">
                 {RESEARCH_LINKS.map((r) => (

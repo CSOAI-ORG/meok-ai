@@ -3,6 +3,7 @@ import Link from "next/link";
 import { FeatureCard } from "@/components/design-system/feature-card";
 import { StatCard } from "@/components/design-system/stat-card";
 import { Surface } from "@/components/design-system/surface";
+import { Globe, MapPin, Rocket, Wallet, TrendingUp, Radio } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "MEOK UNIVERSE — A Sovereign World for Humans, AI & Machines",
@@ -127,6 +128,45 @@ export default function UniversePage() {
         </div>
       </section>
 
+      {/* EARTH + SPACE */}
+      <section className="mx-auto max-w-6xl px-6 pb-24">
+        <div className="grid gap-10 lg:grid-cols-2 items-center">
+          <div>
+            <div className="inline-flex items-center gap-2 rounded-full border border-[#c9a84c]/30 bg-[#c9a84c]/10 px-4 py-1.5 text-xs font-bold uppercase tracking-widest text-[#c9a84c]">
+              <Globe size={14} /> Earth → Space
+            </div>
+            <h2 className="mt-6 text-3xl font-bold md:text-4xl">
+              From your front door to Mars.
+            </h2>
+            <p className="mt-4 text-white/70">
+              MEOK Earth digitizes your real address, street, and neighborhood into a sovereign AI world.
+              MEOK Space extends that world to the Moon, Mars, asteroids, and exoplanets — all built on
+              real NASA/ESA data and open-source tools.
+            </p>
+            <ul className="mt-6 space-y-3 text-sm text-white/70">
+              <li className="flex items-start gap-3"><MapPin size={18} className="mt-0.5 shrink-0 text-[#2d9b8a]" /> Your real house becomes your MEOK home.</li>
+              <li className="flex items-start gap-3"><Rocket size={18} className="mt-0.5 shrink-0 text-[#8b5cf6]" /> Build a spaceport and launch to orbit.</li>
+              <li className="flex items-start gap-3"><Radio size={18} className="mt-0.5 shrink-0 text-[#c9a84c]" /> AI-generated radio reports events in your town.</li>
+              <li className="flex items-start gap-3"><Wallet size={18} className="mt-0.5 shrink-0 text-[#22c55e]" /> Get paid for governance, research, and world-building.</li>
+            </ul>
+          </div>
+          <div className="grid gap-4 sm:grid-cols-2">
+            {[
+              { label: "Real Terrain", value: "CesiumJS + NASA", desc: "Your street in 3D", color: "#2d9b8a" },
+              { label: "Solar System", value: "NASA + ESA data", desc: "Moon, Mars, asteroids", color: "#8b5cf6" },
+              { label: "Open Source", value: "$0 + compute", desc: "UE5, OpenSpace, OSM", color: "#c9a84c" },
+              { label: "Aliens", value: "Peak trend", desc: "29B #alien views", color: "#e07340" },
+            ].map((s) => (
+              <Surface key={s.label} variant="elevated" className="p-5">
+                <div className="text-xs font-bold uppercase tracking-widest text-white/40">{s.label}</div>
+                <div className="mt-1 text-xl font-semibold" style={{ color: s.color }}>{s.value}</div>
+                <div className="mt-1 text-sm text-white/60">{s.desc}</div>
+              </Surface>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* PILLARS */}
       <section className="mx-auto max-w-6xl px-6 py-20">
         <div className="mb-12 text-center">
@@ -163,6 +203,58 @@ export default function UniversePage() {
             ))}
           </div>
         </Surface>
+      </section>
+
+      {/* VALUE EXCHANGE */}
+      <section className="mx-auto max-w-6xl px-6 py-20">
+        <div className="mb-12 text-center">
+          <h2 className="text-3xl font-bold md:text-4xl">Play Free. Get Paid. Govern AI.</h2>
+          <p className="mx-auto mt-4 max-w-2xl text-white/60">
+            MEOK is free to play. Your actions generate consented, anonymized research data — and you earn via x402 micropayments.
+          </p>
+        </div>
+        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+          {[
+            { tier: "Citizen", cost: "Free", gets: "Earth district + 1 AI character", gives: "Anonymized behavioral data" },
+            { tier: "Pioneer", cost: "$9.99/mo", gets: "Moon access + 3 AI characters", gives: "Enhanced data + surveys" },
+            { tier: "Governor", cost: "$24.99/mo", gets: "Mars access + 10 AI characters", gives: "Research partnership" },
+            { tier: "Sovereign", cost: "$99.99/mo", gets: "Full universe + content tools", gives: "Data DAO membership" },
+          ].map((t) => (
+            <Surface key={t.tier} variant="glass" className="p-5">
+              <div className="text-xs font-bold uppercase tracking-widest text-[#c9a84c]">{t.tier}</div>
+              <div className="mt-1 text-2xl font-semibold">{t.cost}</div>
+              <p className="mt-3 text-sm text-white/70">{t.gets}</p>
+              <p className="mt-2 text-xs text-white/50">{t.gives}</p>
+            </Surface>
+          ))}
+        </div>
+      </section>
+
+      {/* GROWTH ENGINE */}
+      <section className="mx-auto max-w-6xl px-6 py-20">
+        <div className="mb-12 text-center">
+          <h2 className="text-3xl font-bold md:text-4xl">Built to Be Shared</h2>
+          <p className="mx-auto mt-4 max-w-2xl text-white/60">
+            Every AI citizen, alien encounter, and Mars colony is content. The growth loop is designed for the algorithm.
+          </p>
+        </div>
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          {[
+            { tag: "#ai", views: "50B+", label: "AI characters in your world" },
+            { tag: "#gaming", views: "100B+", label: "Gameplay clips" },
+            { tag: "#space", views: "30B+", label: "Mars & Moon colonization" },
+            { tag: "#alien", views: "29B+", label: "Alien encounters" },
+          ].map((g) => (
+            <Surface key={g.tag} variant="elevated" className="p-5">
+              <div className="flex items-center gap-2 text-[#c9a84c]">
+                <TrendingUp size={18} />
+                <span className="text-sm font-bold">{g.tag}</span>
+              </div>
+              <div className="mt-2 text-2xl font-semibold">{g.views}</div>
+              <p className="mt-1 text-sm text-white/60">{g.label}</p>
+            </Surface>
+          ))}
+        </div>
       </section>
 
       {/* INSPIRATIONS */}
