@@ -382,6 +382,51 @@ export default function DomePage() {
         </div>
       </section>
 
+      {/* 5D ARCHITECTURE */}
+      <section className="mx-auto max-w-5xl px-6 py-20">
+        <div className="mb-12 text-center">
+          <h2 className="text-3xl font-bold md:text-4xl">MEOK 5D Architecture</h2>
+          <p className="mx-auto mt-4 max-w-2xl text-white/60">
+            Five layers from your front door to persistent time — plus the revenue, safety, and charity systems that make it sustainable.
+          </p>
+        </div>
+        <Surface variant="elevated" className="p-6 md:p-8">
+          <div className="space-y-3">
+            {[
+              { dim: "5D", name: "Time", desc: "24/7 evolution, seasons, history", color: "#c9a84c" },
+              { dim: "4D", name: "AI", desc: "47 agents, your character, AI companions", color: "#2d9b8a" },
+              { dim: "3D", name: "AR Overlay", desc: "Digital twin on your real world", color: "#8b5cf6" },
+              { dim: "2D", name: "Map", desc: "Google Maps, OpenStreetMap, GPS", color: "#3b82f6" },
+              { dim: "1D", name: "Real World", desc: "Your house, street, garden, city", color: "#22c55e" },
+            ].map((l) => (
+              <div key={l.name} className="flex items-center gap-4 rounded-xl border border-white/[0.06] bg-white/[0.03] p-4">
+                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg text-sm font-black" style={{ backgroundColor: `${l.color}20`, color: l.color }}>
+                  {l.dim}
+                </div>
+                <div className="flex-1">
+                  <div className="font-semibold">{l.name}</div>
+                  <div className="text-sm text-white/60">{l.desc}</div>
+                </div>
+              </div>
+            ))}
+          </div>
+          <div className="mt-8 grid gap-4 sm:grid-cols-3">
+            <div className="rounded-xl border border-[#c9a84c]/20 bg-[#c9a84c]/5 p-4">
+              <div className="text-xs font-bold uppercase tracking-widest text-[#c9a84c]">Revenue Share</div>
+              <p className="mt-2 text-sm text-white/70">40% ads → 70% to players. 30% data → 50% to players.</p>
+            </div>
+            <div className="rounded-xl border border-[#2d9b8a]/20 bg-[#2d9b8a]/5 p-4">
+              <div className="text-xs font-bold uppercase tracking-widest text-[#2d9b8a]">Safety</div>
+              <p className="mt-2 text-sm text-white/70">Edge AI, on-device moderation, zero-knowledge age checks.</p>
+            </div>
+            <div className="rounded-xl border border-[#22c55e]/20 bg-[#22c55e]/5 p-4">
+              <div className="text-xs font-bold uppercase tracking-widest text-[#22c55e]">Charity</div>
+              <p className="mt-2 text-sm text-white/70">Play-to-donate trees, food, ocean cleanup. 1% revenue to charity.</p>
+            </div>
+          </div>
+        </Surface>
+      </section>
+
       {/* LIVE FEED + PIONEER SIGNUP */}
       <section className="mx-auto max-w-6xl px-6 py-20">
         <div className="grid gap-8 lg:grid-cols-2">

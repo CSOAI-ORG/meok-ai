@@ -94,6 +94,44 @@ export default function PioneerPage() {
         </div>
       </section>
 
+      {/* PLAY TO EARN */}
+      <section className="mx-auto max-w-6xl px-6 py-20">
+        <div className="mb-12 text-center">
+          <h2 className="text-3xl font-bold md:text-4xl">Play to Earn</h2>
+          <p className="mx-auto mt-4 max-w-2xl text-white/60">
+            Pioneers earn real money for governance, research, exploration, and world-building — paid via x402 micropayments.
+          </p>
+        </div>
+        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+          {[
+            { label: "Casual", time: "1 hr/day", earn: "$2-5/mo", desc: "Walk, scan, vote" },
+            { label: "Active", time: "3 hrs/day", earn: "$10-25/mo", desc: "Build, trade, research" },
+            { label: "Hardcore", time: "6+ hrs/day", earn: "$30-100/mo", desc: "Govern, create, explore" },
+            { label: "Power User", time: "Creators", earn: "$100-500/mo", desc: "Content, studies, DAO" },
+          ].map((t) => (
+            <Surface key={t.label} variant="glass" className="p-5">
+              <div className="text-xs font-bold uppercase tracking-widest text-[#c9a84c]">{t.label}</div>
+              <div className="mt-1 text-2xl font-semibold">{t.earn}</div>
+              <div className="mt-1 text-sm text-white/60">{t.time}</div>
+              <p className="mt-3 text-sm text-white/70">{t.desc}</p>
+            </Surface>
+          ))}
+        </div>
+        <div className="mt-8 grid gap-4 sm:grid-cols-3">
+          {[
+            { label: "Advertising", share: "70% to players", desc: "Like Brave Browser" },
+            { label: "Data Sales", share: "50% to players", desc: "Consent-based only" },
+            { label: "Revenue Share", share: "Proportional", desc: "From licensed datasets" },
+          ].map((r) => (
+            <Surface key={r.label} variant="elevated" className="p-5 text-center">
+              <div className="text-xs font-bold uppercase tracking-widest text-white/40">{r.label}</div>
+              <div className="mt-1 text-xl font-semibold text-[#22c55e]">{r.share}</div>
+              <p className="mt-1 text-sm text-white/60">{r.desc}</p>
+            </Surface>
+          ))}
+        </div>
+      </section>
+
       {/* RESEARCH SEASONS */}
       <section className="mx-auto max-w-5xl px-6 py-20">
         <div className="mb-12 text-center">
@@ -130,6 +168,33 @@ export default function PioneerPage() {
                 Output: {s.output}
               </div>
             </div>
+          ))}
+        </div>
+      </section>
+
+      {/* PLAY TO DONATE */}
+      <section className="mx-auto max-w-6xl px-6 py-20">
+        <div className="mb-12 text-center">
+          <h2 className="text-3xl font-bold md:text-4xl">Play to Donate</h2>
+          <p className="mx-auto mt-4 max-w-2xl text-white/60">
+            Every hour of play can fund real-world impact. 1% of all MEOK revenue goes to global charities.
+          </p>
+        </div>
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {[
+            { icon: "🌳", cause: "Tree Planting", mechanic: "1 hour of play = 1 tree", partner: "Ecosia, One Tree Planted" },
+            { icon: "🍚", cause: "Food Donation", mechanic: "Complete surveys = rice donated", partner: "Freerice / WFP" },
+            { icon: "🌊", cause: "Clean Ocean", mechanic: "Explore coasts = plastic removed", partner: "Ocean Cleanup" },
+            { icon: "📚", cause: "Education", mechanic: "Help AI students = school donation", partner: "UNICEF" },
+            { icon: "🚨", cause: "Disaster Relief", mechanic: "In-game response = real donation", partner: "Red Cross" },
+            { icon: "🔬", cause: "Research", mechanic: "Gameplay data = breakthroughs", partner: "NIH, universities" },
+          ].map((c) => (
+            <Surface key={c.cause} variant="elevated" className="p-5">
+              <div className="text-3xl">{c.icon}</div>
+              <h3 className="mt-3 font-semibold">{c.cause}</h3>
+              <p className="mt-1 text-sm text-white/70">{c.mechanic}</p>
+              <p className="mt-1 text-xs text-white/50">{c.partner}</p>
+            </Surface>
           ))}
         </div>
       </section>

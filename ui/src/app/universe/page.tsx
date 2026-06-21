@@ -167,6 +167,35 @@ export default function UniversePage() {
         </div>
       </section>
 
+      {/* 5D STACK */}
+      <section className="mx-auto max-w-5xl px-6 pb-24">
+        <div className="mb-12 text-center">
+          <h2 className="text-3xl font-bold md:text-4xl">5D Universe</h2>
+          <p className="mx-auto mt-4 max-w-2xl text-white/60">
+            MEOK is built in five dimensions: your real address as the base, then map, AR, AI, and persistent time.
+          </p>
+        </div>
+        <div className="space-y-3">
+          {[
+            { dim: "5D", name: "Time", desc: "World evolves 24/7 — seasons, history, consequences", color: "#c9a84c" },
+            { dim: "4D", name: "AI", desc: "47 agents, your MEOK character, NPC companions", color: "#2d9b8a" },
+            { dim: "3D", name: "AR Overlay", desc: "Digital twin rendered over your camera view", color: "#8b5cf6" },
+            { dim: "2D", name: "Map", desc: "Google Maps, OpenStreetMap, GPS, property lines", color: "#3b82f6" },
+            { dim: "1D", name: "Real World", desc: "Your actual house, street, garden, city", color: "#22c55e" },
+          ].map((l) => (
+            <Surface key={l.name} variant="elevated" className="flex items-center gap-5 p-5">
+              <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl text-lg font-black" style={{ backgroundColor: `${l.color}20`, color: l.color }}>
+                {l.dim}
+              </div>
+              <div className="flex-1">
+                <h3 className="text-lg font-semibold">{l.name}</h3>
+                <p className="text-sm text-white/60">{l.desc}</p>
+              </div>
+            </Surface>
+          ))}
+        </div>
+      </section>
+
       {/* PILLARS */}
       <section className="mx-auto max-w-6xl px-6 py-20">
         <div className="mb-12 text-center">
