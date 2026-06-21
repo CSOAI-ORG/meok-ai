@@ -7,6 +7,7 @@
  */
 
 import { NextResponse } from "next/server";
+import sov3 from "@/lib/sov3-client";
 
 interface StreamEvent {
   id: string;
@@ -54,44 +55,28 @@ export const runtime = "nodejs";
 
 export async function GET() {
   try {
-    const backend = process.env.MEOK_BACKEND_URL?.trim() || "http://198.53.64.194:40646";
-    const sov3Url = process.env.SOV3_MESH_URL || `${backend}/mcp`;
+    const result = await sov3.call<{ recent_events?: Array<{ time?: string; type?: string; agent?: string; task_id?: string }> }>(
+      "coord_get_dashboard",
+      {}
+    );
 
-    const sov3 = await fetch(sov3Url, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        jsonrpc: "2.0",
-        method: "tools/call",
-        params: { name: "coord_get_dashboard" },
-        id: 1,
-      }),
-      next: { revalidate: 0 },
-      cache: "no-store",
-    });
+    if (!result.ok || !result.data) {
+      throw new Error(result.error || "SOV3 dashboard unavailable");
+    }
 
-    if (!sov3.ok) throw new Error(`SOV3 status ${sov3.status}`);
-
-    const json = (await sov3.json()) as {
-      result?: { content?: Array<{ type?: string; text?: string }> };
-    };
-    const text = json.result?.content?.[0]?.text;
-    if (!text) throw new Error("No dashboard text");
-
-    const dashboard = JSON.parse(text) as {
-      recent_events?: Array<{ time?: string; type?: string; agent?: string; task_id?: string }>;
-    };
-
-    const events = (dashboard.recent_events ?? [])
+    const events = (result.data.recent_events ?? [])
       .slice(0, 8)
       .map((e, i) => sov3EventToStreamEvent(e, i));
 
-    if (events.length === 0) throw new Error("No events");
+    if (events.length === 0) {
+      throw new Error("No recent events from SOV3");
+    }
 
     return NextResponse.json(events, {
       headers: { "Cache-Control": "no-store, max-age=0" },
     });
-  } catch {
+  } catch (err) {
+    console.error("[events/stream] falling back to simulated events:", err);
     return NextResponse.json(FALLBACK_EVENTS, {
       headers: { "Cache-Control": "no-store, max-age=0" },
     });
