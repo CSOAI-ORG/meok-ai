@@ -174,6 +174,18 @@ const nextConfig: NextConfig = {
   async headers() {
     return [
       {
+        source: "/ar/:path*",
+        headers: [
+          { key: "Permissions-Policy", value: "camera=(self), microphone=(self), geolocation=(self)" },
+        ],
+      },
+      {
+        source: "/go/:path*",
+        headers: [
+          { key: "Permissions-Policy", value: "camera=(self), microphone=(), geolocation=(self)" },
+        ],
+      },
+      {
         source: "/(.*)",
         headers: [
           { key: "X-DNS-Prefetch-Control", value: "on" },

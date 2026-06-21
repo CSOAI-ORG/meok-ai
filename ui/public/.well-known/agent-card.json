@@ -28,7 +28,7 @@
     {
       "id": "agent-quarters",
       "name": "Agent Quarters",
-      "description": "Discover 145+ MEOK agents via A2A Agent Cards.",
+      "description": "Discover 145+ MEOK agents via A2A Agent Cards at /agent-card/{slug}.",
       "tags": ["a2a", "agents", "discovery"]
     },
     {

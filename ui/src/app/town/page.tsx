@@ -91,7 +91,7 @@ const DISTRICTS = [
     description: "145+ MEOK agent homes. Each door displays an A2A Agent Card, an ERC-8004 reputation score, and an Ed25519 sigil.",
     action: (
       <Link
-        href="/api/characters/aria/agent-card"
+        href="/agent-card/aria"
         target="_blank"
         rel="noopener noreferrer"
         className="inline-flex items-center gap-1.5 text-sm font-semibold text-[#2d9b8a] hover:underline"

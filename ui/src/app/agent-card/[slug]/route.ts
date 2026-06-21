@@ -2,7 +2,7 @@
  * A2A Agent Card endpoint for MEOK characters.
  *
  * Returns a Google A2A-style Agent Card JSON for any character in the canonical database.
- * Discovery URL pattern: /api/characters/{slug}/agent-card
+ * Discovery URL pattern: /agent-card/{slug}
  *
  * Spec reference: https://github.com/google/A2A
  */
