@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Home, Mountain, Cloud, Orbit, Sparkles, Scale, Users, Landmark, MapPin, ScrollText, Rocket, Gamepad2, Bot, Plane, Satellite, Anchor, ArrowRight, Globe, Cpu, Wallet, TrendingUp } from "lucide-react";
+import { Home, Mountain, Cloud, Orbit, Sparkles, Scale, Users, Landmark, MapPin, ScrollText, Rocket, Gamepad2, Bot, Plane, Satellite, Anchor, ArrowRight, Globe, Cpu, Wallet, TrendingUp, Building2, Share2 } from "lucide-react";
 import { FeatureCard } from "@/components/design-system/feature-card";
 import { StatCard } from "@/components/design-system/stat-card";
 import { Surface } from "@/components/design-system/surface";
@@ -100,6 +100,7 @@ const DISTRICTS = [
 ];
 
 const PORTALS = [
+  { href: "/town", icon: "🏘️", label: "MEOK Town", desc: "MCP buildings & A2A roads", color: "#c9a84c" },
   { href: "/universe", icon: "🌍", label: "MEOK Universe", desc: "The sovereign AI world vision", color: "#c9a84c" },
   { href: "/go", icon: "🗺️", label: "MEOK GO", desc: "Real-world character overlay", color: "#2d9b8a" },
   { href: "/pioneer", icon: "🚀", label: "Pioneer Program", desc: "Become a founding citizen", color: "#3b82f6" },
@@ -118,6 +119,7 @@ const VEHICLES = [
 const RESEARCH_LINKS = [
   { label: "MEOK Universe Whitepaper", url: "https://github.com/CSOAI-ORG/clawd-workspace/blob/main/MEOK_UNIVERSE_WHITEPAPER.md" },
   { label: "Pioneer Program 90-Day Roadmap", url: "https://github.com/CSOAI-ORG/clawd-workspace/blob/main/MEOK_PIONEER_PROGRAM_90DAY.md" },
+  { label: "MCP + A2A Town Architecture", url: "https://github.com/CSOAI-ORG/clawd-workspace/blob/main/meok-universe/research/mcp_a2a_town_integration.md" },
   { label: "Research seeds", url: "https://github.com/CSOAI-ORG/clawd-workspace/tree/main/meok-universe/research" },
   { label: "Earth + Space master doc", url: "https://github.com/CSOAI-ORG/clawd-workspace/blob/main/meok-universe/research/meok_earth_space_master.md" },
 ];
@@ -169,6 +171,30 @@ export default function DomePage() {
           <StatCard label="Council Sessions" value="Live" glow="gold" icon={<Landmark size={20} />} />
           <StatCard label="Pioneer Plots" value="1,240 / 10,000" glow="blue" icon={<MapPin size={20} />} />
           <StatCard label="Research Seeds" value="8" change="whitepapers in progress" changeType="positive" glow="purple" icon={<ScrollText size={20} />} />
+        </div>
+      </section>
+
+      {/* PROTOCOL LAYER */}
+      <section className="mx-auto max-w-6xl px-6 pb-24">
+        <div className="mb-10 text-center">
+          <h2 className="text-3xl font-bold md:text-4xl">Protocol Town Layer</h2>
+          <p className="mx-auto mt-4 max-w-2xl text-white/60">
+            MEOK Town renders the agentic internet as a city: MCP servers as buildings, A2A links as roads, and protocol health as building condition.
+          </p>
+        </div>
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          <StatCard label="MCP Buildings" value="290+" glow="gold" icon={<Building2 size={20} />} />
+          <StatCard label="A2A Agents" value="47" glow="teal" icon={<Share2 size={20} />} />
+          <StatCard label="Game Modes" value="4" glow="purple" icon={<Gamepad2 size={20} />} />
+          <StatCard label="Scoreboard" value="Live" glow="green" icon={<TrendingUp size={20} />} />
+        </div>
+        <div className="mt-8 text-center">
+          <Link
+            href="/town"
+            className="inline-flex items-center gap-2 rounded-xl border border-white/20 bg-white/5 px-6 py-3 font-semibold text-white transition hover:bg-white/10"
+          >
+            Walk into MEOK Town <ArrowRight size={16} />
+          </Link>
         </div>
       </section>
 

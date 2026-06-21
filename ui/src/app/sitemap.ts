@@ -5,6 +5,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const highValue = [
     '',
+    '/town',
     '/scorecard',
     '/fine-calculator',
     '/audit-prep-bundle',

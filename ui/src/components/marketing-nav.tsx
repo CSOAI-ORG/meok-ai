@@ -39,6 +39,7 @@ const NAV_PILLARS: NavPillar[] = [
     accentColor: GOLD,
     items: [
       { href: "/universe", icon: "🌍", label: "MEOK Universe", desc: "The sovereign AI world vision" },
+      { href: "/town", icon: "🏘️", label: "MEOK Town", desc: "MCP buildings & A2A roads" },
       { href: "/dome", icon: "🌐", label: "MEOK DOME", desc: "Central world hub & live map" },
       { href: "/pioneer", icon: "🚀", label: "Pioneer Program", desc: "Become a founding citizen" },
       { href: "/go", icon: "🗺️", label: "MEOK GO", desc: "Real-world character overlay" },

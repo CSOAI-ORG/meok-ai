@@ -3,7 +3,7 @@ import Link from "next/link";
 import { FeatureCard } from "@/components/design-system/feature-card";
 import { StatCard } from "@/components/design-system/stat-card";
 import { Surface } from "@/components/design-system/surface";
-import { Globe, MapPin, Rocket, Wallet, TrendingUp, Radio } from "lucide-react";
+import { Globe, MapPin, Rocket, Wallet, TrendingUp, Radio, Building2, Share2, ShieldCheck, ArrowRight, ExternalLink, Landmark, FileText, Gamepad2 } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "MEOK UNIVERSE — A Sovereign World for Humans, AI & Machines",
@@ -209,6 +209,93 @@ export default function UniversePage() {
           {PILLARS.map((p) => (
             <FeatureCard key={p.title} title={p.title} description={p.description} iconVariant={p.iconVariant} glow={p.iconVariant} />
           ))}
+        </div>
+      </section>
+
+      {/* INTEGRATED TOWN ARCHITECTURE */}
+      <section className="mx-auto max-w-6xl px-6 py-20">
+        <div className="mb-12 text-center">
+          <h2 className="text-3xl font-bold md:text-4xl">Integrated Town Architecture</h2>
+          <p className="mx-auto mt-4 max-w-2xl text-white/60">
+            MEOK Town makes the agentic internet tangible: MCP servers become buildings, A2A links become roads, and players test protocols for rewards.
+          </p>
+        </div>
+
+        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          {[
+            { title: "MCP City", icon: Building2, desc: "290+ buildings = 290+ MCP servers. Scoreboard ranks health; quests reward bug finds." },
+            { title: "Agent Quarters", icon: Share2, desc: "47 agent homes with A2A Agent Cards, ERC-8004 reputation, and Ed25519 sigils." },
+            { title: "Governance Hall", icon: Landmark, desc: "BFT Council chamber, voting system, compliance dashboard, permanent Arweave audit log." },
+            { title: "Payment Hub", icon: Wallet, desc: "x402 + Google AP2 revenue rails. Players earn when they improve protocol health." },
+            { title: "Patent Office", icon: FileText, desc: "openpatent.ai integration for prior-art search and invention protection." },
+            { title: "Game Modes", icon: Gamepad2, desc: "Town Admin, Protocol Wars, Great Interop, and Playground — solo, PvP, co-op, sandbox." },
+          ].map((card) => (
+            <Surface key={card.title} variant="glass" className="p-5">
+              <div className="mb-3 flex h-10 w-10 items-center justify-center rounded-xl bg-white/[0.05] text-[#c9a84c]">
+                <card.icon size={20} />
+              </div>
+              <h3 className="font-semibold text-white">{card.title}</h3>
+              <p className="mt-1 text-sm text-white/60">{card.desc}</p>
+            </Surface>
+          ))}
+        </div>
+
+        <div className="mt-10 text-center">
+          <Link
+            href="/town"
+            className="inline-flex items-center gap-2 rounded-xl border border-white/20 bg-white/5 px-6 py-3 font-semibold text-white transition hover:bg-white/10"
+          >
+            Explore MEOK Town <ArrowRight size={16} />
+          </Link>
+        </div>
+      </section>
+
+      {/* 20 GAPS TEASER */}
+      <section className="mx-auto max-w-6xl px-6 pb-24">
+        <div className="mb-12 text-center">
+          <h2 className="text-3xl font-bold md:text-4xl">20 Gaps We're Closing</h2>
+          <p className="mx-auto mt-4 max-w-2xl text-white/60">
+            The agentic internet is missing standards for identity, payment, reputation, and permanent audit. MEOK Town integrates them as districts.
+          </p>
+        </div>
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          {[
+            { label: "A2A Protocol", detail: "Google's Agent-to-Agent standard" },
+            { label: "AGNTCY / AAIF", detail: "Linux Foundation standards body" },
+            { label: "TEE Attestation", detail: "Verifiable agent execution" },
+            { label: "ERC-8004", detail: "On-chain agent reputation" },
+            { label: "Arweave", detail: "Permanent audit storage" },
+            { label: "Akash", detail: "Decentralized compute" },
+            { label: "FIDO Agentic Auth", detail: "Agent identity working group" },
+            { label: "+13 more", detail: "Agent Cards, AP2, Ceramic, SLIM..." },
+          ].map((gap) => (
+            <Surface key={gap.label} variant="elevated" className="p-5">
+              <div className="flex items-center gap-2 text-[#c9a84c]">
+                <ShieldCheck size={16} />
+                <span className="text-xs font-bold uppercase tracking-wider">Gap</span>
+              </div>
+              <div className="mt-2 font-semibold">{gap.label}</div>
+              <p className="mt-1 text-sm text-white/60">{gap.detail}</p>
+            </Surface>
+          ))}
+        </div>
+        <div className="mt-8 flex flex-wrap justify-center gap-4">
+          <Link
+            href="https://github.com/CSOAI-ORG/clawd-workspace/blob/main/meok-universe/research/csoai_missing_tools.md"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 rounded-xl border border-white/20 bg-white/5 px-6 py-3 font-semibold text-white transition hover:bg-white/10"
+          >
+            Read the gap analysis <ExternalLink size={16} />
+          </Link>
+          <Link
+            href="https://github.com/CSOAI-ORG/clawd-workspace/blob/main/meok-universe/research/openpatent_strategy.md"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 rounded-xl border border-white/20 bg-white/5 px-6 py-3 font-semibold text-white transition hover:bg-white/10"
+          >
+            OpenPatent strategy <ExternalLink size={16} />
+          </Link>
         </div>
       </section>
 
