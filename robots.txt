@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+# CCBot allowed 2026-06-16 D21
+User-agent: CCBot
+Allow: /

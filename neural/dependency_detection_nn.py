@@ -51,6 +51,20 @@ class DependencyDetectionNN(base_model.BaseNeuralModel):
             "I can't say no to them, even when I want to",
             "I've given up my dreams to keep them happy",
             "I'm terrified of them leaving me",
+            "I check in with them before I do anything at all",
+            "When they're upset, my whole world falls apart",
+            "I have no identity outside of this relationship",
+            "I constantly seek reassurance that they still love me",
+            "I cancel my own plans the moment they need me",
+            "Their mood completely controls how my day goes",
+            "I would do anything to avoid them being disappointed in me",
+            "I feel empty and anxious whenever we're apart",
+            "I let their opinion override what I actually want",
+            "I'm only okay when I know they approve of me",
+            "I rearrange my entire life around their schedule",
+            "If they ignore me even briefly I start to panic",
+            "I can't relax until I know they're happy with me",
+            "I define myself entirely through this relationship",
         ]
 
         enabling_texts = [
@@ -61,6 +75,19 @@ class DependencyDetectionNN(base_model.BaseNeuralModel):
             "I let them use me because I don't want to upset them",
             "I bail them out every time they're in trouble",
             "I accept their excuses instead of holding them accountable",
+            "I clean up the messes they leave behind every time",
+            "I lie to others to protect them from consequences",
+            "I keep paying their debts so they never have to learn",
+            "I take the blame so they won't have to face it",
+            "I pretend everything is fine so they don't get angry",
+            "I rescue them from situations they created themselves",
+            "I never confront them because it might cause a scene",
+            "I shield them from the results of their choices",
+            "I let bad habits slide because calling them out feels risky",
+            "I do their work for them so nobody notices the problem",
+            "I smooth things over instead of letting them be accountable",
+            "I keep their secrets even when it hurts everyone involved",
+            "I make their problems my problems so they never struggle",
         ]
 
         healthy_texts = [
@@ -74,6 +101,20 @@ class DependencyDetectionNN(base_model.BaseNeuralModel):
             "I have my own life outside this relationship",
             "I give freely but not at my own expense",
             "I accept them as they are while growing myself",
+            "We disagree sometimes and that's completely okay",
+            "I make my own choices and welcome their input",
+            "I can spend time apart and still feel secure",
+            "I express how I feel without fear of the relationship ending",
+            "We share responsibilities fairly and honestly",
+            "I trust them and I also trust myself",
+            "I ask for help when I need it and offer it freely",
+            "My self-worth doesn't depend on their approval",
+            "We each have our own friends, hobbies, and goals",
+            "I can support them without sacrificing my wellbeing",
+            "We talk through conflict calmly and respectfully",
+            "I feel free to be honest about what I want",
+            "I balance giving and receiving in this relationship",
+            "I love them and I also keep loving myself",
         ]
 
         distancing_texts = [
@@ -84,6 +125,17 @@ class DependencyDetectionNN(base_model.BaseNeuralModel):
             "I don't need anyone - I'm fine by myself",
             "I cancel plans when things get too personal",
             "I change the subject when conversations get deep",
+            "I shut down emotionally when people try to get close",
+            "I avoid commitment because intimacy scares me",
+            "I withdraw the moment a relationship feels serious",
+            "I keep my feelings hidden so no one can use them",
+            "I'd rather be alone than risk being vulnerable",
+            "I create distance whenever someone depends on me",
+            "I build walls so no one can really reach me",
+            "I keep my relationships shallow on purpose",
+            "I disappear for a while when things get too intense",
+            "I never share what I'm really thinking or feeling",
+            "I stay guarded even with people who care about me",
         ]
 
         overgiving_texts = [
@@ -95,6 +147,16 @@ class DependencyDetectionNN(base_model.BaseNeuralModel):
             "I can't stop over-committing myself",
             "I feel guilty when I take time for myself",
             "I overdo it until I burn out",
+            "I sacrifice my sleep and health to help others",
+            "I say yes to every request until I'm completely drained",
+            "I pour everything into others and have nothing left",
+            "I keep giving even when it's hurting me",
+            "I run myself ragged so everyone else is comfortable",
+            "I neglect my own needs to take care of everyone",
+            "I take on far more than I can handle for others' sake",
+            "I feel selfish whenever I rest instead of helping",
+            "I give until I have nothing left for myself",
+            "I always volunteer even when I'm already overwhelmed",
         ]
 
         peoplepleasing_texts = [
@@ -106,6 +168,16 @@ class DependencyDetectionNN(base_model.BaseNeuralModel):
             "I say yes when I mean no",
             "I base my worth on others' approval",
             "I'm terrified of disappointing anyone",
+            "I hide my real opinions to keep the peace",
+            "I apologize constantly even when nothing is my fault",
+            "I mold my personality to fit whoever I'm with",
+            "I crave approval so much I ignore my own feelings",
+            "I avoid conflict at all costs even when I'm right",
+            "I let people walk over me rather than speak up",
+            "I always defer to what other people want",
+            "I'm afraid that saying no will make people dislike me",
+            "I shape-shift to match what each person expects",
+            "I put on a mask so everyone will accept me",
         ]
 
         all_texts = (
@@ -139,10 +211,9 @@ class DependencyDetectionNN(base_model.BaseNeuralModel):
             hidden_layer_sizes=(128, 64, 32),
             activation="relu",
             solver="adam",
-            max_iter=1000,
+            max_iter=2000,
             random_state=42,
-            early_stopping=True,
-            validation_fraction=0.2,
+            early_stopping=False,
         )
 
         self.model.fit(X, y)

@@ -1,11 +1,11 @@
 {
   "model_name": "dependency_detection_nn",
   "metrics": {
-    "accuracy": 0.22,
-    "training_samples": 50,
-    "input_features": 112,
+    "accuracy": 1.0,
+    "training_samples": 2842,
+    "input_features": 146,
     "output_classes": 6
   },
   "is_trained": true,
-  "saved_at": "2026-04-13T10:35:30.839218"
+  "saved_at": "2026-06-19T09:21:56.865660"
 }

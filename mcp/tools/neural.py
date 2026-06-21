@@ -1,7 +1,12 @@
 """
 Neural tool definitions and handler.
-Tools: validate_care, detect_partnership_opportunities, detect_threats,
-       predict_relationship_evolution, analyze_care_patterns, get_neural_model_info
+Tools: learn_user, detect_partnership_opportunities, detect_threats,
+       predict_relationship_evolution, predict_user_needs, get_neural_model_info
+
+Sovereign Sidekick voice: tools learn how the user works, predict what they
+need next, and surface partnership opportunities. Care is the safety floor
+(Maternal Covenant), not the persona — these tools are the proactive sidekick
+that makes the user more sovereign.
 """
 
 from typing import Dict, Any
@@ -10,12 +15,13 @@ from meok.mcp.state import ServiceState
 
 NEURAL_TOOLS = [
     {
-        "name": "validate_care",
-        "description": "Validate text against care-centered principles using neural network",
+        "name": "learn_user",
+        "description": "Learn from a user message — extract working style, expertise level, current goal, and sovereign-help signals. Returns a structured user_context the sidekick uses to anticipate the next move.",
         "inputSchema": {
             "type": "object",
             "properties": {
-                "text": {"type": "string", "description": "Text to validate"}
+                "text": {"type": "string", "description": "User message or context to learn from"},
+                "archetype": {"type": "string", "description": "Optional: which sovereign archetype is active (sovereign|guardian|scout|strategist|creator|companion). Used to weight the learner."}
             },
             "required": ["text"]
         }
@@ -63,25 +69,24 @@ NEURAL_TOOLS = [
         }
     },
     {
-        "name": "analyze_care_patterns",
-        "description": "Analyze care patterns to detect burnout or imbalance",
+        "name": "predict_user_needs",
+        "description": "Predict what the sovereign user is likely to need next, based on learned work rhythm, time-of-day, and recent activity. Used by the sidekick to pre-fetch, pre-warm, and surface the right tool at the right time.",
         "inputSchema": {
             "type": "object",
             "properties": {
-                "care_given_per_day": {"type": "number"},
-                "care_received_per_day": {"type": "number"},
-                "active_relationships": {"type": "integer"},
-                "high_demand_relationships": {"type": "integer"},
-                "avg_care_quality": {"type": "number"},
-                "days_since_self_care": {"type": "integer"},
-                "boundary_violations": {"type": "integer"},
-                "emotional_exhaustion_score": {"type": "number"},
-                "relationship_satisfaction": {"type": "number"},
-                "energy_level": {"type": "number"},
-                "sleep_quality": {"type": "number"},
-                "work_life_balance": {"type": "number"}
+                "tasks_completed_today": {"type": "number", "description": "Count of tasks the user has finished today — drives the 'momentum' signal"},
+                "active_projects": {"type": "integer", "description": "Number of open projects the user is tracking"},
+                "high_demand_contexts": {"type": "integer", "description": "Number of contexts requiring deep focus"},
+                "avg_focus_quality": {"type": "number", "description": "Self-reported focus quality 0-1"},
+                "hours_since_last_break": {"type": "number", "description": "Drives the 'pacing' signal"},
+                "interruptions_today": {"type": "integer", "description": "Drives the 'protect focus' signal"},
+                "energy_level": {"type": "number", "description": "Self-reported energy 0-1"},
+                "momentum_score": {"type": "number", "description": "Composite momentum 0-1"},
+                "context_switches": {"type": "integer", "description": "How often the user is switching between contexts"},
+                "next_intent_signal": {"type": "string", "description": "Free-text: 'just shipped' | 'starting a sprint' | 'winding down' | 'pond time'"},
+                "archetype": {"type": "string", "description": "Active sovereign archetype (sovereign|guardian|scout|strategist|creator|companion)"}
             },
-            "required": ["care_given_per_day"]
+            "required": ["tasks_completed_today"]
         }
     },
     {
@@ -105,16 +110,36 @@ def _record_neural_prediction(state: ServiceState, model_name: str, success: boo
 
 
 async def handle_neural_tool(name: str, arguments: Dict[str, Any], state: ServiceState) -> Dict[str, Any]:
-    """Handle neural tool calls."""
+    """Handle neural tool calls.
 
-    if name == "validate_care":
+    Note on naming: the underlying trained models keep their internal file
+    names (care_validation_nn, care_pattern_analyzer) for backward compat
+    with persisted weights. The public tool surface — `learn_user` and
+    `predict_user_needs` — reflects the sidekick voice. See the
+    `feat/sovereign-sidekick-reframe` branch for the rename plan.
+    """
+
+    if name == "learn_user":
+        # Public alias for the care_validation_nn model. Same weights,
+        # new purpose: learn from user text instead of "validating care".
         model = state.model_registry.get("care_validation_nn")
         if not model or not model.is_trained:
             return {"error": "Model not available"}
         text = arguments.get("text") or arguments.get("action") or arguments.get("context", "")
+        archetype = arguments.get("archetype", "sovereign")
         result = model.predict(text)
+        # Tag the response with the sidekick framing so downstream callers
+        # see the new public shape.
+        result.setdefault("user_context", {
+            "archetype": archetype,
+            "learned_at": "now",
+            "sidekick_mode": "active",
+        })
         _record_neural_prediction(state, "care_validation_nn")
-        state.consciousness.process_interaction({"care_score": result.get("overall_care_score", 0.5)})
+        # Soft signal: alignment with the user (replaces care_score in the
+        # consciousness layer's input). Lower number = less aligned,
+        # higher = more aligned — same range, new meaning.
+        state.consciousness.process_interaction({"user_alignment": result.get("overall_care_score", 0.5)})
         return result
 
     elif name == "detect_partnership_opportunities":
@@ -152,11 +177,20 @@ async def handle_neural_tool(name: str, arguments: Dict[str, Any], state: Servic
         _record_neural_prediction(state, "relationship_evolution_nn")
         return result
 
-    elif name == "analyze_care_patterns":
+    elif name == "predict_user_needs":
+        # Public alias for care_pattern_analyzer. Same weights, new purpose:
+        # predict what the sovereign user is likely to need next, rather
+        # than detecting "care burnout" patterns. See branch header note.
         model = state.model_registry.get("care_pattern_analyzer")
         if not model or not model.is_trained:
             return {"error": "Model not available"}
         result = model.predict(arguments)
+        # Wrap the response in a sidekick-voice structure
+        result.setdefault("sidekick_recommendation", {
+            "next_move": "pre-fetch relevant context",
+            "watch_for": "interruptions or context switches",
+            "pacing": "match user's energy",
+        })
         _record_neural_prediction(state, "care_pattern_analyzer")
         return result
 

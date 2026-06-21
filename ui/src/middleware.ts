@@ -67,6 +67,24 @@ const clerkWithRateLimit = clerkMiddleware(async (auth, req) => {
 const guardedMiddleware = hasValidClerk ? clerkWithRateLimit : passthroughMiddleware;
 
 export default function middleware(req: NextRequest, event: unknown) {
+  // Health probe MUST be served from the edge and must NOT be proxied to the
+  // M2 backend (the BACKEND env URL is still a placeholder and returns 403).
+  if (req.nextUrl.pathname === '/api/health') {
+    return new Response(
+      JSON.stringify({
+        status: 'healthy',
+        service: 'meok-ui',
+        timestamp: new Date().toISOString(),
+      }),
+      {
+        status: 200,
+        headers: {
+          'Content-Type': 'application/json',
+          'Cache-Control': 'no-store',
+        },
+      }
+    );
+  }
   // ALL /api/* paths bypass Clerk — Clerk's edge middleware 403s on kid-mismatch
   // or when keys are rotated. Auth lives in the route handlers themselves
   // (api-auth.ts) so /api/* always serves.

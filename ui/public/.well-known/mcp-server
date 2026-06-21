@@ -1,0 +1,66 @@
+{
+  "mcpVersion": "1.0.0",
+  "serverInfo": {
+    "name": "meok-ai",
+    "version": "1.0.0",
+    "description": "MEOK sovereign AI OS and 294+ MCP compliance fleet (EU AI Act, DORA, NIS2, CRA, GDPR, ISO 42001, SOC 2, HIPAA). Audits emit HMAC + Ed25519 signed attestations with public verify URLs."
+  },
+  "capabilities": {
+    "tools": true,
+    "resources": true,
+    "prompts": false
+  },
+  "tools": [
+    {
+      "name": "eu-ai-act-audit",
+      "description": "Run an EU AI Act risk classification + article-by-article audit with signed attestation output.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "system": { "type": "string", "description": "Name or identifier of the AI system" },
+          "use_case": { "type": "string", "description": "Description of the AI use case" }
+        },
+        "required": ["system", "use_case"]
+      }
+    },
+    {
+      "name": "attestation-verify",
+      "description": "Verify a MEOK attestation offline using the Ed25519 public key.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "cert_id": { "type": "string", "description": "The certificate ID to verify" }
+        },
+        "required": ["cert_id"]
+      }
+    },
+    {
+      "name": "compliance-catalogue",
+      "description": "List the 294+ MCP servers in the MEOK compliance fleet.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {}
+      }
+    }
+  ],
+  "resources": [
+    {
+      "uri": "https://www.meok.ai/llms.txt",
+      "name": "MEOK LLMs.txt",
+      "description": "Discovery manifest for LLM agents.",
+      "mimeType": "text/plain"
+    },
+    {
+      "uri": "https://www.meok.ai/sitemap.xml",
+      "name": "MEOK Sitemap",
+      "description": "Index of public MEOK pages.",
+      "mimeType": "application/xml"
+    },
+    {
+      "uri": "https://www.proofof.ai/pubkey",
+      "name": "MEOK Ed25519 Public Key",
+      "description": "Offline attestation verification key.",
+      "mimeType": "text/plain"
+    }
+  ]
+}

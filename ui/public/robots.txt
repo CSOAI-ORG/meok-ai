@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://meok.ai/sitemap.xml

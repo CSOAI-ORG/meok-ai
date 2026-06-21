@@ -10,9 +10,27 @@ export const metadata: Metadata = {
   },
 };
 
+const TECH_ARTICLE_JSONLD = {
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  headline: "MEOK Technology Stack",
+  name: "MEOK Technology Stack",
+  description:
+    "100+ sovereign tools, 11 master hives, 178 meok.ai routes, 977 Vercel functions, 200+ MCP servers. SOV3 sovereign substrate, 13-framework compliance substrate, and Ed25519 sigil-chain audit substrate.",
+  url: "https://meok.ai/technology",
+  author: { "@type": "Organization", name: "MEOK AI Labs" },
+  publisher: { "@type": "Organization", name: "MEOK AI Labs" },
+  about: [
+    { "@type": "Thing", name: "Sovereign AI substrate" },
+    { "@type": "Thing", name: "Regulatory compliance substrate" },
+    { "@type": "Thing", name: "Cryptographic audit substrate" },
+  ],
+};
+
 export default function Page() {
   return (
     <main className="min-h-screen bg-white text-slate-900">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(TECH_ARTICLE_JSONLD) }} />
       <section className="max-w-5xl mx-auto px-6 py-20">
         <h1 className="text-5xl font-bold bg-gradient-to-r from-violet-700 to-blue-700 bg-clip-text text-transparent">MEOK Technology Stack</h1>
         <p className="text-xl text-slate-600 mt-6">100+ sovereign tools. 11 master hives. 178 meok.ai routes. 977 Vercel functions. 200+ MCP servers.</p>

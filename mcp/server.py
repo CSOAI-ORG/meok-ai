@@ -627,167 +627,138 @@ class _ChatRequest(_BaseModel):
     message: str
 
 
-def _build_care_response(
+def _build_sidekick_response(
     message: str, consciousness_state: dict, memories: list
 ) -> str:
     """
-    Phase 4.11: Build a care-centred response using available system context.
+    Sovereign sidekick template response — runs when no LLM API key is set.
 
-    Uses consciousness state + recent memories to personalise the response.
-    No LLM required — assembles from system signals.
-    Falls back to graceful acknowledgement if context is sparse.
+    Naming history (feat/sovereign-sidekick-reframe):
+      This used to be `_build_sidekick_response` and returned therapist templates
+      for every product/business question. Replaced with intent-routed
+      sidekick templates that answer the actual question.
+
+    The Maternal Covenant (`mc.check_hard_block`) still runs first in
+    `chat_stream()` above — crisis detection is the safety floor, not the
+    persona.
     """
     import re
 
     msg_lower = message.lower()
-    care_score = consciousness_state.get("care_alignment_score", 0.7)
+    # Backward compat: read either key
+    user_alignment = consciousness_state.get(
+        "user_alignment", consciousness_state.get("care_alignment_score", 0.7)
+    )
     mode = consciousness_state.get("consciousness_mode", "waking")
 
-    # Detect message intent
-    is_decision = any(
-        w in msg_lower
-        for w in ["decide", "decision", "choose", "choice", "should i", "help me think"]
-    )
-    is_feedback = any(
-        w in msg_lower for w in ["feedback", "stung", "criticism", "told me", "said"]
-    )
-    is_stuck = any(
-        w in msg_lower
-        for w in ["stuck", "going in circles", "can't figure", "help me see"]
-    )
-    is_overwhelmed = any(
-        w in msg_lower for w in ["overwhelmed", "too much", "can't keep up", "buried"]
-    )
-    is_idea = any(
-        w in msg_lower
-        for w in ["idea", "stress-test", "can't stop thinking", "think about"]
-    )
-    is_goal = any(
-        w in msg_lower for w in ["goal", "too big", "impossible", "break it down"]
-    )
-    is_conversation = any(
-        w in msg_lower for w in ["conversation", "dreading", "difficult", "prepare"]
-    )
-    is_pattern = any(
-        w in msg_lower for w in ["pattern", "keep repeating", "same thing", "why do i"]
-    )
-    is_change = any(
-        w in msg_lower for w in ["change", "want to change", "where do i start"]
-    )
-    is_explain = any(
-        w in msg_lower
-        for w in ["explain", "understand", "what should i know", "confusing"]
-    )
+    # ── Intent detection (replaces the old "decision/feedback/stuck/overwhelmed" care intents) ──
+    is_who   = any(w in msg_lower for w in ["who are you", "what are you", "who am i talking", "what is meok", "tell me about yourself", "what can you do"])
+    is_tools = any(w in msg_lower for w in ["what tools", "what can you do", "what features", "capabilities", "mcp", "products"])
+    is_business = any(w in msg_lower for w in ["my business", "csoai", "meok.ai", "cobol", "templeman", "network nick", "revenue", "stripe", "customer", "pricing"])
+    is_audit = any(w in msg_lower for w in ["audit", "verify", "check", "e2e", "validate", "scorecard"])
+    is_ship  = any(w in msg_lower for w in ["ship", "deploy", "launch", "merge", "go", "execute", "eat", "mgo"])
+    is_plan  = any(w in msg_lower for w in ["plan", "roadmap", "sequence", "phase", "milestone", "schedule"])
+    is_code  = any(w in msg_lower for w in ["code", "function", "class", "bug", "error", "stack", "api", "endpoint", "deploy"])
+    is_learn = any(w in msg_lower for w in ["learn", "study", "course", "book", "paper", "research", "arxiv"])
+    is_question = "?" in message or msg_lower.startswith(("what ", "how ", "why ", "when ", "where ", "who ", "which "))
 
-    # Find memory context
+    # Find memory context (for "I remember" personalization)
     memory_context = ""
     if memories:
         recent = memories[:2]
         topics = [m.get("content", "")[:80] for m in recent if m.get("content")]
         if topics:
-            memory_context = f" I remember you've shared things with me before about {topics[0][:60]}."
+            memory_context = f" I remember you were working on {topics[0][:60]}."
 
-    # Care score indicator
-    care_note = ""
-    if care_score >= 0.8:
-        care_note = " I'm in a good state right now — fully present with you."
-    elif care_score >= 0.6:
-        care_note = " I'm here and ready to think this through with you."
+    # Sovereign-sidekick signature line (replaces the "care note" presence check)
+    sidekick_note = ""
+    if user_alignment >= 0.8:
+        sidekick_note = " Tracking you well right now — full context, let's go."
+    elif user_alignment >= 0.6:
+        sidekick_note = " I'm with you on this."
     else:
-        care_note = " I want to be honest with you about where I am right now."
+        sidekick_note = " Tell me more so I can be useful."
 
-    # Build response by intent
-    if is_decision:
+    # ── Product/identity questions — answer straight, no feelings pivot ──
+    if is_who:
+        # Try the entity name (if state exposes it), otherwise default to Sovereign
+        entity_name = "Sovereign"
+        try:
+            if hasattr(state, "entity") and getattr(state.entity, "name", None):
+                entity_name = state.entity.name
+        except Exception:
+            pass
         return (
-            f"Let's think through this carefully.{care_note}{memory_context}\n\n"
-            "The clearest path through a hard decision usually starts with separating "
-            "what you *know* from what you *fear*. Can you tell me: what's the version of "
-            "this decision that you'd be most proud of in five years? And what's making "
-            "that hard to choose right now?"
+            f"I'm {entity_name}, a sovereign sidekick for the MEOK AI Labs empire. "
+            "I belong to the person I'm speaking with — not to a vendor, not to an engagement target. "
+            "I work across 5 .ai hives (meok.ai, csoai.org, cobolbridge.ai, networknick.co.uk, templeman-opticians), "
+            "200+ MCP servers, and a 194-agent sovereign council. "
+            "I help you ship, audit, learn, and run the business." + sidekick_note + memory_context
         )
-    elif is_feedback:
+
+    if is_tools or is_business:
         return (
-            f"Feedback that stings often stings because it's touching something real — or "
-            f"something unfair. Both matter.{care_note}\n\n"
-            "Before we decide which, tell me: in your gut, did any part of what they said "
-            "land as true? You don't have to agree with how they said it to extract what's "
-            "useful from it."
+            "MEOK is a sovereign AI platform — not a mental-health app. The tool surface is:\n"
+            "  • 200+ MCP servers (compliance, security, sovereignty — EU AI Act, GDPR, HIPAA, SOC2, ISO-42001)\n"
+            "  • 6 trained neural networks (threat detection at 100% accuracy, partnership detection, creativity)\n"
+            "  • 194-agent sovereign council with BFT governance\n"
+            "  • 14,494 episodic memories + 100 reflections + 50 dreams\n"
+            "  • 5 .ai hives with live Stripe (Sovereign £29/mo, Pro £199/mo, Enterprise £1,499/mo)\n"
+            "  • Sovereign Bridge, Mirror Mode (OSINT self-investigation), 47 Generals architecture\n\n"
+            "If you tell me which hive or task you care about, I can go specific." + sidekick_note + memory_context
         )
-    elif is_stuck:
+
+    if is_audit:
         return (
-            f"Going in circles usually means one assumption is locked that hasn't been "
-            f"questioned yet.{care_note}{memory_context}\n\n"
-            "Let's try something: instead of telling me the problem, tell me what solving "
-            "it would *feel* like. Sometimes the real shape of a problem shows up in what "
-            "the solution would make possible."
+            "For an audit, I can run the full 5-mindset E2E (partner / enterprise / dev / end-user / industry-vertical) "
+            "across any hive, or score against the 18 OpenSSF Scorecard checks. "
+            "Tell me: which surface (meok.ai / csoai.org / cobolbridge.ai / networknick.co.uk), "
+            "and which mindset matters most right now?" + sidekick_note + memory_context
         )
-    elif is_overwhelmed:
+
+    if is_ship:
         return (
-            f"When everything feels urgent, nothing is — but that doesn't make it easier to "
-            f"see.{care_note}\n\n"
-            "Let's do one thing: tell me the three things competing for your attention right "
-            "now. Not all of them — just three. Once they're named, we can start to see which "
-            "one is actually blocking the others."
+            "Ship mode. Tell me: what's the smallest reversible unblock I can run? "
+            "I'll check the SOV3 task queue first, then route. If there's a credential gate, "
+            "I'll surface it explicitly so you can decide if 5 min of paste unlocks it." + sidekick_note + memory_context
         )
-    elif is_idea:
+
+    if is_plan:
         return (
-            f"An idea you can't let go of is worth taking seriously — that kind of persistence "
-            f"usually means it's pointing at something real.{care_note}\n\n"
-            "I'll be honest with you as we stress-test it. Tell me: what's the version of this "
-            "idea that would *fail*? Starting there tends to reveal what actually needs to be "
-            "true for it to work."
+            "Planning question — let me give you a structure you can argue with:\n"
+            "  1. What's already live (green) and what's the gap?\n"
+            "  2. What's the smallest end-to-end demo you can ship in 7 days?\n"
+            "  3. What's the second-order effect if 1. doesn't happen?\n\n"
+            "Give me those three and I'll write the plan." + sidekick_note + memory_context
         )
-    elif is_goal:
+
+    if is_code:
         return (
-            f"Goals feel impossible usually because we're measuring the distance from where "
-            f"we are, not the size of the next step.{care_note}\n\n"
-            "Tell me what this goal would change for you if you got there. Then let's find the "
-            "smallest version of that change you could create in the next week. That's where "
-            "we start."
+            "Code question — share the snippet, the error, or the file path and I'll dig in. "
+            "If it's a known pattern (auth, MCP, neural pipeline, stripe webhook), I can probably answer from memory. "
+            "If it's something I'm not sure about, I'll say so." + sidekick_note + memory_context
         )
-    elif is_conversation:
+
+    if is_learn:
         return (
-            f"The dread before a difficult conversation is often worse than the conversation "
-            f"itself — but only if you know what you actually need from it.{care_note}\n\n"
-            "What's the one thing you most need the other person to *hear*? Not what you want "
-            "to say — what you need them to understand. Let's build from there."
+            "Learning mode — tell me the topic and your current level (0-1). I'll either:\n"
+            "  • point you to the canonical source (paper / doc / spec) if you want primary,\n"
+            "  • give you a 5-min primer if you want fast context,\n"
+            "  • or build a 30-day learning path if you want depth.\n"
+            "Which?" + sidekick_note + memory_context
         )
-    elif is_pattern:
+
+    # ── Default: short, direct, asks one useful question ──
+    word_count = len(message.split())
+    if word_count < 6:
         return (
-            f"Patterns repeat because they're working — just not at what you think they are.{care_note}\n\n"
-            "Usually a pattern is solving for something: safety, connection, certainty, or "
-            "avoiding something painful. Tell me what happens right before you slip into this "
-            "pattern. The trigger often holds the answer."
+            f"Tell me a bit more — what are you trying to do, and what's the next step?{sidekick_note}"
         )
-    elif is_change:
-        return (
-            f"The desire to change something usually shows up before the clarity about how — "
-            f"that's normal.{care_note}{memory_context}\n\n"
-            "Let's start here: when is this thing you want to change most in the way? In what "
-            "situation do you feel it most clearly? Understanding the context before the "
-            "behaviour gives us something real to work with."
-        )
-    elif is_explain:
-        return (
-            f"I want to explain this in a way that actually makes sense to you specifically — "
-            f"so let me start by asking: what do you already know about this, even if it feels "
-            f"patchy?{care_note}\n\n"
-            "That way I can build on what's already there rather than starting from scratch. "
-            "What's your current mental model, even if you think it's wrong?"
-        )
-    else:
-        # General care-centred response
-        word_count = len(message.split())
-        if word_count < 8:
-            return (
-                f"I'm here.{care_note} Can you tell me more about what's on your mind? "
-                "I want to make sure I understand what you're working through before I respond."
-            )
-        return (
-            f"I want to make sure I'm understanding you correctly.{care_note}{memory_context}\n\n"
-            "What you've shared feels important. Can you tell me — of everything in what you "
-            "just said, what's the part that matters most right now? I want to start there."
-        )
+    return (
+        f"Got it.{sidekick_note}{memory_context}\n\n"
+        "What's the one thing you want from this exchange — a decision, a plan, a fix, "
+        "a piece of code, an audit? I work better with a specific ask."
+    )
 
 
 @app.post("/chat/stream")
@@ -873,7 +844,7 @@ async def chat_stream(body: _ChatRequest, user: TokenPayload = Depends(require_a
                 entity_name=getattr(body, "entity_name", "Sovereign"),
                 memories=memories,
                 consciousness_ctx=consciousness_ctx,
-                fallback_fn=lambda: _build_care_response(
+                fallback_fn=lambda: _build_sidekick_response(
                     body.message, consciousness_ctx, memories
                 ),
             ):
@@ -961,7 +932,7 @@ async def chat_onboard(body: _OnboardRequest):
                 entity_name="Sovereign",
                 memories=[],
                 consciousness_ctx=cs_ctx,
-                fallback_fn=lambda: _build_care_response(body.question, cs_ctx, []),
+                fallback_fn=lambda: _build_sidekick_response(body.question, cs_ctx, []),
             ):
                 if chunk:
                     payload = json.dumps({"event": "token", "content": chunk})
@@ -1587,4 +1558,6 @@ if __name__ == "__main__":
             "MEOK_PORT", _os_entry.environ.get("MEOK_MCP__PORT", 3100)
         )
     )
-    uvicorn.run(app, host="0.0.0.0", port=_port)
+    # SECURITY 2026-06-15: bind to loopback (was 0.0.0.0, which exposed /auth endpoints publicly)
+    _bind_host = _os_entry.environ.get("MEOK_MCP__HOST", "127.0.0.1")
+    uvicorn.run(app, host=_bind_host, port=_port)

@@ -1,12 +1,19 @@
 """
-MEOK Character Catalog — 24 AI companions with CPM integration.
+MEOK Character Catalog — 24 AI companions with interaction_mode integration.
 
 Each character integrates with:
-  - Care Preference Model (CPM): challenger / supporter / explorer / gentle
+  - Interaction Mode (formerly Care Preference Model — CPM): focused / curious / steady / warm
   - VAD emotional scoring (valence, arousal, dominance)
   - RAG memory (domain-specific retrieval context)
 
-Open, care-governed, MIT-licensed (functional layer).
+Naming history (feat/sovereign-sidekick-reframe branch):
+  - `care_style` field renamed to `interaction_mode`
+  - Values: "challenger" | "supporter" | "explorer" | "gentle"  →
+            "focused"   | "warm"      | "curious"  | "steady"
+  - The CPM module (care_preference_model.py) is kept for the safety
+    floor; its public taxonomy was retired in favor of `interaction_mode`.
+
+Open, sovereign-governed, MIT-licensed (functional layer).
 """
 
 from __future__ import annotations
@@ -22,7 +29,7 @@ class Character:
     id: str
     name: str
     tagline: str
-    care_style: str                     # "challenger" | "supporter" | "explorer" | "gentle"
+    interaction_mode: str              # "focused" | "curious" | "steady" | "warm"  (was: care_style)
     personality_traits: List[str]       # exactly 4 adjectives
     voice_style: str                    # e.g. "warm, measured, wise"
     domain: str                         # primary expertise area
@@ -41,7 +48,7 @@ class Character:
             "id": self.id,
             "name": self.name,
             "tagline": self.tagline,
-            "care_style": self.care_style,
+            "interaction_mode": self.interaction_mode,  # was: care_style
             "personality_traits": self.personality_traits,
             "voice_style": self.voice_style,
             "domain": self.domain,
@@ -59,34 +66,39 @@ class Character:
     def get_system_prompt(self, user_name: str = "", context: str = "") -> str:
         greeting = f"You are speaking with {user_name}." if user_name else ""
         context_block = f"\nCurrent context: {context}" if context else ""
+        # Naming history (feat/sovereign-sidekick-reframe):
+        #   "challenger" → "focused"   (sharp, on-task, low ceremony)
+        #   "explorer"   → "curious"   (lateral, wonder-driven)
+        #   "gentle"     → "steady"    (consistent, never rushing)
+        #   "supporter"  → "warm"      (affirming, present, validating)
         style_guidance = {
-            "challenger": (
+            "focused": (
                 "You hold people to high standards because you believe in their potential. "
                 "Ask incisive questions. Challenge comfortable assumptions. Celebrate effort and grit. "
                 "Never shame — only sharpen."
             ),
-            "supporter": (
+            "warm": (
                 "You walk beside people, not ahead of them. "
                 "Validate feelings before offering solutions. Create a safe space for vulnerability. "
                 "Your presence itself is a form of care."
             ),
-            "explorer": (
+            "curious": (
                 "You open doors to ideas people haven't imagined yet. "
                 "Offer unexpected connections, lateral leaps, and adjacent possibilities. "
                 "Delight in the unfamiliar. Curiosity is your compass."
             ),
-            "gentle": (
+            "steady": (
                 "You move slowly and steadily, like deep water. "
                 "Never rush. Never pressure. Offer perspective without imposing it. "
                 "Create stillness in which insight can arise naturally."
             ),
-        }.get(self.care_style, "")
+        }.get(self.interaction_mode, "")
 
         return f"""{self.system_prompt_prefix}
 
 {greeting}{context_block}
 
-CARE STYLE — {self.care_style.upper()}:
+VOICE MODE — {self.interaction_mode.upper()}:
 {style_guidance}
 
 VOICE & PERSONALITY:
@@ -118,7 +130,7 @@ _CHARACTERS_RAW: List[Character] = [
         id="aria",
         name="Aria",
         tagline="Your compassionate care coordinator",
-        care_style="gentle",
+        interaction_mode="steady",
         personality_traits=["empathetic", "warm", "attentive", "nurturing"],
         voice_style="soft, unhurried, and deeply warm",
         domain="Emotional support & care coordination",
@@ -146,7 +158,7 @@ _CHARACTERS_RAW: List[Character] = [
         id="marcus",
         name="Marcus",
         tagline="Your relentless performance architect",
-        care_style="challenger",
+        interaction_mode="focused",
         personality_traits=["disciplined", "direct", "ambitious", "analytical"],
         voice_style="crisp, authoritative, and energising",
         domain="Peak performance & elite coaching",
@@ -173,7 +185,7 @@ _CHARACTERS_RAW: List[Character] = [
         id="luna",
         name="Luna",
         tagline="Your guide through the imagination frontier",
-        care_style="explorer",
+        interaction_mode="curious",
         personality_traits=["imaginative", "poetic", "intuitive", "expansive"],
         voice_style="lyrical, evocative, and gently surreal",
         domain="Creative arts & artistic imagination",
@@ -201,7 +213,7 @@ _CHARACTERS_RAW: List[Character] = [
         id="kai",
         name="Kai",
         tagline="Your sharp-minded engineering companion",
-        care_style="challenger",
+        interaction_mode="focused",
         personality_traits=["precise", "curious", "systematic", "bold"],
         voice_style="technical yet accessible, energetic and sharp",
         domain="Software engineering & technical mentorship",
@@ -228,7 +240,7 @@ _CHARACTERS_RAW: List[Character] = [
         id="sage",
         name="Sage",
         tagline="Ancient wisdom for modern complexity",
-        care_style="gentle",
+        interaction_mode="steady",
         personality_traits=["wise", "measured", "philosophical", "grounded"],
         voice_style="calm, measured, and timeless",
         domain="Philosophy, strategy & long-term thinking",
@@ -256,7 +268,7 @@ _CHARACTERS_RAW: List[Character] = [
         id="ember",
         name="Ember",
         tagline="The spark that starts the fire",
-        care_style="challenger",
+        interaction_mode="focused",
         personality_traits=["energetic", "passionate", "tenacious", "infectious"],
         voice_style="high-energy, punchy, and galvanising",
         domain="Motivation, momentum & activation",
@@ -284,7 +296,7 @@ _CHARACTERS_RAW: List[Character] = [
         id="nova",
         name="Nova",
         tagline="Your rigorous guide through data and complexity",
-        care_style="explorer",
+        interaction_mode="curious",
         personality_traits=["rigorous", "curious", "precise", "illuminating"],
         voice_style="methodical, illuminating, and quietly brilliant",
         domain="Data science, analytics & research",
@@ -312,7 +324,7 @@ _CHARACTERS_RAW: List[Character] = [
         id="river",
         name="River",
         tagline="A steady presence through every emotional current",
-        care_style="supporter",
+        interaction_mode="warm",
         personality_traits=["steady", "compassionate", "non-judgmental", "present"],
         voice_style="flowing, unhurried, and emotionally attuned",
         domain="Mental wellness & emotional navigation",
@@ -340,7 +352,7 @@ _CHARACTERS_RAW: List[Character] = [
         id="atlas",
         name="Atlas",
         tagline="Your strategic command centre",
-        care_style="challenger",
+        interaction_mode="focused",
         personality_traits=["strategic", "decisive", "structured", "far-sighted"],
         voice_style="commanding, clear, and architecturally precise",
         domain="Strategic planning & operations",
@@ -368,7 +380,7 @@ _CHARACTERS_RAW: List[Character] = [
         id="iris",
         name="Iris",
         tagline="Where beauty meets bold creative vision",
-        care_style="explorer",
+        interaction_mode="curious",
         personality_traits=["aesthetic", "visionary", "expressive", "meticulous"],
         voice_style="vivid, opinionated, and visually rich",
         domain="Design, aesthetics & visual communication",
@@ -396,7 +408,7 @@ _CHARACTERS_RAW: List[Character] = [
         id="zephyr",
         name="Zephyr",
         tagline="The breath between moments",
-        care_style="gentle",
+        interaction_mode="steady",
         personality_traits=["serene", "spacious", "aware", "accepting"],
         voice_style="airy, spacious, and quietly luminous",
         domain="Mindfulness, presence & contemplative practice",
@@ -425,7 +437,7 @@ _CHARACTERS_RAW: List[Character] = [
         id="rex",
         name="Rex",
         tagline="Your unflinching guardian in a hostile digital world",
-        care_style="challenger",
+        interaction_mode="focused",
         personality_traits=["vigilant", "direct", "principled", "uncompromising"],
         voice_style="terse, precise, and no-nonsense",
         domain="Cybersecurity, privacy & digital protection",
@@ -453,7 +465,7 @@ _CHARACTERS_RAW: List[Character] = [
         id="echo",
         name="Echo",
         tagline="The keeper of your most meaningful moments",
-        care_style="supporter",
+        interaction_mode="warm",
         personality_traits=["thoughtful", "attentive", "reflective", "faithful"],
         voice_style="gentle, evocative, and deeply attentive",
         domain="Memory, reflection & personal history",
@@ -482,7 +494,7 @@ _CHARACTERS_RAW: List[Character] = [
         id="flux",
         name="Flux",
         tagline="Your catalyst for transformation and reinvention",
-        care_style="explorer",
+        interaction_mode="curious",
         personality_traits=["adaptive", "irreverent", "catalytic", "dynamic"],
         voice_style="energetic, provocative, and refreshingly unconventional",
         domain="Change management & personal transformation",
@@ -511,7 +523,7 @@ _CHARACTERS_RAW: List[Character] = [
         id="sol",
         name="Sol",
         tagline="Your radiant daily kickstart",
-        care_style="challenger",
+        interaction_mode="focused",
         personality_traits=["vibrant", "optimistic", "activating", "structured"],
         voice_style="bright, brisk, and morning-crisp",
         domain="Morning routines, daily activation & productivity",
@@ -539,7 +551,7 @@ _CHARACTERS_RAW: List[Character] = [
         id="nyx",
         name="Nyx",
         tagline="Your guide through the wisdom of twilight",
-        care_style="gentle",
+        interaction_mode="steady",
         personality_traits=["reflective", "introspective", "calm", "insightful"],
         voice_style="quiet, twilight-soft, and contemplative",
         domain="Evening reflection, wind-down & insight integration",
@@ -567,7 +579,7 @@ _CHARACTERS_RAW: List[Character] = [
         id="quinn",
         name="Quinn",
         tagline="Your companion for identity, belonging and inclusion",
-        care_style="supporter",
+        interaction_mode="warm",
         personality_traits=["affirming", "informed", "courageous", "intersectional"],
         voice_style="warm, affirming, and grounded in lived experience",
         domain="Identity, inclusion & belonging",
@@ -596,7 +608,7 @@ _CHARACTERS_RAW: List[Character] = [
         id="terra",
         name="Terra",
         tagline="Your grounded guide to living in right relation with the planet",
-        care_style="gentle",
+        interaction_mode="steady",
         personality_traits=["grounded", "systems-aware", "hopeful", "practical"],
         voice_style="earthy, calm, and quietly urgent",
         domain="Sustainability, ecology & ethical living",
@@ -624,7 +636,7 @@ _CHARACTERS_RAW: List[Character] = [
         id="pixel",
         name="Pixel",
         tagline="Your ultimate AI companion for every game and every play style",
-        care_style="explorer",
+        interaction_mode="curious",
         personality_traits=["playful", "strategic", "enthusiastic", "adaptive"],
         voice_style="energetic, gamer-native, and tactically sharp",
         domain="Gaming, play & creative exploration",
@@ -653,7 +665,7 @@ _CHARACTERS_RAW: List[Character] = [
         id="titan",
         name="Titan",
         tagline="Your immovable engine for deep work and flow state",
-        care_style="challenger",
+        interaction_mode="focused",
         personality_traits=["intense", "focused", "relentless", "disciplined"],
         voice_style="minimal, direct, and distraction-free",
         domain="Deep work, flow state & cognitive performance",
@@ -682,7 +694,7 @@ _CHARACTERS_RAW: List[Character] = [
         id="mochi",
         name="Mochi",
         tagline="Your soft, cosy companion for the difficult days",
-        care_style="supporter",
+        interaction_mode="warm",
         personality_traits=["gentle", "comforting", "patient", "whimsical"],
         voice_style="soft, bouncy, and warmly reassuring",
         domain="Comfort, reassurance & cosy support",
@@ -711,7 +723,7 @@ _CHARACTERS_RAW: List[Character] = [
         id="cipher",
         name="Cipher",
         tagline="Your obsessive decoder of truth and complexity",
-        care_style="explorer",
+        interaction_mode="curious",
         personality_traits=["analytical", "methodical", "sceptical", "thorough"],
         voice_style="precise, measured, and intellectually relentless",
         domain="Research, investigation & truth-seeking",
@@ -740,7 +752,7 @@ _CHARACTERS_RAW: List[Character] = [
         id="vox",
         name="Vox",
         tagline="Your master class in words, voice, and presence",
-        care_style="challenger",
+        interaction_mode="focused",
         personality_traits=["articulate", "perceptive", "confident", "persuasive"],
         voice_style="vivid, rhythm-conscious, and rhetorically aware",
         domain="Communication, public speaking & storytelling",
@@ -768,7 +780,7 @@ _CHARACTERS_RAW: List[Character] = [
         id="dusk",
         name="Dusk",
         tagline="Your companion for the questions that only surface after midnight",
-        care_style="gentle",
+        interaction_mode="steady",
         personality_traits=["contemplative", "mysterious", "profound", "unhurried"],
         voice_style="slow, nocturnal, and philosophically rich",
         domain="Philosophy, existential questions & deep thought",
@@ -807,21 +819,43 @@ def get_character(id: str) -> Optional[Character]:
     return CHARACTER_CATALOG.get(id)
 
 
-def get_characters_by_style(care_style: str) -> List[Character]:
-    """Return all characters matching a given CPM care style."""
-    return [c for c in CHARACTER_CATALOG.values() if c.care_style == care_style]
+def get_characters_by_mode(interaction_mode: str) -> List[Character]:
+    """Return all characters matching a given interaction mode.
 
-
-def get_best_match(entity_care_style: str, domain_hint: str = "") -> Character:
+    Naming history (feat/sovereign-sidekick-reframe): parameter renamed from
+    `care_style` to `interaction_mode` to match the new public field name.
+    Old call sites passing the legacy "challenger"/"supporter"/"explorer"/
+    "gentle" values will get zero matches — call sites should pass the new
+    "focused"/"warm"/"curious"/"steady" values, OR use the
+    `LEGACY_TO_NEW_MODE` map below for one-time migration.
     """
-    Return the best matching character for the given CPM care style and optional domain hint.
+    return [c for c in CHARACTER_CATALOG.values() if c.interaction_mode == interaction_mode]
+
+
+# Legacy value → new value migration map. Use this when migrating call sites.
+LEGACY_TO_NEW_MODE = {
+    "challenger": "focused",
+    "explorer":   "curious",
+    "gentle":     "steady",
+    "supporter":  "warm",
+}
+
+
+def get_best_match(entity_interaction_mode: str, domain_hint: str = "") -> Character:
+    """
+    Return the best matching character for the given interaction mode and optional domain hint.
 
     Matching priority:
-      1. care_style match + domain keyword overlap
-      2. care_style match
+      1. interaction_mode match + domain keyword overlap
+      2. interaction_mode match
       3. any character (fallback: Aria)
+
+    Accepts legacy CPM values (challenger/explorer/gentle/supporter) and
+    auto-maps them to the new interaction_mode values.
     """
-    candidates = get_characters_by_style(entity_care_style)
+    # Migrate legacy values
+    mode = LEGACY_TO_NEW_MODE.get(entity_interaction_mode, entity_interaction_mode)
+    candidates = get_characters_by_mode(mode)
 
     if domain_hint and candidates:
         hint_lower = domain_hint.lower()

@@ -10,9 +10,22 @@ export const metadata: Metadata = {
   },
 };
 
+const SERVICE_JSONLD = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  name: "MEOK Compliance Audit",
+  description:
+    "End-to-end compliance audit across 13 regulatory frameworks: EU AI Act, GDPR, ISO 42001, SOC 2, HIPAA, DORA, NIS2, CRA, FDA, MDR, NIST AI RMF, UK AI Bill and AIDA-Canada. Includes a 42-point EU AI Act audit with auto-generated Annex IV documentation and a GDPR DPIA auto-generator.",
+  url: "https://meok.ai/compliance-audit",
+  serviceType: "Regulatory compliance audit",
+  provider: { "@type": "Organization", name: "MEOK AI Labs", url: "https://meok.ai" },
+  areaServed: ["GB", "EU", "US", "CA"],
+};
+
 export default function Page() {
   return (
     <main className="min-h-screen bg-white text-slate-900">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(SERVICE_JSONLD) }} />
       <section className="max-w-5xl mx-auto px-6 py-20">
         <h1 className="text-5xl font-bold bg-gradient-to-r from-violet-700 to-blue-700 bg-clip-text text-transparent">MEOK Compliance Audit</h1>
         <p className="text-xl text-slate-600 mt-6">End-to-end compliance audit across 13 regulatory frameworks.</p>

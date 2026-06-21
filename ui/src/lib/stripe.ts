@@ -1,11 +1,24 @@
 import Stripe from "stripe";
 
+/**
+ * Thrown when Stripe is not yet configured (missing secret key or a tier's
+ * price ID). Callers should treat this as "self-serve checkout not available
+ * yet" (503 / contact sales) rather than a server fault (500), so a missing
+ * env var on Vercel degrades gracefully instead of erroring the user out.
+ */
+export class StripeConfigError extends Error {
+  constructor(message: string) {
+    super(message);
+    this.name = "StripeConfigError";
+  }
+}
+
 // Server-side Stripe instance (lazy — avoids build-time throw when env not set)
 let _stripe: Stripe | null = null;
 export function getStripe(): Stripe {
   if (!_stripe) {
     const key = process.env.STRIPE_SECRET_KEY;
-    if (!key) throw new Error("STRIPE_SECRET_KEY environment variable is not set");
+    if (!key) throw new StripeConfigError("STRIPE_SECRET_KEY environment variable is not set");
     _stripe = new Stripe(key, {
       apiVersion: "2026-02-25.clover",
       appInfo: { name: "MEOK Sovereign AI OS", version: "1.0.0" },
@@ -153,7 +166,7 @@ export async function createCheckoutSession(params: {
   }
 
   if (!priceId) {
-    throw new Error(`Stripe price ID not configured for tier=${tier} interval=${interval}`);
+    throw new StripeConfigError(`Stripe price ID not configured for tier=${tier} interval=${interval}`);
   }
 
   const session = await getStripe().checkout.sessions.create({
