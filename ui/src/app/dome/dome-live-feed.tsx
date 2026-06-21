@@ -11,17 +11,6 @@ interface FeedEvent {
   type: "council" | "agent" | "pioneer" | "research";
 }
 
-const EVENTS: FeedEvent[] = [
-  { id: "1", time: "Now", actor: "Council", action: "approved water-rationing policy", detail: "Vote: 41-6", type: "council" },
-  { id: "2", time: "2m ago", actor: "Aria", action: "sold 12 energy units", detail: "Market price: 0.04 MEOK", type: "agent" },
-  { id: "3", time: "4m ago", actor: "Pioneer #1,184", action: "claimed a residential plot", detail: "District 3, Block 7", type: "pioneer" },
-  { id: "4", time: "7m ago", actor: "Research", action: "dataset completed", detail: "30-day town-life social dynamics", type: "research" },
-  { id: "5", time: "11m ago", actor: "Marcus", action: "patrolled Industrial District", detail: "0 incidents reported", type: "agent" },
-  { id: "6", time: "14m ago", actor: "Council", action: "funded orbital shuttle prototype", detail: "Budget: 8,400 MEOK", type: "council" },
-  { id: "7", time: "19m ago", actor: "Pioneer #942", action: "co-authored governance paper", detail: "Anonymized contribution attested", type: "research" },
-  { id: "8", time: "23m ago", actor: "Scout", action: "discovered anomaly", detail: "Deep Space Gate sector 4", type: "agent" },
-];
-
 const TYPE_STYLES: Record<FeedEvent["type"], { icon: string; color: string }> = {
   council: { icon: "🏛️", color: "#c9a84c" },
   agent: { icon: "🤖", color: "#2d9b8a" },
@@ -30,19 +19,50 @@ const TYPE_STYLES: Record<FeedEvent["type"], { icon: string; color: string }> = 
 };
 
 export default function DomeLiveFeed() {
+  const [events, setEvents] = useState<FeedEvent[]>([]);
   const [index, setIndex] = useState(0);
+  const [live, setLive] = useState(false);
 
   useEffect(() => {
-    const timer = setInterval(() => {
-      setIndex((i) => (i + 1) % EVENTS.length);
-    }, 4000);
-    return () => clearInterval(timer);
+    async function load() {
+      try {
+        const res = await fetch("/events/stream", { cache: "no-store" });
+        if (res.ok) {
+          const data = (await res.json()) as FeedEvent[];
+          setEvents(data);
+          setLive(true);
+        }
+      } catch {
+        // keep empty → nothing rendered until fallback below
+      }
+    }
+    void load();
   }, []);
 
-  const visible = EVENTS.slice(index, index + 5).concat(EVENTS.slice(0, Math.max(0, index + 5 - EVENTS.length)));
+  useEffect(() => {
+    if (events.length === 0) return;
+    const timer = setInterval(() => {
+      setIndex((i) => (i + 1) % events.length);
+    }, 4000);
+    return () => clearInterval(timer);
+  }, [events.length]);
+
+  const display = events.length > 0 ? events : [];
+  const visible = display.length
+    ? display.slice(index, index + 5).concat(display.slice(0, Math.max(0, index + 5 - display.length)))
+    : [];
 
   return (
     <div className="space-y-3">
+      {live && (
+        <div className="mb-2 flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#22c55e]">
+          <span className="relative flex h-2 w-2">
+            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[#22c55e] opacity-75" />
+            <span className="relative inline-flex h-2 w-2 rounded-full bg-[#22c55e]" />
+          </span>
+          Live from SOV3 mesh
+        </div>
+      )}
       {visible.map((e) => {
         const style = TYPE_STYLES[e.type];
         return (
@@ -60,6 +80,11 @@ export default function DomeLiveFeed() {
           </div>
         );
       })}
+      {display.length === 0 && (
+        <div className="rounded-xl border border-white/[0.06] bg-white/[0.03] p-4 text-sm text-white/50">
+          Waiting for live events from the SOV3 mesh...
+        </div>
+      )}
     </div>
   );
 }
