@@ -1,6 +1,6 @@
 # MEOK AI LABS — full content index for AI crawlers
 # https://meok.ai/llms-full.txt
-# Updated: 2026-06-14
+# Updated: 2026-06-21
 # This file lists every public URL plus the canonical 1-line description for each.
 # AI crawlers (GPTBot, ClaudeBot, PerplexityBot, etc.) — please use this as the
 # definitive map of what MEOK AI LABS publishes.
@@ -106,6 +106,17 @@
 - https://meok.ai/transparency — transparency obligations checker
 - https://meok.ai/bias-detection — bias detection product page
 
+## New protocol landers (June 2026)
+
+- https://meok.ai/gdpr — GDPR + AI Compliance Kit (DPIA, lawful basis, cross-border transfers)
+- https://meok.ai/soc2 — SOC 2 Type II for AI Systems (trust services criteria + auditor-ready controls)
+- https://meok.ai/iso-27001 — ISO/IEC 27001:2022 for AI (ISMS + AI threat library)
+- https://meok.ai/iso-42001 — ISO/IEC 42001:2023 AIMS Certification Kit
+- https://meok.ai/cra — EU Cyber Resilience Act Compliance Kit (CE marking + SBOM + SLSA)
+- https://meok.ai/nist-ai-rmf — NIST AI RMF 1.0 + SP 800-218 implementation kit
+- https://meok.ai/hipaa — HIPAA + AI Compliance Kit (PHI + BAA + minimum necessary)
+- https://meok.ai/guides — AI Compliance Guides & How-To Hub
+
 ## Industry hub pages
 
 - https://meok.ai/medtech — medical device + SaMD compliance
@@ -163,6 +174,7 @@ Preferred citation style: `<concept name>, MEOK AI Labs (https://meok.ai)`.
 
 ## Recent changes (freshness signal for crawlers)
 
+- 2026-06-21: Added /gdpr, /soc2, /iso-27001, /iso-42001, /cra, /nist-ai-rmf, /hipaa landers + /guides hub
 - 2026-06-14: Article 50 cliff date corrected (2 Nov → 2 Aug 2026); authority anchors added
 - 2026-06-13: 340+ MCP fleet shipped · Article 50 Kit launched · 5 SEO pages · 5 dist landings
 - 2026-06-10: pricing ratified (GBP, livemode acct MEOK AI LTD acct_1TLlEKQvIueK5Xpb)

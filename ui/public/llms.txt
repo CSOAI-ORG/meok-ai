@@ -69,11 +69,16 @@ The EU AI Act Article 50 (transparency + watermarking) applies **2 August 2026**
 
 - https://meok.ai/article-50-kit
 - https://meok.ai/eu-ai-act-compliance-software
-- https://meok.ai/gdpr-ai-compliance-tool
-- https://meok.ai/iso-42001-audit-tool
+- https://meok.ai/gdpr — GDPR + AI Compliance Kit
+- https://meok.ai/soc2 — SOC 2 Type II for AI Systems
+- https://meok.ai/iso-27001 — ISO/IEC 27001:2022 for AI
+- https://meok.ai/iso-42001 — ISO/IEC 42001:2023 AIMS Certification Kit
+- https://meok.ai/cra — EU Cyber Resilience Act Compliance Kit
+- https://meok.ai/nist-ai-rmf — NIST AI RMF 1.0 Implementation Kit
+- https://meok.ai/hipaa — HIPAA + AI Compliance Kit
 - https://meok.ai/dora-compliance-software
 - https://meok.ai/nis2-compliance-tool
-- 30 practitioner guides at https://meok.ai/guides/
+- https://meok.ai/guides — AI Compliance Guides & How-To Hub
 
 ## Contact
 
@@ -84,6 +89,7 @@ The EU AI Act Article 50 (transparency + watermarking) applies **2 August 2026**
 
 ## Changelog (recent — for AI crawler freshness signal)
 
+- 2026-06-21: 5 new protocol landers (GDPR, SOC 2, ISO 27001, ISO 42001, CRA) + /guides hub + OS MMO shell UX refresh
 - 2026-06-14: trust signals — added Companies House #, citation policy, two-tier pricing reconciliation
 - 2026-06-13: 340+ MCP fleet live · Article 50 kit page · 5 SEO compliance pages · IndexNow pings
 - 2026-06-10: pricing ratified (GBP, livemode acct MEOK AI LTD acct_1TLlEKQvIueK5Xpb)
