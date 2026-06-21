@@ -7,7 +7,7 @@ interface SurfaceProps extends React.HTMLAttributes<HTMLElement> {
   variant?: "deep" | "surface" | "elevated" | "glass" | "neo";
   className?: string;
   as?: "div" | "section" | "article" | "main";
-  glow?: "none" | "gold" | "teal" | "orange" | "purple" | "blue";
+  glow?: "none" | "gold" | "teal" | "orange" | "purple" | "blue" | "green";
   hover?: boolean;
 }
 
@@ -47,6 +47,8 @@ export function Surface({
           "shadow-[0_0_0_1px_rgba(139,92,246,0.1),0_8px_32px_rgba(139,92,246,0.08)]",
         glow === "blue" &&
           "shadow-[0_0_0_1px_rgba(59,130,246,0.1),0_8px_32px_rgba(59,130,246,0.08)]",
+        glow === "green" &&
+          "shadow-[0_0_0_1px_rgba(52,211,153,0.1),0_8px_32px_rgba(52,211,153,0.08)]",
         
         // Hover effect
         hover && "hover:border-white/20 hover:bg-white/[0.05] cursor-pointer",

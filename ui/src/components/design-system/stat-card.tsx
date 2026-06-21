@@ -10,7 +10,7 @@ interface StatCardProps {
   changeType?: "positive" | "negative" | "neutral";
   icon?: ReactNode;
   className?: string;
-  glow?: "none" | "gold" | "teal" | "orange" | "purple" | "blue";
+  glow?: "none" | "gold" | "teal" | "orange" | "purple" | "blue" | "green";
 }
 
 export function StatCard({

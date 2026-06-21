@@ -10,7 +10,7 @@ interface FeatureCardProps {
   icon?: React.ComponentType<{ className?: string }>;
   iconVariant?: "gold" | "teal" | "orange" | "purple" | "green" | "red" | "blue";
   className?: string;
-  glow?: "none" | "gold" | "teal" | "orange" | "purple" | "blue";
+  glow?: "none" | "gold" | "teal" | "orange" | "purple" | "blue" | "green";
   action?: ReactNode;
 }
 

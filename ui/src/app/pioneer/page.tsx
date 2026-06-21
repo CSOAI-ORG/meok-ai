@@ -137,16 +137,12 @@ export default function PioneerPage() {
       {/* CTA */}
       <section className="mx-auto max-w-3xl px-6 py-24 text-center">
         <h2 className="text-3xl font-bold md:text-5xl">The first sovereign digital society needs its first citizens.</h2>
-        <Link
-          href="#"
-          onClick={(e) => {
-            e.preventDefault();
-            window.scrollTo({ top: 0, behavior: "smooth" });
-          }}
+        <a
+          href="#top"
           className="mx-auto mt-8 inline-block rounded-xl bg-[#c9a84c] px-10 py-4 font-bold text-[#0d0c18] transition hover:bg-[#b8963e]"
         >
           Apply Now
-        </Link>
+        </a>
       </section>
     </main>
   );
