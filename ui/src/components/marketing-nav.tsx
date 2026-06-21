@@ -43,6 +43,7 @@ const NAV_PILLARS: NavPillar[] = [
       { href: "/dome", icon: "🌐", label: "MEOK DOME", desc: "Central world hub & live map" },
       { href: "/pioneer", icon: "🚀", label: "Pioneer Program", desc: "Become a founding citizen" },
       { href: "/go", icon: "🗺️", label: "MEOK GO", desc: "Real-world character overlay" },
+      { href: "/ar", icon: "✨", label: "MEOK AR", desc: "Camera overlay demo" },
       { href: "/council", icon: "🏛️", label: "MEOK Council", desc: "Hybrid AI-human governance" },
       { href: "/gaming", icon: "🎮", label: "Gaming Hive", desc: "AI-powered gaming infrastructure" },
     ],
