@@ -1,9 +1,9 @@
 /**
  * MEOK Dome live event stream.
  *
- * Tries to read real-time events from the SOV3 mesh on localhost:3101.
- * When the mesh is unreachable (e.g. Vercel production), returns a curated
- * fallback stream so the UI always has something to show.
+ * Tries to read real-time events from the SOV3 mesh (default public endpoint).
+ * When the mesh is unreachable (e.g. local dev without a tunnel), returns a
+ * curated fallback stream so the UI always has something to show.
  */
 
 import { NextResponse } from "next/server";
@@ -54,13 +54,13 @@ export const runtime = "nodejs";
 
 export async function GET() {
   try {
-    const sov3 = await fetch("http://localhost:3101/mcp", {
+    const sov3Url = process.env.SOV3_MESH_URL || "http://198.53.64.194:40646/api/v1";
+    const sov3 = await fetch(sov3Url, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         jsonrpc: "2.0",
-        method: "tools/call",
-        params: { name: "coord_get_dashboard" },
+        method: "get_status",
         id: 1,
       }),
       next: { revalidate: 0 },
@@ -70,16 +70,10 @@ export async function GET() {
     if (!sov3.ok) throw new Error(`SOV3 status ${sov3.status}`);
 
     const json = (await sov3.json()) as {
-      result?: { content?: Array<{ type?: string; text?: string }> };
-    };
-    const text = json.result?.content?.[0]?.text;
-    if (!text) throw new Error("No dashboard text");
-
-    const dashboard = JSON.parse(text) as {
-      recent_events?: Array<{ time?: string; type?: string; agent?: string; task_id?: string }>;
+      result?: { recent_events?: Array<{ time?: string; type?: string; agent?: string; task_id?: string }> };
     };
 
-    const events = (dashboard.recent_events ?? [])
+    const events = (json.result?.recent_events ?? [])
       .slice(0, 8)
       .map((e, i) => sov3EventToStreamEvent(e, i));
 
