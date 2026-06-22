@@ -15,6 +15,7 @@
  */
 
 const SOV3_BASE = process.env.SOV3_MCP_URL ?? 'http://localhost:3101';
+const SOV3_KEY = process.env.MEOK_MASTER_API_KEY ?? '';
 const DEFAULT_TIMEOUT_MS = 30_000;
 
 export interface Sov3Result<T = unknown> {
@@ -34,9 +35,12 @@ async function callTool<T>(
     const controller = new AbortController();
     const timer = setTimeout(() => controller.abort(), timeoutMs);
 
+    const headers: Record<string, string> = { 'Content-Type': 'application/json' };
+    if (SOV3_KEY) headers['X-MEOK-Key'] = SOV3_KEY;
+
     const res = await fetch(`${SOV3_BASE}/mcp`, {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      headers,
       body: JSON.stringify({
         jsonrpc: '2.0',
         id: `meok-${Date.now()}`,
