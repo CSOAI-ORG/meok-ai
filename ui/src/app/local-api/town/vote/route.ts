@@ -37,7 +37,38 @@ function buildCouncilSystem(): string {
     (a) => `${a.id} = ${a.name}, ${a.role} (${a.archetype})`,
   ).join('\n');
 
-  return `You are the Aethelgard Finance Hive BFT Council. Ministers:\n\n${agentList}\n\nVote on the proposal. Return one line per minister in this exact format (no markdown, no numbering, no extra text):\n\nagentId|FOR|short reason\n\nUse FOR, AGAINST, or ABSTAIN. Reasons must match each minister's archetype.`;
+  return `You are the Aethelgard Finance Hive BFT Council. Ministers:\n\n${agentList}\n\nVote on the proposal. Return one line per minister in this exact format (no markdown, no numbering, no extra text):\n\nagentId|FOR|short reason\n\nRules:\n- Most ministers MUST vote FOR or AGAINST based on how the proposal aligns with their archetype and mandate.\n- Only vote ABSTAIN if the proposal truly gives you no basis to decide.\n- Reasons must be distinct, in-character, and no longer than one sentence.\n- Do not all vote the same way; the council is intentionally pluralistic.`;
+}
+
+function parseVoteLine(line: string): { agentId: string; vote: string; reason: string } | null {
+  const cleaned = line.trim();
+  if (!cleaned) return null;
+
+  // Primary format: agentId|FOR|reason
+  if (cleaned.includes('|')) {
+    const parts = cleaned.split('|');
+    if (parts.length >= 3) {
+      return {
+        agentId: parts[0].trim().toLowerCase(),
+        vote: parts[1].trim(),
+        reason: parts.slice(2).join('|').trim(),
+      };
+    }
+  }
+
+  // Fallback formats:
+  // "agentId - FOR: reason"
+  // "Name - FOR: reason"
+  const fallback = cleaned.match(/^([^\-:]+)\s*[-:]\s*(FOR|AGAINST|ABSTAIN)\s*[:\-]\s*(.+)$/i);
+  if (fallback) {
+    return {
+      agentId: fallback[1].trim().toLowerCase(),
+      vote: fallback[2].trim(),
+      reason: fallback[3].trim(),
+    };
+  }
+
+  return null;
 }
 
 /**
@@ -74,21 +105,17 @@ export async function POST(req: NextRequest): Promise<Response> {
       model: providerResult.provider,
       system: buildCouncilSystem(),
       messages: [{ role: 'user', content: `Proposal: ${proposalText}\n\nReturn the council vote list now.` }],
-      maxOutputTokens: 512,
-      temperature: 0.4,
+      maxOutputTokens: 768,
+      temperature: 0.35,
+      maxRetries: 1,
+      abortSignal: AbortSignal.timeout(25000),
     });
 
     for (const line of text.split('\n')) {
-      const cleaned = line.trim();
-      if (!cleaned || cleaned.startsWith('|')) continue;
-      const parts = cleaned.split('|');
-      if (parts.length >= 3) {
-        const agentId = parts[0].trim().toLowerCase();
-        const vote = parts[1].trim();
-        const reason = parts.slice(2).join('|').trim();
-        if (AETHELGARD_FINANCE_HIVE.some((a) => a.id === agentId)) {
-          rawVotes.set(agentId, { vote, reason });
-        }
+      const parsed = parseVoteLine(line);
+      if (!parsed) continue;
+      if (AETHELGARD_FINANCE_HIVE.some((a) => a.id === parsed.agentId)) {
+        rawVotes.set(parsed.agentId, { vote: parsed.vote, reason: parsed.reason });
       }
     }
   } catch (err) {

@@ -90,9 +90,14 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
   } catch (err) {
     const message = err instanceof Error ? err.message : String(err);
     console.error('[Checkout] Failed to create Stripe session:', message);
+    // Stripe connection/auth failures are provider-side, not client errors.
+    const isConfigError = message.includes('not configured') || message.includes('environment variable');
     return NextResponse.json(
-      { error: 'Failed to create checkout session' },
-      { status: 500 },
+      {
+        error: 'Checkout unavailable right now',
+        detail: isConfigError ? 'Billing is not configured for this environment.' : 'Our payment provider returned an error. Please try again in a moment.',
+      },
+      { status: isConfigError ? 503 : 502 },
     );
   }
 }

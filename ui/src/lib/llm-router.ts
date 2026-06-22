@@ -26,6 +26,11 @@ const FREELLMAPI_API_KEY = process.env.FREELLMAPI_API_KEY || 'freellmapi-local';
 /** Ollama is available if localhost or env var is set */
 const OLLAMA_AVAILABLE = true; // M4 always has Ollama
 
+/** True when OLLAMA_ENDPOINT points to a non-localhost URL (e.g. Cloudflare Tunnel). */
+function isRemoteOllama(): boolean {
+  return Boolean(OLLAMA_ENDPOINT && !OLLAMA_ENDPOINT.includes('localhost') && !OLLAMA_ENDPOINT.includes('127.0.0.1'));
+}
+
 // ── Tier-based model access ────────────────────────────────────────────────
 
 export const MODEL_ACCESS = {
@@ -448,8 +453,9 @@ export function route(message: string, tier: Tier, options?: { sensitivity?: 'lo
 
   // M2 Ollama as primary: when M2_OLLAMA_HOST is set, route explorer tier locally
   // This means zero API key burn for local workshop use
-  if (M2_HOST && tier === 'explorer' && OLLAMA_AVAILABLE) {
-    // Use qwen2.5:7b for quality tasks, phi4-mini for speed, 3b as fallback
+  if (M2_HOST && tier === 'explorer' && OLLAMA_AVAILABLE && !isRemoteOllama()) {
+    // Use qwen2.5:7b for quality tasks, phi4-mini for speed, 3b as fallback.
+    // Only apply M2-specific model choices when the Ollama endpoint is local.
     const qualityTasks = ['reasoning', 'analysis', 'coding', 'code_review', 'research', 'creative'];
     model = qualityTasks.includes(taskType) ? 'ollama:qwen2.5:7b' : 'ollama:phi4-mini';
   }
