@@ -18,9 +18,58 @@ function escapeHtml(str: string): string {
     .replace(/'/g, '&#39;')
 }
 
+// ── In-memory fallback storage ───────────────────────────────────────────────
+// Keyed by normalized email so signups dedupe within a single server instance.
+const memoryWaitlist = new Map<string, WaitlistEntry & { signedUpAt: string }>()
+
+// ── Upstash Redis integration ────────────────────────────────────────────────
+// Set UPSTASH_REDIS_REST_URL + UPSTASH_REDIS_REST_TOKEN to enable.
+function upstashEnabled(): boolean {
+  return Boolean(process.env.UPSTASH_REDIS_REST_URL && process.env.UPSTASH_REDIS_REST_TOKEN)
+}
+
+async function getUpstashRedis() {
+  if (!upstashEnabled()) return null
+  try {
+    const { Redis } = await import('@upstash/redis')
+    return new Redis({
+      url: process.env.UPSTASH_REDIS_REST_URL!,
+      token: process.env.UPSTASH_REDIS_REST_TOKEN!,
+    })
+  } catch (err) {
+    console.error('[waitlist] Upstash init error:', err)
+    return null
+  }
+}
+
+const WAITLIST_HASH_KEY = 'waitlist:public-beta'
+
+async function persistToUpstash(entry: WaitlistEntry): Promise<boolean> {
+  const redis = await getUpstashRedis()
+  if (!redis) return false
+  try {
+    await redis.hset(WAITLIST_HASH_KEY, {
+      [entry.email]: JSON.stringify({ ...entry, signedUpAt: new Date().toISOString() }),
+    })
+    return true
+  } catch (err) {
+    console.error('[waitlist] Upstash persist error:', err)
+    return false
+  }
+}
+
+async function getUpstashCount(): Promise<number | null> {
+  const redis = await getUpstashRedis()
+  if (!redis) return null
+  try {
+    return (await redis.hlen(WAITLIST_HASH_KEY)) as number
+  } catch (err) {
+    console.error('[waitlist] Upstash count error:', err)
+    return null
+  }
+}
+
 // ── Loops.so integration ────────────────────────────────────────────────────
-// Set LOOPS_API_KEY in Vercel env vars to enable. Free at loops.so.
-// Optionally set LOOPS_WAITLIST_LIST_ID and LOOPS_WAITLIST_TRANSACTIONAL_ID.
 async function sendToLoops(entry: WaitlistEntry): Promise<boolean> {
   const apiKey = process.env.LOOPS_API_KEY
   if (!apiKey) return false
@@ -46,7 +95,6 @@ async function sendToLoops(entry: WaitlistEntry): Promise<boolean> {
       return false
     }
 
-    // Add to waitlist mailing list if ID configured
     const listId = process.env.LOOPS_WAITLIST_LIST_ID
     if (listId) {
       await fetch('https://app.loops.so/api/v1/lists/add', {
@@ -56,7 +104,6 @@ async function sendToLoops(entry: WaitlistEntry): Promise<boolean> {
       })
     }
 
-    // Fire transactional welcome email if template configured
     const transactionalId = process.env.LOOPS_WAITLIST_TRANSACTIONAL_ID
     if (transactionalId) {
       await fetch('https://app.loops.so/api/v1/transactional', {
@@ -78,7 +125,6 @@ async function sendToLoops(entry: WaitlistEntry): Promise<boolean> {
 }
 
 // ── Resend notification (optional) ─────────────────────────────────────────
-// Set RESEND_API_KEY + WAITLIST_NOTIFY_EMAIL to get an email per signup.
 async function notifyViaResend(entry: WaitlistEntry): Promise<void> {
   const apiKey = process.env.RESEND_API_KEY
   const notifyEmail = process.env.WAITLIST_NOTIFY_EMAIL
@@ -105,11 +151,61 @@ ${entry.metadata ? `<p><strong>Metadata:</strong> ${escapeHtml(JSON.stringify(en
   }
 }
 
-// ── Route handler ────────────────────────────────────────────────────────────
+// ── Database persistence (best-effort) ───────────────────────────────────────
+async function persistToDB(entry: WaitlistEntry): Promise<boolean> {
+  try {
+    const { sql } = await import('@/lib/db')
+    await sql`
+      INSERT INTO waitlist (email, name, interest, referrer)
+      VALUES (${entry.email}, ${entry.name ?? null}, ${entry.interest ?? null}, ${entry.referrer ?? null})
+      ON CONFLICT (email) DO UPDATE SET
+        name = COALESCE(EXCLUDED.name, waitlist.name),
+        interest = COALESCE(EXCLUDED.interest, waitlist.interest),
+        updated_at = NOW()
+    `
+    return true
+  } catch (err) {
+    console.error('[waitlist] DB persist error:', err)
+    return false
+  }
+}
+
+async function getDBCount(): Promise<number | null> {
+  try {
+    const { sql } = await import('@/lib/db')
+    const rows = await sql<{ count: number }[]>`SELECT COUNT(*)::int as count FROM waitlist`
+    return rows[0]?.count ?? null
+  } catch (err) {
+    console.error('[waitlist] DB count error:', err)
+    return null
+  }
+}
+
+// ── Count resolution ─────────────────────────────────────────────────────────
+async function getWaitlistCount(): Promise<number> {
+  const upstashCount = await getUpstashCount()
+  if (upstashCount !== null) return upstashCount
+
+  const dbCount = await getDBCount()
+  if (dbCount !== null) return dbCount
+
+  return memoryWaitlist.size
+}
+
+// ── Route handlers ───────────────────────────────────────────────────────────
+
+export async function GET() {
+  try {
+    const count = await getWaitlistCount()
+    return NextResponse.json({ success: true, count })
+  } catch {
+    return NextResponse.json({ success: false, count: memoryWaitlist.size }, { status: 500 })
+  }
+}
 
 export async function POST(req: NextRequest) {
   try {
-    const body = await req.json() as WaitlistEntry
+    const body = (await req.json()) as WaitlistEntry
 
     if (!body.email || typeof body.email !== 'string') {
       return NextResponse.json({ error: 'Email is required' }, { status: 400 })
@@ -136,38 +232,25 @@ export async function POST(req: NextRequest) {
       metadata,
     }
 
-    // Always log — captured by Vercel function logs, never lost
-    console.log('[waitlist]', JSON.stringify({
-      email: entry.email,
-      name: entry.name,
-      interest: entry.interest,
-      referrer: entry.referrer,
-      metadata: entry.metadata,
-      ts: new Date().toISOString(),
-    }))
+    // Always keep a server-side copy so /api/waitlist count never reads zero.
+    memoryWaitlist.set(entry.email, { ...entry, signedUpAt: new Date().toISOString() })
 
-    // Persist to DB — never lose a signup
-    async function persistToDB(): Promise<boolean> {
-      try {
-        const { sql } = await import('@/lib/db')
-        await sql`
-          INSERT INTO waitlist (email, name, interest, referrer)
-          VALUES (${entry.email}, ${entry.name ?? null}, ${entry.interest ?? null}, ${entry.referrer ?? null})
-          ON CONFLICT (email) DO UPDATE SET
-            name = COALESCE(EXCLUDED.name, waitlist.name),
-            interest = COALESCE(EXCLUDED.interest, waitlist.interest),
-            updated_at = NOW()
-        `
-        return true
-      } catch (err) {
-        console.error('[waitlist] DB persist error:', err)
-        return false
-      }
-    }
+    console.log(
+      '[waitlist]',
+      JSON.stringify({
+        email: entry.email,
+        name: entry.name,
+        interest: entry.interest,
+        referrer: entry.referrer,
+        metadata: entry.metadata,
+        ts: new Date().toISOString(),
+      })
+    )
 
-    // Best-effort integrations (parallel, never block response)
+    // Best-effort persistence (parallel, never block response)
     await Promise.allSettled([
-      persistToDB(),
+      persistToDB(entry),
+      persistToUpstash(entry),
       sendToLoops(entry),
       notifyViaResend(entry),
     ])
@@ -175,6 +258,7 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({
       success: true,
       message: "You're on the list. We'll be in touch before launch.",
+      count: await getWaitlistCount(),
     })
   } catch {
     return NextResponse.json({ error: 'Signup failed. Please try again.' }, { status: 500 })

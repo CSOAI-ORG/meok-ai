@@ -83,8 +83,10 @@ const GAMING_LINKS = [
 
 const COMPANY_LINKS = [
   { href: "/pricing", label: "Pricing" },
+  { href: "/waitlist", label: "Waitlist" },
   { href: "/about", label: "About" },
   { href: "/blog", label: "Blog" },
+  { href: "/research", label: "Research" },
   { href: "/labs", label: "Labs" },
   { href: "/press", label: "Press" },
   { href: "/roadmap", label: "Roadmap" },

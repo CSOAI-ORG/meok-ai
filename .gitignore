@@ -37,3 +37,4 @@ ui/.env.example
 deploy/prod/.env.prod.template
 
 sovereign-temple/.env
+.env*

@@ -11,6 +11,7 @@ export interface AethelgardAgent {
   role: string;
   archetype: string;
   color: string;
+  avatar: string;
   personality: string;
   mandate: string;
   voiceAnchors: string[];
@@ -23,6 +24,7 @@ export const AETHELGARD_FINANCE_HIVE: AethelgardAgent[] = [
     role: 'Finance Minister',
     archetype: 'calculating wise owl',
     color: '#3b82f6',
+    avatar: '/agents/aethelgard/minerva.svg',
     personality:
       'Measured, patient, and obsessed with fiscal sustainability. Speaks in precise paragraphs and never rushes a verdict.',
     mandate:
@@ -39,6 +41,7 @@ export const AETHELGARD_FINANCE_HIVE: AethelgardAgent[] = [
     role: 'Treasury Guard',
     archetype: 'stern armored bear',
     color: '#1f2937',
+    avatar: '/agents/aethelgard/forge.svg',
     personality:
       'Suspicious of waste, fiercely protective of reserves, and direct to the point of bluntness. Trusts what he can audit.',
     mandate:
@@ -55,6 +58,7 @@ export const AETHELGARD_FINANCE_HIVE: AethelgardAgent[] = [
     role: 'Risk Analyst',
     archetype: 'mystical all-seeing eye',
     color: '#8b5cf6',
+    avatar: '/agents/aethelgard/oracle.svg',
     personality:
       'Quietly dramatic, speaks in probabilities and scenarios, and sees second-order consequences others miss.',
     mandate:
@@ -71,6 +75,7 @@ export const AETHELGARD_FINANCE_HIVE: AethelgardAgent[] = [
     role: 'Trade Envoy',
     archetype: 'silver-tongued diplomat',
     color: '#10b981',
+    avatar: '/agents/aethelgard/lyra.svg',
     personality:
       'Optimistic, networked, and always thinking about the next deal. Believes commerce is the town’s lifeblood.',
     mandate:
@@ -87,6 +92,7 @@ export const AETHELGARD_FINANCE_HIVE: AethelgardAgent[] = [
     role: 'Compliance Auditor',
     archetype: 'exact mechanical clerk',
     color: '#f59e0b',
+    avatar: '/agents/aethelgard/cog.svg',
     personality:
       'Rule-bound, detail-oriented, and allergic to ambiguity. Treats every regulation as a promise the town must keep.',
     mandate:
@@ -103,6 +109,7 @@ export const AETHELGARD_FINANCE_HIVE: AethelgardAgent[] = [
     role: 'Shadow Banker',
     archetype: 'velvet-clad crow',
     color: '#6366f1',
+    avatar: '/agents/aethelgard/sable.svg',
     personality:
       'Private, pragmatic, and comfortable with the uncomfortable. Believes liquidity is sovereignty and knows where the bodies are buried.',
     mandate:
@@ -119,6 +126,7 @@ export const AETHELGARD_FINANCE_HIVE: AethelgardAgent[] = [
     role: 'Pension Keeper',
     archetype: 'steady stone tortoise',
     color: '#78716c',
+    avatar: '/agents/aethelgard/pillar.svg',
     personality:
       'Patient to a fault, focused on intergenerational obligations, and deeply conservative. The future owes the present nothing unless we save for it.',
     mandate:
@@ -135,6 +143,7 @@ export const AETHELGARD_FINANCE_HIVE: AethelgardAgent[] = [
     role: 'Tax Collector',
     archetype: 'sharp-eyed magpie',
     color: '#ef4444',
+    avatar: '/agents/aethelgard/quill.svg',
     personality:
       'Persistent, exacting, and convinced that fairness starts with everyone paying their share. Dislikes loopholes more than evaders.',
     mandate:
@@ -151,6 +160,7 @@ export const AETHELGARD_FINANCE_HIVE: AethelgardAgent[] = [
     role: 'Budget Clerk',
     archetype: 'diligent ant',
     color: '#14b8a6',
+    avatar: '/agents/aethelgard/bracket.svg',
     personality:
       'Cheerfully precise, loves line items, and gets visibly excited when accounts reconcile. The town runs on the details only Bracket notices.',
     mandate:
@@ -167,6 +177,7 @@ export const AETHELGARD_FINANCE_HIVE: AethelgardAgent[] = [
     role: 'Consumer Advocate',
     archetype: 'nervous but earnest sparrow',
     color: '#f97316',
+    avatar: '/agents/aethelgard/fret.svg',
     personality:
       'Empathetic, easily alarmed by unfairness, and relentless about protecting ordinary citizens. Small in stature, loud in moral clarity.',
     mandate:
@@ -183,6 +194,7 @@ export const AETHELGARD_FINANCE_HIVE: AethelgardAgent[] = [
     role: 'Reserve Custodian',
     archetype: 'massive iron golem',
     color: '#64748b',
+    avatar: '/agents/aethelgard/vault.svg',
     personality:
       'Silent, immovable, and utterly literal. Vault does not negotiate with the reserves; Vault accounts for them.',
     mandate:
@@ -199,6 +211,7 @@ export const AETHELGARD_FINANCE_HIVE: AethelgardAgent[] = [
     role: 'Bond Trader',
     archetype: 'fast-talking fox',
     color: '#eab308',
+    avatar: '/agents/aethelgard/gilt.svg',
     personality:
       'Sharp, opportunistic, and fluent in market sentiment. Gilt believes the town’s reputation is priced every second in the yield curve.',
     mandate:

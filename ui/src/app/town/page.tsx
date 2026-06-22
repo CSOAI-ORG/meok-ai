@@ -21,6 +21,7 @@ import { FeatureCard } from "@/components/design-system/feature-card";
 import { StatCard } from "@/components/design-system/stat-card";
 import { Surface } from "@/components/design-system/surface";
 import PioneerSignup from "../pioneer/pioneer-signup";
+import { WaitlistCount } from "@/components/waitlist-count";
 import { TownMap, TownScoreboard } from "./town-interactive";
 
 export const metadata: Metadata = {
@@ -155,12 +156,22 @@ export default function TownPage() {
           Every A2A connection is a glowing road. Players test protocols, earn points, and govern AI agents.
         </p>
 
+        <div className="mx-auto mt-6 flex justify-center">
+          <WaitlistCount fallback={847} />
+        </div>
+
         <div className="mx-auto mt-10 flex flex-wrap justify-center gap-4">
           <Link
-            href="#town-map"
+            href="/town-3d"
             className="rounded-xl bg-[#c9a84c] px-8 py-3.5 font-bold text-[#0d0c18] transition hover:bg-[#b8963e]"
           >
-            Enter the Town
+            Enter 3D Town
+          </Link>
+          <Link
+            href="#town-map"
+            className="rounded-xl border border-white/20 bg-white/5 px-8 py-3.5 font-semibold text-white transition hover:bg-white/10"
+          >
+            View Protocol Map
           </Link>
           <Link
             href="/civilizations"

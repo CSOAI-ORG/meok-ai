@@ -452,6 +452,7 @@ export function MarketingNav({ activePage }: MarketingNavProps) {
               { href: "/pricing", label: "Pricing" },
               { href: "/family", label: "Family" },
               { href: "/blog", label: "Blog" },
+              { href: "/waitlist", label: "Waitlist" },
               { href: "/about", label: "About" },
             ].map((link) => (
               <Link
@@ -556,6 +557,7 @@ export function MarketingNav({ activePage }: MarketingNavProps) {
               { href: "/features", label: "Features" },
               { href: "/pricing", label: "Pricing" },
               { href: "/blog", label: "Blog" },
+              { href: "/waitlist", label: "Waitlist" },
               { href: "/about", label: "About" },
             ].map((link) => (
               <div key={link.href} className="border-b" style={{ borderColor: "rgba(255,255,255,0.07)" }}>

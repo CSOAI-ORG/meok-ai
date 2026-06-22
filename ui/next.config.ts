@@ -156,6 +156,9 @@ const nextConfig: NextConfig = {
         // catch-all afterFiles /api/:path* → BACKEND rewrite cannot shadow it.
         // Callers keep using /api/* URLs.
         { source: "/api/:path*", destination: "/local-api/:path*" },
+        // Agent-47 3D town SPA (Vite build dropped in public/town-3d).
+        // React Router handles /dashboard, /governance, etc. internally.
+        { source: "/town-3d/:path*", destination: "/town-3d/index.html" },
       ],
       afterFiles: [
         // Legacy backend paths. The /api/* catch-all has been removed now that

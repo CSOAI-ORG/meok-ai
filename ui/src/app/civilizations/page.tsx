@@ -5,7 +5,9 @@ import { Surface } from "@/components/design-system/surface";
 import { StatCard } from "@/components/design-system/stat-card";
 import { CIVILIZATIONS } from "@/lib/civilizations";
 import AethelgardPanel from "./aethelgard-panel";
+import DebateSection from "./debate-section";
 import { PheromoneMatrix, PheromoneMessage } from "@/components/sov-town/PheromoneMatrix";
+import { WaitlistCount } from "@/components/waitlist-count";
 
 export const metadata: Metadata = {
   title: "MEOK Civilizations — 12 Worlds, One Sovereign Temple",
@@ -92,6 +94,10 @@ export default function CivilizationsPage() {
           MEOK is governed by 12 sovereign regions, each with its own economy, culture, and AI ministers.
           Only Aethelgard is live today — the rest awaken as the world proves itself.
         </p>
+
+        <div className="mx-auto mt-6 flex justify-center">
+          <WaitlistCount fallback={847} />
+        </div>
 
         <div className="mx-auto mt-10 flex flex-wrap justify-center gap-4">
           <Link
@@ -207,7 +213,19 @@ export default function CivilizationsPage() {
             keeping the Phase 0 showcase running at $0.
           </span>
         </div>
+
+        <div className="mt-4 flex flex-wrap items-center gap-4">
+          <Link
+            href="/character-creator"
+            className="inline-flex items-center gap-1 text-sm font-bold text-[#c9a84c] hover:underline"
+          >
+            Create your own agent →
+          </Link>
+        </div>
       </section>
+
+      {/* WATCH AGENTS DEBATE */}
+      <DebateSection />
 
       {/* PHEROMONE MATRIX */}
       <section className="mx-auto max-w-6xl px-6 pb-24">

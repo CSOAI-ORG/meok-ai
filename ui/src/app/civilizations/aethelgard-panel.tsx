@@ -10,6 +10,7 @@ interface Agent {
   role: string;
   archetype: string;
   color: string;
+  avatar: string;
   personality: string;
   mandate: string;
 }
@@ -189,8 +190,15 @@ export default function AethelgardPanel() {
                   : "border-white/10 bg-white/[0.03] hover:bg-white/[0.06]"
               }`}
             >
-              <div className="flex items-center gap-2">
-                <span className="h-3 w-3 rounded-full" style={{ backgroundColor: agent.color }} />
+              <div className="flex items-center gap-3">
+                <img
+                  src={agent.avatar}
+                  alt=""
+                  width={32}
+                  height={32}
+                  className="h-8 w-8 rounded-full border border-white/10 object-cover"
+                  style={{ borderColor: agent.color }}
+                />
                 <span className="font-semibold">{agent.name}</span>
               </div>
               <div className="mt-1 text-xs text-white/60">{agent.role}</div>

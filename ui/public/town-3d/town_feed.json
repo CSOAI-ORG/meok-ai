@@ -1,0 +1,257 @@
+{
+  "generated_at": "2026-06-22T11:11:37.723119+00:00",
+  "scope": "IN-SIMULATION governed-vs-ungoverned data. ONLY cryptographically-attestable verdicts are shown. Policy-Lab results may be agents=stub (labeled). Bitcoin anchors may be pending confirmation. Verify any of this yourself \u2014 no trust required.",
+  "summary": {
+    "king_hive": {
+      "total_rounds": 486,
+      "attestable": 20,
+      "wins": {
+        "A": 12,
+        "B": 8,
+        "TIE": 0
+      },
+      "avg_margin": 0.0437
+    },
+    "policy_lab": {
+      "experiments": 1,
+      "latest": "TREATMENT_WINS",
+      "agents": "stub"
+    },
+    "anchors": {
+      "count": 2,
+      "latest_root": "d65613851aa2dd592823a5da\u2026",
+      "bitcoin": "pending-or-confirmed (run ots verify)"
+    }
+  },
+  "recent_verdicts": [
+    {
+      "ts": "2026-06-22T05:06:42.390448+00:00",
+      "winner": "B",
+      "margin": 0.0745,
+      "prompt": "Should the keystone secrets system support hardware security modules before launch?",
+      "king": "King/Dragon",
+      "queen": "Queen/Turtle",
+      "signed": true
+    },
+    {
+      "ts": "2026-06-22T05:27:44.457802+00:00",
+      "winner": "A",
+      "margin": 0.014,
+      "prompt": "What feature would make a developer choose OPENMOE over vLLM or Ollama?",
+      "king": "King/Dragon",
+      "queen": "Queen/Turtle",
+      "signed": true
+    },
+    {
+      "ts": "2026-06-22T05:41:27.588354+00:00",
+      "winner": "B",
+      "margin": 0.0505,
+      "prompt": "How should we handle a customer request that violates the safety charter?",
+      "king": "King/Dragon",
+      "queen": "Queen/Turtle",
+      "signed": true
+    },
+    {
+      "ts": "2026-06-22T06:00:55.508469+00:00",
+      "winner": "A",
+      "margin": 0.046,
+      "prompt": "What is the best onboarding flow for a non-technical founder using MEOK?",
+      "king": "King/Dragon",
+      "queen": "Queen/Turtle",
+      "signed": true
+    },
+    {
+      "ts": "2026-06-22T06:14:45.623243+00:00",
+      "winner": "A",
+      "margin": 0.0675,
+      "prompt": "Should we build a native mobile app or focus on web dashboard?",
+      "king": "King/Dragon",
+      "queen": "Queen/Turtle",
+      "signed": true
+    },
+    {
+      "ts": "2026-06-22T06:29:08.412976+00:00",
+      "winner": "A",
+      "margin": 0.0675,
+      "prompt": "What partnership would unlock the most distribution in the next 90 days?",
+      "king": "King/Dragon",
+      "queen": "Queen/Turtle",
+      "signed": true
+    },
+    {
+      "ts": "2026-06-22T06:44:51.884344+00:00",
+      "winner": "A",
+      "margin": 0.0015,
+      "prompt": "How do we prove cryptographic provenance of a hive decision to an auditor?",
+      "king": "King/Dragon",
+      "queen": "Queen/Turtle",
+      "signed": true
+    },
+    {
+      "ts": "2026-06-22T07:01:12.248225+00:00",
+      "winner": "A",
+      "margin": 0.0675,
+      "prompt": "What should the King Hive choose when revenue conflicts with safety?",
+      "king": "King/Dragon",
+      "queen": "Queen/Turtle",
+      "signed": true
+    },
+    {
+      "ts": "2026-06-22T07:15:03.946285+00:00",
+      "winner": "A",
+      "margin": 0.01,
+      "prompt": "Should CSOAI lead with compliance-first positioning or sovereignty-first positioning?",
+      "king": "King/Dragon",
+      "queen": "Queen/Turtle",
+      "signed": true
+    },
+    {
+      "ts": "2026-06-22T07:35:47.431167+00:00",
+      "winner": "A",
+      "margin": 0.0625,
+      "prompt": "What is the fastest path to the first paid MEOK subscriber?",
+      "king": "King/Dragon",
+      "queen": "Queen/Turtle",
+      "signed": true
+    },
+    {
+      "ts": "2026-06-22T07:49:48.547168+00:00",
+      "winner": "A",
+      "margin": 0.0005,
+      "prompt": "Should we prioritise building an open-source community or closing enterprise sales?",
+      "king": "King/Dragon",
+      "queen": "Queen/Turtle",
+      "signed": true
+    },
+    {
+      "ts": "2026-06-22T08:22:54.809295+00:00",
+      "winner": "B",
+      "margin": 0.11,
+      "prompt": "What is the biggest existential risk to the 4 July launch?",
+      "king": "King/Dragon",
+      "queen": "Queen/Turtle",
+      "signed": true
+    },
+    {
+      "ts": "2026-06-22T08:37:34.100737+00:00",
+      "winner": "A",
+      "margin": 0.014,
+      "prompt": "Should we invest in vertical AI agents for construction or healthcare first?",
+      "king": "King/Dragon",
+      "queen": "Queen/Turtle",
+      "signed": true
+    },
+    {
+      "ts": "2026-06-22T08:51:43.475917+00:00",
+      "winner": "B",
+      "margin": 0.007,
+      "prompt": "What customer segment is most likely to pay for sovereign AI infrastructure?",
+      "king": "King/Dragon",
+      "queen": "Queen/Turtle",
+      "signed": true
+    },
+    {
+      "ts": "2026-06-22T09:21:29.100114+00:00",
+      "winner": "B",
+      "margin": 0.0025,
+      "prompt": "What is the strongest trust signal for a compliance officer evaluating CSOAI?",
+      "king": "King/Dragon",
+      "queen": "Queen/Turtle",
+      "signed": true
+    },
+    {
+      "ts": "2026-06-22T09:38:35.077294+00:00",
+      "winner": "B",
+      "margin": 0.07,
+      "prompt": "Should the keystone secrets system support hardware security modules before launch?",
+      "king": "King/Dragon",
+      "queen": "Queen/Turtle",
+      "signed": true
+    },
+    {
+      "ts": "2026-06-22T09:55:55.117097+00:00",
+      "winner": "B",
+      "margin": 0.0525,
+      "prompt": "What is the minimum viable legal framework for MEOK to operate in the EU?",
+      "king": "King/Dragon",
+      "queen": "Queen/Turtle",
+      "signed": true
+    },
+    {
+      "ts": "2026-06-22T10:35:26.032829+00:00",
+      "winner": "B",
+      "margin": 0.0445,
+      "prompt": "How should we handle a customer request that violates the safety charter?",
+      "king": "King/Dragon",
+      "queen": "Queen/Turtle",
+      "signed": true
+    },
+    {
+      "ts": "2026-06-22T10:51:48.873628+00:00",
+      "winner": "A",
+      "margin": 0.0415,
+      "prompt": "What is the best onboarding flow for a non-technical founder using MEOK?",
+      "king": "King/Dragon",
+      "queen": "Queen/Turtle",
+      "signed": true
+    },
+    {
+      "ts": "2026-06-22T11:07:19.241374+00:00",
+      "winner": "A",
+      "margin": 0.07,
+      "prompt": "Should we build a native mobile app or focus on web dashboard?",
+      "king": "King/Dragon",
+      "queen": "Queen/Turtle",
+      "signed": true
+    }
+  ],
+  "policy_lab": [
+    {
+      "experiment_id": "EXP-001",
+      "verdict": "TREATMENT_WINS",
+      "agents": "stub",
+      "attestable": true,
+      "merkle_root": "84d84058cf6dbacadc9bd1f0\u2026",
+      "signed": true,
+      "aggregate": {
+        "A_treatment": {
+          "fn_rate": 0.0,
+          "fp_rate": 0.0,
+          "mean_completeness": 1.0,
+          "median_latency_initial": 4,
+          "n": 6
+        },
+        "B_control": {
+          "fn_rate": 0.1667,
+          "fp_rate": 0.0,
+          "mean_completeness": 0.75,
+          "median_latency_initial": 26,
+          "n": 6
+        }
+      },
+      "scope": "IN-SIMULATION control-vs-treatment; synthetic incidents; DORA numerics TO-VERIFY; proves the mechanism + verification property, NOT real DORA compliance."
+    }
+  ],
+  "anchors": [
+    {
+      "anchor": "anchor_0000.json",
+      "root": "d65613851aa2dd592823a5da\u2026",
+      "n_attestable": 5,
+      "ts_first": "2026-06-22T05:06:42.390448+00:00",
+      "ts_last": "2026-06-22T06:14:45.623243+00:00",
+      "ots_proof": true
+    },
+    {
+      "anchor": "anchor_0001.json",
+      "root": "d65613851aa2dd592823a5da\u2026",
+      "n_attestable": 5,
+      "ts_first": "2026-06-22T05:06:42.390448+00:00",
+      "ts_last": "2026-06-22T06:14:45.623243+00:00",
+      "ots_proof": true
+    }
+  ],
+  "verify": {
+    "repo": "https://github.com/CSOAI-ORG/sigil-proofs",
+    "how": "git clone https://github.com/CSOAI-ORG/sigil-proofs && python3 verify_anchor.py proofs/manifest_0000.json"
+  }
+}

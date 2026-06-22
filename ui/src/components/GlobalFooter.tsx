@@ -82,6 +82,9 @@ export function GlobalFooter() {
           <Link href="/pricing" className="text-white/40 hover:text-white/70 transition-colors">
             Pricing
           </Link>
+          <Link href="/waitlist" className="text-white/40 hover:text-white/70 transition-colors">
+            Waitlist
+          </Link>
           <Link href="/about" className="text-white/40 hover:text-white/70 transition-colors">
             About
           </Link>
