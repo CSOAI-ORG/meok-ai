@@ -8,7 +8,7 @@ export const dynamic = 'force-dynamic';
  * GET /api/town/agents
  *
  * Returns the current roster of Aethelgard (EU) Finance Hive agents.
- * This is the Phase 0 showcase capital — 5 agents, one civilization.
+ * Phase 0 showcase capital — 12 ministers, one civilization.
  */
 export async function GET() {
   return NextResponse.json({

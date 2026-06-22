@@ -142,6 +142,13 @@ const nextConfig: NextConfig = {
       { source: '/register',                destination: '/start',      permanent: false },
       { source: '/hatch',                   destination: '/start',      permanent: false },
       { source: '/signup',                  destination: '/waitlist',   permanent: false },
+      // Archived OS pages consolidated into overview
+      { source: '/os/any-llm',          destination: '/os-overview', permanent: false },
+      { source: '/os/consciousness',    destination: '/os-overview', permanent: false },
+      { source: '/os/sovereign',        destination: '/os-overview', permanent: false },
+      { source: '/os/sovereign-display', destination: '/os-overview', permanent: false },
+      { source: '/os/sovereign-os',     destination: '/os-overview', permanent: false },
+      { source: '/sitemap',             destination: '/sitemap.xml', permanent: false },
     ];
   },
 
@@ -156,11 +163,13 @@ const nextConfig: NextConfig = {
         // catch-all afterFiles /api/:path* → BACKEND rewrite cannot shadow it.
         // Callers keep using /api/* URLs.
         { source: "/api/:path*", destination: "/local-api/:path*" },
-        // Agent-47 3D town SPA (Vite build dropped in public/town-3d).
-        // React Router handles /dashboard, /governance, etc. internally.
-        { source: "/town-3d/:path*", destination: "/town-3d/index.html" },
       ],
       afterFiles: [
+        // Agent-47 3D town SPA (Vite build dropped in public/town-3d).
+        // React Router handles /dashboard, /governance, etc. internally.
+        // Placed in afterFiles so static assets (JS/CSS/JSON) in public/town-3d
+        // are served directly instead of being rewritten to index.html.
+        { source: "/town-3d/:path*", destination: "/town-3d/index.html" },
         // Legacy backend paths. The /api/* catch-all has been removed now that
         // all local handlers live under /local-api/*.
         { source: "/auth/:path*", destination: `${BACKEND}/auth/:path*` },
