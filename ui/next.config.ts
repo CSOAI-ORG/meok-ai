@@ -146,22 +146,14 @@ const nextConfig: NextConfig = {
     // to BACKEND for paths we don't serve from Next itself.
     return {
       beforeFiles: [
-        // Local routes must be served by Next.js, not proxied to the offline M2
-        // backend. Because afterFiles has a catch-all /api/:path* → BACKEND, the
-        // beforeFiles entries must rewrite to paths OUTSIDE /api. Handlers live
-        // under /local-api; callers keep using /api/* URLs.
-        { source: "/api/health",          destination: "/local-api/health" },
-        { source: "/api/cron/:path*",     destination: "/local-api/cron/:path*" },
-        { source: "/api/webhooks/:path*", destination: "/local-api/webhooks/:path*" },
-        { source: "/api/stripe/:path*",   destination: "/local-api/stripe/:path*" },
-        // NOTE: /api/auth/* has no local handler; let it fall through to BACKEND.
-        { source: "/api/waitlist",        destination: "/local-api/waitlist" },
-        { source: "/api/og",              destination: "/local-api/og" },
+        // Every local Next.js API route lives under /local-api/* so the old
+        // catch-all afterFiles /api/:path* → BACKEND rewrite cannot shadow it.
+        // Callers keep using /api/* URLs.
+        { source: "/api/:path*", destination: "/local-api/:path*" },
       ],
       afterFiles: [
-        // Everything else under /api/* falls through to the M2 backend when
-        // there is no local Next route matching.
-        { source: "/api/:path*",  destination: `${BACKEND}/api/:path*` },
+        // Legacy backend paths. The /api/* catch-all has been removed now that
+        // all local handlers live under /local-api/*.
         { source: "/auth/:path*", destination: `${BACKEND}/auth/:path*` },
         { source: "/chat/:path*", destination: `${BACKEND}/chat/:path*` },
         { source: "/mcp",         destination: `${BACKEND}/mcp` },
