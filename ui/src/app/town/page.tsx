@@ -163,6 +163,12 @@ export default function TownPage() {
             Enter the Town
           </Link>
           <Link
+            href="/civilizations"
+            className="rounded-xl border border-white/20 bg-white/5 px-8 py-3.5 font-semibold text-white transition hover:bg-white/10"
+          >
+            Explore Civilizations
+          </Link>
+          <Link
             href="https://github.com/CSOAI-ORG/clawd-workspace/blob/main/meok-universe/research/mcp_a2a_town_integration.md"
             target="_blank"
             rel="noopener noreferrer"

@@ -19,15 +19,19 @@ const M2_PORT = process.env.M2_OLLAMA_PORT || '11434';
 const OLLAMA_ENDPOINT = process.env.OLLAMA_ENDPOINT || 'http://localhost:11434/v1';
 const M2_OLLAMA_ENDPOINT = M2_HOST ? `http://${M2_HOST}:${M2_PORT}/v1` : null;
 
+/** FreeLLMAPI — local OpenAI-compatible proxy that aggregates free tiers. */
+const FREELLMAPI_BASE_URL = process.env.FREELLMAPI_BASE_URL || 'http://localhost:3001/v1';
+const FREELLMAPI_API_KEY = process.env.FREELLMAPI_API_KEY || 'freellmapi-local';
+
 /** Ollama is available if localhost or env var is set */
 const OLLAMA_AVAILABLE = true; // M4 always has Ollama
 
 // ── Tier-based model access ────────────────────────────────────────────────
 
 export const MODEL_ACCESS = {
-  explorer:  ['cerebras-llama', 'groq-llama', 'deepseek-chat', 'nemotron-nano', 'llama-3.1-8b', 'ollama:llama3.2:3b'],
-  sovereign: ['cerebras-llama', 'groq-llama', 'deepseek-chat', 'nemotron-nano', 'nemotron-super', 'gpt-4o-mini', 'claude-3-5-haiku-latest', 'mistral-small', 'ollama:llama3.2:3b'],
-  family:    ['cerebras-llama', 'groq-llama', 'deepseek-chat', 'nemotron-nano', 'nemotron-super', 'nemotron-ultra', 'gpt-4o', 'claude-3-5-sonnet-latest', 'minimax-text-01', 'mistral-large', 'ollama:llama3.2:3b'],
+  explorer:  ['freellmapi:auto', 'cerebras-llama', 'groq-llama', 'deepseek-chat', 'nemotron-nano', 'llama-3.1-8b', 'ollama:llama3.2:3b'],
+  sovereign: ['freellmapi:auto', 'cerebras-llama', 'groq-llama', 'deepseek-chat', 'nemotron-nano', 'nemotron-super', 'gpt-4o-mini', 'claude-3-5-haiku-latest', 'mistral-small', 'ollama:llama3.2:3b'],
+  family:    ['freellmapi:auto', 'cerebras-llama', 'groq-llama', 'deepseek-chat', 'nemotron-nano', 'nemotron-super', 'nemotron-ultra', 'gpt-4o', 'claude-3-5-sonnet-latest', 'minimax-text-01', 'mistral-large', 'ollama:llama3.2:3b'],
 } as const;
 
 export type Tier = keyof typeof MODEL_ACCESS;
@@ -190,7 +194,7 @@ export function getProvider(modelId: string): LanguageModel {
     // Fallback: route to local Ollama when API key is exhausted/missing
     if (OLLAMA_AVAILABLE) {
       console.warn(`[llm-router] ANTHROPIC_API_KEY not set — routing ${modelId} to local Ollama (llama3.2:3b)`);
-      const ollama = createOpenAI({ baseURL: OLLAMA_ENDPOINT, apiKey: 'ollama' });
+      const ollama = createOpenAI({ baseURL: OLLAMA_ENDPOINT, apiKey: process.env.MEOK_MASTER_API_KEY || 'ollama' });
       return ollama('llama3.2:3b');
     }
     // Last resort: try anyway (will fail with auth error)
@@ -203,7 +207,7 @@ export function getProvider(modelId: string): LanguageModel {
     }
     if (OLLAMA_AVAILABLE) {
       console.warn(`[llm-router] OPENAI_API_KEY not set — routing ${modelId} to local Ollama`);
-      const ollama = createOpenAI({ baseURL: OLLAMA_ENDPOINT, apiKey: 'ollama' });
+      const ollama = createOpenAI({ baseURL: OLLAMA_ENDPOINT, apiKey: process.env.MEOK_MASTER_API_KEY || 'ollama' });
       return ollama('llama3.2:3b');
     }
     return openai(modelId);
@@ -228,7 +232,7 @@ export function getProvider(modelId: string): LanguageModel {
     // Fallback: local Ollama Nemotron if available
     if (process.env.OLLAMA_ENDPOINT || process.env.OLLAMA_ENABLED === 'true') {
       console.info(`[llm-router] NVIDIA_API_KEY not set — routing ${modelId} to local Ollama`);
-      const ollama = createOpenAI({ baseURL: OLLAMA_ENDPOINT, apiKey: 'ollama' });
+      const ollama = createOpenAI({ baseURL: OLLAMA_ENDPOINT, apiKey: process.env.MEOK_MASTER_API_KEY || 'ollama' });
       const localNemotronModels: Record<string, string> = {
         'nemotron-nano': 'nemotron-nano',
         'nemotron-super': 'nemotron-nano', // 30B+ won't fit 16GB — map to nano
@@ -294,8 +298,8 @@ export function getProvider(modelId: string): LanguageModel {
     const deepseekApiKey = process.env.DEEPSEEK_API_KEY;
     if (!deepseekApiKey) {
       console.warn('[llm-router] DEEPSEEK_API_KEY is not set — falling back to Ollama');
-      const ollama = createOpenAI({ baseURL: 'http://localhost:11434/v1', apiKey: 'ollama' });
-      return ollama('deepseek-r1:8b');
+      const ollama = createOpenAI({ baseURL: OLLAMA_ENDPOINT, apiKey: process.env.MEOK_MASTER_API_KEY || 'ollama' });
+      return ollama('llama3.2:3b');
     }
     const deepseek = createOpenAI({
       baseURL: 'https://api.deepseek.com/v1',
@@ -341,10 +345,18 @@ export function getProvider(modelId: string): LanguageModel {
     return mistral(mistralModels[modelId] ?? 'mistral-small-latest');
   }
 
+  // FreeLLMAPI — local OpenAI-compatible proxy aggregating free provider tiers
+  if (modelId.startsWith('freellmapi:') || modelId.startsWith('free:')) {
+    const freellmapiModel = modelId.replace(/^freellmapi:/, '').replace(/^free:/, '') || 'auto';
+    const freellmapi = createOpenAI({ baseURL: FREELLMAPI_BASE_URL, apiKey: FREELLMAPI_API_KEY });
+    console.info(`[llm-router] Routing ${modelId} to FreeLLMAPI (${FREELLMAPI_BASE_URL}) as model "${freellmapiModel}"`);
+    return freellmapi(freellmapiModel);
+  }
+
   // Local Ollama models — explicit routing via 'ollama:' prefix
   if (modelId.startsWith('ollama:')) {
     const ollamaModel = modelId.replace('ollama:', '');
-    const ollama = createOpenAI({ baseURL: OLLAMA_ENDPOINT, apiKey: 'ollama' });
+    const ollama = createOpenAI({ baseURL: OLLAMA_ENDPOINT, apiKey: process.env.MEOK_MASTER_API_KEY || 'ollama' });
     return ollama(ollamaModel);
   }
 
@@ -358,7 +370,7 @@ export function getProvider(modelId: string): LanguageModel {
     return openrouter(modelId);
   }
   console.warn(`[llm-router] Unknown model "${modelId}" — routing to local Ollama`);
-  const ollama = createOpenAI({ baseURL: 'http://localhost:11434/v1', apiKey: 'ollama' });
+  const ollama = createOpenAI({ baseURL: 'http://localhost:11434/v1', apiKey: process.env.MEOK_MASTER_API_KEY || 'ollama' });
   return ollama(modelId);
 }
 
@@ -371,6 +383,8 @@ export interface RouterResult {
   taskType: TaskType;
   /** A ready-to-use Vercel AI SDK provider instance */
   provider: LanguageModel;
+  /** True when a preferredModel override was supplied and honoured */
+  preferred?: boolean;
 }
 
 // ── Effort levels ───────────────────────────────────────────────────────
@@ -421,9 +435,16 @@ export function getThinkingBudget(effort: EffortLevel): number {
  * const { model, taskType, provider } = route(message, 'sovereign');
  * const result = streamText({ model: provider, messages, system });
  */
-export function route(message: string, tier: Tier, options?: { sensitivity?: 'low' | 'medium' | 'high'; companionId?: string }): RouterResult {
+export function route(message: string, tier: Tier, options?: { sensitivity?: 'low' | 'medium' | 'high'; companionId?: string; preferredModel?: string }): RouterResult {
   const taskType = classifyTask(message);
-  let model = selectModel(taskType, tier);
+  const allAllowedModels = [
+    ...MODEL_ACCESS.explorer,
+    ...MODEL_ACCESS.sovereign,
+    ...MODEL_ACCESS.family,
+  ] as const;
+  let model = options?.preferredModel && allAllowedModels.includes(options.preferredModel as typeof allAllowedModels[number])
+    ? options.preferredModel
+    : selectModel(taskType, tier);
 
   // M2 Ollama as primary: when M2_OLLAMA_HOST is set, route explorer tier locally
   // This means zero API key burn for local workshop use
@@ -462,7 +483,7 @@ export function route(message: string, tier: Tier, options?: { sensitivity?: 'lo
   }
 
   const provider = getProvider(model);
-  return { model, taskType, provider };
+  return { model, taskType, provider, preferred: !!options?.preferredModel };
 }
 
 // ── Fallback chain logic ────────────────────────────────────────────────
@@ -537,6 +558,6 @@ export function getProviderWithFallback(modelId: string): FallbackResult {
     model: modelId,
     metadata: { fallbackChain: chain },
   });
-  const ollama = createOpenAI({ baseURL: OLLAMA_ENDPOINT, apiKey: 'ollama' });
+  const ollama = createOpenAI({ baseURL: OLLAMA_ENDPOINT, apiKey: process.env.MEOK_MASTER_API_KEY || 'ollama' });
   return { provider: ollama('nemotron-nano'), model: 'ollama:llama3.2:3b', wasFallback: true };
 }

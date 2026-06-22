@@ -23,6 +23,12 @@ const nextConfig: NextConfig = {
   poweredByHeader: false,
   reactStrictMode: true,
 
+  // Build container memory relief: type-check and lint are run in CI/local dev
+  // (`tsc --noEmit` + `next lint`) before deploy. Skipping them remotely avoids
+  // the 8 GB Vercel builder OOM'ing during "Linting and checking validity of types".
+  typescript: { ignoreBuildErrors: true },
+  eslint: { ignoreDuringBuilds: true },
+
   // RSC compat fix — Next.js 15.5.15 + React 19.2.3 + @clerk/nextjs 7.0.5
   // hits `Cannot read properties of undefined (reading 'registerClientReference')`
   // in _not-found page-data collection. Excluding these packages from RSC
