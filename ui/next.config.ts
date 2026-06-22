@@ -146,19 +146,17 @@ const nextConfig: NextConfig = {
     // to BACKEND for paths we don't serve from Next itself.
     return {
       beforeFiles: [
-        // Local health + cron routes must be served by Next.js, not proxied.
-        { source: "/api/health",          destination: "/api/health" },
-        { source: "/api/cron/:path*",     destination: "/api/cron/:path*" },
-        // Keep Stripe webhook + checkout routes local — they MUST stay on Vercel,
-        // not proxied to the M2 home server (which can be offline).
-        { source: "/api/webhooks/:path*", destination: "/api/webhooks/:path*" },
-        { source: "/api/stripe/:path*",   destination: "/api/stripe/:path*" },
-        // Clerk auth hooks MUST also stay local — proxying them breaks auth.
-        { source: "/api/auth/:path*",     destination: "/api/auth/:path*" },
-        // Lead capture + OG MUST stay local — the afterFiles /api/* catch-all was
-        // proxying these to the offline M2 backend (198.53.x), 403'ing signups.
-        { source: "/api/waitlist",        destination: "/api/waitlist" },
-        { source: "/api/og",              destination: "/api/og" },
+        // Local routes must be served by Next.js, not proxied to the offline M2
+        // backend. Because afterFiles has a catch-all /api/:path* → BACKEND, the
+        // beforeFiles entries must rewrite to paths OUTSIDE /api. Handlers live
+        // under /local-api; callers keep using /api/* URLs.
+        { source: "/api/health",          destination: "/local-api/health" },
+        { source: "/api/cron/:path*",     destination: "/local-api/cron/:path*" },
+        { source: "/api/webhooks/:path*", destination: "/local-api/webhooks/:path*" },
+        { source: "/api/stripe/:path*",   destination: "/local-api/stripe/:path*" },
+        // NOTE: /api/auth/* has no local handler; let it fall through to BACKEND.
+        { source: "/api/waitlist",        destination: "/local-api/waitlist" },
+        { source: "/api/og",              destination: "/local-api/og" },
       ],
       afterFiles: [
         // Everything else under /api/* falls through to the M2 backend when
