@@ -2,6 +2,7 @@ import { type NextRequest, NextResponse } from 'next/server';
 import { generateText } from 'ai';
 import { route } from '@/lib/llm-router';
 import { getAethelgardAgent } from '@/lib/aethelgard-agents';
+import { loadHistory, saveHistory, type Message } from '@/lib/town-memory';
 
 export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
@@ -11,8 +12,10 @@ interface TownChatRequest {
   agentId: string;
   /** The user's message */
   message: string;
-  /** Optional prior conversation turns */
-  history?: Array<{ role: 'user' | 'assistant'; content: string }>;
+  /** Optional prior conversation turns (deprecated: server now persists history) */
+  history?: Message[];
+  /** Optional stable user identifier for persistent memory */
+  userId?: string;
   /** Optional model override; defaults to a working provider for the environment */
   model?: string;
 }
@@ -27,10 +30,38 @@ function isRemoteOllama(): boolean {
   return !endpoint.includes('localhost') && !endpoint.includes('127.0.0.1');
 }
 
+function parseAgentId(searchParams: URLSearchParams): string | null {
+  return searchParams.get('agentId');
+}
+
+/**
+ * GET /api/town/chat?agentId={agentId}
+ *
+ * Returns the persisted conversation history for the current user and the
+ * requested agent. Used when switching agents in the UI.
+ */
+export async function GET(req: NextRequest): Promise<Response> {
+  const { searchParams } = new URL(req.url);
+  const agentId = parseAgentId(searchParams);
+  const userId = searchParams.get('userId') ?? undefined;
+
+  if (!agentId) {
+    return NextResponse.json({ error: 'agentId is required' }, { status: 400 });
+  }
+
+  const agent = getAethelgardAgent(agentId);
+  if (!agent) {
+    return NextResponse.json({ error: `Unknown agent: ${agentId}` }, { status: 404 });
+  }
+
+  const history = await loadHistory(agent.id, userId);
+  return NextResponse.json({ agentId: agent.id, history });
+}
+
 /**
  * POST /api/town/chat
  *
- * Talk to an Aethelgard Finance Hive agent.
+ * Talk to an Aethelgard Finance Hive agent with persistent per-user memory.
  *
  * Routing priority:
  * 1. Explicit `model` override if provided.
@@ -51,7 +82,7 @@ export async function POST(req: NextRequest): Promise<Response> {
     return NextResponse.json({ error: 'Invalid JSON body' }, { status: 400 });
   }
 
-  const { agentId, message, history = [], model: preferredModel } = body;
+  const { agentId, message, userId, model: preferredModel } = body;
 
   if (!agentId || typeof message !== 'string' || message.trim().length === 0) {
     return NextResponse.json({ error: 'agentId and message are required' }, { status: 400 });
@@ -76,7 +107,10 @@ Context:
 - Keep responses concise (2-4 sentences) unless asked for detail.
 - Stay in character at all times. Do not break the fourth wall.`;
 
-  const messages = [...history, { role: 'user' as const, content: message }];
+  // Load persisted history for this user/agent, append the new user message,
+  // and cap at the last 20 turns to control token usage.
+  const existingHistory = await loadHistory(agent.id, userId);
+  const messages: Message[] = [...existingHistory, { role: 'user' as const, content: message }];
 
   // Pick the best default model for the current environment.
   let chosenModel =
@@ -143,6 +177,9 @@ Context:
     text = `I hear you, citizen. As ${agent.role}, my duty is ${agent.mandate.toLowerCase()}. The ledger is balanced, the council is watching, and Aethelgard remains sovereign. Ask again when the chamber is fully in session.`;
     providerResult = { ...providerResult, model: 'static:fallback' };
   }
+
+  // Persist the updated conversation history.
+  await saveHistory(agent.id, [...messages, { role: 'assistant' as const, content: text }], userId);
 
   return new Response(text, {
     status: 200,

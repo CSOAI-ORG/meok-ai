@@ -15,6 +15,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/article-50-kit',
     '/article-50-marking',
     '/article-50-transparency',
+    '/eu-ai-act-countdown',
+    '/certification',
     '/eu-code-of-practice',
     '/code-of-practice-2nd-draft',
     '/eu-ai-act',

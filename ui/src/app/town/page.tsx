@@ -216,6 +216,59 @@ export default function TownPage() {
         </div>
       </section>
 
+      {/* AETHELGARD */}
+      <section className="mx-auto max-w-6xl px-6 pb-24">
+        <Surface variant="glass" glow="blue" className="p-8 md:p-12">
+          <div className="grid gap-8 lg:grid-cols-2 items-center">
+            <div>
+              <div className="inline-flex items-center gap-2 rounded-full border border-[#3b82f6]/30 bg-[#3b82f6]/10 px-3 py-1 text-xs font-bold uppercase tracking-widest text-[#3b82f6] mb-4">
+                <Landmark size={14} /> Live Civilization
+              </div>
+              <h2 className="text-3xl font-bold md:text-4xl mb-4">
+                Aethelgard — the EU Finance Hive
+              </h2>
+              <p className="text-white/70 text-lg leading-relaxed mb-6">
+                12 AI ministers govern the first live civilization in MEOK. Chat with Minerva,
+                Forge, Oracle and the rest of the Finance Hive, or watch the BFT Council vote on
+                fiscal policy in real time.
+              </p>
+              <div className="flex flex-wrap gap-4">
+                <Link
+                  href="/civilizations#aethelgard"
+                  className="rounded-xl bg-[#3b82f6] px-6 py-3 font-bold text-white transition hover:bg-[#2563eb]"
+                >
+                  Enter Aethelgard →
+                </Link>
+                <Link
+                  href="/council"
+                  className="rounded-xl border border-white/20 bg-white/5 px-6 py-3 font-semibold text-white transition hover:bg-white/10"
+                >
+                  Visit Council Hall
+                </Link>
+              </div>
+            </div>
+            <div className="grid grid-cols-3 gap-3">
+              {[
+                { name: "Minerva", role: "Finance Minister" },
+                { name: "Forge", role: "Treasury Guard" },
+                { name: "Oracle", role: "Risk Analyst" },
+                { name: "Lyra", role: "Trade Envoy" },
+                { name: "Cog", role: "Compliance Auditor" },
+                { name: "Sable", role: "Shadow Banker" },
+              ].map((a) => (
+                <div
+                  key={a.name}
+                  className="rounded-xl border border-white/10 bg-white/5 p-4 text-center"
+                >
+                  <div className="text-sm font-bold text-white">{a.name}</div>
+                  <div className="text-[10px] uppercase tracking-wider text-white/50">{a.role}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </Surface>
+      </section>
+
       {/* TOWN MAP */}
       <section id="town-map" className="mx-auto max-w-6xl px-6 pb-24">
         <div className="mb-10 text-center">

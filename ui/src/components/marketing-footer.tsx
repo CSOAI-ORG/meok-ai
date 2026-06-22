@@ -89,6 +89,7 @@ const COMPANY_LINKS = [
   { href: "/press", label: "Press" },
   { href: "/roadmap", label: "Roadmap" },
   { href: "/how-it-works", label: "How It Works" },
+  { href: "/eu-ai-act-countdown", label: "EU AI Act Countdown" },
   { href: "/faq", label: "FAQ" },
   { href: "/open-source", label: "Open Source" },
   { href: "/sitemap", label: "Sitemap" },

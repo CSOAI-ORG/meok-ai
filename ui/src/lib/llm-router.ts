@@ -492,7 +492,7 @@ export function route(message: string, tier: Tier, options?: { sensitivity?: 'lo
  * Fallback chains: requested model → free cloud alternative → local Ollama.
  * Each model maps to an ordered list of fallbacks to try on failure.
  */
-const FALLBACK_CHAINS: Record<string, string[]> = {
+export const FALLBACK_CHAINS: Record<string, string[]> = {
   'claude-3-5-sonnet-latest':  ['deepseek-chat', 'groq-llama', 'ollama:llama3.2:3b'],
   'claude-3-5-haiku-latest':   ['deepseek-chat', 'groq-llama', 'ollama:llama3.2:3b'],
   'gpt-4o':                    ['deepseek-chat', 'groq-llama', 'ollama:llama3.2:3b'],

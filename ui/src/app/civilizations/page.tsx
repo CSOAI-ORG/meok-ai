@@ -5,6 +5,7 @@ import { Surface } from "@/components/design-system/surface";
 import { StatCard } from "@/components/design-system/stat-card";
 import { CIVILIZATIONS } from "@/lib/civilizations";
 import AethelgardPanel from "./aethelgard-panel";
+import { PheromoneMatrix, PheromoneMessage } from "@/components/sov-town/PheromoneMatrix";
 
 export const metadata: Metadata = {
   title: "MEOK Civilizations — 12 Worlds, One Sovereign Temple",
@@ -12,6 +13,51 @@ export const metadata: Metadata = {
     "Explore the 12 civilizations of MEOK. Aethelgard (EU Finance Hive) is live now; the remaining eleven unlock as the world grows.",
   alternates: { canonical: "https://meok.ai/civilizations" },
 };
+
+const FINANCE_MINISTERS = [
+  "Von Weber",
+  "Draghi",
+  "Lagarde",
+  "Scholz",
+  "Macron",
+  "Sunak",
+  "Meloni",
+  "Rutte",
+  "Andersson",
+  "Costa",
+  "Kallas",
+  "Orbán",
+];
+
+const MOCK_TOPICS = [
+  "bond yield",
+  "AI Act fine",
+  "budget transfer",
+  "stress test",
+  "liquidity alert",
+  "green taxonomy",
+  "CBDC pilot",
+  "fiscal rule",
+  "crypto framework",
+  "sovereign debt",
+];
+
+function generateMockMessages(agents: string[]): PheromoneMessage[] {
+  const messages: PheromoneMessage[] = [];
+  for (let i = 0; i < 36; i++) {
+    const from = agents[Math.floor(Math.random() * agents.length)];
+    const to = agents[Math.floor(Math.random() * agents.length)];
+    messages.push({
+      from,
+      to,
+      intensity: Math.max(0.2, Math.round((Math.random() * 1 + Number(from !== to) * 0.5) * 10) / 10),
+      topic: MOCK_TOPICS[Math.floor(Math.random() * MOCK_TOPICS.length)],
+    });
+  }
+  return messages;
+}
+
+const MOCK_MESSAGES = generateMockMessages(FINANCE_MINISTERS);
 
 const jsonLd = {
   "@context": "https://schema.org",
@@ -74,7 +120,7 @@ export default function CivilizationsPage() {
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           <StatCard label="Civilizations" value="12" glow="gold" />
           <StatCard label="Live Now" value={String(live.length)} glow="green" />
-          <StatCard label="Agents in Aethelgard" value="5" glow="blue" />
+          <StatCard label="Agents in Aethelgard" value="12" glow="blue" />
           <StatCard label="Total Planned Agents" value="26,508" change="dormant simulation" changeType="positive" glow="purple" />
         </div>
       </section>
@@ -161,6 +207,20 @@ export default function CivilizationsPage() {
             keeping the Phase 0 showcase running at $0.
           </span>
         </div>
+      </section>
+
+      {/* PHEROMONE MATRIX */}
+      <section className="mx-auto max-w-6xl px-6 pb-24">
+        <div className="mb-6 flex items-center gap-3">
+          <span className="text-2xl">🐜</span>
+          <div>
+            <h2 className="text-3xl font-bold md:text-4xl">Pheromone Matrix</h2>
+            <p className="text-white/60">Live ministerial signalling intensity across the Finance Hive</p>
+          </div>
+        </div>
+        <Surface variant="glass" className="p-4">
+          <PheromoneMatrix messages={MOCK_MESSAGES} />
+        </Surface>
       </section>
 
       {/* ROADMAP */}
