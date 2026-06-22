@@ -13,7 +13,7 @@
  */
 
 import { type NextRequest, NextResponse } from 'next/server';
-import { streamText } from 'ai';
+import { generateText, streamText } from 'ai';
 import { auth } from '@clerk/nextjs/server';
 import { route, type Tier, getEffortLevel, getThinkingBudget, getProvider } from '@/lib/llm-router';
 import { compressContext } from '@/lib/context-compressor';
@@ -615,7 +615,7 @@ You are LIVE and operational. Report this status when asked.`;
     );
   }
 
-  // 8. Stream response
+  // 8. Generate / stream response
   try {
     // Build character tools (sovereign+ tier only, based on archetype)
     const character = getCharacter(cid);
@@ -633,19 +633,42 @@ You are LIVE and operational. Report this status when asked.`;
     const streamModel = model.startsWith('ollama:') ? model : remoteOllama ? 'ollama:llama3.2:3b' : model;
     const streamProvider = streamModel === model ? provider : getProvider(streamModel);
 
-    const result = streamText({
-      model: streamProvider,
-      system: systemPrompt,
-      messages: messagesForLLM,
-      maxOutputTokens: Math.max(2048, thinkingBudget),
-      temperature: (typeof clientTemperature === 'number' && clientTemperature >= 0 && clientTemperature <= 2) ? clientTemperature : 0.7,
-      ...(hasTools ? { tools: characterTools, maxSteps: 3 } : {}),
-      providerOptions: isAnthropic ? {
-        anthropic: {
-          cacheControl: { type: "ephemeral" },
-        },
-      } : undefined,
-    });
+    // Production runs through a sometimes-flaky Ollama tunnel. Use generateText
+    // there so we can fall back to a static response instead of returning an
+    // empty stream when the tunnel drops.
+    const useGenerate = remoteOllama || streamModel.startsWith('ollama:');
+    let result: Awaited<ReturnType<typeof streamText>> | null = null;
+    let generatedText: string | null = null;
+
+    if (useGenerate) {
+      const gen = await generateText({
+        model: streamProvider,
+        system: systemPrompt,
+        messages: messagesForLLM,
+        maxOutputTokens: Math.max(1024, thinkingBudget),
+        temperature: (typeof clientTemperature === 'number' && clientTemperature >= 0 && clientTemperature <= 2) ? clientTemperature : 0.7,
+        maxRetries: 1,
+        abortSignal: AbortSignal.timeout(25000),
+      });
+      generatedText = gen.text?.trim() ?? '';
+      if (!generatedText) {
+        throw new Error('Ollama returned an empty response');
+      }
+    } else {
+      result = streamText({
+        model: streamProvider,
+        system: systemPrompt,
+        messages: messagesForLLM,
+        maxOutputTokens: Math.max(2048, thinkingBudget),
+        temperature: (typeof clientTemperature === 'number' && clientTemperature >= 0 && clientTemperature <= 2) ? clientTemperature : 0.7,
+        ...(hasTools ? { tools: characterTools, maxSteps: 3 } : {}),
+        providerOptions: isAnthropic ? {
+          anthropic: {
+            cacheControl: { type: "ephemeral" },
+          },
+        } : undefined,
+      });
+    }
 
     // Fire-and-forget: store memory episode + periodically persist OCEAN profile
     const importance = extractImportance(trimmed);
@@ -753,21 +776,16 @@ You are LIVE and operational. Report this status when asked.`;
 
     // Cost tracking (per-message logging)
     const inputTokens = Math.ceil(trimmed.length / 4);
-    const outputTokens = Math.ceil((result as unknown as { text?: string })?.text?.length ?? 200 / 4);
+    const outputTokens = Math.ceil((generatedText ?? (result as unknown as { text?: string })?.text)?.length ?? 200 / 4);
     const costPerKToken: Record<string, number> = {
       'claude': 0.003, 'gpt': 0.005, 'groq': 0.0001, 'cerebras': 0.0001,
       'deepseek': 0.0005, 'ollama': 0, 'minimax': 0.0002, 'qwen': 0.0002,
     };
-    const costKey = Object.keys(costPerKToken).find(k => model.includes(k)) ?? 'ollama';
+    const costKey = Object.keys(costPerKToken).find(k => streamModel.includes(k)) ?? 'ollama';
     const estimatedCost = ((inputTokens + outputTokens) / 1000) * (costPerKToken[costKey] ?? 0);
-    logInfo('chat.cost', { userId, model, metadata: { inputTokens, outputTokens, estimatedCost: `$${estimatedCost.toFixed(6)}` } });
+    logInfo('chat.cost', { userId, model: streamModel, metadata: { inputTokens, outputTokens, estimatedCost: `$${estimatedCost.toFixed(6)}` } });
 
-    // Inject sovereign metadata headers into the streaming response
-    const streamResponse = result.toTextStreamResponse();
-    const location = model.startsWith('local-') || model.startsWith('ollama-') ? 'local' : 'cloud';
-    const sovereignHeaders = new Headers(streamResponse.headers);
     // Compute real care score from emotion analysis + memory importance
-    // Care score = baseline 70 + emotion confidence bonus + importance bonus + valence adjustment
     const careScore = Math.min(100, Math.max(40, Math.round(
       70
       + (emotionState.confidence * 15)                // +0-15 for understanding the user's emotion
@@ -776,58 +794,67 @@ You are LIVE and operational. Report this status when asked.`;
       - (emotionState.arousal > 0.8 ? 5 : 0)          // -5 for very high arousal (potential escalation)
     )));
 
-    sovereignHeaders.set('X-MEOK-Model', model);
-    sovereignHeaders.set('X-MEOK-TaskType', taskType);
-    sovereignHeaders.set('X-MEOK-Effort', effortLevel);
-    sovereignHeaders.set('X-MEOK-Emotion', emotionState.primary);
-    sovereignHeaders.set('X-MEOK-Language', langDetection.language);
-    sovereignHeaders.set('X-MEOK-Location', location);
-    sovereignHeaders.set('X-MEOK-CareScore', String(careScore));
-    // Evolution metadata
+    const location = streamModel.startsWith('ollama:') ? 'local' : 'cloud';
     const totalMessages = (user?.messages_total ?? 0) + 1;
     const stage = getEvolutionStage(totalMessages);
-
-    // MEOKCLAW OS: Routing & Consensus
     const assignedGeneral = emperor.route(trimmed);
     const consensus = await emperor.reachConsensus(assignedGeneral);
 
-    sovereignHeaders.set('X-MEOK-Model', model);
-    sovereignHeaders.set('X-MEOK-General', assignedGeneral.name);
-    sovereignHeaders.set('X-MEOK-Votes', String(consensus.votes));
-    sovereignHeaders.set('X-MEOK-Attestation', consensus.attestation);
-    sovereignHeaders.set('X-MEOK-TaskType', taskType);
-    sovereignHeaders.set('X-MEOK-Stage', String(stage.id));
-    sovereignHeaders.set('X-MEOK-StageName', stage.name);
-    sovereignHeaders.set('X-MEOK-Interactions', String(totalMessages));
-    sovereignHeaders.set('X-MEOK-Memories', String(memoryCount));
+    const sovereignHeaders = new Headers({
+      'Content-Type': 'text/plain; charset=utf-8',
+      'X-MEOK-Model': streamModel,
+      'X-MEOK-General': assignedGeneral.name,
+      'X-MEOK-Votes': String(consensus.votes),
+      'X-MEOK-Attestation': consensus.attestation,
+      'X-MEOK-TaskType': taskType,
+      'X-MEOK-Effort': effortLevel,
+      'X-MEOK-Emotion': emotionState.primary,
+      'X-MEOK-Language': langDetection.language,
+      'X-MEOK-Location': location,
+      'X-MEOK-CareScore': String(careScore),
+      'X-MEOK-Stage': String(stage.id),
+      'X-MEOK-StageName': stage.name,
+      'X-MEOK-Interactions': String(totalMessages),
+      'X-MEOK-Memories': String(memoryCount),
+    });
 
+    // For Ollama (production tunnel), we already have the full generated text.
+    // Stream it so the client contract stays the same, but we can fall back cleanly.
+    if (generatedText) {
+      const encoder = new TextEncoder();
+      const body = new ReadableStream({
+        start(controller) {
+          controller.enqueue(encoder.encode(generatedText));
+          controller.close();
+        },
+      });
+      return new Response(body, { headers: sovereignHeaders });
+    }
+
+    // Cloud-hosted providers: use the native text stream.
+    const streamResponse = result!.toTextStreamResponse();
+    sovereignHeaders.forEach((value, key) => streamResponse.headers.set(key, value));
     return new Response(streamResponse.body, {
       status: streamResponse.status,
-      headers: sovereignHeaders,
+      headers: streamResponse.headers,
     });
   } catch (err) {
     // Log the real error server-side; never expose internals to the client
-    console.error('[api/chat] streamText error:', err);
+    console.error('[api/chat] generation error:', err);
 
-    // Care-centered error responses (from Sovereign Missing Layer research):
-    // "Errors are trust moments — never leave the user in a void."
-    const errMsg = err instanceof Error ? err.message : '';
-    if (errMsg.includes('rate') || errMsg.includes('429') || errMsg.includes('quota')) {
-      return errorResponse(
-        'I need a moment to think more carefully. Give me a minute and I\'ll be ready — your conversation is safe.',
-        429,
-      );
-    }
-    if (errMsg.includes('timeout') || errMsg.includes('ECONNREFUSED')) {
-      return errorResponse(
-        'I stumbled on that one. Let me try a different approach — could you send that again?',
-        503,
-      );
-    }
-    return errorResponse(
-      'Something went wrong on my end, but everything I remember about our conversations is intact. Could you try again?',
-      500,
-    );
+    // Care-centered fallback: never return an empty body to the client when
+    // the LLM path fails (especially the production Ollama tunnel).
+    const character = getCharacter(cid);
+    const fallbackText = `I hear you, but the council chamber is temporarily out of reach. ${character?.name ?? 'I'} will be back in session shortly — your message is safe.`;
+    return new Response(fallbackText, {
+      status: 200,
+      headers: {
+        'Content-Type': 'text/plain; charset=utf-8',
+        'X-MEOK-Model': 'static:fallback',
+        'X-MEOK-TaskType': taskType ?? 'chat',
+        'X-MEOK-Fallback': 'true',
+      },
+    });
   }
 }
 

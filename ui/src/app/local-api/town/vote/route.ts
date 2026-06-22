@@ -96,9 +96,11 @@ export async function POST(req: NextRequest): Promise<Response> {
   }
 
   const proposalText = proposal.trim();
+  const debug = req.nextUrl.searchParams.get('debug') === '1';
   const providerResult = route(proposalText, 'sovereign', { preferredModel: 'ollama:llama3.2:3b' });
 
   const rawVotes = new Map<string, { vote: string; reason: string }>();
+  let rawText = '';
 
   try {
     const { text } = await generateText({
@@ -111,6 +113,7 @@ export async function POST(req: NextRequest): Promise<Response> {
       abortSignal: AbortSignal.timeout(25000),
     });
 
+    rawText = text;
     for (const line of text.split('\n')) {
       const parsed = parseVoteLine(line);
       if (!parsed) continue;
@@ -158,7 +161,7 @@ export async function POST(req: NextRequest): Promise<Response> {
     }
   }
 
-  const result: VoteResult = {
+  const result: VoteResult & { raw?: string } = {
     proposal: proposalText,
     threshold,
     votes,
@@ -166,6 +169,10 @@ export async function POST(req: NextRequest): Promise<Response> {
     outcome,
     majorityVote,
   };
+  if (debug) {
+    // Include the raw LLM output to help diagnose parsing/format issues.
+    result.raw = rawText;
+  }
 
   return NextResponse.json(result, {
     headers: {
