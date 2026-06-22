@@ -15,7 +15,7 @@
 import { type NextRequest, NextResponse } from 'next/server';
 import { generateText, streamText } from 'ai';
 import { auth } from '@clerk/nextjs/server';
-import { route, type Tier, getEffortLevel, getThinkingBudget, getProvider } from '@/lib/llm-router';
+import { route, type Tier, getEffortLevel, getThinkingBudget, getProvider, DEFAULT_OLLAMA_MODEL_ID } from '@/lib/llm-router';
 import { compressContext } from '@/lib/context-compressor';
 import { getUserById, incrementMessageCount, getUserProfile, updateUserProfile, TIER_LIMITS, addBondPoints, storeDiaryEntry, getSignalsSentThisWeek, queueCareSignal, createNotification } from '@/lib/db/user';
 import { getCharacter } from '@/lib/characters';
@@ -353,7 +353,7 @@ export async function POST(req: NextRequest): Promise<Response> {
   })();
   const { model, taskType, provider } = route(trimmed, userTier, {
     companionId: cid,
-    preferredModel: remoteOllama ? 'ollama:llama3.2:3b' : undefined,
+    preferredModel: remoteOllama ? DEFAULT_OLLAMA_MODEL_ID : undefined,
   });
 
   // 6a2. Draft-refine: if explorer tier and simple task, try local draft first
@@ -630,7 +630,7 @@ You are LIVE and operational. Report this status when asked.`;
       ).catch(() => {});
     }
 
-    const streamModel = model.startsWith('ollama:') ? model : remoteOllama ? 'ollama:llama3.2:3b' : model;
+    const streamModel = model.startsWith('ollama:') ? model : remoteOllama ? DEFAULT_OLLAMA_MODEL_ID : model;
     const streamProvider = streamModel === model ? provider : getProvider(streamModel);
 
     // Production runs through a sometimes-flaky Ollama tunnel. Use generateText

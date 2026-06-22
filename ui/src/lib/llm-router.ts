@@ -31,12 +31,16 @@ function isRemoteOllama(): boolean {
   return Boolean(OLLAMA_ENDPOINT && !OLLAMA_ENDPOINT.includes('localhost') && !OLLAMA_ENDPOINT.includes('127.0.0.1'));
 }
 
+/** Default Ollama model: use the small, fast model available on the active endpoint. */
+export const DEFAULT_OLLAMA_MODEL = isRemoteOllama() ? 'qwen2.5-coder:1.5b' : 'llama3.2:3b';
+export const DEFAULT_OLLAMA_MODEL_ID = `ollama:${DEFAULT_OLLAMA_MODEL}`;
+
 // ── Tier-based model access ────────────────────────────────────────────────
 
 export const MODEL_ACCESS = {
-  explorer:  ['freellmapi:auto', 'cerebras-llama', 'groq-llama', 'deepseek-chat', 'nemotron-nano', 'llama-3.1-8b', 'ollama:llama3.2:3b'],
-  sovereign: ['freellmapi:auto', 'cerebras-llama', 'groq-llama', 'deepseek-chat', 'nemotron-nano', 'nemotron-super', 'gpt-4o-mini', 'claude-3-5-haiku-latest', 'mistral-small', 'ollama:llama3.2:3b'],
-  family:    ['freellmapi:auto', 'cerebras-llama', 'groq-llama', 'deepseek-chat', 'nemotron-nano', 'nemotron-super', 'nemotron-ultra', 'gpt-4o', 'claude-3-5-sonnet-latest', 'minimax-text-01', 'mistral-large', 'ollama:llama3.2:3b'],
+  explorer:  ['freellmapi:auto', 'cerebras-llama', 'groq-llama', 'deepseek-chat', 'nemotron-nano', 'llama-3.1-8b', DEFAULT_OLLAMA_MODEL_ID],
+  sovereign: ['freellmapi:auto', 'cerebras-llama', 'groq-llama', 'deepseek-chat', 'nemotron-nano', 'nemotron-super', 'gpt-4o-mini', 'claude-3-5-haiku-latest', 'mistral-small', DEFAULT_OLLAMA_MODEL_ID],
+  family:    ['freellmapi:auto', 'cerebras-llama', 'groq-llama', 'deepseek-chat', 'nemotron-nano', 'nemotron-super', 'nemotron-ultra', 'gpt-4o', 'claude-3-5-sonnet-latest', 'minimax-text-01', 'mistral-large', DEFAULT_OLLAMA_MODEL_ID],
 } as const;
 
 export type Tier = keyof typeof MODEL_ACCESS;
@@ -454,7 +458,7 @@ export function route(message: string, tier: Tier, options?: { sensitivity?: 'lo
   // M2 Ollama as primary: when M2_OLLAMA_HOST is set, route explorer tier locally
   // This means zero API key burn for local workshop use
   if (M2_HOST && tier === 'explorer' && OLLAMA_AVAILABLE && !isRemoteOllama()) {
-    // Use qwen2.5:7b for quality tasks, phi4-mini for speed, 3b as fallback.
+    // Use qwen2.5:7b for quality tasks, phi4-mini for speed, default as fallback.
     // Only apply M2-specific model choices when the Ollama endpoint is local.
     const qualityTasks = ['reasoning', 'analysis', 'coding', 'code_review', 'research', 'creative'];
     model = qualityTasks.includes(taskType) ? 'ollama:qwen2.5:7b' : 'ollama:phi4-mini';
@@ -480,11 +484,11 @@ export function route(message: string, tier: Tier, options?: { sensitivity?: 'lo
   // Sensitivity-based routing override
   if (options?.sensitivity === 'high' && OLLAMA_AVAILABLE) {
     // High sensitivity = always local, never cloud
-    model = 'ollama:llama3.2:3b';
+    model = DEFAULT_OLLAMA_MODEL_ID;
   } else if (options?.sensitivity === 'medium' && OLLAMA_AVAILABLE) {
     // Medium = prefer local for non-critical tasks
     if (['chat', 'planning', 'research'].includes(taskType)) {
-      model = 'ollama:llama3.2:3b';
+      model = DEFAULT_OLLAMA_MODEL_ID;
     }
   }
 
@@ -499,16 +503,16 @@ export function route(message: string, tier: Tier, options?: { sensitivity?: 'lo
  * Each model maps to an ordered list of fallbacks to try on failure.
  */
 export const FALLBACK_CHAINS: Record<string, string[]> = {
-  'claude-3-5-sonnet-latest':  ['deepseek-chat', 'groq-llama', 'ollama:llama3.2:3b'],
-  'claude-3-5-haiku-latest':   ['deepseek-chat', 'groq-llama', 'ollama:llama3.2:3b'],
-  'gpt-4o':                    ['deepseek-chat', 'groq-llama', 'ollama:llama3.2:3b'],
-  'gpt-4o-mini':               ['deepseek-chat', 'cerebras-llama', 'ollama:llama3.2:3b'],
-  'nemotron-ultra':            ['nemotron-super', 'groq-llama', 'ollama:llama3.2:3b'],
-  'nemotron-super':            ['groq-llama', 'cerebras-llama', 'ollama:llama3.2:3b'],
-  'nemotron-nano':             ['cerebras-llama', 'ollama:llama3.2:3b'],
-  'deepseek-chat':             ['groq-llama', 'cerebras-llama', 'ollama:llama3.2:3b'],
-  'groq-llama':                ['cerebras-llama', 'deepseek-chat', 'ollama:llama3.2:3b'],
-  'cerebras-llama':            ['groq-llama', 'deepseek-chat', 'ollama:llama3.2:3b'],
+  'claude-3-5-sonnet-latest':  ['deepseek-chat', 'groq-llama', DEFAULT_OLLAMA_MODEL_ID],
+  'claude-3-5-haiku-latest':   ['deepseek-chat', 'groq-llama', DEFAULT_OLLAMA_MODEL_ID],
+  'gpt-4o':                    ['deepseek-chat', 'groq-llama', DEFAULT_OLLAMA_MODEL_ID],
+  'gpt-4o-mini':               ['deepseek-chat', 'cerebras-llama', DEFAULT_OLLAMA_MODEL_ID],
+  'nemotron-ultra':            ['nemotron-super', 'groq-llama', DEFAULT_OLLAMA_MODEL_ID],
+  'nemotron-super':            ['groq-llama', 'cerebras-llama', DEFAULT_OLLAMA_MODEL_ID],
+  'nemotron-nano':             ['cerebras-llama', DEFAULT_OLLAMA_MODEL_ID],
+  'deepseek-chat':             ['groq-llama', 'cerebras-llama', DEFAULT_OLLAMA_MODEL_ID],
+  'groq-llama':                ['cerebras-llama', 'deepseek-chat', DEFAULT_OLLAMA_MODEL_ID],
+  'cerebras-llama':            ['groq-llama', 'deepseek-chat', DEFAULT_OLLAMA_MODEL_ID],
 };
 
 export interface FallbackResult {
@@ -542,7 +546,7 @@ export function getProviderWithFallback(modelId: string): FallbackResult {
   }
 
   // Walk the fallback chain
-  const chain = FALLBACK_CHAINS[modelId] ?? ['groq-llama', 'ollama:llama3.2:3b'];
+  const chain = FALLBACK_CHAINS[modelId] ?? ['groq-llama', DEFAULT_OLLAMA_MODEL_ID];
   for (const fallbackModel of chain) {
     try {
       const provider = getProvider(fallbackModel);
@@ -565,5 +569,5 @@ export function getProviderWithFallback(modelId: string): FallbackResult {
     metadata: { fallbackChain: chain },
   });
   const ollama = createOpenAI({ baseURL: OLLAMA_ENDPOINT, apiKey: process.env.MEOK_MASTER_API_KEY || 'ollama' });
-  return { provider: ollama('nemotron-nano'), model: 'ollama:llama3.2:3b', wasFallback: true };
+  return { provider: ollama('nemotron-nano'), model: DEFAULT_OLLAMA_MODEL_ID, wasFallback: true };
 }

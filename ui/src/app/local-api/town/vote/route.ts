@@ -1,6 +1,6 @@
 import { type NextRequest, NextResponse } from 'next/server';
 import { generateText } from 'ai';
-import { route } from '@/lib/llm-router';
+import { route, DEFAULT_OLLAMA_MODEL_ID } from '@/lib/llm-router';
 import { AETHELGARD_FINANCE_HIVE } from '@/lib/aethelgard-agents';
 
 export const runtime = 'nodejs';
@@ -29,6 +29,9 @@ const VALID_VOTES: Vote[] = ['FOR', 'AGAINST', 'ABSTAIN'];
 
 function coerceVote(v: string): Vote {
   const cleaned = String(v).trim().toUpperCase();
+  if (cleaned.includes('FOR')) return 'FOR';
+  if (cleaned.includes('AGAINST')) return 'AGAINST';
+  if (cleaned.includes('ABSTAIN')) return 'ABSTAIN';
   return VALID_VOTES.includes(cleaned as Vote) ? (cleaned as Vote) : 'ABSTAIN';
 }
 
@@ -37,7 +40,7 @@ function buildCouncilSystem(): string {
     (a) => `${a.id} = ${a.name}, ${a.role} (${a.archetype})`,
   ).join('\n');
 
-  return `You are the Aethelgard Finance Hive BFT Council. Ministers:\n\n${agentList}\n\nVote on the proposal. Return one line per minister in this exact format (no markdown, no numbering, no extra text):\n\nagentId|FOR|short reason\n\nRules:\n- Most ministers MUST vote FOR or AGAINST based on how the proposal aligns with their archetype and mandate.\n- Only vote ABSTAIN if the proposal truly gives you no basis to decide.\n- Reasons must be distinct, in-character, and no longer than one sentence.\n- Do not all vote the same way; the council is intentionally pluralistic.`;
+  return `You are the Aethelgard Finance Hive BFT Council chair. Ministers:\n\n${agentList}\n\nExpected leanings on a wealth-tax proposal (use as a guide, but stay in character):\n- minerva: FOR if the fiscal case is sound\n- forge: AGAINST new taxes\n- oracle: AGAINST unless risks are mitigated\n- lyra: AGAINST capital controls\n- cog: FOR if legally enforceable\n- sable: AGAINST if it drives capital away\n- pillar: FOR if funds are ring-fenced\n- quill: strongly FOR\n- bracket: AGAINST unless spending is cut first\n- fret: FOR if it protects citizens\n- vault: AGAINST if it weakens reserves\n- gilt: AGAINST if it raises yields\n\nReturn exactly one line per minister in this exact format (no markdown, no numbering, no extra text):\n\nagentId|FOR|one-sentence in-character reason\n\nRules:\n- Each minister MUST vote FOR or AGAINST. Abstain only if truly undecided.\n- Reasons must be distinct, in-character, and no longer than one sentence.\n- The council is intentionally pluralistic; ministers disagree.`;
 }
 
 function parseVoteLine(line: string): { agentId: string; vote: string; reason: string } | null {
@@ -97,7 +100,7 @@ export async function POST(req: NextRequest): Promise<Response> {
 
   const proposalText = proposal.trim();
   const debug = req.nextUrl.searchParams.get('debug') === '1';
-  const providerResult = route(proposalText, 'sovereign', { preferredModel: 'ollama:llama3.2:3b' });
+  const providerResult = route(proposalText, 'sovereign', { preferredModel: DEFAULT_OLLAMA_MODEL_ID });
 
   const rawVotes = new Map<string, { vote: string; reason: string }>();
   let rawText = '';
@@ -107,10 +110,10 @@ export async function POST(req: NextRequest): Promise<Response> {
       model: providerResult.provider,
       system: buildCouncilSystem(),
       messages: [{ role: 'user', content: `Proposal: ${proposalText}\n\nReturn the council vote list now.` }],
-      maxOutputTokens: 768,
-      temperature: 0.35,
+      maxOutputTokens: 1200,
+      temperature: 0.45,
       maxRetries: 1,
-      abortSignal: AbortSignal.timeout(25000),
+      abortSignal: AbortSignal.timeout(45000),
     });
 
     rawText = text;

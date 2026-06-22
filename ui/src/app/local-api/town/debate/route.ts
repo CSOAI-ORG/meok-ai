@@ -1,6 +1,6 @@
 import { type NextRequest, NextResponse } from 'next/server';
 import { generateText } from 'ai';
-import { route, FALLBACK_CHAINS } from '@/lib/llm-router';
+import { route, FALLBACK_CHAINS, DEFAULT_OLLAMA_MODEL_ID } from '@/lib/llm-router';
 import { AETHELGARD_FINANCE_HIVE } from '@/lib/aethelgard-agents';
 import type { VoteResult, Vote, AgentVote } from '../vote/route';
 
@@ -25,7 +25,7 @@ export interface DebateResult {
 }
 
 const VALID_VOTES: Vote[] = ['FOR', 'AGAINST', 'ABSTAIN'];
-const DEFAULT_MODEL = 'ollama:llama3.2:3b';
+const DEFAULT_MODEL = DEFAULT_OLLAMA_MODEL_ID;
 
 function coerceVote(v: string): Vote {
   const cleaned = String(v).trim().toUpperCase();

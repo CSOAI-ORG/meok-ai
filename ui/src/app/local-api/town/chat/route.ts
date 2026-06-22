@@ -1,6 +1,6 @@
 import { type NextRequest, NextResponse } from 'next/server';
 import { generateText } from 'ai';
-import { route } from '@/lib/llm-router';
+import { route, DEFAULT_OLLAMA_MODEL_ID } from '@/lib/llm-router';
 import { getAethelgardAgent } from '@/lib/aethelgard-agents';
 import { loadHistory, saveHistory, type Message } from '@/lib/town-memory';
 
@@ -118,12 +118,12 @@ Context:
     (process.env.FREELLMAPI_API_KEY
       ? 'freellmapi:auto'
       : isRemoteOllama()
-        ? 'ollama:llama3.2:3b'
+        ? DEFAULT_OLLAMA_MODEL_ID
         : process.env.ANTHROPIC_API_KEY
           ? 'claude-3-5-haiku-latest'
           : process.env.OPENAI_API_KEY
             ? 'gpt-4o-mini'
-            : 'ollama:llama3.2:3b');
+            : DEFAULT_OLLAMA_MODEL_ID);
 
   // If FreeLLMAPI is requested, probe it quickly. Fall back on failure.
   if ((chosenModel.startsWith('freellmapi:') || chosenModel.startsWith('free:')) && !process.env.FREELLMAPI_API_KEY) {
@@ -134,7 +134,7 @@ Context:
       });
       if (!probe.ok) {
         console.warn(`[api/town/chat] FreeLLMAPI probe failed (${probe.status}); using fallback`);
-        chosenModel = isRemoteOllama() ? 'ollama:llama3.2:3b' : 'claude-3-5-haiku-latest';
+        chosenModel = isRemoteOllama() ? DEFAULT_OLLAMA_MODEL_ID : 'claude-3-5-haiku-latest';
       }
     } catch {
       console.warn('[api/town/chat] FreeLLMAPI unreachable; using fallback');
@@ -169,7 +169,7 @@ Context:
 
   // Fallback to Ollama if the primary provider failed.
   if (!text && !chosenModel.startsWith('ollama:')) {
-    text = await tryGenerate('ollama:llama3.2:3b', true);
+    text = await tryGenerate(DEFAULT_OLLAMA_MODEL_ID, true);
   }
 
   // Last resort: static in-character response so the UI never hangs empty.
