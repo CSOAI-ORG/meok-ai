@@ -293,3 +293,49 @@ export interface TownFeed {
     how: string;
   };
 }
+
+/* ──────────────────────── BFT Council Chamber ──────────────────────── */
+
+export type CouncilVote = 'FOR' | 'AGAINST' | 'ABSTAIN';
+
+export interface CouncilAgentVote {
+  agentId: string;
+  name: string;
+  role: string;
+  vote: CouncilVote;
+  reason: string;
+}
+
+export interface CouncilTally {
+  FOR: number;
+  AGAINST: number;
+  ABSTAIN: number;
+}
+
+export type CouncilOutcome = 'PASSED' | 'REJECTED' | 'TIED';
+
+export interface CouncilVoteResult {
+  proposal: string;
+  threshold: number;
+  votes: CouncilAgentVote[];
+  tally: CouncilTally;
+  outcome: CouncilOutcome;
+  majorityVote: CouncilVote | null;
+}
+
+export interface CouncilStatement {
+  agentId: string;
+  name: string;
+  role: string;
+  round: number;
+  targetAgentId?: string;
+  targetName?: string;
+  statement: string;
+}
+
+export interface CouncilDebateResult {
+  proposal: string;
+  threshold: number;
+  debate: CouncilStatement[][];
+  votes: CouncilVoteResult;
+}

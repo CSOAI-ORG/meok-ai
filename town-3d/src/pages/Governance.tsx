@@ -4,7 +4,7 @@ import {
   Shield, Vote, Users, Clock, CheckCircle, XCircle,
   MinusCircle, ChevronDown, FileText, Crown,
   Activity, Globe, Lock, Wallet, Landmark, Scale, User,
-  ExternalLink
+  ExternalLink, Gavel, Loader2, MessageSquare
 } from 'lucide-react'
 import {
   PieChart, Pie, Cell, ResponsiveContainer, Tooltip,
@@ -13,7 +13,7 @@ import {
 } from 'recharts'
 import { DISTRICT_COLORS } from '@/types'
 import { useTownStore } from '@/store/useTownStore'
-import type { District } from '@/types'
+import type { District, CouncilVoteResult, CouncilDebateResult, CouncilVote } from '@/types'
 
 const ease = [0.16, 1, 0.3, 1] as [number, number, number, number]
 
@@ -345,6 +345,15 @@ export default function Governance() {
   const [userVote, setUserVote] = useState<VoteType | null>(null)
   const townFeed = useTownStore((s) => s.townFeed)
 
+  /* ─── BFT Council Chamber state ─── */
+  const DEFAULT_COUNCIL_PROPOSAL = 'Issue a 2% sovereign wealth tax on AI-derived capital gains'
+  const [councilProposal, setCouncilProposal] = useState(DEFAULT_COUNCIL_PROPOSAL)
+  const [councilDebate, setCouncilDebate] = useState(false)
+  const [councilLoading, setCouncilLoading] = useState(false)
+  const [councilResult, setCouncilResult] = useState<CouncilVoteResult | null>(null)
+  const [councilDebateResult, setCouncilDebateResult] = useState<CouncilDebateResult | null>(null)
+  const [councilError, setCouncilError] = useState<string | null>(null)
+
   const filteredProposals = useMemo(
     () => PROPOSALS.filter(p => p.status === activeTab),
     [activeTab]
@@ -355,6 +364,37 @@ export default function Governance() {
   const castVote = useCallback((vote: VoteType) => {
     setUserVote(vote)
   }, [])
+
+  const conveneCouncil = useCallback(async () => {
+    setCouncilLoading(true)
+    setCouncilError(null)
+    setCouncilResult(null)
+    setCouncilDebateResult(null)
+    try {
+      const endpoint = councilDebate ? '/api/town/debate' : '/api/town/vote'
+      const response = await fetch(endpoint, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ proposal: councilProposal }),
+      })
+      if (!response.ok) {
+        const payload = await response.json().catch(() => ({})) as { error?: string }
+        throw new Error(payload.error || `Council returned ${response.status}`)
+      }
+      if (councilDebate) {
+        const data = (await response.json()) as CouncilDebateResult
+        setCouncilDebateResult(data)
+        setCouncilResult(data.votes)
+      } else {
+        const data = (await response.json()) as CouncilVoteResult
+        setCouncilResult(data)
+      }
+    } catch (err) {
+      setCouncilError(err instanceof Error ? err.message : 'The council could not be convened')
+    } finally {
+      setCouncilLoading(false)
+    }
+  }, [councilProposal, councilDebate])
 
   // Donut chart data for active proposal
   const donutData = activeProposal ? [
@@ -822,6 +862,182 @@ export default function Governance() {
           </motion.div>
         </div>
 
+        {/* ─── BFT Council Chamber ─── */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.4, delay: 0.65, ease }}
+          className="glass-panel rounded-xl p-5 mt-5"
+        >
+          <div className="flex items-start gap-3 mb-5">
+            <div className="w-10 h-10 rounded-lg bg-[#2ECC71]/15 flex items-center justify-center flex-shrink-0">
+              <Gavel className="w-5 h-5 text-[#2ECC71]" />
+            </div>
+            <div>
+              <h2 className="text-lg font-semibold text-[#F0F0F5]" style={{ fontFamily: "'Orbitron', sans-serif" }}>
+                BFT Council Chamber
+              </h2>
+              <p className="text-xs text-[#5A5A6A] mt-0.5">
+                Live Aethelgard Finance Hive consensus on a proposal.
+              </p>
+            </div>
+          </div>
+
+          <div className="space-y-4">
+            <div>
+              <label
+                className="block text-xs text-[#5A5A6A] mb-1.5"
+                style={{ fontFamily: "'JetBrains Mono', monospace" }}
+              >
+                Proposal under deliberation
+              </label>
+              <textarea
+                value={councilProposal}
+                onChange={(e) => setCouncilProposal(e.target.value)}
+                rows={3}
+                className="w-full bg-[#12121A]/60 border border-[#2A2A35] rounded-lg p-3 text-sm text-[#F0F0F5] placeholder:text-[#5A5A6A] focus:outline-none focus:border-[#2ECC71]/50 resize-none"
+              />
+            </div>
+
+            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+              <button
+                onClick={() => setCouncilDebate(!councilDebate)}
+                className={`flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs font-medium transition-colors ${
+                  councilDebate
+                    ? 'bg-[#D4AF37]/15 text-[#D4AF37] border border-[#D4AF37]/30'
+                    : 'bg-[#1A1A24] text-[#8A8A9A] border border-[#2A2A35]'
+                }`}
+              >
+                <MessageSquare className="w-3.5 h-3.5" />
+                {councilDebate ? 'Debate Mode: On' : 'Debate Mode: Off'}
+              </button>
+              <button
+                onClick={conveneCouncil}
+                disabled={councilLoading || !councilProposal.trim()}
+                className="inline-flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-semibold text-white bg-[#2ECC71] hover:opacity-90 disabled:opacity-50 disabled:cursor-not-allowed transition-all"
+              >
+                {councilLoading ? (
+                  <Loader2 className="w-4 h-4 animate-spin" />
+                ) : (
+                  <Users className="w-4 h-4" />
+                )}
+                {councilLoading ? 'Convening…' : 'Convene Council'}
+              </button>
+            </div>
+
+            {councilError && (
+              <div className="p-3 rounded-lg bg-[#E74C3C]/10 border border-[#E74C3C]/30 text-sm text-[#E74C3C]">
+                {councilError}
+              </div>
+            )}
+
+            {councilResult && (
+              <div className="space-y-5 pt-2">
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-4 border-b border-[#2A2A35]">
+                  <div>
+                    <h3 className="text-sm font-semibold text-[#F0F0F5]">{councilResult.proposal}</h3>
+                    <p
+                      className="text-[10px] text-[#5A5A6A] mt-0.5"
+                      style={{ fontFamily: "'JetBrains Mono', monospace" }}
+                    >
+                      Threshold {Math.round(councilResult.threshold * 100)}% · {councilResult.votes.length} ministers
+                    </p>
+                  </div>
+                  <CouncilOutcomeBadge outcome={councilResult.outcome} />
+                </div>
+
+                {/* Tally */}
+                <div className="grid grid-cols-3 gap-3">
+                  {[
+                    { label: 'FOR', count: councilResult.tally.FOR, color: '#2ECC71' },
+                    { label: 'AGAINST', count: councilResult.tally.AGAINST, color: '#E74C3C' },
+                    { label: 'ABSTAIN', count: councilResult.tally.ABSTAIN, color: '#D4AF37' },
+                  ].map((item) => (
+                    <div
+                      key={item.label}
+                      className="p-3 rounded-lg bg-[#12121A]/60 border border-[#2A2A35] text-center"
+                    >
+                      <div
+                        className="text-xl font-bold"
+                        style={{ color: item.color, fontFamily: "'JetBrains Mono', monospace" }}
+                      >
+                        {item.count}
+                      </div>
+                      <div className="text-[10px] text-[#5A5A6A] uppercase tracking-wider">{item.label}</div>
+                    </div>
+                  ))}
+                </div>
+
+                {/* Ministers */}
+                <div>
+                  <h4
+                    className="text-xs font-semibold text-[#5A5A6A] uppercase tracking-wider mb-3"
+                    style={{ fontFamily: "'JetBrains Mono', monospace" }}
+                  >
+                    Minister Votes
+                  </h4>
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3">
+                    {councilResult.votes.map((v) => (
+                      <div
+                        key={v.agentId}
+                        className="p-3 rounded-lg bg-[#12121A]/60 border border-[#2A2A35]"
+                      >
+                        <div className="flex items-center justify-between mb-2">
+                          <div>
+                            <div className="text-sm font-medium text-[#F0F0F5]">{v.name}</div>
+                            <div className="text-[10px] text-[#5A5A6A]">{v.role}</div>
+                          </div>
+                          <CouncilVoteBadge vote={v.vote} />
+                        </div>
+                        <p className="text-xs text-[#8A8A9A] leading-relaxed">{v.reason}</p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Debate transcript */}
+                {councilDebateResult && (
+                  <div className="space-y-4 pt-2 border-t border-[#2A2A35]">
+                    <h4
+                      className="text-xs font-semibold text-[#D4AF37] uppercase tracking-wider"
+                      style={{ fontFamily: "'JetBrains Mono', monospace" }}
+                    >
+                      Debate Transcript
+                    </h4>
+                    {councilDebateResult.debate.map((round, roundIdx) => (
+                      <div key={roundIdx} className="space-y-2">
+                        <div
+                          className="text-[10px] text-[#5A5A6A] uppercase tracking-wider"
+                          style={{ fontFamily: "'JetBrains Mono', monospace" }}
+                        >
+                          Round {roundIdx + 1}
+                        </div>
+                        <div className="space-y-2">
+                          {round.map((s) => (
+                            <div
+                              key={`${s.agentId}-${roundIdx}`}
+                              className="p-3 rounded-lg bg-[#12121A]/60 border-l-2 border-[#2ECC71]/50"
+                            >
+                              <div className="flex items-center gap-2 mb-1 flex-wrap">
+                                <span className="text-xs font-medium text-[#F0F0F5]">{s.name}</span>
+                                <span className="text-[10px] text-[#5A5A6A]">· {s.role}</span>
+                                {s.targetName && (
+                                  <span className="text-[10px] text-[#D4AF37]">→ {s.targetName}</span>
+                                )}
+                              </div>
+                              <p className="text-xs text-[#8A8A9A]">{s.statement}</p>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </div>
+            )}
+          </div>
+        </motion.div>
+
         {/* ─── Delegate Power Network ─── */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -1138,6 +1354,38 @@ function StatusBadge({ status }: { status: ProposalStatus }) {
     >
       <cfg.icon className="w-3 h-3" />
       {cfg.label}
+    </span>
+  )
+}
+
+function councilVoteColor(vote: CouncilVote): string {
+  switch (vote) {
+    case 'FOR': return '#2ECC71'
+    case 'AGAINST': return '#E74C3C'
+    default: return '#D4AF37'
+  }
+}
+
+function CouncilVoteBadge({ vote }: { vote: CouncilVote }) {
+  const color = councilVoteColor(vote)
+  return (
+    <span
+      className="px-2 py-0.5 rounded-full text-[10px] font-medium"
+      style={{ backgroundColor: `${color}20`, color }}
+    >
+      {vote}
+    </span>
+  )
+}
+
+function CouncilOutcomeBadge({ outcome }: { outcome: CouncilVoteResult['outcome'] }) {
+  const color = outcome === 'PASSED' ? '#2ECC71' : outcome === 'REJECTED' ? '#E74C3C' : '#D4AF37'
+  return (
+    <span
+      className="px-3 py-1 rounded-full text-xs font-semibold"
+      style={{ backgroundColor: `${color}20`, color, fontFamily: "'JetBrains Mono', monospace" }}
+    >
+      {outcome}
     </span>
   )
 }

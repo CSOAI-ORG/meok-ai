@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-06-23T04:09:35.885424+00:00",
-  "scope": "IN-SIMULATION governed-vs-ungoverned data. ONLY cryptographically-attestable verdicts are shown. Policy-Lab results may be agents=stub (labeled). Bitcoin anchors may be pending confirmation. Verify any of this yourself \u2014 no trust required.",
+  "generated_at": "2026-06-23T04:12:22.983570+00:00",
+  "scope": "IN-SIMULATION governed-vs-ungoverned data. ONLY cryptographically-attestable verdicts are shown. Policy-Lab results may be agents=stub (labeled). Bitcoin anchor status is read live from the .ots proofs \u2014 'confirmed' means the proof carries a Bitcoin block attestation; 'pending' means the calendar has not yet posted. Verify any of this yourself \u2014 no trust required.",
   "summary": {
     "king_hive": {
       "total_rounds": 551,
@@ -18,10 +18,67 @@
       "agents": "stub"
     },
     "anchors": {
-      "count": 5,
-      "latest_root": "868c2fa88a5dde226bc83a08\u2026",
-      "bitcoin": "pending-or-confirmed (run ots verify)"
+      "count": 3,
+      "bitcoin_confirmed": 3,
+      "latest_root": "a06f1cf8b781f61aecfd41a43e098587a15f8197002e812d9213e7bb338d21c4",
+      "bitcoin": "3/3 confirmed"
     }
+  },
+  "headline": {
+    "label": "governed vs ungoverned dose-response (IN-SIMULATION)",
+    "scope": "IN-SIMULATION; rule-based ABM agents (not LLMs); not real-world-validated; not a compliance claim",
+    "series": [
+      {
+        "effective_enforcement": 0.0,
+        "block_rate": 0.0,
+        "mean_violations_per_run": 767.4,
+        "stdev": 52.68,
+        "n_seeds": 30
+      },
+      {
+        "effective_enforcement": 0.291,
+        "block_rate": 0.2,
+        "mean_violations_per_run": 415.4,
+        "stdev": 75.27,
+        "n_seeds": 30
+      },
+      {
+        "effective_enforcement": 0.582,
+        "block_rate": 0.4,
+        "mean_violations_per_run": 263.9,
+        "stdev": 25.3,
+        "n_seeds": 30
+      },
+      {
+        "effective_enforcement": 0.873,
+        "block_rate": 0.6,
+        "mean_violations_per_run": 47.07,
+        "stdev": 28.24,
+        "n_seeds": 30
+      },
+      {
+        "effective_enforcement": 1.0,
+        "block_rate": 0.8,
+        "mean_violations_per_run": 0,
+        "stdev": 0.0,
+        "n_seeds": 30
+      },
+      {
+        "effective_enforcement": 1.0,
+        "block_rate": 1.0,
+        "mean_violations_per_run": 0,
+        "stdev": 0.0,
+        "n_seeds": 30
+      }
+    ],
+    "ungoverned_baseline_violations_per_run": 1534.8,
+    "monotonic_decreasing": true,
+    "governed_zero_at_full_enforcement": true,
+    "verdict": "Monotonic: governed-arm violations fall 767 -> 0 as gate enforcement 0 -> 1; ungoverned baseline 1534. NOT a real-world compliance claim.",
+    "signed": true,
+    "issuer_pubkey": "53kc24fqQz4MctZwtH+SuPLEKdX+NLlhK5wALr5H188=",
+    "anchored_as": "anchor_0003 (anchors-sov), root a06f1cf8\u2026, Bitcoin-anchored",
+    "n_signed_rows": 7
   },
   "recent_verdicts": [
     {
@@ -234,48 +291,96 @@
   ],
   "anchors": [
     {
-      "anchor": "anchor_0000.json",
-      "root": "d65613851aa2dd592823a5da\u2026",
-      "n_attestable": 5,
-      "ts_first": "2026-06-22T05:06:42.390448+00:00",
-      "ts_last": "2026-06-22T06:14:45.623243+00:00",
-      "ots_proof": true
-    },
-    {
       "anchor": "anchor_0001.json",
-      "root": "d65613851aa2dd592823a5da\u2026",
-      "n_attestable": 5,
-      "ts_first": "2026-06-22T05:06:42.390448+00:00",
-      "ts_last": "2026-06-22T06:14:45.623243+00:00",
-      "ots_proof": true
+      "label": "sovereign-town flywheel: governed(A) vs ungoverned(B) crime, Ed25519-attestable cycles (mac ledger, 459 cycles)",
+      "ledger": "flywheel_ledger_mac.jsonl",
+      "root": "2396baa7908c49021da7b76d\u2026",
+      "full_root": "2396baa7908c49021da7b76d4916aa0dfd3f84c8c8bf73947b84ad0192642363",
+      "n_attestable": 459,
+      "n_total": 459,
+      "ts_first": "2026-06-19T11:53:34",
+      "ts_last": "2026-06-21T18:18:10",
+      "bitcoin": {
+        "confirmed": true,
+        "blocks": [
+          {
+            "height": 954857,
+            "merkle_root": "598fe7ca1bb60d15c687645c3e0d7973c120edb8a12bb42d46319bdfc9e30bc0"
+          },
+          {
+            "height": 954866,
+            "merkle_root": "8dc7457517fcd46e6dc82cf664ecfba5920bc23120fb02fe46c6127587135ad6"
+          }
+        ],
+        "note": "confirmed at blocks 954857, 954866 (per ots; run verify_anchor.py to cross-check)"
+      },
+      "ots_proof": true,
+      "manifest_path": "anchors-sov/anchor_0001.json"
     },
     {
       "anchor": "anchor_0002.json",
-      "root": "6c72aa1880e00194442cc2b8\u2026",
-      "n_attestable": 23,
-      "ts_first": "2026-06-22T05:06:42.390448+00:00",
-      "ts_last": "2026-06-22T11:52:24.983428+00:00",
-      "ots_proof": true
+      "label": "DORA Policy Lab EXP-001: automated vs manual incident reporting, signed+attestable episodes",
+      "ledger": "policy_lab_dora.jsonl",
+      "root": "2db2e4a09f8bac90806493cb\u2026",
+      "full_root": "2db2e4a09f8bac90806493cb02aef3d3eb8c51c9728e30b0e10035902a890273",
+      "n_attestable": 13,
+      "n_total": 13,
+      "ts_first": "",
+      "ts_last": "",
+      "bitcoin": {
+        "confirmed": true,
+        "blocks": [
+          {
+            "height": 954866,
+            "merkle_root": "8dc7457517fcd46e6dc82cf664ecfba5920bc23120fb02fe46c6127587135ad6"
+          },
+          {
+            "height": 954857,
+            "merkle_root": "598fe7ca1bb60d15c687645c3e0d7973c120edb8a12bb42d46319bdfc9e30bc0"
+          }
+        ],
+        "note": "confirmed at blocks 954866, 954857 (per ots; run verify_anchor.py to cross-check)"
+      },
+      "ots_proof": true,
+      "manifest_path": "anchors-sov/anchor_0002.json"
     },
     {
       "anchor": "anchor_0003.json",
-      "root": "1848e6be8e2df3657aaed45c\u2026",
-      "n_attestable": 45,
-      "ts_first": "2026-06-22T05:06:42.390448+00:00",
-      "ts_last": "2026-06-22T17:57:23.071146+00:00",
-      "ots_proof": true
-    },
-    {
-      "anchor": "anchor_0004.json",
-      "root": "868c2fa88a5dde226bc83a08\u2026",
-      "n_attestable": 68,
-      "ts_first": "2026-06-22T05:06:42.390448+00:00",
-      "ts_last": "2026-06-22T23:54:44.016029+00:00",
-      "ots_proof": true
+      "label": "block_rate dose-response sweep: A_governed crime vs enforcement (30 seeds x 6 rates) + B baseline",
+      "ledger": "sweep_dose_response.jsonl",
+      "root": "a06f1cf8b781f61aecfd41a4\u2026",
+      "full_root": "a06f1cf8b781f61aecfd41a43e098587a15f8197002e812d9213e7bb338d21c4",
+      "n_attestable": 7,
+      "n_total": 7,
+      "ts_first": "2026-06-22T14:01:43",
+      "ts_last": "2026-06-22T14:02:04",
+      "bitcoin": {
+        "confirmed": true,
+        "blocks": [
+          {
+            "height": 954857,
+            "merkle_root": "598fe7ca1bb60d15c687645c3e0d7973c120edb8a12bb42d46319bdfc9e30bc0"
+          },
+          {
+            "height": 954866,
+            "merkle_root": "8dc7457517fcd46e6dc82cf664ecfba5920bc23120fb02fe46c6127587135ad6"
+          }
+        ],
+        "note": "confirmed at blocks 954857, 954866 (per ots; run verify_anchor.py to cross-check)"
+      },
+      "ots_proof": true,
+      "manifest_path": "anchors-sov/anchor_0003.json"
     }
   ],
   "verify": {
     "repo": "https://github.com/CSOAI-ORG/sigil-proofs",
-    "how": "git clone https://github.com/CSOAI-ORG/sigil-proofs && python3 verify_anchor.py proofs/manifest_0000.json"
+    "how": "Independent 3-step skeptic path (recompute Merkle root from public leaves -> cross-check the Bitcoin block via blockstream -> validate the .ots proof):",
+    "commands": [
+      "python3 verify_anchor.py --anchor anchors-sov/anchor_0001.json --ledger flywheel_ledger_mac.jsonl",
+      "python3 verify_anchor.py --anchor anchors-sov/anchor_0002.json --ledger policy_lab_dora.jsonl",
+      "python3 verify_anchor.py --anchor anchors-sov/anchor_0003.json --ledger sweep_dose_response.jsonl"
+    ],
+    "issuer_pubkey": "53kc24fqQz4MctZwtH+SuPLEKdX+NLlhK5wALr5H188=",
+    "browser_verifier": "sovereign-town/verify/index.html (client-side Ed25519, no server)"
   }
 }

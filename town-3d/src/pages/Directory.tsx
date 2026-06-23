@@ -15,7 +15,7 @@ const ease = [0.16, 1, 0.3, 1] as [number, number, number, number]
 
 /* ──────────────────────── Types ──────────────────────── */
 
-interface AgentProfile {
+export interface AgentProfile {
   id: string
   name: string
   role: string
@@ -54,7 +54,7 @@ const ARCHETYPE_NAMES = [
 
 /* ──────────────────────── 46 AI Agents + Agent 47 ──────────────────────── */
 
-const AGENTS: AgentProfile[] = [
+export const AGENTS: AgentProfile[] = [
   // Agent 47 (Founder)
   {
     id: '47', name: 'Agent 47 (Nick / Founder)', role: 'Sovereign Founder',

@@ -41,6 +41,8 @@ import {
 } from '@/types'
 import { useTownStore } from '@/store/useTownStore'
 import type { District } from '@/types'
+import { AGENTS } from './Directory'
+import type { AgentProfile } from './Directory'
 
 const ease = [0.16, 1, 0.3, 1] as [number, number, number, number]
 
@@ -897,38 +899,67 @@ function AgentActivityBreakdown() {
 
 function SocialNetworkGraph() {
   const canvasRef = useRef<HTMLCanvasElement>(null)
-  const agents = useMemo(
-    () =>
-      AGENT_NAMES.slice(0, 35).map((name, i) => {
-        const districts: District[] = [
-          'central', 'governance', 'commerce', 'wellness', 'innovation',
-          'safety', 'legal', 'media', 'residential',
-        ]
-        const d = districts[i % districts.length]
-        return {
-          name,
-          x: 0,
-          y: 0,
-          vx: 0,
-          vy: 0,
-          color: DISTRICT_COLORS[d],
-          district: d,
-        }
-      }),
-    []
-  )
 
-  const friendships = useMemo(() => {
-    const edges: [number, number, number][] = []
-    for (let i = 0; i < agents.length; i++) {
-      for (let j = i + 1; j < agents.length; j++) {
-        if (Math.random() < 0.08) {
-          edges.push([i, j, Math.random() * 0.8 + 0.2])
-        }
+  const graphData = useMemo(() => {
+    const nodes = AGENTS.map((a) => ({
+      name: a.name,
+      district: a.district,
+      color: DISTRICT_COLORS[a.district],
+      x: 0,
+      y: 0,
+      vx: 0,
+      vy: 0,
+    }))
+
+    const nameToIndex = new Map<string, number>()
+    nodes.forEach((n, i) => {
+      const token = n.name.split(/[(\s]/)[0].trim().toLowerCase()
+      nameToIndex.set(token === 'agent' ? 'agent47' : token, i)
+    })
+
+    type RelationshipType = AgentProfile['relationships'][number]['type']
+
+    const edgeMap = new Map<
+      string,
+      {
+        a: number
+        b: number
+        trustSum: number
+        count: number
+        type: RelationshipType
       }
-    }
-    return edges
-  }, [agents])
+    >()
+
+    AGENTS.forEach((agent, srcIdx) => {
+      agent.relationships.forEach((r) => {
+        const token = r.name.split(/[(\s]/)[0].trim().toLowerCase()
+        const lookup = token === 'agent' ? 'agent47' : token
+        const tgtIdx = nameToIndex.get(lookup)
+        if (tgtIdx === undefined || tgtIdx === srcIdx) return
+
+        const a = Math.min(srcIdx, tgtIdx)
+        const b = Math.max(srcIdx, tgtIdx)
+        const key = `${a}|${b}`
+        const existing = edgeMap.get(key)
+        if (existing) {
+          existing.trustSum += r.trust
+          existing.count += 1
+          if (r.type === 'friend') existing.type = 'friend'
+        } else {
+          edgeMap.set(key, { a, b, trustSum: r.trust, count: 1, type: r.type })
+        }
+      })
+    })
+
+    const edges = Array.from(edgeMap.values()).map((e) => ({
+      a: e.a,
+      b: e.b,
+      strength: e.trustSum / (e.count * 100),
+      type: e.type,
+    }))
+
+    return { nodes, edges }
+  }, [])
 
   useEffect(() => {
     const canvas = canvasRef.current
@@ -942,6 +973,8 @@ function SocialNetworkGraph() {
     canvas.width = w * dpr
     canvas.height = h * dpr
     ctx.scale(dpr, dpr)
+
+    const { nodes: agents, edges: friendships } = graphData
 
     // Seed positions in clusters by district
     const districtGroups: Record<string, { cx: number; cy: number }> = {
@@ -980,7 +1013,7 @@ function SocialNetworkGraph() {
         }
       }
       // Attraction for friends
-      friendships.forEach(([a, b, strength]) => {
+      friendships.forEach(({ a, b, strength }) => {
         const dx = agents[b].x - agents[a].x
         const dy = agents[b].y - agents[a].y
         const dist = Math.sqrt(dx * dx + dy * dy) || 1
@@ -1001,11 +1034,16 @@ function SocialNetworkGraph() {
     ctx.clearRect(0, 0, w, h)
 
     // Edges
-    friendships.forEach(([a, b, strength]) => {
+    const edgeColors: Record<AgentProfile['relationships'][number]['type'], string> = {
+      friend: '212,175,55',
+      rival: '231,76,60',
+      neutral: '138,138,154',
+    }
+    friendships.forEach(({ a, b, strength, type }) => {
       ctx.beginPath()
       ctx.moveTo(agents[a].x, agents[a].y)
       ctx.lineTo(agents[b].x, agents[b].y)
-      ctx.strokeStyle = `rgba(212,175,55,${strength * 0.2})`
+      ctx.strokeStyle = `rgba(${edgeColors[type]},${strength * 0.25})`
       ctx.lineWidth = strength * 1.5
       ctx.stroke()
     })
@@ -1023,7 +1061,7 @@ function SocialNetworkGraph() {
     })
 
     // Labels for a few
-    const labelIndices = [0, 5, 10, 15, 20, 25, 30]
+    const labelIndices = [0, 5, 10, 15, 20, 25, 30, 35, 40, 45]
     ctx.font = "9px 'JetBrains Mono', monospace"
     ctx.fillStyle = '#8A8A9A'
     ctx.textAlign = 'center'
@@ -1032,7 +1070,7 @@ function SocialNetworkGraph() {
         ctx.fillText(agents[i].name, agents[i].x, agents[i].y + 14)
       }
     })
-  }, [agents, friendships])
+  }, [graphData])
 
   return (
     <div className="relative">
