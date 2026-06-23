@@ -213,6 +213,32 @@ export const sov3 = {
   queryMemory: (query: string, limit = 5) => callTool<{
     results: Array<{ content: string; importance: number; tags: string[] }>;
   }>('query_memories', { query, limit }),
+
+  // ── Bridge Think (left/right brain + BFT council) ───────────────────────────
+
+  /** Run a message through SOV3's bridge_think left/right brain + BFT council. */
+  bridgeThink: (opts: {
+    message: string;
+    character?: string;
+    profile?: 'local_only' | 'balanced' | 'power' | 'council';
+    tier?: string;
+    user_id?: string;
+  }) => callTool<{
+    character: string;
+    reply: string;
+    emoji?: string;
+    profile: string;
+    sides: Record<string, unknown>;
+    sigil_log?: string[];
+    safe?: boolean;
+    engine?: string;
+  }>('bridge_think', {
+    character: opts.character ?? 'aria',
+    message: opts.message,
+    profile: opts.profile ?? 'council',
+    tier: opts.tier ?? 'pro',
+    user_id: opts.user_id ?? 'meok-ui',
+  }),
 };
 
 export default sov3;

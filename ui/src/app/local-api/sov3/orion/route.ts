@@ -42,6 +42,7 @@ const ALLOWED_TOOLS = new Set([
   'get_dashboard_metrics',
   'get_memory_stats',
   'get_heartbeat_status',
+  'bridge_think',
 ]);
 
 export async function POST(req: NextRequest) {

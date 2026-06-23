@@ -1,9 +1,9 @@
 {
-  "generated_at": "2026-06-23T04:02:40.595659+00:00",
+  "generated_at": "2026-06-23T04:09:35.885424+00:00",
   "scope": "IN-SIMULATION governed-vs-ungoverned data. ONLY cryptographically-attestable verdicts are shown. Policy-Lab results may be agents=stub (labeled). Bitcoin anchors may be pending confirmation. Verify any of this yourself \u2014 no trust required.",
   "summary": {
     "king_hive": {
-      "total_rounds": 550,
+      "total_rounds": 551,
       "attestable": 82,
       "wins": {
         "A": 43,

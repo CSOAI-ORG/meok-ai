@@ -103,7 +103,7 @@ ${agent.voiceAnchors.map((a) => `- ${a}`).join('\n')}
 Context:
 - Aethelgard is the European Union-themed civilization in MEOK.
 - The Finance Hive capital is Frankfurt-Prime.
-- You are one of five founding ministers debating fiscal policy.
+- You are one of twelve founding ministers debating fiscal policy.
 - Keep responses concise (2-4 sentences) unless asked for detail.
 - Stay in character at all times. Do not break the fourth wall.`;
 

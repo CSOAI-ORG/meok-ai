@@ -199,7 +199,7 @@ export default function CivilizationsPage() {
           <span className="text-3xl">🔵</span>
           <div>
             <h2 className="text-3xl font-bold md:text-4xl">Aethelgard — Frankfurt-Prime</h2>
-            <p className="text-white/60">EU Finance Hive • Parliamentary Democracy • 5 founding ministers</p>
+            <p className="text-white/60">EU Finance Hive • Parliamentary Democracy • 12 founding ministers</p>
           </div>
           <span className="ml-auto rounded-full bg-green-500/20 px-3 py-1 text-xs font-bold text-green-400">LIVE</span>
         </div>
