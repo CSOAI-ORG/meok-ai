@@ -238,7 +238,7 @@ export default function CreateYourselfPage() {
 
         {/* Actions */}
         <div style={{ display: "flex", gap: 12, flexWrap: "wrap", justifyContent: "center" }}>
-          <button
+          <button type="button"
             onClick={handleCopy}
             style={{
               background: GOLD,
@@ -268,7 +268,7 @@ export default function CreateYourselfPage() {
           >
             Begin Birth Ceremony
           </Link>
-          <button
+          <button type="button"
             onClick={() => { setResult(null); setStep(1); setForm({ name:"",headline:"",archetype:"",warmth:0.65,energy:0.65,edge:0.45,complexity:0.7,whimsy:0.5,gift1:"",gift2:"",gift3:"",emoji:"🌟",color:"#6366F1" }); }}
             style={{
               background: "transparent",
@@ -359,7 +359,7 @@ export default function CreateYourselfPage() {
 
             <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))", gap: 12 }}>
               {ARCHETYPES.map(a => (
-                <button
+                <button type="button"
                   key={a.id}
                   onClick={() => set("archetype", a.id)}
                   style={{
@@ -484,7 +484,7 @@ export default function CreateYourselfPage() {
             <label style={labelStyle}>Your symbol</label>
             <div style={{ display: "flex", flexWrap: "wrap", gap: 8, marginBottom: 32 }}>
               {EMOJI_OPTIONS.map(emoji => (
-                <button
+                <button type="button"
                   key={emoji}
                   onClick={() => set("emoji", emoji)}
                   style={{
@@ -509,7 +509,7 @@ export default function CreateYourselfPage() {
             <label style={labelStyle}>Your colour</label>
             <div style={{ display: "flex", flexWrap: "wrap", gap: 8 }}>
               {COLOR_OPTIONS.map(color => (
-                <button
+                <button type="button"
                   key={color}
                   onClick={() => set("color", color)}
                   style={{
@@ -566,7 +566,7 @@ export default function CreateYourselfPage() {
 
         {/* Navigation */}
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginTop: 48 }}>
-          <button
+          <button type="button"
             onClick={() => setStep(s => Math.max(1, s - 1))}
             disabled={step === 1}
             style={{
@@ -584,7 +584,7 @@ export default function CreateYourselfPage() {
           </button>
 
           {step < TOTAL_STEPS ? (
-            <button
+            <button type="button"
               onClick={() => canNext() && setStep(s => s + 1)}
               disabled={!canNext()}
               style={{
@@ -602,7 +602,7 @@ export default function CreateYourselfPage() {
               Continue →
             </button>
           ) : (
-            <button
+            <button type="button"
               onClick={handleGenerate}
               disabled={loading}
               style={{

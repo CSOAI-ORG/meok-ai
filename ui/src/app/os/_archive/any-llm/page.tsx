@@ -222,7 +222,7 @@ function ModelDropdown({
 
   return (
     <div className="relative">
-      <button
+      <button type="button"
         onClick={() => setOpen((v) => !v)}
         className="flex items-center justify-between w-full px-3 py-2 rounded-lg text-xs text-white/70 transition-colors hover:text-white"
         style={{ background: "rgba(255,255,255,0.05)", border: `1px solid ${BORDER}` }}
@@ -239,7 +239,7 @@ function ModelDropdown({
           style={{ background: "#1a1929", border: `1px solid ${BORDER}` }}
         >
           {provider.models.map((m) => (
-            <button
+            <button type="button"
               key={m.id}
               onClick={() => { onSelect(m.id); setOpen(false); }}
               className="w-full flex items-center justify-between px-3 py-2 text-xs hover:bg-white/[0.06] transition-colors"
@@ -448,7 +448,7 @@ export default function AnyLlmPage() {
                           <p className="text-[10px] text-white/30">{provider.label}</p>
                         </div>
                       </div>
-                      <button
+                      <button type="button"
                         onClick={() => setActiveProvider(isActive ? "" : provider.id)}
                         className="flex items-center justify-center w-7 h-7 rounded-full transition-all"
                         style={{
@@ -497,7 +497,7 @@ export default function AnyLlmPage() {
                     {/* Test this model */}
                     <div>
                       {!ts || (!ts.loading && !ts.response && !ts.error) ? (
-                        <button
+                        <button type="button"
                           onClick={() => testModel(provider)}
                           className="w-full flex items-center justify-center gap-1.5 py-2 rounded-lg text-xs font-semibold transition-all hover:scale-[1.02]"
                           style={{
@@ -528,7 +528,7 @@ export default function AnyLlmPage() {
                           ) : (
                             <p style={{ color: provider.color }}>{ts.response}</p>
                           )}
-                          <button
+                          <button type="button"
                             onClick={() => clearTest(provider.id)}
                             className="mt-2 flex items-center gap-1 text-[10px] text-white/25 hover:text-white/50 transition-colors"
                           >
@@ -616,7 +616,7 @@ export default function AnyLlmPage() {
                 style={{ border: `1px solid ${BORDER}` }}
               >
                 {[{ id: "auto", label: "Auto (use rules above)" }, ...PROVIDERS].map((p, i, arr) => (
-                  <button
+                  <button type="button"
                     key={p.id}
                     onClick={() => setRule("manualOverride", p.id)}
                     className="w-full flex items-center justify-between px-3 py-2.5 text-xs transition-colors hover:bg-white/[0.04]"
@@ -640,7 +640,7 @@ export default function AnyLlmPage() {
           <Surface variant="glass" className="p-4 text-xs text-white/30">
             <p className="font-mono mb-1" style={{ color: GOLD }}>meok_llm_router_config</p>
             <p>Stored in localStorage. Synced across sessions.</p>
-            <button
+            <button type="button"
               onClick={() => {
                 if (typeof window !== "undefined") {
                   localStorage.removeItem(LS_CONFIG_KEY);

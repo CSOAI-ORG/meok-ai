@@ -346,7 +346,7 @@ export function UnifiedCommandCenter() {
         </div>
         
         <nav className="flex-1 p-3 space-y-1 overflow-y-auto">
-          <button 
+          <button type="button" 
             onClick={() => setActiveTab('chat')}
             className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-lg transition-all ${activeTab === 'chat' ? 'bg-green-500/20 text-green-400 border border-green-500/30' : 'hover:bg-white/5 text-gray-300'}`}
           >
@@ -354,7 +354,7 @@ export function UnifiedCommandCenter() {
             <span className="text-sm font-medium">Command Chat</span>
           </button>
           
-          <button 
+          <button type="button" 
             onClick={() => setActiveTab('cluster')}
             className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-lg transition-all ${activeTab === 'cluster' ? 'bg-green-500/20 text-green-400 border border-green-500/30' : 'hover:bg-white/5 text-gray-300'}`}
           >
@@ -365,7 +365,7 @@ export function UnifiedCommandCenter() {
             </span>
           </button>
           
-          <button 
+          <button type="button" 
             onClick={() => setActiveTab('tools')}
             className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-lg transition-all ${activeTab === 'tools' ? 'bg-green-500/20 text-green-400 border border-green-500/30' : 'hover:bg-white/5 text-gray-300'}`}
           >
@@ -376,7 +376,7 @@ export function UnifiedCommandCenter() {
           <div className="pt-4 mt-4 border-t border-white/5">
             <p className="px-3 text-xs font-semibold text-gray-500 uppercase tracking-wider mb-2">Quick Actions</p>
             {quickActions.map((action, idx) => (
-              <button 
+              <button type="button" 
                 key={idx}
                 onClick={action.action}
                 className="w-full flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-white/5 text-gray-400 hover:text-white transition-all text-sm"
@@ -405,7 +405,7 @@ export function UnifiedCommandCenter() {
         {/* Header */}
         <header className="bg-[#13121f] border-b border-white/5 px-4 py-3 flex items-center justify-between">
           <div className="flex items-center gap-4">
-            <button 
+            <button type="button" 
               onClick={() => setSidebarOpen(!sidebarOpen)}
               className="p-2 hover:bg-white/5 rounded-lg transition"
             >
@@ -439,7 +439,7 @@ export function UnifiedCommandCenter() {
               </span>
             </div>
             {activeTab === 'chat' && (
-              <button 
+              <button type="button" 
                 onClick={toggleVoice}
                 className={`p-2 rounded-lg transition ${voiceMode ? 'bg-green-500/20 text-green-400' : 'hover:bg-white/5 text-gray-400'}`}
               >
@@ -467,7 +467,7 @@ export function UnifiedCommandCenter() {
                     </p>
                     <div className="grid grid-cols-2 gap-2 max-w-sm">
                       {quickActions.map((action, idx) => (
-                        <button 
+                        <button type="button" 
                           key={idx}
                           onClick={action.action}
                           className="bg-[#13121f] border border-white/10 px-4 py-2 rounded-lg text-left hover:border-green-500/30 transition text-sm"
@@ -536,7 +536,7 @@ export function UnifiedCommandCenter() {
                     ))}
                   </div>
                   
-                  <button 
+                  <button type="button" 
                     onClick={toggleVoice}
                     className={`w-16 h-16 rounded-full flex items-center justify-center transition-all ${
                       isRecording 
@@ -547,7 +547,7 @@ export function UnifiedCommandCenter() {
                     {isRecording ? <Square className="w-6 h-6" /> : <Mic className="w-6 h-6" />}
                   </button>
                   
-                  <button 
+                  <button type="button" 
                     onClick={() => setVoiceMode(false)}
                     className="mt-6 text-gray-400 hover:text-white text-sm"
                   >
@@ -559,7 +559,7 @@ export function UnifiedCommandCenter() {
               {/* Input */}
               <div className="bg-[#13121f] border-t border-white/5 p-3">
                 <div className="flex gap-2 max-w-3xl mx-auto">
-                  <button 
+                  <button type="button" 
                     onClick={() => setVoiceMode(true)}
                     className="p-2.5 rounded-lg hover:bg-white/5 text-gray-400 hover:text-green-400 transition"
                   >
@@ -572,7 +572,7 @@ export function UnifiedCommandCenter() {
                     placeholder="Command Legion..."
                     className="flex-1 bg-[#0d0c18] border border-white/10 rounded-lg px-4 py-2 text-sm focus:outline-none focus:border-green-500 transition"
                   />
-                  <button 
+                  <button type="button" 
                     onClick={sendMessage}
                     disabled={!inputText.trim()}
                     className="p-2.5 rounded-lg bg-green-600 hover:bg-green-700 disabled:opacity-50 disabled:cursor-not-allowed transition"
@@ -681,7 +681,7 @@ export function UnifiedCommandCenter() {
               {mcpTools.length > 0 ? (
                 <div className="grid grid-cols-2 lg:grid-cols-3 gap-4">
                   {mcpTools.slice(0, 30).map((tool) => (
-                    <button 
+                    <button type="button" 
                       key={tool.name}
                       onClick={() => handleToolCall(tool.name)}
                       className="bg-[#13121f] p-5 rounded-xl text-left hover:border-green-500/30 transition border border-white/10 group"

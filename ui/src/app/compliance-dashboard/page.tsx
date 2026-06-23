@@ -199,7 +199,7 @@ export default function ComplianceDashboard() {
               </label>
             ))}
           </div>
-          <button
+          <button type="button"
             onClick={runMultiFrameworkCheck}
             disabled={runningCheck !== null || multiCheck.length === 0}
             className="bg-blue-600 hover:bg-blue-700 disabled:opacity-50 px-6 py-2 rounded-lg font-medium"
@@ -210,7 +210,7 @@ export default function ComplianceDashboard() {
 
         {/* Filter */}
         <div className="flex gap-2 mb-6">
-          <button
+          <button type="button"
             onClick={() => setSelectedFramework('all')}
             className={`px-4 py-2 rounded-lg ${
               selectedFramework === 'all' ? 'bg-blue-600' : 'bg-gray-800'
@@ -219,7 +219,7 @@ export default function ComplianceDashboard() {
             All ({checks.length})
           </button>
           {frameworks.map(fw => (
-            <button
+            <button type="button"
               key={fw.id}
               onClick={() => setSelectedFramework(fw.id)}
               className={`px-4 py-2 rounded-lg ${
@@ -257,7 +257,7 @@ export default function ComplianceDashboard() {
                       </span>
                     ))}
                   </div>
-                  <button
+                  <button type="button"
                     onClick={() => runCheck(check.id, check.framework)}
                     disabled={runningCheck !== null}
                     className="bg-gray-700 hover:bg-gray-600 disabled:opacity-50 px-4 py-2 rounded-lg text-sm"

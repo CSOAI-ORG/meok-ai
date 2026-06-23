@@ -232,7 +232,7 @@ export default function TasksPage() {
           <Surface variant="elevated" glow="orange" className="px-4 py-3 flex items-center gap-3">
             <AlertCircle className="w-4 h-4 text-orange-400 flex-shrink-0" />
             <p className="text-sm text-white/70">{error}</p>
-            <button
+            <button type="button"
               onClick={() => setError(null)}
               className="ml-auto text-xs text-white/40 hover:text-white/70"
             >
@@ -314,7 +314,7 @@ export default function TasksPage() {
                   style={{ color: 'rgba(255,255,255,0.9)' }}
                   disabled={creating}
                 />
-                <button
+                <button type="button"
                   onClick={handleSubmit}
                   disabled={!inputTitle.trim() || creating}
                   className="w-8 h-8 rounded-md flex items-center justify-center flex-shrink-0 transition-all disabled:opacity-30"

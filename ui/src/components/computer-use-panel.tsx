@@ -498,7 +498,7 @@ export function ComputerUsePanel({
                   alt="Current screen state"
                   className="w-full h-auto object-contain max-h-64"
                 />
-                <button
+                <button type="button"
                   className="absolute top-2 right-2 text-xs px-2 py-1 rounded-lg bg-black/60 text-white/60 hover:text-white/90 transition"
                   onClick={() => { setScreenshotBase64(null); setPastedScreenshot(null); }}
                 >
@@ -507,7 +507,7 @@ export function ComputerUsePanel({
               </div>
             ) : (
               <div className="flex flex-col gap-2">
-                <button
+                <button type="button"
                   className="flex items-center justify-center gap-2 w-full rounded-xl border py-3 text-sm text-white/50 hover:text-white/80 hover:border-white/20 transition"
                   style={{ borderColor: BORDER, borderStyle: "dashed" }}
                   onClick={() => pasteInputRef.current?.focus()}
@@ -533,7 +533,7 @@ export function ComputerUsePanel({
           </div>
 
           {/* CTA */}
-          <button
+          <button type="button"
             className="w-full rounded-xl py-3 text-sm font-bold transition-all disabled:opacity-40"
             style={{
               background: taskInput.trim() ? GOLD : "rgba(255,255,255,0.06)",
@@ -624,7 +624,7 @@ export function ComputerUsePanel({
           <div className="flex items-center gap-3">
             <span className="text-xs text-white/30">{actionLog.length} action{actionLog.length !== 1 ? "s" : ""}</span>
             {actionLog.length > 0 && (
-              <button
+              <button type="button"
                 className="text-xs text-white/40 hover:text-white/70 transition"
                 onClick={() => setShowSafetyPanel((v) => !v)}
               >
@@ -736,13 +736,13 @@ export function ComputerUsePanel({
               <p className="text-xs text-amber-400/80 flex-1">
                 Are you sure? This will stop {characterName} mid-task.
               </p>
-              <button
+              <button type="button"
                 className="text-xs px-4 py-2 rounded-xl border border-red-500/40 text-red-400 hover:bg-red-500/10 transition"
                 onClick={handleStop}
               >
                 Yes, stop now
               </button>
-              <button
+              <button type="button"
                 className="text-xs px-4 py-2 rounded-xl border text-white/50 hover:text-white/80 transition"
                 style={{ borderColor: BORDER }}
                 onClick={() => setConfirmStop(false)}
@@ -751,7 +751,7 @@ export function ComputerUsePanel({
               </button>
             </>
           ) : (
-            <button
+            <button type="button"
               className="flex items-center gap-2 text-sm font-semibold px-5 py-2.5 rounded-xl border transition hover:bg-white/5"
               style={{ borderColor: BORDER, color: sessionActive ? "#f87171" : "rgba(255,255,255,0.4)" }}
               onClick={sessionActive ? handleStop : () => {

@@ -292,14 +292,14 @@ export function ConsoleModule() {
             disabled={streaming}
           />
           {streaming ? (
-            <button
+            <button type="button"
               onClick={handleAbort}
               style={btnStyle("#EF4444")}
             >
               ■ STOP
             </button>
           ) : (
-            <button
+            <button type="button"
               onClick={sendMessage}
               disabled={!input.trim()}
               style={btnStyle(!input.trim() ? "#374151" : "#F59E0B")}

@@ -114,7 +114,7 @@ export default function EmailScannerPage() {
       <div className="max-w-3xl mx-auto px-5 py-10 space-y-8">
         {/* ─── HEADER ──────────────────────────────────────────────────────── */}
         <div className="flex items-center gap-3">
-          <button
+          <button type="button"
             onClick={() => router.push("/dashboard/guardian")}
             className="p-2 rounded-xl transition-all"
             style={{ background: SURFACE, border: `1px solid ${BORDER}` }}

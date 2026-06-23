@@ -316,7 +316,7 @@ function ArchetypeCard({
   }, [selected]);
 
   return (
-    <button
+    <button type="button"
       onClick={handleClick}
       onMouseEnter={() => onHover(archetype.color)}
       onMouseLeave={() => onHover(null)}
@@ -402,7 +402,7 @@ function ValueToggle({
   onToggle: () => void;
 }) {
   return (
-    <button
+    <button type="button"
       onClick={onToggle}
       className="flex items-center justify-between gap-4 w-full rounded-xl px-4 py-3.5 text-left transition-all duration-200"
       style={{
@@ -585,7 +585,7 @@ export default function BirthCeremonyClient() {
           will be called. This ceremony happens once. It cannot be undone.
         </p>
       </div>
-      <button
+      <button type="button"
         onClick={() => setStep(1)}
         className="flex items-center gap-2 px-8 py-4 rounded-xl font-black text-base transition-all hover:opacity-90 active:scale-95"
         style={{
@@ -634,7 +634,7 @@ export default function BirthCeremonyClient() {
         ))}
       </div>
 
-      <button
+      <button type="button"
         onClick={() => setStep(2)}
         disabled={!state.archetype}
         className="flex items-center justify-center gap-2 py-4 px-8 rounded-xl font-black text-base transition-all disabled:opacity-30 disabled:cursor-not-allowed hover:opacity-90 active:scale-95"
@@ -695,7 +695,7 @@ export default function BirthCeremonyClient() {
         shape every future response.
       </div>
 
-      <button
+      <button type="button"
         onClick={() => setStep(3)}
         className="flex items-center justify-center gap-2 py-4 px-8 rounded-xl font-black text-base transition-all hover:opacity-90 active:scale-95"
         style={{
@@ -783,7 +783,7 @@ export default function BirthCeremonyClient() {
         </div>
       </div>
 
-      <button
+      <button type="button"
         onClick={() => setStep(4)}
         disabled={(state.name || "").length > 0 && (state.name || "").length < 2}
         className="flex items-center justify-center gap-2 py-4 px-8 rounded-xl font-black text-base transition-all hover:opacity-90 active:scale-95 disabled:opacity-30"
@@ -934,7 +934,7 @@ export default function BirthCeremonyClient() {
         </div>
       </div>
 
-      <button
+      <button type="button"
         onClick={handleComplete}
         className="flex items-center gap-2 px-8 py-4 rounded-xl font-black text-base transition-all hover:opacity-90 active:scale-95 w-full justify-center"
         style={{
@@ -1101,7 +1101,7 @@ export default function BirthCeremonyClient() {
 
         {/* Back button (steps 1-3 only) */}
         {step >= 1 && step <= 3 && (
-          <button
+          <button type="button"
             onClick={() => setStep((s) => s - 1)}
             className="fixed bottom-6 left-6 text-xs px-3 py-2 rounded-lg transition-opacity hover:opacity-70"
             style={{

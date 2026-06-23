@@ -140,7 +140,7 @@ export function SmartUpgradePrompt({
               )}
             </div>
           </div>
-          <button
+          <button type="button"
             onClick={handleDismiss}
             className="p-1.5 rounded-lg text-white/40 hover:text-white/70 hover:bg-white/10 transition-colors"
           >
@@ -176,7 +176,7 @@ export function SmartUpgradePrompt({
             {isUrgent ? "Upgrade Now" : prompt.cta}
             <ArrowRight className="w-4 h-4" />
           </Link>
-          <button
+          <button type="button"
             onClick={handleDismiss}
             className="px-4 py-2.5 rounded-lg border border-white/20 text-white/60 text-sm font-medium hover:bg-white/5 transition-colors"
           >

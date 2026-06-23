@@ -201,7 +201,7 @@ export function SensorySettingsPanel() {
         </div>
         <div style={{ display: 'flex', gap: 4, marginTop: 4 }}>
           {[14, 16, 18, 20, 24].map((size) => (
-            <button
+            <button type="button"
               key={size}
               onClick={() => update({ fontSize: size })}
               aria-label={`Set font size to ${size}px`}
@@ -242,7 +242,7 @@ function ToggleRow({
   onChange: (v: boolean) => void;
 }) {
   return (
-    <button
+    <button type="button"
       role="switch"
       aria-checked={checked}
       onClick={() => onChange(!checked)}

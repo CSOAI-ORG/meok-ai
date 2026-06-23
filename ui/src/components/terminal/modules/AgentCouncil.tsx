@@ -156,7 +156,7 @@ export function AgentCouncil() {
         <div style={{ width: "6px", height: "6px", borderRadius: "50%", background: "#6B7280" }} />
         <span style={{ fontSize: "10px", color: "#6B7280" }}>{stats.idle} idle</span>
         <div style={{ flex: 1 }} />
-        <button
+        <button type="button"
           onClick={fetchAgents}
           disabled={loading}
           style={termBtnStyle(loading ? "#374151" : "#6B7280", loading)}
@@ -178,7 +178,7 @@ export function AgentCouncil() {
         }}
       >
         {(["all", "active", "idle", "error"] as FilterStatus[]).map((f) => (
-          <button
+          <button type="button"
             key={f}
             onClick={() => setFilter(f)}
             style={{
@@ -431,7 +431,7 @@ function AgentCard({
 
       {/* Controls */}
       <div style={{ display: "flex", gap: "4px", marginTop: "2px" }}>
-        <button
+        <button type="button"
           onClick={onViewLog}
           style={{
             flex: 1,
@@ -447,7 +447,7 @@ function AgentCard({
         >
           ⊡ log
         </button>
-        <button
+        <button type="button"
           onClick={onRun}
           disabled={agent.status === "active"}
           style={{

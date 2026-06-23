@@ -53,7 +53,7 @@ const ARCHETYPES = [
 
 function FilterChip({ label, active, onClick }: { label: string; active: boolean; onClick: () => void }) {
   return (
-    <button
+    <button type="button"
       onClick={onClick}
       className="px-3 py-1.5 rounded-full text-sm font-medium transition-all duration-150 capitalize whitespace-nowrap"
       style={{
@@ -314,7 +314,7 @@ export default function MarketplaceClient() {
 
             {hasMore && (
               <div className="mt-10 text-center">
-                <button
+                <button type="button"
                   onClick={handleLoadMore}
                   disabled={loadingMore}
                   className="px-8 py-3 rounded-full font-semibold text-sm transition-all duration-200 disabled:opacity-50"

@@ -95,7 +95,7 @@ export function SovereignDisplay({
       }}
     >
       {/* Collapsed header — always visible */}
-      <button
+      <button type="button"
         onClick={() => setExpanded(v => !v)}
         className="w-full flex items-center justify-between px-3 py-2 transition-colors"
         style={{ background: expanded ? 'rgba(255,255,255,0.02)' : 'transparent' }}
@@ -150,7 +150,7 @@ export function SovereignDisplay({
             >
               Sovereign Transparency
             </span>
-            <button
+            <button type="button"
               onClick={handleCopyMetadata}
               className="text-[9px] font-mono px-2 py-0.5 rounded border transition-colors"
               style={{

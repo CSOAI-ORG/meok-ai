@@ -79,7 +79,7 @@ export function TrialExtend({ referralCode }: TrialExtendProps) {
         }}
       >
         <span className="flex-1 text-xs text-white/50 font-mono truncate">{referralUrl}</span>
-        <button
+        <button type="button"
           onClick={copy}
           aria-label="Copy referral link"
           className="shrink-0 flex items-center gap-1.5 text-xs font-semibold px-3 py-1.5 rounded-md transition-all hover:opacity-90 active:scale-95"
@@ -97,7 +97,7 @@ export function TrialExtend({ referralCode }: TrialExtendProps) {
       {/* Share buttons */}
       <div className="flex items-center gap-2">
         <span className="text-white/25 text-xs mr-1">Share via</span>
-        <button
+        <button type="button"
           onClick={shareTwitter}
           className="flex items-center gap-1.5 text-xs font-semibold px-3 py-1.5 rounded-lg transition-all hover:opacity-90 active:scale-95"
           style={{
@@ -109,7 +109,7 @@ export function TrialExtend({ referralCode }: TrialExtendProps) {
           <Twitter className="w-3.5 h-3.5" />
           Twitter
         </button>
-        <button
+        <button type="button"
           onClick={shareLinkedIn}
           className="flex items-center gap-1.5 text-xs font-semibold px-3 py-1.5 rounded-lg transition-all hover:opacity-90 active:scale-95"
           style={{

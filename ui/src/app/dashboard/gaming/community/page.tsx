@@ -223,7 +223,7 @@ function LFGSection() {
           <label className="block text-xs text-white/40 font-medium mb-1.5">Playstyle</label>
           <div className="flex gap-2">
             {PLAYSTYLES.map((ps) => (
-              <button
+              <button type="button"
                 key={ps}
                 onClick={() => setPlaystyle(ps)}
                 className="flex-1 py-2.5 rounded-lg text-xs font-semibold transition-all"
@@ -244,7 +244,7 @@ function LFGSection() {
           <label className="block text-xs text-white/40 font-medium mb-1.5">Schedule</label>
           <div className="flex gap-2">
             {SCHEDULES.map((s) => (
-              <button
+              <button type="button"
                 key={s}
                 onClick={() => setSchedule(s)}
                 className="flex-1 py-2.5 rounded-lg text-xs font-semibold transition-all"
@@ -277,7 +277,7 @@ function LFGSection() {
         </div>
       </div>
 
-      <button
+      <button type="button"
         onClick={handleFindGroup}
         disabled={loading}
         className="w-full py-3 rounded-xl text-sm font-bold transition-all hover:scale-[1.01] disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
@@ -423,7 +423,7 @@ function TournamentPrepSection() {
         style={{ background: 'rgba(255,255,255,0.04)', border: `1px solid rgba(255,255,255,0.08)` }}
       />
 
-      <button
+      <button type="button"
         onClick={handlePrepPlan}
         disabled={loading || !input.trim()}
         className="w-full py-3 rounded-xl text-sm font-bold transition-all hover:scale-[1.01] disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 mb-5"

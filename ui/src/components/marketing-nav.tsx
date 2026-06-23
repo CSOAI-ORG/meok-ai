@@ -235,7 +235,7 @@ function DropdownPanel({ pillar, open, pathname, onClose }: DropdownPanelProps) 
                 }
               }}
             >
-              <span className="text-xl leading-none">{item.icon}</span>
+              <span className="text-xl leading-none" aria-hidden="true">{item.icon}</span>
               <span
                 className="text-sm font-semibold leading-tight"
                 style={{ color: isActive ? pillar.accentColor : "rgba(255,255,255,0.88)" }}
@@ -268,7 +268,7 @@ function MobileAccordion({ pillar, pathname, onClose }: MobileAccordionProps) {
 
   return (
     <div className="border-b" style={{ borderColor: "rgba(255,255,255,0.07)" }}>
-      <button
+      <button type="button"
         className="w-full flex items-center justify-between px-6 py-4 text-left"
         onClick={() => setOpen((v) => !v)}
         aria-expanded={open}
@@ -311,7 +311,7 @@ function MobileAccordion({ pillar, pathname, onClose }: MobileAccordionProps) {
                   }
                 }}
               >
-                <span className="text-lg leading-none flex-shrink-0">{item.icon}</span>
+                <span className="text-lg leading-none flex-shrink-0" aria-hidden="true">{item.icon}</span>
                 <div>
                   <div className="text-sm font-semibold leading-tight">{item.label}</div>
                   <div className="text-xs mt-0.5" style={{ color: "rgba(255,255,255,0.38)" }}>
@@ -416,8 +416,8 @@ export function MarketingNav({ activePage }: MarketingNavProps) {
                   onMouseEnter={() => { cancelClose(); setOpenPillar(pillar.key); }}
                   onMouseLeave={scheduleClose}
                 >
-                  <button
-                    className="flex items-center gap-1 px-3 py-2 rounded-lg text-sm font-medium transition-colors"
+                  <button type="button"
+                    className="flex items-center gap-1 px-3 py-2 rounded-lg text-sm font-medium transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#c9a84c]/50"
                     style={{
                       color: isActive || isOpen
                         ? "#ffffff"
@@ -448,6 +448,7 @@ export function MarketingNav({ activePage }: MarketingNavProps) {
 
             {/* Flat links — no dropdown */}
             {[
+              { href: "/apps", label: "Apps" },
               { href: "/features", label: "Features" },
               { href: "/pricing", label: "Pricing" },
               { href: "/family", label: "Family" },
@@ -458,7 +459,8 @@ export function MarketingNav({ activePage }: MarketingNavProps) {
               <Link
                 key={link.href}
                 href={link.href}
-                className="px-3 py-2 rounded-lg text-sm font-medium transition-colors"
+                aria-current={pathname === link.href ? "page" : undefined}
+                className="px-3 py-2 rounded-lg text-sm font-medium transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#c9a84c]/50"
                 style={{
                   color: pathname === link.href ? "#ffffff" : "rgba(255,255,255,0.62)",
                 }}
@@ -479,7 +481,7 @@ export function MarketingNav({ activePage }: MarketingNavProps) {
           <div className="hidden md:flex items-center gap-4">
             <Link
               href="/login"
-              className="text-sm font-medium transition-colors"
+              className="text-sm font-medium transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#c9a84c]/50 rounded-md px-2 py-1"
               style={{ color: "rgba(255,255,255,0.62)" }}
               onMouseEnter={(e) =>
                 ((e.currentTarget as HTMLAnchorElement).style.color = "#ffffff")
@@ -493,7 +495,7 @@ export function MarketingNav({ activePage }: MarketingNavProps) {
             </Link>
             <Link
               href="/start"
-              className="text-sm px-5 py-2 rounded-full font-bold transition-all hover:brightness-110"
+              className="text-sm px-5 py-2 rounded-full font-bold transition-all hover:brightness-110 focus:outline-none focus-visible:ring-2 focus-visible:ring-white/30"
               style={{ background: GOLD, color: DEEP }}
             >
               Start Free
@@ -504,25 +506,26 @@ export function MarketingNav({ activePage }: MarketingNavProps) {
           <div className="md:hidden flex items-center gap-2 flex-shrink-0">
             <Link
               href="/login"
-              className="text-xs font-medium px-2 py-1 transition-colors"
+              className="text-xs font-medium px-2 py-1 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#c9a84c]/50 rounded-md"
               style={{ color: "rgba(255,255,255,0.62)" }}
             >
               Sign in
             </Link>
             <Link
               href="/start"
-              className="text-xs px-3 py-1.5 rounded-full font-bold whitespace-nowrap transition-all hover:brightness-110"
+              className="text-xs px-3 py-1.5 rounded-full font-bold whitespace-nowrap transition-all hover:brightness-110 focus:outline-none focus-visible:ring-2 focus-visible:ring-white/30"
               style={{ background: GOLD, color: DEEP }}
             >
               Start Free
             </Link>
-            <button
-              className="ml-1 transition-colors"
+            <button type="button"
+              className="ml-1 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#c9a84c]/50 rounded-md"
               style={{ color: "rgba(255,255,255,0.7)" }}
               onClick={() => setMobileOpen((v) => !v)}
-              aria-label="Toggle menu"
+              aria-label={mobileOpen ? "Close menu" : "Open menu"}
+              aria-expanded={mobileOpen}
             >
-              {mobileOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+              {mobileOpen ? <X className="w-5 h-5" aria-hidden="true" /> : <Menu className="w-5 h-5" aria-hidden="true" />}
             </button>
           </div>
         </div>
@@ -554,6 +557,7 @@ export function MarketingNav({ activePage }: MarketingNavProps) {
 
             {/* Flat links */}
             {[
+              { href: "/apps", label: "Apps" },
               { href: "/features", label: "Features" },
               { href: "/pricing", label: "Pricing" },
               { href: "/blog", label: "Blog" },
@@ -563,7 +567,8 @@ export function MarketingNav({ activePage }: MarketingNavProps) {
               <div key={link.href} className="border-b" style={{ borderColor: "rgba(255,255,255,0.07)" }}>
                 <Link
                   href={link.href}
-                  className="flex items-center px-6 py-4 text-base font-semibold transition-colors"
+                  aria-current={pathname === link.href ? "page" : undefined}
+                  className="flex items-center px-6 py-4 text-base font-semibold transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#c9a84c]/50"
                   style={{ color: pathname === link.href ? GOLD : "rgba(255,255,255,0.85)" }}
                   onClick={() => setMobileOpen(false)}
                 >
@@ -581,7 +586,7 @@ export function MarketingNav({ activePage }: MarketingNavProps) {
               style={{ background: GOLD, color: DEEP }}
               onClick={() => setMobileOpen(false)}
             >
-              🚀 Activate your agent
+              <span aria-hidden="true">🚀</span> Activate your agent
             </Link>
             <p className="text-center text-xs mt-3" style={{ color: "rgba(255,255,255,0.35)" }}>
               Free forever · No credit card

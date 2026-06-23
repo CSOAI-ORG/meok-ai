@@ -343,7 +343,7 @@ export default function AccessibilityPage() {
 
         {/* Save button */}
         <div className="flex justify-end pt-1">
-          <button
+          <button type="button"
             onClick={handleSave}
             className="flex items-center gap-2 px-5 py-2 rounded-lg text-sm font-semibold transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2"
             style={{

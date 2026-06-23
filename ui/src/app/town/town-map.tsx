@@ -167,7 +167,7 @@ export default function TownMap() {
           <p className="mb-3 text-xs font-semibold uppercase tracking-widest text-white/40">Select a district</p>
           <div className="flex flex-wrap gap-2">
             {DISTRICTS.map((d) => (
-              <button
+              <button type="button"
                 key={d.id}
                 onClick={() => setSelected(d.id)}
                 className="rounded-full border border-white/10 px-3 py-1.5 text-xs font-medium transition hover:border-white/20"

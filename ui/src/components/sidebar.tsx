@@ -560,7 +560,7 @@ export function Sidebar({ consciousnessMode }: { consciousnessMode?: string }) {
           return (
             <div key={group.title} className="mb-0">
               {/* Section header — clickable to collapse/expand */}
-              <button
+              <button type="button"
                 onClick={() =>
                   setCollapsedSections((prev) => ({
                     ...prev,
@@ -708,7 +708,7 @@ export function Sidebar({ consciousnessMode }: { consciousnessMode?: string }) {
           </div>
 
           {/* Logout */}
-          <button
+          <button type="button"
             onClick={() => signOut()}
             className="p-1.5 rounded-lg transition-colors flex-shrink-0"
             style={{ color: "rgba(255,255,255,0.25)" }}
@@ -750,7 +750,7 @@ export function Sidebar({ consciousnessMode }: { consciousnessMode?: string }) {
         }}
       >
         {/* Close button inside drawer */}
-        <button
+        <button type="button"
           onClick={() => setMobileOpen(false)}
           className="absolute top-4 right-4 z-10 p-1.5 rounded-lg"
           style={{ color: "rgba(255,255,255,0.35)" }}
@@ -762,7 +762,7 @@ export function Sidebar({ consciousnessMode }: { consciousnessMode?: string }) {
       </aside>
 
       {/* ── Mobile hamburger button ── */}
-      <button
+      <button type="button"
         onClick={() => setMobileOpen(true)}
         className="md:hidden fixed bottom-6 left-4 z-50 w-12 h-12 rounded-full flex items-center justify-center"
         style={{

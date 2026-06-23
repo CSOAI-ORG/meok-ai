@@ -438,7 +438,7 @@ function FaqAccordionItem({ q, a }: { q: string; a: string }) {
         background: open ? "rgba(201,168,76,0.03)" : "#ffffff",
       }}
     >
-      <button
+      <button type="button"
         className="w-full flex items-center justify-between gap-4 px-7 py-5 text-left"
         onClick={() => setOpen((o) => !o)}
       >

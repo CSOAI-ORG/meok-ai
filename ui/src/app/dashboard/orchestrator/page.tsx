@@ -273,7 +273,7 @@ function ResultPanel({
       className="mt-3 rounded-lg overflow-hidden"
       style={{ border: `1px solid ${accentColor}22` }}
     >
-      <button
+      <button type="button"
         onClick={onToggle}
         className="w-full flex items-center justify-between px-3 py-2 transition-colors hover:bg-white/5"
         style={{ background: `${accentColor}08` }}
@@ -364,7 +364,7 @@ function TaskRow({
 
         {/* Reorder + remove controls */}
         <div className="flex items-center gap-1 flex-shrink-0">
-          <button
+          <button type="button"
             onClick={onMoveUp}
             disabled={index === 0}
             className="p-1 rounded hover:bg-white/10 disabled:opacity-20 transition-colors"
@@ -372,7 +372,7 @@ function TaskRow({
           >
             <ChevronUp className="w-3.5 h-3.5 text-white/50" />
           </button>
-          <button
+          <button type="button"
             onClick={onMoveDown}
             disabled={index === total - 1}
             className="p-1 rounded hover:bg-white/10 disabled:opacity-20 transition-colors"
@@ -380,7 +380,7 @@ function TaskRow({
           >
             <ChevronDown className="w-3.5 h-3.5 text-white/50" />
           </button>
-          <button
+          <button type="button"
             onClick={onRemove}
             className="p-1 rounded hover:bg-red-500/20 transition-colors"
             title="Remove task"
@@ -483,7 +483,7 @@ function AddTaskForm({
       </div>
 
       <div className="flex items-center gap-2">
-        <button
+        <button type="button"
           onClick={submit}
           disabled={!label.trim()}
           className="flex items-center gap-1.5 px-4 py-2 rounded-lg text-sm font-semibold disabled:opacity-40 transition-all hover:scale-[1.02]"
@@ -492,7 +492,7 @@ function AddTaskForm({
           <Plus className="w-3.5 h-3.5" />
           Add to queue
         </button>
-        <button
+        <button type="button"
           onClick={onCancel}
           className="px-4 py-2 rounded-lg text-sm text-white/50 hover:text-white/70 transition-colors"
           style={{ background: "rgba(255,255,255,0.05)" }}
@@ -690,7 +690,7 @@ export default function OrchestratorPage() {
             <p className="text-sm text-white/40">Phase 75 — task execution engine</p>
           </div>
         </div>
-        <button
+        <button type="button"
           onClick={resetDemo}
           className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs text-white/40 hover:text-white/60 transition-colors"
           style={{ background: "rgba(255,255,255,0.05)", border: `1px solid ${BORDER}` }}
@@ -731,7 +731,7 @@ export default function OrchestratorPage() {
         {/* Filter tabs */}
         <div className="flex items-center gap-2 mb-4 flex-wrap">
           {(["all", "queued", "running", "completed", "failed"] as const).map((f) => (
-            <button
+            <button type="button"
               key={f}
               onClick={() => setFilterStatus(f)}
               className="px-3 py-1 rounded-full text-xs font-medium capitalize transition-all"
@@ -745,7 +745,7 @@ export default function OrchestratorPage() {
             </button>
           ))}
 
-          <button
+          <button type="button"
             onClick={() => setShowAddForm((v) => !v)}
             className="ml-auto flex items-center gap-1.5 px-4 py-2 rounded-lg text-xs font-semibold transition-all hover:scale-[1.02]"
             style={{
@@ -893,7 +893,7 @@ export default function OrchestratorPage() {
                     )}
 
                     <div className="mt-3 flex gap-2">
-                      <button
+                      <button type="button"
                         onClick={() =>
                           setTasks((prev) =>
                             prev.map((t) =>
@@ -909,7 +909,7 @@ export default function OrchestratorPage() {
                         <Zap className="w-3 h-3" />
                         Retry task
                       </button>
-                      <button
+                      <button type="button"
                         onClick={() => removeTask(task.id)}
                         className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium transition-all text-white/40 hover:text-white/60"
                         style={{ background: "rgba(255,255,255,0.05)" }}

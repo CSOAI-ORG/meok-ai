@@ -101,7 +101,7 @@ export default function TrustDashboardPage() {
         {/* Tab bar */}
         <div className="flex gap-1 p-1 rounded-xl mb-6 md:mb-8 overflow-x-auto" style={{ background: 'rgba(255,255,255,0.04)' }}>
           {tabs.map((tab) => (
-            <button
+            <button type="button"
               key={tab.id}
               onClick={() => setActiveTab(tab.id)}
               className="flex items-center gap-1.5 md:gap-2 px-2.5 md:px-4 py-2 md:py-2.5 rounded-lg text-xs md:text-sm font-medium transition-all flex-1 justify-center whitespace-nowrap"

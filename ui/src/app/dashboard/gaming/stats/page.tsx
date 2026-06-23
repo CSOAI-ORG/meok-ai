@@ -684,7 +684,7 @@ export default function GamingStatsPage() {
             </Field>
           </div>
 
-          <button
+          <button type="button"
             onClick={handleAddStat}
             disabled={!formGame.trim() || !formValue.trim()}
             className="flex items-center gap-2 px-5 py-2.5 rounded-lg text-sm font-semibold transition-all hover:scale-[1.02] disabled:opacity-40 disabled:hover:scale-100 mb-5"
@@ -732,7 +732,7 @@ export default function GamingStatsPage() {
                     <span className="text-xs text-white/30 flex-shrink-0">
                       {s.date}
                     </span>
-                    <button
+                    <button type="button"
                       onClick={() => handleDeleteStat(s.id)}
                       className="opacity-0 group-hover:opacity-100 transition-opacity p-0.5 rounded hover:text-red-400 text-white/30 flex-shrink-0"
                     >
@@ -779,7 +779,7 @@ export default function GamingStatsPage() {
             </div>
             <div className="flex gap-1.5 flex-wrap">
               {STAT_TYPES.map((t) => (
-                <button
+                <button type="button"
                   key={t}
                   onClick={() => setChartStat(t)}
                   className="px-3 py-1.5 rounded-lg text-xs font-medium transition-all"
@@ -933,7 +933,7 @@ export default function GamingStatsPage() {
             }}
           />
 
-          <button
+          <button type="button"
             onClick={handleAnalyse}
             disabled={analysisLoading || !notes.trim()}
             className="mt-3 flex items-center gap-2 px-5 py-2.5 rounded-lg text-sm font-semibold transition-all hover:scale-[1.02] disabled:opacity-40 disabled:hover:scale-100"
@@ -1036,7 +1036,7 @@ export default function GamingStatsPage() {
             </Field>
           </div>
 
-          <button
+          <button type="button"
             onClick={handleAddGoal}
             disabled={
               !goalGame.trim() || !goalDesc.trim() || !goalTarget.trim()
@@ -1094,7 +1094,7 @@ export default function GamingStatsPage() {
                           </span>
                         </p>
                       </div>
-                      <button
+                      <button type="button"
                         onClick={() => handleDeleteGoal(goal.id)}
                         className="p-1 rounded hover:text-red-400 text-white/20 transition-colors flex-shrink-0"
                       >

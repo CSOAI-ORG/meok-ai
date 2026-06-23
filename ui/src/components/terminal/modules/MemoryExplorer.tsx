@@ -150,7 +150,7 @@ export function MemoryExplorer() {
             width: "200px",
           }}
         />
-        <button
+        <button type="button"
           onClick={() => fetchMemories(searchTerm, page)}
           disabled={loading}
           style={termBtnStyle(loading ? "#374151" : "#6B7280", loading)}
@@ -281,7 +281,7 @@ export function MemoryExplorer() {
               flexShrink: 0,
             }}
           >
-            <button
+            <button type="button"
               onClick={() => handlePageChange(page - 1)}
               disabled={page === 1 || loading}
               style={termBtnStyle(page === 1 || loading ? "#374151" : "#6B7280", page === 1 || loading)}
@@ -291,7 +291,7 @@ export function MemoryExplorer() {
             <span>
               {page}/{totalPages}
             </span>
-            <button
+            <button type="button"
               onClick={() => handlePageChange(page + 1)}
               disabled={page === totalPages || loading}
               style={termBtnStyle(page === totalPages || loading ? "#374151" : "#6B7280", page === totalPages || loading)}

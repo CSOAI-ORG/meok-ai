@@ -343,7 +343,7 @@ function FAQAccordion({ faqs }: { faqs: typeof FAQS }) {
     <div className="space-y-3">
       {faqs.map((faq, i) => (
         <Surface key={i} variant="glass" className="overflow-hidden">
-          <button
+          <button type="button"
             className="w-full flex items-center justify-between gap-4 px-6 py-5 text-left hover:bg-white/[0.03] transition-colors"
             onClick={() => setOpen(open === i ? null : i)}
             aria-expanded={open === i}

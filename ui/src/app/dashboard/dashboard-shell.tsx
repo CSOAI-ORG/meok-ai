@@ -32,7 +32,7 @@ function TopBar({ status, toggleSidebar }: { status: SystemStatus; toggleSidebar
   return (
     <header className="h-14 border-b border-white/[0.05] bg-[#0d0c18]/80 backdrop-blur-xl flex items-center justify-between px-4 md:px-6 sticky top-0 z-40 transition-all">
       <div className="flex items-center gap-4">
-        <button 
+        <button type="button" 
           onClick={toggleSidebar}
           className="p-2 -ml-2 hover:bg-white/05 rounded-lg md:hidden"
         >

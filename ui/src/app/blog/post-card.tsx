@@ -74,7 +74,7 @@ function ShareRow({ slug, title }: { slug: string; title: string }) {
       >
         <Linkedin size={13} />
       </a>
-      <button
+      <button type="button"
         onClick={handleCopy}
         title="Copy link"
         className="flex items-center justify-center w-8 h-8 rounded-full transition-all hover:scale-110"

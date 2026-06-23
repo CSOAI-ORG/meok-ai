@@ -269,7 +269,7 @@ function MCPServerCard({ server }: { server: MCPServer }) {
 
       {server.tools.length > 0 && (
         <div>
-          <button
+          <button type="button"
             onClick={() => setExpanded(!expanded)}
             className="flex items-center gap-1 text-[11px] text-white/30 hover:text-white/50 transition-colors"
           >
@@ -528,7 +528,7 @@ export default function RegistryPage() {
           </div>
 
           {/* Open-source toggle */}
-          <button
+          <button type="button"
             onClick={() => setOpenSourceOnly(!openSourceOnly)}
             className="flex items-center gap-2 px-3 py-2 rounded-lg text-sm transition-all"
             style={{
@@ -569,7 +569,7 @@ export default function RegistryPage() {
             style={{ backgroundColor: SURFACE, border: `1px solid ${BORDER}` }}
           >
             <div className="text-red-400 text-sm mb-3">{error}</div>
-            <button
+            <button type="button"
               onClick={() => { setSearch(""); setSourceFilter(""); setCapabilityFilter(""); setOpenSourceOnly(false); }}
               className="text-sm px-4 py-2 rounded-lg transition-colors"
               style={{
@@ -618,7 +618,7 @@ export default function RegistryPage() {
         {/* ── Load More ──────────────────────────────── */}
         {!loading && pagination?.has_more && (
           <div className="flex justify-center mt-8">
-            <button
+            <button type="button"
               onClick={handleLoadMore}
               disabled={loadingMore}
               className="flex items-center gap-2 px-6 py-2.5 rounded-lg text-sm font-medium transition-all disabled:opacity-50"
@@ -643,7 +643,7 @@ export default function RegistryPage() {
         {/* ── MCP Servers Section ────────────────────── */}
         {mcpServers.length > 0 && (
           <div className="mt-12">
-            <button
+            <button type="button"
               onClick={() => setMcpExpanded(!mcpExpanded)}
               className="flex items-center gap-3 mb-4 group"
             >

@@ -137,7 +137,7 @@ export default function FineCalculatorClient() {
           </h2>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))", gap: 8, marginBottom: 16 }}>
             {TURNOVER_PRESETS.map((p) => (
-              <button
+              <button type="button"
                 key={p.label}
                 onClick={() => {
                   setTurnover(p.value);
@@ -187,7 +187,7 @@ export default function FineCalculatorClient() {
           </h2>
           <div style={{ display: "grid", gap: 10 }}>
             {TIERS.map((t) => (
-              <button
+              <button type="button"
                 key={t.id}
                 onClick={() => setSelectedTier(t.id)}
                 style={{

@@ -85,10 +85,10 @@ export default function StatusClient() {
         </div>
         <div style={{ display: "flex", gap: 8, alignItems: "center" }}>
           <p style={{ fontSize: 12, color: `${NAVY}88`, margin: 0 }}>Last update: {lastUpdate.toLocaleTimeString()}</p>
-          <button onClick={() => setPolling(!polling)} style={{ padding: "6px 12px", fontSize: 12, background: polling ? GREEN : ORANGE, color: "white", border: "none", borderRadius: 6, fontWeight: 700, cursor: "pointer" }}>
+          <button type="button" onClick={() => setPolling(!polling)} style={{ padding: "6px 12px", fontSize: 12, background: polling ? GREEN : ORANGE, color: "white", border: "none", borderRadius: 6, fontWeight: 700, cursor: "pointer" }}>
             {polling ? "Auto-refresh ON" : "Paused"}
           </button>
-          <button onClick={poll} style={{ padding: "6px 12px", fontSize: 12, background: NAVY, color: GOLD, border: "none", borderRadius: 6, fontWeight: 700, cursor: "pointer" }}>
+          <button type="button" onClick={poll} style={{ padding: "6px 12px", fontSize: 12, background: NAVY, color: GOLD, border: "none", borderRadius: 6, fontWeight: 700, cursor: "pointer" }}>
             Refresh now
           </button>
         </div>

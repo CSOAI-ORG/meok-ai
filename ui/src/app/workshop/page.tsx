@@ -240,7 +240,7 @@ export default function WorkshopPage() {
             { label: 'Care Patterns', cmd: 'analyze_care_patterns' },
             { label: 'System Status', cmd: 'get_system_status' },
           ].map(action => (
-            <button key={action.cmd} onClick={() => executeCommand(action.cmd)}
+            <button type="button" key={action.cmd} onClick={() => executeCommand(action.cmd)}
               style={{ display: 'block', width: '100%', textAlign: 'left', padding: '6px 8px', marginBottom: 4, background: 'rgba(201,168,76,0.08)', border: '1px solid rgba(201,168,76,0.15)', borderRadius: 6, color: '#e0ddd4', fontSize: 11, cursor: 'pointer' }}>
               {action.label}
             </button>

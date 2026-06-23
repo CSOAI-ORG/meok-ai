@@ -115,7 +115,7 @@ export function OsModeSwitcher() {
       {MODES.map((mode) => {
         const isActive = activeMode === mode.id;
         return (
-          <button
+          <button type="button"
             key={mode.id}
             onClick={() => handleSwitch(mode)}
             title={mode.title}

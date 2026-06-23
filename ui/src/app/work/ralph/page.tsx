@@ -309,7 +309,7 @@ export default function RalphPage() {
                 <div className="flex-shrink-0 px-3 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-[10px] font-black tracking-[0.12em]">
                   ⚡ {SAMPLE_PROJECT.status}
                 </div>
-                <button
+                <button type="button"
                   onClick={() => setBoardExpanded(!boardExpanded)}
                   className="p-1.5 rounded-lg text-white/30 hover:text-white/60 transition-colors"
                 >

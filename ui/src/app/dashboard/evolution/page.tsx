@@ -702,7 +702,7 @@ export default function EvolutionEnginePage() {
             { id: 'traits',   label: '🧬 Traits'   },
             { id: 'diary',    label: '📖 Diary'    },
           ] as const).map(tab => (
-            <button
+            <button type="button"
               key={tab.id}
               onClick={() => setActiveTab(tab.id)}
               style={{
@@ -854,7 +854,7 @@ export default function EvolutionEnginePage() {
               <p style={{ fontSize: '0.78rem', color: 'rgba(255,255,255,0.45)', marginBottom: '1rem', lineHeight: 1.5 }}>
                 Generate a summary card with your companion's name, stage, and top traits. Copies to clipboard.
               </p>
-              <button
+              <button type="button"
                 onClick={handleShare}
                 style={{
                   padding:      '0.5rem 1.25rem',

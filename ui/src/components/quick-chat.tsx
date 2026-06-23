@@ -94,7 +94,7 @@ function ResponseBubble({
       </p>
       {!streaming && (
         <div className="mt-3 flex items-center gap-3">
-          <button
+          <button type="button"
             onClick={onClear}
             className="flex items-center gap-1.5 text-xs transition-colors"
             style={{ color: "rgba(255,255,255,0.3)" }}
@@ -104,7 +104,7 @@ function ResponseBubble({
             <RotateCcw className="w-3 h-3" />
             Ask something else
           </button>
-          <button
+          <button type="button"
             onClick={async () => {
               if (!text) return;
               try {

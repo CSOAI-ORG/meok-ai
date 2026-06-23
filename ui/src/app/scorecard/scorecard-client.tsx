@@ -255,7 +255,7 @@ export default function ScorecardClient() {
                 <p style={{ fontSize: 15, fontWeight: 600, marginBottom: 14, lineHeight: 1.45 }}>{q.q}</p>
                 <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
                   {(["yes", "partial", "no", "unknown"] as Answer[]).map((opt) => (
-                    <button
+                    <button type="button"
                       key={opt!}
                       onClick={() => setAnswers((prev) => ({ ...prev, [q.id]: opt }))}
                       style={{
@@ -278,7 +278,7 @@ export default function ScorecardClient() {
             ))}
           </div>
 
-          <button
+          <button type="button"
             onClick={() => setStep("email")}
             disabled={!allAnswered}
             style={{
@@ -343,7 +343,7 @@ export default function ScorecardClient() {
             />
           </div>
 
-          <button
+          <button type="button"
             onClick={submit}
             disabled={submitting || !email || !email.includes("@")}
             style={{

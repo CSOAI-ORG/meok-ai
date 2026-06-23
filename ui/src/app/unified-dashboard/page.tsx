@@ -134,7 +134,7 @@ export default function UnifiedDashboard() {
         {/* System Cards */}
         <div className="grid grid-cols-7 gap-3 mb-8">
           {systems.map(sys => (
-            <button
+            <button type="button"
               key={sys.id}
               onClick={() => setSelectedSystem(selectedSystem === sys.id ? null : sys.id)}
               className={`p-4 rounded-lg text-center transition ${

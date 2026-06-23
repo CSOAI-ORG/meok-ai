@@ -183,7 +183,7 @@ export default function ComputerUsePage() {
         {/* ── Mode selector ────────────────────────────────────────────── */}
         {mode === "idle" && (
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-2xl">
-            <button
+            <button type="button"
               className="group relative flex flex-col items-start gap-3 p-6 rounded-2xl border text-left transition-all hover:border-[#c9a84c]/40 hover:bg-white/[0.02]"
               style={{ background: SURFACE, borderColor: BORDER }}
               onClick={() => setMode("demo")}
@@ -207,7 +207,7 @@ export default function ComputerUsePage() {
               </span>
             </button>
 
-            <button
+            <button type="button"
               className="group relative flex flex-col items-start gap-3 p-6 rounded-2xl border text-left transition-all hover:border-[#c9a84c]/40 hover:bg-white/[0.02]"
               style={{ background: SURFACE, borderColor: BORDER }}
               onClick={() => setMode("live")}
@@ -237,7 +237,7 @@ export default function ComputerUsePage() {
         {/* ── Reset link ───────────────────────────────────────────────── */}
         {mode !== "idle" && (
           <div className="flex items-center gap-4">
-            <button
+            <button type="button"
               className="text-xs text-white/30 hover:text-white/60 transition"
               onClick={() => { setMode("idle"); setTaskStopped(false); }}
             >
@@ -330,7 +330,7 @@ export default function ComputerUsePage() {
           <ul className="space-y-2">
             {EXAMPLE_TASKS.map((task) => (
               <li key={task}>
-                <button
+                <button type="button"
                   className="text-left w-full text-sm text-white/55 px-4 py-3 rounded-xl border hover:border-white/20 hover:text-white/80 hover:bg-white/[0.02] transition group"
                   style={{ borderColor: BORDER }}
                   onClick={() => {

@@ -40,7 +40,7 @@ export default function ControlBar() {
           { mode: 'follow' as const, icon: Eye, label: 'Follow' },
           { mode: 'cinematic' as const, icon: Film, label: 'Cine' },
         ].map(({ mode, icon: Icon, label }) => (
-          <button
+          <button type="button"
             key={mode}
             onClick={() => setCameraMode(mode)}
             className={`
@@ -64,7 +64,7 @@ export default function ControlBar() {
       <div className="w-px h-6 bg-[#2A2A35]" />
 
       {/* Play/Pause */}
-      <button
+      <button type="button"
         onClick={togglePaused}
         className={`
           w-8 h-8 rounded-full flex items-center justify-center transition-all
@@ -78,7 +78,7 @@ export default function ControlBar() {
       {/* Speed */}
       <div className="flex items-center gap-1">
         {[1, 2, 5].map((s) => (
-          <button
+          <button type="button"
             key={s}
             onClick={() => setSimulationSpeed(s)}
             className={`
@@ -119,7 +119,7 @@ export default function ControlBar() {
       {/* Weather */}
       <div className="flex items-center gap-0.5">
         {weatherOptions.map(({ key, icon: Icon }) => (
-          <button
+          <button type="button"
             key={key}
             onClick={() => setWeather(key)}
             className={`

@@ -73,7 +73,7 @@ export default function SharedResearchPage() {
             <ArrowLeft className="w-4 h-4" />
             Back
           </Link>
-          <button
+          <button type="button"
             onClick={copyLink}
             className="flex items-center gap-2 px-4 py-2 rounded-lg text-sm bg-[#c9a84c]/20 text-[#c9a84c] hover:bg-[#c9a84c]/30"
           >

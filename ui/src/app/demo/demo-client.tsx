@@ -319,7 +319,7 @@ export default function DemoClient() {
                 >
                   Start free
                 </Link>
-                <button
+                <button type="button"
                   onClick={() => setShowSignupNudge(false)}
                   className="text-white/30 hover:text-white/60 transition-colors"
                 >
@@ -333,7 +333,7 @@ export default function DemoClient() {
           {messages.length === 1 && (
             <div className="px-4 pb-2 flex gap-2 flex-wrap">
               {STARTER_PROMPTS.map((p) => (
-                <button
+                <button type="button"
                   key={p.text}
                   onClick={() => sendMessage(p.text)}
                   className="text-xs px-3 py-1.5 rounded-full transition-all hover:scale-105"

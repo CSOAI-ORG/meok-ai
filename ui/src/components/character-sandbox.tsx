@@ -120,7 +120,7 @@ export function CharacterSandbox({
 
   if (compact) {
     return (
-      <button 
+      <button type="button" 
         onClick={handleSelect}
         className={`w-full flex items-center gap-3 px-3 py-2 rounded-lg border transition-all text-left ${
           isActive 
@@ -155,7 +155,7 @@ export function CharacterSandbox({
     <div className="bg-[#13121f] border border-white/10 rounded-xl overflow-hidden">
       <div className="flex items-center justify-between px-4 py-3 border-b border-white/5">
         <div className="flex items-center gap-3">
-          <button 
+          <button type="button" 
             onClick={handleSelect}
             className={`w-10 h-10 rounded-xl flex items-center justify-center transition-all ${
               isActive 

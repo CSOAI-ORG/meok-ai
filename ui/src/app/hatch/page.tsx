@@ -550,7 +550,7 @@ function OptionCard({ text, selected, onClick, disabled }: OptionCardProps) {
   const [hovered, setHovered] = useState(false);
 
   return (
-    <button
+    <button type="button"
       onClick={onClick}
       disabled={disabled}
       onMouseEnter={() => setHovered(true)}
@@ -810,7 +810,7 @@ export default function HatchPage() {
                 Seven questions. No right answers. By the end, your companion
                 will have already found you.
               </p>
-              <button
+              <button type="button"
                 onClick={() => dispatch({ type: "START" })}
                 style={{
                   padding: "16px 48px",
@@ -940,7 +940,7 @@ export default function HatchPage() {
 
               {/* Back button */}
               {state.currentQuestion > 0 && selectedOption === null && (
-                <button
+                <button type="button"
                   onClick={() => dispatch({ type: "BACK" })}
                   style={{
                     marginTop: "24px",
@@ -1299,7 +1299,7 @@ export default function HatchPage() {
                   }}
                 >
                   {/* Twitter/X */}
-                  <button
+                  <button type="button"
                     onClick={() => {
                       const name = companionName || winner;
                       const tweetText = `I just hatched ${name}, my sovereign AI companion on @meok_ai \u{1F95A}\u{2728} meok.ai/easter`;
@@ -1332,7 +1332,7 @@ export default function HatchPage() {
                   </button>
 
                   {/* Copy OG image link */}
-                  <button
+                  <button type="button"
                     onClick={() => {
                       const name = encodeURIComponent(companionName || winner);
                       const arch = encodeURIComponent(winner);
@@ -1369,7 +1369,7 @@ export default function HatchPage() {
 
                   {/* Native share (if available) */}
                   {canNativeShare && (
-                    <button
+                    <button type="button"
                       onClick={() => {
                         const name = companionName || winner;
                         const arch = encodeURIComponent(winner);
@@ -1466,7 +1466,7 @@ export default function HatchPage() {
                   </div>
                 </div>
 
-                <button
+                <button type="button"
                   onClick={handleReset}
                   style={{
                     background: "none",

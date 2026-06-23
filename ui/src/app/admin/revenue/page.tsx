@@ -67,7 +67,7 @@ export default function RevenueDashboard() {
       {/* Time Range Selector */}
       <div className="flex gap-2 mb-6">
         {(["7d", "30d", "90d", "1y"] as const).map((range) => (
-          <button
+          <button type="button"
             key={range}
             onClick={() => setTimeRange(range)}
             className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${

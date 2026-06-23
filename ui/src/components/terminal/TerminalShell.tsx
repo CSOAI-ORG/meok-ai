@@ -148,7 +148,7 @@ export function TerminalShell() {
           >
             {userDisplay}
           </div>
-          <button
+          <button type="button"
             onClick={() => {
               if (confirm("Exit terminal?")) window.location.href = "/dashboard";
             }}
@@ -193,7 +193,7 @@ export function TerminalShell() {
               justifyContent: collapsed ? "center" : "flex-end",
             }}
           >
-            <button
+            <button type="button"
               onClick={() => setCollapsed(!collapsed)}
               style={{
                 background: "none",
@@ -214,7 +214,7 @@ export function TerminalShell() {
           {/* Tab list */}
           <div style={{ flex: 1, padding: "8px 0" }}>
             {TABS.map((tab) => (
-              <button
+              <button type="button"
                 key={tab.id}
                 onClick={() => handleTabClick(tab.id)}
                 style={{
@@ -263,7 +263,7 @@ export function TerminalShell() {
             />
 
             {/* Settings */}
-            <button
+            <button type="button"
               onClick={() => handleTabClick("settings")}
               style={{
                 width: "100%",

@@ -64,7 +64,7 @@ export default function CharacterBuilder() {
           <h2 className="text-xl font-bold">Custom Characters</h2>
           <p className="text-sm" style={{ opacity: 0.6 }}>Create your own AI squad members</p>
         </div>
-        <button
+        <button type="button"
           onClick={() => setShowBuilder(!showBuilder)}
           className="flex items-center gap-2 px-4 py-2 rounded-lg font-medium"
           style={{ background: "#c9a84c", color: "#0d0c18" }}
@@ -94,7 +94,7 @@ export default function CharacterBuilder() {
               <h3 className="text-lg font-bold flex items-center gap-2">
                 <Sparkles className="w-5 h-5" /> Create Character
               </h3>
-              <button onClick={() => setShowBuilder(false)}><X className="w-5 h-5" /></button>
+              <button type="button" onClick={() => setShowBuilder(false)}><X className="w-5 h-5" /></button>
             </div>
 
             <div className="space-y-4">
@@ -115,7 +115,7 @@ export default function CharacterBuilder() {
                 <label className="text-sm font-medium mb-2 block">Avatar</label>
                 <div className="flex flex-wrap gap-2">
                   {EMOJI_OPTIONS.map((emoji) => (
-                    <button
+                    <button type="button"
                       key={emoji}
                       onClick={() => setForm({ ...form, emoji })}
                       className={`text-2xl p-2 rounded-lg ${form.emoji === emoji ? "bg-white/20" : "bg-white/5"}`}
@@ -131,7 +131,7 @@ export default function CharacterBuilder() {
                 <label className="text-sm font-medium mb-2 block">Purpose</label>
                 <div className="flex flex-wrap gap-2">
                   {PURPOSE_OPTIONS.map((opt) => (
-                    <button
+                    <button type="button"
                       key={opt.value}
                       onClick={() => setForm({ ...form, purpose: opt.value as any })}
                       className={`flex items-center gap-2 px-3 py-1.5 rounded-lg text-sm ${
@@ -168,7 +168,7 @@ export default function CharacterBuilder() {
             </div>
 
             {/* Save Button */}
-            <button
+            <button type="button"
               onClick={handleSave}
               disabled={saving || !form.name || !form.personality}
               className="w-full mt-4 py-3 rounded-lg font-medium flex items-center justify-center gap-2 disabled:opacity-50"

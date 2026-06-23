@@ -364,7 +364,7 @@ export default function DeploymentPage() {
 
       {/* Action buttons */}
       <div style={{ display: "flex", gap: 10, marginBottom: 32, flexWrap: "wrap" }}>
-        <button
+        <button type="button"
           onClick={copyTemplate}
           style={{
             display: "flex",
@@ -385,7 +385,7 @@ export default function DeploymentPage() {
           {copied ? "Copied!" : "Copy .env template"}
         </button>
 
-        <button
+        <button type="button"
           onClick={exportConfig}
           style={{
             display: "flex",
@@ -438,7 +438,7 @@ export default function DeploymentPage() {
                 Sovereign Temple MCP
               </span>
             </div>
-            <button
+            <button type="button"
               onClick={checkMCP}
               disabled={mcpLoading}
               style={{

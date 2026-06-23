@@ -181,7 +181,7 @@ function Toggle({
   onChange: (v: boolean) => void;
 }) {
   return (
-    <button
+    <button type="button"
       role="switch"
       aria-checked={checked}
       onClick={() => onChange(!checked)}
@@ -520,7 +520,7 @@ export default function AntiSycophancyPage() {
 
             {/* Two action buttons: honest assessment + evaluate */}
             <div className="flex flex-wrap items-center gap-3">
-              <button
+              <button type="button"
                 onClick={runHonestyTest}
                 disabled={isStreaming || !testInput.trim()}
                 className="flex items-center gap-2 px-6 py-3 rounded-xl font-semibold text-sm transition-all"
@@ -543,7 +543,7 @@ export default function AntiSycophancyPage() {
                 )}
               </button>
 
-              <button
+              <button type="button"
                 onClick={runEvaluation}
                 disabled={isEvaluating || !testInput.trim()}
                 className="flex items-center gap-2 px-5 py-3 rounded-xl font-semibold text-sm transition-all"

@@ -62,7 +62,7 @@ export function SessionTimeout() {
             : "You've been away. Your session is still active."}
         </p>
         {state === 'expired' ? (
-          <button
+          <button type="button"
             onClick={() => window.location.reload()}
             className="flex-shrink-0 text-xs font-semibold px-3 py-1.5 rounded-lg transition-colors"
             style={{ background: 'rgba(239,68,68,0.2)', color: '#fca5a5', border: '1px solid rgba(239,68,68,0.3)' }}
@@ -70,7 +70,7 @@ export function SessionTimeout() {
             Refresh
           </button>
         ) : (
-          <button
+          <button type="button"
             onClick={resetActivity}
             className="flex-shrink-0 text-xs font-semibold px-3 py-1.5 rounded-lg transition-colors"
             style={{ background: 'rgba(201,168,76,0.15)', color: '#c9a84c', border: '1px solid rgba(201,168,76,0.25)' }}

@@ -508,7 +508,7 @@ function ProtocolActivity() {
         </div>
         <div className="flex items-center gap-1 bg-[#12121A] rounded-lg p-0.5 border border-[#2A2A35]">
           {['1H', '6H', '24H', '7D'].map((t) => (
-            <button
+            <button type="button"
               key={t}
               className="px-2.5 py-1 text-[10px] rounded-md transition-all duration-150"
               style={{ fontFamily: "'JetBrains Mono', monospace" }}
@@ -736,7 +736,7 @@ function AgentActivityBreakdown() {
         </h3>
         <div className="flex items-center gap-0.5 bg-[#12121A] rounded-lg p-0.5 border border-[#2A2A35]">
           {(['activity', 'needs', 'social'] as const).map((t) => (
-            <button
+            <button type="button"
               key={t}
               onClick={() => setActiveTab(t)}
               className="px-2.5 py-1 text-[10px] rounded-md transition-all duration-150 capitalize"
@@ -1663,7 +1663,7 @@ export default function Dashboard() {
                 {' '}(live)
               </span>
             </div>
-            <button
+            <button type="button"
               onClick={handleRefresh}
               className="p-1.5 rounded-md transition-all duration-150 hover:bg-[#1A1A24] text-[#5A5A6A] hover:text-[#D4AF37]"
             >

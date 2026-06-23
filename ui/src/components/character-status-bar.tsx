@@ -76,7 +76,7 @@ export function CharacterStatusBar({
       }}
     >
       {/* ── Main bar row ──────────────────────────────────────────────────── */}
-      <button
+      <button type="button"
         onClick={() => setExpanded((v) => !v)}
         aria-expanded={expanded}
         aria-label="Toggle character status details"

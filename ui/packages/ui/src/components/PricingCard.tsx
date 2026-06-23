@@ -9,6 +9,7 @@ export interface PricingProduct {
   description: string;
   href: string;
   featured?: boolean;
+  cta?: string;
 }
 
 export interface PricingCardProps {
@@ -68,9 +69,9 @@ export function PricingCard({ product, theme = "light", className }: PricingCard
           color: featured ? colors.deep : undefined,
         }}
       >
-        {product.name.includes("Kit") || product.name.includes("Cert")
+        {product.cta ?? (product.name.includes("Kit") || product.name.includes("Cert")
           ? `Buy ${product.name}`
-          : `Subscribe ${product.name}`} →
+          : `Subscribe ${product.name}`)} →
       </a>
     </div>
   );

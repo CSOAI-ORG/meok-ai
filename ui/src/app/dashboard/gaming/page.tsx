@@ -607,7 +607,7 @@ export default function GamingPage() {
               </div>
 
               {/* Submit */}
-              <button
+              <button type="button"
                 onClick={handleLogSession}
                 disabled={!gameName.trim()}
                 className="w-full flex items-center justify-center gap-2 py-3 rounded-lg text-sm font-semibold transition-all hover:scale-[1.02] disabled:opacity-30 disabled:hover:scale-100"
@@ -655,7 +655,7 @@ export default function GamingPage() {
               )}
 
               {!loadingTips && coachingTips && lastCoachSession && (
-                <button
+                <button type="button"
                   onClick={() => {
                     const s = sessions.find((x) => x.id === lastCoachSession);
                     if (s) fetchCoachingTips(s);
@@ -749,7 +749,7 @@ export default function GamingPage() {
           </div>
 
           {sessions.length > 5 && (
-            <button
+            <button type="button"
               onClick={() => setShowAllSessions(!showAllSessions)}
               className="mt-3 w-full flex items-center justify-center gap-1.5 py-2.5 rounded-lg text-xs font-medium transition-all hover:scale-[1.01]"
               style={{

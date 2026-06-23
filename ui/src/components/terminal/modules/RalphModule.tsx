@@ -235,7 +235,7 @@ export function RalphModule() {
           — Operator Terminal
         </span>
         <div style={{ flex: 1 }} />
-        <button
+        <button type="button"
           onClick={() => {
             inputRef.current?.focus();
             setFocused(true);
@@ -322,7 +322,7 @@ export function RalphModule() {
             }}
           >
             {SYSTEM_COMMANDS.map((cmd) => (
-              <button
+              <button type="button"
                 key={cmd.id}
                 onClick={() => runCommand(cmd.id, `> ${cmd.label}`, cmd.fn)}
                 disabled={running !== null}
@@ -378,7 +378,7 @@ export function RalphModule() {
                 transition: "border-color 0.1s",
               }}
             />
-            <button
+            <button type="button"
               onClick={handleCustomCmd}
               disabled={!customCmd.trim() || running !== null}
               style={{

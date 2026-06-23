@@ -107,7 +107,7 @@ export function FlyEyeLearning({ characterId, characterName }: FlyEyeProps) {
           </div>
         </div>
         <div className="flex gap-2">
-          <button
+          <button type="button"
             onClick={handleDream}
             className="px-3 py-1.5 text-xs font-medium bg-purple-500/20 text-purple-300 rounded-lg hover:bg-purple-500/30 flex items-center gap-1"
           >
@@ -148,7 +148,7 @@ export function FlyEyeLearning({ characterId, characterName }: FlyEyeProps) {
             placeholder="Ask about past conversations..."
             className="flex-1 px-3 py-2 bg-white/5 border border-white/10 rounded-lg text-sm text-white placeholder-gray-500 focus:outline-none focus:border-purple-500/50"
           />
-          <button
+          <button type="button"
             onClick={handleQuery}
             disabled={querying}
             className="px-3 py-2 bg-purple-500/20 text-purple-300 rounded-lg hover:bg-purple-500/30 text-sm font-medium disabled:opacity-50"

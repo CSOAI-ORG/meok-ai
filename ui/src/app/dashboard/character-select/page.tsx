@@ -167,7 +167,7 @@ function MeetCharacterPreview({ character, onClose }: PreviewProps) {
               <p className="text-sm text-white/40">{character.tagline}</p>
             </div>
           </div>
-          <button onClick={onClose} className="text-white/40 hover:text-white/60">
+          <button type="button" onClick={onClose} className="text-white/40 hover:text-white/60">
             <X size={20} />
           </button>
         </div>
@@ -262,7 +262,7 @@ function CharacterComparison({ characters, onClose }: ComparisonProps) {
         {/* Header */}
         <div className="sticky top-0 border-b border-white/10 p-6 flex items-center justify-between bg-[#0d0c18]">
           <h2 className="text-xl font-semibold text-white">Compare Characters</h2>
-          <button onClick={onClose} className="text-white/40 hover:text-white/60">
+          <button type="button" onClick={onClose} className="text-white/40 hover:text-white/60">
             <X size={20} />
           </button>
         </div>
@@ -390,7 +390,7 @@ export default function CharacterSelectPage() {
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
             {recommendations.map(char => (
-              <button
+              <button type="button"
                 key={char.id}
                 onClick={() => setSelectedCharacter(char)}
                 className="text-left p-4 rounded bg-white/2 border border-white/10 hover:border-white/20 transition-all"
@@ -410,7 +410,7 @@ export default function CharacterSelectPage() {
           <div className="text-xs font-medium text-white/60 mt-2">Filter by:</div>
           <div className="flex flex-wrap gap-2">
             {Object.entries(CHARACTER_CATEGORIES).map(([key, cat]) => (
-              <button
+              <button type="button"
                 key={key}
                 onClick={() => setFilterCategory(filterCategory === key ? null : key)}
                 className={`text-xs px-3 py-1.5 rounded transition-all ${
@@ -459,7 +459,7 @@ export default function CharacterSelectPage() {
                   <p className="text-xs text-white/40">Selected</p>
                 </div>
               </div>
-              <button
+              <button type="button"
                 onClick={() => setSelectedCharacter(null)}
                 className="text-white/40 hover:text-white/60"
               >
@@ -477,7 +477,7 @@ export default function CharacterSelectPage() {
 
         {/* Comparison Badge */}
         {compareCharacters.length > 0 && (
-          <button
+          <button type="button"
             onClick={() => setCompareCharacters([])}
             className="fixed bottom-6 left-6 px-4 py-2 rounded-lg bg-white/10 border border-white/20 text-white text-sm font-medium hover:bg-white/15 transition-all"
           >

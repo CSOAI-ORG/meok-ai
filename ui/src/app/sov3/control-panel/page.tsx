@@ -145,7 +145,7 @@ export default function Sov3ControlPanel() {
                 Connected
               </div>
             )}
-            <button onClick={fetchStatus} className="p-2 hover:bg-white/10 rounded-lg">
+            <button type="button" onClick={fetchStatus} className="p-2 hover:bg-white/10 rounded-lg">
               <RefreshCw className="w-5 h-5 text-gray-400" />
             </button>
           </div>
@@ -159,7 +159,7 @@ export default function Sov3ControlPanel() {
             { id: 'agents', label: 'Agents', icon: Bot },
             { id: 'neural', label: 'Neural Models', icon: Cpu },
           ].map(tab => (
-            <button
+            <button type="button"
               key={tab.id}
               onClick={() => setActiveTab(tab.id as any)}
               className={`flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-all ${

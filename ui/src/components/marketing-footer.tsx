@@ -82,6 +82,8 @@ const GAMING_LINKS = [
 ];
 
 const COMPANY_LINKS = [
+  { href: "/apps", label: "Apps" },
+  { href: "/ai-os", label: "AI OS Story" },
   { href: "/pricing", label: "Pricing" },
   { href: "/waitlist", label: "Waitlist" },
   { href: "/about", label: "About" },
@@ -304,7 +306,7 @@ export function MarketingFooter() {
                   key={p.name}
                   className="flex items-center gap-2 opacity-40 hover:opacity-70 transition-opacity"
                 >
-                  <span className="text-lg">{p.icon}</span>
+                  <span className="text-lg" aria-hidden="true">{p.icon}</span>
                   <span className="text-sm font-bold text-white tracking-tight">
                     {p.name}
                   </span>
@@ -320,7 +322,7 @@ export function MarketingFooter() {
                   key={p.name}
                   className="flex items-center gap-2 opacity-35 hover:opacity-60 transition-opacity"
                 >
-                  <span className="text-base">{p.icon}</span>
+                  <span className="text-base" aria-hidden="true">{p.icon}</span>
                   <span className="text-xs font-semibold text-white">
                     {p.name}
                   </span>

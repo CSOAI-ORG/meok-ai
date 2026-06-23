@@ -330,10 +330,11 @@ export default function Directory() {
               placeholder="Search by name, role, or ID..."
               value={search}
               onChange={e => setSearch(e.target.value)}
+              aria-label="Search agents"
               className="w-full h-9 pl-10 pr-8 rounded-lg bg-[#12121A] border border-[#2A2A35] text-sm text-[#F0F0F5] placeholder:text-[#5A5A6A] focus:outline-none focus:border-[#00E5FF] focus:ring-1 focus:ring-[#00E5FF]/20"
             />
             {search && (
-              <button onClick={() => setSearch('')} className="absolute right-2 top-1/2 -translate-y-1/2">
+              <button type="button" onClick={() => setSearch('')} className="absolute right-2 top-1/2 -translate-y-1/2" aria-label="Clear search">
                 <X className="w-3.5 h-3.5 text-[#5A5A6A] hover:text-[#F0F0F5]" />
               </button>
             )}
@@ -367,6 +368,7 @@ export default function Directory() {
           <select
             value={statusFilter}
             onChange={e => setStatusFilter(e.target.value as StatusFilter)}
+            aria-label="Filter by status"
             className="h-9 px-3 rounded-lg bg-[#12121A] border border-[#2A2A35] text-sm text-[#F0F0F5] focus:outline-none focus:border-[#00E5FF] cursor-pointer"
           >
             <option value="all">All Statuses</option>
@@ -379,6 +381,7 @@ export default function Directory() {
           <select
             value={sortBy}
             onChange={e => setSortBy(e.target.value)}
+            aria-label="Sort agents"
             className="h-9 px-3 rounded-lg bg-[#12121A] border border-[#2A2A35] text-sm text-[#F0F0F5] focus:outline-none focus:border-[#00E5FF] cursor-pointer"
           >
             <option value="name">Sort by Name</option>
@@ -390,9 +393,10 @@ export default function Directory() {
 
           {/* Clear */}
           {hasFilters && (
-            <button
+            <button type="button"
               onClick={clearFilters}
-              className="h-9 px-3 text-sm text-[#8A8A9A] hover:text-[#F0F0F5] hover:bg-[#1A1A24] rounded-lg transition-colors"
+              aria-label="Clear all filters"
+              className="h-9 px-3 text-sm text-[#8A8A9A] hover:text-[#F0F0F5] hover:bg-[#1A1A24] rounded-lg transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#00E5FF]/30"
             >
               Clear All
             </button>
@@ -407,7 +411,7 @@ export default function Directory() {
             <Search className="w-12 h-12 text-[#5A5A6A] mx-auto mb-4" />
             <p className="text-lg text-[#8A8A9A] mb-2">No agents match your filters</p>
             <p className="text-sm text-[#5A5A6A] mb-6">Try adjusting your search or filters</p>
-            <button onClick={clearFilters} className="px-4 py-2 bg-[#D4AF37] text-[#0A0A0F] rounded-lg font-medium text-sm hover:bg-[#F0C94A] transition-colors">
+            <button type="button" onClick={clearFilters} className="px-4 py-2 bg-[#D4AF37] text-[#0A0A0F] rounded-lg font-medium text-sm hover:bg-[#F0C94A] transition-colors">
               Clear all filters
             </button>
           </div>
@@ -459,12 +463,14 @@ function DropdownFilter<T extends string>({
 
   return (
     <div className="relative">
-      <button
+      <button type="button"
         onClick={() => setOpen(!open)}
-        className="h-9 px-3 rounded-lg bg-[#12121A] border border-[#2A2A35] text-sm text-[#F0F0F5] hover:border-[#3A3A48] transition-colors flex items-center gap-2"
+        aria-expanded={open}
+        aria-label={`Filter by ${label}`}
+        className="h-9 px-3 rounded-lg bg-[#12121A] border border-[#2A2A35] text-sm text-[#F0F0F5] hover:border-[#3A3A48] transition-colors flex items-center gap-2 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#00E5FF]/30"
       >
         {selected.length > 0 ? `${label} (${selected.length})` : `All ${label}s`}
-        <ChevronDown className={`w-3.5 h-3.5 transition-transform ${open ? 'rotate-180' : ''}`} />
+        <ChevronDown className={`w-3.5 h-3.5 transition-transform ${open ? 'rotate-180' : ''}`} aria-hidden="true" />
       </button>
       <AnimatePresence>
         {open && (
@@ -479,10 +485,11 @@ function DropdownFilter<T extends string>({
               className="absolute top-full mt-1 left-0 z-50 min-w-[180px] bg-[#1A1A24] border border-[#2A2A35] rounded-lg shadow-xl overflow-hidden"
             >
               {items.map(item => (
-                <button
+                <button type="button"
                   key={item.value}
                   onClick={() => onToggle(item.value)}
-                  className={`w-full px-3 py-2 text-left text-sm flex items-center gap-2 hover:bg-[#2A2A35] transition-colors ${
+                  aria-pressed={selected.includes(item.value)}
+                  className={`w-full px-3 py-2 text-left text-sm flex items-center gap-2 hover:bg-[#2A2A35] transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#00E5FF]/30 ${
                     selected.includes(item.value) ? 'text-[#F0F0F5]' : 'text-[#8A8A9A]'
                   }`}
                 >
@@ -658,7 +665,7 @@ function AgentDetailModal({ agent, activeTab, onTabChange, onClose }: {
         <div className="relative h-28 flex-shrink-0" style={{
           background: `linear-gradient(180deg, ${districtColor}20 0%, transparent 100%)`,
         }}>
-          <button
+          <button type="button"
             onClick={onClose}
             className="absolute top-4 right-4 w-10 h-10 rounded-full bg-[#1A1A24]/80 flex items-center justify-center hover:bg-[#2A2A35] transition-colors z-10"
           >
@@ -709,7 +716,7 @@ function AgentDetailModal({ agent, activeTab, onTabChange, onClose }: {
         {/* Tabs */}
         <div className="flex items-center gap-1 px-6 border-b border-[#2A2A35] flex-shrink-0 overflow-x-auto">
           {TABS.map(tab => (
-            <button
+            <button type="button"
               key={tab}
               onClick={() => onTabChange(tab)}
               className={`

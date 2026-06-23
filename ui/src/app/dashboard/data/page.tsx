@@ -166,7 +166,7 @@ function MemoryRow({
         </div>
         {!editing && (
           <div className="flex items-center gap-1 flex-shrink-0">
-            <button
+            <button type="button"
               onClick={() => setEditing(true)}
               className="flex items-center gap-1 px-2 py-1 rounded text-xs text-white/45 hover:text-white/75 hover:bg-white/5 transition-colors"
               aria-label={`Edit memory: ${entry.content}`}
@@ -174,7 +174,7 @@ function MemoryRow({
               <Edit2 className="w-3 h-3" />
               Edit
             </button>
-            <button
+            <button type="button"
               onClick={() => onDelete(entry.id)}
               className="flex items-center gap-1 px-2 py-1 rounded text-xs text-red-400/60 hover:text-red-400 hover:bg-red-500/5 transition-colors"
               aria-label={`Delete memory: ${entry.content}`}
@@ -198,14 +198,14 @@ function MemoryRow({
             aria-label="Edit memory content"
           />
           <div className="flex gap-2">
-            <button
+            <button type="button"
               onClick={handleSave}
               className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold transition-colors"
               style={{ background: GOLD, color: DEEP }}
             >
               <Check className="w-3 h-3" /> Save
             </button>
-            <button
+            <button type="button"
               onClick={handleCancel}
               className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs text-white/45 hover:text-white/75 transition-colors"
               style={{ background: "rgba(255,255,255,0.05)" }}
@@ -246,7 +246,7 @@ function AddMemoryForm({ onAdd }: { onAdd: (e: MemoryEntry) => void }) {
 
   if (!open) {
     return (
-      <button
+      <button type="button"
         onClick={() => setOpen(true)}
         className="flex items-center gap-2 px-3 py-2 rounded-lg text-sm text-white/50 hover:text-white/80 transition-colors w-full"
         style={{ border: `1px dashed rgba(255,255,255,0.12)` }}
@@ -269,7 +269,7 @@ function AddMemoryForm({ onAdd }: { onAdd: (e: MemoryEntry) => void }) {
       {/* Category selector */}
       <div className="flex flex-wrap gap-1.5">
         {ALL_CATEGORIES.map((cat) => (
-          <button
+          <button type="button"
             key={cat}
             onClick={() => setCategory(cat)}
             className="px-2.5 py-1 rounded text-xs transition-all"
@@ -296,7 +296,7 @@ function AddMemoryForm({ onAdd }: { onAdd: (e: MemoryEntry) => void }) {
       />
 
       <div className="flex gap-2">
-        <button
+        <button type="button"
           onClick={handleAdd}
           disabled={!content.trim()}
           className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold transition-all disabled:opacity-40"
@@ -304,7 +304,7 @@ function AddMemoryForm({ onAdd }: { onAdd: (e: MemoryEntry) => void }) {
         >
           <Plus className="w-3 h-3" /> Add
         </button>
-        <button
+        <button type="button"
           onClick={() => { setOpen(false); setContent(""); }}
           className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs text-white/45 hover:text-white/75 transition-colors"
           style={{ background: "rgba(255,255,255,0.05)" }}
@@ -463,7 +463,7 @@ export default function DataManagementPage() {
             <p className="text-sm text-white/55 leading-relaxed">
               Download a full export of your MEOK data including your profile, memories, conversation history, and preferences as a JSON file.
             </p>
-            <button
+            <button type="button"
               onClick={handleDownload}
               disabled={downloading}
               className="flex items-center gap-2 px-4 py-2.5 rounded-lg text-sm font-semibold transition-all disabled:opacity-60"
@@ -576,7 +576,7 @@ export default function DataManagementPage() {
                 </span>{" "}
                 conversation{FILTER_COUNTS[convFilter] !== 1 ? "s" : ""}
               </span>
-              <button
+              <button type="button"
                 onClick={() => setShowConvConfirm(!showConvConfirm)}
                 className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold text-red-400 hover:text-red-300 transition-colors"
                 style={{ background: "rgba(239,68,68,0.08)" }}
@@ -608,7 +608,7 @@ export default function DataManagementPage() {
                   </p>
                 </div>
                 <div className="flex gap-2">
-                  <button
+                  <button type="button"
                     onClick={handleDeleteConversations}
                     disabled={convDeleting}
                     className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold transition-all disabled:opacity-60"
@@ -620,7 +620,7 @@ export default function DataManagementPage() {
                       <><Trash2 className="w-3 h-3" /> Confirm delete</>
                     )}
                   </button>
-                  <button
+                  <button type="button"
                     onClick={() => setShowConvConfirm(false)}
                     className="px-3 py-1.5 rounded-lg text-xs text-white/40 hover:text-white/65 transition-colors"
                     style={{ background: "rgba(255,255,255,0.05)" }}
@@ -645,7 +645,7 @@ export default function DataManagementPage() {
             </p>
 
             {!showDeletePanel ? (
-              <button
+              <button type="button"
                 onClick={() => setShowDeletePanel(true)}
                 className="flex items-center gap-2 px-4 py-2.5 rounded-lg text-sm font-semibold transition-colors"
                 style={{
@@ -698,7 +698,7 @@ export default function DataManagementPage() {
                 </div>
 
                 <div className="flex gap-2">
-                  <button
+                  <button type="button"
                     onClick={handleDeleteAccount}
                     disabled={deleteText !== "DELETE" || deleting}
                     className="flex items-center gap-1.5 px-4 py-2 rounded-lg text-sm font-semibold transition-all disabled:opacity-40 disabled:cursor-not-allowed"
@@ -711,7 +711,7 @@ export default function DataManagementPage() {
                       <><Trash2 className="w-4 h-4" /> Permanently delete</>
                     )}
                   </button>
-                  <button
+                  <button type="button"
                     onClick={() => { setShowDeletePanel(false); setDeleteText(""); }}
                     className="px-4 py-2 rounded-lg text-sm text-white/40 hover:text-white/65 transition-colors"
                     style={{ background: "rgba(255,255,255,0.05)" }}

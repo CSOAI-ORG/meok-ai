@@ -263,7 +263,7 @@ function Btn({
     danger: { backgroundColor: "rgba(239,68,68,0.15)", color: "#ef4444", border: "1px solid rgba(239,68,68,0.25)" },
   };
   return (
-    <button onClick={onClick} disabled={disabled} style={{ ...base, ...variants[variant], ...style }}>
+    <button type="button" onClick={onClick} disabled={disabled} style={{ ...base, ...variants[variant], ...style }}>
       {children}
     </button>
   );
@@ -720,7 +720,7 @@ function PromiseTracker({ confidential }: { confidential: boolean }) {
                   </div>
                   <div style={{ display: "flex", gap: 6, flexShrink: 0 }}>
                     {(["kept", "pending", "broken"] as PromiseStatus[]).map((s) => (
-                      <button
+                      <button type="button"
                         key={s}
                         onClick={() => setStatus(p.id, s)}
                         title={s}
@@ -738,7 +738,7 @@ function PromiseTracker({ confidential }: { confidential: boolean }) {
                         {statusIcon[s]}
                       </button>
                     ))}
-                    <button
+                    <button type="button"
                       onClick={() => remove(p.id)}
                       style={{
                         cursor: "pointer",
@@ -971,7 +971,7 @@ function ContributionBalance({ confidential }: { confidential: boolean }) {
                 </span>
                 <span style={{ flex: 1, fontSize: 13, color: TEXT }}>{e.description}</span>
                 <span style={{ fontSize: 11, color: MUTED, flexShrink: 0 }}>{e.date}</span>
-                <button
+                <button type="button"
                   onClick={() => remove(e.id)}
                   style={{ cursor: "pointer", background: "none", border: "none", padding: 2 }}
                 >
@@ -1353,7 +1353,7 @@ export default function RelationshipShieldDashboard() {
               A private tool for tracking what you notice. {scans.length > 0 && `${scans.length} scan${scans.length !== 1 ? "s" : ""} recorded.`}
             </p>
           </div>
-          <button
+          <button type="button"
             onClick={() => setConfidential((v) => !v)}
             style={{
               cursor: "pointer",
@@ -1507,7 +1507,7 @@ export default function RelationshipShieldDashboard() {
           {TABS.map(({ id, label, icon: Icon }) => {
             const active = tab === id;
             return (
-              <button
+              <button type="button"
                 key={id}
                 onClick={() => setTab(id)}
                 style={{

@@ -153,7 +153,7 @@ function CopyButton({ text }: { text: string }) {
     setTimeout(() => setCopied(false), 2000);
   };
   return (
-    <button
+    <button type="button"
       onClick={handleCopy}
       className="absolute top-3 right-3 p-2 rounded-lg transition-all opacity-60 hover:opacity-100"
       style={{ background: "rgba(255,255,255,0.05)", border: "1px solid rgba(255,255,255,0.1)" }}
@@ -180,7 +180,7 @@ function FaqItem({ q, a }: { q: string; a: string }) {
         background: open ? "rgba(74,222,128,0.03)" : "rgba(255,255,255,0.02)",
       }}
     >
-      <button
+      <button type="button"
         className="w-full flex items-center justify-between gap-4 px-5 py-4 text-left"
         onClick={() => setOpen((o) => !o)}
       >

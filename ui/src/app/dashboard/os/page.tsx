@@ -359,7 +359,7 @@ export default function OSDashboardPage() {
               </div>
               <div className="flex flex-wrap gap-2">
                 {["Claude Sonnet", "GPT-4o", "DeepSeek", "Gemini Pro", "Ollama"].map((m) => (
-                  <button
+                  <button type="button"
                     key={m}
                     onClick={() => switchProvider(m)}
                     className="px-3 py-1.5 rounded-full text-xs font-semibold transition-all"
@@ -464,7 +464,7 @@ export default function OSDashboardPage() {
                 </span>
                 <div className="flex-1 h-px" style={{ background: BORDER }} />
               </div>
-              <button
+              <button type="button"
                 onClick={resetOverrides}
                 className="flex items-center gap-1 text-[10px] font-mono px-2 py-1 rounded transition-all"
                 style={{ color: "rgba(255,255,255,0.3)", background: "rgba(255,255,255,0.03)", border: `1px solid ${BORDER}` }}
@@ -499,7 +499,7 @@ export default function OSDashboardPage() {
                     <span className="text-xs text-white/70 font-medium">{row.task}</span>
                     <span className="text-xs font-bold" style={{ color: GOLD }}>{row.model}</span>
                     <span className="text-[11px]" style={{ color: "rgba(255,255,255,0.35)" }}>{row.why}</span>
-                    <button
+                    <button type="button"
                       onClick={() => {
                         if (editingKey === row.key) {
                           setEditingKey(null);
@@ -536,7 +536,7 @@ export default function OSDashboardPage() {
                         }}
                         autoFocus
                       />
-                      <button
+                      <button type="button"
                         onClick={() => saveOverride(row.key, editValue)}
                         className="text-xs px-3 py-2 rounded-lg font-bold transition-all"
                         style={{ background: GOLD, color: DEEP }}
@@ -557,7 +557,7 @@ export default function OSDashboardPage() {
           >
             <div className="flex items-center justify-between mb-4">
               <SectionHeader label="MCP Status Board" />
-              <button
+              <button type="button"
                 onClick={runMcpChecks}
                 className="flex items-center gap-1 text-[10px] font-mono px-2 py-1 rounded transition-all -mt-4"
                 style={{ color: "rgba(255,255,255,0.3)", background: "rgba(255,255,255,0.03)", border: `1px solid ${BORDER}` }}

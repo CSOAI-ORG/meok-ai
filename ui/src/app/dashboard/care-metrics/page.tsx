@@ -140,7 +140,7 @@ function TooltipHint({ text }: { text: string }) {
   const [open, setOpen] = useState(false);
   return (
     <div className="relative inline-block">
-      <button
+      <button type="button"
         onClick={() => setOpen(!open)}
         className="w-4 h-4 rounded-full text-xs font-bold flex items-center justify-center transition-colors"
         style={{

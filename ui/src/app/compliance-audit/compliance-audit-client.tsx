@@ -109,7 +109,7 @@ export default function ComplianceAuditClient() {
                   </li>
                 ))}
               </ul>
-              <button
+              <button type="button"
                 onClick={() => handlePurchase(pkg.stripe)}
                 disabled={loading !== null}
                 className={`w-full py-3 px-6 rounded-xl font-semibold transition-colors flex items-center justify-center gap-2 ${
@@ -216,7 +216,7 @@ export default function ComplianceAuditClient() {
           <div className="space-y-4">
             {faqs.map((faq, i) => (
               <div key={i} className="border border-gray-200 rounded-xl overflow-hidden">
-                <button
+                <button type="button"
                   onClick={() => setFaqOpen(faqOpen === i ? null : i)}
                   className="w-full flex items-center justify-between p-6 text-left font-medium"
                 >

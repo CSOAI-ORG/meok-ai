@@ -88,7 +88,7 @@ export default function DashboardError({
           </p>
         )}
 
-        <button
+        <button type="button"
           onClick={reset}
           style={{
             marginTop: 4,

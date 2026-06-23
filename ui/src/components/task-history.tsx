@@ -117,7 +117,7 @@ function HistoryRow({ entry }: { entry: HistoryEntry }) {
         </span>
 
         {/* Expand button */}
-        <button
+        <button type="button"
           onClick={() => setExpanded((v) => !v)}
           className="flex items-center gap-1 text-xs flex-shrink-0 transition-opacity opacity-40 group-hover:opacity-100"
           style={{ color: '#c9a84c' }}

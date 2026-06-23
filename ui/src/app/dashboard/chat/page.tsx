@@ -105,7 +105,7 @@ function CrisisBanner({ onDismiss }: { onDismiss: () => void }) {
             <a href="https://www.iasp.info/resources/Crisis_Centres/" target="_blank" rel="noreferrer" className="font-bold text-white/50 hover:text-white/80">Other countries →</a>
           </div>
         </div>
-        <button onClick={onDismiss} className="text-white/30 hover:text-white/60 text-sm">✕</button>
+        <button type="button" onClick={onDismiss} className="text-white/30 hover:text-white/60 text-sm">✕</button>
       </div>
     </div>
   );
@@ -283,7 +283,7 @@ function SovereignPanel({
     <div className="w-72 flex-shrink-0 flex flex-col overflow-hidden" style={{ background: SURFACE, borderLeft: '1px solid rgba(255,255,255,0.08)' }}>
       <div className="flex items-center justify-between px-4 py-3 flex-shrink-0" style={{ borderBottom: '1px solid rgba(255,255,255,0.07)' }}>
         <span className="text-[10px] font-semibold tracking-[0.15em] uppercase" style={{ color: GOLD }}>Sovereign Display</span>
-        <button onClick={onClose} className="text-sm leading-none transition-colors" style={{ color: 'rgba(255,255,255,0.25)' }} aria-label="Close sovereign display">✕</button>
+        <button type="button" onClick={onClose} className="text-sm leading-none transition-colors" style={{ color: 'rgba(255,255,255,0.25)' }} aria-label="Close sovereign display">✕</button>
       </div>
       <div className="flex-1 overflow-y-auto px-4 py-4 space-y-5">
         {!streaming && !showSummary && (
@@ -325,7 +325,7 @@ function SovereignPanel({
           <div className="rounded-xl p-4 space-y-2 text-xs" style={{ background: `${GOLD}05`, border: `1px solid ${GOLD}30` }}>
             <div className="flex items-center justify-between mb-3">
               <p className="font-semibold text-[11px] uppercase tracking-wider" style={{ color: 'rgba(255,255,255,0.7)' }}>Response complete</p>
-              <button
+              <button type="button"
                 onClick={() => {
                   const metadata = JSON.stringify(sovereignMeta, null, 2);
                   navigator.clipboard.writeText(metadata);
@@ -348,11 +348,11 @@ function SovereignPanel({
           </div>
         )}
         <div className="space-y-2 pt-2" style={{ borderTop: '1px solid rgba(255,255,255,0.05)' }}>
-          <button onClick={onTogglePrivacy} className="w-full flex items-center justify-between px-3 py-2 rounded-lg transition-colors text-xs" style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.06)', color: 'rgba(255,255,255,0.45)' }}>
+          <button type="button" onClick={onTogglePrivacy} className="w-full flex items-center justify-between px-3 py-2 rounded-lg transition-colors text-xs" style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.06)', color: 'rgba(255,255,255,0.45)' }}>
             <span>Privacy Mode 🏠</span>
             <span className="px-2 py-0.5 rounded-full text-[10px] font-medium" style={privacyMode ? { background: 'rgba(74,222,128,0.15)', color: '#4ade80' } : { background: 'rgba(255,255,255,0.08)', color: 'rgba(255,255,255,0.3)' }}>{privacyMode ? 'ON' : 'OFF'} &gt;</span>
           </button>
-          <button onClick={onTogglePower} className="w-full flex items-center justify-between px-3 py-2 rounded-lg transition-colors text-xs" style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.06)', color: 'rgba(255,255,255,0.45)' }}>
+          <button type="button" onClick={onTogglePower} className="w-full flex items-center justify-between px-3 py-2 rounded-lg transition-colors text-xs" style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.06)', color: 'rgba(255,255,255,0.45)' }}>
             <span>Power Mode ⚡</span>
             <span className="px-2 py-0.5 rounded-full text-[10px] font-medium" style={powerMode ? { background: `${GOLD}30`, color: GOLD } : { background: 'rgba(255,255,255,0.08)', color: 'rgba(255,255,255,0.3)' }}>{powerMode ? 'ON' : 'OFF'} &gt;</span>
           </button>
@@ -957,7 +957,7 @@ export default function DashboardChatPage() {
       {/* Header */}
       <div className="flex items-center justify-between px-4 py-3 flex-shrink-0" style={{ borderBottom: '1px solid rgba(255,255,255,0.07)' }}>
         <span className="text-xs font-semibold uppercase tracking-widest" style={{ color: GOLD }}>Conversations</span>
-        <button
+        <button type="button"
           onClick={() => setSidebarOpen(false)}
           className="text-sm text-white/25 hover:text-white/50 transition-colors"
           title="Close sidebar"
@@ -968,7 +968,7 @@ export default function DashboardChatPage() {
       </div>
 
       {/* New conversation button */}
-      <button
+      <button type="button"
         onClick={handleNewConversation}
         className="m-3 px-3 py-2 rounded-lg text-xs font-medium border transition-all hover:scale-[1.02]"
         style={{ background: `${GOLD}20`, borderColor: `${GOLD}40`, color: GOLD }}
@@ -990,7 +990,7 @@ export default function DashboardChatPage() {
               const charName = char?.name ?? conv.companion_id ?? 'Aura';
               const isActive = currentConversationId === conv.id;
               return (
-                <button
+                <button type="button"
                   key={conv.id}
                   onClick={() => handleLoadConversation(conv.id)}
                   className="w-full text-left px-3 py-2 rounded-lg text-xs transition-colors"
@@ -1018,7 +1018,7 @@ export default function DashboardChatPage() {
 
       {/* Toggle button */}
       <div className="px-3 py-2 flex-shrink-0 border-t" style={{ borderColor: 'rgba(255,255,255,0.07)' }}>
-        <button
+        <button type="button"
           onClick={() => setSidebarOpen(false)}
           className="w-full text-xs py-1.5 rounded-lg transition-colors text-white/40 hover:text-white/60"
           title="Hide sidebar"
@@ -1046,7 +1046,7 @@ export default function DashboardChatPage() {
           <header className="h-12 flex items-center justify-between px-4 flex-shrink-0" style={{ borderBottom: '1px solid rgba(255,255,255,0.08)', background: SURFACE }}>
             <style>{KEYFRAMES_IDLE}</style>
             {!sidebarOpen && (
-              <button
+              <button type="button"
                 onClick={() => setSidebarOpen(true)}
                 className="text-xs px-2 py-1 rounded-lg border transition-colors flex-shrink-0"
                 style={{ borderColor: 'rgba(255,255,255,0.1)', color: 'rgba(255,255,255,0.4)' }}
@@ -1095,7 +1095,7 @@ export default function DashboardChatPage() {
             })()}
             <div className="flex items-center gap-1 overflow-x-auto scrollbar-hide px-2">
               {MODELS.map(m => (
-                <button key={m.id} onClick={() => setSelectedModel(m.id)} className="text-xs font-medium px-3 py-1 rounded-full border whitespace-nowrap transition-all"
+                <button type="button" key={m.id} onClick={() => setSelectedModel(m.id)} className="text-xs font-medium px-3 py-1 rounded-full border whitespace-nowrap transition-all"
                   style={selectedModel === m.id ? { background: GOLD, color: NAVY, borderColor: GOLD } : { color: 'rgba(255,255,255,0.5)', borderColor: 'rgba(255,255,255,0.15)' }}>
                   {m.label}{selectedModel === m.id && ' ✓'}
                 </button>
@@ -1108,7 +1108,7 @@ export default function DashboardChatPage() {
                 { key: 'balanced' as const, label: 'Balanced', tip: 'Default' },
                 { key: 'creative' as const, label: 'Creative', tip: 'Expansive, exploratory responses' },
               ]).map(p => (
-                <button key={p.key} onClick={() => setTempPreset(p.key)} title={p.tip} className="text-xs font-medium px-3 py-1 rounded-full border whitespace-nowrap transition-all"
+                <button type="button" key={p.key} onClick={() => setTempPreset(p.key)} title={p.tip} className="text-xs font-medium px-3 py-1 rounded-full border whitespace-nowrap transition-all"
                   style={tempPreset === p.key ? { background: GOLD, color: NAVY, borderColor: GOLD } : { color: 'rgba(255,255,255,0.5)', borderColor: 'rgba(255,255,255,0.15)' }}>
                   {p.label}{tempPreset === p.key && ' ✓'}
                 </button>
@@ -1119,7 +1119,7 @@ export default function DashboardChatPage() {
               const companion = getCharacter(companionId);
               const charName = companion?.name || 'Aura';
               return (
-                <button
+                <button type="button"
                   onClick={() => {
                     if (messages.length > 0) {
                       try {
@@ -1150,18 +1150,18 @@ export default function DashboardChatPage() {
                 </button>
               );
             })()}
-            <button onClick={() => setShowSovereign(v => !v)} className="flex items-center gap-1.5 text-xs px-2.5 py-1 rounded-lg border transition-colors flex-shrink-0"
+            <button type="button" onClick={() => setShowSovereign(v => !v)} className="flex items-center gap-1.5 text-xs px-2.5 py-1 rounded-lg border transition-colors flex-shrink-0"
               style={showSovereign ? { borderColor: `${GOLD}50`, color: GOLD, background: `${GOLD}10` } : { borderColor: 'rgba(255,255,255,0.1)', color: 'rgba(255,255,255,0.4)' }} title="Toggle sovereign display">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" /><circle cx="12" cy="12" r="3" /></svg>
               <span className="hidden sm:inline">Sovereign</span>
             </button>
-            <button onClick={() => setHighContrast(v => !v)} className="flex items-center gap-1.5 text-xs px-2.5 py-1 rounded-lg border transition-colors flex-shrink-0"
+            <button type="button" onClick={() => setHighContrast(v => !v)} className="flex items-center gap-1.5 text-xs px-2.5 py-1 rounded-lg border transition-colors flex-shrink-0"
               style={highContrast ? { borderColor: '#ffffff', color: '#ffffff', background: 'rgba(255,255,255,0.15)' } : { borderColor: 'rgba(255,255,255,0.1)', color: 'rgba(255,255,255,0.4)' }} title="Toggle high contrast mode" aria-label="High contrast mode">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="9" /><path d="M12 9v6M15 12h-6" /></svg>
               <span className="hidden sm:inline">Contrast</span>
             </button>
             <div className="flex items-center gap-1.5 text-xs px-2.5 py-1 rounded-lg border" style={{ borderColor: 'rgba(255,255,255,0.1)', background: 'rgba(255,255,255,0.03)' }} title="Adjust font size for readability">
-              <button
+              <button type="button"
                 onClick={() => setFontSize(prev => Math.max(12, prev - 1))}
                 className="flex-shrink-0 w-4 h-4 flex items-center justify-center hover:opacity-70"
                 style={{ color: 'rgba(255,255,255,0.4)' }}
@@ -1170,7 +1170,7 @@ export default function DashboardChatPage() {
                 −
               </button>
               <span className="text-[10px] px-1 min-w-[20px] text-center" style={{ color: 'rgba(255,255,255,0.3)' }}>{fontSize}px</span>
-              <button
+              <button type="button"
                 onClick={() => setFontSize(prev => Math.min(20, prev + 1))}
                 className="flex-shrink-0 w-4 h-4 flex items-center justify-center hover:opacity-70"
                 style={{ color: 'rgba(255,255,255,0.4)' }}
@@ -1196,7 +1196,7 @@ export default function DashboardChatPage() {
                   {pct > 90 && (
                     <div className="flex items-center justify-center gap-2 px-4 py-1.5 text-center" style={{ color: '#ef4444', background: `${DEEP}ee` }}>
                       <span className="text-[10px]">Context nearly full — consider starting a new conversation</span>
-                      <button
+                      <button type="button"
                         onClick={handleSummarize}
                         disabled={summarizing}
                         className="text-[10px] px-2 py-0.5 rounded-full border transition-colors flex-shrink-0"
@@ -1211,7 +1211,7 @@ export default function DashboardChatPage() {
                   {pct > 75 && pct <= 90 && (
                     <div className="flex items-center justify-between px-4 py-1 text-center gap-2" style={{ color: GOLD, background: `${DEEP}ee` }}>
                       <span className="text-[10px]">Context: {Math.round(pct)}% used</span>
-                      <button
+                      <button type="button"
                         onClick={() => {
                           showToast('Context pruning preview: First 5 messages would be compressed');
                         }}
@@ -1330,7 +1330,7 @@ export default function DashboardChatPage() {
                               latencyMs={sovereignMeta?.latency}
                             />
                             {isTTSSupported() && text && (
-                              <button
+                              <button type="button"
                                 onClick={async () => {
                                   try {
                                     if (speakingMsgId === msg.id) {
@@ -1364,7 +1364,7 @@ export default function DashboardChatPage() {
                               </button>
                             )}
                             {text && (
-                              <button
+                              <button type="button"
                                 onClick={async () => {
                                   const ok = await copyToClipboard(text);
                                   if (ok) {
@@ -1386,7 +1386,7 @@ export default function DashboardChatPage() {
                             )}
                             {/* Reaction buttons — visible on hover */}
                             <span className="inline-flex items-center gap-0.5 ml-1 opacity-100 sm:opacity-0 sm:group-hover/msg:opacity-100 transition-opacity duration-150">
-                              <button
+                              <button type="button"
                                 onClick={() => {
                                   fetch('/api/feedback', {
                                     method: 'POST',
@@ -1399,7 +1399,7 @@ export default function DashboardChatPage() {
                                 className="text-[13px] px-1 py-0.5 rounded transition-colors hover:bg-white/10"
                                 title="Like"
                               >👍</button>
-                              <button
+                              <button type="button"
                                 onClick={() => {
                                   fetch('/api/feedback', {
                                     method: 'POST',
@@ -1412,7 +1412,7 @@ export default function DashboardChatPage() {
                                 className="text-[13px] px-1 py-0.5 rounded transition-colors hover:bg-white/10"
                                 title="Dislike"
                               >👎</button>
-                              <button
+                              <button type="button"
                                 onClick={() => {
                                   fetch('/api/feedback', {
                                     method: 'POST',
@@ -1425,7 +1425,7 @@ export default function DashboardChatPage() {
                                 className="text-[13px] px-1 py-0.5 rounded transition-colors hover:bg-white/10"
                                 title="Save"
                               >💾</button>
-                              <button
+                              <button type="button"
                                 onClick={async () => {
                                   setExplainMsgId(msg.id);
                                   try {
@@ -1450,7 +1450,7 @@ export default function DashboardChatPage() {
                                 className="text-[13px] px-1 py-0.5 rounded transition-colors hover:bg-white/10 disabled:opacity-50"
                                 title="Explain simpler"
                               >{explainMsgId === msg.id ? '⏳' : '💡'}</button>
-                              <button
+                              <button type="button"
                                 onClick={() => { regenerate(); showToast('Regenerating…'); }}
                                 aria-label="Regenerate response"
                                 className="text-[13px] px-1 py-0.5 rounded transition-colors hover:bg-white/10"
@@ -1508,7 +1508,7 @@ export default function DashboardChatPage() {
                     Upgrade for unlimited messages
                   </Link>
                 </p>
-                <button
+                <button type="button"
                   onClick={() => setRateLimited(false)}
                   className="text-xs px-2 py-1 rounded-lg transition-colors"
                   style={{ color: 'rgba(255,255,255,0.4)' }}
@@ -1522,7 +1522,7 @@ export default function DashboardChatPage() {
 
           {/* Scroll to bottom button */}
           {userScrolledUp && messages.length > 0 && (
-            <button
+            <button type="button"
               onClick={() => { bottomRef.current?.scrollIntoView({ behavior: 'smooth' }); setUserScrolledUp(false); }}
               className="absolute bottom-20 left-1/2 -translate-x-1/2 z-30 px-3 py-1.5 rounded-full text-xs font-semibold shadow-lg transition-all hover:scale-105"
               style={{ background: GOLD, color: DEEP }}
@@ -1547,7 +1547,7 @@ export default function DashboardChatPage() {
             {!hasUserMessages && (
               <div className="flex flex-wrap gap-2 max-w-3xl mx-auto mb-3">
                 {QUICK_PROMPTS.map(prompt => (
-                  <button
+                  <button type="button"
                     key={prompt}
                     onClick={() => { setInput(prompt); }}
                     className="text-xs px-3 py-1.5 rounded-full border transition-all hover:scale-[1.03]"
@@ -1563,7 +1563,7 @@ export default function DashboardChatPage() {
               <div className="flex items-center gap-2 max-w-3xl mx-auto mb-2 px-1">
                 <div className="relative group">
                   <img src={imagePreview} alt="Selected" className="w-12 h-12 rounded-lg object-cover border" style={{ borderColor: `${GOLD}40` }} />
-                  <button onClick={clearImage} className="absolute -top-1.5 -right-1.5 w-5 h-5 rounded-full flex items-center justify-center text-[10px] leading-none" style={{ background: '#ef4444', color: '#fff' }} aria-label="Remove image">x</button>
+                  <button type="button" onClick={clearImage} className="absolute -top-1.5 -right-1.5 w-5 h-5 rounded-full flex items-center justify-center text-[10px] leading-none" style={{ background: '#ef4444', color: '#fff' }} aria-label="Remove image">x</button>
                 </div>
                 <span className="text-[10px] italic" style={{ color: 'rgba(255,255,255,0.3)' }}>{selectedImage.name}</span>
               </div>
@@ -1590,7 +1590,7 @@ export default function DashboardChatPage() {
               <div className="absolute right-2 bottom-2 flex items-center gap-1">
                 <span className="text-[10px] hidden sm:inline" style={{ color: 'rgba(255,255,255,0.2)' }}>⌘↵</span>
                 {/* Image upload hidden — no image processing backend yet */}
-                {false && <button
+                {false && <button type="button"
                   onClick={() => fileInputRef.current?.click()}
                   disabled={isStreaming}
                   aria-label="Attach image"
@@ -1602,7 +1602,7 @@ export default function DashboardChatPage() {
                 >
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
                 </button>}
-                <button
+                <button type="button"
                   onClick={toggleVoiceInput}
                   disabled={isStreaming}
                   aria-label={isListening ? 'Stop recording' : 'Record voice input'}
@@ -1618,9 +1618,9 @@ export default function DashboardChatPage() {
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg>
                 </button>
                 {isStreaming ? (
-                  <button onClick={() => stop()} aria-label="Stop generating response" className="h-8 px-3 rounded-lg text-xs font-semibold transition-all flex-shrink-0" style={{ background: '#ef4444', color: '#fff' }}>Stop</button>
+                  <button type="button" onClick={() => stop()} aria-label="Stop generating response" className="h-8 px-3 rounded-lg text-xs font-semibold transition-all flex-shrink-0" style={{ background: '#ef4444', color: '#fff' }}>Stop</button>
                 ) : (
-                  <button onClick={handleSend} disabled={!input.trim() || input.length > MAX_MESSAGE_LENGTH} aria-label="Send message" className="h-8 px-3 rounded-lg text-xs font-semibold transition-all flex-shrink-0 disabled:opacity-30 disabled:cursor-not-allowed" style={{ background: GOLD, color: NAVY }}>Send</button>
+                  <button type="button" onClick={handleSend} disabled={!input.trim() || input.length > MAX_MESSAGE_LENGTH} aria-label="Send message" className="h-8 px-3 rounded-lg text-xs font-semibold transition-all flex-shrink-0 disabled:opacity-30 disabled:cursor-not-allowed" style={{ background: GOLD, color: NAVY }}>Send</button>
                 )}
               </div>
             </div>
@@ -1666,7 +1666,7 @@ export default function DashboardChatPage() {
           >
             <div className="flex items-center justify-between mb-4">
               <h3 className="text-sm font-bold" style={{ color: GOLD }}>Conversation Summary</h3>
-              <button
+              <button type="button"
                 onClick={() => setSummaryText(null)}
                 className="text-white/40 hover:text-white/70 transition-colors text-lg leading-none"
                 aria-label="Close summary"
@@ -1677,7 +1677,7 @@ export default function DashboardChatPage() {
             <div className="text-sm text-white/80 leading-relaxed whitespace-pre-wrap">
               {summaryText}
             </div>
-            <button
+            <button type="button"
               onClick={() => setSummaryText(null)}
               className="mt-5 w-full py-2 rounded-xl text-xs font-semibold transition-colors"
               style={{ background: `rgba(201,168,76,0.12)`, border: `1px solid rgba(201,168,76,0.25)`, color: GOLD }}
@@ -1726,7 +1726,7 @@ export default function DashboardChatPage() {
             {searchResults.length > 0 && (
               <div className="max-h-72 overflow-y-auto">
                 {searchResults.map((r, i) => (
-                  <button
+                  <button type="button"
                     key={`${r.conversation_id}-${i}`}
                     onClick={() => { handleLoadConversation(r.conversation_id); setSearchOpen(false); }}
                     className="w-full text-left px-4 py-3 text-xs hover:bg-white/5 transition-colors"

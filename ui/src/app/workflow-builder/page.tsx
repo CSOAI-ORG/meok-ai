@@ -205,7 +205,7 @@ export default function WorkflowBuilder() {
               <label className="text-sm text-gray-400 mb-2 block">Workflow Type</label>
               <div className="grid grid-cols-4 gap-2 mb-4">
                 {workflowTypes.map(type => (
-                  <button
+                  <button type="button"
                     key={type.id}
                     onClick={() => setCurrentWorkflow({ ...currentWorkflow, type: type.id as Workflow['type'] })}
                     className={`p-3 rounded-lg text-center transition ${
@@ -239,7 +239,7 @@ export default function WorkflowBuilder() {
             <div className="bg-gray-900 rounded-lg p-6 border border-gray-800">
               <div className="flex items-center justify-between mb-4">
                 <h2 className="text-xl font-semibold">Workflow Steps ({currentWorkflow.steps.length})</h2>
-                <button
+                <button type="button"
                   onClick={addStep}
                   className="bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-lg"
                 >
@@ -294,7 +294,7 @@ export default function WorkflowBuilder() {
                             className="bg-gray-700 border border-gray-600 rounded px-2 py-1"
                           />
                         </div>
-                        <button
+                        <button type="button"
                           onClick={(e) => { e.stopPropagation(); removeStep(step.id); }}
                           className="text-red-400 hover:text-red-300 px-2"
                         >
@@ -344,14 +344,14 @@ export default function WorkflowBuilder() {
 
             {/* Actions */}
             <div className="flex gap-4">
-              <button
+              <button type="button"
                 onClick={testWorkflow}
                 disabled={testing || currentWorkflow.steps.length === 0}
                 className="bg-green-600 hover:bg-green-700 disabled:opacity-50 px-6 py-3 rounded-lg font-medium"
               >
                 {testing ? 'Testing...' : '▶ Test Workflow'}
               </button>
-              <button
+              <button type="button"
                 onClick={saveWorkflow}
                 disabled={currentWorkflow.steps.length === 0}
                 className="bg-blue-600 hover:bg-blue-700 disabled:opacity-50 px-6 py-3 rounded-lg font-medium"
@@ -409,7 +409,7 @@ export default function WorkflowBuilder() {
               <h2 className="text-lg font-semibold mb-4">Saved Workflows</h2>
               <div className="space-y-2">
                 {savedWorkflows.slice(0, 5).map((wf, i) => (
-                  <button
+                  <button type="button"
                     key={i}
                     onClick={() => setCurrentWorkflow(wf)}
                     className="w-full bg-gray-800 hover:bg-gray-700 rounded-lg p-3 text-left"

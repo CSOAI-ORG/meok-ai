@@ -194,7 +194,7 @@ export default function ScamStopPage() {
             </h2>
 
             {SCAM_EXAMPLES.map((scam) => (
-              <button
+              <button type="button"
                 key={scam.id}
                 onClick={() => handleTryScam(scam)}
                 className="w-full text-left p-4 rounded-xl border-2 transition-all"
@@ -263,7 +263,7 @@ export default function ScamStopPage() {
                 </div>
 
                 {/* Share button */}
-                <button
+                <button type="button"
                   onClick={handleShare}
                   className="w-full mt-6 py-2 rounded-lg text-sm font-medium flex items-center justify-center gap-2 transition-all"
                   style={{

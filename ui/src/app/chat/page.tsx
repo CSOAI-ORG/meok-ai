@@ -168,7 +168,7 @@ function ModeSwitcher({ mode, onChange }: { mode: ChatMode; onChange: (m: ChatMo
 
   return (
     <div ref={ref} className="relative">
-      <button
+      <button type="button"
         onClick={() => setOpen((v) => !v)}
         className="flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-semibold border transition-all hover:scale-[1.02]"
         style={{
@@ -191,7 +191,7 @@ function ModeSwitcher({ mode, onChange }: { mode: ChatMode; onChange: (m: ChatMo
             const cfg = getModeConfig(m);
             const isActive = m === mode;
             return (
-              <button
+              <button type="button"
                 key={m}
                 onClick={() => {
                   onChange(m);
@@ -535,7 +535,7 @@ export default function ChatPage() {
           <GlowText variant="gold" as="span" className="text-xs font-bold uppercase tracking-widest">
             History
           </GlowText>
-          <button
+          <button type="button"
             onClick={() => setSidebarOpen(false)}
             className="p-1.5 rounded-lg hover:bg-white/5 transition-colors lg:hidden"
             aria-label="Close sidebar"
@@ -559,7 +559,7 @@ export default function ChatPage() {
 
         {/* New Chat */}
         <div className="px-3 pb-2">
-          <button
+          <button type="button"
             onClick={handleNewConversation}
             className="w-full flex items-center justify-center gap-2 px-3 py-2 rounded-xl text-xs font-semibold border transition-all hover:scale-[1.01]"
             style={{ background: `${GOLD}18`, borderColor: `${GOLD}35`, color: GOLD }}
@@ -592,7 +592,7 @@ export default function ChatPage() {
                     const active = currentConversationId === conv.id;
                     const char = getCharacter(conv.companion_id);
                     return (
-                      <button
+                      <button type="button"
                         key={conv.id}
                         onClick={() => handleLoadConversation(conv.id)}
                         className="w-full text-left px-3 py-2.5 rounded-xl transition-all text-xs"
@@ -634,7 +634,7 @@ export default function ChatPage() {
         {/* Top Bar */}
         <header className="flex items-center justify-between px-4 py-3 border-b border-white/[0.07] bg-[#0d0c18]/80 backdrop-blur-md z-10">
           <div className="flex items-center gap-3">
-            <button
+            <button type="button"
               onClick={() => setSidebarOpen(true)}
               className="p-2 rounded-xl hover:bg-white/5 transition-colors"
               aria-label="Open sidebar"
@@ -703,7 +703,7 @@ export default function ChatPage() {
               </div>
               <div className="flex flex-wrap justify-center gap-2 max-w-md">
                 {quickPrompts.map((prompt) => (
-                  <button
+                  <button type="button"
                     key={prompt}
                     onClick={() => {
                       setInput(prompt);
@@ -805,7 +805,7 @@ export default function ChatPage() {
                 style={{ caretColor: GOLD }}
               />
               <div className="flex items-center gap-1.5">
-                <button
+                <button type="button"
                   onClick={toggleVoice}
                   disabled={isStreaming}
                   className="p-2.5 rounded-xl transition-all disabled:opacity-30"
@@ -819,7 +819,7 @@ export default function ChatPage() {
                   {isListening ? <MicOff className="w-4 h-4" /> : <Mic className="w-4 h-4" />}
                 </button>
                 {isStreaming ? (
-                  <button
+                  <button type="button"
                     onClick={stop}
                     className="p-2.5 rounded-xl transition-all"
                     style={{
@@ -832,7 +832,7 @@ export default function ChatPage() {
                     <div className="w-4 h-4 rounded-sm bg-current" />
                   </button>
                 ) : (
-                  <button
+                  <button type="button"
                     onClick={handleSend}
                     disabled={!input.trim()}
                     className="p-2.5 rounded-xl transition-all disabled:opacity-30"

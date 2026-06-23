@@ -1,16 +1,16 @@
 {
-  "generated_at": "2026-06-23T05:09:44.916638+00:00",
+  "generated_at": "2026-06-23T07:10:18.629829+00:00",
   "scope": "IN-SIMULATION governed-vs-ungoverned data. ONLY cryptographically-attestable verdicts are shown. Policy-Lab results may be agents=stub (labeled). Bitcoin anchor status is read live from the .ots proofs \u2014 'confirmed' means the proof carries a Bitcoin block attestation; 'pending' means the calendar has not yet posted. Verify any of this yourself \u2014 no trust required.",
   "summary": {
     "king_hive": {
-      "total_rounds": 555,
-      "attestable": 86,
+      "total_rounds": 561,
+      "attestable": 92,
       "wins": {
-        "A": 44,
-        "B": 42,
+        "A": 47,
+        "B": 45,
         "TIE": 0
       },
-      "avg_margin": 0.0397
+      "avg_margin": 0.0401
     },
     "policy_lab": {
       "experiments": 1,
@@ -81,60 +81,6 @@
     "n_signed_rows": 7
   },
   "recent_verdicts": [
-    {
-      "ts": "2026-06-22T23:40:15.533143+00:00",
-      "winner": "A",
-      "margin": 0.014,
-      "prompt": "How do we differentiate MEOK from generic AI-agent platforms?",
-      "king": "King/Dragon",
-      "queen": "Queen/Turtle",
-      "signed": true
-    },
-    {
-      "ts": "2026-06-22T23:54:44.016029+00:00",
-      "winner": "B",
-      "margin": 0.0395,
-      "prompt": "What is the strongest trust signal for a compliance officer evaluating CSOAI?",
-      "king": "King/Dragon",
-      "queen": "Queen/Turtle",
-      "signed": true
-    },
-    {
-      "ts": "2026-06-23T00:24:28.477594+00:00",
-      "winner": "A",
-      "margin": 0.004,
-      "prompt": "What is the minimum viable legal framework for MEOK to operate in the EU?",
-      "king": "King/Dragon",
-      "queen": "Queen/Turtle",
-      "signed": true
-    },
-    {
-      "ts": "2026-06-23T00:37:58.768072+00:00",
-      "winner": "A",
-      "margin": 0.0265,
-      "prompt": "Should we pursue grant funding or angel funding first?",
-      "king": "King/Dragon",
-      "queen": "Queen/Turtle",
-      "signed": true
-    },
-    {
-      "ts": "2026-06-23T00:53:03.539333+00:00",
-      "winner": "A",
-      "margin": 0.0005,
-      "prompt": "What feature would make a developer choose OPENMOE over vLLM or Ollama?",
-      "king": "King/Dragon",
-      "queen": "Queen/Turtle",
-      "signed": true
-    },
-    {
-      "ts": "2026-06-23T01:07:55.040532+00:00",
-      "winner": "B",
-      "margin": 0.125,
-      "prompt": "How should we handle a customer request that violates the safety charter?",
-      "king": "King/Dragon",
-      "queen": "Queen/Turtle",
-      "signed": true
-    },
     {
       "ts": "2026-06-23T01:31:31.643805+00:00",
       "winner": "A",
@@ -257,6 +203,60 @@
       "winner": "B",
       "margin": 0.045,
       "prompt": "Should the keystone secrets system support hardware security modules before launch?",
+      "king": "King/Dragon",
+      "queen": "Queen/Turtle",
+      "signed": true
+    },
+    {
+      "ts": "2026-06-23T05:25:13.708326+00:00",
+      "winner": "A",
+      "margin": 0.0005,
+      "prompt": "What is the minimum viable legal framework for MEOK to operate in the EU?",
+      "king": "King/Dragon",
+      "queen": "Queen/Turtle",
+      "signed": true
+    },
+    {
+      "ts": "2026-06-23T05:40:53.980496+00:00",
+      "winner": "B",
+      "margin": 0.0325,
+      "prompt": "Should we pursue grant funding or angel funding first?",
+      "king": "King/Dragon",
+      "queen": "Queen/Turtle",
+      "signed": true
+    },
+    {
+      "ts": "2026-06-23T05:56:00.242010+00:00",
+      "winner": "B",
+      "margin": 0.0625,
+      "prompt": "What feature would make a developer choose OPENMOE over vLLM or Ollama?",
+      "king": "King/Dragon",
+      "queen": "Queen/Turtle",
+      "signed": true
+    },
+    {
+      "ts": "2026-06-23T06:11:31.091532+00:00",
+      "winner": "B",
+      "margin": 0.0445,
+      "prompt": "How should we handle a customer request that violates the safety charter?",
+      "king": "King/Dragon",
+      "queen": "Queen/Turtle",
+      "signed": true
+    },
+    {
+      "ts": "2026-06-23T06:35:06.028122+00:00",
+      "winner": "A",
+      "margin": 0.0675,
+      "prompt": "Should we build a native mobile app or focus on web dashboard?",
+      "king": "King/Dragon",
+      "queen": "Queen/Turtle",
+      "signed": true
+    },
+    {
+      "ts": "2026-06-23T06:51:11.306527+00:00",
+      "winner": "A",
+      "margin": 0.0675,
+      "prompt": "What partnership would unlock the most distribution in the next 90 days?",
       "king": "King/Dragon",
       "queen": "Queen/Turtle",
       "signed": true

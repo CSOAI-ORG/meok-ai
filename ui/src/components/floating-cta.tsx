@@ -55,7 +55,7 @@ export function FloatingCTA() {
         Hatch your AI free
         <ArrowRight className="w-4 h-4" />
       </Link>
-      <button
+      <button type="button"
         onClick={() => {
           setDismissed(true);
           sessionStorage.setItem('meok-cta-dismissed', '1');

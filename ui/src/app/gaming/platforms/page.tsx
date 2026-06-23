@@ -328,7 +328,7 @@ function PlatformCard({ platform, accent }: { platform: PlatformEntry; accent: s
           </div>
         </div>
         <p className="text-xs text-white/40 leading-relaxed mb-3">{platform.what}</p>
-        <button
+        <button type="button"
           className="text-[10px] font-black tracking-wider uppercase transition-colors"
           style={{ color: expanded ? accent : "rgba(255,255,255,0.25)" }}
           onClick={() => setExpanded(!expanded)}
@@ -368,7 +368,7 @@ function FAQAccordion({ faqs }: { faqs: typeof FAQS }) {
     <div className="space-y-3">
       {faqs.map((faq, i) => (
         <Surface key={i} variant="glass" className="overflow-hidden">
-          <button
+          <button type="button"
             className="w-full flex items-center justify-between gap-4 px-6 py-5 text-left hover:bg-white/[0.03] transition-colors"
             onClick={() => setOpen(open === i ? null : i)}
             aria-expanded={open === i}

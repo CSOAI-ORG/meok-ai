@@ -340,7 +340,7 @@ export default function ApiKeysSettingsPage() {
           <Section
             title="Saved Keys"
             action={
-              <button
+              <button type="button"
                 onClick={() => setShowAddForm((v) => !v)}
                 style={{
                   display: "flex",
@@ -462,7 +462,7 @@ export default function ApiKeysSettingsPage() {
 
                   {/* Save button */}
                   <div style={{ display: "flex", justifyContent: "flex-end" }}>
-                    <button
+                    <button type="button"
                       onClick={handleSave}
                       disabled={formSaving}
                       style={{
@@ -590,7 +590,7 @@ export default function ApiKeysSettingsPage() {
                       <div style={{ display: "flex", justifyContent: "center" }}>
                         {isRemoving ? (
                           <div style={{ display: "flex", gap: 4 }}>
-                            <button
+                            <button type="button"
                               onClick={() => handleRemoveConfirm(key.id)}
                               style={{
                                 padding: "4px 8px",
@@ -605,7 +605,7 @@ export default function ApiKeysSettingsPage() {
                             >
                               Yes
                             </button>
-                            <button
+                            <button type="button"
                               onClick={() => setPendingRemove(null)}
                               style={{
                                 padding: "4px 8px",
@@ -621,7 +621,7 @@ export default function ApiKeysSettingsPage() {
                             </button>
                           </div>
                         ) : (
-                          <button
+                          <button type="button"
                             onClick={() => setPendingRemove(key.id)}
                             title="Remove key"
                             style={{
@@ -743,7 +743,7 @@ export default function ApiKeysSettingsPage() {
                     second: "2-digit",
                   })}
                 </span>
-                <button
+                <button type="button"
                   onClick={handleManualRefresh}
                   title="Refresh status"
                   style={{

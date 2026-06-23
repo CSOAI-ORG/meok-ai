@@ -99,7 +99,7 @@ export default function IntegrationSettings() {
             className="w-full px-4 py-2 rounded-lg bg-white/5 border border-white/10"
           />
           <div className="flex gap-2">
-            <button
+            <button type="button"
               onClick={async () => {
                 if (!discordUrl) return;
                 setLoading(true);

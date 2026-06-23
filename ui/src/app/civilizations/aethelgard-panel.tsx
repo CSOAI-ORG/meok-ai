@@ -1,8 +1,9 @@
 "use client";
 
 import { useEffect, useState, useRef } from "react";
-import { Loader2, Send, Users, Gavel, RefreshCw, MessagesSquare } from "lucide-react";
+import { Loader2, Send, Users, Gavel, MessagesSquare } from "lucide-react";
 import { Surface } from "@/components/design-system/surface";
+import { BFTVoteResult } from "@meok/ui";
 
 interface Agent {
   id: string;
@@ -195,7 +196,7 @@ export default function AethelgardPanel() {
         </div>
         <div className="space-y-2 max-h-[48rem] overflow-y-auto pr-1">
           {agents.map((agent) => (
-            <button
+            <button type="button"
               key={agent.id}
               onClick={() => {
                 setSelected(agent);
@@ -326,35 +327,11 @@ export default function AethelgardPanel() {
 
           {voteResult && (
             <div className="space-y-4">
-              <div className="flex items-center justify-between rounded-lg border border-white/10 bg-white/[0.03] p-3">
-                <div className="min-w-0 flex-1 pr-4">
-                  <div className="text-xs text-white/50">Proposal</div>
-                  <div className="text-sm font-medium text-white">{voteResult.proposal}</div>
-                </div>
-                <div className="flex items-center gap-3 text-right">
-                  <div>
-                    <div className={`text-lg font-bold ${
-                      voteResult.outcome === "PASSED" ? "text-emerald-400" :
-                      voteResult.outcome === "REJECTED" ? "text-rose-400" : "text-amber-400"
-                    }`}>
-                      {voteResult.outcome}
-                    </div>
-                    <div className="text-xs text-white/50">
-                      FOR {voteResult.tally.FOR} · AGAINST {voteResult.tally.AGAINST} · ABSTAIN {voteResult.tally.ABSTAIN}
-                    </div>
-                  </div>
-                  <button
-                    type="button"
-                    onClick={() => runVote()}
-                    disabled={voteLoading || !voteProposal.trim()}
-                    className="flex items-center gap-1 rounded-lg border border-white/10 bg-white/[0.05] px-3 py-2 text-xs font-semibold text-white/80 hover:bg-white/[0.08] disabled:opacity-50"
-                    title="Re-run vote with the same proposal"
-                  >
-                    <RefreshCw size={14} />
-                    Re-run
-                  </button>
-                </div>
-              </div>
+              <BFTVoteResult
+                result={voteResult}
+                onReRun={() => runVote()}
+                canReRun={!voteLoading && !!voteProposal.trim()}
+              />
 
               {debateMode && debateResult && (
                 <div className="space-y-4">
@@ -390,24 +367,6 @@ export default function AethelgardPanel() {
                   ))}
                 </div>
               )}
-
-              <div className="grid gap-2 sm:grid-cols-2">
-                {voteResult.votes.map((v) => (
-                  <div key={v.agentId} className="rounded-lg border border-white/10 bg-white/[0.03] p-3">
-                    <div className="flex items-center justify-between">
-                      <span className="text-sm font-semibold text-white">{v.name}</span>
-                      <span className={`text-xs font-bold ${
-                        v.vote === "FOR" ? "text-emerald-400" :
-                        v.vote === "AGAINST" ? "text-rose-400" : "text-amber-400"
-                      }`}>
-                        {v.vote}
-                      </span>
-                    </div>
-                    <div className="text-xs text-white/50">{v.role}</div>
-                    <div className="mt-1 text-xs text-white/70 italic">“{v.reason}”</div>
-                  </div>
-                ))}
-              </div>
             </div>
           )}
         </Surface>

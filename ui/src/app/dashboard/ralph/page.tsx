@@ -478,7 +478,7 @@ export default function RalphModePage() {
             </p>
           </div>
           {plan && (
-            <button
+            <button type="button"
               onClick={handleReset}
               className="text-xs text-white/30 hover:text-white/60 transition-colors"
             >
@@ -542,7 +542,7 @@ export default function RalphModePage() {
                   )}
                 </div>
 
-                <button
+                <button type="button"
                   onClick={handleDecompose}
                   disabled={loading || !projectInput.trim()}
                   className="inline-flex items-center gap-2 px-6 py-2.5 rounded-xl text-sm font-black transition-all disabled:opacity-40"
@@ -621,7 +621,7 @@ export default function RalphModePage() {
                     <ChevronRight size={12} />
                     <span>{plan.tasks.length} tasks across 3 agents</span>
                   </div>
-                  <button
+                  <button type="button"
                     onClick={handleApprove}
                     className="ml-auto inline-flex items-center gap-2 px-5 py-2 rounded-xl text-sm font-black transition-all"
                     style={{ background: GOLD, color: DEEP }}

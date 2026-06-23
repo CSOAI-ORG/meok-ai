@@ -107,7 +107,7 @@ function FaqItem({ q, a }: { q: string; a: string }) {
   const [open, setOpen] = useState(false);
   return (
     <div className="border-b border-white/[0.07]">
-      <button
+      <button type="button"
         onClick={() => setOpen(!open)}
         className="w-full flex items-center justify-between py-5 text-left gap-4"
       >

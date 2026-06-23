@@ -210,7 +210,7 @@ function MemoryCard({
           </div>
 
           {/* Delete button — visible on hover */}
-          <button
+          <button type="button"
             onClick={handleDelete}
             disabled={deleting}
             className={`
@@ -265,7 +265,7 @@ function TopicBubble({
 }) {
   const size = Math.max(60, Math.min(120, 60 + cluster.weight / 2))
   return (
-    <button
+    <button type="button"
       onClick={onClick}
       className="rounded-full flex flex-col items-center justify-center transition-all hover:scale-110 focus:outline-none"
       style={{
@@ -309,7 +309,7 @@ function FadingMemory({
           <p className="text-xs text-gray-400 line-clamp-2">{memory.content}</p>
         </div>
         <div className="flex items-center gap-2 shrink-0">
-          <button
+          <button type="button"
             onClick={() => {
               setRecovering(true)
               setTimeout(() => {
@@ -321,7 +321,7 @@ function FadingMemory({
           >
             {recovering ? '…' : recovered ? '✓ Recovered' : 'Recover'}
           </button>
-          <button
+          <button type="button"
             onClick={() => onDelete(memory.id)}
             className="text-gray-600 hover:text-red-400 p-1 rounded hover:bg-red-900/20"
             title="Delete memory"
@@ -659,7 +659,7 @@ export default function MemoriesPage() {
                   >
                     <p>No memories match your search or filters.</p>
                     {selectedTopic && (
-                      <button
+                      <button type="button"
                         className="mt-2 text-sm underline"
                         style={{ color: GOLD }}
                         onClick={() => setSelectedTopic(null)}

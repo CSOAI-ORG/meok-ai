@@ -154,7 +154,7 @@ export default function ResearchDashboard() {
                 </label>
               </div>
               
-              <button
+              <button type="button"
                 onClick={runResearch}
                 disabled={researching || !query.trim()}
                 className="mt-4 bg-blue-600 hover:bg-blue-700 disabled:opacity-50 px-6 py-3 rounded-lg font-medium"
@@ -168,7 +168,7 @@ export default function ResearchDashboard() {
               <h2 className="text-xl font-semibold mb-4">Research Templates</h2>
               <div className="grid grid-cols-3 gap-3">
                 {templateButtons.map(tpl => (
-                  <button
+                  <button type="button"
                     key={tpl.id}
                     onClick={() => setSelectedTemplate(selectedTemplate === tpl.id ? null : tpl.id)}
                     className={`p-4 rounded-lg text-left transition ${
@@ -314,7 +314,7 @@ export default function ResearchDashboard() {
               <h2 className="text-lg font-semibold mb-4">Quick Research</h2>
               <div className="space-y-2">
                 {['AI ethics frameworks', 'HIPAA compliance 2024', 'GDPR updates', 'SOC2 audit process'].map(q => (
-                  <button
+                  <button type="button"
                     key={q}
                     onClick={() => { setQuery(q); runResearch(); }}
                     disabled={researching}

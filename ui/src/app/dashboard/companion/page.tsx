@@ -794,7 +794,7 @@ export default function CompanionPage() {
             {/* Model selector pills */}
             <div className="flex items-center gap-1 overflow-x-auto px-2">
               {MODELS.map((m) => (
-                <button
+                <button type="button"
                   key={m.id}
                   onClick={() => setSelectedModel(m.id)}
                   className="text-xs font-medium px-3 py-1 rounded-full border whitespace-nowrap transition-all"
@@ -866,7 +866,7 @@ export default function CompanionPage() {
                     };
                     const prompt = prompts[tag] ?? `Tell me about ${tag}.`;
                     return (
-                      <button
+                      <button type="button"
                         key={i}
                         onClick={() => setInput(prompt)}
                         className="text-xs border rounded-full px-4 py-2 transition-all text-left"
@@ -1027,7 +1027,7 @@ export default function CompanionPage() {
               />
               <div className="absolute right-2 bottom-2 flex items-center gap-1">
                 <span className="text-[10px] hidden sm:inline" style={{ color: 'rgba(255,255,255,0.2)' }}>⌘↵</span>
-                <button
+                <button type="button"
                   onClick={sendMessage}
                   disabled={!input.trim() || streaming}
                   className="h-8 px-3 rounded-lg text-xs font-semibold transition-all flex-shrink-0"

@@ -79,7 +79,7 @@ export function SOV3OverlayWidget() {
   return (
     <div className="fixed bottom-4 right-4 z-50">
       {/* Toggle Button */}
-      <button
+      <button type="button"
         onClick={() => setExpanded(!expanded)}
         className="flex items-center gap-2 px-4 py-2 bg-slate-800/90 backdrop-blur border border-slate-600 rounded-full shadow-lg hover:bg-slate-700 transition-all"
       >
@@ -97,7 +97,7 @@ export function SOV3OverlayWidget() {
               <span className="text-2xl">{modeEmoji[displayMode]}</span>
               <span className="text-white font-semibold capitalize">{displayMode}</span>
             </div>
-            <button onClick={() => setVisible(false)} className="text-gray-400 hover:text-white">
+            <button type="button" onClick={() => setVisible(false)} className="text-gray-400 hover:text-white">
               <X className="w-4 h-4" />
             </button>
           </div>

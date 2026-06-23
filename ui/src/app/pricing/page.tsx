@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { PricingCard } from "@meok/ui";
 
 export const metadata: Metadata = {
   title: "Pricing — MEOK Compliance MCP Fleet | Two Product Lines | MEOK.AI",
@@ -215,17 +216,21 @@ export default function PricingPage() {
           <p style={{ fontSize: 14, color: `${NAVY}cc`, marginBottom: 20, maxWidth: 720 }}>
             For individuals using MEOK as a personal AI companion. Persistent memory, character evolution, family OS.
           </p>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))", gap: 16 }}>
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {CONSUMER_TIERS.map((t) => (
-              <div key={t.tier} style={{ background: t.cta.primary ? NAVY : "white", color: t.cta.primary ? "white" : NAVY, borderRadius: 14, padding: 24, border: `2px solid ${t.cta.primary ? GOLD : NAVY + "1a"}`, display: "flex", flexDirection: "column" }}>
-                <div style={{ fontSize: 12, fontWeight: 900, letterSpacing: "0.05em", textTransform: "uppercase", color: t.cta.primary ? GOLD : GOLD, marginBottom: 4 }}>{t.tier}</div>
-                <div style={{ fontSize: 32, fontWeight: 900, lineHeight: 1, margin: "4px 0" }}>{t.price}</div>
-                <div style={{ fontSize: 12, color: t.cta.primary ? "rgba(255,255,255,0.6)" : `${NAVY}77`, marginBottom: 12 }}>{t.sub}</div>
-                <p style={{ fontSize: 13, lineHeight: 1.5, opacity: 0.85, margin: "0 0 16px", flex: 1 }}>{t.desc}</p>
-                <a href={t.cta.href} target="_blank" rel="noopener noreferrer" style={{ display: "block", textAlign: "center", padding: "12px 16px", borderRadius: 10, background: t.cta.primary ? GOLD : "transparent", color: t.cta.primary ? NAVY : NAVY, fontWeight: 900, textDecoration: "none", fontSize: 13, border: t.cta.primary ? "none" : `1px solid ${NAVY}33` }}>
-                  {t.cta.label} →
-                </a>
-              </div>
+              <PricingCard
+                key={t.tier}
+                product={{
+                  id: t.tier,
+                  name: t.tier,
+                  price: t.price,
+                  sub: t.sub,
+                  description: t.desc,
+                  href: t.cta.href,
+                  featured: t.cta.primary,
+                  cta: t.cta.label,
+                }}
+              />
             ))}
           </div>
         </section>
@@ -235,17 +240,21 @@ export default function PricingPage() {
           <p style={{ fontSize: 14, color: `${NAVY}cc`, marginBottom: 20, maxWidth: 720 }}>
             For organisations operating under EU AI Act, DORA, NIS2, GDPR, ISO 42001, SOC 2, HIPAA, or FDA. HMAC-signed evidence chain, monthly attestations, council governance.
           </p>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))", gap: 16 }}>
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {COMPLIANCE_TIERS.map((t) => (
-              <div key={t.tier} style={{ background: t.cta.primary ? NAVY : "white", color: t.cta.primary ? "white" : NAVY, borderRadius: 14, padding: 24, border: `2px solid ${t.cta.primary ? GOLD : NAVY + "1a"}`, display: "flex", flexDirection: "column" }}>
-                <div style={{ fontSize: 12, fontWeight: 900, letterSpacing: "0.05em", textTransform: "uppercase", color: GOLD, marginBottom: 4 }}>{t.tier}</div>
-                <div style={{ fontSize: 32, fontWeight: 900, lineHeight: 1, margin: "4px 0" }}>{t.price}</div>
-                <div style={{ fontSize: 12, color: t.cta.primary ? "rgba(255,255,255,0.6)" : `${NAVY}77`, marginBottom: 12 }}>{t.sub}</div>
-                <p style={{ fontSize: 13, lineHeight: 1.5, opacity: 0.85, margin: "0 0 16px", flex: 1 }}>{t.desc}</p>
-                <a href={t.cta.href} target="_blank" rel="noopener noreferrer" style={{ display: "block", textAlign: "center", padding: "12px 16px", borderRadius: 10, background: t.cta.primary ? GOLD : "transparent", color: t.cta.primary ? NAVY : NAVY, fontWeight: 900, textDecoration: "none", fontSize: 13, border: t.cta.primary ? "none" : `1px solid ${NAVY}33` }}>
-                  {t.cta.label} →
-                </a>
-              </div>
+              <PricingCard
+                key={t.tier}
+                product={{
+                  id: t.tier,
+                  name: t.tier,
+                  price: t.price,
+                  sub: t.sub,
+                  description: t.desc,
+                  href: t.cta.href,
+                  featured: t.cta.primary,
+                  cta: t.cta.label,
+                }}
+              />
             ))}
           </div>
         </section>
@@ -255,17 +264,21 @@ export default function PricingPage() {
           <p style={{ fontSize: 14, color: `${NAVY}cc`, marginBottom: 20, maxWidth: 720 }}>
             For specific compliance needs that don't require a subscription. Ships in 7 days or less.
           </p>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))", gap: 16 }}>
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
             {ONE_TIME.map((t) => (
-              <div key={t.tier} style={{ background: t.cta.primary ? NAVY : "white", color: t.cta.primary ? "white" : NAVY, borderRadius: 14, padding: 24, border: `2px solid ${t.cta.primary ? GOLD : NAVY + "1a"}`, display: "flex", flexDirection: "column" }}>
-                <div style={{ fontSize: 12, fontWeight: 900, letterSpacing: "0.05em", textTransform: "uppercase", color: GOLD, marginBottom: 4 }}>{t.tier}</div>
-                <div style={{ fontSize: 32, fontWeight: 900, lineHeight: 1, margin: "4px 0" }}>{t.price}</div>
-                <div style={{ fontSize: 12, color: t.cta.primary ? "rgba(255,255,255,0.6)" : `${NAVY}77`, marginBottom: 12 }}>{t.sub}</div>
-                <p style={{ fontSize: 13, lineHeight: 1.5, opacity: 0.85, margin: "0 0 16px", flex: 1 }}>{t.desc}</p>
-                <a href={t.cta.href} target="_blank" rel="noopener noreferrer" style={{ display: "block", textAlign: "center", padding: "12px 16px", borderRadius: 10, background: t.cta.primary ? GOLD : "transparent", color: t.cta.primary ? NAVY : NAVY, fontWeight: 900, textDecoration: "none", fontSize: 13, border: t.cta.primary ? "none" : `1px solid ${NAVY}33` }}>
-                  {t.cta.label} →
-                </a>
-              </div>
+              <PricingCard
+                key={t.tier}
+                product={{
+                  id: t.tier,
+                  name: t.tier,
+                  price: t.price,
+                  sub: t.sub,
+                  description: t.desc,
+                  href: t.cta.href,
+                  featured: t.cta.primary,
+                  cta: t.cta.label,
+                }}
+              />
             ))}
           </div>
         </section>

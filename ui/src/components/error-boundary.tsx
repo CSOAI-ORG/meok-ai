@@ -117,7 +117,7 @@ export class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundarySt
             <p style={styles.fallbackDetail}>
               {error?.message ?? 'An unexpected error occurred.'}
             </p>
-            <button
+            <button type="button"
               style={styles.reloadButton}
               onClick={() => window.location.reload()}
             >
@@ -144,7 +144,7 @@ export class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundarySt
           <p style={styles.stumbleMessage}>
             &ldquo;I stumbled for a moment&hellip; let me try again.&rdquo;
           </p>
-          <button
+          <button type="button"
             style={{
               ...styles.retryButton,
               opacity: isRetrying ? 0.6 : 1,

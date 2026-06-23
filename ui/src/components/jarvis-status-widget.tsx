@@ -92,7 +92,7 @@ export function JarvisStatusWidget() {
   return (
     <div className="fixed bottom-4 left-4 z-50">
       {/* Collapsed Status */}
-      <button
+      <button type="button"
         onClick={() => setExpanded(!expanded)}
         className={`flex items-center gap-2 px-4 py-2 rounded-full shadow-lg transition-all ${
           status?.status === "executing" 

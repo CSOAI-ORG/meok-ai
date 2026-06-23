@@ -72,7 +72,7 @@ export default function AgentListPanel({ agents }: AgentListPanelProps) {
         {/* Filter tabs */}
         <div className="flex gap-1">
           {filters.map((f) => (
-            <button
+            <button type="button"
               key={f.key}
               onClick={() => setFilter(f.key)}
               className={`
@@ -95,7 +95,7 @@ export default function AgentListPanel({ agents }: AgentListPanelProps) {
           const isSelected = a.id === selectedAgentId
           const districtColor = DISTRICT_COLORS[a.district]
           return (
-            <button
+            <button type="button"
               key={a.id}
               onClick={() => selectAgent(isSelected ? null : a.id)}
               className={`

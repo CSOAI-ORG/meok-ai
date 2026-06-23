@@ -114,7 +114,7 @@ function ConsciousnessModal({ state, characterName, onClose }: ModalProps) {
               {characterName || "Your companion"} · consciousness mode
             </div>
           </div>
-          <button
+          <button type="button"
             onClick={onClose}
             className="ml-auto text-[#f5f0e8]/30 hover:text-[#f5f0e8]/70 transition-colors text-lg leading-none"
           >
@@ -281,7 +281,7 @@ export function ConsciousnessIndicator({
 
   return (
     <>
-      <button
+      <button type="button"
         onClick={handleClick}
         className={`group relative flex items-center gap-2 rounded-full px-3 py-1.5 transition-all hover:opacity-90 ${className}`}
         style={{
@@ -386,7 +386,7 @@ export function ConsciousnessDot({
 
   return (
     <>
-      <button
+      <button type="button"
         onClick={() => setModalOpen(true)}
         className={`block w-2.5 h-2.5 rounded-full flex-shrink-0 ${cfg.dotClass} ${cfg.animClass} ${className}`}
         style={cfg.glowStyle}

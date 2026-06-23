@@ -201,7 +201,7 @@ export default function ControlRoom() {
           <span className="text-xs text-gray-500">
             Last update: {lastUpdate.toLocaleTimeString()}
           </span>
-          <button
+          <button type="button"
             onClick={() => fetchSystemData()}
             className="p-2 rounded-lg bg-white/5 hover:bg-white/10 transition-colors"
           >
@@ -219,7 +219,7 @@ export default function ControlRoom() {
           { id: "departments", icon: Briefcase, label: "Departments" },
           { id: "apis", icon: Globe, label: "External APIs" },
         ].map((tab) => (
-          <button
+          <button type="button"
             key={tab.id}
             onClick={() => setActiveTab(tab.id as TabId)}
             className={`flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-colors whitespace-nowrap ${
@@ -297,7 +297,7 @@ export default function ControlRoom() {
                       <option value={7}>P7 - Low</option>
                       <option value={9}>P9 - Trivial</option>
                     </select>
-                    <button
+                    <button type="button"
                       onClick={handleDelegate}
                       disabled={delegating || !taskInput.trim()}
                       className="px-4 py-2 bg-[#c9a84c] text-black rounded-lg text-sm font-medium disabled:opacity-50"

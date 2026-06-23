@@ -197,7 +197,7 @@ function ErrorState({ message, onRetry }: { message: string; onRetry: () => void
       <p className="text-sm mb-6 max-w-xs" style={{ color: "rgba(255,255,255,0.4)" }}>
         {message}
       </p>
-      <button
+      <button type="button"
         onClick={onRetry}
         className="flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-semibold transition-all"
         style={{
@@ -455,7 +455,7 @@ export default function MorningBriefingPage() {
                 )}
               </div>
             </div>
-            <button
+            <button type="button"
               onClick={() => load(true)}
               disabled={refreshing || status === "loading" || status === "generating"}
               className="flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-medium transition-all duration-150 flex-shrink-0 disabled:opacity-40"

@@ -424,7 +424,7 @@ export default function DreamPage() {
         <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
           {!accepted ? (
             <>
-              <button
+              <button type="button"
                 onClick={handleAccept}
                 className="w-full sm:w-auto rounded-xl px-6 py-3 text-sm font-black tracking-[0.1em] uppercase transition-all hover:opacity-90 active:scale-[0.97]"
                 style={{
@@ -434,7 +434,7 @@ export default function DreamPage() {
               >
                 Accept insights
               </button>
-              <button
+              <button type="button"
                 onClick={handleTalkAbout}
                 className="w-full sm:w-auto rounded-xl px-6 py-3 text-sm font-black tracking-[0.1em] uppercase transition-all hover:opacity-90 active:scale-[0.97]"
                 style={{
@@ -445,7 +445,7 @@ export default function DreamPage() {
               >
                 Talk about this
               </button>
-              <button
+              <button type="button"
                 onClick={handleDismiss}
                 className="w-full sm:w-auto rounded-xl px-6 py-3 text-sm font-black tracking-[0.1em] uppercase transition-all hover:opacity-70 active:scale-[0.97]"
                 style={{

@@ -477,7 +477,7 @@ export default function GuardianDashboardPage() {
               {saving && (
                 <span className="text-[10px] text-white/30">Saving...</span>
               )}
-              <button
+              <button type="button"
                 onClick={() => {
                   const allEnabled = Object.values(protections).every(v => v);
                   const newProtections = {

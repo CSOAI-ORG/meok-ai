@@ -294,7 +294,7 @@ export default function ElderCarePage() {
             <p className="text-gray-400">Health support and family connection for your wellbeing</p>
           </div>
 
-          <button
+          <button type="button"
             onClick={() => setSimplifiedMode(!simplifiedMode)}
             className="px-4 py-2 rounded-lg font-medium text-sm transition-all"
             style={{

@@ -175,7 +175,7 @@ export default function CharacterDatabasePage() {
             </div>
             
             <div className="flex items-center gap-3">
-              <button
+              <button type="button"
                 onClick={syncCharacters}
                 disabled={loading}
                 className="flex items-center gap-2 px-4 py-2 bg-white/10 rounded-lg hover:bg-white/20 transition-colors disabled:opacity-50"
@@ -221,19 +221,19 @@ export default function CharacterDatabasePage() {
 
             {/* View Toggle */}
             <div className="flex items-center gap-1 p-1 bg-[#13121f] rounded-xl border border-white/10">
-              <button
+              <button type="button"
                 onClick={() => setViewMode('grid')}
                 className={`p-2 rounded-lg ${viewMode === 'grid' ? 'bg-[#c9a84c]/20 text-[#c9a84c]' : 'text-gray-400 hover:text-white'}`}
               >
                 <Grid className="w-4 h-4" />
               </button>
-              <button
+              <button type="button"
                 onClick={() => setViewMode('council')}
                 className={`p-2 rounded-lg ${viewMode === 'council' ? 'bg-[#c9a84c]/20 text-[#c9a84c]' : 'text-gray-400 hover:text-white'}`}
               >
                 <Users className="w-4 h-4" />
               </button>
-              <button
+              <button type="button"
                 onClick={() => setViewMode('flyeye')}
                 className={`p-2 rounded-lg ${viewMode === 'flyeye' ? 'bg-[#c9a84c]/20 text-[#c9a84c]' : 'text-gray-400 hover:text-white'}`}
               >

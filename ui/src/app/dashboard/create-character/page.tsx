@@ -137,7 +137,7 @@ export default function CreateCharacterPage() {
       {STEP_LABELS.map((label, i) => {
         const Icon = STEP_ICONS[i]; const active = i === step; const done = i < step;
         return (
-          <button key={label} onClick={() => i < step && setStep(i)} disabled={i > step}
+          <button type="button" key={label} onClick={() => i < step && setStep(i)} disabled={i > step}
             className="flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold transition-all"
             style={{ background: active ? 'rgba(201,168,76,0.15)' : done ? 'rgba(255,255,255,0.05)' : 'transparent',
               border: active ? `1px solid ${GOLD}` : '1px solid transparent',
@@ -204,7 +204,7 @@ export default function CreateCharacterPage() {
         {ARCHETYPES.map((arch) => {
           const sel = form.archetype === arch.id;
           return (
-            <button key={arch.id} onClick={() => update({ archetype: arch.id })}
+            <button type="button" key={arch.id} onClick={() => update({ archetype: arch.id })}
               className="flex items-start gap-3 p-4 rounded-2xl text-left transition-all hover:scale-[1.02]"
               style={{ background: sel ? 'rgba(201,168,76,0.12)' : 'rgba(255,255,255,0.03)',
                 border: sel ? `1px solid ${GOLD}` : `1px solid ${BORDER}`,
@@ -276,7 +276,7 @@ export default function CreateCharacterPage() {
         {VOICE_STYLES.map((vs) => {
           const sel = form.voiceStyle === vs;
           return (
-            <button key={vs} onClick={() => update({ voiceStyle: vs })}
+            <button type="button" key={vs} onClick={() => update({ voiceStyle: vs })}
               className="px-5 py-2.5 rounded-full text-sm font-semibold transition-all hover:scale-105 capitalize"
               style={{ background: sel ? 'rgba(201,168,76,0.15)' : 'rgba(255,255,255,0.05)',
                 border: sel ? `1px solid ${GOLD}` : `1px solid ${BORDER}`,
@@ -401,7 +401,7 @@ export default function CreateCharacterPage() {
       {/* Header */}
       <div className="w-full max-w-xl mb-6">
         <div className="flex items-center gap-3 mb-2">
-          <button
+          <button type="button"
             onClick={() => router.push('/dashboard/companion')}
             className="p-2 rounded-xl transition-all hover:scale-105"
             style={{ background: 'rgba(255,255,255,0.05)', border: `1px solid ${BORDER}` }}
@@ -430,7 +430,7 @@ export default function CreateCharacterPage() {
 
       {/* Navigation */}
       <div className="w-full max-w-xl flex items-center justify-between mt-6">
-        <button
+        <button type="button"
           onClick={() => setStep((s) => Math.max(0, s - 1))}
           disabled={step === 0}
           className="flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-semibold transition-all hover:scale-105 disabled:opacity-30 disabled:cursor-not-allowed"
@@ -441,7 +441,7 @@ export default function CreateCharacterPage() {
         </button>
 
         {step < 4 ? (
-          <button
+          <button type="button"
             onClick={() => setStep((s) => Math.min(4, s + 1))}
             disabled={!canNext()}
             className="flex items-center gap-2 px-6 py-2.5 rounded-xl text-sm font-bold transition-all hover:scale-105 hover:opacity-90 disabled:opacity-30 disabled:cursor-not-allowed"
@@ -456,7 +456,7 @@ export default function CreateCharacterPage() {
             <ArrowRight size={14} />
           </button>
         ) : (
-          <button
+          <button type="button"
             onClick={handleSave}
             disabled={saving}
             className="flex items-center gap-2 px-6 py-2.5 rounded-xl text-sm font-bold transition-all hover:scale-105 hover:opacity-90 disabled:opacity-60"

@@ -183,7 +183,7 @@ export default function McpStackDemoPage() {
           evidence event mapped to EU AI Act Articles 12 + 50, DORA Article 17, ISO 42001 clause 9.
         </p>
 
-        <button
+        <button type="button"
           onClick={runChain}
           disabled={running}
           style={{

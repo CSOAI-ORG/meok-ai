@@ -85,7 +85,7 @@ export default function OnboardingStep2() {
                 const isSelected = selected === arch.id;
                 const characters = getCharactersByArchetype(arch.id);
                 return (
-                  <button
+                  <button type="button"
                     key={arch.id}
                     onClick={() => setSelected(arch.id)}
                     className="flex flex-col items-start gap-3 rounded-2xl p-4 text-left transition-all hover:scale-[1.02] active:scale-[0.98]"
@@ -124,7 +124,7 @@ export default function OnboardingStep2() {
             </p>
 
             {/* CTA */}
-            <button
+            <button type="button"
               onClick={handleContinue}
               disabled={!selected}
               className="w-full py-4 rounded-xl font-bold text-lg transition-all hover:opacity-90 active:scale-95 disabled:opacity-30 disabled:cursor-not-allowed"

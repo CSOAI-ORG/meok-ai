@@ -80,7 +80,7 @@ export function ExperienceModeSelector() {
           const config = getModeConfig(opt.value);
 
           return (
-            <button
+            <button type="button"
               key={opt.value}
               onClick={() => handleSelect(opt.value)}
               aria-pressed={isActive}

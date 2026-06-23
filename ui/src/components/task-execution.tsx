@@ -111,7 +111,7 @@ function RedirectInput({
         className="flex-1 bg-transparent text-sm outline-none placeholder:text-white/30"
         style={{ color: 'rgba(255,255,255,0.85)' }}
       />
-      <button
+      <button type="button"
         onClick={onClose}
         className="flex-shrink-0 hover:opacity-70 transition-opacity"
         aria-label="Cancel redirect"
@@ -189,7 +189,7 @@ export function TaskExecution({
 
         <div className="flex items-center gap-2 flex-shrink-0">
           {/* Redirect trigger */}
-          <button
+          <button type="button"
             onClick={() => setShowRedirect((v) => !v)}
             className="text-xs px-2 py-1 rounded transition-all hover:opacity-80"
             style={{
@@ -203,7 +203,7 @@ export function TaskExecution({
           </button>
 
           {/* Pause / Resume */}
-          <button
+          <button type="button"
             onClick={onPause}
             className="flex items-center gap-1.5 text-xs px-2.5 py-1 rounded transition-all hover:opacity-80"
             style={{

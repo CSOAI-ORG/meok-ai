@@ -215,7 +215,7 @@ function SendButton({
   loadingLabel?: string;
 }) {
   return (
-    <button
+    <button type="button"
       onClick={onClick}
       disabled={loading || disabled}
       className="flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-bold transition-all hover:scale-[1.02] disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:scale-100 whitespace-nowrap"
@@ -259,7 +259,7 @@ function FPSTab() {
       {/* Tip sections toggle */}
       <div className="flex gap-2">
         {(["aim", "map"] as const).map((s) => (
-          <button
+          <button type="button"
             key={s}
             onClick={() => setActiveSection(s)}
             className="flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-semibold transition-all"
@@ -558,7 +558,7 @@ function PuzzleTab() {
           const isActive = activeLevel === level.id;
           return (
             <div key={level.id} className="flex flex-col gap-2">
-              <button
+              <button type="button"
                 onClick={() => handleHint(level)}
                 disabled={isAnyLoading || !puzzleDesc.trim()}
                 className="flex flex-col items-center gap-2 p-4 rounded-xl text-sm font-semibold transition-all hover:scale-[1.02] disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:scale-100"
@@ -778,7 +778,7 @@ export default function GenreCoachingPage() {
           {GENRES.map(({ id, label, Icon }) => {
             const active = activeGenre === id;
             return (
-              <button
+              <button type="button"
                 key={id}
                 onClick={() => setActiveGenre(id)}
                 className="flex-1 flex items-center justify-center gap-2 py-2.5 px-3 rounded-xl text-sm font-semibold transition-all"

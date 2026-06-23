@@ -94,7 +94,7 @@ export function ArchetypeGrid({ archetypes }: { archetypes: ArchetypeItem[] }) {
             {TIER_FILTERS.map((tier) => {
               const active = tierFilter === tier;
               return (
-                <button
+                <button type="button"
                   key={tier}
                   onClick={() => setTierFilter(tier)}
                   className="px-4 py-2 rounded-full text-xs font-semibold transition-all"
@@ -116,7 +116,7 @@ export function ArchetypeGrid({ archetypes }: { archetypes: ArchetypeItem[] }) {
           <span className="text-xs text-gray-600 uppercase tracking-widest font-semibold mr-1">
             Archetype:
           </span>
-          <button
+          <button type="button"
             onClick={() => setArchetypeFilter('All')}
             className="px-3 py-1 rounded-full text-xs font-semibold transition-all"
             style={{
@@ -128,7 +128,7 @@ export function ArchetypeGrid({ archetypes }: { archetypes: ArchetypeItem[] }) {
             All
           </button>
           {archetypes.map((a) => (
-            <button
+            <button type="button"
               key={a.id}
               onClick={() => setArchetypeFilter(a.name === archetypeFilter ? 'All' : a.name)}
               className="px-3 py-1 rounded-full text-xs font-semibold transition-all"
@@ -154,7 +154,7 @@ export function ArchetypeGrid({ archetypes }: { archetypes: ArchetypeItem[] }) {
         {filtered.length === 0 ? (
           <div className="text-center py-16">
             <p className="text-gray-500 text-sm">No archetypes match your search.</p>
-            <button
+            <button type="button"
               onClick={() => { setSearch(''); setTierFilter('All'); setArchetypeFilter('All'); }}
               className="mt-3 text-[#c9a84c] text-sm hover:underline"
             >

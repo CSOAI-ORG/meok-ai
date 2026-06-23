@@ -271,7 +271,7 @@ export default function HourmanPage() {
             <div className="border-t border-violet-500/10 p-6 sm:p-8 bg-violet-500/[0.03]">
               <p className="text-xs font-black tracking-[0.15em] uppercase text-white/25 mb-4">Connect your calendar</p>
               <div className="flex flex-col sm:flex-row gap-3">
-                <button
+                <button type="button"
                   onClick={() => setCalendarExpanded(true)}
                   className="group inline-flex items-center gap-3 px-6 py-3 rounded-xl font-black text-white border border-white/15 hover:border-violet-500/40 bg-white/[0.04] hover:bg-violet-500/[0.07] transition-all text-sm"
                 >
@@ -279,7 +279,7 @@ export default function HourmanPage() {
                   Google Calendar
                   <ArrowRight className="w-4 h-4 ml-auto opacity-40 group-hover:opacity-100 group-hover:translate-x-0.5 transition-all" />
                 </button>
-                <button
+                <button type="button"
                   onClick={() => setCalendarExpanded(true)}
                   className="group inline-flex items-center gap-3 px-6 py-3 rounded-xl font-black text-white border border-white/15 hover:border-violet-500/40 bg-white/[0.04] hover:bg-violet-500/[0.07] transition-all text-sm"
                 >

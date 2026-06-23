@@ -74,7 +74,7 @@ export function Modal({
               )}
             </div>
             {showCloseButton && (
-              <button
+              <button type="button"
                 onClick={onClose}
                 className="p-2 rounded-lg text-white/40 hover:text-white/70 hover:bg-white/10 transition-colors flex-shrink-0"
                 aria-label="Close modal"
@@ -119,13 +119,13 @@ export function ConfirmModal({
     <Modal isOpen={isOpen} onClose={onClose} title={title} size="sm">
       <p className="text-white/70 mb-6">{description}</p>
       <div className="flex gap-3 justify-end">
-        <button
+        <button type="button"
           onClick={onClose}
           className="px-4 py-2 rounded-lg border border-white/20 text-white/70 font-medium hover:bg-white/5 transition-colors"
         >
           {cancelText}
         </button>
-        <button
+        <button type="button"
           onClick={handleConfirm}
           className={`px-4 py-2 rounded-lg font-medium transition-colors ${
             variant === "danger"

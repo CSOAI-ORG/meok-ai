@@ -479,7 +479,7 @@ Evidence: ${i.supportingEvidence.join(' | ')}
             {/* Type filter */}
             <div className="flex flex-wrap gap-2">
               {Object.entries(ENTRY_TYPE_LABELS).map(([type, label]) => (
-                <button
+                <button type="button"
                   key={type}
                   onClick={() => setSelectedTypeFilter(selectedTypeFilter === type ? '' : type)}
                   className={`text-xs px-3 py-1 rounded-full border transition-colors ${
@@ -496,7 +496,7 @@ Evidence: ${i.supportingEvidence.join(' | ')}
             {/* Mood filter */}
             <div className="flex flex-wrap gap-2">
               {Object.entries(MOOD_COLORS).map(([mood, style]) => (
-                <button
+                <button type="button"
                   key={mood}
                   onClick={() => setSelectedMoodFilter(selectedMoodFilter === mood ? '' : mood)}
                   className={`text-xs px-3 py-1 rounded-full border transition-colors ${

@@ -565,7 +565,7 @@ export default function FamilyGuardianPage() {
               </div>
 
               <div className="flex gap-3">
-                <button
+                <button type="button"
                   onClick={() => setShowConsentModal(false)}
                   className="flex-1 px-4 py-2 rounded-lg text-sm font-medium transition-all"
                   style={{
@@ -576,7 +576,7 @@ export default function FamilyGuardianPage() {
                 >
                   Cancel
                 </button>
-                <button
+                <button type="button"
                   onClick={() => {
                     // Save consent changes
                     setShowConsentModal(false);

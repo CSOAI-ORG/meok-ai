@@ -544,7 +544,7 @@ export default function ResearchPage() {
           </div>
         </div>
 
-        <button
+        <button type="button"
           onClick={() => setShowHistory(!showHistory)}
           className="flex items-center gap-2 px-3 py-2 rounded-lg text-sm font-medium transition-all"
           style={{
@@ -600,7 +600,7 @@ export default function ResearchPage() {
                     </p>
                   </div>
                   <div className="flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
-                    <button
+                    <button type="button"
                       onClick={(e) => {
                         e.stopPropagation();
                         deleteEntry(entry.id);
@@ -658,7 +658,7 @@ export default function ResearchPage() {
                 />
                 {/* Voice input button */}
                 {voiceSupported && (
-                  <button
+                  <button type="button"
                     onClick={toggleVoice}
                     className="absolute right-12 top-1/2 -translate-y-1/2 p-1 rounded-full hover:bg-white/10"
                     title={isListening ? "Stop recording" : "Voice input"}
@@ -674,7 +674,7 @@ export default function ResearchPage() {
               
               {/* Research mode selector */}
               <div className="flex items-center gap-2">
-                <button
+                <button type="button"
                   onClick={() => setResearchMode('fast')}
                   className="px-3 py-1.5 rounded text-xs font-medium transition-all"
                   style={{
@@ -685,7 +685,7 @@ export default function ResearchPage() {
                 >
                   ⚡ Fast
                 </button>
-                <button
+                <button type="button"
                   onClick={() => setResearchMode('deep')}
                   className="px-3 py-1.5 rounded text-xs font-medium transition-all"
                   style={{
@@ -696,7 +696,7 @@ export default function ResearchPage() {
                 >
                   🔬 Deep
                 </button>
-                <button
+                <button type="button"
                   onClick={() => setResearchMode('crew')}
                   className="px-3 py-1.5 rounded text-xs font-medium transition-all"
                   style={{
@@ -711,7 +711,7 @@ export default function ResearchPage() {
 
               {/* Template selector */}
               <div className="flex items-center gap-2">
-                <button
+                <button type="button"
                   onClick={() => setShowTemplates(!showTemplates)}
                   className="flex items-center gap-2 px-3 py-1.5 rounded text-xs font-medium transition-all"
                   style={{
@@ -725,7 +725,7 @@ export default function ResearchPage() {
                 </button>
                 
                 {/* Visualizations toggle */}
-                <button
+                <button type="button"
                   onClick={() => setShowViz(!showViz)}
                   className="flex items-center gap-2 px-3 py-1.5 rounded text-xs font-medium transition-all"
                   style={{
@@ -752,7 +752,7 @@ export default function ResearchPage() {
                 )}
               </div>
               
-              <button
+              <button type="button"
                 onClick={() => runResearch()}
                 disabled={loading || (!activeEntry && !query.trim())}
                 className="flex items-center gap-2 px-6 py-3 rounded-lg text-sm font-semibold transition-all hover:scale-[1.02] disabled:opacity-40 disabled:hover:scale-100 whitespace-nowrap"
@@ -801,7 +801,7 @@ export default function ResearchPage() {
                   )}
 
                   {/* Sources toggle */}
-                  <button
+                  <button type="button"
                     onClick={() => setShowSources(!showSources)}
                     className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-md text-xs font-medium transition-all"
                     style={{
@@ -816,7 +816,7 @@ export default function ResearchPage() {
                   </button>
 
                   {/* Confidence toggle */}
-                  <button
+                  <button type="button"
                     onClick={() => setShowConfidence(!showConfidence)}
                     className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-md text-xs font-medium transition-all"
                     style={{
@@ -831,7 +831,7 @@ export default function ResearchPage() {
                   </button>
 
                   {/* Save to documents */}
-                  <button
+                  <button type="button"
                     onClick={saveToDocuments}
                     className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-md text-xs font-medium transition-all hover:scale-105"
                     style={{
@@ -856,19 +856,19 @@ export default function ResearchPage() {
                       Export
                     </button>
                     <div className="absolute right-0 top-full mt-1 hidden group-hover:block z-50 min-w-32 bg-slate-800 border border-slate-600 rounded-lg shadow-xl overflow-hidden">
-                      <button
+                      <button type="button"
                         onClick={() => exportAsMarkdown({ title: currentQuery, query: currentQuery, answer: currentAnswer, sources }, { format: 'markdown', includeSources: true, includeMetadata: true })}
                         className="w-full px-3 py-2 text-xs text-white/80 hover:bg-white/10 text-left"
                       >
                         Markdown
                       </button>
-                      <button
+                      <button type="button"
                         onClick={() => exportAsHTML({ title: currentQuery, query: currentQuery, answer: currentAnswer, sources }, { format: 'html', includeSources: true, includeMetadata: true })}
                         className="w-full px-3 py-2 text-xs text-white/80 hover:bg-white/10 text-left"
                       >
                         HTML / PDF
                       </button>
-                      <button
+                      <button type="button"
                         onClick={() => exportAsText({ title: currentQuery, query: currentQuery, answer: currentAnswer, sources }, { format: 'text', includeSources: true, includeMetadata: true })}
                         className="w-full px-3 py-2 text-xs text-white/80 hover:bg-white/10 text-left"
                       >
@@ -878,7 +878,7 @@ export default function ResearchPage() {
                   </div>
 
                   {/* Copy */}
-                  <button
+                  <button type="button"
                     onClick={copyAnswer}
                     className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-md text-xs font-medium transition-all hover:scale-105"
                     style={{
@@ -894,7 +894,7 @@ export default function ResearchPage() {
 
                   {/* Clear active */}
                   {activeEntry && (
-                    <button
+                    <button type="button"
                       onClick={() => setActiveEntry(null)}
                       className="p-1.5 rounded-md transition-all hover:bg-white/5"
                       title="Close"
@@ -978,7 +978,7 @@ export default function ResearchPage() {
               {showTemplates && (
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-3 p-4 rounded-xl" style={{ background: SURFACE, border: `1px solid ${BORDER}` }}>
                   {RESEARCH_TEMPLATES.map(template => (
-                    <button
+                    <button type="button"
                       key={template.id}
                       onClick={() => {
                         setSelectedTemplate(template);
@@ -1062,7 +1062,7 @@ function CitationFormatRow({ citations, query }: { citations: Citation[]; query:
         </p>
         <div className="flex items-center gap-1">
           {FORMATS.map((f) => (
-            <button
+            <button type="button"
               key={f.key}
               onClick={() => setFormat(f.key)}
               className="px-2 py-1 rounded text-[10px] font-semibold transition-colors"
@@ -1074,7 +1074,7 @@ function CitationFormatRow({ citations, query }: { citations: Citation[]; query:
               {f.label}
             </button>
           ))}
-          <button
+          <button type="button"
             onClick={copy}
             className="flex items-center gap-1 ml-2 px-2 py-1 rounded text-[10px] font-semibold transition-all"
             style={{

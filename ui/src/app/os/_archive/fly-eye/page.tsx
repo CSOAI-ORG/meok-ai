@@ -696,7 +696,7 @@ Surface only what matters. No fluff. Start immediately.`,
                   </div>
                   <div style={{ display: "flex", flexWrap: "wrap", gap: "0.5rem", justifyContent: "center" }}>
                     {QUICK_ACTIONS.map(action => (
-                      <button
+                      <button type="button"
                         key={action}
                         className="fly-eye-quick-chip"
                         onClick={() => setInputValue(action)}
@@ -788,7 +788,7 @@ Surface only what matters. No fluff. Start immediately.`,
                 }}
               >
                 {(Object.keys(TOOL_ICONS) as ToolTab[]).map(tab => (
-                  <button
+                  <button type="button"
                     key={tab}
                     className={activeTab === tab ? "fly-eye-tab-active" : ""}
                     onClick={() => setActiveTab(tab)}
@@ -899,7 +899,7 @@ Surface only what matters. No fluff. Start immediately.`,
           </button>
 
           {/* Send button */}
-          <button
+          <button type="button"
             onClick={handleSend}
             disabled={!inputValue.trim() || isSending}
             aria-label="Send message"
@@ -990,7 +990,7 @@ function TopBarButton({
   title?: string;
 }) {
   return (
-    <button
+    <button type="button"
       onClick={onClick}
       title={title}
       style={{
@@ -1030,7 +1030,7 @@ function TaskButton({
   title?: string;
 }) {
   return (
-    <button
+    <button type="button"
       onClick={onClick}
       title={title}
       style={{

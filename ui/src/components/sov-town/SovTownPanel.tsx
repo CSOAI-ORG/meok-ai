@@ -38,7 +38,7 @@ export default function SovTownPanel({ status, hives, characters, selectedHive, 
         <Surface variant="elevated" className="p-3">
           <div className="mb-2 flex items-center justify-between">
             <h3 className="text-xs font-bold text-white">{selected.name}</h3>
-            <button onClick={onClear} className="text-[10px] text-slate-400 hover:text-white">
+            <button type="button" onClick={onClear} className="text-[10px] text-slate-400 hover:text-white">
               Clear
             </button>
           </div>

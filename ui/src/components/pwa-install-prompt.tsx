@@ -98,7 +98,7 @@ export function PwaInstallPrompt() {
                 Add MEOK to your home screen for quick access to your sovereign AI.
               </p>
             </div>
-            <button
+            <button type="button"
               onClick={handleDismiss}
               className="shrink-0 p-1 rounded-md text-white/40 hover:text-white/70 hover:bg-white/5 transition-colors"
               aria-label="Dismiss install prompt"
@@ -107,7 +107,7 @@ export function PwaInstallPrompt() {
             </button>
           </div>
           <div className="mt-4 flex items-center gap-2">
-            <button
+            <button type="button"
               onClick={handleInstall}
               className="flex-1 px-4 py-2 rounded-xl text-sm font-semibold
                          bg-cyan-500 hover:bg-cyan-400 text-black
@@ -115,7 +115,7 @@ export function PwaInstallPrompt() {
             >
               Install
             </button>
-            <button
+            <button type="button"
               onClick={handleDismiss}
               className="px-4 py-2 rounded-xl text-sm font-medium
                          text-white/70 hover:text-white hover:bg-white/5

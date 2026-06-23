@@ -1,6 +1,7 @@
 @import "tailwindcss";
 @plugin "@tailwindcss/typography";
 @import "../../packages/ui/src/styles/tokens.css";
+@import "../styles/meok-warm-tokens.css";
 
 /* ═══════════════════════════════════════════════════════════
    MEOK.AI — Global Design System

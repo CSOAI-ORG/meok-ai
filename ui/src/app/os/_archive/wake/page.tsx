@@ -236,7 +236,7 @@ export default function WakePage() {
 
             {/* Action buttons */}
             <div className="flex flex-col gap-3 mt-8 max-w-sm mx-auto">
-              <button
+              <button type="button"
                 onClick={handleContinue}
                 className="flex items-center justify-center gap-2 w-full px-6 py-3 rounded-full bg-[#c9a84c] text-[#0d0c18] font-bold hover:bg-[#b8963e] transition-all"
               >
@@ -244,7 +244,7 @@ export default function WakePage() {
                 <ArrowRight className="w-4 h-4" />
               </button>
 
-              <button
+              <button type="button"
                 onClick={handleFresh}
                 className="flex items-center justify-center gap-2 w-full px-6 py-3 rounded-full border border-white/10 text-white/40 hover:text-white/70 hover:border-white/20 transition-all"
               >

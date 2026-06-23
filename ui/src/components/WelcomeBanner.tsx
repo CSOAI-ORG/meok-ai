@@ -56,7 +56,7 @@ export function WelcomeBanner({ userName, daysSinceHatch, onDismiss }: WelcomeBa
             <ArrowRight className="w-4 h-4" />
           </Link>
         </div>
-        <button
+        <button type="button"
           onClick={handleDismiss}
           className="absolute top-3 right-3 p-1.5 rounded-lg text-white/40 hover:text-white/70 hover:bg-white/10 transition-colors"
           aria-label="Dismiss welcome banner"
@@ -79,7 +79,7 @@ export function WelcomeBanner({ userName, daysSinceHatch, onDismiss }: WelcomeBa
             Day {daysSinceHatch + 1} with your companion. {daysSinceHatch > 7 ? "Your bond is growing stronger." : "Keep building those memories."}
           </p>
         </div>
-        <button
+        <button type="button"
           onClick={handleDismiss}
           className="p-1.5 rounded-lg text-white/40 hover:text-white/70 hover:bg-white/10 transition-colors"
           aria-label="Dismiss"

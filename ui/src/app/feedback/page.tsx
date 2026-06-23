@@ -102,7 +102,7 @@ export default function FeedbackPage() {
             provided an email, we may follow up.
           </p>
           <div style={{ display: "flex", gap: 12, justifyContent: "center" }}>
-            <button
+            <button type="button"
               onClick={() => setStatus("idle")}
               style={{
                 padding: "10px 24px",

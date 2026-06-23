@@ -344,7 +344,7 @@ export function ConsciousnessControlRoom() {
             {MODES.map((mode) => {
               const isActive = activeMode === mode.id;
               return (
-                <button
+                <button type="button"
                   key={mode.id}
                   onClick={() => selectMode(mode.id)}
                   disabled={loading}
@@ -621,7 +621,7 @@ export function ConsciousnessControlRoom() {
               Override the automatic consciousness cycle. Changes save immediately to your profile.
             </p>
 
-            <button
+            <button type="button"
               onClick={() => selectMode("waking")}
               className="flex items-center gap-3 rounded-xl px-5 py-4 text-left transition-all"
               style={{
@@ -644,7 +644,7 @@ export function ConsciousnessControlRoom() {
               )}
             </button>
 
-            <button
+            <button type="button"
               onClick={() => selectMode("deep-rest")}
               className="flex items-center gap-3 rounded-xl px-5 py-4 text-left transition-all"
               style={{

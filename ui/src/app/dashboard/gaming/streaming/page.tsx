@@ -127,7 +127,7 @@ function CopyButton({ text, label = 'Copy' }: { text: string; label?: string }) 
     } catch { /* silent */ }
   }
   return (
-    <button
+    <button type="button"
       onClick={handleCopy}
       className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold transition-all hover:scale-105"
       style={{
@@ -209,7 +209,7 @@ function OBSOverlaySection() {
           <label className="block text-xs text-white/40 font-medium mb-1.5">Current Mood</label>
           <div className="flex gap-1.5 flex-wrap">
             {MOOD_OPTIONS.map((m) => (
-              <button
+              <button type="button"
                 key={m.key}
                 onClick={() => setMood(m.key)}
                 className="px-2 py-1 rounded text-[11px] font-semibold transition-all"
@@ -336,7 +336,7 @@ function ChatConceptsSection() {
         <div className="lg:col-span-2 space-y-2">
           <p className="text-xs text-white/40 font-semibold uppercase tracking-widest mb-3">Commands</p>
           {COMMANDS.map((c) => (
-            <button
+            <button type="button"
               key={c.cmd}
               onClick={() => setActiveCmd(activeCmd === c.cmd ? null : c.cmd)}
               className="w-full text-left rounded-xl p-3 transition-all"
@@ -504,7 +504,7 @@ function ClipHighlightsSection() {
               lineHeight: '1.6',
             }}
           />
-          <button
+          <button type="button"
             onClick={suggest}
             disabled={loading || !notes.trim()}
             className="w-full py-3 rounded-xl text-sm font-bold transition-all hover:scale-[1.02] disabled:opacity-30 disabled:hover:scale-100 flex items-center justify-center gap-2"
@@ -678,7 +678,7 @@ function StreamSummarySection() {
               lineHeight: '1.6',
             }}
           />
-          <button
+          <button type="button"
             onClick={generate}
             disabled={loading || !notes.trim()}
             className="w-full py-3 rounded-xl text-sm font-bold transition-all hover:scale-[1.02] disabled:opacity-30 disabled:hover:scale-100 flex items-center justify-center gap-2"

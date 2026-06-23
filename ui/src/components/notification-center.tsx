@@ -107,7 +107,7 @@ export default function NotificationCenter() {
   return (
     <div ref={ref} style={{ position: 'relative' }}>
       {/* ---- Bell button ---- */}
-      <button
+      <button type="button"
         onClick={() => setOpen((prev) => !prev)}
         aria-label="Notifications"
         style={{
@@ -145,7 +145,7 @@ export default function NotificationCenter() {
           }}>
             <span style={{ fontWeight: 600, fontSize: 14, color: TEXT_PRIMARY }}>Notifications</span>
             {unreadCount > 0 && (
-              <button
+              <button type="button"
                 onClick={markAllRead}
                 style={{
                   background: 'none', border: 'none', color: GOLD, cursor: 'pointer',

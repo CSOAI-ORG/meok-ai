@@ -95,7 +95,7 @@ export function TrialBanner({ daysLeft, totalDays }: TrialBannerProps) {
           >
             Upgrade now
           </button>
-          <button
+          <button type="button"
             onClick={dismiss}
             aria-label="Dismiss trial banner"
             className="text-white/20 hover:text-white/50 transition-colors p-1"

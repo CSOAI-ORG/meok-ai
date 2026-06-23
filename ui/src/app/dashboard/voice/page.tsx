@@ -317,7 +317,7 @@ export default function VoicePage() {
 
                   <p className="text-xs text-white/60 mb-3 leading-relaxed">{character.voiceStyle}</p>
 
-                  <button
+                  <button type="button"
                     onClick={e => {
                       e.stopPropagation()
                       speak(character.samplePhrase, character, character.id)
@@ -394,7 +394,7 @@ export default function VoicePage() {
               style={{ borderColor: BORDER }}
               onKeyDown={e => e.key === 'Enter' && handleTestSpeak()}
             />
-            <button
+            <button type="button"
               onClick={handleTestSpeak}
               disabled={speaking === 'test'}
               className="px-5 py-2.5 rounded-lg font-medium text-sm transition-all flex items-center gap-2"
@@ -418,7 +418,7 @@ export default function VoicePage() {
           className="rounded-xl border"
           style={{ background: SURFACE, borderColor: BORDER }}
         >
-          <button
+          <button type="button"
             onClick={() => setShowVoiceList(v => !v)}
             className="w-full flex items-center justify-between p-5 text-left"
           >
@@ -469,7 +469,7 @@ export default function VoicePage() {
               </div>
             </div>
           </div>
-          <button
+          <button type="button"
             onClick={() => updateSettings({ useForNotifications: !settings.useForNotifications })}
             className="relative w-12 h-6 rounded-full transition-colors flex-shrink-0"
             style={{
@@ -487,7 +487,7 @@ export default function VoicePage() {
 
         {/* Voice Not Working Help */}
         <section className="rounded-xl border" style={{ borderColor: BORDER }}>
-          <button
+          <button type="button"
             onClick={() => setShowHelp(h => !h)}
             className="w-full flex items-center gap-2 p-5 text-left"
           >

@@ -412,7 +412,7 @@ function TerminalButton({
   color?: string;
 }) {
   return (
-    <button
+    <button type="button"
       onClick={onClick}
       disabled={disabled}
       style={{

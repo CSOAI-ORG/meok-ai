@@ -77,7 +77,7 @@ export function OsEntryBanner() {
       </div>
 
       <div style={{ display: "flex", alignItems: "center", gap: "8px", flexShrink: 0 }}>
-        <button
+        <button type="button"
           onClick={() => router.push("/os/sovereign-os")}
           style={{
             display: "flex",
@@ -101,7 +101,7 @@ export function OsEntryBanner() {
           Try it <ArrowRight size={12} />
         </button>
 
-        <button
+        <button type="button"
           onClick={dismiss}
           aria-label="Dismiss banner"
           style={{

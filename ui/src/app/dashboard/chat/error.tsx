@@ -47,7 +47,7 @@ export default function ChatError({
           </p>
         )}
         <div className="flex flex-col gap-3">
-          <button
+          <button type="button"
             onClick={reset}
             className="w-full py-3 rounded-xl text-sm font-bold transition-all hover:opacity-90"
             style={{ background: GOLD, color: '#1a1a2e' }}

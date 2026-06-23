@@ -221,7 +221,7 @@ export default function CharacterDashboard() {
               <h2 className="text-lg font-semibold mb-4">My Characters</h2>
               <div className="space-y-2">
                 {characters.map(char => (
-                  <button
+                  <button type="button"
                     key={char.id}
                     onClick={() => setSelectedCharacter(char)}
                     className={`w-full p-3 rounded-lg text-left transition ${
@@ -243,19 +243,19 @@ export default function CharacterDashboard() {
             <div className="bg-gray-900 rounded-lg p-4 border border-gray-800">
               <h2 className="text-lg font-semibold mb-4">Actions</h2>
               <div className="space-y-2">
-                <button 
+                <button type="button" 
                   onClick={evolveCharacter}
                   className="w-full bg-gray-800 hover:bg-gray-700 px-3 py-2 rounded-lg text-left text-sm"
                 >
                   ✨ Evolve
                 </button>
-                <button 
+                <button type="button" 
                   onClick={analyzeWithMcp}
                   className="w-full bg-gray-800 hover:bg-gray-700 px-3 py-2 rounded-lg text-left text-sm"
                 >
                   🔬 MCP Analyze
                 </button>
-                <button 
+                <button type="button" 
                   onClick={runCouncil}
                   className="w-full bg-gray-800 hover:bg-gray-700 px-3 py-2 rounded-lg text-left text-sm"
                 >
@@ -311,7 +311,7 @@ export default function CharacterDashboard() {
                 {/* Tabs */}
                 <div className="flex gap-2 border-b border-gray-800 pb-4">
                   {(['overview', 'evolution', 'relationships', 'memories', 'mcp'] as const).map(tab => (
-                    <button
+                    <button type="button"
                       key={tab}
                       onClick={() => setActiveTab(tab)}
                       className={`px-4 py-2 rounded-lg transition ${
@@ -477,7 +477,7 @@ export default function CharacterDashboard() {
                         <div className="text-xs text-green-400 mt-1">✓ Connected</div>
                       </div>
                     </div>
-                    <button 
+                    <button type="button" 
                       onClick={analyzeWithMcp}
                       className="mt-4 bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-lg"
                     >

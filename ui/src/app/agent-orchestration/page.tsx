@@ -194,7 +194,7 @@ export default function AgentOrchestration() {
               <h2 className="text-xl font-semibold mb-4">Create New Agent</h2>
               <div className="grid grid-cols-4 gap-2 mb-4">
                 {agentTypes.map(type => (
-                  <button
+                  <button type="button"
                     key={type.id}
                     onClick={() => setNewAgentType(type.id)}
                     className={`p-3 rounded-lg text-left transition ${
@@ -209,7 +209,7 @@ export default function AgentOrchestration() {
                   </button>
                 ))}
               </div>
-              <button
+              <button type="button"
                 onClick={createAgent}
                 disabled={creatingAgent}
                 className="bg-blue-600 hover:bg-blue-700 disabled:opacity-50 px-6 py-2 rounded-lg font-medium"
@@ -299,7 +299,7 @@ export default function AgentOrchestration() {
                   placeholder="Describe the task..."
                   className="flex-1 bg-gray-800 border border-gray-700 rounded-lg px-4 py-2"
                 />
-                <button
+                <button type="button"
                   onClick={assignTask}
                   disabled={!selectedAgent || !taskDescription.trim()}
                   className="bg-blue-600 hover:bg-blue-700 disabled:opacity-50 px-6 py-2 rounded-lg font-medium"

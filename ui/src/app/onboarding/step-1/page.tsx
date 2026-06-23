@@ -95,7 +95,7 @@ export default function OnboardingStep1() {
             {/* Suggestion chips */}
             <div className="flex flex-wrap gap-2">
               {SUGGESTIONS.map((s) => (
-                <button
+                <button type="button"
                   key={s}
                   onClick={() => setName(s)}
                   className="px-4 py-1.5 rounded-full text-sm font-semibold transition-all hover:opacity-80 active:scale-95"
@@ -111,7 +111,7 @@ export default function OnboardingStep1() {
             </div>
 
             {/* CTA */}
-            <button
+            <button type="button"
               onClick={handleContinue}
               disabled={!name.trim()}
               className="w-full py-4 rounded-xl font-bold text-lg transition-all hover:opacity-90 active:scale-95 disabled:opacity-30 disabled:cursor-not-allowed"

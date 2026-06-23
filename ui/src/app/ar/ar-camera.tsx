@@ -72,7 +72,7 @@ export default function ARCamera() {
           <p className="max-w-md text-white/70">
             {error ?? "Enable your camera to see MEOK characters and data nodes overlaid on your world."}
           </p>
-          <button
+          <button type="button"
             onClick={startCamera}
             className="mt-6 inline-flex items-center gap-2 rounded-xl bg-[#c9a84c] px-6 py-3 font-bold text-[#0d0c18] transition hover:bg-[#b8963e]"
           >
@@ -121,14 +121,14 @@ export default function ARCamera() {
       {/* HUD controls */}
       {stream && (
         <div className="absolute bottom-6 left-0 right-0 flex justify-center gap-3 px-6">
-          <button
+          <button type="button"
             onClick={handleScan}
             disabled={scanning}
             className="inline-flex items-center gap-2 rounded-full bg-[#2d9b8a] px-6 py-3 font-bold text-white shadow-lg transition hover:bg-[#268a7b] disabled:opacity-70"
           >
             <Scan size={18} /> {scanning ? "Scanning..." : "Scan Area"}
           </button>
-          <button
+          <button type="button"
             onClick={stopCamera}
             className="inline-flex h-12 w-12 items-center justify-center rounded-full border border-white/20 bg-black/40 text-white backdrop-blur transition hover:bg-white/10"
           >

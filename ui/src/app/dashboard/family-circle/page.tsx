@@ -233,7 +233,7 @@ function AddMemberForm({
     >
       <div className="flex items-center justify-between mb-4">
         <span className="text-sm font-semibold text-white/80">Add Family Member</span>
-        <button onClick={onCancel} className="p-1 rounded-md hover:bg-white/5 transition-colors">
+        <button type="button" onClick={onCancel} className="p-1 rounded-md hover:bg-white/5 transition-colors">
           <X size={14} style={{ color: "rgba(255,255,255,0.4)" }} />
         </button>
       </div>
@@ -305,14 +305,14 @@ function AddMemberForm({
 
         {/* Actions */}
         <div className="flex items-center gap-3 pt-1">
-          <button
+          <button type="button"
             onClick={onCancel}
             className="flex-1 py-2.5 rounded-lg text-sm font-medium border transition-all hover:opacity-70"
             style={{ borderColor: BORDER, color: "rgba(255,255,255,0.45)" }}
           >
             Cancel
           </button>
-          <button
+          <button type="button"
             onClick={handleSubmit}
             className="flex-1 py-2.5 rounded-lg text-sm font-semibold transition-all hover:opacity-85"
             style={{ background: GOLD, color: DEEP }}
@@ -343,7 +343,7 @@ function MemberCard({
       style={{ background: SURFACE, borderColor: BORDER }}
     >
       {/* Remove button */}
-      <button
+      <button type="button"
         onClick={() => onRemove(member.id)}
         className="absolute top-3 right-3 p-1 rounded-md opacity-0 group-hover:opacity-100 transition-opacity hover:bg-red-500/10"
         style={{ color: "rgba(255,255,255,0.2)" }}
@@ -381,7 +381,7 @@ function MemberCard({
 
 function AddSlotCard({ onClick }: { onClick: () => void }) {
   return (
-    <button
+    <button type="button"
       onClick={onClick}
       className="rounded-xl border p-4 flex flex-col items-center justify-center gap-2 min-h-[140px] transition-all hover:border-opacity-40 hover:bg-white/[0.02] group"
       style={{ background: SURFACE, borderColor: BORDER, borderStyle: "dashed" }}
@@ -436,7 +436,7 @@ function EmergencyContactCard({
           </div>
         </div>
         {!editing && (
-          <button
+          <button type="button"
             onClick={() => { setName(contact?.name ?? ""); setPhone(contact?.phone ?? ""); setEditing(true); }}
             className="text-xs font-medium px-3 py-1.5 rounded-lg border transition-all hover:opacity-70"
             style={{ borderColor: BORDER, color: "rgba(255,255,255,0.45)" }}
@@ -475,14 +475,14 @@ function EmergencyContactCard({
             />
           </div>
           <div className="flex gap-3">
-            <button
+            <button type="button"
               onClick={() => setEditing(false)}
               className="flex-1 py-2 rounded-lg text-xs font-medium border"
               style={{ borderColor: BORDER, color: "rgba(255,255,255,0.4)" }}
             >
               Cancel
             </button>
-            <button
+            <button type="button"
               onClick={handleSave}
               disabled={!name.trim() || !phone.trim()}
               className="flex-1 py-2 rounded-lg text-xs font-semibold disabled:opacity-40"
@@ -875,7 +875,7 @@ export default function FamilyCirclePage() {
 
         {/* Add button when form hidden and there's room */}
         {!showAddForm && canAddMore && members.length > 0 && (
-          <button
+          <button type="button"
             onClick={() => setShowAddForm(true)}
             className="mt-3 flex items-center gap-2 text-sm font-medium px-4 py-2.5 rounded-lg border transition-all hover:opacity-70"
             style={{ borderColor: BORDER, color: "rgba(255,255,255,0.45)" }}

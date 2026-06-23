@@ -116,7 +116,7 @@ export default function HomePageClient() {
                 Access Protocol: Western_UI_v3.5
               </p>
               
-              <button
+              <button type="button"
                 onClick={() => setBooting(true)}
                 className="w-full bg-[#c9a84c] hover:bg-[#d4b86c] text-[#0d0c18] font-bold py-4 rounded-xl transition-all shadow-[0_8px_24px_rgba(201,168,76,0.25)] active:scale-[0.98] flex items-center justify-center gap-3 group/btn"
               >

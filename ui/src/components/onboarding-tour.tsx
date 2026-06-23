@@ -117,7 +117,7 @@ export function OnboardingTour() {
                 Welcome to MEOK OS
               </span>
             </div>
-            <button 
+            <button type="button" 
               onClick={handleDismiss}
               className="text-gray-500 hover:text-white transition-colors"
             >
@@ -155,7 +155,7 @@ export function OnboardingTour() {
 
           {/* Navigation */}
           <div className="flex items-center justify-between">
-            <button
+            <button type="button"
               onClick={handlePrev}
               disabled={currentStep === 0}
               className={`flex items-center gap-1 text-sm ${
@@ -175,7 +175,7 @@ export function OnboardingTour() {
                 />
               ))}
             </div>
-            <button
+            <button type="button"
               onClick={handleNext}
               className="flex items-center gap-2 px-4 py-2 bg-[#c9a84c] text-[#0d0c18] rounded-lg text-sm font-bold hover:opacity-90 transition-opacity"
             >

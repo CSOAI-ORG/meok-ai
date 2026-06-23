@@ -42,7 +42,7 @@ export default function Error({
 
       {/* Actions */}
       <div className="flex gap-4 flex-wrap justify-center mb-12">
-        <button
+        <button type="button"
           onClick={reset}
           className="bg-[#c9a84c] text-[#0d0c18] font-bold px-8 py-3 rounded-full hover:opacity-90 transition-opacity"
         >

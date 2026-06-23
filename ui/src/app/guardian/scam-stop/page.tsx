@@ -283,7 +283,7 @@ function ShareButton({ result }: { result: ApiResult }) {
   }
 
   return (
-    <button
+    <button type="button"
       onClick={handleShare}
       style={{
         display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 7,
@@ -457,7 +457,7 @@ export default function ScamStopPage() {
                 onBlur={(e) =>  { e.currentTarget.style.borderColor = BORDER; }}
               />
 
-              <button
+              <button type="button"
                 onClick={handleAnalyse}
                 disabled={analysing || !message.trim()}
                 style={{
@@ -624,7 +624,7 @@ export default function ScamStopPage() {
                   &ldquo;{ex.text}&rdquo;
                 </p>
 
-                <button
+                <button type="button"
                   onClick={() => {
                     loadExample(ex.text);
                     if (typeof window !== 'undefined') {

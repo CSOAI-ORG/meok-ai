@@ -250,7 +250,7 @@ export default function WorkOnboardingPage() {
         </div>
 
         {completed && (
-          <button
+          <button type="button"
             onClick={handleReset}
             className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium transition-all hover:scale-[1.02]"
             style={{
@@ -294,7 +294,7 @@ export default function WorkOnboardingPage() {
           </Card>
 
           <div className="flex justify-end">
-            <button
+            <button type="button"
               onClick={() => setStep(1)}
               disabled={!canAdvanceStep0}
               className="flex items-center gap-2 px-6 py-3 rounded-lg text-sm font-semibold transition-all hover:scale-[1.02] disabled:opacity-40 disabled:hover:scale-100"
@@ -319,7 +319,7 @@ export default function WorkOnboardingPage() {
               {ROLES.map((r) => {
                 const selected = wizard.role === r.value;
                 return (
-                  <button
+                  <button type="button"
                     key={r.value}
                     onClick={() => setWizard((w) => ({ ...w, role: r.value }))}
                     className="w-full flex items-center gap-3 px-4 py-3 rounded-lg text-left transition-all hover:scale-[1.01]"
@@ -348,7 +348,7 @@ export default function WorkOnboardingPage() {
           </Card>
 
           <div className="flex justify-between">
-            <button
+            <button type="button"
               onClick={() => setStep(0)}
               className="flex items-center gap-2 px-5 py-3 rounded-lg text-sm font-medium transition-all hover:scale-[1.01]"
               style={{ color: "rgba(255,255,255,0.4)", background: "rgba(255,255,255,0.04)", border: `1px solid ${BORDER}` }}
@@ -356,7 +356,7 @@ export default function WorkOnboardingPage() {
               <ChevronLeft className="w-4 h-4" />
               Back
             </button>
-            <button
+            <button type="button"
               onClick={() => setStep(2)}
               disabled={!canAdvanceStep1}
               className="flex items-center gap-2 px-6 py-3 rounded-lg text-sm font-semibold transition-all hover:scale-[1.02] disabled:opacity-40 disabled:hover:scale-100"
@@ -382,7 +382,7 @@ export default function WorkOnboardingPage() {
               {TOOLS.map((t) => {
                 const selected = wizard.tools.includes(t.value);
                 return (
-                  <button
+                  <button type="button"
                     key={t.value}
                     onClick={() => toggleTool(t.value)}
                     className="flex items-center gap-3 px-4 py-3 rounded-lg text-left transition-all hover:scale-[1.01]"
@@ -438,7 +438,7 @@ export default function WorkOnboardingPage() {
                 style={{ background: DEEP, border: `1px solid ${BORDER}` }}
               >
                 <pre className="text-white/60 whitespace-pre">{MCP_CONFIG_SNIPPET}</pre>
-                <button
+                <button type="button"
                   onClick={copyConfig}
                   className="absolute top-3 right-3 flex items-center gap-1.5 px-2.5 py-1 rounded-md text-xs font-medium transition-all hover:scale-105"
                   style={{
@@ -454,7 +454,7 @@ export default function WorkOnboardingPage() {
             </div>
 
             {/* Test connection */}
-            <button
+            <button type="button"
               onClick={testMcp}
               disabled={mcpTesting}
               className="flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-all hover:scale-[1.02] disabled:opacity-60"
@@ -496,7 +496,7 @@ export default function WorkOnboardingPage() {
           </Card>
 
           <div className="flex justify-between">
-            <button
+            <button type="button"
               onClick={() => setStep(1)}
               className="flex items-center gap-2 px-5 py-3 rounded-lg text-sm font-medium transition-all hover:scale-[1.01]"
               style={{ color: "rgba(255,255,255,0.4)", background: "rgba(255,255,255,0.04)", border: `1px solid ${BORDER}` }}
@@ -504,7 +504,7 @@ export default function WorkOnboardingPage() {
               <ChevronLeft className="w-4 h-4" />
               Back
             </button>
-            <button
+            <button type="button"
               onClick={handleComplete}
               disabled={!canAdvanceStep2}
               className="flex items-center gap-2 px-6 py-3 rounded-lg text-sm font-semibold transition-all hover:scale-[1.02] disabled:opacity-40 disabled:hover:scale-100"
@@ -617,7 +617,7 @@ export default function WorkOnboardingPage() {
               </h3>
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
                 {templates.map((tmpl) => (
-                  <button
+                  <button type="button"
                     key={tmpl.title}
                     className="flex flex-col items-start gap-2 px-4 py-4 rounded-xl text-left transition-all hover:scale-[1.02] group"
                     style={{ background: SURFACE, border: `1px solid ${BORDER}` }}

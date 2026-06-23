@@ -612,7 +612,7 @@ export function BirthCeremonyClient() {
               ))}
             </div>
 
-            <button
+            <button type="button"
               onClick={cosmosDecide}
               style={{
                 background: "rgba(107,33,168,0.15)",
@@ -1181,7 +1181,7 @@ export function BirthCeremonyClient() {
         }}
       >
         {stage > 0 && stage < 5 && (
-          <button
+          <button type="button"
             onClick={back}
             style={{
               background: "rgba(255,255,255,0.04)",
@@ -1206,7 +1206,7 @@ export function BirthCeremonyClient() {
         )}
 
         {stage < 5 && (
-          <button
+          <button type="button"
             onClick={next}
             disabled={!canProceed()}
             style={{
@@ -1241,7 +1241,7 @@ export function BirthCeremonyClient() {
         )}
 
         {stage === 5 && (
-          <button
+          <button type="button"
             onClick={() => router.push("/dashboard/companion")}
             style={{
               background: `linear-gradient(135deg, ${GOLD}, ${GOLD}cc)`,

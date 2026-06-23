@@ -159,7 +159,7 @@ function ContentFilteringControls() {
                 borderColor: isExpanded ? "rgba(201,168,76,0.3)" : "rgba(255,255,255,0.1)",
               }}
             >
-              <button
+              <button type="button"
                 onClick={() => setExpandedFilter(isExpanded ? null : filter.category)}
                 className="w-full p-4 flex items-center justify-between gap-2"
               >
@@ -197,7 +197,7 @@ function ContentFilteringControls() {
                     <p className="text-xs font-semibold text-gray-400">Sensitivity:</p>
                     <div className="flex gap-2">
                       {[0, 1, 2, 3, 4, 5].map((level) => (
-                        <button
+                        <button type="button"
                           key={level}
                           onClick={() => handleLevelChange(filter.category, level)}
                           className="flex-1 px-2 py-1 rounded text-xs font-medium transition-all"

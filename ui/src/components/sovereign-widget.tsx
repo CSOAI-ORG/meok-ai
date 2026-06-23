@@ -84,7 +84,7 @@ export function SovereignWidget() {
       )}
 
       {/* Floating button */}
-      <button
+      <button type="button"
         onClick={() => { setOpen(!open); setShown(false); }}
         className="fixed bottom-6 right-6 z-[70] w-14 h-14 rounded-full shadow-2xl flex items-center justify-center transition-all hover:scale-110 active:scale-95"
         style={{
@@ -168,7 +168,7 @@ export function SovereignWidget() {
                 className="flex-1 bg-transparent text-xs text-white/80 placeholder-white/20 outline-none"
                 disabled={streaming}
               />
-              <button
+              <button type="button"
                 onClick={send}
                 disabled={!input.trim() || streaming}
                 className="w-6 h-6 rounded-lg bg-[#c9a84c] hover:bg-[#d4b463] disabled:opacity-30 flex items-center justify-center transition-all flex-shrink-0"

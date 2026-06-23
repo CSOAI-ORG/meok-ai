@@ -293,7 +293,7 @@ export default function EmailPage() {
             </label>
             <div className="flex flex-wrap gap-2">
               {Object.entries(EMAIL_TEMPLATES).map(([key, { label }]) => (
-                <button
+                <button type="button"
                   key={key}
                   onClick={() => setContext(EMAIL_TEMPLATES[key].body)}
                   className="px-4 py-2 rounded-lg text-sm font-medium transition-all hover:scale-[1.02]"
@@ -310,7 +310,7 @@ export default function EmailPage() {
           </div>
 
           {/* Generate button */}
-          <button
+          <button type="button"
             onClick={generateDraft}
             disabled={loading || !context.trim()}
             className="flex items-center gap-2 px-6 py-3 rounded-lg text-sm font-semibold transition-all hover:scale-[1.02] disabled:opacity-40 disabled:hover:scale-100"
@@ -329,7 +329,7 @@ export default function EmailPage() {
 
           {/* Generate variants button */}
           {draft && !loading && (
-            <button
+            <button type="button"
               onClick={generateVariants}
               className="flex items-center gap-2 px-6 py-3 rounded-lg text-sm font-semibold transition-all hover:scale-[1.02] w-full"
               style={{
@@ -359,7 +359,7 @@ export default function EmailPage() {
             </div>
             <div className="flex items-center gap-2">
               {draft && (
-                <button
+                <button type="button"
                   onClick={() => analyzeReview(variants.length > 0 ? variants[variantIndex].text : draft)}
                   className="flex items-center gap-1.5 px-3 py-1 rounded-md text-xs font-medium transition-all hover:scale-105"
                   style={{
@@ -373,7 +373,7 @@ export default function EmailPage() {
                 </button>
               )}
               {draft && (
-                <button
+                <button type="button"
                   onClick={copyToClipboard}
                   className="flex items-center gap-1.5 px-3 py-1 rounded-md text-xs font-medium transition-all hover:scale-105"
                   style={{
@@ -396,7 +396,7 @@ export default function EmailPage() {
           {/* Variant navigation */}
           {variants.length > 0 && (
             <div className="flex items-center gap-2 p-2 rounded-lg" style={{ background: `${SURFACE}` }}>
-              <button
+              <button type="button"
                 onClick={() => setVariantIndex(Math.max(0, variantIndex - 1))}
                 disabled={variantIndex === 0}
                 className="p-1 rounded disabled:opacity-30"
@@ -406,7 +406,7 @@ export default function EmailPage() {
               <div className="flex-1 text-center">
                 <p className="text-xs text-white/60">{variants[variantIndex].description}</p>
               </div>
-              <button
+              <button type="button"
                 onClick={() => setVariantIndex(Math.min(variants.length - 1, variantIndex + 1))}
                 disabled={variantIndex === variants.length - 1}
                 className="p-1 rounded disabled:opacity-30"
@@ -439,7 +439,7 @@ export default function EmailPage() {
                   <Eye className="w-4 h-4" />
                   Pre-send Review
                 </h3>
-                <button
+                <button type="button"
                   onClick={() => setShowReview(false)}
                   className="text-white/40 hover:text-white/60"
                 >

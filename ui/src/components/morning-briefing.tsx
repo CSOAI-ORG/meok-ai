@@ -220,7 +220,7 @@ export function MorningBriefing({
                 </p>
               </div>
             </div>
-            <button
+            <button type="button"
               onClick={() => setDismissedDream(true)}
               className="text-gray-500 hover:text-gray-300 flex-shrink-0 text-sm"
               aria-label="Dismiss insight"
@@ -239,7 +239,7 @@ export function MorningBriefing({
               <Heart className="w-4 h-4 text-pink-400" />
               Care Signals
             </h3>
-            <button
+            <button type="button"
               onClick={() => setDismissedSignals(true)}
               className="text-gray-500 hover:text-gray-300 text-sm"
               aria-label="Dismiss all"

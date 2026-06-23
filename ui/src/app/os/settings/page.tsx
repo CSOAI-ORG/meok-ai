@@ -165,7 +165,7 @@ export default function SettingsPage() {
             </h2>
             <p className="text-gray-400 mt-1">Customize your AI companion</p>
           </div>
-          <button
+          <button type="button"
             onClick={handleSave}
             className={`flex items-center gap-2 px-4 py-2 rounded-lg font-medium transition-all ${
               saved 
@@ -181,7 +181,7 @@ export default function SettingsPage() {
         {/* Tabs */}
         <div className="flex gap-2 mb-6 overflow-x-auto pb-2">
           {tabs.map((tab) => (
-            <button
+            <button type="button"
               key={tab.id}
               onClick={() => setActiveTab(tab.id)}
               className={`flex items-center gap-2 px-4 py-2 rounded-lg font-medium whitespace-nowrap transition-all ${
@@ -343,7 +343,7 @@ export default function SettingsPage() {
                 <label className="text-gray-300 text-sm font-medium mb-3 block">Personality Archetype</label>
                 <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
                   {PERSONALITIES.map((p) => (
-                    <button
+                    <button type="button"
                       key={p.id}
                       onClick={() => setPersonality(p.id)}
                       className={`p-4 rounded-lg border text-left transition-all ${
@@ -425,7 +425,7 @@ export default function SettingsPage() {
                   <div className="text-white font-medium">Stream Response</div>
                   <div className="text-gray-400 text-sm">Show responses as they're generated</div>
                 </div>
-                <button
+                <button type="button"
                   onClick={() => setStreamResponse(!streamResponse)}
                   className={`w-12 h-6 rounded-full transition-all ${
                     streamResponse ? "bg-[#c9a84c]" : "bg-gray-600"

@@ -142,7 +142,7 @@ function ErrorBanner({ message, onRetry }: { message: string; onRetry: () => voi
         <AlertCircle className="w-4 h-4 shrink-0" />
         {message}
       </div>
-      <button
+      <button type="button"
         onClick={onRetry}
         className="shrink-0 text-xs px-3 py-1 rounded border border-red-700/40 hover:bg-red-900/20 transition-colors"
       >
@@ -528,7 +528,7 @@ export default function DreamsPage() {
 
         {/* Trigger button */}
         <div className="flex justify-center pt-2 pb-8">
-          <button
+          <button type="button"
             onClick={triggerDream}
             disabled={dreaming}
             className="relative inline-flex items-center gap-3 px-8 py-4 rounded-2xl text-sm font-semibold transition-all duration-300 disabled:opacity-60 disabled:cursor-not-allowed"

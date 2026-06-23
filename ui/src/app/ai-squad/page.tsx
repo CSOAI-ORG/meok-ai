@@ -98,7 +98,7 @@ export default function AISquadPage() {
             <Users className="w-8 h-8" style={{ color: "#c9a84c" }} />
             <h1 className="text-2xl font-bold">AI Squad</h1>
           </div>
-          <button onClick={() => setShowCreate(true)} className="flex items-center gap-2 px-4 py-2 rounded-lg font-medium" style={{ background: "#c9a84c", color: "#0d0c18" }}>
+          <button type="button" onClick={() => setShowCreate(true)} className="flex items-center gap-2 px-4 py-2 rounded-lg font-medium" style={{ background: "#c9a84c", color: "#0d0c18" }}>
             <Plus className="w-4 h-4" /> New Squad
           </button>
         </div>
@@ -110,14 +110,14 @@ export default function AISquadPage() {
               const Icon = PURPOSE_ICONS[t.purpose] || Users;
               const color = PURPOSE_COLORS[t.purpose] || "#c9a84c";
               return (
-                <button key={t.index} onClick={() => createSquad(t.index)} disabled={loading} className="p-4 rounded-xl text-left transition-all hover:scale-[1.02] border" style={{ background: "#1a1a2e", borderColor: "rgba(255,255,255,0.07)" }}>
+                <button type="button" key={t.index} onClick={() => createSquad(t.index)} disabled={loading} className="p-4 rounded-xl text-left transition-all hover:scale-[1.02] border" style={{ background: "#1a1a2e", borderColor: "rgba(255,255,255,0.07)" }}>
                   <div className="flex items-center gap-3 mb-3"><Icon className="w-5 h-5" style={{ color }} /><span className="font-medium">{t.name}</span></div>
                   <div className="flex flex-wrap gap-1">{t.members.map((m: string) => <span key={m} className="text-2xl">{CHARACTER_EMOJI[m] || "🤖"}</span>)}</div>
                   <div className="mt-2 text-sm" style={{ opacity: 0.6 }}>{t.members.length} members</div>
                 </button>
               );
             })}
-            <button onClick={() => setShowCreate(true)} className="p-4 rounded-xl text-center border border-dashed" style={{ borderColor: "rgba(255,255,255,0.2)" }}>
+            <button type="button" onClick={() => setShowCreate(true)} className="p-4 rounded-xl text-center border border-dashed" style={{ borderColor: "rgba(255,255,255,0.2)" }}>
               <Plus className="w-8 h-8 mx-auto mb-2" style={{ opacity: 0.5 }} /><span style={{ opacity: 0.6 }}>Create Squad</span>
             </button>
           </div>
@@ -129,9 +129,9 @@ export default function AISquadPage() {
                 <div><h2 className="font-bold">{selectedSquad.name}</h2><p className="text-sm" style={{ opacity: 0.6 }}>{selectedSquad.purpose} • {selectedSquad.members.length} members</p></div>
               </div>
               <div className="flex items-center gap-2">
-                <button onClick={() => setVoiceEnabled(!voiceEnabled)} className={`p-2 rounded-lg ${voiceEnabled ? "bg-green-600" : "bg-white/10"}`}>{voiceEnabled ? <Volume2 className="w-5 h-5" /> : <VolumeX className="w-5 h-5" />}</button>
-                <button onClick={() => setShowSettings(!showSettings)} className="p-2 rounded-lg bg-white/10"><Settings className="w-5 h-5" /></button>
-                <button onClick={() => setSelectedSquad(null)} className="p-2 rounded-lg hover:bg-white/10"><X className="w-5 h-5" /></button>
+                <button type="button" onClick={() => setVoiceEnabled(!voiceEnabled)} className={`p-2 rounded-lg ${voiceEnabled ? "bg-green-600" : "bg-white/10"}`}>{voiceEnabled ? <Volume2 className="w-5 h-5" /> : <VolumeX className="w-5 h-5" />}</button>
+                <button type="button" onClick={() => setShowSettings(!showSettings)} className="p-2 rounded-lg bg-white/10"><Settings className="w-5 h-5" /></button>
+                <button type="button" onClick={() => setSelectedSquad(null)} className="p-2 rounded-lg hover:bg-white/10"><X className="w-5 h-5" /></button>
               </div>
             </div>
             <div className="h-96 overflow-y-auto p-4 space-y-4">
@@ -141,7 +141,7 @@ export default function AISquadPage() {
             <div className="p-4 border-t" style={{ borderColor: "rgba(255,255,255,0.07)" }}>
               <div className="flex gap-2">
                 <input type="text" value={input} onChange={(e) => setInput(e.target.value)} onKeyDown={(e) => { if (e.key === "Enter") sendMessage(); }} placeholder="Message..." className="flex-1 px-4 py-3 rounded-lg bg-white/5 border border-white/10" />
-                <button onClick={sendMessage} disabled={loading} className="px-4 py-3 rounded-lg" style={{ background: "#c9a84c", color: "#0d0c18" }}>{loading ? <Loader2 className="w-5 h-5 animate-spin" /> : <Send className="w-5 h-5" />}</button>
+                <button type="button" onClick={sendMessage} disabled={loading} className="px-4 py-3 rounded-lg" style={{ background: "#c9a84c", color: "#0d0c18" }}>{loading ? <Loader2 className="w-5 h-5 animate-spin" /> : <Send className="w-5 h-5" />}</button>
               </div>
             </div>
           </div>
@@ -162,9 +162,9 @@ export default function AISquadPage() {
       {showCreate && (
         <div className="fixed inset-0 bg-black/50 flex items-center justify-center p-4 z-50">
           <div className="rounded-xl p-6 max-w-2xl w-full" style={{ background: "#13121f" }}>
-            <div className="flex items-center justify-between mb-6"><h2 className="text-xl font-bold">Choose Template</h2><button onClick={() => setShowCreate(false)}><X className="w-5 h-5" /></button></div>
+            <div className="flex items-center justify-between mb-6"><h2 className="text-xl font-bold">Choose Template</h2><button type="button" onClick={() => setShowCreate(false)}><X className="w-5 h-5" /></button></div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-              {templates.map((t) => <button key={t.index} onClick={() => createSquad(t.index)} className="p-4 rounded-lg text-left border" style={{ borderColor: "rgba(255,255,255,0.1)" }}><div className="font-medium">{t.name}</div><div className="text-sm" style={{ opacity: 0.6 }}>{t.purpose}</div></button>)}
+              {templates.map((t) => <button type="button" key={t.index} onClick={() => createSquad(t.index)} className="p-4 rounded-lg text-left border" style={{ borderColor: "rgba(255,255,255,0.1)" }}><div className="font-medium">{t.name}</div><div className="text-sm" style={{ opacity: 0.6 }}>{t.purpose}</div></button>)}
             </div>
           </div>
         </div>
@@ -172,7 +172,7 @@ export default function AISquadPage() {
       {showSettings && (
         <div className="fixed inset-0 bg-black/50 flex items-center justify-center p-4 z-50">
           <div className="rounded-xl p-6 max-w-md w-full" style={{ background: "#13121f" }}>
-            <div className="flex items-center justify-between mb-4"><h2 className="text-xl font-bold">Settings</h2><button onClick={() => setShowSettings(false)}><X className="w-5 h-5" /></button></div>
+            <div className="flex items-center justify-between mb-4"><h2 className="text-xl font-bold">Settings</h2><button type="button" onClick={() => setShowSettings(false)}><X className="w-5 h-5" /></button></div>
             <div className="space-y-4">
               <label className="flex items-center gap-2">
                 <input type="checkbox" checked={voiceEnabled} onChange={(e) => setVoiceEnabled(e.target.checked)} />

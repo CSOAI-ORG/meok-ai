@@ -176,7 +176,7 @@ export default function JarvisOS() {
         </div>
         <div style={{ display: 'flex', gap: 4 }}>
           {(['chat', 'terminal', 'dashboard', 'ralph', 'memory'] as Tab[]).map(t => (
-            <button key={t} onClick={() => setTab(t)}
+            <button type="button" key={t} onClick={() => setTab(t)}
               style={{ padding: '4px 12px', borderRadius: 6, fontSize: 11, fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.08em', cursor: 'pointer',
                 background: tab === t ? 'rgba(201,168,76,0.15)' : 'transparent',
                 border: tab === t ? `1px solid ${GOLD}` : '1px solid transparent',
@@ -196,7 +196,7 @@ export default function JarvisOS() {
             {/* Model selector */}
             <div style={{ padding: '8px 16px', borderBottom: `1px solid rgba(255,255,255,0.05)`, display: 'flex', gap: 6, flexWrap: 'wrap' }}>
               {MODELS.map(m => (
-                <button key={m.id} onClick={() => setSelectedModel(m.id)}
+                <button type="button" key={m.id} onClick={() => setSelectedModel(m.id)}
                   style={{ padding: '3px 10px', borderRadius: 12, fontSize: 10, cursor: 'pointer',
                     background: selectedModel === m.id ? 'rgba(201,168,76,0.15)' : 'rgba(255,255,255,0.03)',
                     border: selectedModel === m.id ? `1px solid ${GOLD}` : '1px solid rgba(255,255,255,0.08)',
@@ -214,7 +214,7 @@ export default function JarvisOS() {
                   <div style={{ fontSize: 13, marginBottom: 24 }}>78 MCP tools. 13 models. Your sovereign OS layer.</div>
                   <div style={{ display: 'flex', gap: 8, justifyContent: 'center', flexWrap: 'wrap' }}>
                     {['Status report', 'Run quantum batch', 'Hunt for tasks', 'What needs fixing?'].map(p => (
-                      <button key={p} onClick={() => { setChatInput(p); }}
+                      <button type="button" key={p} onClick={() => { setChatInput(p); }}
                         style={{ padding: '8px 16px', borderRadius: 20, border: `1px solid rgba(201,168,76,0.3)`, background: 'transparent', color: GOLD, fontSize: 12, cursor: 'pointer' }}>
                         {p}
                       </button>
@@ -285,7 +285,7 @@ export default function JarvisOS() {
               <h3 style={{ color: GOLD, fontSize: 12, fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: 12 }}>Quick Actions</h3>
               <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
                 {['get_heartbeat_status', 'analyze_care_patterns', 'get_consciousness_state', 'trigger_research_sweep', 'trigger_creativity_cycle', 'orion_hunt_tasks', 'enter_dream_state duration_seconds=30', 'run_quantum_batch'].map(cmd => (
-                  <button key={cmd} onClick={() => { setTab('terminal'); setTermInput(cmd); }}
+                  <button type="button" key={cmd} onClick={() => { setTab('terminal'); setTermInput(cmd); }}
                     style={{ padding: '6px 12px', borderRadius: 8, background: 'rgba(201,168,76,0.08)', border: '1px solid rgba(201,168,76,0.15)', color: '#e0ddd4', fontSize: 11, cursor: 'pointer' }}>
                     {cmd.split(' ')[0].replace('trigger_', '').replace('get_', '')}
                   </button>
@@ -354,7 +354,7 @@ function RalphPanel() {
         <input value={goal} onChange={e => setGoal(e.target.value)} onKeyDown={e => e.key === 'Enter' && submit()}
           placeholder="Describe a project for Ralph to decompose..."
           style={{ width: '100%', padding: '12px 14px', borderRadius: 10, border: '1px solid rgba(201,168,76,0.2)', background: 'rgba(0,0,0,0.3)', color: '#e0ddd4', fontSize: 13, outline: 'none' }} />
-        <button onClick={submit} disabled={loading}
+        <button type="button" onClick={submit} disabled={loading}
           style={{ marginTop: 8, padding: '8px 20px', borderRadius: 8, background: '#c9a84c', color: '#0d0c18', fontWeight: 700, fontSize: 12, border: 'none', cursor: 'pointer' }}>
           {loading ? 'Decomposing...' : 'Submit to Ralph'}
         </button>
@@ -397,7 +397,7 @@ function MemoryPanel() {
         <input value={query} onChange={e => setQuery(e.target.value)} onKeyDown={e => e.key === 'Enter' && search()}
           placeholder="Search memories..."
           style={{ flex: 1, padding: '10px 14px', borderRadius: 10, border: '1px solid rgba(201,168,76,0.2)', background: 'rgba(0,0,0,0.3)', color: '#e0ddd4', fontSize: 13, outline: 'none' }} />
-        <button onClick={search} style={{ padding: '10px 16px', borderRadius: 10, background: '#c9a84c', color: '#0d0c18', fontWeight: 700, fontSize: 12, border: 'none', cursor: 'pointer' }}>Search</button>
+        <button type="button" onClick={search} style={{ padding: '10px 16px', borderRadius: 10, background: '#c9a84c', color: '#0d0c18', fontWeight: 700, fontSize: 12, border: 'none', cursor: 'pointer' }}>Search</button>
       </div>
       {results.map((r, i) => (
         <div key={i} style={{ padding: '8px 12px', marginBottom: 6, borderRadius: 8, background: '#13121f', border: '1px solid rgba(255,255,255,0.07)', fontSize: 12, color: '#e0ddd4' }}>

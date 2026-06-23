@@ -331,7 +331,7 @@ export default function TrustFunnelPage() {
           {QUICK_SIGNALS.map((s) => {
             const positive = s.value >= 0.5;
             return (
-              <button
+              <button type="button"
                 key={s.signal}
                 onClick={() => recordSignal(s.type, s.signal, s.value, s.label)}
                 disabled={recording === s.label}

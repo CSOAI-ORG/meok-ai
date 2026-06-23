@@ -99,7 +99,7 @@ function ToastContainer({ toasts, onRemove }: { toasts: Toast[]; onRemove: (id: 
                     <p className="text-white/70 text-xs mt-1">{toast.message}</p>
                   )}
                 </div>
-                <button
+                <button type="button"
                   onClick={() => onRemove(toast.id)}
                   className="p-1 rounded-lg text-white/40 hover:text-white/70 hover:bg-white/10 transition-colors"
                 >

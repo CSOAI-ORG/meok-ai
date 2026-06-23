@@ -72,7 +72,7 @@ function FilterChip({
   onClick: () => void
 }) {
   return (
-    <button
+    <button type="button"
       onClick={onClick}
       className="px-3 py-1.5 rounded-full text-sm font-medium transition-all duration-150 capitalize whitespace-nowrap"
       style={{
@@ -239,7 +239,7 @@ export default function CharacterSearchClient() {
               className="flex-1 bg-transparent outline-none text-white placeholder:text-[rgba(255,255,255,0.3)] text-base"
             />
             {query && (
-              <button
+              <button type="button"
                 onClick={() => setQuery('')}
                 className="text-xs px-2 py-1 rounded-full transition-colors"
                 style={{ color: 'rgba(255,255,255,0.4)', background: 'rgba(255,255,255,0.05)' }}
@@ -282,7 +282,7 @@ export default function CharacterSearchClient() {
               />
             ))}
             {hasFilters && (
-              <button
+              <button type="button"
                 onClick={clearFilters}
                 className="px-3 py-1.5 rounded-full text-xs font-medium transition-all duration-150"
                 style={{ color: 'rgba(255,255,255,0.4)', border: `1px solid ${BORDER}` }}

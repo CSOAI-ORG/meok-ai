@@ -236,7 +236,7 @@ function FaqAccordion() {
           variant="glass"
           className="overflow-hidden"
         >
-          <button
+          <button type="button"
             className="w-full flex items-center justify-between px-6 py-5 text-left gap-4"
             onClick={() => setOpen(open === i ? null : i)}
             aria-expanded={open === i}

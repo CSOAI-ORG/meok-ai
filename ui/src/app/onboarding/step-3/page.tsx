@@ -129,7 +129,7 @@ export default function OnboardingStep3() {
             </div>
 
             {/* Hatch CTA */}
-            <button
+            <button type="button"
               onClick={handleHatch}
               disabled={!memory.trim() || hatching}
               className="w-full py-5 rounded-xl font-black text-xl transition-all hover:opacity-90 active:scale-95 disabled:opacity-30 disabled:cursor-not-allowed"

@@ -166,7 +166,7 @@ function FAQItem({ q, a }: { q: string; a: string }) {
   const [open, setOpen] = useState(false);
   return (
     <div className="rounded-2xl border border-[#c9a84c]/20 overflow-hidden bg-white/80 backdrop-blur-sm">
-      <button
+      <button type="button"
         onClick={() => setOpen(!open)}
         className="w-full flex items-center justify-between gap-4 px-6 py-5 text-left hover:bg-[#c9a84c]/[0.04] transition-colors"
         aria-expanded={open}

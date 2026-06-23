@@ -224,7 +224,7 @@ function ButtonGroup<T extends string>({
         const Icon = opt.icon
         const isActive = value === opt.value
         return (
-          <button
+          <button type="button"
             key={opt.value}
             onClick={() => onChange(opt.value)}
             className={`
@@ -359,7 +359,7 @@ function SimulationTab() {
           />
           <div className="flex flex-wrap gap-2 mt-3">
             {timePresets.map((preset) => (
-              <button
+              <button type="button"
                 key={preset}
                 onClick={() => setSimulationSpeed(preset)}
                 className={`
@@ -379,7 +379,7 @@ function SimulationTab() {
 
         {/* Pause / Resume */}
         <div className="mb-6">
-          <button
+          <button type="button"
             onClick={togglePaused}
             className={`
               w-full sm:w-auto px-8 py-4 rounded-xl font-semibold text-sm
@@ -437,7 +437,7 @@ function SimulationTab() {
               { value: 'snow', icon: Snowflake, label: 'Snow' },
               { value: 'fog', icon: CloudFog, label: 'Fog' },
             ] as const).map(({ value, icon: Icon, label }) => (
-              <button
+              <button type="button"
                 key={value}
                 onClick={() => setWeather(value)}
                 className={`
@@ -540,7 +540,7 @@ function SimulationTab() {
             Agent Spawning
           </span>
           <div className="relative inline-block" ref={summonRef}>
-            <button
+            <button type="button"
               onClick={() => setShowSummonDropdown(!showSummonDropdown)}
               className="flex items-center gap-2 px-5 py-2.5 rounded-lg text-sm font-medium
                 bg-[#D4AF37]/10 text-[#D4AF37] border border-[#D4AF37]/40
@@ -562,7 +562,7 @@ function SimulationTab() {
                   className="absolute top-full left-0 mt-2 w-48 glass-panel z-30 py-1"
                 >
                   {archetypes.map((a) => (
-                    <button
+                    <button type="button"
                       key={a}
                       onClick={() => setShowSummonDropdown(false)}
                       className="w-full text-left px-4 py-2 text-sm text-[#8A8A9A] hover:text-[#F0F0F5]
@@ -591,7 +591,7 @@ function SimulationTab() {
           <p className="text-xs mb-3" style={{ color: 'var(--text-muted)' }}>
             Clear all agent memories, reset economy, return to Day 1. This cannot be undone.
           </p>
-          <button
+          <button type="button"
             onClick={() => setShowResetConfirm(true)}
             className="px-4 py-2 rounded-lg text-sm font-medium bg-[#E74C3C]/10
               text-[#E74C3C] border border-[#E74C3C]/40 hover:bg-[#E74C3C]/20
@@ -645,7 +645,7 @@ function SimulationTab() {
                 }}
               />
               <div className="flex gap-2">
-                <button
+                <button type="button"
                   onClick={() => {
                     setShowResetConfirm(false)
                     setResetInput('')
@@ -656,7 +656,7 @@ function SimulationTab() {
                 >
                   Cancel
                 </button>
-                <button
+                <button type="button"
                   onClick={handleReset}
                   disabled={resetInput !== 'RESET'}
                   className={`
@@ -1033,7 +1033,7 @@ function AudioTab() {
               { key: 'minimal', label: 'Minimal' },
               { key: 'mute', label: 'Mute All' },
             ] as const).map((p) => (
-              <button
+              <button type="button"
                 key={p.key}
                 onClick={() => applyPreset(p.key)}
                 className="px-3 py-1.5 rounded-md text-xs font-medium
@@ -1119,7 +1119,7 @@ function AccountTab() {
               >
                 {did}
               </code>
-              <button
+              <button type="button"
                 onClick={handleCopy}
                 className="p-1 rounded hover:bg-white/10 transition-colors flex-shrink-0"
               >
@@ -1201,7 +1201,7 @@ function AccountTab() {
               Session Active — 3h 24m
             </span>
           </div>
-          <button
+          <button type="button"
             onClick={() => setShowEndSession(true)}
             className="px-3 py-1.5 rounded-lg text-xs font-medium
               bg-[#1A1A24] text-[#8A8A9A] border border-[#2A2A35]
@@ -1227,7 +1227,7 @@ function AccountTab() {
           <p className="text-xs mb-3" style={{ color: 'var(--text-muted)' }}>
             Reset all agent data, memories, and relationships. This action is irreversible.
           </p>
-          <button
+          <button type="button"
             onClick={() => setShowResetData(true)}
             className="px-4 py-2 rounded-lg text-sm font-medium bg-[#E74C3C]/10
               text-[#E74C3C] border border-[#E74C3C]/40 hover:bg-[#E74C3C]/20
@@ -1264,7 +1264,7 @@ function AccountTab() {
                 Your session data will be saved. You can resume later.
               </p>
               <div className="flex gap-2">
-                <button
+                <button type="button"
                   onClick={() => setShowEndSession(false)}
                   className="flex-1 px-4 py-2 rounded-lg text-sm font-medium
                     bg-[#1A1A24] text-[#8A8A9A] border border-[#2A2A35]
@@ -1272,7 +1272,7 @@ function AccountTab() {
                 >
                   Cancel
                 </button>
-                <button
+                <button type="button"
                   onClick={() => setShowEndSession(false)}
                   className="flex-1 px-4 py-2 rounded-lg text-sm font-medium
                     bg-[#E74C3C] text-white hover:bg-[#ff5a5a] transition-all"
@@ -1314,7 +1314,7 @@ function AccountTab() {
                 This will permanently delete all agent memories, relationships, and simulation state.
               </p>
               <div className="flex gap-2">
-                <button
+                <button type="button"
                   onClick={() => setShowResetData(false)}
                   className="flex-1 px-4 py-2 rounded-lg text-sm font-medium
                     bg-[#1A1A24] text-[#8A8A9A] border border-[#2A2A35]
@@ -1322,7 +1322,7 @@ function AccountTab() {
                 >
                   Cancel
                 </button>
-                <button
+                <button type="button"
                   onClick={() => setShowResetData(false)}
                   className="flex-1 px-4 py-2 rounded-lg text-sm font-medium
                     bg-[#E74C3C] text-white hover:bg-[#ff5a5a] transition-all"
@@ -1502,19 +1502,21 @@ export default function Settings() {
             const Icon = tab.icon
             const isActive = activeTab === tab.id
             return (
-              <button
+              <button type="button"
                 key={tab.id}
+                role="tab"
+                aria-selected={isActive}
                 onClick={() => setActiveTab(tab.id)}
                 className={`
                   flex items-center gap-1.5 px-3 py-2 rounded-lg text-xs font-medium
-                  transition-all duration-150 whitespace-nowrap
+                  transition-all duration-150 whitespace-nowrap focus:outline-none focus-visible:ring-2 focus-visible:ring-[#D4AF37]/40
                   ${isActive
                     ? 'bg-[#D4AF37]/10 text-[#D4AF37]'
                     : 'text-[#8A8A9A] hover:text-[#F0F0F5] hover:bg-[#1A1A24]'
                   }
                 `}
               >
-                <Icon className="w-3.5 h-3.5" />
+                <Icon className="w-3.5 h-3.5" aria-hidden="true" />
                 {tab.label}
               </button>
             )
@@ -1535,12 +1537,14 @@ export default function Settings() {
             const Icon = tab.icon
             const isActive = activeTab === tab.id
             return (
-              <button
+              <button type="button"
                 key={tab.id}
+                role="tab"
+                aria-selected={isActive}
                 onClick={() => setActiveTab(tab.id)}
                 className={`
                   w-full flex items-center gap-3 px-3 h-11 rounded-lg text-sm font-medium
-                  transition-all duration-150 relative
+                  transition-all duration-150 relative focus:outline-none focus-visible:ring-2 focus-visible:ring-[#D4AF37]/40
                   ${isActive
                     ? 'text-[#D4AF37]'
                     : 'text-[#8A8A9A] hover:text-[#F0F0F5] hover:bg-[#1A1A24]'
@@ -1555,7 +1559,7 @@ export default function Settings() {
                     : {}
                 }
               >
-                <Icon className="w-[18px] h-[18px] flex-shrink-0 ml-1" />
+                <Icon className="w-[18px] h-[18px] flex-shrink-0 ml-1" aria-hidden="true" />
                 <span>{tab.label}</span>
               </button>
             )

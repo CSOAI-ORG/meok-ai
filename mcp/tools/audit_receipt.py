@@ -117,7 +117,7 @@ def _generate_authorization_receipt(
         "timestamp": ts,
         "previous_receipt_hash": previous_hash or "genesis",
     }
-    canon = json.dumps(payload, sort_keys=True, separators=(",", ":"))
+    canon = json.dumps(payload, sort_keys=True)  # SPACED canonical (matches council_vote.py / sign_lib / CANONICAL.md)
     payload["receipt_hash"] = _hash(canon)
     # Sign with a placeholder key; in production, load from SIGIL_SIGNING_KEY
     payload["signature"] = _sign(canon) or "unsigned"
@@ -141,7 +141,7 @@ def _generate_execution_receipt(
         "duration_ms": duration_ms,
         "timestamp": ts,
     }
-    canon = json.dumps(payload, sort_keys=True, separators=(",", ":"))
+    canon = json.dumps(payload, sort_keys=True)  # SPACED canonical (matches council_vote.py / sign_lib / CANONICAL.md)
     payload["receipt_hash"] = _hash(canon + auth.get("receipt_hash", ""))
     payload["signature"] = _sign(canon) or "unsigned"
     payload["algorithm"] = "ed25519" if _CRYPTO else "unsigned-sha256"
@@ -194,7 +194,7 @@ async def handle_audit_tool(name: str, arguments: Dict[str, Any], state: Service
                 pub = arguments.get("public_key")
                 sig_ok = None
                 if pub and r.get("signature") and r.get("signature") != "unsigned":
-                    canon = json.dumps({k: v for k, v in r.items() if k not in ("signature", "receipt_hash")}, sort_keys=True, separators=(",", ":"))
+                    canon = json.dumps({k: v for k, v in r.items() if k not in ("signature", "receipt_hash")}, sort_keys=True)  # SPACED canonical (matches sign path)
                     sig_ok = _verify(canon, r["signature"], pub)
                 results.append({
                     "receipt_hash": r.get("receipt_hash"),

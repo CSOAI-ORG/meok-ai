@@ -96,7 +96,7 @@ export function NeuralModelPanel() {
           <Brain className="w-5 h-5 text-cyan-400" />
           <h3 className="text-lg font-bold text-white">Neural Models</h3>
         </div>
-        <button
+        <button type="button"
           onClick={triggerRetrain}
           disabled={retraining}
           className="flex items-center gap-2 px-3 py-1.5 bg-cyan-500/20 hover:bg-cyan-500/30 text-cyan-400 rounded-lg text-sm disabled:opacity-50"
@@ -167,7 +167,7 @@ export function NeuralModelPanel() {
             <Settings className="w-4 h-4 text-gray-400" />
             <span className="text-sm font-medium text-gray-300">Training Configuration</span>
           </div>
-          <button
+          <button type="button"
             onClick={() => setShowConfig(!showConfig)}
             className="text-xs text-cyan-400 hover:text-cyan-300"
           >
@@ -199,7 +199,7 @@ export function NeuralModelPanel() {
         {/* Per-model training controls */}
         <div className="mt-3 flex flex-wrap gap-2">
           {modelList.map(([name]) => (
-            <button
+            <button type="button"
               key={name}
               onClick={() => setSelectedModel(selectedModel === name ? null : name)}
               className={`px-2 py-1 rounded text-xs transition-all ${
@@ -224,7 +224,7 @@ export function NeuralModelPanel() {
                 <p className="text-xs text-gray-500">Training controls</p>
               </div>
               <div className="flex gap-2">
-                <button
+                <button type="button"
                   onClick={() => {
                     // Trigger retrain for specific model
                     triggerRetrain();

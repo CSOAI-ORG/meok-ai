@@ -141,7 +141,7 @@ function UsageBar({ label, used, limit, icon }: { label: string; used: number; l
 function PlanCard({ plan, isCurrent, isSelected, onSelect }: { plan: PlanInfo; isCurrent: boolean; isSelected: boolean; onSelect: () => void }) {
   const active = isCurrent || isSelected;
   return (
-    <button
+    <button type="button"
       onClick={onSelect}
       className="w-full text-left p-4 rounded-xl transition-all duration-200 hover:scale-[1.01]"
       style={{ background: active ? `${GOLD}12` : SURFACE, border: `1px solid ${active ? `${GOLD}50` : BORDER}`, outline: "none" }}
@@ -285,7 +285,7 @@ export default function BillingPage() {
         <div className="max-w-xl mx-auto rounded-xl border border-red-500/30 bg-red-500/10 p-6 text-red-200">
           <p className="font-semibold mb-1">Unable to load billing</p>
           <p className="text-sm opacity-80">{error}</p>
-          <button onClick={() => window.location.reload()} className="mt-4 px-4 py-2 rounded-lg bg-red-500/20 hover:bg-red-500/30 text-sm">
+          <button type="button" onClick={() => window.location.reload()} className="mt-4 px-4 py-2 rounded-lg bg-red-500/20 hover:bg-red-500/30 text-sm">
             Retry
           </button>
         </div>
@@ -328,7 +328,7 @@ export default function BillingPage() {
                 )}
               </div>
               <div className="flex flex-col gap-2">
-                <button
+                <button type="button"
                   onClick={openModal}
                   className="flex items-center gap-1.5 px-4 py-2 rounded-lg text-sm font-semibold transition-all hover:scale-[1.02]"
                   style={{ background: `linear-gradient(135deg, ${GOLD}, ${GOLD}cc)`, color: DEEP }}
@@ -337,7 +337,7 @@ export default function BillingPage() {
                   <ChevronRight className="w-4 h-4" />
                 </button>
                 {billing?.stripe_customer_id && (
-                  <button
+                  <button type="button"
                     onClick={openPortal}
                     disabled={portalLoading}
                     className="flex items-center justify-center gap-1.5 px-4 py-2 rounded-lg text-xs font-medium transition-all hover:bg-white/10 border border-white/10 text-white/80"
@@ -382,7 +382,7 @@ export default function BillingPage() {
             <div className="flex items-center justify-between mb-4">
               <h3 className="text-sm font-semibold text-white">Invoices</h3>
               {billing?.stripe_customer_id ? (
-                <button onClick={openPortal} className="text-xs font-medium hover:underline" style={{ color: GOLD }}>
+                <button type="button" onClick={openPortal} className="text-xs font-medium hover:underline" style={{ color: GOLD }}>
                   View all
                 </button>
               ) : (
@@ -392,7 +392,7 @@ export default function BillingPage() {
             {billing?.stripe_customer_id ? (
               <div className="text-sm text-white/60">
                 <p className="mb-3">Your invoices are available in the Stripe Customer Portal.</p>
-                <button
+                <button type="button"
                   onClick={openPortal}
                   disabled={portalLoading}
                   className="inline-flex items-center gap-2 px-3 py-2 rounded-lg text-xs font-medium bg-white/5 hover:bg-white/10 border border-white/10 transition"
@@ -417,7 +417,7 @@ export default function BillingPage() {
                 <Link href="/contact" className="text-white/60 hover:text-white transition">Contact support</Link>
               </li>
               <li>
-                <button onClick={openPortal} className="text-white/60 hover:text-white transition text-left">Update payment method</button>
+                <button type="button" onClick={openPortal} className="text-white/60 hover:text-white transition text-left">Update payment method</button>
               </li>
             </ul>
           </div>
@@ -430,7 +430,7 @@ export default function BillingPage() {
           <div className="w-full max-w-lg rounded-2xl p-6" style={{ background: SURFACE, border: `1px solid ${BORDER}` }}>
             <div className="flex items-center justify-between mb-4">
               <h3 className="text-lg font-semibold text-white">Change plan</h3>
-              <button onClick={handleDone} className="p-1 rounded-lg hover:bg-white/10 text-white/60">
+              <button type="button" onClick={handleDone} className="p-1 rounded-lg hover:bg-white/10 text-white/60">
                 <X className="w-5 h-5" />
               </button>
             </div>
@@ -452,7 +452,7 @@ export default function BillingPage() {
                   <p className="text-xs text-white/40 mb-3">
                     Need a custom solution? <Link href="/contact" className="underline hover:text-white">Contact sales</Link>
                   </p>
-                  <button
+                  <button type="button"
                     onClick={handleConfirmPlan}
                     disabled={!selectedPlan || selectedPlan === currentPlanId || checkoutLoading}
                     className="w-full py-2.5 rounded-lg text-sm font-semibold transition-all disabled:opacity-40 disabled:cursor-not-allowed"
@@ -487,13 +487,13 @@ export default function BillingPage() {
                   </p>
                 </div>
                 <div className="flex gap-3">
-                  <button
+                  <button type="button"
                     onClick={() => setShowConfirm(false)}
                     className="flex-1 py-2.5 rounded-lg text-sm font-medium text-white/80 hover:bg-white/5 border border-white/10"
                   >
                     Back
                   </button>
-                  <button
+                  <button type="button"
                     onClick={handleConfirmPlan}
                     className="flex-1 py-2.5 rounded-lg text-sm font-semibold transition-all"
                     style={{ background: `linear-gradient(135deg, ${GOLD}, ${GOLD}cc)`, color: DEEP }}

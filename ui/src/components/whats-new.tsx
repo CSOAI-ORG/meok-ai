@@ -47,7 +47,7 @@ export function WhatsNew() {
         <span className="text-xs font-bold uppercase tracking-widest" style={{ color: '#c9a84c' }}>
           What&apos;s new
         </span>
-        <button
+        <button type="button"
           onClick={dismiss}
           className="text-white/30 hover:text-white/60 transition-colors text-sm leading-none"
           aria-label="Dismiss"
@@ -63,7 +63,7 @@ export function WhatsNew() {
           </li>
         ))}
       </ul>
-      <button
+      <button type="button"
         onClick={dismiss}
         className="mt-4 w-full py-2 rounded-lg text-xs font-semibold transition-all"
         style={{

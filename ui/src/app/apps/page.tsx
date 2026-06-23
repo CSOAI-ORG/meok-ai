@@ -135,6 +135,12 @@ export default function AppsDirectoryPage() {
               desc="MCP buildings, A2A roads, and live council chambers."
               icon={<Landmark size={20} />}
             />
+            <AppTile
+              href="/ai-os"
+              label="AI OS Story"
+              desc="The warm-sovereign visual narrative from signal to sovereign."
+              icon={<Sparkles size={20} />}
+            />
           </div>
         </section>
 
@@ -293,6 +299,49 @@ export default function AppsDirectoryPage() {
               icon={<Wrench size={20} />}
               badge="Soon"
             />
+          </div>
+        </section>
+
+        {/* Warm Sovereign — AI OS Origin Story gallery */}
+        <section className="meok-warm mb-20 overflow-hidden rounded-[2rem] border border-[#e8e4dc] bg-[#f7f3ee] p-8 md:p-12">
+          <div className="mb-10 text-center">
+            <span className="meok-pill meok-pill-gold mb-4 inline-flex">Warm Sovereign</span>
+            <h2 className="meok-title-lg mb-3">The AI OS origin story</h2>
+            <p className="meok-body mx-auto max-w-2xl">
+              From first signal to sovereign companion — the nine-stage visual narrative that powers every MEOK surface.
+            </p>
+          </div>
+          <div className="meok-grid-3">
+            {[
+              { src: "/assets/warm-sovereign/ai-os/slide-01-orb.png", title: "The Orb", desc: "The first signal — warm, alive, waiting." },
+              { src: "/assets/warm-sovereign/ai-os/slide-02-logo.png", title: "The Mark", desc: "The sovereign seal emerges." },
+              { src: "/assets/warm-sovereign/ai-os/slide-03-seed.png", title: "The Seed", desc: "A tiny kernel of persistent memory." },
+            ].map((slide) => (
+              <div key={slide.src} className="meok-card meok-card-solid p-0">
+                <div className="relative aspect-[4/3] overflow-hidden rounded-t-[var(--meok-radius-lg)]">
+                  <img
+                    src={slide.src}
+                    alt={slide.title}
+                    className="meok-image-cover"
+                    loading="lazy"
+                  />
+                </div>
+                <div className="p-5">
+                  <h3 className="meok-title-md text-lg">{slide.title}</h3>
+                  <p className="meok-body-muted text-sm">{slide.desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <div className="mt-8 text-center">
+            <a
+              href="/ai-os"
+              className="inline-flex items-center gap-2 rounded-full border border-meok-gold/30 bg-meok-gold/10 px-5 py-2 text-sm font-bold text-meok-gold transition-colors hover:bg-meok-gold/20"
+            >
+              View the full AI OS origin story
+              <ArrowRight size={16} />
+            </a>
           </div>
         </section>
 

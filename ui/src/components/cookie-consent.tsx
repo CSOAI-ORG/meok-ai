@@ -91,14 +91,14 @@ export function CookieConsent() {
 
       <div className="flex flex-col gap-2">
         <div className="flex gap-2">
-          <button
+          <button type="button"
             onClick={() => accept("all")}
             className="flex-1 px-4 py-2.5 bg-cyan-500 hover:bg-cyan-400 text-black font-semibold
                        rounded-xl transition-colors text-sm"
           >
             Accept all
           </button>
-          <button
+          <button type="button"
             onClick={() => accept("essential")}
             className="flex-1 px-4 py-2.5 bg-white/5 hover:bg-white/10 text-white/70
                        rounded-xl transition-colors text-sm border border-white/10"
@@ -106,7 +106,7 @@ export function CookieConsent() {
             Essential only
           </button>
         </div>
-        <button
+        <button type="button"
           onClick={() => setShowDetails((v) => !v)}
           className="text-xs text-white/30 hover:text-white/50 transition-colors py-1"
         >

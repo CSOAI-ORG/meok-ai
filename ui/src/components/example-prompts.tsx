@@ -106,7 +106,7 @@ export function ExamplePrompts({ onSelect, compact = false }: ExamplePromptsProp
     return (
       <div className="grid grid-cols-2 gap-2">
         {flat.map((p) => (
-          <button
+          <button type="button"
             key={p.text}
             onClick={() => onSelect(p.text)}
             className="text-left px-3 py-2.5 rounded-lg bg-white/5 hover:bg-white/10 border border-white/8 transition-all group text-sm"
@@ -125,7 +125,7 @@ export function ExamplePrompts({ onSelect, compact = false }: ExamplePromptsProp
       {/* Category tabs */}
       <div className="flex gap-1 overflow-x-auto pb-1 scrollbar-hide">
         {categories.map((cat) => (
-          <button
+          <button type="button"
             key={cat}
             onClick={() => setActiveCategory(cat)}
             className={`px-3 py-1.5 rounded-full text-xs font-medium whitespace-nowrap transition-all ${
@@ -142,7 +142,7 @@ export function ExamplePrompts({ onSelect, compact = false }: ExamplePromptsProp
       {/* Prompt list */}
       <div className="space-y-2">
         {prompts.map((p) => (
-          <button
+          <button type="button"
             key={p.text}
             onClick={() => onSelect(p.text)}
             className="w-full text-left flex items-center gap-3 px-4 py-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/8 transition-all group"

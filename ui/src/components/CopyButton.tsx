@@ -27,7 +27,7 @@ export function CopyButton({ text, className = "", onCopy }: CopyButtonProps) {
   }, [text, onCopy]);
 
   return (
-    <button
+    <button type="button"
       onClick={handleCopy}
       className={`p-2 rounded-lg transition-all duration-200 ${
         copied
@@ -74,7 +74,7 @@ export function CopyWithLabel({
   }, [text, onCopy]);
 
   return (
-    <button
+    <button type="button"
       onClick={handleCopy}
       className={`inline-flex items-center gap-2 px-3 py-1.5 rounded-lg text-sm font-medium transition-all duration-200 ${
         copied

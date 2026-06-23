@@ -114,7 +114,7 @@ export default function AuditDashboard() {
         {/* Time Range */}
         <div className="flex gap-2 mb-6">
           {['1h', '6h', '24h', '7d', '30d'].map(range => (
-            <button
+            <button type="button"
               key={range}
               onClick={() => setTimeRange(range)}
               className={`px-4 py-2 rounded-lg ${

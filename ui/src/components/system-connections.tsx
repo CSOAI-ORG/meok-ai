@@ -103,7 +103,7 @@ export function SystemConnections({ compact = false }: SystemConnectionsProps) {
           <Wifi className="w-4 h-4 text-[#c9a84c]" />
           <span className="text-sm font-medium text-white">System Connections</span>
         </div>
-        <button 
+        <button type="button" 
           onClick={checkConnections}
           disabled={isRefreshing}
           className="p-1.5 hover:bg-white/10 rounded-lg transition-colors"

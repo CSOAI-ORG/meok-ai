@@ -299,7 +299,7 @@ export default function RiriPage() {
           {/* Tab selector */}
           <div className="flex items-center gap-2 mb-6 overflow-x-auto pb-1">
             {SAMPLE_OUTPUTS.map((out, i) => (
-              <button
+              <button type="button"
                 key={out.label}
                 onClick={() => setActiveOutput(i)}
                 className={`flex-shrink-0 px-4 py-2 rounded-full text-xs font-black tracking-wide transition-all ${

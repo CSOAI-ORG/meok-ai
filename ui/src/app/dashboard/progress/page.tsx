@@ -130,7 +130,7 @@ export default function ProgressPage() {
       <div className="min-h-screen flex items-center justify-center" style={{ background: DEEP }}>
         <div className="text-center">
           <p className="text-sm mb-3" style={{ color: "rgba(255,255,255,0.4)" }}>{error}</p>
-          <button
+          <button type="button"
             onClick={fetchProgress}
             className="text-xs px-4 py-2 rounded-lg"
             style={{ background: `${GOLD}20`, color: GOLD, border: `1px solid ${GOLD}40` }}

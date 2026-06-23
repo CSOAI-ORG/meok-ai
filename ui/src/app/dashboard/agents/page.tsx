@@ -637,7 +637,7 @@ export default function AgentsPage() {
           {/* Filter tabs */}
           <div className="flex items-center gap-1.5 mb-4 flex-wrap">
             {FILTER_TABS.map((tab) => (
-              <button
+              <button type="button"
                 key={tab.key}
                 onClick={() => setActiveFilter(tab.key)}
                 className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium transition-colors"

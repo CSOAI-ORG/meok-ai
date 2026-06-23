@@ -99,7 +99,7 @@ function ToggleRow({
           </p>
         )}
       </div>
-      <button
+      <button type="button"
         onClick={() => onChange(!checked)}
         aria-checked={checked}
         role="switch"
@@ -475,7 +475,7 @@ export default function SettingsClient({ profile }: { profile: Profile }) {
             </p>
 
             {!deleteConfirm ? (
-              <button
+              <button type="button"
                 onClick={() => setDeleteConfirm(true)}
                 style={{
                   padding: '0.625rem 1.25rem',
@@ -508,7 +508,7 @@ export default function SettingsClient({ profile }: { profile: Profile }) {
                   Are you sure? This will schedule your account for deletion in 30 days.
                 </p>
                 <div style={{ display: 'flex', gap: '0.625rem' }}>
-                  <button
+                  <button type="button"
                     onClick={async () => {
                       try {
                         await fetch('/api/user/delete', { method: 'POST' })
@@ -530,7 +530,7 @@ export default function SettingsClient({ profile }: { profile: Profile }) {
                   >
                     Yes, delete my account
                   </button>
-                  <button
+                  <button type="button"
                     onClick={() => setDeleteConfirm(false)}
                     style={{
                       padding: '0.5rem 1rem',
@@ -662,7 +662,7 @@ function CompanionSection({
           </label>
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
             {ARCHETYPES.map((a) => (
-              <button
+              <button type="button"
                 key={a.id}
                 onClick={() => { setArchetype(a.id); setDirty(true) }}
                 style={{
@@ -684,7 +684,7 @@ function CompanionSection({
         </div>
 
         {dirty && (
-          <button
+          <button type="button"
             onClick={() => { onSave(name, archetype); setDirty(false) }}
             style={{
               alignSelf: 'flex-start',

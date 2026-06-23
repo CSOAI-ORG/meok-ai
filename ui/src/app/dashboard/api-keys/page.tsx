@@ -196,7 +196,7 @@ function ProviderCards({
       {PROVIDERS.map((p) => {
         const isActive = p.id === active;
         return (
-          <button
+          <button type="button"
             key={p.id}
             onClick={() => onSelect(p.id)}
             className="rounded-xl border p-4 text-left transition-all duration-200 hover:scale-[1.02] focus:outline-none"
@@ -369,7 +369,7 @@ function KeyEntryForm({
             {PROVIDERS.map((p) => {
               const sel = p.id === provider;
               return (
-                <button
+                <button type="button"
                   key={p.id}
                   onClick={() => handleProviderChange(p.id)}
                   className="flex items-center gap-2 px-3 py-2 rounded-lg text-xs font-medium border transition-all"
@@ -484,7 +484,7 @@ function KeyEntryForm({
 
         {/* Actions */}
         <div className="flex items-center gap-3 pt-1">
-          <button
+          <button type="button"
             onClick={handleTest}
             disabled={!keyValue || testResult.status === "testing"}
             className="flex items-center gap-2 px-4 py-2.5 rounded-lg text-sm font-medium border transition-all disabled:opacity-40 disabled:cursor-not-allowed hover:opacity-80"
@@ -502,7 +502,7 @@ function KeyEntryForm({
             Test Key
           </button>
 
-          <button
+          <button type="button"
             onClick={handleSave}
             disabled={!keyValue || !!error}
             className="flex items-center gap-2 px-5 py-2.5 rounded-lg text-sm font-semibold transition-all disabled:opacity-40 disabled:cursor-not-allowed hover:opacity-85"
@@ -626,7 +626,7 @@ function UsageTable({
 
                   {/* Delete */}
                   <td className="px-5 py-4">
-                    <button
+                    <button type="button"
                       onClick={() => onDelete(k.id)}
                       className="p-1.5 rounded-md transition-colors hover:bg-red-500/10"
                       style={{ color: "rgba(255,255,255,0.2)" }}

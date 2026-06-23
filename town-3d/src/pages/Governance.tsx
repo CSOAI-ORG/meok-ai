@@ -520,15 +520,17 @@ export default function Governance() {
             </div>
 
             {/* Status Tabs */}
-            <div className="flex gap-1 mb-4 overflow-x-auto pb-1">
+            <div className="flex gap-1 mb-4 overflow-x-auto pb-1" role="tablist" aria-label="Proposal status">
               {STATUS_TABS.map(status => {
                 const cfg = statusConfig(status)
                 return (
-                  <button
+                  <button type="button"
                     key={status}
+                    role="tab"
+                    aria-selected={activeTab === status}
                     onClick={() => { setActiveTab(status); setSelectedProposal(null); setUserVote(null) }}
                     className={`
-                      relative px-3 py-1.5 rounded-lg text-xs font-medium transition-all whitespace-nowrap flex-shrink-0
+                      relative px-3 py-1.5 rounded-lg text-xs font-medium transition-all whitespace-nowrap flex-shrink-0 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#2ECC71]/50
                       ${activeTab === status
                         ? 'text-[#F0F0F5]'
                         : 'text-[#8A8A9A] hover:text-[#F0F0F5] hover:bg-[#1A1A24]'
@@ -567,7 +569,7 @@ export default function Governance() {
                     transition={{ duration: 0.3, delay: i * 0.06 }}
                     onClick={() => { setSelectedProposal(proposal); setUserVote(null) }}
                     className={`
-                      relative rounded-lg p-4 cursor-pointer transition-all
+                      relative rounded-lg p-4 cursor-pointer transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-[#2ECC71]/50
                       ${selectedProposal?.id === proposal.id
                         ? 'bg-[#1A1A24] border border-[#2ECC71]/40'
                         : 'bg-[#12121A]/60 border border-[#2A2A35] hover:border-[#3A3A48] hover:-translate-y-0.5'
@@ -794,11 +796,12 @@ export default function Governance() {
                         { vote: 'no' as VoteType, label: 'Vote NO', color: '#E74C3C', bg: 'bg-[#E74C3C]', icon: XCircle },
                         { vote: 'abstain' as VoteType, label: 'Abstain', color: '#5A5A6A', bg: 'bg-[#5A5A6A]', icon: MinusCircle },
                       ]).map(v => (
-                        <button
+                        <button type="button"
                           key={v.vote}
                           onClick={() => castVote(v.vote)}
+                          aria-label={`Vote ${v.vote}`}
                           className={`
-                            py-2.5 rounded-lg text-xs font-semibold flex items-center justify-center gap-1.5 transition-all
+                            py-2.5 rounded-lg text-xs font-semibold flex items-center justify-center gap-1.5 transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-white/30
                             ${v.vote === 'abstain'
                               ? 'bg-transparent border border-[#2A2A35] text-[#8A8A9A] hover:bg-[#1A1A24]'
                               : 'text-white hover:opacity-90'
@@ -900,7 +903,7 @@ export default function Governance() {
             </div>
 
             <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
-              <button
+              <button type="button"
                 onClick={() => setCouncilDebate(!councilDebate)}
                 className={`flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs font-medium transition-colors ${
                   councilDebate
@@ -911,10 +914,11 @@ export default function Governance() {
                 <MessageSquare className="w-3.5 h-3.5" />
                 {councilDebate ? 'Debate Mode: On' : 'Debate Mode: Off'}
               </button>
-              <button
+              <button type="button"
                 onClick={conveneCouncil}
                 disabled={councilLoading || !councilProposal.trim()}
-                className="inline-flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-semibold text-white bg-[#2ECC71] hover:opacity-90 disabled:opacity-50 disabled:cursor-not-allowed transition-all"
+                aria-label="Convene council"
+                className="inline-flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-semibold text-white bg-[#2ECC71] hover:opacity-90 disabled:opacity-50 disabled:cursor-not-allowed transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-[#2ECC71]/50"
               >
                 {councilLoading ? (
                   <Loader2 className="w-4 h-4 animate-spin" />
@@ -926,8 +930,17 @@ export default function Governance() {
             </div>
 
             {councilError && (
-              <div className="p-3 rounded-lg bg-[#E74C3C]/10 border border-[#E74C3C]/30 text-sm text-[#E74C3C]">
+              <div className="p-3 rounded-lg bg-[#E74C3C]/10 border border-[#E74C3C]/30 text-sm text-[#E74C3C]" role="alert">
                 {councilError}
+              </div>
+            )}
+
+            {!councilLoading && !councilError && !councilResult && (
+              <div className="p-6 rounded-lg bg-[#12121A]/40 border border-dashed border-[#2A2A35] text-center">
+                <Users className="w-8 h-8 text-[#5A5A6A] mx-auto mb-2" />
+                <p className="text-sm text-[#8A8A9A]">
+                  Enter a proposal and convene the council to see live BFT consensus.
+                </p>
               </div>
             )}
 
@@ -1222,7 +1235,7 @@ export default function Governance() {
           transition={{ duration: 0.4, delay: 0.9, ease }}
           className="glass-panel rounded-xl p-5 mt-5"
         >
-          <button
+          <button type="button"
             onClick={() => setConstitutionOpen(!constitutionOpen)}
             className="flex items-center justify-between w-full"
           >

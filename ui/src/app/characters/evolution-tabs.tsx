@@ -56,7 +56,7 @@ export function EvolutionTabs() {
       {/* Tab bar */}
       <div className="flex flex-wrap justify-center gap-2 mb-10">
         {STAGES.map((s, i) => (
-          <button
+          <button type="button"
             key={s.id}
             onClick={() => setActive(i)}
             className={`px-5 py-2.5 rounded-full text-sm font-semibold transition-all border ${

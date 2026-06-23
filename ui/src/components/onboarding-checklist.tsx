@@ -105,7 +105,7 @@ export function OnboardingChecklist() {
             {completed.size}/{CHECKLIST_ITEMS.length} complete
           </p>
         </div>
-        <button onClick={dismiss} className="text-white/20 hover:text-white/50 transition-colors">
+        <button type="button" onClick={dismiss} className="text-white/20 hover:text-white/50 transition-colors">
           <X className="w-4 h-4" />
         </button>
       </div>

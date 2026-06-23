@@ -63,7 +63,7 @@ export function EmperorCommandBar() {
   };
 
   if (!open) return (
-    <button 
+    <button type="button" 
       onClick={() => setOpen(true)}
       className="flex items-center gap-3 px-3 py-1.5 bg-white/05 hover:bg-white/10 rounded-lg border border-white/05 transition-all group w-48 lg:w-64"
     >

@@ -546,7 +546,7 @@ export default function TeamDashboard() {
                 style={{ background: DEEP, border: `1px solid ${BORDER}` }}
                 onKeyDown={(e) => e.key === "Enter" && handleCreateTeam()}
               />
-              <button
+              <button type="button"
                 onClick={handleCreateTeam}
                 disabled={creating || !teamName.trim()}
                 className="px-6 py-3 rounded-lg font-semibold text-black transition-opacity disabled:opacity-50"
@@ -870,7 +870,7 @@ export default function TeamDashboard() {
                     {/* Change role dropdown (disabled for owner) */}
                     {!isOwnerRole ? (
                       <div className="relative" onClick={(e) => e.stopPropagation()}>
-                        <button
+                        <button type="button"
                           onClick={() =>
                             setOpenRoleDropdown(isDropdownOpen ? null : member.userId)
                           }
@@ -904,7 +904,7 @@ export default function TeamDashboard() {
                               const optStyle = ROLE_BADGE_STYLES[roleOption];
                               const isActive = effectiveRole === roleOption;
                               return (
-                                <button
+                                <button type="button"
                                   key={roleOption}
                                   onClick={() => handleRoleChange(member.userId, roleOption)}
                                   className="w-full flex items-center justify-between px-4 py-2.5 text-sm transition-colors"
@@ -960,7 +960,7 @@ export default function TeamDashboard() {
               Members
             </h2>
             {isAdmin && (
-              <button
+              <button type="button"
                 onClick={handleGenerateInvite}
                 disabled={generatingInvite}
                 className="flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-opacity disabled:opacity-50"
@@ -992,7 +992,7 @@ export default function TeamDashboard() {
                   {inviteCode}
                 </code>
               </div>
-              <button
+              <button type="button"
                 onClick={copyInviteCode}
                 className="p-2 rounded-lg hover:bg-white/5 transition-colors"
                 title="Copy code"
@@ -1083,7 +1083,7 @@ export default function TeamDashboard() {
             {COMPANION_OPTIONS.map((c) => {
               const isSelected = selectedCompanion === c.id;
               return (
-                <button
+                <button type="button"
                   key={c.id}
                   onClick={() => handleSelectCompanion(c.id)}
                   className="p-4 rounded-lg text-left transition-all"

@@ -48,7 +48,7 @@ export function KeyboardShortcuts() {
 
   if (!isOpen) {
     return (
-      <button
+      <button type="button"
         onClick={() => setIsOpen(true)}
         className="fixed bottom-1.5 left-1.5 z-50 p-2 rounded-lg bg-white/5 text-white/40 hover:text-white/70 hover:bg-white/10 transition-colors"
         aria-label="Keyboard shortcuts (press ?)"
@@ -73,7 +73,7 @@ export function KeyboardShortcuts() {
             <Keyboard className="w-5 h-5 text-[#c9a84c]" />
             Keyboard Shortcuts
           </h2>
-          <button
+          <button type="button"
             onClick={() => setIsOpen(false)}
             className="p-1 rounded-lg text-white/40 hover:text-white/70 hover:bg-white/10 transition-colors"
             aria-label="Close"

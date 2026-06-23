@@ -67,7 +67,7 @@ export function ExperienceModeSelector() {
   return (
     <div className="flex items-center gap-1 p-1 rounded-full" style={{ background: 'rgba(255,255,255,0.05)' }}>
       {modes.map((m) => (
-        <button
+        <button type="button"
           key={m.value}
           onClick={() => setMode(m.value)}
           className="px-3 py-1.5 rounded-full text-xs font-medium transition-all"

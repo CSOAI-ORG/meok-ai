@@ -365,7 +365,7 @@ export default function OnboardingPage() {
           {/* Options */}
           <div className="space-y-3">
             {currentQuestion.options.map((option, i) => (
-              <button
+              <button type="button"
                 key={i}
                 onClick={() => handleAnswer(i)}
                 className="w-full text-left px-6 py-4 rounded-xl transition-all duration-200 hover:scale-[1.02] active:scale-[0.98]"
@@ -389,7 +389,7 @@ export default function OnboardingPage() {
 
           {/* Back button */}
           {questionIndex > 0 && (
-            <button
+            <button type="button"
               onClick={handleBack}
               className="mt-6 flex items-center gap-2 text-white/30 hover:text-white/60 text-sm transition-colors"
             >
@@ -467,7 +467,7 @@ export default function OnboardingPage() {
             ))}
           </div>
 
-          <button
+          <button type="button"
             onClick={() => {
               setStep('name');
               setTimeout(() => nameInputRef.current?.focus(), 100);
@@ -510,7 +510,7 @@ export default function OnboardingPage() {
             }}
           />
 
-          <button
+          <button type="button"
             onClick={handleSave}
             disabled={!companionName.trim()}
             className="mt-6 inline-flex items-center gap-2 font-bold rounded-full transition-all hover:scale-105 disabled:opacity-30 disabled:hover:scale-100"

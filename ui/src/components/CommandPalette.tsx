@@ -229,7 +229,7 @@ export function CommandPalette() {
           ) : (
             <div className="px-2">
               {filteredCommands.map((command, index) => (
-                <button
+                <button type="button"
                   key={command.id}
                   onClick={() => handleSelect(command)}
                   className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-left transition-colors ${

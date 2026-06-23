@@ -103,7 +103,7 @@ export function DowngradeModal({
               </p>
             </div>
           </div>
-          <button
+          <button type="button"
             onClick={onKeep}
             aria-label="Close"
             className="text-white/20 hover:text-white/50 transition-colors p-1 -mt-1 -mr-1"
@@ -144,7 +144,7 @@ export function DowngradeModal({
 
         {/* Actions */}
         <div className="flex flex-col gap-2.5">
-          <button
+          <button type="button"
             onClick={onKeep}
             className="w-full py-2.5 rounded-xl text-sm font-bold transition-all hover:opacity-90 active:scale-[0.98]"
             style={{
@@ -154,7 +154,7 @@ export function DowngradeModal({
           >
             Keep {fromPlan}
           </button>
-          <button
+          <button type="button"
             onClick={onDowngrade}
             className="w-full py-2.5 rounded-xl text-sm font-medium transition-all hover:bg-white/[0.05] active:scale-[0.98]"
             style={{

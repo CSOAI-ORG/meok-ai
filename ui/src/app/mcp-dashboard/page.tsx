@@ -234,7 +234,7 @@ export default function MCPDashboard() {
         {/* Tabs */}
         <div className="flex gap-2 mb-6 border-b border-white/10 pb-4">
           {(['servers', 'synergies', 'workflows', 'orchestration'] as const).map(tab => (
-            <button
+            <button type="button"
               key={tab}
               onClick={() => setActiveTab(tab)}
               className={`px-4 py-2 rounded-xl transition-all font-medium text-sm ${
@@ -253,7 +253,7 @@ export default function MCPDashboard() {
           <div className="animate-fade-in-up">
             {/* Category Filter */}
             <div className="flex gap-2 mb-6 flex-wrap">
-              <button
+              <button type="button"
                 onClick={() => setSelectedCategory('all')}
                 className={`px-3 py-1.5 rounded-full text-sm transition-all ${
                   selectedCategory === 'all'
@@ -264,7 +264,7 @@ export default function MCPDashboard() {
                 All ({servers.length})
               </button>
               {categories.map(cat => (
-                <button
+                <button type="button"
                   key={cat}
                   onClick={() => setSelectedCategory(cat)}
                   className={`px-3 py-1.5 rounded-full text-sm flex items-center gap-1.5 transition-all ${
@@ -406,7 +406,7 @@ export default function MCPDashboard() {
                   placeholder="Describe your compliance need (e.g., 'HIPAA healthcare data audit')"
                   className="flex-1 bg-white/[0.05] border border-white/10 rounded-xl px-4 py-2.5 text-white placeholder-white/30 focus:outline-none focus:border-[rgba(201,168,76,0.4)]"
                 />
-                <button
+                <button type="button"
                   onClick={handleMatch}
                   className="bg-[#c9a84c] hover:opacity-90 text-black px-6 py-2 rounded-xl font-medium transition-all"
                 >

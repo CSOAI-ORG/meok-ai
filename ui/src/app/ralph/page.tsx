@@ -274,7 +274,7 @@ function RalphConsole() {
     <div className="space-y-6">
       {/* Controls */}
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-        <button
+        <button type="button"
           onClick={() => runTool("trigger_research_sweep", "Research Sweep")}
           disabled={loading !== null}
           className="group relative flex items-center justify-center gap-3 px-6 py-4 rounded-2xl font-bold text-sm transition-all disabled:opacity-50 disabled:cursor-not-allowed"
@@ -294,7 +294,7 @@ function RalphConsole() {
           {ralphActive ? "Ralph Active" : "Activate Ralph Mode"}
         </button>
 
-        <button
+        <button type="button"
           onClick={() => runTool("orion_riri_hourman_status", "Agent Status")}
           disabled={loading !== null}
           className="group flex items-center justify-center gap-3 px-6 py-4 rounded-2xl font-bold text-sm border border-purple-400/25 text-purple-400 transition-all hover:bg-purple-400/10 disabled:opacity-50 disabled:cursor-not-allowed"
@@ -308,7 +308,7 @@ function RalphConsole() {
           Get Agent Status
         </button>
 
-        <button
+        <button type="button"
           onClick={() => runTool("get_nightshift_digest", "Overnight Digest")}
           disabled={loading !== null}
           className="group flex items-center justify-center gap-3 px-6 py-4 rounded-2xl font-bold text-sm border border-orange-400/25 text-orange-400 transition-all hover:bg-orange-400/10 disabled:opacity-50 disabled:cursor-not-allowed"

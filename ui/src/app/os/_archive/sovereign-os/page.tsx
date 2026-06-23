@@ -641,7 +641,7 @@ export default function SovereignOSPage() {
           </span>
         </div>
         <span style={{ width: 1, height: 16, background: BORDER }} />
-        <button
+        <button type="button"
           onClick={cycleMode}
           style={{
             fontSize: 11,
@@ -823,7 +823,7 @@ export default function SovereignOSPage() {
             </span>
             {workOutput && (
               <div style={{ display: "flex", gap: 8 }}>
-                <button
+                <button type="button"
                   onClick={handleAskAbout}
                   style={{
                     fontSize: 10,
@@ -840,7 +840,7 @@ export default function SovereignOSPage() {
                 >
                   Ask about this
                 </button>
-                <button
+                <button type="button"
                   onClick={handleCopy}
                   style={{
                     fontSize: 10,
@@ -970,7 +970,7 @@ export default function SovereignOSPage() {
         {/* Quick command chips */}
         <div style={{ display: "flex", gap: 6, flexWrap: "wrap", marginBottom: 8 }}>
           {QUICK_COMMANDS.map(cmd => (
-            <button
+            <button type="button"
               key={cmd.label}
               onClick={() => handleQuickCommand(cmd.prompt)}
               style={{
@@ -1041,7 +1041,7 @@ export default function SovereignOSPage() {
               el.style.height = Math.min(el.scrollHeight, 100) + "px";
             }}
           />
-          <button
+          <button type="button"
             onClick={handleSubmit}
             disabled={!input.trim() || sending}
             style={{

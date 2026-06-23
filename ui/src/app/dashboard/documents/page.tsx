@@ -292,7 +292,7 @@ ${608 + content.length}
           { label: "Simplify", icon: Minimize2, instruction: "Simplify this text to be clearer and more concise", preview: true },
           { label: "Expand", icon: Maximize2, instruction: "Expand this text with more detail and supporting points", preview: true },
         ].map(({ label, icon: Icon, instruction, preview }) => (
-          <button
+          <button type="button"
             key={label}
             onClick={() => aiAssist(instruction, preview)}
             disabled={loading}
@@ -313,7 +313,7 @@ ${608 + content.length}
 
         {/* History button */}
         <div className="relative">
-          <button
+          <button type="button"
             onClick={() => setShowVersions(!showVersions)}
             className="flex items-center gap-1.5 px-3 py-1.5 rounded-md text-sm font-medium transition-all hover:scale-105"
             style={{
@@ -335,7 +335,7 @@ ${608 + content.length}
               style={{ background: SURFACE, border: `1px solid ${BORDER}` }}
             >
               {versions.map((v) => (
-                <button
+                <button type="button"
                   key={v.id}
                   onClick={() => restoreVersion(v)}
                   className="w-full text-left px-4 py-2 hover:bg-white/5 border-b last:border-b-0 text-sm"
@@ -350,7 +350,7 @@ ${608 + content.length}
         </div>
 
         {/* Save button */}
-        <button
+        <button type="button"
           onClick={handleSave}
           className="flex items-center gap-1.5 px-4 py-1.5 rounded-md text-sm font-medium transition-all hover:scale-105"
           style={{
@@ -378,7 +378,7 @@ ${608 + content.length}
           { label: "Heading", icon: Heading1, action: () => insertMarkdown("# ", "") },
           { label: "List", icon: List, action: () => insertMarkdown("- ", "") },
         ].map(({ label, icon: Icon, action }) => (
-          <button
+          <button type="button"
             key={label}
             onClick={action}
             title={label}
@@ -418,7 +418,7 @@ ${608 + content.length}
               { format: "txt" as const, label: "Plain Text" },
               { format: "pdf" as const, label: "PDF" },
             ].map(({ format, label }) => (
-              <button
+              <button type="button"
                 key={format}
                 onClick={() => handleExportAs(format)}
                 disabled={!content.trim()}
@@ -459,7 +459,7 @@ ${608 + content.length}
               <div className="mt-3 p-2 rounded bg-white/5 border border-white/10">
                 <p className="text-xs text-white/40 mb-2">Accept suggestion?</p>
                 <div className="flex gap-2">
-                  <button
+                  <button type="button"
                     onClick={() => {
                       replaceTargetText(ghostText);
                       setShowGhost(false);
@@ -469,7 +469,7 @@ ${608 + content.length}
                   >
                     Accept
                   </button>
-                  <button
+                  <button type="button"
                     onClick={() => setShowGhost(false)}
                     className="px-2 py-1 rounded text-xs bg-gray-900/30 border border-gray-700/50 text-gray-300 hover:bg-gray-900/50 pointer-events-auto"
                   >

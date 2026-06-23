@@ -68,7 +68,7 @@ export default function AgentPassport({ agent, onClose }: AgentPassportProps) {
       >
         {/* Header */}
         <div className="relative p-5 text-center border-b border-[#2A2A35]">
-          <button
+          <button type="button"
             onClick={onClose}
             className="absolute top-4 right-4 w-8 h-8 rounded-full bg-[#1A1A24] hover:bg-[#2A2A35] flex items-center justify-center transition-colors"
           >
@@ -122,7 +122,7 @@ export default function AgentPassport({ agent, onClose }: AgentPassportProps) {
         {/* Tabs */}
         <div className="flex border-b border-[#2A2A35]">
           {tabs.map((t) => (
-            <button
+            <button type="button"
               key={t.key}
               onClick={() => setActiveTab(t.key)}
               className={`
@@ -271,7 +271,7 @@ export default function AgentPassport({ agent, onClose }: AgentPassportProps) {
 
         {/* Action buttons */}
         <div className="flex gap-2 p-4 border-t border-[#2A2A35]">
-          <button
+          <button type="button"
             onClick={() => setChatOpen(!chatOpen)}
             className="flex-1 h-9 rounded-lg bg-[#D4AF37] hover:bg-[#F0C94A] text-[#0A0A0F] text-xs font-semibold flex items-center justify-center gap-1.5 transition-colors"
           >
@@ -284,7 +284,7 @@ export default function AgentPassport({ agent, onClose }: AgentPassportProps) {
             <Send className="w-3.5 h-3.5" />
             Delegate
           </button>
-          <button
+          <button type="button"
             onClick={() => {
               setCameraMode('follow')
               onClose()
@@ -325,7 +325,7 @@ export default function AgentPassport({ agent, onClose }: AgentPassportProps) {
                 placeholder="Type a message..."
                 className="flex-1 h-7 px-2 rounded-md bg-[#0A0A0F] border border-[#2A2A35] text-[11px] text-[#F0F0F5] placeholder:text-[#5A5A6A] focus:outline-none focus:border-[#00E5FF]"
               />
-              <button
+              <button type="button"
                 onClick={handleSendMessage}
                 className="w-7 h-7 rounded-md bg-[#D4AF37] hover:bg-[#F0C94A] flex items-center justify-center transition-colors"
               >

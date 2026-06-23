@@ -185,7 +185,7 @@ Please help me prepare.`;
           </div>
         </div>
 
-        <button
+        <button type="button"
           onClick={handleSubmit}
           disabled={loading || !who.trim() || !purpose.trim()}
           className="w-full py-2.5 rounded-lg text-sm font-semibold transition-all flex items-center justify-center gap-2 disabled:opacity-50"
@@ -314,7 +314,7 @@ Please generate a script to help me navigate this.`;
             Context
           </label>
           <div className="relative">
-            <button
+            <button type="button"
               onClick={() => setOpen(!open)}
               className="w-full px-3 py-2.5 rounded-lg text-white text-sm flex items-center justify-between"
               style={{ background: "rgba(255,255,255,0.05)", border: `1px solid ${BORDER}` }}
@@ -331,7 +331,7 @@ Please generate a script to help me navigate this.`;
                 style={{ background: "#1a1929", border: `1px solid ${BORDER}` }}
               >
                 {SCRIPT_CONTEXTS.map((c) => (
-                  <button
+                  <button type="button"
                     key={c.value}
                     onClick={() => { setContext(c.value); setOpen(false); }}
                     className="w-full px-4 py-2.5 text-left text-sm transition-colors hover:bg-white/5"
@@ -359,7 +359,7 @@ Please generate a script to help me navigate this.`;
           />
         </div>
 
-        <button
+        <button type="button"
           onClick={handleSubmit}
           disabled={loading || !situation.trim()}
           className="w-full py-2.5 rounded-lg text-sm font-semibold transition-all flex items-center justify-center gap-2 disabled:opacity-50"
@@ -388,7 +388,7 @@ Please generate a script to help me navigate this.`;
             <div className="flex items-center gap-2">
               {loading && <Loader2 className="w-4 h-4 animate-spin" style={{ color: GOLD }} />}
               {!loading && output && (
-                <button
+                <button type="button"
                   onClick={handleCopy}
                   className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium transition-all"
                   style={{
@@ -560,7 +560,7 @@ function SensoryTracker() {
           </div>
         )}
 
-        <button
+        <button type="button"
           onClick={handleSave}
           className="w-full py-2.5 rounded-lg text-sm font-semibold transition-all flex items-center justify-center gap-2"
           style={{ background: GOLD, color: DEEP }}
@@ -706,7 +706,7 @@ Please give me a personalised debrief.`;
           </label>
           <div className="flex gap-2">
             {STARS.map((s) => (
-              <button
+              <button type="button"
                 key={s}
                 onClick={() => setRating(s)}
                 className="transition-transform hover:scale-110"
@@ -755,7 +755,7 @@ Please give me a personalised debrief.`;
         </div>
 
         <div className="flex gap-3">
-          <button
+          <button type="button"
             onClick={handleSubmit}
             disabled={loading}
             className="flex-1 py-2.5 rounded-lg text-sm font-semibold transition-all flex items-center justify-center gap-2 disabled:opacity-50"
@@ -765,7 +765,7 @@ Please give me a personalised debrief.`;
             {loading ? "Generating debrief…" : "Get My Debrief"}
           </button>
           {output && (
-            <button
+            <button type="button"
               onClick={handleReset}
               className="px-4 py-2.5 rounded-lg text-sm font-medium transition-all"
               style={{ background: "rgba(255,255,255,0.05)", color: "#9ca3af", border: `1px solid ${BORDER}` }}
@@ -870,7 +870,7 @@ export default function SocialGuardianPage() {
           style={{ background: SURFACE, border: `1px solid ${BORDER}` }}
         >
           {TABS.map((t) => (
-            <button
+            <button type="button"
               key={t.id}
               onClick={() => setTab(t.id)}
               className="flex-1 flex items-center justify-center gap-1.5 py-2 px-2 rounded-lg text-xs font-medium transition-all"

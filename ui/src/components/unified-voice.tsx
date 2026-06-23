@@ -335,7 +335,7 @@ export function SpeakButton({ text, disabled }: SpeakButtonProps) {
   };
 
   return (
-    <button
+    <button type="button"
       onClick={speak}
       disabled={disabled || !text}
       className={`p-1 rounded ${isSpeaking ? "text-red-500" : "text-gray-400 hover:text-gray-600"}`}

@@ -471,7 +471,7 @@ export default function FamilyVaultPage() {
               Moments your family shares, remembered forever.
             </p>
           </div>
-          <button
+          <button type="button"
             onClick={handleGenerateStory}
             disabled={storyLoading || sharedCount === 0}
             className="inline-flex items-center gap-2 px-5 py-2 rounded-xl text-sm font-black transition-all disabled:opacity-40"
@@ -523,7 +523,7 @@ export default function FamilyVaultPage() {
             >
               <Sparkles size={15} color={GOLD} />
               <span className="text-sm font-black text-white">Your Family Story</span>
-              <button
+              <button type="button"
                 onClick={() => setShowStory(false)}
                 className="ml-auto text-xs text-white/25 hover:text-white/50 transition-colors"
               >

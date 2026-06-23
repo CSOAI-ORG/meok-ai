@@ -212,7 +212,7 @@ function AskMeokButton({ prompt }: { prompt: string }) {
   }
 
   return (
-    <button
+    <button type="button"
       onClick={handleClick}
       className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium transition-all hover:scale-[1.02]"
       style={{ background: `${GOLD}15`, color: GOLD, border: `1px solid ${GOLD}30` }}
@@ -329,7 +329,7 @@ function SteamIntegration() {
               className="flex-1 px-3 py-2 rounded-lg text-xs text-white placeholder-white/20 outline-none"
               style={{ background: "rgba(255,255,255,0.04)", border: `1px solid ${BORDER}` }}
             />
-            <button
+            <button type="button"
               onClick={handleConnect}
               disabled={loading || !input.trim()}
               className="flex items-center gap-1.5 px-4 py-2 rounded-lg text-xs font-semibold transition-all hover:scale-[1.02] disabled:opacity-40 disabled:hover:scale-100 shrink-0"
@@ -436,7 +436,7 @@ function SteamIntegration() {
 
           <div className="flex items-center justify-between">
             <AskMeokButton prompt={chatPrompt} />
-            <button
+            <button type="button"
               onClick={handleDisconnect}
               className="text-[11px] text-white/25 hover:text-red-400 transition-colors flex items-center gap-1"
             >
@@ -542,7 +542,7 @@ function RawgIntegration() {
           className="flex-1 px-3 py-2 rounded-lg text-xs text-white placeholder-white/20 outline-none"
           style={{ background: "rgba(255,255,255,0.04)", border: `1px solid ${BORDER}` }}
         />
-        <button
+        <button type="button"
           onClick={handleSearch}
           disabled={loading || !query.trim()}
           className="flex items-center gap-1.5 px-4 py-2 rounded-lg text-xs font-semibold transition-all hover:scale-[1.02] disabled:opacity-40 disabled:hover:scale-100 shrink-0"
@@ -606,7 +606,7 @@ function RawgIntegration() {
                     )}
                   </div>
                 </div>
-                <button
+                <button type="button"
                   onClick={(e) => {
                     e.stopPropagation();
                     inLibrary(game.id) ? removeFromLibrary(game.id) : addToLibrary(game);
@@ -688,7 +688,7 @@ function RawgIntegration() {
                 }}
               >
                 {g.name}
-                <button
+                <button type="button"
                   onClick={() => removeFromLibrary(g.id)}
                   className="text-white/20 hover:text-red-400 transition-colors ml-0.5"
                 >
@@ -785,7 +785,7 @@ function TwitchIntegration() {
             {fetchedTime && (
               <span className="text-[10px] text-white/25">Updated {fetchedTime}</span>
             )}
-            <button
+            <button type="button"
               onClick={handleDisconnect}
               className="text-[11px] text-white/25 hover:text-red-400 transition-colors flex items-center gap-1"
             >
@@ -793,7 +793,7 @@ function TwitchIntegration() {
             </button>
           </div>
         ) : (
-          <button
+          <button type="button"
             onClick={handleFetch}
             disabled={loading}
             className="flex items-center gap-1.5 px-4 py-2 rounded-lg text-xs font-semibold transition-all hover:scale-[1.02] disabled:opacity-40"
@@ -858,7 +858,7 @@ function TwitchIntegration() {
           {/* Refresh + Ask MEOK */}
           <div className="flex items-center justify-between pt-1">
             <AskMeokButton prompt={chatPrompt} />
-            <button
+            <button type="button"
               onClick={handleFetch}
               disabled={loading}
               className="text-[11px] text-white/25 hover:text-white/50 transition-colors"
@@ -1063,7 +1063,7 @@ function OpenDotaIntegration() {
               className="flex-1 px-3 py-2 rounded-lg text-xs text-white placeholder-white/20 outline-none"
               style={{ background: "rgba(255,255,255,0.04)", border: `1px solid ${BORDER}` }}
             />
-            <button
+            <button type="button"
               onClick={handleConnect}
               disabled={loading || !input.trim()}
               className="flex items-center gap-1.5 px-4 py-2 rounded-lg text-xs font-semibold transition-all hover:scale-[1.02] disabled:opacity-40 disabled:hover:scale-100 shrink-0"
@@ -1206,7 +1206,7 @@ function OpenDotaIntegration() {
 
           <div className="flex items-center justify-between pt-1">
             <AskMeokButton prompt={chatPrompt} />
-            <button
+            <button type="button"
               onClick={handleDisconnect}
               className="text-[11px] text-white/25 hover:text-red-400 transition-colors flex items-center gap-1"
             >

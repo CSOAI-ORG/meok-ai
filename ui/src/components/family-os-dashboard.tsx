@@ -133,7 +133,7 @@ export default function FamilyOSDashboard() {
           </div>
           <div className="flex gap-2">
             {tabs.map(tab => (
-              <button
+              <button type="button"
                 key={tab.id}
                 onClick={() => setActiveTab(tab.id)}
                 className={`px-4 py-2 rounded-lg flex items-center gap-2 transition-all ${
@@ -208,7 +208,7 @@ export default function FamilyOSDashboard() {
                     </div>
                   </div>
                 ))}
-                <button
+                <button type="button"
                   onClick={() => {
                     const name = prompt('Name:');
                     const role = prompt('Role (parent/child):');
@@ -276,7 +276,7 @@ export default function FamilyOSDashboard() {
                   ))}
                 </div>
               )}
-              <button
+              <button type="button"
                 onClick={() => {
                   const name = prompt('Child name:');
                   const age = parseInt(prompt('Age:') || '0');
@@ -302,7 +302,7 @@ export default function FamilyOSDashboard() {
                   className="flex-1 bg-slate-700 border border-slate-600 rounded-lg px-4 py-2"
                   id="gameInput"
                 />
-                <button
+                <button type="button"
                   onClick={() => {
                     const game = (document.getElementById('gameInput') as HTMLInputElement).value;
                     if (game) checkGame(game);
