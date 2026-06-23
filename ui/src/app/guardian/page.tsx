@@ -1,35 +1,57 @@
 import type { Metadata } from "next";
+import { WarmContentPage } from "@/components/warm-content-page";
 
 export const metadata: Metadata = {
   title: "MEOK Guardian · MEOK AI Labs",
-  description: "Vigilant, protective, principled, uncompromising. Watches without controlling; warns without alarming.",
+  description:
+    "Vigilant, protective, principled, uncompromising. Watches without controlling; warns without alarming.",
   openGraph: {
     title: "MEOK Guardian · MEOK AI Labs",
-    description: "Vigilant, protective, principled, uncompromising. Watches without controlling; warns without alarming.",
+    description:
+      "Vigilant, protective, principled, uncompromising. Watches without controlling; warns without alarming.",
     type: "website",
   },
 };
 
-export default function Page() {
+export default function GuardianPage() {
   return (
-    <main className="min-h-screen bg-white text-slate-900">
-      <section className="max-w-5xl mx-auto px-6 py-20">
-        <h1 className="text-5xl font-bold bg-gradient-to-r from-violet-700 to-blue-700 bg-clip-text text-transparent">MEOK Guardian</h1>
-        <p className="text-xl text-slate-600 mt-6">Vigilant, protective, principled, uncompromising. Watches without controlling; warns without alarming.</p>
-        <div className="prose prose-slate max-w-none mt-10">
-          <h2>Memory style</h2>
-          <p>Pattern-based temporal memory - tracks change over time.</p>
-          <h2>Speaking style</h2>
-          <p>Warm, measured, never alarmist.</p>
-          <h2>Evolution stages</h2>
-          <p>Watchful (0) → Aware (50) → Sentinel (200) → Covenant (500).</p>
-        </div>
-        <div className="mt-12 flex flex-wrap gap-4">
-          <a href="/characters/guardian" className="inline-block px-6 py-3 bg-violet-700 text-white rounded-lg font-semibold hover:bg-violet-800 transition">Meet the Guardian</a>
-          <a href="/pricing" className="inline-block px-6 py-3 bg-white text-violet-700 border-2 border-violet-700 rounded-lg font-semibold hover:bg-violet-50 transition">View pricing</a>
-          <a href="/fleet" className="inline-block px-6 py-3 bg-slate-100 text-slate-900 rounded-lg font-semibold hover:bg-slate-200 transition">See the fleet</a>
-        </div>
-      </section>
-    </main>
+    <WarmContentPage
+      title="MEOK Guardian"
+      description="Vigilant, protective, principled, uncompromising. The Guardian watches without controlling and warns without alarming."
+      eyebrow="Archetype spotlight"
+      ctas={[
+        { href: "/characters", label: "Meet the characters", variant: "primary" },
+        { href: "/pricing", label: "View pricing", variant: "secondary" },
+        { href: "/apps", label: "Explore apps", variant: "soft" },
+      ]}
+    >
+      <h2>Memory style</h2>
+      <p>
+        Pattern-based temporal memory. The Guardian tracks change over time —
+        unusual logins, late arrivals, missed check-ins, or shifting risk
+        signals — and surfaces them only when they matter.
+      </p>
+
+      <h2>Speaking style</h2>
+      <p>
+        Warm, measured, and never alarmist. The Guardian explains risk in plain
+        language, gives you actionable next steps, and lets you decide how to
+        respond.
+      </p>
+
+      <h2>Evolution stages</h2>
+      <p>
+        Watchful (0) → Aware (50) → Sentinel (200) → Covenant (500). As trust
+        deepens, the Guardian becomes more proactive while staying strictly
+        within the boundaries you set.
+      </p>
+
+      <h2>Use cases</h2>
+      <p>
+        Children&apos;s online safety, elder care monitoring, scam and fraud
+        protection, travel safety, and relationship-shield protocols. Every
+        alert is signed and attestable.
+      </p>
+    </WarmContentPage>
   );
 }

@@ -1,35 +1,57 @@
 import type { Metadata } from "next";
+import { WarmContentPage } from "@/components/warm-content-page";
 
 export const metadata: Metadata = {
   title: "MEOK Family OS · MEOK AI Labs",
-  description: "The family operating system. Multi-companion coordination, child-safe mode, elder-care mode.",
+  description:
+    "The family operating system. Multi-companion coordination, child-safe mode, elder-care mode.",
   openGraph: {
     title: "MEOK Family OS · MEOK AI Labs",
-    description: "The family operating system. Multi-companion coordination, child-safe mode, elder-care mode.",
+    description:
+      "The family operating system. Multi-companion coordination, child-safe mode, elder-care mode.",
     type: "website",
   },
 };
 
-export default function Page() {
+export default function FamilyPage() {
   return (
-    <main className="min-h-screen bg-white text-slate-900">
-      <section className="max-w-5xl mx-auto px-6 py-20">
-        <h1 className="text-5xl font-bold bg-gradient-to-r from-violet-700 to-blue-700 bg-clip-text text-transparent">MEOK Family OS</h1>
-        <p className="text-xl text-slate-600 mt-6">The family operating system. Multi-companion coordination, child-safe mode, elder-care mode.</p>
-        <div className="prose prose-slate max-w-none mt-10">
-          <h2>5 family archetypes</h2>
-          <p>The Guardian, the Healer, the Scholar, the Storyteller, the Connector.</p>
-          <h2>Child-safe mode</h2>
-          <p>Age-appropriate communication filtering. No adult content. Full parental visibility.</p>
-          <h2>Elder-care mode</h2>
-          <p>Medication reminders, activity monitoring, fall detection via sensors.</p>
-        </div>
-        <div className="mt-12 flex flex-wrap gap-4">
-          <a href="/family" className="inline-block px-6 py-3 bg-violet-700 text-white rounded-lg font-semibold hover:bg-violet-800 transition">Get the family OS</a>
-          <a href="/pricing" className="inline-block px-6 py-3 bg-white text-violet-700 border-2 border-violet-700 rounded-lg font-semibold hover:bg-violet-50 transition">View pricing</a>
-          <a href="/fleet" className="inline-block px-6 py-3 bg-slate-100 text-slate-900 rounded-lg font-semibold hover:bg-slate-200 transition">See the fleet</a>
-        </div>
-      </section>
-    </main>
+    <WarmContentPage
+      title="MEOK Family OS"
+      description="The family operating system. Multi-companion coordination, child-safe mode, and elder-care mode — all under your roof and your keys."
+      eyebrow="For households"
+      ctas={[
+        { href: "/pricing", label: "View pricing", variant: "primary" },
+        { href: "/characters", label: "Meet the characters", variant: "secondary" },
+        { href: "/apps", label: "Explore apps", variant: "soft" },
+      ]}
+    >
+      <h2>5 family archetypes</h2>
+      <p>
+        The Guardian watches, the Healer comforts, the Scholar teaches, the
+        Storyteller brings wonder, and the Connector keeps everyone in sync.
+        Each archetype can be assigned to a family member or shared across the
+        household.
+      </p>
+
+      <h2>Child-safe mode</h2>
+      <p>
+        Age-appropriate communication filtering, no adult content, full parental
+        visibility, and sovereign audit logs so you always know what the AI
+        discussed with your child.
+      </p>
+
+      <h2>Elder-care mode</h2>
+      <p>
+        Medication reminders, activity monitoring, fall-detection sensor
+        integration, and gentle voice check-ins — all routed to trusted family
+        members, not a third-party cloud.
+      </p>
+
+      <h2>One household memory graph</h2>
+      <p>
+        Family OS keeps a shared memory graph under the household&apos;s own keys.
+        Preferences, schedules, and care plans stay local and private.
+      </p>
+    </WarmContentPage>
   );
 }
