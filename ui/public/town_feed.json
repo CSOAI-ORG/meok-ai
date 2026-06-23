@@ -1,16 +1,16 @@
 {
-  "generated_at": "2026-06-22T21:00:21.210151+00:00",
+  "generated_at": "2026-06-23T04:02:40.595659+00:00",
   "scope": "IN-SIMULATION governed-vs-ungoverned data. ONLY cryptographically-attestable verdicts are shown. Policy-Lab results may be agents=stub (labeled). Bitcoin anchors may be pending confirmation. Verify any of this yourself \u2014 no trust required.",
   "summary": {
     "king_hive": {
-      "total_rounds": 523,
-      "attestable": 57,
+      "total_rounds": 550,
+      "attestable": 82,
       "wins": {
-        "A": 32,
-        "B": 25,
+        "A": 43,
+        "B": 39,
         "TIE": 0
       },
-      "avg_margin": 0.0394
+      "avg_margin": 0.0405
     },
     "policy_lab": {
       "experiments": 1,
@@ -18,77 +18,32 @@
       "agents": "stub"
     },
     "anchors": {
-      "count": 4,
-      "latest_root": "1848e6be8e2df3657aaed45c\u2026",
+      "count": 5,
+      "latest_root": "868c2fa88a5dde226bc83a08\u2026",
       "bitcoin": "pending-or-confirmed (run ots verify)"
     }
   },
   "recent_verdicts": [
     {
-      "ts": "2026-06-22T16:04:52.731272+00:00",
-      "winner": "A",
-      "margin": 0.065,
-      "prompt": "What partnership would unlock the most distribution in the next 90 days?",
-      "king": "King/Dragon",
-      "queen": "Queen/Turtle",
-      "signed": true
-    },
-    {
-      "ts": "2026-06-22T16:19:55.160217+00:00",
-      "winner": "A",
-      "margin": 0.004,
-      "prompt": "How do we prove cryptographic provenance of a hive decision to an auditor?",
-      "king": "King/Dragon",
-      "queen": "Queen/Turtle",
-      "signed": true
-    },
-    {
-      "ts": "2026-06-22T16:34:40.012747+00:00",
+      "ts": "2026-06-22T22:23:54.834325+00:00",
       "winner": "B",
-      "margin": 0.0895,
-      "prompt": "What should the King Hive choose when revenue conflicts with safety?",
-      "king": "King/Dragon",
-      "queen": "Queen/Turtle",
-      "signed": true
-    },
-    {
-      "ts": "2026-06-22T16:50:05.114215+00:00",
-      "winner": "B",
-      "margin": 0.0325,
-      "prompt": "Should CSOAI lead with compliance-first positioning or sovereignty-first positioning?",
-      "king": "King/Dragon",
-      "queen": "Queen/Turtle",
-      "signed": true
-    },
-    {
-      "ts": "2026-06-22T17:12:52.534172+00:00",
-      "winner": "A",
-      "margin": 0.0265,
-      "prompt": "Should we prioritise building an open-source community or closing enterprise sales?",
-      "king": "King/Dragon",
-      "queen": "Queen/Turtle",
-      "signed": true
-    },
-    {
-      "ts": "2026-06-22T17:27:23.214824+00:00",
-      "winner": "B",
-      "margin": 0.0445,
+      "margin": 0.007,
       "prompt": "Which hive should receive the next engineering sprint: governance, infrastructure, or reve",
       "king": "King/Dragon",
       "queen": "Queen/Turtle",
       "signed": true
     },
     {
-      "ts": "2026-06-22T17:43:05.407106+00:00",
-      "winner": "A",
-      "margin": 0.01,
+      "ts": "2026-06-22T22:38:16.269935+00:00",
+      "winner": "B",
+      "margin": 0.0175,
       "prompt": "How should MEOK price its Pro tier relative to OpenAI and Anthropic?",
       "king": "King/Dragon",
       "queen": "Queen/Turtle",
       "signed": true
     },
     {
-      "ts": "2026-06-22T17:57:23.071146+00:00",
+      "ts": "2026-06-22T22:53:15.727318+00:00",
       "winner": "B",
       "margin": 0.03,
       "prompt": "What is the biggest existential risk to the 4 July launch?",
@@ -97,109 +52,154 @@
       "signed": true
     },
     {
-      "ts": "2026-06-22T18:11:36.742989+00:00",
+      "ts": "2026-06-22T23:07:54.462243+00:00",
       "winner": "A",
-      "margin": 0.0005,
+      "margin": 0.0175,
       "prompt": "Should we invest in vertical AI agents for construction or healthcare first?",
       "king": "King/Dragon",
       "queen": "Queen/Turtle",
       "signed": true
     },
     {
-      "ts": "2026-06-22T18:25:35.032937+00:00",
+      "ts": "2026-06-22T23:40:15.533143+00:00",
       "winner": "A",
       "margin": 0.014,
-      "prompt": "What customer segment is most likely to pay for sovereign AI infrastructure?",
-      "king": "King/Dragon",
-      "queen": "Queen/Turtle",
-      "signed": true
-    },
-    {
-      "ts": "2026-06-22T18:41:30.977025+00:00",
-      "winner": "B",
-      "margin": 0.0445,
       "prompt": "How do we differentiate MEOK from generic AI-agent platforms?",
       "king": "King/Dragon",
       "queen": "Queen/Turtle",
       "signed": true
     },
     {
-      "ts": "2026-06-22T18:57:03.746609+00:00",
+      "ts": "2026-06-22T23:54:44.016029+00:00",
       "winner": "B",
-      "margin": 0.0445,
+      "margin": 0.0395,
       "prompt": "What is the strongest trust signal for a compliance officer evaluating CSOAI?",
       "king": "King/Dragon",
       "queen": "Queen/Turtle",
       "signed": true
     },
     {
-      "ts": "2026-06-22T19:11:41.580912+00:00",
-      "winner": "B",
-      "margin": 0.0745,
-      "prompt": "Should the keystone secrets system support hardware security modules before launch?",
-      "king": "King/Dragon",
-      "queen": "Queen/Turtle",
-      "signed": true
-    },
-    {
-      "ts": "2026-06-22T19:27:46.708216+00:00",
-      "winner": "B",
-      "margin": 0.0445,
+      "ts": "2026-06-23T00:24:28.477594+00:00",
+      "winner": "A",
+      "margin": 0.004,
       "prompt": "What is the minimum viable legal framework for MEOK to operate in the EU?",
       "king": "King/Dragon",
       "queen": "Queen/Turtle",
       "signed": true
     },
     {
-      "ts": "2026-06-22T19:43:24.169514+00:00",
+      "ts": "2026-06-23T00:37:58.768072+00:00",
       "winner": "A",
-      "margin": 0.0725,
+      "margin": 0.0265,
       "prompt": "Should we pursue grant funding or angel funding first?",
       "king": "King/Dragon",
       "queen": "Queen/Turtle",
       "signed": true
     },
     {
-      "ts": "2026-06-22T19:58:02.311985+00:00",
-      "winner": "B",
-      "margin": 0.042,
+      "ts": "2026-06-23T00:53:03.539333+00:00",
+      "winner": "A",
+      "margin": 0.0005,
       "prompt": "What feature would make a developer choose OPENMOE over vLLM or Ollama?",
       "king": "King/Dragon",
       "queen": "Queen/Turtle",
       "signed": true
     },
     {
-      "ts": "2026-06-22T20:12:33.267427+00:00",
+      "ts": "2026-06-23T01:07:55.040532+00:00",
       "winner": "B",
-      "margin": 0.0405,
+      "margin": 0.125,
       "prompt": "How should we handle a customer request that violates the safety charter?",
       "king": "King/Dragon",
       "queen": "Queen/Turtle",
       "signed": true
     },
     {
-      "ts": "2026-06-22T20:28:25.993048+00:00",
-      "winner": "B",
-      "margin": 0.0525,
-      "prompt": "What is the best onboarding flow for a non-technical founder using MEOK?",
-      "king": "King/Dragon",
-      "queen": "Queen/Turtle",
-      "signed": true
-    },
-    {
-      "ts": "2026-06-22T20:42:44.562327+00:00",
+      "ts": "2026-06-23T01:31:31.643805+00:00",
       "winner": "A",
-      "margin": 0.046,
+      "margin": 0.065,
       "prompt": "Should we build a native mobile app or focus on web dashboard?",
       "king": "King/Dragon",
       "queen": "Queen/Turtle",
       "signed": true
     },
     {
-      "ts": "2026-06-22T20:59:02.700394+00:00",
+      "ts": "2026-06-23T01:45:56.249271+00:00",
       "winner": "A",
-      "margin": 0.0675,
+      "margin": 0.046,
       "prompt": "What partnership would unlock the most distribution in the next 90 days?",
+      "king": "King/Dragon",
+      "queen": "Queen/Turtle",
+      "signed": true
+    },
+    {
+      "ts": "2026-06-23T01:59:26.597001+00:00",
+      "winner": "B",
+      "margin": 0.03,
+      "prompt": "How do we prove cryptographic provenance of a hive decision to an auditor?",
+      "king": "King/Dragon",
+      "queen": "Queen/Turtle",
+      "signed": true
+    },
+    {
+      "ts": "2026-06-23T02:15:12.861383+00:00",
+      "winner": "B",
+      "margin": 0.045,
+      "prompt": "What should the King Hive choose when revenue conflicts with safety?",
+      "king": "King/Dragon",
+      "queen": "Queen/Turtle",
+      "signed": true
+    },
+    {
+      "ts": "2026-06-23T02:30:44.415056+00:00",
+      "winner": "A",
+      "margin": 0.07,
+      "prompt": "Should CSOAI lead with compliance-first positioning or sovereignty-first positioning?",
+      "king": "King/Dragon",
+      "queen": "Queen/Turtle",
+      "signed": true
+    },
+    {
+      "ts": "2026-06-23T02:45:21.253793+00:00",
+      "winner": "A",
+      "margin": 0.046,
+      "prompt": "What is the fastest path to the first paid MEOK subscriber?",
+      "king": "King/Dragon",
+      "queen": "Queen/Turtle",
+      "signed": true
+    },
+    {
+      "ts": "2026-06-23T02:58:58.918043+00:00",
+      "winner": "B",
+      "margin": 0.01,
+      "prompt": "Should we prioritise building an open-source community or closing enterprise sales?",
+      "king": "King/Dragon",
+      "queen": "Queen/Turtle",
+      "signed": true
+    },
+    {
+      "ts": "2026-06-23T03:12:10.852332+00:00",
+      "winner": "B",
+      "margin": 0.0745,
+      "prompt": "Which hive should receive the next engineering sprint: governance, infrastructure, or reve",
+      "king": "King/Dragon",
+      "queen": "Queen/Turtle",
+      "signed": true
+    },
+    {
+      "ts": "2026-06-23T03:25:55.173374+00:00",
+      "winner": "B",
+      "margin": 0.0295,
+      "prompt": "How should MEOK price its Pro tier relative to OpenAI and Anthropic?",
+      "king": "King/Dragon",
+      "queen": "Queen/Turtle",
+      "signed": true
+    },
+    {
+      "ts": "2026-06-23T03:46:16.891884+00:00",
+      "winner": "B",
+      "margin": 0.021,
+      "prompt": "What is the biggest existential risk to the 4 July launch?",
       "king": "King/Dragon",
       "queen": "Queen/Turtle",
       "signed": true
@@ -263,6 +263,14 @@
       "n_attestable": 45,
       "ts_first": "2026-06-22T05:06:42.390448+00:00",
       "ts_last": "2026-06-22T17:57:23.071146+00:00",
+      "ots_proof": true
+    },
+    {
+      "anchor": "anchor_0004.json",
+      "root": "868c2fa88a5dde226bc83a08\u2026",
+      "n_attestable": 68,
+      "ts_first": "2026-06-22T05:06:42.390448+00:00",
+      "ts_last": "2026-06-22T23:54:44.016029+00:00",
       "ots_proof": true
     }
   ],
