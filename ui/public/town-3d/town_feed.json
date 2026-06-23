@@ -1,16 +1,16 @@
 {
-  "generated_at": "2026-06-23T04:12:22.983570+00:00",
+  "generated_at": "2026-06-23T04:39:39.774862+00:00",
   "scope": "IN-SIMULATION governed-vs-ungoverned data. ONLY cryptographically-attestable verdicts are shown. Policy-Lab results may be agents=stub (labeled). Bitcoin anchor status is read live from the .ots proofs \u2014 'confirmed' means the proof carries a Bitcoin block attestation; 'pending' means the calendar has not yet posted. Verify any of this yourself \u2014 no trust required.",
   "summary": {
     "king_hive": {
-      "total_rounds": 551,
-      "attestable": 82,
+      "total_rounds": 553,
+      "attestable": 84,
       "wins": {
         "A": 43,
-        "B": 39,
+        "B": 41,
         "TIE": 0
       },
-      "avg_margin": 0.0405
+      "avg_margin": 0.0401
     },
     "policy_lab": {
       "experiments": 1,
@@ -81,24 +81,6 @@
     "n_signed_rows": 7
   },
   "recent_verdicts": [
-    {
-      "ts": "2026-06-22T22:23:54.834325+00:00",
-      "winner": "B",
-      "margin": 0.007,
-      "prompt": "Which hive should receive the next engineering sprint: governance, infrastructure, or reve",
-      "king": "King/Dragon",
-      "queen": "Queen/Turtle",
-      "signed": true
-    },
-    {
-      "ts": "2026-06-22T22:38:16.269935+00:00",
-      "winner": "B",
-      "margin": 0.0175,
-      "prompt": "How should MEOK price its Pro tier relative to OpenAI and Anthropic?",
-      "king": "King/Dragon",
-      "queen": "Queen/Turtle",
-      "signed": true
-    },
     {
       "ts": "2026-06-22T22:53:15.727318+00:00",
       "winner": "B",
@@ -257,6 +239,24 @@
       "winner": "B",
       "margin": 0.021,
       "prompt": "What is the biggest existential risk to the 4 July launch?",
+      "king": "King/Dragon",
+      "queen": "Queen/Turtle",
+      "signed": true
+    },
+    {
+      "ts": "2026-06-23T04:24:03.834654+00:00",
+      "winner": "B",
+      "margin": 0.006,
+      "prompt": "What customer segment is most likely to pay for sovereign AI infrastructure?",
+      "king": "King/Dragon",
+      "queen": "Queen/Turtle",
+      "signed": true
+    },
+    {
+      "ts": "2026-06-23T04:39:32.237873+00:00",
+      "winner": "B",
+      "margin": 0.0405,
+      "prompt": "How do we differentiate MEOK from generic AI-agent platforms?",
       "king": "King/Dragon",
       "queen": "Queen/Turtle",
       "signed": true

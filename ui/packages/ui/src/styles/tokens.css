@@ -1,0 +1,51 @@
+@theme {
+  /* ── Brand colours ── */
+  --color-meok-gold: #c9a84c;
+  --color-meok-gold-dark: #b8963e;
+  --color-meok-navy: #1a1a2e;
+  --color-meok-deep: #0d0c18;
+  --color-meok-cream: #FAF9F6;
+  --color-meok-cream-dark: #F5F3EF;
+  --color-meok-teal: #2d9b8a;
+  --color-meok-orange: #e07340;
+  --color-meok-muted: #9a9a8a;
+  --color-meok-border: #e8e4dc;
+
+  /* ── Semantic surfaces ── */
+  --color-surface-0: #0a0a0f;
+  --color-surface-1: #13121f;
+  --color-surface-2: #1a1a2e;
+  --color-surface-3: #242340;
+
+  /* ── Spacing scale extensions ── */
+  --spacing-18: 4.5rem;
+  --spacing-88: 22rem;
+  --spacing-128: 32rem;
+
+  /* ── Typography ── */
+  --font-sans: var(--font-dm-sans), system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  --text-2xs: 0.625rem;
+}
+
+:root {
+  /* ── Brand Palette ── */
+  --meok-cream: #FAF9F6;
+  --meok-cream-dark: #F5F3EF;
+  --meok-navy: #1a1a2e;
+  --meok-deep: #0d0c18;
+  --meok-text: #111111;
+  --meok-muted: #9a9a8a;
+  --meok-border: #e8e4dc;
+  --meok-gold: #c9a84c;
+  --meok-gold-dark: #b8963e;
+  --meok-teal: #2d9b8a;
+  --meok-orange: #e07340;
+
+  /* ── Surface Hierarchy (dark UI) ── */
+  --surface-0: #0a0a0f;
+  --surface-1: #13121f;
+  --surface-2: #1a1a2e;
+  --surface-3: #242340;
+  --surface-border: rgba(255, 255, 255, 0.08);
+  --surface-border-hover: rgba(255, 255, 255, 0.15);
+}
