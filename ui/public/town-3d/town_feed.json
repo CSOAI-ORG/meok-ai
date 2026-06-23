@@ -1,16 +1,16 @@
 {
-  "generated_at": "2026-06-22T14:29:38.641194+00:00",
+  "generated_at": "2026-06-22T21:00:21.210151+00:00",
   "scope": "IN-SIMULATION governed-vs-ungoverned data. ONLY cryptographically-attestable verdicts are shown. Policy-Lab results may be agents=stub (labeled). Bitcoin anchors may be pending confirmation. Verify any of this yourself \u2014 no trust required.",
   "summary": {
     "king_hive": {
-      "total_rounds": 498,
-      "attestable": 32,
+      "total_rounds": 523,
+      "attestable": 57,
       "wins": {
-        "A": 20,
-        "B": 12,
+        "A": 32,
+        "B": 25,
         "TIE": 0
       },
-      "avg_margin": 0.0417
+      "avg_margin": 0.0394
     },
     "policy_lab": {
       "experiments": 1,
@@ -18,86 +18,14 @@
       "agents": "stub"
     },
     "anchors": {
-      "count": 5,
-      "latest_root": "a06f1cf8b781f61aecfd41a4\u2026",
+      "count": 4,
+      "latest_root": "1848e6be8e2df3657aaed45c\u2026",
       "bitcoin": "pending-or-confirmed (run ots verify)"
     }
   },
   "recent_verdicts": [
     {
-      "ts": "2026-06-22T08:37:34.100737+00:00",
-      "winner": "A",
-      "margin": 0.014,
-      "prompt": "Should we invest in vertical AI agents for construction or healthcare first?",
-      "king": "King/Dragon",
-      "queen": "Queen/Turtle",
-      "signed": true
-    },
-    {
-      "ts": "2026-06-22T08:51:43.475917+00:00",
-      "winner": "B",
-      "margin": 0.007,
-      "prompt": "What customer segment is most likely to pay for sovereign AI infrastructure?",
-      "king": "King/Dragon",
-      "queen": "Queen/Turtle",
-      "signed": true
-    },
-    {
-      "ts": "2026-06-22T09:21:29.100114+00:00",
-      "winner": "B",
-      "margin": 0.0025,
-      "prompt": "What is the strongest trust signal for a compliance officer evaluating CSOAI?",
-      "king": "King/Dragon",
-      "queen": "Queen/Turtle",
-      "signed": true
-    },
-    {
-      "ts": "2026-06-22T09:38:35.077294+00:00",
-      "winner": "B",
-      "margin": 0.07,
-      "prompt": "Should the keystone secrets system support hardware security modules before launch?",
-      "king": "King/Dragon",
-      "queen": "Queen/Turtle",
-      "signed": true
-    },
-    {
-      "ts": "2026-06-22T09:55:55.117097+00:00",
-      "winner": "B",
-      "margin": 0.0525,
-      "prompt": "What is the minimum viable legal framework for MEOK to operate in the EU?",
-      "king": "King/Dragon",
-      "queen": "Queen/Turtle",
-      "signed": true
-    },
-    {
-      "ts": "2026-06-22T10:35:26.032829+00:00",
-      "winner": "B",
-      "margin": 0.0445,
-      "prompt": "How should we handle a customer request that violates the safety charter?",
-      "king": "King/Dragon",
-      "queen": "Queen/Turtle",
-      "signed": true
-    },
-    {
-      "ts": "2026-06-22T10:51:48.873628+00:00",
-      "winner": "A",
-      "margin": 0.0415,
-      "prompt": "What is the best onboarding flow for a non-technical founder using MEOK?",
-      "king": "King/Dragon",
-      "queen": "Queen/Turtle",
-      "signed": true
-    },
-    {
-      "ts": "2026-06-22T11:07:19.241374+00:00",
-      "winner": "A",
-      "margin": 0.07,
-      "prompt": "Should we build a native mobile app or focus on web dashboard?",
-      "king": "King/Dragon",
-      "queen": "Queen/Turtle",
-      "signed": true
-    },
-    {
-      "ts": "2026-06-22T11:23:08.368185+00:00",
+      "ts": "2026-06-22T16:04:52.731272+00:00",
       "winner": "A",
       "margin": 0.065,
       "prompt": "What partnership would unlock the most distribution in the next 90 days?",
@@ -106,61 +34,70 @@
       "signed": true
     },
     {
-      "ts": "2026-06-22T11:37:56.818953+00:00",
-      "winner": "B",
-      "margin": 0.0445,
+      "ts": "2026-06-22T16:19:55.160217+00:00",
+      "winner": "A",
+      "margin": 0.004,
       "prompt": "How do we prove cryptographic provenance of a hive decision to an auditor?",
       "king": "King/Dragon",
       "queen": "Queen/Turtle",
       "signed": true
     },
     {
-      "ts": "2026-06-22T11:52:24.983428+00:00",
+      "ts": "2026-06-22T16:34:40.012747+00:00",
       "winner": "B",
-      "margin": 0.1825,
+      "margin": 0.0895,
       "prompt": "What should the King Hive choose when revenue conflicts with safety?",
       "king": "King/Dragon",
       "queen": "Queen/Turtle",
       "signed": true
     },
     {
-      "ts": "2026-06-22T12:07:51.471199+00:00",
-      "winner": "A",
-      "margin": 0.065,
+      "ts": "2026-06-22T16:50:05.114215+00:00",
+      "winner": "B",
+      "margin": 0.0325,
       "prompt": "Should CSOAI lead with compliance-first positioning or sovereignty-first positioning?",
       "king": "King/Dragon",
       "queen": "Queen/Turtle",
       "signed": true
     },
     {
-      "ts": "2026-06-22T12:30:02.913229+00:00",
-      "winner": "B",
-      "margin": 0.033,
+      "ts": "2026-06-22T17:12:52.534172+00:00",
+      "winner": "A",
+      "margin": 0.0265,
       "prompt": "Should we prioritise building an open-source community or closing enterprise sales?",
       "king": "King/Dragon",
       "queen": "Queen/Turtle",
       "signed": true
     },
     {
-      "ts": "2026-06-22T12:54:30.082943+00:00",
+      "ts": "2026-06-22T17:27:23.214824+00:00",
+      "winner": "B",
+      "margin": 0.0445,
+      "prompt": "Which hive should receive the next engineering sprint: governance, infrastructure, or reve",
+      "king": "King/Dragon",
+      "queen": "Queen/Turtle",
+      "signed": true
+    },
+    {
+      "ts": "2026-06-22T17:43:05.407106+00:00",
       "winner": "A",
-      "margin": 0.0015,
+      "margin": 0.01,
       "prompt": "How should MEOK price its Pro tier relative to OpenAI and Anthropic?",
       "king": "King/Dragon",
       "queen": "Queen/Turtle",
       "signed": true
     },
     {
-      "ts": "2026-06-22T13:09:12.090695+00:00",
+      "ts": "2026-06-22T17:57:23.071146+00:00",
       "winner": "B",
-      "margin": 0.0405,
+      "margin": 0.03,
       "prompt": "What is the biggest existential risk to the 4 July launch?",
       "king": "King/Dragon",
       "queen": "Queen/Turtle",
       "signed": true
     },
     {
-      "ts": "2026-06-22T13:23:40.675701+00:00",
+      "ts": "2026-06-22T18:11:36.742989+00:00",
       "winner": "A",
       "margin": 0.0005,
       "prompt": "Should we invest in vertical AI agents for construction or healthcare first?",
@@ -169,37 +106,100 @@
       "signed": true
     },
     {
-      "ts": "2026-06-22T13:39:26.206984+00:00",
+      "ts": "2026-06-22T18:25:35.032937+00:00",
       "winner": "A",
-      "margin": 0.004,
+      "margin": 0.014,
       "prompt": "What customer segment is most likely to pay for sovereign AI infrastructure?",
       "king": "King/Dragon",
       "queen": "Queen/Turtle",
       "signed": true
     },
     {
-      "ts": "2026-06-22T13:54:40.767743+00:00",
-      "winner": "A",
-      "margin": 0.0005,
+      "ts": "2026-06-22T18:41:30.977025+00:00",
+      "winner": "B",
+      "margin": 0.0445,
       "prompt": "How do we differentiate MEOK from generic AI-agent platforms?",
       "king": "King/Dragon",
       "queen": "Queen/Turtle",
       "signed": true
     },
     {
-      "ts": "2026-06-22T14:08:57.766031+00:00",
-      "winner": "A",
-      "margin": 0.004,
+      "ts": "2026-06-22T18:57:03.746609+00:00",
+      "winner": "B",
+      "margin": 0.0445,
       "prompt": "What is the strongest trust signal for a compliance officer evaluating CSOAI?",
       "king": "King/Dragon",
       "queen": "Queen/Turtle",
       "signed": true
     },
     {
-      "ts": "2026-06-22T14:22:43.028734+00:00",
-      "winner": "A",
-      "margin": 0.02,
+      "ts": "2026-06-22T19:11:41.580912+00:00",
+      "winner": "B",
+      "margin": 0.0745,
       "prompt": "Should the keystone secrets system support hardware security modules before launch?",
+      "king": "King/Dragon",
+      "queen": "Queen/Turtle",
+      "signed": true
+    },
+    {
+      "ts": "2026-06-22T19:27:46.708216+00:00",
+      "winner": "B",
+      "margin": 0.0445,
+      "prompt": "What is the minimum viable legal framework for MEOK to operate in the EU?",
+      "king": "King/Dragon",
+      "queen": "Queen/Turtle",
+      "signed": true
+    },
+    {
+      "ts": "2026-06-22T19:43:24.169514+00:00",
+      "winner": "A",
+      "margin": 0.0725,
+      "prompt": "Should we pursue grant funding or angel funding first?",
+      "king": "King/Dragon",
+      "queen": "Queen/Turtle",
+      "signed": true
+    },
+    {
+      "ts": "2026-06-22T19:58:02.311985+00:00",
+      "winner": "B",
+      "margin": 0.042,
+      "prompt": "What feature would make a developer choose OPENMOE over vLLM or Ollama?",
+      "king": "King/Dragon",
+      "queen": "Queen/Turtle",
+      "signed": true
+    },
+    {
+      "ts": "2026-06-22T20:12:33.267427+00:00",
+      "winner": "B",
+      "margin": 0.0405,
+      "prompt": "How should we handle a customer request that violates the safety charter?",
+      "king": "King/Dragon",
+      "queen": "Queen/Turtle",
+      "signed": true
+    },
+    {
+      "ts": "2026-06-22T20:28:25.993048+00:00",
+      "winner": "B",
+      "margin": 0.0525,
+      "prompt": "What is the best onboarding flow for a non-technical founder using MEOK?",
+      "king": "King/Dragon",
+      "queen": "Queen/Turtle",
+      "signed": true
+    },
+    {
+      "ts": "2026-06-22T20:42:44.562327+00:00",
+      "winner": "A",
+      "margin": 0.046,
+      "prompt": "Should we build a native mobile app or focus on web dashboard?",
+      "king": "King/Dragon",
+      "queen": "Queen/Turtle",
+      "signed": true
+    },
+    {
+      "ts": "2026-06-22T20:59:02.700394+00:00",
+      "winner": "A",
+      "margin": 0.0675,
+      "prompt": "What partnership would unlock the most distribution in the next 90 days?",
       "king": "King/Dragon",
       "queen": "Queen/Turtle",
       "signed": true
@@ -259,18 +259,10 @@
     },
     {
       "anchor": "anchor_0003.json",
-      "root": "2db2e4a09f8bac90806493cb\u2026",
-      "n_attestable": 13,
-      "ts_first": "",
-      "ts_last": "",
-      "ots_proof": true
-    },
-    {
-      "anchor": "anchor_0004.json",
-      "root": "a06f1cf8b781f61aecfd41a4\u2026",
-      "n_attestable": 7,
-      "ts_first": "2026-06-22T14:01:43",
-      "ts_last": "2026-06-22T14:02:04",
+      "root": "1848e6be8e2df3657aaed45c\u2026",
+      "n_attestable": 45,
+      "ts_first": "2026-06-22T05:06:42.390448+00:00",
+      "ts_last": "2026-06-22T17:57:23.071146+00:00",
       "ots_proof": true
     }
   ],
