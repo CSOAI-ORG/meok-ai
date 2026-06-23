@@ -133,7 +133,7 @@ const CRITICAL_GAPS = [
 
 export default function TownPage() {
   return (
-    <main className="min-h-screen overflow-x-hidden bg-[#0d0c18] text-white">
+    <main className="min-h-screen overflow-x-hidden bg-[#0d0c18] text-white page-transition-enter">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
 
       {/* HERO */}
@@ -163,7 +163,7 @@ export default function TownPage() {
         <div className="mx-auto mt-10 flex flex-wrap justify-center gap-4">
           <Link
             href="/town-3d"
-            className="rounded-xl bg-[#c9a84c] px-8 py-3.5 font-bold text-[#0d0c18] transition hover:bg-[#b8963e]"
+            className="rounded-xl bg-[#c9a84c] px-8 py-3.5 font-bold text-[#0d0c18] transition hover:bg-[#b8963e] hover:shadow-lg hover:shadow-[#c9a84c]/20"
           >
             Enter 3D Town
           </Link>
@@ -173,19 +173,18 @@ export default function TownPage() {
           >
             View Protocol Map
           </Link>
-          <Link
-            href="/civilizations"
-            className="rounded-xl border border-white/20 bg-white/5 px-8 py-3.5 font-semibold text-white transition hover:bg-white/10"
-          >
-            Explore Civilizations
+        </div>
+        <div className="mx-auto mt-4 flex flex-wrap justify-center gap-6 text-sm text-white/50">
+          <Link href="/civilizations" className="hover:text-[#c9a84c] transition">
+            Explore Civilizations →
           </Link>
           <Link
             href="https://github.com/CSOAI-ORG/clawd-workspace/blob/main/meok-universe/research/mcp_a2a_town_integration.md"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 rounded-xl border border-white/20 bg-white/5 px-8 py-3.5 font-semibold text-white transition hover:bg-white/10"
+            className="inline-flex items-center gap-1 hover:text-[#c9a84c] transition"
           >
-            Read the Architecture <ExternalLink size={16} />
+            Read the Architecture <ExternalLink size={14} />
           </Link>
         </div>
       </section>

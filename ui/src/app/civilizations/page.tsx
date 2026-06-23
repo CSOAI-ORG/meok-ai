@@ -6,7 +6,7 @@ import { StatCard } from "@/components/design-system/stat-card";
 import { CIVILIZATIONS } from "@/lib/civilizations";
 import AethelgardPanel from "./aethelgard-panel";
 import DebateSection from "./debate-section";
-import { PheromoneMatrix, PheromoneMessage } from "@/components/sov-town/PheromoneMatrix";
+import { LivePheromoneMatrix } from "@/components/sov-town/LivePheromoneMatrix";
 import { WaitlistCount } from "@/components/waitlist-count";
 
 export const metadata: Metadata = {
@@ -16,50 +16,7 @@ export const metadata: Metadata = {
   alternates: { canonical: "https://meok.ai/civilizations" },
 };
 
-const FINANCE_MINISTERS = [
-  "Von Weber",
-  "Draghi",
-  "Lagarde",
-  "Scholz",
-  "Macron",
-  "Sunak",
-  "Meloni",
-  "Rutte",
-  "Andersson",
-  "Costa",
-  "Kallas",
-  "Orbán",
-];
 
-const MOCK_TOPICS = [
-  "bond yield",
-  "AI Act fine",
-  "budget transfer",
-  "stress test",
-  "liquidity alert",
-  "green taxonomy",
-  "CBDC pilot",
-  "fiscal rule",
-  "crypto framework",
-  "sovereign debt",
-];
-
-function generateMockMessages(agents: string[]): PheromoneMessage[] {
-  const messages: PheromoneMessage[] = [];
-  for (let i = 0; i < 36; i++) {
-    const from = agents[Math.floor(Math.random() * agents.length)];
-    const to = agents[Math.floor(Math.random() * agents.length)];
-    messages.push({
-      from,
-      to,
-      intensity: Math.max(0.2, Math.round((Math.random() * 1 + Number(from !== to) * 0.5) * 10) / 10),
-      topic: MOCK_TOPICS[Math.floor(Math.random() * MOCK_TOPICS.length)],
-    });
-  }
-  return messages;
-}
-
-const MOCK_MESSAGES = generateMockMessages(FINANCE_MINISTERS);
 
 const jsonLd = {
   "@context": "https://schema.org",
@@ -74,7 +31,7 @@ export default function CivilizationsPage() {
   const locked = CIVILIZATIONS.filter((c) => !c.live);
 
   return (
-    <main className="min-h-screen overflow-x-hidden bg-[#0d0c18] text-white">
+    <main className="min-h-screen overflow-x-hidden bg-[#0d0c18] text-white page-transition-enter">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
 
       {/* HERO */}
@@ -102,21 +59,23 @@ export default function CivilizationsPage() {
         <div className="mx-auto mt-10 flex flex-wrap justify-center gap-4">
           <Link
             href="#aethelgard"
-            className="rounded-xl bg-[#c9a84c] px-8 py-3.5 font-bold text-[#0d0c18] transition hover:bg-[#b8963e]"
+            className="rounded-xl bg-[#c9a84c] px-8 py-3.5 font-bold text-[#0d0c18] transition hover:bg-[#b8963e] hover:shadow-lg hover:shadow-[#c9a84c]/20"
           >
             Enter Aethelgard
-          </Link>
-          <Link
-            href="/sov-town"
-            className="rounded-xl border border-white/20 bg-white/5 px-8 py-3.5 font-semibold text-white transition hover:bg-white/10"
-          >
-            OpenGridWorks View <ArrowRight size={16} />
           </Link>
           <Link
             href="/town"
             className="rounded-xl border border-white/20 bg-white/5 px-8 py-3.5 font-semibold text-white transition hover:bg-white/10"
           >
             Visit MEOK Town <ArrowRight size={16} />
+          </Link>
+        </div>
+        <div className="mx-auto mt-4 flex flex-wrap justify-center gap-6 text-sm text-white/50">
+          <Link href="/sov-town" className="hover:text-[#c9a84c] transition">
+            OpenGridWorks View →
+          </Link>
+          <Link href="/town-3d" className="hover:text-[#c9a84c] transition">
+            Enter 3D Town →
           </Link>
         </div>
       </section>
@@ -237,7 +196,7 @@ export default function CivilizationsPage() {
           </div>
         </div>
         <Surface variant="glass" className="p-4">
-          <PheromoneMatrix messages={MOCK_MESSAGES} />
+          <LivePheromoneMatrix />
         </Surface>
       </section>
 
@@ -251,7 +210,7 @@ export default function CivilizationsPage() {
         </div>
         <div className="space-y-4">
           {[
-            { phase: "Phase 0 — Jul 4 2026", title: "Aethelgard Finance Hive", status: "Live", desc: "5 ministers, BFT voting, EU AI Act compliance page." },
+            { phase: "Phase 0 — Jul 4 2026", title: "Aethelgard Finance Hive", status: "Live", desc: "12 ministers, BFT voting, EU AI Act compliance page." },
             { phase: "Phase 1 — Jul 2026", title: "4 Capitals + 12 Regionals", status: "Locked", desc: "Aethelgard, Sino-Nova, Pan-America, Nubia Prime." },
             { phase: "Phase 2 — Aug 2026", title: "6 Civilizations", status: "Locked", desc: "Add Brasilia and Indo-Sphere." },
             { phase: "Phase 3 — Sep 2026", title: "Full Globe (12 Capitals)", status: "Locked", desc: "All 12 capitals active with dormancy for satellites." },

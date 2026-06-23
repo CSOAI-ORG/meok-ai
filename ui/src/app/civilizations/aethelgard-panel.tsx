@@ -162,9 +162,26 @@ export default function AethelgardPanel() {
 
   if (agents.length === 0) {
     return (
-      <Surface variant="elevated" className="flex h-96 items-center justify-center">
-        <Loader2 className="animate-spin text-[#c9a84c]" size={24} />
-      </Surface>
+      <div className="grid gap-6 lg:grid-cols-3">
+        <Surface variant="elevated" className="p-4 lg:col-span-1">
+          <div className="skeleton mb-4 h-4 w-40 rounded" />
+          <div className="space-y-2">
+            {Array.from({ length: 8 }).map((_, i) => (
+              <div key={i} className="skeleton h-16 rounded-lg" />
+            ))}
+          </div>
+        </Surface>
+        <div className="flex flex-col gap-6 lg:col-span-2">
+          <Surface variant="elevated" className="flex-1 p-4">
+            <div className="skeleton mb-4 h-8 w-48 rounded" />
+            <div className="space-y-2">
+              {Array.from({ length: 4 }).map((_, i) => (
+                <div key={i} className="skeleton h-12 w-3/4 rounded-lg" />
+              ))}
+            </div>
+          </Surface>
+        </div>
+      </div>
     );
   }
 
