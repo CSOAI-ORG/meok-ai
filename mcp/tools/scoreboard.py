@@ -6,20 +6,54 @@ best-for-a-task). Ported from model-scoreboard-mcp so the production platform
 can keep an evidence-based "which model wins which task" surface — the basis
 for the SmartRouter / best-model selection.
 
-State is in-memory (per process). For durable storage, back it with the
-platform's memory/DB layer; the API is stable either way.
+State is durable: backed by a JSON file (MEOK_SCOREBOARD_PATH, default
+~/.meok/model_board.json), loaded on import and saved on every write.
 
 Pattern matches the other tool modules: SCOREBOARD_TOOLS + handle_scoreboard_tool.
 """
+import os
+import json
 from typing import Dict, Any, List
 from meok.mcp.state import ServiceState
 
 MODEL_TYPES = ["LLM", "MoE", "MoM", "SLM", "world", "reasoning", "multimodal"]
 
+# Durable store (JSON file). Override with MEOK_SCOREBOARD_PATH.
+_STORE = os.environ.get(
+    "MEOK_SCOREBOARD_PATH",
+    os.path.join(os.path.expanduser("~"), ".meok", "model_board.json"),
+)
+
 # id -> {provider, type}
 _MODELS: Dict[str, Dict[str, str]] = {}
 # list of {model, task, score}
 _RESULTS: List[Dict[str, Any]] = []
+
+
+def _load() -> None:
+    """Load the board from disk on import (best-effort; in-memory if unavailable)."""
+    try:
+        if os.path.exists(_STORE):
+            with open(_STORE) as f:
+                d = json.load(f)
+            _MODELS.clear(); _MODELS.update(d.get("models", {}))
+            _RESULTS.clear(); _RESULTS.extend(d.get("results", []))
+    except Exception:
+        pass
+
+
+def _save() -> bool:
+    """Persist the board to disk (best-effort)."""
+    try:
+        os.makedirs(os.path.dirname(_STORE), exist_ok=True)
+        with open(_STORE, "w") as f:
+            json.dump({"models": _MODELS, "results": _RESULTS}, f)
+        return True
+    except Exception:
+        return False
+
+
+_load()
 
 
 def _agg(task: str = "") -> List[Dict[str, Any]]:
@@ -99,7 +133,8 @@ async def handle_scoreboard_tool(name: str, arguments: Dict[str, Any], state: Se
             if not mid:
                 return {"error": "id required"}
             _MODELS[mid] = {"provider": args.get("provider", ""), "type": args.get("type", "LLM")}
-            return {"registered": mid, **_MODELS[mid], "total_models": len(_MODELS)}
+            persisted = _save()
+            return {"registered": mid, **_MODELS[mid], "total_models": len(_MODELS), "persisted": persisted}
 
         if name == "record_result":
             mid, task = args.get("model", ""), args.get("task", "")
@@ -109,7 +144,8 @@ async def handle_scoreboard_tool(name: str, arguments: Dict[str, Any], state: Se
                 _MODELS[mid] = {"provider": args.get("provider", ""), "type": args.get("type", "LLM")}
             score = max(0.0, min(1.0, float(args["score"])))
             _RESULTS.append({"model": mid, "task": task, "score": score})
-            return {"recorded": True, "model": mid, "task": task, "score": score, "total_results": len(_RESULTS)}
+            persisted = _save()
+            return {"recorded": True, "model": mid, "task": task, "score": score, "total_results": len(_RESULTS), "persisted": persisted}
 
         if name == "leaderboard":
             rows = _agg(args.get("task", ""))

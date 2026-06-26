@@ -62,6 +62,8 @@ from meok.mcp.tools.council_bft import COUNCIL_BFT_TOOLS, handle_council_tool
 from meok.mcp.tools.bridges import LEGACY_BRIDGES_TOOLS, handle_legacy_bridges_tool
 from meok.mcp.tools.law import LAW_TOOLS, handle_law_tool
 from meok.mcp.tools.scoreboard import SCOREBOARD_TOOLS, handle_scoreboard_tool
+from meok.mcp.tools.knowledge import KNOWLEDGE_TOOLS, handle_knowledge_tool
+from meok.mcp.tools.aware import AWARE_TOOLS, handle_aware_tool
 
 # Combined tool list — order matches the original monolithic server
 ALL_TOOLS = (
@@ -114,6 +116,8 @@ ALL_TOOLS = (
     + LEGACY_BRIDGES_TOOLS       # CSOAI Layer-0 legacy bridges (19 governed: COBOL/SAP/HL7/SCADA/payments/tax/mortgage/energy)
     + LAW_TOOLS                  # MEOK Law — jurisdiction engine (local→regional→national→bloc + cross-jurisdiction)
     + SCOREBOARD_TOOLS           # Model-Board — track-record scoreboard (register/record/leaderboard/best_for)
+    + KNOWLEDGE_TOOLS            # Sovereign Knowledge — 17 governed domains (neutral, sourced, attestable)
+    + AWARE_TOOLS                # MEOK Aware — governed on-device presence/world-model (consent-first, GDPR Art.9)
 )
 
 # Build name -> handler lookup from each module's tool list
@@ -233,6 +237,10 @@ for _tool in LAW_TOOLS:
     _TOOL_NAME_TO_HANDLER[_tool["name"]] = handle_law_tool
 for _tool in SCOREBOARD_TOOLS:
     _TOOL_NAME_TO_HANDLER[_tool["name"]] = handle_scoreboard_tool
+for _tool in KNOWLEDGE_TOOLS:
+    _TOOL_NAME_TO_HANDLER[_tool["name"]] = handle_knowledge_tool
+for _tool in AWARE_TOOLS:
+    _TOOL_NAME_TO_HANDLER[_tool["name"]] = handle_aware_tool
 
 # Also expose as a dict for external inspection
 TOOL_HANDLERS = {
@@ -268,6 +276,8 @@ TOOL_HANDLERS = {
     "legacy_bridges": handle_legacy_bridges_tool,
     "law": handle_law_tool,
     "scoreboard": handle_scoreboard_tool,
+    "knowledge": handle_knowledge_tool,
+    "aware": handle_aware_tool,
 }
 
 

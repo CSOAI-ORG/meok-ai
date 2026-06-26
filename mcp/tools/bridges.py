@@ -62,6 +62,37 @@ def _sigil_note(bridge_id: str) -> str:
     return f"attestable: govern:{bridge_id} → SIGIL hash-chain (CSOAI Layer-0)"
 
 
+def _try_full_parse(bridge_id: str, message: str):
+    """If the matching <bridge>-bridge-mcp package is installed, run its real
+    parser/mapper for a full structured result. Best-effort: returns None if the
+    package is absent or the call fails — governance metadata is always returned regardless."""
+    if not message:
+        return None
+    import importlib
+    mod_name = bridge_id.replace("-", "_") + "_bridge_mcp"
+    srv = None
+    for candidate in (mod_name + ".server", mod_name):
+        try:
+            srv = importlib.import_module(candidate)
+            break
+        except Exception:
+            continue
+    if srv is None:
+        return None
+    # Prefer a map_to_modern; else any parse_* callable. Tolerate FastMCP-wrapped tools.
+    candidates = ["map_to_modern"] + [a for a in dir(srv) if a.startswith("parse_")]
+    for fn_name in candidates:
+        fn = getattr(srv, fn_name, None)
+        fn = getattr(fn, "fn", fn)  # unwrap a FastMCP tool wrapper if present
+        if callable(fn):
+            try:
+                r = fn(message)
+                return {"tool": fn_name, "result": r.model_dump() if hasattr(r, "model_dump") else r}
+            except Exception:
+                continue
+    return None
+
+
 async def handle_legacy_bridges_tool(name: str, arguments: Dict[str, Any], state: ServiceState) -> Dict[str, Any]:
     """Handle legacy-bridge tool calls."""
     try:
@@ -92,15 +123,22 @@ async def handle_legacy_bridges_tool(name: str, arguments: Dict[str, Any], state
                 flags.append("OT/critical-infra — authenticate + authorise control-point writes.")
             if not flags:
                 flags.append("Apply the listed frameworks; retain an attestable audit trail.")
-            return {
+            full = _try_full_parse(bid, msg)
+            out = {
                 "bridge": {"id": bid, **entry},
                 "governed": True,
                 "frameworks": entry["frameworks"],
                 "risk_flags": flags,
                 "attestation": _sigil_note(bid),
-                "note": "Metadata-level governance. Install %s-bridge-mcp for full parse/validate/map." % bid,
                 "message_seen": bool(msg),
+                "full_bridge_installed": full is not None,
             }
+            if full is not None:
+                out["full_parse"] = full
+                out["note"] = "Full governance: parsed via the installed %s-bridge-mcp package." % bid
+            else:
+                out["note"] = "Metadata-level governance. Install %s-bridge-mcp for full parse/validate/map." % bid
+            return out
 
         return {"error": f"Unknown legacy-bridge tool: {name}"}
     except Exception as e:
