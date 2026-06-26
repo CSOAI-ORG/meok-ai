@@ -59,6 +59,7 @@ from meok.mcp.tools.agentik import AGENTIK_TOOLS, handle_agentik_tool
 from meok.mcp.tools.revenue import REVENUE_TOOLS, handle_revenue_tool
 from meok.mcp.tools.character_factory import CHARACTER_TOOLS, handle_character_factory_tool
 from meok.mcp.tools.council_bft import COUNCIL_BFT_TOOLS, handle_council_tool
+from meok.mcp.tools.bridges import LEGACY_BRIDGES_TOOLS, handle_legacy_bridges_tool
 
 # Combined tool list — order matches the original monolithic server
 ALL_TOOLS = (
@@ -108,6 +109,7 @@ ALL_TOOLS = (
     + AIBOM_TOOLS                # AI Bill of Materials (EuConform-compatible)
     + SHIELD_TOOLS               # Sovereign Shield deterministic security
     + AUDIT_TOOLS                # Nobulex-style Ed25519 audit receipts
+    + LEGACY_BRIDGES_TOOLS       # CSOAI Layer-0 legacy bridges (19 governed: COBOL/SAP/HL7/SCADA/payments/tax/mortgage/energy)
 )
 
 # Build name -> handler lookup from each module's tool list
@@ -221,6 +223,8 @@ for _tool in REVENUE_TOOLS:
     _TOOL_NAME_TO_HANDLER[_tool["name"]] = handle_revenue_tool
 for _tool in CHARACTER_TOOLS:
     _TOOL_NAME_TO_HANDLER[_tool["name"]] = handle_character_factory_tool
+for _tool in LEGACY_BRIDGES_TOOLS:
+    _TOOL_NAME_TO_HANDLER[_tool["name"]] = handle_legacy_bridges_tool
 
 # Also expose as a dict for external inspection
 TOOL_HANDLERS = {
@@ -253,6 +257,7 @@ TOOL_HANDLERS = {
     "agentik": handle_agentik_tool,
     "revenue": handle_revenue_tool,
     "character_factory": handle_character_factory_tool,
+    "legacy_bridges": handle_legacy_bridges_tool,
 }
 
 
