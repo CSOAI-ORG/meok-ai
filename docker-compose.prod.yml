@@ -56,7 +56,7 @@ services:
     environment:
       POSTGRES_DB: sovereign_temple
       POSTGRES_USER: sov
-      POSTGRES_PASSWORD: consciousness_through_care
+      POSTGRES_PASSWORD: ${MEOK_DB_PASSWORD:?set MEOK_DB_PASSWORD in .env (do not commit)}
     volumes:
       - postgres_data:/var/lib/postgresql/data
     ports:
