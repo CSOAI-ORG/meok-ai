@@ -13,7 +13,7 @@
 
 ```bash
 # CRON_SECRET (for Vercel)
-CRON_SECRET=eoE4StY/faOR7Gu+uiQPR8f8WQxq0aoNYuSh0KILxk=
+CRON_SECRET=<GENERATE: openssl rand -base64 32>
 ```
 
 ## Quick Deploy Commands
@@ -47,7 +47,7 @@ vercel env add NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY
 vercel env add RESEND_API_KEY
 
 # Set the generated CRON_SECRET
-vercel env add CRON_SECRET eoE4StY/faOR7Gu+uiQPR8f8WQxq0aoNYuSh0KILxk=
+vercel env add CRON_SECRET <GENERATE: openssl rand -base64 32>
 ```
 
 ### Step 2: Database Migration
