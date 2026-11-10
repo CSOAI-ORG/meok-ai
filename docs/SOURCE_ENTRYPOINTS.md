@@ -1,0 +1,65 @@
+# Source entrypoints and duplicated Python trees
+
+Source audit date: 2026-11-10. Baseline: [`628c3cb159e08c524668b8665d8d0c2d15f00718`](https://github.com/CSOAI-ORG/meok-ai/tree/628c3cb159e08c524668b8665d8d0c2d15f00718). This document maps tracked source and build instructions; it does not establish which commit or image is serving a live domain.
+
+## Which source a launch resolves
+
+The same `meok.*` import can select different files depending on working directory and package layout. The container builds copy the repository root into a directory named `meok`; running Python from the checkout root instead selects the already nested `meok/` package. Both layouts currently exist, and they are not interchangeable.
+
+| Entry or build | Tracked behavior | Source selected / limit |
+| --- | --- | --- |
+| Root npm scripts | `dev`, `build`, `start`, `test` change directory to `ui` and invoke its npm scripts. | `ui/` is the frontend source for these commands. Root npm is a launcher. |
+| Root GitHub CI | Job default working directory is `ui`; installs npm dependencies, runs Jest and builds Next.js. | This workflow does not validate Python imports or duplicated Python trees. Type-check step currently allows failure. |
+| `ui/Dockerfile` | Builds the UI and copies `.next/standalone`, static assets and public assets; runs `node server.js`. | Frontend container produced from `ui/`, not either Python tree. |
+| `Dockerfile`, `Dockerfile.amd64`, `Dockerfile.update` | `WORKDIR /app`, `COPY . /app/meok/`, then `python -m meok.mcp.server`. | Repository-root `mcp/server.py` becomes `/app/meok/mcp/server.py`. The nested checkout tree becomes `/app/meok/meok/` and is not the `meok` package selected by this command. |
+| `Dockerfile.standalone` | Same copy layout; `/entrypoint.sh` comes from `deploy/entrypoint.sh`, which changes to `/app` and runs `python3 -m meok.mcp.server`. | Repository-root Python tree, subject to runtime dependencies and entrypoint setup. |
+| Serverless image | Copies root into `/app/meok/`; Supervisor uses directory `/app`, `PYTHONPATH=/app`, command `python -m meok.mcp.server`. | Repository-root Python tree for the MCP service. |
+| Patch images | Copy selected root `auth/`, `core/`, and `mcp/tools/` files into `/app/meok/...`; launch the same module through an inherited image. | Those explicitly copied root files override their container destinations. Files inherited from mutable/base image tags cannot be identified from this Git tree alone. |
+| Python launched from checkout root | Default module search finds `checkout/meok/__init__.py`. | `meok.api.server` resolves to nested `meok/api/server.py`. `meok.mcp.server` cannot resolve there: nested `meok/mcp/` is absent at this baseline. |
+| Python launched from a parent of a checkout actually named `meok` | If that parent is the active module search root, `meok` can resolve to the repository-root package. | Root `api/server.py`/`mcp/server.py` can then be selected. This is conditional on actual directory/search-path configuration, not a portable local launch recipe. |
+| Python packaging | `pyproject.toml` discovers packages under `ui` with `include = ["ui*"]`. | It does not define distribution of the root or nested `meok` Python service. A successful packaging command would not prove the service is installed. |
+
+Sources: [package.json](https://github.com/CSOAI-ORG/meok-ai/blob/628c3cb159e08c524668b8665d8d0c2d15f00718/package.json), [ui/package.json](https://github.com/CSOAI-ORG/meok-ai/blob/628c3cb159e08c524668b8665d8d0c2d15f00718/ui/package.json), [.github/workflows/ci.yml](https://github.com/CSOAI-ORG/meok-ai/blob/628c3cb159e08c524668b8665d8d0c2d15f00718/.github/workflows/ci.yml), [ui/Dockerfile](https://github.com/CSOAI-ORG/meok-ai/blob/628c3cb159e08c524668b8665d8d0c2d15f00718/ui/Dockerfile), [Dockerfile](https://github.com/CSOAI-ORG/meok-ai/blob/628c3cb159e08c524668b8665d8d0c2d15f00718/Dockerfile), [Dockerfile.amd64](https://github.com/CSOAI-ORG/meok-ai/blob/628c3cb159e08c524668b8665d8d0c2d15f00718/Dockerfile.amd64), [Dockerfile.update](https://github.com/CSOAI-ORG/meok-ai/blob/628c3cb159e08c524668b8665d8d0c2d15f00718/Dockerfile.update), [Dockerfile.standalone](https://github.com/CSOAI-ORG/meok-ai/blob/628c3cb159e08c524668b8665d8d0c2d15f00718/Dockerfile.standalone), [deploy/entrypoint.sh](https://github.com/CSOAI-ORG/meok-ai/blob/628c3cb159e08c524668b8665d8d0c2d15f00718/deploy/entrypoint.sh), [deploy/serverless/Dockerfile.serverless](https://github.com/CSOAI-ORG/meok-ai/blob/628c3cb159e08c524668b8665d8d0c2d15f00718/deploy/serverless/Dockerfile.serverless), [deploy/serverless/supervisord.conf](https://github.com/CSOAI-ORG/meok-ai/blob/628c3cb159e08c524668b8665d8d0c2d15f00718/deploy/serverless/supervisord.conf), [Dockerfile.patch](https://github.com/CSOAI-ORG/meok-ai/blob/628c3cb159e08c524668b8665d8d0c2d15f00718/Dockerfile.patch), [Dockerfile.patch.amd64](https://github.com/CSOAI-ORG/meok-ai/blob/628c3cb159e08c524668b8665d8d0c2d15f00718/Dockerfile.patch.amd64), [pyproject.toml](https://github.com/CSOAI-ORG/meok-ai/blob/628c3cb159e08c524668b8665d8d0c2d15f00718/pyproject.toml).
+
+`docker-compose.yml` explicitly builds the Python service with the root Dockerfile, sets `PYTHONPATH=/app`, and builds the dashboard from `./ui`. That agrees with the container layout above. [docker-compose.yml](https://github.com/CSOAI-ORG/meok-ai/blob/628c3cb159e08c524668b8665d8d0c2d15f00718/docker-compose.yml).
+
+Root `vercel.json` identifies Next.js and `ui/.next` as output, while project-level settings can affect the build root. The repository's `AGENTS.md` contains a dated June deployment incident and alias snapshot. Neither establishes the current Vercel project configuration, deployed commit, domain alias, authentication state or service health. Read those deployment instructions before any separate deployment operation. [vercel.json](https://github.com/CSOAI-ORG/meok-ai/blob/628c3cb159e08c524668b8665d8d0c2d15f00718/vercel.json), [AGENTS.md](https://github.com/CSOAI-ORG/meok-ai/blob/628c3cb159e08c524668b8665d8d0c2d15f00718/AGENTS.md).
+
+## The duplicate inventory
+
+The recursive Git tree has 117 file pairs where both `path` and `meok/path` exist. Git blob IDs match for 106 pairs; 11 pairs differ. Identical blob IDs establish identical tracked bytes at this commit, not equal runtime imports, generated outputs or live files.
+
+| Root path | Nested path | Comparison |
+| --- | --- | --- |
+| [__init__.py](https://github.com/CSOAI-ORG/meok-ai/blob/628c3cb159e08c524668b8665d8d0c2d15f00718/__init__.py) | [meok/__init__.py](https://github.com/CSOAI-ORG/meok-ai/blob/628c3cb159e08c524668b8665d8d0c2d15f00718/meok/__init__.py) | Different Git blobs |
+| [agents/ralph_task_runner.py](https://github.com/CSOAI-ORG/meok-ai/blob/628c3cb159e08c524668b8665d8d0c2d15f00718/agents/ralph_task_runner.py) | [meok/agents/ralph_task_runner.py](https://github.com/CSOAI-ORG/meok-ai/blob/628c3cb159e08c524668b8665d8d0c2d15f00718/meok/agents/ralph_task_runner.py) | Different Git blobs |
+| [api/server.py](https://github.com/CSOAI-ORG/meok-ai/blob/628c3cb159e08c524668b8665d8d0c2d15f00718/api/server.py) | [meok/api/server.py](https://github.com/CSOAI-ORG/meok-ai/blob/628c3cb159e08c524668b8665d8d0c2d15f00718/meok/api/server.py) | Different Git blobs |
+| [core/consciousness.py](https://github.com/CSOAI-ORG/meok-ai/blob/628c3cb159e08c524668b8665d8d0c2d15f00718/core/consciousness.py) | [meok/core/consciousness.py](https://github.com/CSOAI-ORG/meok-ai/blob/628c3cb159e08c524668b8665d8d0c2d15f00718/meok/core/consciousness.py) | Different Git blobs |
+| [neural/__init__.py](https://github.com/CSOAI-ORG/meok-ai/blob/628c3cb159e08c524668b8665d8d0c2d15f00718/neural/__init__.py) | [meok/neural/__init__.py](https://github.com/CSOAI-ORG/meok-ai/blob/628c3cb159e08c524668b8665d8d0c2d15f00718/meok/neural/__init__.py) | Different Git blobs |
+| [neural/models/care_pattern_analyzer_metadata.json](https://github.com/CSOAI-ORG/meok-ai/blob/628c3cb159e08c524668b8665d8d0c2d15f00718/neural/models/care_pattern_analyzer_metadata.json) | [meok/neural/models/care_pattern_analyzer_metadata.json](https://github.com/CSOAI-ORG/meok-ai/blob/628c3cb159e08c524668b8665d8d0c2d15f00718/meok/neural/models/care_pattern_analyzer_metadata.json) | Different Git blobs |
+| [neural/models/care_validation_nn_metadata.json](https://github.com/CSOAI-ORG/meok-ai/blob/628c3cb159e08c524668b8665d8d0c2d15f00718/neural/models/care_validation_nn_metadata.json) | [meok/neural/models/care_validation_nn_metadata.json](https://github.com/CSOAI-ORG/meok-ai/blob/628c3cb159e08c524668b8665d8d0c2d15f00718/meok/neural/models/care_validation_nn_metadata.json) | Different Git blobs |
+| [neural/models/creativity_assessment_nn_metadata.json](https://github.com/CSOAI-ORG/meok-ai/blob/628c3cb159e08c524668b8665d8d0c2d15f00718/neural/models/creativity_assessment_nn_metadata.json) | [meok/neural/models/creativity_assessment_nn_metadata.json](https://github.com/CSOAI-ORG/meok-ai/blob/628c3cb159e08c524668b8665d8d0c2d15f00718/meok/neural/models/creativity_assessment_nn_metadata.json) | Different Git blobs |
+| [neural/models/partnership_detection_ml_metadata.json](https://github.com/CSOAI-ORG/meok-ai/blob/628c3cb159e08c524668b8665d8d0c2d15f00718/neural/models/partnership_detection_ml_metadata.json) | [meok/neural/models/partnership_detection_ml_metadata.json](https://github.com/CSOAI-ORG/meok-ai/blob/628c3cb159e08c524668b8665d8d0c2d15f00718/meok/neural/models/partnership_detection_ml_metadata.json) | Different Git blobs |
+| [neural/models/relationship_evolution_nn_metadata.json](https://github.com/CSOAI-ORG/meok-ai/blob/628c3cb159e08c524668b8665d8d0c2d15f00718/neural/models/relationship_evolution_nn_metadata.json) | [meok/neural/models/relationship_evolution_nn_metadata.json](https://github.com/CSOAI-ORG/meok-ai/blob/628c3cb159e08c524668b8665d8d0c2d15f00718/meok/neural/models/relationship_evolution_nn_metadata.json) | Different Git blobs |
+| [neural/models/threat_detection_nn_metadata.json](https://github.com/CSOAI-ORG/meok-ai/blob/628c3cb159e08c524668b8665d8d0c2d15f00718/neural/models/threat_detection_nn_metadata.json) | [meok/neural/models/threat_detection_nn_metadata.json](https://github.com/CSOAI-ORG/meok-ai/blob/628c3cb159e08c524668b8665d8d0c2d15f00718/meok/neural/models/threat_detection_nn_metadata.json) | Different Git blobs |
+
+One concrete behavioral difference is visible in the API entry files: the root `api/server.py` imports council-vote helpers and declares a council-vote endpoint, while the nested `meok/api/server.py` lacks that import/endpoint. A command using `meok.api.server:app` therefore does not identify the same API code in both layouts. Both files contain that Uvicorn module string, which is why the working directory matters. [api/server.py](https://github.com/CSOAI-ORG/meok-ai/blob/628c3cb159e08c524668b8665d8d0c2d15f00718/api/server.py), [meok/api/server.py](https://github.com/CSOAI-ORG/meok-ai/blob/628c3cb159e08c524668b8665d8d0c2d15f00718/meok/api/server.py).
+
+The root MCP server is a separate, larger service entrypoint importing `meok.mcp.*`, `meok.api.*`, `meok.core.*` and other root-container modules. There is no corresponding nested MCP package. [mcp/server.py](https://github.com/CSOAI-ORG/meok-ai/blob/628c3cb159e08c524668b8665d8d0c2d15f00718/mcp/server.py).
+
+## Maintainer rule for changes
+
+Choose the actual build/launch being repaired before choosing a file:
+
+- For the tracked MCP Docker paths above, edit the repository-root module that the Docker layout copies into `/app/meok`. Verify the built container's import origin before claiming runtime integration.
+- For a local command launched from checkout root that imports nested `meok.*`, the nested package is currently the selected source. Do not assume a root-tree patch reaches it.
+- For the tracked npm/Next.js commands, work in `ui/` and verify the frontend build separately.
+- Do not delete either tree, bulk-copy one over the other, or change `pyproject.toml` to package an arbitrary tree on the strength of the duplicate count. The 11 differing pairs require a behavior-level reconciliation and the missing nested MCP package requires an explicit packaging decision.
+
+No source imports or build configuration are changed by this documentation patch. The available evidence supports the source-selection map; it does not support a global replacement of one tree with the other.
+
+## Completing a later consolidation
+
+A consolidation should first select a supported Python package layout, map each documented service entrypoint to it, and compare the 11 differing pairs. Then update Docker copy/launch paths, local commands and packaging together, with import-origin checks for each supported environment and real API behavior tests. Record source commit and built image digest in the release evidence. Preserve a migration path for consumers of the previous module layout.
+
+The frontend remains the MEOK shelf/frontend described by the README honesty register. This file does not establish a second Council, approve an authority implementation, certify a benchmark or change live board authority.
