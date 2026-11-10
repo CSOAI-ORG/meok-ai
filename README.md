@@ -8,6 +8,10 @@ Part of the MEOK AI Labs / CSOAI-ORG ecosystem.
 
 See the top-level [MEOK topology](https://github.com/CSOAI-ORG/clawd/blob/main/AGENTS.md) for coordination rules.
 
+## Source entrypoints
+
+See [the source-entrypoint map](docs/SOURCE_ENTRYPOINTS.md) before editing duplicated Python modules. Docker launches select the root Python tree; Python launched from the checkout root selects the nested `meok/` package. The frontend npm commands select `ui/`. These are source/build observations, not proof of a live deployment.
+
 ## Honesty register (2026-09-02)
 
 **MEOK.ai is a shelf / frontend, not a second Council.**
