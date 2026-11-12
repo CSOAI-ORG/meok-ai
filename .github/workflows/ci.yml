@@ -7,6 +7,19 @@ on:
     branches: [main]
 
 jobs:
+  gspc-contract:
+    name: GSPC Board Reader Contract
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Run deterministic GSPC board unit tests
+        run: python3 -m unittest discover -s tests -p "test_gspc_board.py" -v
+
   build-and-test:
     name: Build & Test
     runs-on: ubuntu-latest
