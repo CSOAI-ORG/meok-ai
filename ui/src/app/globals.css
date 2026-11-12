@@ -27,6 +27,22 @@
   --teal: #2d9b8a;
   --orange: #e07340;
 
+  /* ── Sovereign Emergence spectrum (decks: hero aurora + character cards) ──
+     Shared system with MEOK OS + MEOK Earth. Additive — safe to consume in heroes,
+     archetype cards, and section backgrounds. See clawd/MEOK_OS_UI_BUILD_SPEC. */
+  --spectrum-coral:      #e6a07c;
+  --spectrum-sage:       #9dbe9a;
+  --spectrum-periwinkle: #b4b6e8;
+  --spectrum-lavender:   #cbb7df;
+  --champagne:           #bd9d54;
+  --champagne-light:     #e0c074;
+  /* hero aurora — matches "Begin Your Evolution" + the MEOK OS frame */
+  --aurora: radial-gradient(1100px 420px at 16% -8%, rgba(230,160,124,.42), transparent 60%),
+            radial-gradient(1000px 460px at 84% -10%, rgba(157,190,154,.40), transparent 62%),
+            radial-gradient(900px 520px at 60% -14%, rgba(180,182,232,.34), transparent 60%);
+  /* M monogram mark gradient */
+  --m-mark: linear-gradient(150deg,#2a2a31,#15151a);
+
   /* ── Legacy aliases (keep for dark dashboard/ralph pages) ── */
   --background: #0a0a0f;
   --foreground: #e5e5e5;
